@@ -1,4 +1,6 @@
 .container {
+  background-image: url("/BG.png");
+  opacity: 1;
   min-height: 100vh;
   padding: 0 0.5rem;
   display: flex;
