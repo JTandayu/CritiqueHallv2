@@ -20,6 +20,8 @@ export default function Home() {
           A Discussion Forum Web Application for Students
         </p>
 
+        <button>Get Started</button>
+
         {/* <div className={styles.grid}>
           <a href="https://nextjs.org/docs" className={styles.card}>
             <h2>Documentation &rarr;</h2>
