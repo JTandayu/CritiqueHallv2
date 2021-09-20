@@ -13,7 +13,7 @@ export default function Home() {
 
       <main className={styles.main}>
         <h1 className={styles.title}>
-          Welcome to <a href="#"><img src="/critiquehall2.png" /></a>
+        <a href="#"><img src="/critiquehall2.png" /></a>
         </h1>
 
         <p className={styles.description}>
@@ -54,7 +54,7 @@ export default function Home() {
         
       </main>
 
-      <footer className={styles.footer}>
+      {/* <footer className={styles.footer}>
         <a
           href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
           target="_blank"
@@ -62,10 +62,10 @@ export default function Home() {
         >
           Powered by{' '}
           <span className={styles.logo}>
-            <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
+            <Image src="/critiquehall.png" alt="Vercel Logo" width={500} height={300} />
           </span>
         </a>
-      </footer>
+      </footer> */}
     </div>
   )
 }
