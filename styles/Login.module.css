@@ -6,21 +6,34 @@
     justify-content: center;
     align-items: center;
     height: 100vh;
+    margin: auto;
   }
 
   .main {
     position: absolute;
     width: 50ch;
-    height: 100vh;
-    margin-left: 100vh;
-    margin-left: 10ch;
+    height: 50vh;
+    margin: 0 auto;
     padding: 5rem 0;
     flex: 1;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    /* border: 1px solid black; */
+    box-shadow: 5px 5px rgb(235, 235, 235);
+    border-left: 1px solid rgb(235, 235, 235);
+    border-top: 1px solid rgb(235, 235, 235);
+  }
+
+  .login_container{
+    box-shadow: 5px 10px;
+  }
+  .input_box{
+    width: 20vh;
+    padding: 10px;
+    margin-bottom: 1ch;
+    border-radius: 1ch;
+    border: 1px solid rgb(92, 92, 92);
   }
 
   .login_button {
