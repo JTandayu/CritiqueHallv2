@@ -16,17 +16,17 @@ export default function Register() {
   
         
             <form id="login">
-                <input placeholder="First Name" type="text"/>
+                <input placeholder="First Name" type="text" className={styles.input_box}/>
                 <br/>
-                <input placeholder="Last Name" type="text"/>
+                <input placeholder="Last Name" type="text" className={styles.input_box}/>
                 <br/>
-                <input placeholder="Email" type="email"/>
+                <input placeholder="Email" type="email" className={styles.input_box}/>
                 <br/>
-                <input placeholder="Display Name" type="text"/>
+                <input placeholder="Display Name" type="text" className={styles.input_box}/>
                 <br/>
-                <input placeholder="Password" type="password"/>
+                <input placeholder="Password" type="password" className={styles.input_box}/>
                 <br/>
-                <input placeholder="Confirm Password" type="password"/>
+                <input placeholder="Confirm Password" type="password" className={styles.input_box}/>
                 <br/>
                 <button type="button" className={styles.login_button}>Login</button>
             </form>

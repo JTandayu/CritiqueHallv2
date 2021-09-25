@@ -5,6 +5,12 @@ import styles from '../styles/Login.module.css'
 import { css, cx } from '@emotion/react'
 import { motion } from "framer-motion"
 
+export async function getStaticProps(context) {
+  return {
+    props: {}, // will be passed to the page component as props
+  }
+}
+
 export default function Login() {
     return (
       <div className={styles.container} >
@@ -21,7 +27,7 @@ export default function Login() {
           >
   
 
-            <form id="login">
+            <form id="login" action>
                 <input placeholder="Username" className={styles.input_box} type="text"/>
                 <br/>
                 <input placeholder="Password" className={styles.input_box} type="password"/>
