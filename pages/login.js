@@ -4,6 +4,9 @@ import Image from 'next/image'
 import styles from '../styles/Login.module.css'
 import { css, cx } from '@emotion/react'
 import { motion } from "framer-motion"
+import Home from './home'
+import Link from 'next/link'
+import Logo from '../public/critiquehall2.png'
 
 export async function getStaticProps(context) {
   return {
@@ -25,18 +28,28 @@ export default function Login() {
           initial = {{y: -70, opacity: 0}}
           transition ={{duration: .7}}
           >
-  
+            <div className={styles.logo}>
+                <Image src={Logo}></Image>
+            </div>
 
-            <form id="login" action>
+            <form id="login" action="/home">
                 <input placeholder="Username" className={styles.input_box} type="text"/>
                 <br/>
                 <input placeholder="Password" className={styles.input_box} type="password"/>
                 <br/>
-                <button type="button" className={styles.login_button}>Login</button>
+                <button type="submit" className={styles.login_button}>Login</button>
             </form>
+
+            <p className={styles.register}>
+              <Link href="./register"><a>New User?</a></Link>
+            </p>
 
         </motion.main>
 
       </div>
     )
   }
+ function CheckLogin(param) {
+
+
+   }
