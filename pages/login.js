@@ -43,7 +43,7 @@ export default function Login() {
             </div>
             
 
-            <center><FormControl id="login">
+            <center><FormControl id="loginform" isRequired>
               <FormLabel>Username</FormLabel>
                 <input placeholder="Username" className={styles.input_box} type="text"/>
                 <br/>
