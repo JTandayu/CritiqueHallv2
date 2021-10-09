@@ -7,6 +7,8 @@ import { motion } from "framer-motion"
 import Home from './home'
 import Link from 'next/link'
 import Logo from '../public/critiquehall2.png'
+import { Heading } from '@chakra-ui/react'
+import { Box } from "@chakra-ui/react"
 
 export default function Register() {
     return (
@@ -27,7 +29,7 @@ export default function Register() {
             <div className={styles.logo}>
             <Link href="/"><Image src={Logo}></Image></Link>
             </div>
-            <h2>Forgot Password</h2>
+            <Heading mb={4} as="h2" size="lg">Register</Heading>
             <form id="login">
                 <input placeholder="First Name" type="text" className={styles.input_box}/>
                 <br/>

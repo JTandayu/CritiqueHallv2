@@ -6,6 +6,8 @@ import { motion } from "framer-motion"
 import Home from './home'
 import Link from 'next/link'
 import Logo from '../public/critiquehall2.png'
+import { Heading } from '@chakra-ui/react'
+import { Box } from "@chakra-ui/react"
 
 export default function ForgotPassword(){
     return(
@@ -25,7 +27,7 @@ export default function ForgotPassword(){
                 <Image src={Logo}></Image>
             </div>
 
-            <h2>Forgot Password</h2>
+            <Heading mb={2} as="h2" size="lg">Forgot Password</Heading>
             <p className={styles.description}>Kindly enter your email address to receive a link for further process in changing your password.</p>
             <form id="login" action="/home">
                 <input placeholder="Email Address" className={styles.input_box} type="text"/>
