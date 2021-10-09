@@ -47,6 +47,7 @@ export default function Register() {
             </form>
 
             <p className={styles.register}>
+            <p><Link href="./forgot-password"><a>Forgot Password?</a></Link></p>
               <p><Link href="./login"><a>Back to Login</a></Link></p>
             </p>
   
