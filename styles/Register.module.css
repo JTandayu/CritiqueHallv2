@@ -1,37 +1,64 @@
 .container {
-    height: 100vh;
-    padding: 0 0.5rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-  }
+  height: 100vh;
+  padding: 0 0.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: auto;
+  
+}
 
-  .main {
-    position: absolute;
-    width: 50ch;
-    height: 100vh;
-    margin-left: 100vh;
-    margin-left: 10ch;
-    padding: 5rem 0;
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    /* border: 1px solid black; */
-  }
+.main {
+  position: absolute;
+  width: 50ch;
+  height: 70vh;
+  margin: 0 auto;
+  padding: 5rem 0;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 5px 5px rgb(235, 235, 235);
+  border-left: 1px solid rgb(235, 235, 235);
+  border-top: 1px solid rgb(235, 235, 235);
+  overflow: visible;
+  border-radius: 2ch;
+}
 
-  .input_box{
-    width: 20vh;
-    padding: 10px;
-    margin-bottom: 1ch;
-    border-radius: 1ch;
-    border: 1px solid rgb(92, 92, 92);
-  }
+/* .login_container{
+  box-shadow: 5px 10px;
+} */
 
-  .login_button {
-    margin-top: 5vh;
-    margin-left: 35%;
-  }
+.input_box{
+  width: 20vh;
+  padding: 10px;
+  margin-bottom: 1ch;
+  border-radius: 1ch;
+  border: 1px solid rgb(92, 92, 92);
+}
+
+.login_button {
+  margin-top: 5ch;
+  width: 100%;
+  height: 6ch;
+  padding: 1ch 5ch;
+  border: none;
+  border-radius: 1ch;
+  background-color: rgb(51, 139, 255);
+  color: #fff;
+}
+
+.register{
+  margin-top: 1ch;
+  color: rgb(0, 60, 255);
+  text-align: center;
+}
+
+.logo{
+  height: 15ch;
+  width: 25ch;
+  margin-bottom: 5ch;
+}

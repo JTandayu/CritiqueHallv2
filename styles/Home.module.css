@@ -146,7 +146,7 @@
   transition: 0.5s;
 }
 
-.getStartedButton span:after {
+/* .getStartedButton span:after {
   content: '\00bb';
   position: absolute;
   opacity: 0;
@@ -162,5 +162,5 @@
 .getStartedButton:hover span:hover {
   opacity: 1;
   right: 0;
-}
+} */
 

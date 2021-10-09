@@ -41,7 +41,8 @@ export default function Login() {
             </form>
 
             <p className={styles.register}>
-              <Link href="./register"><a>New User?</a></Link>
+              <p><Link href="./forgot-password"><a>Forgot Password?</a></Link></p>
+              <p><Link href="./register"><a>New User?</a></Link></p>
             </p>
 
         </motion.main>

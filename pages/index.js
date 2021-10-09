@@ -19,14 +19,14 @@ export default function Home() {
         <link rel="icon" href="/logo256.png" onLoad=""/>
       </Head>
 
-      
       <main className={styles.main}>
+
         <motion.h1 
           animate={{ y: 50, stdDeviation: [1, 5, 3], opacity:1}}
           initial="hidden"
           variants={variants}
           className={styles.title}>
-        <img src="/critiquehall2.png" />
+          <img src="/critiquehall2.png" />
         </motion.h1>
 
         <motion.p 
@@ -37,7 +37,16 @@ export default function Home() {
           A Discussion Forum Web Application for Students
         </motion.p>
 
-        <button className={styles.getStartedButton}><span><Link href="/login">Get Started</Link></span></button>
+        <button className={styles.getStartedButton}>
+          <motion.span
+            // animate={{opacity:1}}
+            initial={{opacity:0.5}}
+            whileHover={{opacity:1}}
+            transition={{duration:.1}}
+          >
+          <Link href="/login">Get Started</Link>
+          </motion.span>
+        </button>
 
       </main>
     </div>

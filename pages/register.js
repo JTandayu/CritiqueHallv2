@@ -2,6 +2,11 @@ import Head from 'next/head'
 import Image from 'next/image'
 // import styles from '../styles/Home.module.css'
 import styles from '../styles/Register.module.css'
+import { css, cx } from '@emotion/react'
+import { motion } from "framer-motion"
+import Home from './home'
+import Link from 'next/link'
+import Logo from '../public/critiquehall2.png'
 
 export default function Register() {
     return (
@@ -12,9 +17,17 @@ export default function Register() {
           <link rel="icon" href="/critiquehall.png" />
         </Head>
   
-        <main className={styles.main}>
-  
-        
+
+        <motion.main className={styles.main} 
+          animate = {{opacity: 1}}
+          initial = {{opacity: 0}}
+          transition ={{duration: .7}}
+          >
+
+            <div className={styles.logo}>
+                <Image src={Logo}></Image>
+            </div>
+            <h2>Forgot Password</h2>
             <form id="login">
                 <input placeholder="First Name" type="text" className={styles.input_box}/>
                 <br/>
@@ -28,12 +41,15 @@ export default function Register() {
                 <br/>
                 <input placeholder="Confirm Password" type="password" className={styles.input_box}/>
                 <br/>
-                <button type="button" className={styles.login_button}>Login</button>
+                <button type="button" className={styles.login_button}>Register</button>
             </form>
+
+            <p className={styles.register}>
+              <p><Link href="./login"><a>Back to Login</a></Link></p>
+            </p>
   
           
-          
-        </main>
+      </motion.main>
 
       </div>
     )

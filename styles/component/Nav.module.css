@@ -4,17 +4,33 @@
     min-height: 10vh;
     padding: 0 0.5rem;
     display: flex;
-    justify-content: flex-end;
     align-items: flex-start;
     height: 10vh;
+    width: 100%;
     /* display: inline-block; */
 
   }
 
   .container > ul > li{
       list-style-type: none;
-      display: inline-flex;
+      display: flex;
       padding: 1vh 1vh 1vh 7vh;
       font-size: 2.5ch;
+  }
+  .container > ul{
+    list-style-type: none;
+    display: flex;
+    padding: 1vh 1vh 1vh 7vh;
+    font-size: 2.5ch;
+    margin: auto 5vh;
+    justify-self: flex-end;
+  }
+
+  .logo{
+    height: 10ch;
+    width: 30ch;
+    flex-direction: row;
+    display: inline-flex;
+    justify-self: flex-start;
   }
 }
