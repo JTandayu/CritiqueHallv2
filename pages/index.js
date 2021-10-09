@@ -5,6 +5,7 @@ import { motion } from "framer-motion"
 import Link from 'next/link'
 import { Stack, HStack, VStack } from "@chakra-ui/react"
 import { Button, ButtonGroup } from "@chakra-ui/react"
+import { ArrowForwardIcon, CheckIcon } from '@chakra-ui/icons'
 
 
 const variants = {
@@ -72,7 +73,7 @@ export default function Home() {
             whileHover={{ scale: 1.3 }}
             whileTap={{ scale: 0.9 }}
           >
-        <Button colorScheme="messenger" variant="solid" size="lg">
+        <Button rightIcon={<CheckIcon />} colorScheme="messenger" variant="solid" size="lg">
        <Link href="/login">Login</Link>
         </Button>
         </motion.button>
@@ -85,7 +86,7 @@ export default function Home() {
             whileHover={{ scale: 1.3 }}
             whileTap={{ scale: 0.9 }}
           >
-        <Button colorScheme="red" variant="solid" size="lg">
+        <Button rightIcon={<ArrowForwardIcon />} colorScheme="red" variant="solid" size="lg">
        <Link href="/register">Get Started</Link>
         </Button>
         </motion.button>

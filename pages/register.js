@@ -7,6 +7,14 @@ import { motion } from "framer-motion"
 import Home from './home'
 import Link from 'next/link'
 import Logo from '../public/critiquehall2.png'
+import { Button, ButtonGroup } from "@chakra-ui/react"
+import { Stack, HStack, VStack } from "@chakra-ui/react"
+import {
+  FormControl,
+  FormLabel,
+  FormErrorMessage,
+  FormHelperText,
+} from "@chakra-ui/react"
 
 export default function Register() {
     return (
@@ -25,24 +33,34 @@ export default function Register() {
           >
 
             <div className={styles.logo}>
-            <Link href="/"><Image src={Logo}></Image></Link>
+            <Link href="/"><Image src={Logo}  alt="Critique Hall Logo"></Image></Link>
             </div>
           
-            <form id="login">
-                <input placeholder="First Name" type="text" className={styles.input_box}/>
+            <center><FormControl id="registerform" isRequired>
+              <FormLabel>First Name</FormLabel>
+                <input placeholder="First Name" className={styles.input_box} type="text"/>
                 <br/>
-                <input placeholder="Last Name" type="text" className={styles.input_box}/>
+                <FormLabel>Last Name</FormLabel>
+                <input placeholder="Last Name" className={styles.input_box} type="text"/>
                 <br/>
-                <input placeholder="Email" type="email" className={styles.input_box}/>
+                <FormLabel>Display Name</FormLabel>
+                <input placeholder="Display Name" className={styles.input_box} type="text"/>
                 <br/>
-                <input placeholder="Display Name" type="text" className={styles.input_box}/>
+              <FormLabel>Password</FormLabel>
+                <input placeholder="Password" className={styles.input_box} type="password"/>
                 <br/>
-                <input placeholder="Password" type="password" className={styles.input_box}/>
+                <FormLabel>Confirm Password</FormLabel>
+                <input placeholder="Confirm Password" className={styles.input_box} type="password"/>
                 <br/>
-                <input placeholder="Confirm Password" type="password" className={styles.input_box}/>
-                <br/>
-                <button type="button" className={styles.login_button}>Register</button>
-            </form>
+                <motion.button
+                  whileHover={{ scale: 1.2 }}
+                  whileTap={{ scale: 0.9 }}
+                  >
+                <HStack direction="column" spacing={8} align="center">
+                <Button className={styles.RegisterButton} colorScheme="green" type="submit" size="lg">Register</Button>
+                </HStack>
+                </motion.button>
+            </FormControl></center>
 
             <p className={styles.register}>
             <p><Link href="./forgot-password"><a>Forgot Password?</a></Link></p>

@@ -15,7 +15,7 @@
     background-color:#fff;
     position: absolute;
     width: 50ch;
-    height: 70vh;
+    height: 60vh;
     margin: 0 auto;
     padding: 5rem 0;
     flex: 1;
@@ -54,7 +54,7 @@
   }
 
   .register{
-    margin-top: 10ch;
+    margin-top: 5ch;
     color: rgb(0, 60, 255);
     text-align: center;
     text-transform: uppercase;
