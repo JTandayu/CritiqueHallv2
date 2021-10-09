@@ -1,34 +1,37 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## The Design and Implementation of "Critique Hall": A Discussion Forum Web Application for Students
 
-## Getting Started
+## 1. Project Context of Critique Hall
 
-First, run the development server:
+- The outbreak of the COVID-19 pandemic introduced countless problems globally.
+In the Philippine context, President Rodrigo Duterte announced the implementation of
+“community quarantine” within the National Capital Region (NCR) supposedly lasting
+for a whole month, beginning on the 15th of March, 2020. Aligned with the country’s
+efforts to mitigate the spread of the disease was to suspend face-to-face meetings within
+schools, universities, and institutions alike, leaving them with no choice but to transition
+into online learning. As of writing, a year and a half have already passed and the
+ever-extending quarantine still has not been lifted due to the continuous and rising surge
+of COVID-19 cases. As a result, this makes the Philippines the only country in Southeast
+Asia that is still implementing home-based learning (Hernando-Malipot, 2021). This kind
+of transition is a luxury not every student can afford.
+Notwithstanding, those with the privilege of learning online also face numerous
+challenges themselves. For the purpose of this project, the main problems that the
+researchers are trying to alleviate concern the students’ academic lives and personal
+development amid this pandemic. With that said, the researchers understand that
+professors can only do so much. That is why Critique Hall, a discussion forum web
+responsive and secure application, will be designed as a learning supplement focused on
+students for gathering and giving critiques regarding each other’s works.
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+## 2. Objectives of Critique Hall
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
-
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
-
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+The general objective of the project is to determine and provide a solution for the
+challenges brought about by online learning by designing and implementing Critique
+Hall, a discussion forum web application mainly for students.
+In order to achieve the general objective, the following specific objectives have to
+be met:
+- To successfully design Critique Hall with all features functioning and operating
+- To successfully implement Critique Hall for pilot testing to iACADEMY college
+students
+- To meet the student needs with regards to their academic lives and personal
+development as discussed earlier in subchapter 1.2 Purpose and Description
+- To measure the project’s efficacy through a dedicated tab with fill-up forms for
+feedback, reviews, and suggestions
