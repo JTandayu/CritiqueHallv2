@@ -7,6 +7,7 @@
     align-items: center;
     height: 100vh;
     margin: auto;
+    
   }
 
   .main {
@@ -23,11 +24,14 @@
     box-shadow: 5px 5px rgb(235, 235, 235);
     border-left: 1px solid rgb(235, 235, 235);
     border-top: 1px solid rgb(235, 235, 235);
+    overflow: visible;
+    border-radius: 2ch;
   }
 
-  .login_container{
+  /* .login_container{
     box-shadow: 5px 10px;
-  }
+  } */
+
   .input_box{
     width: 20vh;
     padding: 10px;
@@ -37,6 +41,23 @@
   }
 
   .login_button {
-    margin-top: 5vh;
-    margin-left: 35%;
+    margin-top: 5ch;
+    width: 100%;
+    padding: 1ch 5ch;
+    border: none;
+    border-radius: 1ch;
+    background-color: rgb(0, 0, 255);
+    color: #fff;
+  }
+
+  .register{
+    margin-top: 10ch;
+    color: rgb(0, 60, 255);
+  }
+
+  .logo{
+    height: 10ch;
+    width: 20ch;
+    margin-bottom: 5ch;
+
   }
