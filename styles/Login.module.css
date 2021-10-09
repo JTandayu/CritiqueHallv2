@@ -33,7 +33,7 @@
   } */
 
   .input_box{
-    width: 20vh;
+    width: 30vh;
     padding: 10px;
     margin-bottom: 1ch;
     border-radius: 1ch;
@@ -55,10 +55,17 @@
     margin-top: 10ch;
     color: rgb(0, 60, 255);
     text-align: center;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   }
 
   .logo{
     height: 15ch;
-    width: 25ch;
-    margin-bottom: 5ch;
+    width: 40ch;
+    margin-bottom: 2ch;
+  }
+
+  .LoginButton {
+    margin-top: 1.5rem;
   }

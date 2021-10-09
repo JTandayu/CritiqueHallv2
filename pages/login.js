@@ -7,6 +7,15 @@ import { motion } from "framer-motion"
 import Home from './home'
 import Link from 'next/link'
 import Logo from '../public/critiquehall2.png'
+import { Button, ButtonGroup } from "@chakra-ui/react"
+import { Stack, HStack, VStack } from "@chakra-ui/react"
+import {
+  FormControl,
+  FormLabel,
+  FormErrorMessage,
+  FormHelperText,
+} from "@chakra-ui/react"
+
 
 export async function getStaticProps(context) {
   return {
@@ -29,16 +38,27 @@ export default function Login() {
           transition ={{duration: .7}}
           >
             <div className={styles.logo}>
-            <Link href="/"><Image src={Logo}></Image></Link>
+            <Link href="/"><Image src={Logo} 
+            alt="Critique Hall Logo"></Image></Link>
             </div>
+            
 
-            <form id="login" action="/home">
+            <center><FormControl id="login">
+              <FormLabel>Username</FormLabel>
                 <input placeholder="Username" className={styles.input_box} type="text"/>
                 <br/>
+              <FormLabel>Password</FormLabel>
                 <input placeholder="Password" className={styles.input_box} type="password"/>
                 <br/>
-                <button type="submit" className={styles.login_button}>Login</button>
-            </form>
+                <motion.button
+                  whileHover={{ scale: 1.2 }}
+                  whileTap={{ scale: 0.9 }}
+                  >
+                <VStack direction="row" spacing={8} align="center">
+                <Button className={styles.LoginButton} colorScheme="blue" type="submit" size="lg">Login</Button>
+                </VStack>
+                </motion.button>
+            </FormControl></center>
 
             <p className={styles.register}>
               <p><Link href="./forgot-password"><a>Forgot Password?</a></Link></p>

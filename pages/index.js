@@ -38,14 +38,14 @@ export default function Home() {
           loader={imageLoader}
           src="critiquehall2.png"
           alt="Logo of Critique Hall"
-          width={1000}
-          height={300}
+          width={700}
+          height={200}
           />
         </motion.h1>
 
         <motion.p 
-          // initial="hidden" 
-          animate={{ x: 10 }}
+          initial="hidden" 
+          animate={{ y: 10, stdDeviation: [1, 5, 3], opacity:1 }}
           transition={{ delay: 1 }} 
           variants={variants} 
           className={styles.description}>
@@ -65,27 +65,27 @@ export default function Home() {
 
         <Stack direction="row" spacing={8} align="center">
         <motion.button
-            // animate={{opacity:1}}
-            // initial={{opacity:0.5}}
+            // initial="hidden"
+            // animate={{ x: 10, stdDeviation: [1, 5, 3], opacity:1 }}
             // whileHover={{opacity:1}}
             // transition={{duration:.1}}
             whileHover={{ scale: 1.3 }}
             whileTap={{ scale: 0.9 }}
           >
-        <Button colorScheme="twitter" variant="solid" size="lg">
+        <Button colorScheme="messenger" variant="solid" size="lg">
        <Link href="/login">Login</Link>
         </Button>
         </motion.button>
 
         <motion.button
-            // animate={{opacity:1}}
-            // initial={{opacity:0.5}}
+            // initial="hidden"
+            // animate={{ x: 10, stdDeviation: [1, 5, 3], opacity:1 }}
             // whileHover={{opacity:1}}
             // transition={{duration:.1}}
             whileHover={{ scale: 1.3 }}
             whileTap={{ scale: 0.9 }}
           >
-        <Button colorScheme="twitter" variant="solid" size="lg">
+        <Button colorScheme="red" variant="solid" size="lg">
        <Link href="/register">Get Started</Link>
         </Button>
         </motion.button>

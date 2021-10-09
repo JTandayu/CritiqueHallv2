@@ -27,7 +27,7 @@ export default function Register() {
             <div className={styles.logo}>
             <Link href="/"><Image src={Logo}></Image></Link>
             </div>
-            <h2>Forgot Password</h2>
+          
             <form id="login">
                 <input placeholder="First Name" type="text" className={styles.input_box}/>
                 <br/>
@@ -45,6 +45,7 @@ export default function Register() {
             </form>
 
             <p className={styles.register}>
+            <p><Link href="./forgot-password"><a>Forgot Password?</a></Link></p>
               <p><Link href="./login"><a>Back to Login</a></Link></p>
             </p>
   
