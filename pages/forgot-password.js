@@ -37,9 +37,9 @@ export default function ForgotPassword(){
             </div>
 
             <Heading mb={2} as="h2" size="lg">Forgot Password</Heading>
-            <p className={styles.description}>Kindly enter your email address to receive a link for further process in changing your password.</p>
+            <p className={styles.description}>Kindly enter your E-mail Address to receive a link for further process in changing your password.</p>
             <center><FormControl id="forgotpassword" action="/home" isRequired>
-                <input placeholder="Email Address" className={styles.input_box} type="text"/>
+                <input placeholder="E-mail Address" className={styles.input_box} type="text"/>
                 <FormHelperText>This field is required.</FormHelperText>
                 <br/>
                 <motion.button
