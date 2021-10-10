@@ -33,7 +33,7 @@ export default function ForgotPassword(){
           >
             <center>
             <div className={styles.logo}>
-                <Image src={Logo}></Image>
+            <Link href="/"><Image src={Logo} alt="Critique Hall Logo"></Image></Link>
             </div>
 
             <Heading mb={2} as="h2" size="lg">Forgot Password</Heading>
