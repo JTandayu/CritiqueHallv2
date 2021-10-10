@@ -9,6 +9,7 @@ import Link from 'next/link'
 import Logo from '../public/critiquehall2.png'
 import { Button, ButtonGroup } from "@chakra-ui/react"
 import { Stack, HStack, VStack } from "@chakra-ui/react"
+import { Heading } from '@chakra-ui/react'
 import {
   FormControl,
   FormLabel,
@@ -42,7 +43,7 @@ export default function Login() {
             alt="Critique Hall Logo"></Image></Link>
             </div>
             
-
+            <Heading mb={2} as="h2" size="lg">Login</Heading>
             <center><FormControl id="loginform" isRequired>
               <FormLabel>Username</FormLabel>
                 <input placeholder="Username" className={styles.input_box} type="text"/>

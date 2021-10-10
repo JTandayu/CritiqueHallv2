@@ -9,6 +9,7 @@ import Link from 'next/link'
 import Logo from '../public/critiquehall2.png'
 import { Button, ButtonGroup } from "@chakra-ui/react"
 import { Stack, HStack, VStack } from "@chakra-ui/react"
+import { Heading } from '@chakra-ui/react'
 import {
   FormControl,
   FormLabel,
@@ -36,6 +37,7 @@ export default function Register() {
             <Link href="/"><Image src={Logo}  alt="Critique Hall Logo"></Image></Link>
             </div>
           
+            <Heading mb={2} as="h2" size="lg">Register</Heading>
             <center><FormControl id="registerform" isRequired>
               <FormLabel>First Name</FormLabel>
                 <input placeholder="First Name" className={styles.input_box} type="text"/>
