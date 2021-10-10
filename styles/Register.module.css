@@ -15,7 +15,7 @@
   background-color:#fff;
   position: absolute;
   width: 50ch;
-  height: 80vh;
+  height: 90ch;
   margin: 0 auto;
   padding: 5rem 0;
   flex: 1;
@@ -35,7 +35,7 @@
 } */
 
 .input_box{
-  width: 20vh;
+  width: 30vh;
   padding: 10px;
   margin-bottom: 1ch;
   border-radius: 1ch;

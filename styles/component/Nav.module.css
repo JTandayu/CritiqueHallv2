@@ -1,36 +1,58 @@
-@media (min-width:384px) {
-    .container {
-    opacity: 1;
-    min-height: 10vh;
-    padding: 0 0.5rem;
+
+.container {
     display: flex;
-    align-items: flex-start;
-    height: 10vh;
-    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 10%;
     /* display: inline-block; */
-
   }
 
-  .container > ul > li{
-      list-style-type: none;
-      display: flex;
-      padding: 1vh 1vh 1vh 7vh;
-      font-size: 2.5ch;
+  .container > nav > ul > li{
+      display: inline-block;
+      padding: 0ch 3ch;
+      font-size: 1.5ch;
+      border-bottom: 0px;
+      margin-left: 1ch;
   }
-  .container > ul{
-    list-style-type: none;
-    display: flex;
-    padding: 1vh 1vh 1vh 7vh;
+
+  .container > nav > ul > li > a:after{
+    background: none repeat scroll 0 0 transparent;
+    bottom: 0;
+    content: "";
+    display: block;
+    height: 2px;
+    left: 50%;
+    position: absolute;
+    background: #fff;
+    transition: width 0.3s ease 0s, left 0.3s ease 0s;
+    width: 0;
+  }
+
+  .container > nav > ul > li > a:hover:after{
+    width: 100%; 
+    left: 0; 
+  }
+  
+  .container > nav{
+    box-sizing: border-box;
+  }
+
+
+  .container > nav > ul{
+    list-style: none;
     font-size: 2.5ch;
-    margin: auto 5vh;
-    justify-self: flex-end;
+    margin-left: 10px;
   }
 
   .logo{
     height: 10ch;
-    width: 30ch;
-    flex-direction: row;
-    display: inline-flex;
-    justify-self: flex-start;
+    width: 15ch;
+    cursor: pointer;
+    margin-top: 3vh;
+    margin-right: auto;
   }
-}
+
+  .logo > Image{
+    height: 10ch;
+    width: 15ch;
+  }

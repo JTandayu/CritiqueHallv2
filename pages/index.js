@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import Image from 'next/image'
-import styles from '../styles/Home.module.css'
+import styles from '../styles/Welcome.module.css'
 import { motion } from "framer-motion"
 import Link from 'next/link'
 import { Stack, HStack, VStack } from "@chakra-ui/react"

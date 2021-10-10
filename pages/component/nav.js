@@ -11,14 +11,19 @@ export default function Nav(){
     return(
     <div className={styles.container}>
         <div className={styles.logo}>
+            <Link href="/home">
                 <Image src={Logo}></Image>
+            </Link>
         </div>
-        <ul className={styles.nav}>
-            <li><Link href=""><a>Home</a></Link></li>
-            <li><Link href=""><a>Critique</a></Link></li>
-            <li><Link href=""><a>Feedback</a></Link></li>
-            <li><Link href=""><a>Profile</a></Link></li>
-        </ul>
+        <nav>
+            <ul>
+                <li><Link href="/home"><a>Home</a></Link></li>
+                <li><Link href=""><a>Critique</a></Link></li>
+                <li><Link href=""><a>Feedback</a></Link></li>
+                {/* Profile will be changed into a dropdown with AccName as label */}
+                <li><Link href=""><a>Profile</a></Link></li>
+            </ul>
+        </nav>
     </div>
     )
 }

@@ -7,10 +7,6 @@ import { motion } from "framer-motion"
 import Home from './home'
 import Link from 'next/link'
 import Logo from '../public/critiquehall2.png'
-<<<<<<< HEAD
-import { Heading } from '@chakra-ui/react'
-import { Box } from "@chakra-ui/react"
-=======
 import { Button, ButtonGroup } from "@chakra-ui/react"
 import { Stack, HStack, VStack } from "@chakra-ui/react"
 import {
@@ -19,7 +15,6 @@ import {
   FormErrorMessage,
   FormHelperText,
 } from "@chakra-ui/react"
->>>>>>> 198755c0a678566e5ac7621e69224845891ac1c8
 
 export default function Register() {
     return (
@@ -68,7 +63,6 @@ export default function Register() {
             </FormControl></center>
 
             <p className={styles.register}>
-            <p><Link href="./forgot-password"><a>Forgot Password?</a></Link></p>
               <p><Link href="./login"><a>Back to Login</a></Link></p>
             </p>
   
