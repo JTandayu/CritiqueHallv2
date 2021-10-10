@@ -9,6 +9,7 @@ import Logo from '../public/critiquehall2.png'
 import { Heading } from '@chakra-ui/react'
 import { Box } from "@chakra-ui/react"
 import { Button, ButtonGroup } from "@chakra-ui/react"
+import { Stack, HStack, VStack } from "@chakra-ui/react"
 
 export default function ForgotPassword(){
     return(
@@ -34,7 +35,14 @@ export default function ForgotPassword(){
             <form id="login" action="/home">
                 <input placeholder="Email Address" className={styles.input_box} type="text"/>
                 <br/>
-                <Button type="submit" colorScheme="Blue" className={styles.login_button}>Send</Button>
+                <motion.button
+                  whileHover={{ scale: 1.2 }}
+                  whileTap={{ scale: 0.9 }}
+                  >
+                <VStack direction="row" spacing={8} align="center">
+                <Button type="submit" colorScheme="Blue" className={styles.login_button} size="lg">Send</Button>
+                </VStack>
+                </motion.button>
             </form>
 
             <p className={styles.register}>
