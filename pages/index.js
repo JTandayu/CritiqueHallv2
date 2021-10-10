@@ -17,7 +17,9 @@ const imageLoader = ({ src, width, quality }) => {
   return `/${src}?=${width}&q=${quality || 100}`
 }
 
-export default function Home() { 
+const MotionButton = motion(Button)
+
+export default function Welcome() { 
   return (
     <div className={styles.container}>
       <Head>
@@ -65,31 +67,29 @@ export default function Home() {
         </button> */}
 
         <Stack direction="row" spacing={8} align="center">
-        <motion.button
+        <MotionButton
             // initial="hidden"
             // animate={{ x: 10, stdDeviation: [1, 5, 3], opacity:1 }}
             // whileHover={{opacity:1}}
             // transition={{duration:.1}}
             whileHover={{ scale: 1.3 }}
             whileTap={{ scale: 0.9 }}
+            rightIcon={<CheckIcon />} colorScheme="messenger" variant="solid" size="lg"
           >
-        <Button rightIcon={<CheckIcon />} colorScheme="messenger" variant="solid" size="lg">
-       <Link href="/login">Login</Link>
-        </Button>
-        </motion.button>
+          <Link href="/login">Login</Link>
+        </MotionButton>
 
-        <motion.button
+        <MotionButton
             // initial="hidden"
             // animate={{ x: 10, stdDeviation: [1, 5, 3], opacity:1 }}
             // whileHover={{opacity:1}}
             // transition={{duration:.1}}
             whileHover={{ scale: 1.3 }}
             whileTap={{ scale: 0.9 }}
+            rightIcon={<ArrowForwardIcon />} colorScheme="red" variant="solid" size="lg"
           >
-        <Button rightIcon={<ArrowForwardIcon />} colorScheme="red" variant="solid" size="lg">
-       <Link href="/register">Get Started</Link>
-        </Button>
-        </motion.button>
+        <Link href="/register">Get Started</Link>
+        </MotionButton>
         </Stack>
 
       </main>

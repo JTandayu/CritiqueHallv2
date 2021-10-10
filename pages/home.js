@@ -6,11 +6,9 @@ import Layout from './layout/layout'
 
 export default function Home(){
     return(
-        <Layout>
-            <div>
-                <p>Hello World</p>
-            </div>
-        </Layout>
+            <main>
+            <p>Hello World</p>
+            </main>
     )
 }
 
