@@ -13,10 +13,6 @@
       font-size: 1.5ch;
       border-bottom: 0px;
       margin-left: 1ch;
-      
-      &:first-child {
-        margin-left: 3rem;
-      }
   }
 
   .container > nav > ul > li > a:after{
