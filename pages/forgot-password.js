@@ -40,7 +40,7 @@ export default function ForgotPassword(){
             <p className={styles.description}>Kindly enter your E-mail Address to receive a link for further process in changing your password.</p>
             <center><FormControl id="forgotpassword" action="/home" isRequired>
                 <input placeholder="E-mail Address" className={styles.input_box} type="text"/>
-                <FormHelperText>This field is required.</FormHelperText>
+                <FormHelperText className={styles.helperText}>This field is required.</FormHelperText>
                 <br/>
                 <motion.button
                   whileHover={{ scale: 1.2 }}
