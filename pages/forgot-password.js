@@ -10,6 +10,12 @@ import { Heading } from '@chakra-ui/react'
 import { Box } from "@chakra-ui/react"
 import { Button, ButtonGroup } from "@chakra-ui/react"
 import { Stack, HStack, VStack } from "@chakra-ui/react"
+import {
+  FormControl,
+  FormLabel,
+  FormErrorMessage,
+  FormHelperText,
+} from "@chakra-ui/react"
 
 export default function ForgotPassword(){
     return(
@@ -32,7 +38,7 @@ export default function ForgotPassword(){
 
             <Heading mb={2} as="h2" size="lg">Forgot Password</Heading>
             <p className={styles.description}>Kindly enter your email address to receive a link for further process in changing your password.</p>
-            <form id="login" action="/home">
+            <center><FormControl id="forgotpassword" action="/home" isRequired>
                 <input placeholder="Email Address" className={styles.input_box} type="text"/>
                 <br/>
                 <motion.button
@@ -43,7 +49,7 @@ export default function ForgotPassword(){
                 <Button type="submit" colorScheme="Blue" className={styles.login_button} size="lg">Send</Button>
                 </VStack>
                 </motion.button>
-            </form>
+            </FormControl></center>
 
             <p className={styles.register}>
               <p><Link href="./login"><a>Back to Login</a></Link></p>
