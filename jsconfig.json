@@ -1,3 +1,20 @@
+/*
+Relative import paths to files 
+in any application can be tricky to manage. 
+Often we rely on the intelligence of our IDEs to tell us how many dot-dot-slashes to type 
+when we're importing files that are nested many directories deep. 
+If you're working with Next.js — there's a better way!
+
+Define your base directories — or module aliases — in a jsconfig.json file 
+at the root of your Next.js project.
+*/
+
+/* Using module aliases, import paths at the top of files are 
+self-documenting and easier to write, meaning you can 
+focus on writing code rather than traversing spaghetti directories. It's beautiful.*/
+
+/* Source: https://dev.to/whitep4nth3r/how-to-avoid-using-relative-path-imports-in-next-js-eki*/
+
 {
     "compilerOptions": {
       "baseUrl": "./",
