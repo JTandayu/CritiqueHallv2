@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import Image from 'next/image'
-import styles from '../styles/Welcome.module.css'
+import styles from "@styles/Welcome.module.css";
 import { motion } from "framer-motion"
 import Link from 'next/link'
 import { Stack, HStack, VStack } from "@chakra-ui/react"
@@ -77,18 +77,6 @@ export default function Welcome() {
             rightIcon={<CheckIcon />} colorScheme="messenger" variant="solid" size="lg"
           >
           <Link href="/login">Login</Link>
-        </MotionButton>
-
-        <MotionButton
-            // initial="hidden"
-            // animate={{ x: 10, stdDeviation: [1, 5, 3], opacity:1 }}
-            // whileHover={{opacity:1}}
-            // transition={{duration:.1}}
-            whileHover={{ scale: 1.3 }}
-            whileTap={{ scale: 0.9 }}
-            rightIcon={<InfoOutlineIcon />} colorScheme="green" variant="solid" size="lg"
-          >
-          <Link href="/admin-login">Admin Login</Link>
         </MotionButton>
 
         <MotionButton

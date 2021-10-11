@@ -1,12 +1,10 @@
 import Head from 'next/head'
 import Image from 'next/image'
-// import styles from '../styles/Home.module.css'
-import styles from '../styles/AdminLogin.module.css'
+import styles from "@styles/AdminLogin.module.css";
 import { css, cx } from '@emotion/react'
 import { motion } from "framer-motion"
-// import Home from './home'
 import Link from 'next/link'
-import Logo from '../public/critiquehall2.png'
+import Logo from "@public/critiquehall2.png";
 import { Button, ButtonGroup } from "@chakra-ui/react"
 import { Stack, HStack, VStack } from "@chakra-ui/react"
 import { Heading } from '@chakra-ui/react'
@@ -20,7 +18,7 @@ import {
 
 export async function getStaticProps(context) {
   return {
-    props: {}, // will be passed to the page component as props
+    props: {}, // will be passed to the page component as  props
   }
 }
 
