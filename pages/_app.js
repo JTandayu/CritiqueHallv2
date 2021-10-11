@@ -15,6 +15,8 @@ function MyApp({ Component, pageProps }) {
   switch (Component.name) {
     case "Login":
         return <ChakraProvider><Component {...pageProps} /></ChakraProvider>;
+    case "AdminLogin":
+        return <ChakraProvider><Component {...pageProps} /></ChakraProvider>;
     case "Register":
         return <ChakraProvider><Component {...pageProps} /></ChakraProvider>;
     case "ForgotPassword":

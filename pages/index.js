@@ -5,7 +5,7 @@ import { motion } from "framer-motion"
 import Link from 'next/link'
 import { Stack, HStack, VStack } from "@chakra-ui/react"
 import { Button, ButtonGroup } from "@chakra-ui/react"
-import { ArrowForwardIcon, CheckIcon } from '@chakra-ui/icons'
+import { ArrowForwardIcon, CheckIcon, InfoOutlineIcon } from '@chakra-ui/icons'
 
 
 const variants = {
@@ -77,6 +77,18 @@ export default function Welcome() {
             rightIcon={<CheckIcon />} colorScheme="messenger" variant="solid" size="lg"
           >
           <Link href="/login">Login</Link>
+        </MotionButton>
+
+        <MotionButton
+            // initial="hidden"
+            // animate={{ x: 10, stdDeviation: [1, 5, 3], opacity:1 }}
+            // whileHover={{opacity:1}}
+            // transition={{duration:.1}}
+            whileHover={{ scale: 1.3 }}
+            whileTap={{ scale: 0.9 }}
+            rightIcon={<InfoOutlineIcon />} colorScheme="green" variant="solid" size="lg"
+          >
+          <Link href="/admin-login">Admin Login</Link>
         </MotionButton>
 
         <MotionButton
