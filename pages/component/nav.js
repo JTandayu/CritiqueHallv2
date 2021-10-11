@@ -2,9 +2,9 @@ import Head from 'next/head'
 import Image from 'next/image'
 import { css, cx } from '@emotion/react'
 import { motion } from "framer-motion"
-import styles from '../../styles/component/Nav.module.css'
+import styles from "@styles/component/Nav.module.css";
 import Link from 'next/link'
-import Logo from '../../public/critiquehall2.png'
+import Logo from "@public/critiquehall.png";
 
 
 export default function Nav(){
