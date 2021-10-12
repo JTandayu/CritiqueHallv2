@@ -1,5 +1,7 @@
 .container {
   background-image: url("/BG.png");
+  background-repeat: no-repeat;
+  background-size: cover;
   height: 100vh;
   padding: 0 0.5rem;
   display: flex;
