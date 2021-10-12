@@ -74,7 +74,7 @@ export default function Welcome() {
             // transition={{duration:.1}}
             whileHover={{ scale: 1.3 }}
             whileTap={{ scale: 0.9 }}
-            rightIcon={<CheckIcon />} colorScheme="messenger" variant="solid" size="lg"
+            rightIcon={<CheckIcon />} colorScheme="facebook" variant="solid" size="lg"
           >
           <Link href="/login">Login</Link>
         </MotionButton>
@@ -86,7 +86,7 @@ export default function Welcome() {
             // transition={{duration:.1}}
             whileHover={{ scale: 1.3 }}
             whileTap={{ scale: 0.9 }}
-            rightIcon={<ArrowForwardIcon />} colorScheme="red" variant="solid" size="lg"
+            rightIcon={<ArrowForwardIcon />} colorScheme="yellow" variant="solid" size="lg"
           >
         <Link href="/register">Get Started</Link>
         </MotionButton>

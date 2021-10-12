@@ -10,12 +10,12 @@
     margin: auto;
     
   }
-
+  
   .main {
-    background-color: #fff;
+    background-color:#fff;
     position: absolute;
-    width: 50ch;
-    height: 70ch;
+    width: 70ch;
+    height: 80ch;
     margin: 0 auto;
     padding: 5rem 0;
     flex: 1;
@@ -29,11 +29,11 @@
     overflow: visible;
     border-radius: 2ch;
   }
-
+  
   /* .login_container{
     box-shadow: 5px 10px;
   } */
-
+  
   .input_box{
     width: 30vh;
     padding: 10px;
@@ -41,19 +41,20 @@
     border-radius: 1ch;
     border: 1px solid rgb(92, 92, 92);
   }
-
+  
   .login_button {
     margin-top: 5ch;
     width: 100%;
+    height: 6ch;
     padding: 1ch 5ch;
     border: none;
     border-radius: 1ch;
     background-color: rgb(51, 139, 255);
     color: #fff;
   }
-
+  
   .register{
-    margin-top: 4ch;
+    margin-top: 2ch;
     color: rgb(0, 60, 255);
     text-align: center;
     text-transform: uppercase;
@@ -64,20 +65,18 @@
   .register:hover {
     text-decoration: underline;
   }
-
+  
   .logo{
     height: 15ch;
-    width: 40ch;
-    margin-bottom: 1.5ch;
+    width: 45ch;
+    margin-bottom: 1ch;
   }
   
-  .description{
-      padding: 1ch 1ch;
-      text-align: center;
-      font-size: 12px;
-      margin-bottom: 1.5rem;
-  }
+  /* .RegisterButton {
+    margin: auto;
+  } */
 
-  .helperText {
-    margin-bottom: -3rem;
+  .studentIcon {
+      height: 150px;
+      width: 150px;
   }

@@ -19,7 +19,11 @@ function MyApp({ Component, pageProps }) {
         return <ChakraProvider><Component {...pageProps} /></ChakraProvider>;
     case "Register":
         return <ChakraProvider><Component {...pageProps} /></ChakraProvider>;
+    case "Register2":
+        return <ChakraProvider><Component {...pageProps} /></ChakraProvider>;
     case "ForgotPassword":
+        return <ChakraProvider><Component {...pageProps} /></ChakraProvider>;
+    case "ResetPassword":
         return <ChakraProvider><Component {...pageProps} /></ChakraProvider>;
     case "Welcome":
         return <ChakraProvider><Component {...pageProps} /></ChakraProvider>;

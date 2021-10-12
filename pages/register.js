@@ -15,6 +15,9 @@ import {
   FormErrorMessage,
   FormHelperText,
 } from "@chakra-ui/react"
+import { ArrowRightIcon, CheckIcon, InfoOutlineIcon } from '@chakra-ui/icons'
+
+const MotionButton = motion(Button)
 
 export default function Register() {
     return (
@@ -44,23 +47,29 @@ export default function Register() {
                 <FormLabel>Last Name</FormLabel>
                 <input placeholder="Last Name" className={styles.input_box} type="text"/>
                 <br/>
-                <FormLabel>Display Name</FormLabel>
-                <input placeholder="Display Name" className={styles.input_box} type="text"/>
-                <br/>
+                <FormLabel>School E-Mail</FormLabel>
+                <input placeholder="School E-Mail" className={styles.input_box} type="text"/>
+                <FormHelperText className={styles.helperText}>format: ***@iacademy.edu.ph</FormHelperText>
+                {/* <br/> */}
               <FormLabel>Password</FormLabel>
                 <input placeholder="Password" className={styles.input_box} type="password"/>
                 <br/>
                 <FormLabel>Confirm Password</FormLabel>
                 <input placeholder="Confirm Password" className={styles.input_box} type="password"/>
                 <br/>
-                <motion.button
+                <VStack direction="column" spacing={8} align="center">
+                <MotionButton
                   whileHover={{ scale: 1.2 }}
                   whileTap={{ scale: 0.9 }}
+                  className={styles.RegisterButton} 
+                  colorScheme="yellow" 
+                  type="submit" 
+                  size="lg"
+                  rightIcon={<ArrowRightIcon />} 
                   >
-                <HStack direction="column" spacing={8} align="center">
-                <Button className={styles.RegisterButton} colorScheme="green" type="submit" size="lg">Register</Button>
-                </HStack>
-                </motion.button>
+                <Link href="/register2">Next Page</Link>
+                </MotionButton>
+                </VStack>
             </FormControl></center>
 
             <p className={styles.register}>

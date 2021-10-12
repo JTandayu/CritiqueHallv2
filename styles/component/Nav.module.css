@@ -45,6 +45,7 @@
   .container > nav > ul{
     list-style: none;
     font-size: 2.5ch;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
     margin-left: 10px;
   }
 
