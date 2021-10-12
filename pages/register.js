@@ -33,7 +33,7 @@ export default function Register() {
           animate = {{opacity: 1}}
           initial = {{opacity: 0}}
           transition ={{duration: .7}}
-          >
+        >
 
             <div className={styles.logo}>
             <Link href="/"><Image src={Logo}  alt="Critique Hall Logo"></Image></Link>
@@ -75,10 +75,8 @@ export default function Register() {
             <p className={styles.register}>
               <p><Link href="./login"><a>Back to Login</a></Link></p>
             </p>
-  
-          
-      </motion.main>
 
+        </motion.main>
       </div>
     )
   }

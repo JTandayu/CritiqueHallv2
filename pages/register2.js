@@ -133,10 +133,8 @@ export default function Register2() {
             <p className={styles.register}>
               <p><Link href="./login"><a>Back to Login</a></Link></p>
             </p>
-  
-          
+         
       </motion.main>
-
       </div>
     )
   }
