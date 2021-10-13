@@ -29,7 +29,7 @@ export default function Login() {
     return (
       <div className={styles.container} >
         <Head>
-          <title>Log-In to Critique Hall</title>
+          <title>Login to Critique Hall</title>
           <meta name="description" content="Critique Hall by create next app" />
           <link rel="icon" href="/logo256.png" onLoad=""/>
         </Head>

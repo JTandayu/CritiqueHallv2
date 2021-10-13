@@ -15,6 +15,8 @@
     "@emotion/styled": "^11.3.0",
     "axios": "^0.22.0",
     "framer-motion": "^4.1.17",
+    "jquery": "^3.6.0",
+    "jsdom": "^18.0.0",
     "next": "11.1.2",
     "react": "17.0.2",
     "react-dom": "17.0.2",
