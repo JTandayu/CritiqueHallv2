@@ -54,7 +54,9 @@ export default function ForgotPassword(){
                 <input placeholder="E-mail Address" className={styles.input_box} type="text"/>
                 <FormHelperText className={styles.helperText}>This field is required.</FormHelperText>
                 <br/>
-                <Popover>
+                <Popover
+                placement="bottom"
+                closeOnBlur={false}>
                 <PopoverTrigger>
                 <MotionButton
                   whileHover={{ scale: 1.2 }}
@@ -66,10 +68,10 @@ export default function ForgotPassword(){
                 Send
                 </MotionButton>
                 </PopoverTrigger>
-                <PopoverContent>
+                <PopoverContent color="white" bg="blue.800" borderColor="blue.800">
                 <PopoverArrow />
                 <PopoverCloseButton />
-                <PopoverHeader>Reset Password Link Sent!</PopoverHeader>
+                <PopoverHeader pt={4} fontWeight="bold" border="0">Reset Password Link Sent!</PopoverHeader>
                 <PopoverBody>We have sent a reset password confirmation to your e-mail.
                   Check on your primary or spam folder.
                 </PopoverBody>

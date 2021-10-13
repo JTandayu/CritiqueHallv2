@@ -59,7 +59,9 @@ export default function ResetPassword(){
                 <FormLabel>Confirm New Password</FormLabel>
                 <input placeholder="Confirm New Password" className={styles.input_box} type="password"/>
                 <br/>
-                <Popover>
+                <Popover
+                placement="bottom"
+                closeOnBlur={false}>
                 <PopoverTrigger>
                 <MotionButton
                   whileHover={{ scale: 1.2 }}
@@ -71,10 +73,10 @@ export default function ResetPassword(){
                 Reset Password
                 </MotionButton>
                 </PopoverTrigger>
-                <PopoverContent>
+                <PopoverContent color="white" bg="blue.800" borderColor="blue.800">
                 <PopoverArrow />
                 <PopoverCloseButton />
-                <PopoverHeader>Reset Password Successful!</PopoverHeader>
+                <PopoverHeader pt={4} fontWeight="bold" border="0">Reset Password Successful!</PopoverHeader>
                 <PopoverBody>Your password has been successfully reset! Login with your new password.
                 </PopoverBody>
                 </PopoverContent>
