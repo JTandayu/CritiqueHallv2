@@ -23,11 +23,15 @@ const MotionButton = motion(Button)
 function toPart2() {
   document.getElementById('part1').hidden=true;
   document.getElementById('part2').removeAttribute('hidden');
+  document.getElementById('motion-main').style.width = "70ch";
+  document.getElementById('motion-main').style.height = "85ch";
 }
 
 function toPart1() {
   document.getElementById('part2').hidden=true;
   document.getElementById('part1').removeAttribute('hidden');
+  document.getElementById('motion-main').style.width = "60ch";
+  document.getElementById('motion-main').style.height = "90ch";
 }
 
 export default function Register() {
@@ -43,6 +47,7 @@ export default function Register() {
           animate = {{opacity: 1}}
           initial = {{opacity: 0}}
           transition ={{duration: .7}}
+          id="motion-main"
         >
           <center><FormControl id="registerpart1" isRequired>
           <div id="part1">
