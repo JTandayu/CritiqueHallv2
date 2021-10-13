@@ -24,4 +24,4 @@ focus on writing code rather than traversing spaghetti directories. It's beautif
         "@component/*": ["component/*"]
       }
     }
-  }
+}
