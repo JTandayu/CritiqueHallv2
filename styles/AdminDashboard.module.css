@@ -1,5 +1,5 @@
 .container {
-    background-image: url("/BG.png");
+    background-image: url("/AdminBG4.png");
     background-repeat: no-repeat;
     background-size: cover;
     opacity: 1;
@@ -126,5 +126,11 @@
       flex-direction: column;
     }
   }
+
+  .welcomeText {
+      color: #fafafa;
+  }
+
+
   
   

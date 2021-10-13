@@ -27,6 +27,8 @@ function MyApp({ Component, pageProps }) {
         return <ChakraProvider><Component {...pageProps} /></ChakraProvider>;
     case "Welcome":
         return <ChakraProvider><Component {...pageProps} /></ChakraProvider>;
+    case "AdminDashboard":
+          return <ChakraProvider><Component {...pageProps} /></ChakraProvider>;
     default:
       return (
         <ChakraProvider>

@@ -13,14 +13,15 @@ at the root of your Next.js project.
 self-documenting and easier to write, meaning you can 
 focus on writing code rather than traversing spaghetti directories. It's beautiful.*/
 
-/* Source: https://dev.to/whitep4nth3r/how-to-avoid-using-relative-path-imports-in-next-js-eki*/
+/* Source: https://dev.to/whitep4nth3r/how-to-avoid-using-relative-path-imports-in-next-js-eki */
 
 {
     "compilerOptions": {
       "baseUrl": "./",
       "paths": {
         "@styles/*": ["styles/*"],
-        "@public/*": ["public/*"]
+        "@public/*": ["public/*"],
+        "@component/*": ["component/*"]
       }
     }
   }

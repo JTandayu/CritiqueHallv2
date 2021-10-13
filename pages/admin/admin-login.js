@@ -15,6 +15,7 @@ import {
   FormHelperText,
 } from "@chakra-ui/react"
 
+const MotionButton = motion(Button)
 
 export async function getStaticProps(context) {
   return {
@@ -50,14 +51,18 @@ export default function AdminLogin() {
               <FormLabel>Password</FormLabel>
                 <input placeholder="Password" className={styles.input_box} type="password"/>
                 <br/>
-                <motion.button
+                <MotionButton
                   whileHover={{ scale: 1.2 }}
                   whileTap={{ scale: 0.9 }}
+                  className={styles.LoginButton} 
+                  colorScheme="yellow" 
+                  type="submit" 
+                  size="lg"
                   >
                 <VStack direction="row" spacing={8} align="center">
-                <Button className={styles.LoginButton} colorScheme="yellow" type="submit" size="lg">Login</Button>
+                <Link href="/admin/admin-dashboard">Login</Link>
                 </VStack>
-                </motion.button>
+                </MotionButton>
             </FormControl></center>
 
             {/* <p className={styles.register}>

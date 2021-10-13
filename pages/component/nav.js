@@ -15,7 +15,7 @@ export default function Nav(){
         
         <div className={styles.logo}>
             <Link href="/home">
-                <Image src={Logo}></Image>
+                <Image src={Logo} alt="Critique Hall Logo"></Image>
             </Link>
         </div>
         <nav>
