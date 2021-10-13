@@ -20,21 +20,15 @@ import { Select } from "@chakra-ui/react"
 
 const MotionButton = motion(Button)
 
-// // jQuery and JSDOM objects
-// const { JSDOM } = require("jsdom");
-// const { window } = new JSDOM ("");
-// const $ = require("jquery")( window );
+function toPart2() {
+  document.getElementById('part1').hidden=true;
+  document.getElementById('part2').removeAttribute('hidden');
+}
 
-// // jQuery for switching Register Part 1 to Register Part 2
-// $('#next').on('click', function() {
-//   $('this').parent().attr('hidden', 'true');
-//   $('#part2').removeAttr('hidden');
-// });
-
-// $('#back').on('click', function() {
-// $('this').parent().attr('hidden', 'true');
-// $('#part1').removeAttr('hidden');
-// });
+function toPart1() {
+  document.getElementById('part2').hidden=true;
+  document.getElementById('part1').removeAttribute('hidden');
+}
 
 export default function Register() {
     return (
@@ -45,20 +39,19 @@ export default function Register() {
           <link rel="icon" href="/logo256.png" onLoad=""/>
         </Head>
   
-
         <motion.main className={styles.main} 
           animate = {{opacity: 1}}
           initial = {{opacity: 0}}
           transition ={{duration: .7}}
-          id="part1"
         >
-
+          <center><FormControl id="registerpart1" isRequired>
+          <div id="part1">
             <div className={styles.logo}>
             <Link href="/"><Image src={Logo}  alt="Critique Hall Logo"></Image></Link>
             </div>
           
             <Heading mb={2} as="h2" size="lg">Register</Heading>
-            <center><FormControl id="registerpart1" isRequired>
+            
               <FormLabel>First Name</FormLabel>
                 <input placeholder="First Name" className={styles.input_box} type="text"/>
                 <br/>
@@ -84,32 +77,19 @@ export default function Register() {
                   type="submit" 
                   size="lg"
                   rightIcon={<ArrowRightIcon />}
-                  id="next" 
+                  onClick={toPart2}
                   >
-                <Link href="/register2">Next Page</Link>
+                Next Page
                 </MotionButton>
                 </VStack>
-            </FormControl></center>
+          </div>
 
-            <p className={styles.register}>
-              <p><Link href="./login"><a>Back to Login</a></Link></p>
-            </p>
-
-        </motion.main>
-
-        <motion.main className={styles.main} 
-          animate = {{opacity: 1}}
-          initial = {{opacity: 0}}
-          transition ={{duration: .7}}
-          id="part2"
-          hidden>
-
-            <div className={styles.logo}>
+          <div id="part2" hidden>
+            <div className={styles.logo2}>
             <Link href="/"><Image src={Logo}  alt="Critique Hall Logo"></Image></Link>
             </div>
           
             <Heading mb={2} as="h2" size="lg">Register</Heading>
-            <center><FormControl id="registerpart2" isRequired>
                 <FormLabel>Department</FormLabel>
                 <Select placeholder="Select Department" size="sm">
                 <option value="shs">Senior High School (SHS)</option>
@@ -149,7 +129,7 @@ export default function Register() {
                   whileHover={{ scale: 1.2 }}
                   whileTap={{ scale: 0.9 }}
                   className={styles.RegisterButton} 
-                  colorScheme="blue" 
+                  colorScheme="messenger" 
                   type="submit" 
                   size="sm"
                   >Upload Picture</MotionButton>
@@ -162,7 +142,7 @@ export default function Register() {
                   whileHover={{ scale: 1.2 }}
                   whileTap={{ scale: 0.9 }}
                   className={styles.RegisterButton} 
-                  colorScheme="blue" 
+                  colorScheme="messenger" 
                   type="submit" 
                   size="sm"
                   >Upload Picture</MotionButton>
@@ -178,9 +158,10 @@ export default function Register() {
                   type="submit" 
                   size="sm"
                   leftIcon={<ArrowLeftIcon />}
-                  id="back" 
+                  onClick={toPart1} 
                   >
-                <Link href="/register">Previous Page</Link>
+                {/* <button >Previous Page</button> */}
+                Previous Page
                 </MotionButton>
                 <MotionButton
                   whileHover={{ scale: 1.2 }}
@@ -194,13 +175,15 @@ export default function Register() {
                 <Link href="/home">Register</Link>
                 </MotionButton>
                 </HStack>
-            </FormControl></center>
+            
 
             <p className={styles.register}>
               <p><Link href="./login"><a>Back to Login</a></Link></p>
             </p>
-         
-      </motion.main>
+          </div>
+          </FormControl></center>
+
+        </motion.main>
       </div>
     )
   }
