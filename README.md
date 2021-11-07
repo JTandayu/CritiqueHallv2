@@ -1,5 +1,14 @@
 ## The Design and Implementation of "Critique Hall": A Discussion Forum Web Application for Students
 
+Capstone Project 1 & 2
+
+Members:
+- Azariah Danizar G. Concepcion
+- Jomari L. Matias
+- Jose Luis P. Tandayu
+- Richie Gene R. Tan
+
+
 ## Objectives of Critique Hall
 
 The general objective of the project is to determine and provide a solution for the
