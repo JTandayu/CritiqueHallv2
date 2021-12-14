@@ -4,6 +4,7 @@
   background-size: cover;
   opacity: 1;
   min-height: 100vh;
+  max-height: 1000vh;
   padding: 0 0.5rem;
   display: flex;
   flex-direction: column;
@@ -127,45 +128,4 @@
   }
 }
 
-/* .getStartedButton {
-  display: inline-block;
-  border-radius: 12px;
-  background-color: #f4511e;
-  border: none;
-  color: #FFFFFF;
-  text-align: center;
-  font-size: 28px;
-  padding: 20px;
-  width: 200px;
-  transition: all 0.5s;
-  cursor: pointer;
-  margin: 5px;
-  vertical-align: middle;
-  text-shadow: 2px 2px 4px #000000;
-}
-
-.getStartedButton span {
-  cursor: pointer;
-  display: inline-block;
-  position: relative;
-  transition: 0.5s;
-} */
-
-/* .getStartedButton span:after {
-  content: '\00bb';
-  position: absolute;
-  opacity: 0;
-  top: 0;
-  right: -20px;
-  transition: 0.5s;
-}
-
-.getStartedButton:hover span {
-  padding-right: 15px;
-}
-
-.getStartedButton:hover span:hover {
-  opacity: 1;
-  right: 0;
-} */
 

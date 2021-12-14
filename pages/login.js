@@ -16,16 +16,29 @@ import {
   FormErrorMessage,
   FormHelperText,
 } from "@chakra-ui/react"
+import { GetStaticProps } from 'next'
 
 const MotionButton = motion(Button)
 
-export async function getStaticProps(context) {
-  return {
-    props: {}, // will be passed to the page component as props
-  }
-}
+// export const getServerSideProps = withSession(async function ({ req, res }) {
+//   if (!req.session.user) {
+//     return {
+//       redirect: {
+//         destination: '/login',
+//         permanent: false,
+//       },
+//     }
+//   }
 
-export default function Login() {
+//   return {
+//     props: { user },
+//   }
+// })
+
+
+export default function Login({user}) {
+    
+
     return (
       <div className={styles.container} >
         <Head>
@@ -46,11 +59,11 @@ export default function Login() {
             
             <Heading mb={2} as="h2" size="lg">Login</Heading>
             <center><FormControl id="loginform" isRequired>
-              <FormLabel>Username</FormLabel>
-                <input placeholder="Username" className={styles.input_box} type="text"/>
+              <FormLabel>Email Address</FormLabel>
+                <input placeholder="Username" id="email" className={styles.input_box} type="email"/>
                 <br/>
               <FormLabel>Password</FormLabel>
-                <input placeholder="Password" className={styles.input_box} type="password"/>
+                <input placeholder="Password" id="password" className={styles.input_box} type="password"/>
                 <br/>
                 <p className={styles.register}>
                 <p><Link href="./forgot-password"><a>Forgot Password?</a></Link></p>
@@ -65,6 +78,7 @@ export default function Login() {
                   size="lg"
                   >
                   <Link href="/home">Login</Link>
+                  {/* Login */}
                 </MotionButton>
                 </VStack>
             </FormControl></center>

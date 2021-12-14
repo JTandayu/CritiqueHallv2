@@ -1,14 +1,23 @@
-@media screen and (min-width: 500px){
+@media screen and (max-width: 400px){
+  .menu_button{
+    display: block;
+    margin-right: 3vh;
+  }
+
   .nav_button{
     display: none;
   }
+
   .container {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 10px 10%;
     /* display: inline-block; */
+    position: -webkit-sticky; /* Safari */
     position: sticky;
+    top: 0;
+    background-color: white;
   }
 
   .container > nav > ul > li{
@@ -39,6 +48,7 @@
   
   .container > nav{
     box-sizing: border-box;
+    display: none;
   }
 
 
@@ -53,19 +63,26 @@
     height: 10ch;
     width: 15ch;
     cursor: pointer;
-    margin-top: 3vh;
     margin-right: auto;
+
   }
 
   .logo > Image{
     height: 10ch;
     width: 15ch;
+    margin-bottom: 1vh;
+  }
+
+  .input_box{
+    width: 30vh;
+    padding: 10px;
+    margin-bottom: 1ch;
+    border-radius: 1ch;
+    border: 1px solid rgb(172, 172, 172);
   }
 }
 
-
-
-@media screen and (min-width: 1920px) {
+@media screen and (max-width: 1000px){
   .nav_button{
     display: none;
   }
@@ -75,6 +92,92 @@
     align-items: center;
     padding: 10px 10%;
     /* display: inline-block; */
+    position: -webkit-sticky; /* Safari */
+    position: sticky;
+    top: 0;
+    background-color: white;
+  }
+
+  .container > nav > ul > li{
+      display: inline-block;
+      padding: 0ch 3ch;
+      font-size: 1.5ch;
+      border-bottom: 0px;
+      margin-left: 1ch;
+  }
+
+  .container > nav > ul > li > a:after{
+    background: none repeat scroll 0 0 transparent;
+    bottom: 0;
+    content: "";
+    display: block;
+    height: 2px;
+    left: 50%;
+    position: absolute;
+    background: #fff;
+    transition: width 0.3s ease 0s, left 0.3s ease 0s;
+    width: 0;
+  }
+
+  .container > nav > ul > li > a:hover:after{
+    width: 100%; 
+    left: 0; 
+  }
+  
+  .container > nav{
+    box-sizing: border-box;
+    display: none;
+  }
+
+
+  .container > nav > ul{
+    list-style: none;
+    font-size: 2.5ch;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    margin-left: 10px;
+  }
+
+  .logo{
+    height: 10ch;
+    width: 15ch;
+    cursor: pointer;
+    margin-right: 15vh;
+  }
+
+  .logo > Image{
+    height: 10ch;
+    width: 15ch;
+    margin-bottom: 1vh;
+  }
+
+  .input_box{
+    width: 30vh;
+    padding: 10px;
+    margin-bottom: 1ch;
+    border-radius: 1ch;
+    border: 1px solid rgb(172, 172, 172);
+  }
+}
+
+
+
+@media screen and (min-width:1001px) {
+  .menu_button{
+    display: none;
+  }
+  .nav_button{
+    display: none;
+  }
+  .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 10%;
+    /* display: inline-block; */
+    position: -webkit-sticky; /* Safari */
+    position: sticky;
+    top: 0;
+    background-color: white;
   }
 
   .container > nav > ul > li{
@@ -118,7 +221,7 @@
     height: 10ch;
     width: 15ch;
     cursor: pointer;
-    margin-top: 3vh;
+    margin-bottom: 1ch;
     margin-right: auto;
   }
 
@@ -127,4 +230,13 @@
     width: 15ch;
   }
 
+  .input_box{
+    width: 30vh;
+    padding: 10px;
+    margin-bottom: 1ch;
+    border-radius: 1ch;
+    border: 1px solid rgb(172, 172, 172);
+  }
+
 }
+

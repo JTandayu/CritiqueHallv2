@@ -15,8 +15,6 @@ function MyApp({ Component, pageProps }) {
   switch (Component.name) {
     case "Login":
         return <ChakraProvider><Component {...pageProps} /></ChakraProvider>;
-    case "AdminLogin":
-        return <ChakraProvider><Component {...pageProps} /></ChakraProvider>;
     case "Register":
         return <ChakraProvider><Component {...pageProps} /></ChakraProvider>;
     case "Register2":
@@ -27,8 +25,10 @@ function MyApp({ Component, pageProps }) {
         return <ChakraProvider><Component {...pageProps} /></ChakraProvider>;
     case "Welcome":
         return <ChakraProvider><Component {...pageProps} /></ChakraProvider>;
-    case "AdminDashboard":
-          return <ChakraProvider><Component {...pageProps} /></ChakraProvider>;
+    // case "AdminDashboard":
+    //     return <ChakraProvider><AdminLayout><Component {...pageProps} /></AdminLayout></ChakraProvider>;
+    // case "AdminLogs":
+    //     return <ChakraProvider><AdminLayout><Component {...pageProps} /></AdminLayout></ChakraProvider>;
     default:
       return (
         <ChakraProvider>

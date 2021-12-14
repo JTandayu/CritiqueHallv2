@@ -1,0 +1,65 @@
+.container {
+    /* background-image: url("/BG.png");
+    background-repeat: no-repeat;
+    background-size: cover; */
+    background-color: #f3f3f3;
+    opacity: 1;
+    min-height: 88vh;
+    padding: 0 0.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 1000vh;
+    max-height: 100%;
+  }
+  
+  .button1 {
+    padding: 5px;
+    background-color: grey;
+    width: 50px;
+    color: white;
+    border-radius: 10px;
+    margin-right: 5px;
+  }
+  .button2 {
+    padding: 5px;
+    background-color: red;
+    width: 100px;
+    color: white;
+    border-radius: 10px;
+    margin-right: 5px;
+  }
+  .button3 {
+    padding: 5px;
+    background-color: blue;
+    width: 100px;
+    color: white;
+    border-radius: 10px;
+    margin-right: 5px;
+  }
+  .button4 {
+    padding: 5px;
+    background-color: rgb(238, 255, 0);
+    width: 100px;
+    color: black;
+    border-radius: 10px;
+    margin-right: 5px;
+  }
+  .button5 {
+    padding: 5px; 
+    background-color: green;
+    width: 100px;
+    color: white;
+    border-radius: 10px;
+    margin-right: 5px;
+  }
+
+  .cpbutton{
+    padding: 5px;
+    background-color: rgb(46, 43, 255);
+    width: 100px;
+    color: rgb(255, 255, 255);
+    border-radius: 10px;
+    margin-right: 5px;
+  }

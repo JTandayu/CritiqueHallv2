@@ -92,7 +92,17 @@ export default function Welcome() {
         </MotionButton>
         </Stack>
 
+
       </main>
+      <div className={styles.main}>
+
+      </div>
+      <div className={styles.main}>
+        
+      </div>
+      <div className={styles.main}>
+        
+      </div>
     </div>
   )
 }

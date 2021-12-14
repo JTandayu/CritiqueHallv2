@@ -14,7 +14,7 @@ import {
     ModalCloseButton,
   } from "@chakra-ui/react"
 
-export default function ProfilePage() {
+export default function Settings(){
 
     return(
         <>
