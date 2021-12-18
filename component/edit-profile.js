@@ -11,7 +11,15 @@ import { useDisclosure } from '@chakra-ui/react'
 import { Button } from '@chakra-ui/react'
 import styles from "@styles/Hall.module.css";
 
-  
+// export async function getServerSideProps(context) {
+//     const res = await fetch(`https://...`)
+//     const user = await res.json()
+
+
+//     return {
+//       props: { user }, // will be passed to the page component as props
+//     }
+// } 
 
 function EditProfile() {
     const { isOpen, onOpen, onClose } = useDisclosure()
@@ -35,7 +43,7 @@ function EditProfile() {
                     <Button colorScheme='blue' mr={3} onClick={onClose}>
                     Close
                     </Button>
-                    <Button variant='ghost'>Post</Button>
+                    <Button variant='ghost'>Save</Button>
                 </ModalFooter>
             </ModalContent>
         </Modal>

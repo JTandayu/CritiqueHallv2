@@ -24,14 +24,14 @@ function toPart2() {
   document.getElementById('part1').hidden=true;
   document.getElementById('part2').removeAttribute('hidden');
   document.getElementById('motion-main').style.width = "70ch";
-  document.getElementById('motion-main').style.height = "85ch";
+  document.getElementById('motion-main').style.height = "100%";
 }
 
 function toPart1() {
   document.getElementById('part2').hidden=true;
   document.getElementById('part1').removeAttribute('hidden');
-  document.getElementById('motion-main').style.width = "60ch";
-  document.getElementById('motion-main').style.height = "90ch";
+  document.getElementById('motion-main').style.width = "70ch";
+  document.getElementById('motion-main').style.height = "100%";
 }
 
 export default function Register() {
@@ -43,10 +43,7 @@ export default function Register() {
           <link rel="icon" href="/logo256.png" onLoad=""/>
         </Head>
   
-        <motion.main className={styles.main} 
-          animate = {{opacity: 1}}
-          initial = {{opacity: 0}}
-          transition ={{duration: .7}}
+        <main className={styles.main} 
           id="motion-main"
         >
           <center><FormControl id="registerpart1" isRequired>
@@ -188,7 +185,7 @@ export default function Register() {
           </div>
           </FormControl></center>
 
-        </motion.main>
+        </main>
       </div>
     )
   }

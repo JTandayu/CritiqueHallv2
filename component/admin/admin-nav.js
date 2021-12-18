@@ -33,7 +33,7 @@ export default function Nav(){
         <Button ><HamburgerIcon /></Button>
         </div>
         <div className={styles.logo}>
-            <Link href="/home">
+            <Link href="/admin/admin-dashboard" as="/admin-dashboard">
                 <Image src={Logo} alt="Critique Hall Logo"></Image>
             </Link>
         </div>
@@ -41,16 +41,14 @@ export default function Nav(){
             <motion.ul 
             animate={{ y: -5, stdDeviation: [1, 3, 2], opacity:1}}
             initial={{opacity: 0 , y: -15}}>
+                <li><Link px={4} py={2} href="/home"><a>Dashboard</a></Link></li>
+                <li><Link px={4} py={2} href="/feedback"><a>Logs</a></Link></li>
+                <li><Link px={4} py={2} href="/feedback"><a>Analytics</a></Link></li>
                 <li>
                     <form action="/search" method="GET">
                         <input placeholder="Search" id="search" className={styles.input_box} type="text"/>
                     </form>
                 </li>
-                <li><Link px={4} py={2} href="/home"><a>Home</a></Link></li>
-                <li><Link px={4} py={2} href="/critique/hall-page"><a>Critique</a></Link></li>
-                <li><Link px={4} py={2} href="/feedback"><a>Feedback</a></Link></li>
-                {/* Profile will be changed into a dropdown with AccName as label */}
-                {/* <li><Link href=""><a>Profile</a></Link></li> */}
                 <li><Menu>
                     <MenuButton
                         px={4}
@@ -63,13 +61,12 @@ export default function Nav(){
                         // _focus={{ boxShadow: 'outline' }}
                     >
                         
-                        User 
+                        Admin 
 
                         <ChevronDownIcon />
                     </MenuButton>
                     <MenuList>
-                        <MenuItem><Link href="/profile/profile" as="/profile">Profile</Link></MenuItem>
-                        {/* <MenuItem>Dark Mode<Switch id='dark-mode' ml="3" /></MenuItem> */}
+                        <MenuItem>Dark Mode<Switch id='dark-mode' ml="3" /></MenuItem>
                         <MenuItem color="red" _hover={{ bg: 'red.500' }}><Link href="/">Log Out</Link></MenuItem>
                         {/* <MenuDivider />
                         <MenuItem>Open...</MenuItem>

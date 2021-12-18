@@ -17,7 +17,7 @@
     background-color:#fff;
     position: absolute;
     width: 70ch;
-    height: 80ch;
+    height: 100%;
     margin: 0 auto;
     padding: 5rem 0;
     flex: 1;
@@ -30,6 +30,7 @@
     border-top: 1px solid rgb(235, 235, 235);
     overflow: visible;
     border-radius: 2ch;
+    right: 0;
   }
   
   /* .login_container{

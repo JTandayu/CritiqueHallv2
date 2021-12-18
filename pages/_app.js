@@ -9,6 +9,8 @@
 
 import { ChakraProvider } from "@chakra-ui/react"
 import Layout from './layout/layout'
+import GuestLayout from "./layout/guest-layout";
+import AdminLayout from "./layout/admin-layout";
 
 function MyApp({ Component, pageProps }) {
 
@@ -24,7 +26,7 @@ function MyApp({ Component, pageProps }) {
     case "ResetPassword":
         return <ChakraProvider><Component {...pageProps} /></ChakraProvider>;
     case "Welcome":
-        return <ChakraProvider><Component {...pageProps} /></ChakraProvider>;
+        return <ChakraProvider><GuestLayout><Component {...pageProps} /></GuestLayout></ChakraProvider>;
     // case "AdminDashboard":
     //     return <ChakraProvider><AdminLayout><Component {...pageProps} /></AdminLayout></ChakraProvider>;
     // case "AdminLogs":

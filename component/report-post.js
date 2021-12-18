@@ -11,7 +11,11 @@ import { useDisclosure } from '@chakra-ui/react'
 import { Button } from '@chakra-ui/react'
 import styles from "@styles/Hall.module.css";
 
-  
+// export async function getServerSideProps(context) {
+//     return {
+//       props: {}, // will be passed to the page component as props
+//     }
+// }
 
 function ReportPost() {
     const { isOpen, onOpen, onClose } = useDisclosure()
@@ -29,8 +33,10 @@ function ReportPost() {
                 <ModalCloseButton />
                 <ModalBody>
                     Hello
-                </ModalBody>
+                    <form action="" method="POST">
 
+                    </form>
+                </ModalBody>
                 <ModalFooter>
                     <Button colorScheme='blue' mr={3} onClick={onClose}>
                     Close

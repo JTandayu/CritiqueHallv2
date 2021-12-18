@@ -20,6 +20,10 @@ import {
     ModalCloseButton,
   } from "@chakra-ui/react"
 import CreatePost from '@component/create-post'
+import { Textarea } from '@chakra-ui/react'
+import PostMain from '@component/post-main'
+import PostCritiques from '@component/post-critiques'
+// import { Image } from '@chakra-ui/react'
 
 const breakpoints = createBreakpoints({
     sm: '320px',
@@ -41,9 +45,12 @@ export default function CritiquePost(){
             <link rel="icon" href="/logo256.png" onLoad=""/>
             </Head>
 
-            <Box display="flex" w="100%" h="full" spacing="10px" mt="5">
-                <Box w={{lg: "70%" , sm: '100%'}} bg="white" mx="auto" p="3" h="80vh" boxShadow="lg" spacing="10">
-                <Heading size="lg">Post</Heading>
+            <Box w="100%" h="full" spacing="10px" mt="5">
+                <Box display="flex" p="3">
+                    {/* Main */}
+                    <PostMain />
+                    {/* Critique */}
+                    <PostCritiques />
                 </Box>
             </Box>
 

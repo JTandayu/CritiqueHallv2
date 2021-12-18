@@ -74,7 +74,7 @@
   }
 
   .input_box{
-    width: 30vh;
+    width: 50vh;
     padding: 10px;
     margin-bottom: 1ch;
     border-radius: 1ch;
@@ -160,7 +160,6 @@
 }
 
 
-
 @media screen and (min-width:1001px) {
   .menu_button{
     display: none;
@@ -231,7 +230,7 @@
   }
 
   .input_box{
-    width: 30vh;
+    width: 50vh;
     padding: 10px;
     margin-bottom: 1ch;
     border-radius: 1ch;

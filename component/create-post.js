@@ -10,6 +10,7 @@ import {
 import { useDisclosure } from '@chakra-ui/react'
 import { Button } from '@chakra-ui/react'
 import styles from "@styles/Hall.module.css";
+import { Box } from '@chakra-ui/react'
 
   
 
@@ -22,20 +23,22 @@ function CreatePost() {
 
 
         <form action='' method='POST'>
-        <Modal isOpen={isOpen} onClose={onClose}>
+        <Modal isOpen={isOpen} onClose={onClose} size="full">
             <ModalOverlay />
                 <ModalContent>
                 <ModalHeader>Create Post</ModalHeader>
                 <ModalCloseButton />
                 <ModalBody>
-                    Hello
+                    Hey
+                    <Button variant='ghost'>Post</Button>
+                    <Button colorScheme='blue' mr={3} onClick={onClose}>
+                    Cancel
+                    </Button>
                 </ModalBody>
-
                 <ModalFooter>
                     <Button colorScheme='blue' mr={3} onClick={onClose}>
                     Close
                     </Button>
-                    <Button variant='ghost'>Post</Button>
                 </ModalFooter>
             </ModalContent>
         </Modal>

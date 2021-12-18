@@ -37,8 +37,6 @@ const MotionButton = motion(Button)
 
 
 export default function Login({user}) {
-    
-
     return (
       <div className={styles.container} >
         <Head>
@@ -47,10 +45,10 @@ export default function Login({user}) {
           <link rel="icon" href="/logo256.png" onLoad=""/>
         </Head>
   
-        <motion.main className={styles.main} 
-          animate = {{y: 0 , opacity: 1}}
-          initial = {{y: -70, opacity: 0}}
-          transition ={{duration: .7}}
+        <main className={styles.main} 
+          // animate = {{y: 0 , opacity: 1}}
+          // initial = {{y: -70, opacity: 0}}
+          // transition ={{duration: .7}}
           >
             <div className={styles.logo}>
             <Link href="/"><Image src={Logo} 
@@ -87,7 +85,7 @@ export default function Login({user}) {
               <p>New User? <Link href="./register"><a className={styles.signUpText}>Sign Up Now!</a></Link></p>
             </p>
 
-        </motion.main>
+        </main>
       </div>
     )
   }
