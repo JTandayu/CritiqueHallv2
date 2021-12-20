@@ -4,7 +4,7 @@ import { css, cx } from '@emotion/react'
 import { motion } from "framer-motion"
 import styles from "@styles/component/Nav.module.css";
 import Link from 'next/link'
-import Logo from "@public/critiquehall.png";
+import Logo from "@public/critiquehall2.png";
 import { Button, ButtonGroup } from "@chakra-ui/react"
 import { HamburgerIcon } from '@chakra-ui/icons'
 import { ChevronDownIcon } from '@chakra-ui/icons'
@@ -42,8 +42,8 @@ export default function Nav(){
             <motion.ul 
             animate={{ y: -5, stdDeviation: [1, 3, 2], opacity:1}}
             initial={{opacity: 0 , y: -15}}>
-                <li><Link px={4} py={2} href="/login"><a>Login</a></Link></li>
-                <li><Link px={4} py={2} href="/register"><a>Register</a></Link></li>
+                <li><Link px={4} py={2} href="/login"><a>LOG-IN</a></Link></li>
+                <li><Link px={4} py={2} href="/register"><a>REGISTER</a></Link></li>
                 <li><Switch id='dark-mode' ml="3" /></li>
             </motion.ul>
         </nav>

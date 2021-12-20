@@ -6,6 +6,7 @@ import Link from 'next/link'
 import { Stack, HStack, VStack } from "@chakra-ui/react"
 import { Button, ButtonGroup } from "@chakra-ui/react"
 import { ArrowForwardIcon, CheckIcon, InfoOutlineIcon } from '@chakra-ui/icons'
+import { Box, Divider } from "@chakra-ui/react"
 
 
 const variants = {
@@ -30,30 +31,45 @@ export default function Welcome() {
 
       <main className={styles.main}>
 
-        <motion.h1 
+      {/* <Box w="100%" h="60vh" display={{lg: 'flex', md: 'flex', sm: 'block'}} borderBottom="1px solid black">
+      <motion.h1 
           animate={{ y: 50, stdDeviation: [1, 5, 3], opacity:1}}
           initial="hidden"
           variants={variants}
           whileHover={{ scale: 1.1 }}
-          className={styles.title}>
+          className={styles.title}> */}
           {/* <img className="imageLogo" src="/critiquehall2.png" /> */}
-          <Image
+          {/* <Image
           loader={imageLoader}
-          src="critiquehall2.png"
+          src="critiquehall.png"
           alt="Logo of Critique Hall"
-          width={700}
-          height={200}
-          />
-        </motion.h1>
+          width={510}
+          height={333}
+          left={272}
+          right={347}
+          /> */}
+        {/* </motion.h1> */}
+        {/* <MotionButton
+            // initial="hidden"
+            // animate={{ x: 10, stdDeviation: [1, 5, 3], opacity:1 }}
+            // whileHover={{opacity:1}}
+            // transition={{duration:.1}}
+            whileHover={{ scale: 1.3 }}
+            whileTap={{ scale: 0.9 }}
+            colorScheme="red" variant="solid" size="lg"
+          > */}
+        {/* <Link href="/register">Get Started</Link>
+        </MotionButton>
+      </Box>  */}
 
-        <motion.p 
+        {/* <motion.p 
           initial="hidden" 
           animate={{ y: 10, stdDeviation: [1, 5, 3], opacity:1 }}
           transition={{ delay: 1 }} 
           variants={variants} 
           className={styles.description}>
           A Discussion Forum Web Application for Students
-        </motion.p>
+        </motion.p> */}
 
         {/* <button className={styles.getStartedButton}>
           <motion.span
@@ -66,8 +82,8 @@ export default function Welcome() {
           </motion.span>
         </button> */}
 
-        <Stack direction="row" spacing={8} align="center">
-        <MotionButton
+        {/* <Stack direction="row" spacing={8} align="center"> */}
+        {/* <MotionButton
             // initial="hidden"
             // animate={{ x: 10, stdDeviation: [1, 5, 3], opacity:1 }}
             // whileHover={{opacity:1}}
@@ -77,24 +93,14 @@ export default function Welcome() {
             rightIcon={<CheckIcon />} colorScheme="facebook" variant="solid" size="lg"
           >
           <Link href="/login">Login</Link>
-        </MotionButton>
+        </MotionButton> */}
 
-        <MotionButton
-            // initial="hidden"
-            // animate={{ x: 10, stdDeviation: [1, 5, 3], opacity:1 }}
-            // whileHover={{opacity:1}}
-            // transition={{duration:.1}}
-            whileHover={{ scale: 1.3 }}
-            whileTap={{ scale: 0.9 }}
-            rightIcon={<ArrowForwardIcon />} colorScheme="yellow" variant="solid" size="lg"
-          >
-        <Link href="/register">Get Started</Link>
-        </MotionButton>
-        </Stack>
+        
+        {/* </Stack> */}
 
 
       </main>
-      <div className={styles.main}>
+      {/* <div className={styles.main}>
 
       </div>
       <div className={styles.main}>
@@ -102,7 +108,7 @@ export default function Welcome() {
       </div>
       <div className={styles.main}>
         
-      </div>
+      </div> */}
     </div>
   )
 }
