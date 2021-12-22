@@ -41,7 +41,7 @@ export default function PostMain(){
       <Heading mx="auto">Title</Heading>
               
       {/* Image */}
-      <Image mx="auto" />
+      {/* <Image mx="auto" /> */}
       {/* Options */}
       <Box display="flex" w="100%">
         <Menu>

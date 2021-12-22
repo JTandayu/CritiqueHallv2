@@ -61,9 +61,9 @@ export default function HallPage(){
             <Box w={{lg: "70%" , sm: '100%'}} mb="5" mx="auto" p="4" mt="4" spacing="10" h="10vh" top={0} bg="blue.400">
                 <Center><Heading size="2xl" align="center" mt="2" mb="4" color="white">Halls</Heading></Center>
             </Box>
-
+            
             {/* Halls */}
-            <Box mt="3vh" w="70%" display={{lg: 'flex', md: 'flex', sm: 'none'}} mx="auto" mb="5">
+            <Box mt="3vh" w="70%" display={{lg: 'flex', md: 'flex', sm: 'none'}} mx="auto" mb="" top="0">
                 <Box w="20vh" h="10vh" ml={{lg: 0, sm: 0}} bg="purple" rounded="lg">
                     <Center>
                     <Text fontSize="3xl" color="white" mt="5" textShadow="1px 1px #000">Technology</Text>
@@ -133,20 +133,76 @@ export default function HallPage(){
             <Box w="100%" h="100%" spacing="10px" mt="2">
                 <Box w={{lg: "70%" , sm: '100%'}} h="full" mx="auto" p="3" spacing="10" overflow="hidden">
                     {/* Critique Item */}
-                    <Box w="100%">
+                    <Box w="100%" display={{lg: 'flex', sm: 'block'}} mt='2ch'>
                         <Box p="3" w="100%" bg="white">
-                            <Grid h='70px'
-                                templateRows='repeat(2, 1fr)'
-                                templateColumns='repeat(5, 1fr)'
-                                gap={4}
-                                >
-                                <GridItem rowSpan={2} colSpan={1} bg='tomato' />
-                                <GridItem colSpan={2} bg='papayawhip' />
-                                <GridItem colSpan={2} bg='papayawhip' />
-                                <GridItem colSpan={4} bg='tomato' />
-                            </Grid>
-                        </Box>       
+                            Hall
+                        </Box>
+                        <Box p="3" w="100%" bg="white">
+                            Image
+                        </Box>
+                        <Box p="3" w="100%" bg="white">
+                            Title
+                        </Box>
+                        <Box p="3" w="100%" bg="white">
+                            Posted by:
+                        </Box>
+                        <Box p="3" w="100%" bg="white" display='flex'>
+                            <Box w="100%" bg="white">
+                                Time
+                            </Box>
+                            <Box w="100%" bg="white">
+                                Options
+                            </Box>      
+                        </Box>                 
                     </Box>
+                    {/* Critique Item */}
+                    <Box w="100%" display={{lg: 'flex', sm: 'block'}} mt='2ch'>
+                        <Box p="3" w="100%" bg="white">
+                            Hall
+                        </Box>
+                        <Box p="3" w="100%" bg="white">
+                            Image
+                        </Box>
+                        <Box p="3" w="100%" bg="white">
+                            Title
+                        </Box>
+                        <Box p="3" w="100%" bg="white">
+                            Posted by:
+                        </Box>
+                        <Box p="3" w="100%" bg="white" display='flex'>
+                            <Box w="100%" bg="white">
+                                Time
+                            </Box>
+                            <Box w="100%" bg="white">
+                                Options
+                            </Box>      
+                        </Box>                 
+                    </Box>
+                    {/* Critique Item */}
+                    <Box w="100%" display={{lg: 'flex', sm: 'block'}} mt='2ch'>
+                        <Box p="3" w="100%" bg="white">
+                            Hall
+                        </Box>
+                        <Box p="3" w="100%" bg="white">
+                            Image
+                        </Box>
+                        <Box p="3" w="100%" bg="white">
+                            Title
+                        </Box>
+                        <Box p="3" w="100%" bg="white">
+                            Posted by:
+                        </Box>
+                        <Box p="3" w="100%" bg="white" display='flex'>
+                            <Box w="100%" bg="white">
+                                Time
+                            </Box>
+                            <Box w="100%" bg="white">
+                                Options
+                            </Box>      
+                        </Box>                 
+                    </Box>
+                    
+                    
 
 
                 </Box>

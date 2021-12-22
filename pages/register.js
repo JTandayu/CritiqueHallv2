@@ -17,6 +17,7 @@ import {
 } from "@chakra-ui/react"
 import { ArrowRightIcon, ArrowLeftIcon, CheckIcon, InfoOutlineIcon } from '@chakra-ui/icons'
 import { Select } from "@chakra-ui/react"
+import { useState } from 'react';
 
 const MotionButton = motion(Button)
 
@@ -35,6 +36,24 @@ function toPart1() {
 }
 
 export default function Register() {
+  const { API_URL } = process.env
+  const { API_KEY } = process.env
+
+  const first_name, last_name, email, password, confirm_password, department, specialization, profile_pic, cover_pic = useState('')
+
+    // const submitRegister = async () =>{
+    //   const response =  await fetch(`${API_URL}/api/register`,  {
+    //     method: 'POST',
+    //     body: JSON.stringify({first_name, last_name, email, password, confirm_password, department, specialization, profile_pic, cover_pic}),
+    //     headers: {
+    //       'Content-Type': 'application/json',
+    //       'X-API-KEY': `${API_KEY}`
+    //     },
+    //   })
+    //   const data = await response.json()
+    //   console.log(data)
+    // }
+
     return (
       <div className={styles.container}>
         <Head>

@@ -28,7 +28,7 @@ const MotionButton = motion(Button)
 
 export default function Nav(){
     return(
-    <Box className={styles.container}>
+    <Box bg='white' className={styles.container}>
         <div className={styles.menu_button}>
         <Button ><HamburgerIcon /></Button>
         </div>

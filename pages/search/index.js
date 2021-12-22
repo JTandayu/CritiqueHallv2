@@ -35,20 +35,29 @@ export default function SearchResult(){
             </Box>
             {/* <Pagination></Pagination> */}
             {/* Search Item */}
-            <Box w={{lg: '70%', sm: '100%'}} h="100vh" mx="auto">
+            <Box w={{lg: '70%', sm: '100%'}} display={{lg: 'flex', sm: 'block'}} mt='2ch' mx="auto">
                 <Box p="3" w="100%" bg="white">
-                <Grid h='80px'
-                    templateRows='repeat(2, 1fr)'
-                    templateColumns='repeat(5, 1fr)'
-                    gap={4}
-                    >
-                    <GridItem rowSpan={2} colSpan={1} bg='tomato' />
-                    <GridItem colSpan={2} bg='papayawhip' />
-                    <GridItem colSpan={2} bg='papayawhip' />
-                    <GridItem colSpan={4} bg='tomato' />
-                </Grid>
-                </Box>       
+                            Hall
+                        </Box>
+                        <Box p="3" w="100%" bg="white">
+                            Image
+                        </Box>
+                        <Box p="3" w="100%" bg="white">
+                            Title
+                        </Box>
+                        <Box p="3" w="100%" bg="white">
+                            Posted by:
+                        </Box>
+                        <Box p="3" w="100%" bg="white" display='flex'>
+                            <Box w="100%" bg="white">
+                                Time
+                            </Box>
+                            <Box w="100%" bg="white">
+                                Options
+                            </Box>      
+                        </Box>       
             </Box>
+
 
         </div>
     )

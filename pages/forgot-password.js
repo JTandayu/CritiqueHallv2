@@ -30,6 +30,24 @@ import {
 const MotionButton = motion(Button)
 
 export default function ForgotPassword(){
+  const { API_URL } = process.env
+  const { API_KEY } = process.env
+
+  const [email, setEmail] = useState('')
+
+    // const forgotPassword = async () =>{
+    //   const response =  await fetch(`${API_URL}/api/login`,  {
+    //     method: 'POST',
+    //     body: JSON.stringify({email}),
+    //     headers: {
+    //       'Content-Type': 'application/json',
+    //       'X-API-KEY': `${API_KEY}`
+    //     },
+    //   })
+    //   const data = await response.json()
+    //   console.log(data)
+    // }
+
     return(
         <div className={styles.container} >
         <Head>

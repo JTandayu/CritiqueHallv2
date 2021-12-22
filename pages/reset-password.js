@@ -26,10 +26,31 @@ import {
   PopoverArrow,
   PopoverCloseButton,
 } from "@chakra-ui/react"
+import { useState } from 'react';
 
 const MotionButton = motion(Button)
 
 export default function ResetPassword(){
+  const { API_URL } = process.env
+  const { API_KEY } = process.env
+
+  const [password, setPassword] = useState('')
+
+
+
+    // const resetPassword = async () =>{
+    //   const response =  await fetch(`${API_URL}/api/login`,  {
+    //     method: 'POST',
+    //     body: JSON.stringify({password}),
+    //     headers: {
+    //       'Content-Type': 'application/json',
+    //       'X-API-KEY': `${API_KEY}`
+    //     },
+    //   })
+    //   const data = await response.json()
+    //   console.log(data)
+    // }
+
     return(
         <div className={styles.container} >
         <Head>

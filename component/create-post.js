@@ -11,11 +11,32 @@ import { useDisclosure } from '@chakra-ui/react'
 import { Button } from '@chakra-ui/react'
 import styles from "@styles/Hall.module.css";
 import { Box } from '@chakra-ui/react'
+import { useState } from 'react';
 
   
 
 function CreatePost() {
     const { isOpen, onOpen, onClose } = useDisclosure()
+    const { API_URL } = process.env
+    const { API_KEY } = process.env
+
+    const [title, setTitle] = useState('')
+    const [description, setPassword] = useState('')
+
+
+
+    // const submitLogin = async () =>{
+    //   const response =  await fetch(`${API_URL}/api/post`,  {
+    //     method: 'POST',
+    //     body: JSON.stringify({title, description}),
+    //     headers: {
+    //       'Content-Type': 'application/json',
+    //       'X-API-KEY': `${API_KEY}`
+    //     },
+    //   })
+    //   const data = await response.json()
+    //   console.log(data)
+    // }
 
     return(
         <>
