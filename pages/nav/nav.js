@@ -5,7 +5,7 @@ import { motion } from "framer-motion"
 import styles from "@styles/component/Nav.module.css";
 import Link from 'next/link'
 import Logo from "@public/critiquehall.png";
-import { Button, ButtonGroup, IconButton, Spacer, useColorModeValue } from "@chakra-ui/react"
+import { Button, ButtonGroup, IconButton, Input, Spacer, useColorModeValue } from "@chakra-ui/react"
 import { CloseIcon, HamburgerIcon } from '@chakra-ui/icons'
 import { ChevronDownIcon } from '@chakra-ui/icons'
 import {
@@ -110,7 +110,11 @@ export default function Nav(){
                     <Image src={Logo} alt="Critique Hall Logo"></Image>
                 </Link>
             </Flex>
-
+            <Spacer />
+                <form action='/search' method='POST'>
+                    <Input display={['none','none','flex','flex']} w='30vw' type='text' mt={7} mr='15vw' color='black' bg='white' />
+                </form>
+            <Spacer />
         <Flex
             pos='fixed'
             top='1rem'
