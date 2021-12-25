@@ -5,7 +5,7 @@ import { motion } from "framer-motion"
 import styles from "@styles/component/Nav.module.css";
 import Link from 'next/link'
 import Logo from "@public/critiquehall.png";
-import { Heading, Spacer } from '@chakra-ui/react'
+import { Flex, Heading, Spacer, Text } from '@chakra-ui/react'
 import { Button, ButtonGroup } from "@chakra-ui/react"
 import { HamburgerIcon } from '@chakra-ui/icons'
 import { ChevronDownIcon } from '@chakra-ui/icons'
@@ -23,6 +23,7 @@ import {
   } from '@chakra-ui/react'
 import { Box } from '@chakra-ui/react'
 import { Switch } from '@chakra-ui/react'
+import { Select } from '@chakra-ui/react';
 
 
 const MotionButton = motion(Button)
@@ -50,7 +51,17 @@ export default function PostCritiques(){
       <Box display='flex'>
         <Heading>Critiques</Heading>
         <Spacer />
-        <Menu>
+        <Flex w='15vw' mt={1}>
+          <Text mr={5} w={20} mt={2}>Sort By: </Text>
+          <Select>
+            <option value='oldest'>Oldest</option>
+            <option value='newest'>Newest</option>
+            <option value='most-star'>Most Stars</option>
+            <option value='least-star'>Least Stars</option>
+            <option value='has-badge'>Badge</option>
+          </Select>
+        </Flex>
+        {/* <Menu>
             <MenuButton
               px={4}
               py={2}
@@ -64,7 +75,7 @@ export default function PostCritiques(){
               <MenuItem><Link href="/settings" as="/setting">Settings</Link></MenuItem>
               <MenuItem color="red" _hover={{ bg: 'red.500' }}><Link href="/">Log Out</Link></MenuItem>
             </MenuList>
-        </Menu>
+        </Menu> */}
       </Box>
       {/* Critiques */}
 

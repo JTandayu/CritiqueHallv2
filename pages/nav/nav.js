@@ -172,7 +172,7 @@ export default function Nav(){
                     </MenuButton>
                     <MenuList>
                         <MenuItem><Link href="/profile/profile">Profile</Link></MenuItem>
-                        <MenuItem color="red" _hover={{ bg: 'red.500' }}><Link href="/">Log Out</Link></MenuItem>
+                        <MenuItem color="red" _hover={{ bg: 'red.500', color: 'white' }}><Link href="/">Log Out</Link></MenuItem>
                     </MenuList>
                 </Menu>
 
@@ -264,7 +264,11 @@ export default function Nav(){
                         aria-label='Home'
                         my={5}
                         w='100%'
-
+                        _hover={{
+                            bg: 'red',
+                            color: 'white'
+                        }}
+                        rounded='none'
                     >
                         Logout
                     </Button>

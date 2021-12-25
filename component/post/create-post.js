@@ -64,7 +64,7 @@ function CreatePost() {
                     <Box w='24vw'>
                     <Flex mt='3vh'>
                         <FormLabel>Title</FormLabel>
-                        <Input type='text' w='20vw' ml='11px' bg='white' />
+                        <Input type='text' w='20vw' ml='11px' bg='white' color='black'  />
                     </Flex>
 
                     <FormLabel mt={2}>Description</FormLabel>

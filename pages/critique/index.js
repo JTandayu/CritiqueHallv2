@@ -65,7 +65,7 @@ export default function HallPage(){
             {/* Halls */}
             <Box mt="3vh" w="70%" display={{lg: 'flex', md: 'flex', sm: 'none'}} mx="auto" mb="" top="0">
 
-                <Button variant='ghost' w="20vh" h="10vh" bg="purple" rounded="lg" _hover={{backgroundColor: 'purple'}} _active={{backgroundColor: 'purple'}}>
+                <Button variant='ghost' w="20vh" h="10vh" bg="purple" rounded="lg" position='static' _hover={{backgroundColor: 'purple'}} _active={{backgroundColor: 'purple'}}>
                 <Box w="20vh" h="10vh" ml={{lg: 0, sm: 0}}  px='5'>
                     <Center>
                     <Text fontSize="3xl" color="white" mt="5" textShadow="1px 1px #000">Technology</Text>
@@ -79,7 +79,7 @@ export default function HallPage(){
 
                 <Spacer />
 
-                <Button variant='ghost' w="20vh" h="10vh" bg="blue.300" rounded="lg" _hover={{backgroundColor: 'blue.300'}} _active={{backgroundColor: 'blue.300'}}>
+                <Button variant='ghost' w="20vh" h="10vh" bg="blue.300" rounded="lg" position='static' _hover={{backgroundColor: 'blue.300'}} _active={{backgroundColor: 'blue.300'}}>
                 <Box w="20vh" h="10vh" ml={{lg: 0, sm: 0}} rounded="lg" px='9'>
                     <Center>
                     <Text fontSize="3xl" color="white" mt="5" textShadow="1px 1px #000">Arts</Text>
@@ -93,7 +93,7 @@ export default function HallPage(){
 
                 <Spacer />
 
-                <Button variant='ghost' w="20vh" h="10vh" bg="red" rounded="lg" _hover={{backgroundColor: 'red'}} _active={{backgroundColor: 'red'}}>
+                <Button variant='ghost' w="20vh" h="10vh" bg="red" rounded="lg" position='static' _hover={{backgroundColor: 'red'}} _active={{backgroundColor: 'red'}}>
                 <Box w="20vh" h="10vh" ml={{lg: 0, sm: 0}} rounded="lg" px='9' >
                     <Center>
                     <Text fontSize="3xl" color="white" mt="5" textShadow="1px 1px #000">Business</Text>
@@ -106,7 +106,7 @@ export default function HallPage(){
 
                 <Spacer />
 
-                <Button variant='ghost' w="20vh" h="10vh" bg="green.300" rounded="lg" _hover={{backgroundColor: 'green.300'}} _active={{backgroundColor: 'green.300'}} >
+                <Button variant='ghost' w="20vh" h="10vh" bg="green.300" rounded="lg" position='static' _hover={{backgroundColor: 'green.300'}} _active={{backgroundColor: 'green.300'}} >
                 <Box w="100%" h="10vh" ml={{lg: 0, sm: 0}} rounded="lg" px='9'>
                     <Center>
                     <Text fontSize="3xl" color="white" mt="5" textShadow="1px 1px #000">Lounge</Text>

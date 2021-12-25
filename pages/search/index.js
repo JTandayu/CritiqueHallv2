@@ -2,7 +2,7 @@ import Head from 'next/head'
 import Image from 'next/image'
 import { css, cx } from '@emotion/react'
 import { motion } from "framer-motion"
-import { Button, Center, Heading } from '@chakra-ui/react'
+import { Button, Center, Heading, Spacer } from '@chakra-ui/react'
 import Link from 'next/link'
 import {
     Modal,
@@ -12,6 +12,9 @@ import {
     ModalFooter,
     ModalBody,
     ModalCloseButton,
+    Flex,
+    Select,
+    Text
   } from "@chakra-ui/react"
 import { Box } from '@chakra-ui/react'
 import { Grid, GridItem } from '@chakra-ui/react'
@@ -33,9 +36,25 @@ export default function SearchResult(){
             <Box w="100%" mb="10" mt="15vh">
                 <Heading><Center>Search Result for</Center></Heading>
             </Box>
-            {/* <Pagination></Pagination> */}
+            
+            
+            <Flex w="80%">
+                {/* <Pagination></Pagination> */}
+                <Box w='10vw'></Box>
+                <Spacer />
+                <Flex w='15vw' mt={1}>
+                    <Text mr={5} w={20} mt={2}>Sort By: </Text>
+                    <Select>
+                        <option value='oldest'>Oldest</option>
+                        <option value='newest'>Newest</option>
+                        <option value='most-star'>Most Stars</option>
+                        <option value='least-star'>Least Stars</option>
+                        <option value='has-badge'>Badge</option>
+                    </Select>
+                </Flex>
+            </Flex>
             {/* Search Item */}
-            <Box w={{lg: '70%', sm: '100%'}} display={{lg: 'flex', sm: 'block'}} mt='2ch' mx="auto">
+            <Box w={{lg: '70%', sm: '100%'}} display={{lg: 'flex', sm: 'block'}} mt='2ch' mx="auto" border='1px solid' borderColor='dark'>
                 <Box p="3" w="100%" bg="light">
                             Hall
                         </Box>
