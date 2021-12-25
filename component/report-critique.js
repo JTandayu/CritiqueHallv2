@@ -29,7 +29,7 @@ function ReportCritique() {
         <form action='' method='POST'>
         <Modal isOpen={isOpen} onClose={onClose}>
             <ModalOverlay />
-                <ModalContent>
+                <ModalContent maxW="70rem">
                 <ModalHeader>Report Critique</ModalHeader>
                 <ModalCloseButton />
                 <ModalBody>

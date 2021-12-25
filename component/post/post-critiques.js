@@ -69,6 +69,7 @@ export default function PostCritiques(){
       {/* Critiques */}
 
       <Box p="2" overflow-y="auto">
+        
 
       </Box>
       
