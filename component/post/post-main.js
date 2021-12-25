@@ -40,15 +40,17 @@ const MotionBox = motion(Box)
 // }
 
 export default function PostMain(){
+
+
     return(
-    <Box w="50%">
+    <Box w="50%" bg='light' h='80vh' p={5} boxShadow='md' mt={28} ml='3vw'>
       <Heading mx="auto">Title</Heading>
               
       {/* Image */}
-      <Image mx="auto" w='30vh' h='30vh' />
+        <Image mx="auto" w='30vh' h='30vh' onClick='' />
       {/* Options */}
       <Box display="flex" w="100%" mt={5}>
-        <Button>Like</Button>
+        <Button position='static'>Like</Button>
         <Spacer />
         <Menu>
             <MenuButton
@@ -76,6 +78,7 @@ export default function PostMain(){
       {/* Description */}
       <Box mt={5}>
         <Heading size='md'>Description</Heading>
+        <Text w='45vw' mx='auto' mt={5}>Dolor est mollit id cillum laborum irure velit do magna consequat veniam qui deserunt et. Lorem sunt irure eu deserunt proident consectetur. Incididunt laboris laboris consequat eu consectetur voluptate dolore velit in. Commodo aute velit tempor esse fugiat. Dolore Lorem officia ullamco elit.</Text>
       </Box>
       {/* Critique Input */}
       <Box display='flex' flexDir='column' mt={5}>

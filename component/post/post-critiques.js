@@ -5,7 +5,7 @@ import { motion } from "framer-motion"
 import styles from "@styles/component/Nav.module.css";
 import Link from 'next/link'
 import Logo from "@public/critiquehall.png";
-import { Heading } from '@chakra-ui/react'
+import { Heading, Spacer } from '@chakra-ui/react'
 import { Button, ButtonGroup } from "@chakra-ui/react"
 import { HamburgerIcon } from '@chakra-ui/icons'
 import { ChevronDownIcon } from '@chakra-ui/icons'
@@ -45,26 +45,26 @@ export default function PostCritiques(){
 
 
     return(
-    <Box w="40%">
+    <Box w="40%" bg='light' h='80vh' p={5} boxShadow='md' mt={28} ml='3vw'>
       {/* Header */}
-      <Box >
+      <Box display='flex'>
         <Heading>Critiques</Heading>
-        {/* <Menu>
+        <Spacer />
+        <Menu>
             <MenuButton
               px={4}
               py={2}
               transition='all 0.2s'
             > 
-            <ChevronDownIcon />
+            Sort By: 
+            <ChevronDownIcon ml={2} />
             </MenuButton>
             <MenuList>
               <MenuItem><Link href="/profile/profile" as="/profile">Profile</Link></MenuItem>
               <MenuItem><Link href="/settings" as="/setting">Settings</Link></MenuItem>
-              <MenuItem>Dark Mode<Switch id='dark-mode' ml="3" /></MenuItem>
               <MenuItem color="red" _hover={{ bg: 'red.500' }}><Link href="/">Log Out</Link></MenuItem>
             </MenuList>
-        </Menu> */}
-        
+        </Menu>
       </Box>
       {/* Critiques */}
 

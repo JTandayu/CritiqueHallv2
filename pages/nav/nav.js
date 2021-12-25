@@ -131,7 +131,7 @@ export default function Nav(){
                         Home
                     </Button>
                 </Link>
-                <Link href="/critique/hall-page" as='/critique'>
+                <Link href="/critique" as='/critique'>
                     <Button
                         as='a'
                         variant='ghost'
@@ -189,6 +189,7 @@ export default function Nav(){
         overflowY='auto'
         flexDir='column'
         display={display}
+        boxShadow='lg'
         >
             <Flex justify='flex-start'>
                 <IconButton
@@ -216,7 +217,7 @@ export default function Nav(){
                         Home
                     </Button>
                 </Link>
-                <Link href="/critique/hall-page" as='/critique'>
+                <Link href="/critique" as='/critique'>
                     <Button
                         as='a'
                         variant='ghost'

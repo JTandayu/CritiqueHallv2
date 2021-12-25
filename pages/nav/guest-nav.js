@@ -144,6 +144,7 @@ export default function Nav(){
         overflowY='auto'
         flexDir='column'
         display={display}
+        boxShadow='lg'
         >
             <Flex justify='flex-start'>
                 <IconButton
