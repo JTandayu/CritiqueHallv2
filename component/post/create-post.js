@@ -21,6 +21,7 @@ import { Input } from '@chakra-ui/react'
 import { Label } from '@chakra-ui/react'
 import { Center } from '@chakra-ui/react'
 import { Divider } from '@chakra-ui/react'
+import { Select } from '@chakra-ui/react'
 
   
 
@@ -29,8 +30,10 @@ function CreatePost() {
     const { API_URL } = process.env
     const { API_KEY } = process.env
 
-    const [title, setTitle] = useState('')
-    const [description, setPassword] = useState('')
+    // const [title, setTitle] = useState('')
+    // const [description, setPassword] = useState('')
+
+
 
     // const submitLogin = async () =>{
     //   const response =  await fetch(`${API_URL}/api/create_post`,  {
@@ -59,17 +62,26 @@ function CreatePost() {
                 <ModalBody >
                     <Flex mb={5}>
                     <Box w='24vw'>
-                    <FormLabel>Title</FormLabel>
-                    <Input type='text' w='23vw' bg='white' />
+                    <Flex mt='3vh'>
+                        <FormLabel>Title</FormLabel>
+                        <Input type='text' w='20vw' ml='11px' bg='white' />
+                    </Flex>
 
                     <FormLabel mt={2}>Description</FormLabel>
                     <Textarea type='text' w='23vw' h='20vh' color='black' bg='white' />
+                    <Flex mt={5}>
+                        <FormLabel mt={2}>Post This to: </FormLabel>
+                        <Select w='10vw'>
+                            <option value='technology' bg='purple'>Technology</option>
+                            <option value='business' bg='purple' >Business</option>
+                            <option value='arts' bg='purple' >Arts</option>
+                            <option value='lounge' bg='purple' >Lounge</option>
+                        </Select>
+                    
+                    </Flex>
+                    
 
-                    <FormLabel mt={2}>File Upload</FormLabel>
-
-                    <input type='file' w='5vw' border='none' mt='2'  />
-
-                    <Center mt={5}>
+                    <Center mt={10}>
                         <Button type="submit" colorScheme='blue' mr={2}>
                             Submit
                         </Button>
@@ -87,8 +99,19 @@ function CreatePost() {
                     </Center>
                 
 
-                    <Box ml='2vw' w='19vw'  boxShadow='md' p={5}>
-                        <Heading size='sm'>Attachments Preview</Heading>
+                    <Box ml='2vw' w='20vw' p={5}>
+                        <Flex>
+                            <Heading size='sm'>Attachments</Heading>
+                            <Button bg='blue.400' color='white' ml={5} h='2em'>upload</Button>
+                        </Flex>
+                        <Flex bg='white' w='19vw' h='5vh' rounded='md' overflowX='auto' mt={3}>
+
+                        </Flex>
+
+                        <Heading size='sm' mt={5}>Attachments Preview</Heading>
+                        <Flex bg='white' w='19vw' h='20vh' rounded='md' overflowX='auto' mt={3}>
+                            
+                        </Flex>
                     </Box>
 
                     </Flex >
