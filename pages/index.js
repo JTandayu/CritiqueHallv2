@@ -1,12 +1,12 @@
 import Head from 'next/head'
-import Image from 'next/image'
+// import Image from 'next/image'
 import styles from "@styles/Welcome.module.css";
 import { motion } from "framer-motion"
 import Link from 'next/link'
-import { Stack, HStack, VStack, useColorMode } from "@chakra-ui/react"
+import { Stack, HStack, VStack, useColorMode, FormLabel, Input, Textarea } from "@chakra-ui/react"
 import { Button, ButtonGroup } from "@chakra-ui/react"
 import { ArrowForwardIcon, CheckIcon, InfoOutlineIcon } from '@chakra-ui/icons'
-import { Box, Divider } from "@chakra-ui/react"
+import { Box, Divider, Flex, Heading, Spacer, Image } from "@chakra-ui/react"
 
 
 const variants = {
@@ -31,77 +31,88 @@ export default function Welcome() {
         <link rel="icon" href="/logo256.png" onLoad=""/>
       </Head>
 
-      <main className={styles.main}>
 
-      {/* <Box w="100%" h="60vh" display={{lg: 'flex', md: 'flex', sm: 'block'}} borderBottom="1px solid black">
-      <motion.h1 
-          animate={{ y: 50, stdDeviation: [1, 5, 3], opacity:1}}
-          initial="hidden"
-          variants={variants}
-          whileHover={{ scale: 1.1 }}
-          className={styles.title}> */}
-          {/* <img className="imageLogo" src="/critiquehall2.png" /> */}
-          {/* <Image
-          loader={imageLoader}
-          src="critiquehall.png"
-          alt="Logo of Critique Hall"
-          width={510}
-          height={333}
-          left={272}
-          right={347}
-          /> */}
-        {/* </motion.h1> */}
-        {/* <MotionButton
-            // initial="hidden"
-            // animate={{ x: 10, stdDeviation: [1, 5, 3], opacity:1 }}
-            // whileHover={{opacity:1}}
-            // transition={{duration:.1}}
-            whileHover={{ scale: 1.3 }}
-            whileTap={{ scale: 0.9 }}
-            colorScheme="red" variant="solid" size="lg"
-          > */}
-        {/* <Link href="/register">Get Started</Link>
-        </MotionButton>
-      </Box>  */}
+      <Box position='static' w="100%" h="70vh" display={{lg: 'flex', md: 'flex', sm: 'block'}} z-index='-1' borderBottom="1px solid black">
+            <Flex mt={44} flexDir='column' align='center' w='50vw'>
+              <Heading size='3xl' >WELCOME TO</Heading>
+              <Image src='critiquehall.png' w='30vw' h='37vh' mt={5}/>
+            </Flex>
+              
+          </Box>
 
-        {/* <motion.p 
-          initial="hidden" 
-          animate={{ y: 10, stdDeviation: [1, 5, 3], opacity:1 }}
-          transition={{ delay: 1 }} 
-          variants={variants} 
-          className={styles.description}>
-          A Discussion Forum Web Application for Students
-        </motion.p> */}
+          <Box position='static' w="100%" h="70vh" display={{lg: 'flex', md: 'flex', sm: 'block'}} borderBottom="1px solid black">
+            <Flex >
+              <Flex w='45vw'>
 
-        {/* <button className={styles.getStartedButton}>
-          <motion.span
-            // animate={{opacity:1}}
-            initial={{opacity:0.5}}
-            whileHover={{opacity:1}}
-            transition={{duration:.1}}
-          >
-          <Link href="/login">Get Started</Link>
-          </motion.span>
-        </button> */}
+              </Flex>
+              <Spacer />
+              <Flex mt={16} flexDir='column' align='center' w='45vw'>
+                <Heading size='3xl'>WHAT IS</Heading>
+                <Flex>
+                  <Image src='critiquehall.png' w='30vw' h='37vh' mt={5}/>
+                  <Heading size='3xl' my='auto'>?</Heading>
+                  
+                </Flex>
+                <Heading size='xl' w='30vw' align='center' mt={5}>An Open Forum Web Application for Students and Teachers</Heading>
+              </Flex>
+            </Flex>
+              
+          </Box>
 
-        {/* <Stack direction="row" spacing={8} align="center"> */}
-        {/* <MotionButton
-            // initial="hidden"
-            // animate={{ x: 10, stdDeviation: [1, 5, 3], opacity:1 }}
-            // whileHover={{opacity:1}}
-            // transition={{duration:.1}}
-            whileHover={{ scale: 1.3 }}
-            whileTap={{ scale: 0.9 }}
-            rightIcon={<CheckIcon />} colorScheme="facebook" variant="solid" size="lg"
-          >
-          <Link href="/login">Login</Link>
-        </MotionButton> */}
+          {/* <Divider position='static' /> */}
 
-        
-        {/* </Stack> */}
+          <Box position='static' w="100%" h="70vh" display={{lg: 'flex', md: 'flex', sm: 'block'}} borderBottom="1px solid black">
+
+            <Flex>
+              <Flex mt={16} flexDir='column' align='center' w='45vw'>
+                <Heading size='3xl' >GOAL OF</Heading>
+                <Image src='critiquehall.png' w='30vw' h='37vh' mt={5}/>
+              </Flex>
+              <Spacer />
+              <Flex mt={16} w='45vw'>
+                <Heading size='lg' w='45vw' align='center'>To meet the student and teacher’s needs with regards to academic lives and personal development.</Heading>
+              </Flex>
+            </Flex>
+              
+          </Box>
+
+          {/* <Divider position='static' /> */}
+
+          <Box position='static' w="100%" h="80vh" display={{lg: 'flex', md: 'flex', sm: 'block'}}>
+            <Flex flexDir='column' w='100%'>
+            <Flex flexDir='column' w='100%'>
+              <Heading size='4xl' align='center' w='100%' mt={5}>WE'D LOVE TO HEAR FROM YOU</Heading>
+              <Heading size='lg' align='center' w='100%' mt={5}>Send your feedbacks and suggestions and we’ll answer it for you.</Heading>
+            </Flex>
+            <form action='' method='POST'>
+              <Flex w='100%' align='center' mt={20}>
+                <Box w='30vw'>
+
+                </Box>
+              
+                <Flex flexDir='column' w='100%' align='center'>
+                
+                  <Flex align='center' w='40vw' color='black'>
+                      <Input type='text' w='13vw' placeholder='Email Address'></Input>
+                      <Spacer />
+                      <Input type='text' w='13vw' placeholder='Full Name'></Input>
+                      <Spacer />
+                      <Input type='text' w='13vw' placeholder='Subject'></Input>
+                  </Flex>
+                  <Textarea w='40vw' h='20vh' mt={5} placeholder='Message...' />
+                
+                </Flex>
+                <Flex w='20vw' >
+                  <Button type='submit' colorScheme='blue' w='10vw' justify="flex-start" mr={48}>Submit</Button>
+                </Flex>
+              </Flex>
+              </form>
+            </Flex>
+            
+              
+          </Box> 
 
 
-      </main>
       {/* <div className={styles.main}>
 
       </div>

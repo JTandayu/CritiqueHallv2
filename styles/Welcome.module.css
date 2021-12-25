@@ -1,17 +1,18 @@
 .container {
-  /* background-image: url("/BG.png"); */
-  /* background: #E5E5E5; */
-  background-repeat: no-repeat;
-  background-size: cover;
-  opacity: 1;
-  min-height: 100vh;
-  max-height: 1000vh;
-  padding: 0 0.5rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
+  /* background-image: url("/BG.png");
+    background-repeat: no-repeat;
+    background-size: cover; */
+    /* background-color: #f3f3f3; */
+    opacity: 1;
+    min-height: 88vh;
+    padding: 0 0.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* height: 85vh; */
+    max-height: 100%;
+    z-index: 0;
 }
 
 .main {
