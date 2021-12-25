@@ -1,7 +1,7 @@
 .container {
-    background-image: url("/BG.png");
+    background-image: url("/Banner.png");
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: display;
     height: 100vh;
     padding: 0 0.5rem;
     display: flex;
@@ -14,7 +14,7 @@
   }
 
   .main {
-    background-color:#fff;
+    /* background-color:#fff; */
     position: absolute;
     width: 60ch;
     height: 100%;

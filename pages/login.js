@@ -18,6 +18,8 @@ import {
 } from "@chakra-ui/react"
 import { GetStaticProps } from 'next'
 import { useState } from 'react';
+import { ColorModeScript, useColorModeValue } from '@chakra-ui/react'
+import { Box } from '@chakra-ui/react'
 
 const MotionButton = motion(Button)
 
@@ -56,6 +58,12 @@ export default function Login({user}) {
     //   })
     //   const data = await response.json()
     //   console.log(data)
+    // 
+    //  return{
+    //    props:{
+    //      data
+    //    }
+    //  }
     // }
 
     return (
@@ -66,7 +74,7 @@ export default function Login({user}) {
           <link rel="icon" href="/logo256.png" onLoad=""/>
         </Head>
   
-        <main className={styles.main} 
+        <Box as='main' bg={useColorModeValue('white', '#1a202c')} className={styles.main} 
           // animate = {{y: 0 , opacity: 1}}
           // initial = {{y: -70, opacity: 0}}
           // transition ={{duration: .7}}
@@ -117,7 +125,7 @@ export default function Login({user}) {
               <p>New User? <Link href="./register"><a className={styles.signUpText}>Sign Up Now!</a></Link></p>
             </p>
 
-        </main>
+        </Box>
       </div>
     )
   }

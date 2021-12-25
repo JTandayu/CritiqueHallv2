@@ -31,7 +31,7 @@ function ReportUser() {
         <form action='' method='POST'>
         <Modal isOpen={isOpen} onClose={onClose}>
             <ModalOverlay />
-                <ModalContent>
+                <ModalContent maxW="50rem">
                 <ModalHeader>Report User</ModalHeader>
                 <ModalCloseButton />
                 <ModalBody>

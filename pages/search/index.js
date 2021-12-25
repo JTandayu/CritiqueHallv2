@@ -36,23 +36,23 @@ export default function SearchResult(){
             {/* <Pagination></Pagination> */}
             {/* Search Item */}
             <Box w={{lg: '70%', sm: '100%'}} display={{lg: 'flex', sm: 'block'}} mt='2ch' mx="auto">
-                <Box p="3" w="100%" bg="white">
+                <Box p="3" w="100%" bg="light">
                             Hall
                         </Box>
-                        <Box p="3" w="100%" bg="white">
+                        <Box p="3" w="100%" bg="light">
                             Image
                         </Box>
-                        <Box p="3" w="100%" bg="white">
+                        <Box p="3" w="100%" bg="light">
                             Title
                         </Box>
-                        <Box p="3" w="100%" bg="white">
+                        <Box p="3" w="100%" bg="light">
                             Posted by:
                         </Box>
-                        <Box p="3" w="100%" bg="white" display='flex'>
-                            <Box w="100%" bg="white">
+                        <Box p="3" w="100%" bg="light" display='flex'>
+                            <Box w="100%" bg="light">
                                 Time
                             </Box>
-                            <Box w="100%" bg="white">
+                            <Box w="100%" bg="light">
                                 Options
                             </Box>      
                         </Box>       

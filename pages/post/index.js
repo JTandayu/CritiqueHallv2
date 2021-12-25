@@ -19,11 +19,10 @@ import {
     ModalBody,
     ModalCloseButton,
   } from "@chakra-ui/react"
-import CreatePost from '@component/create-post'
-import { Textarea } from '@chakra-ui/react'
-import PostMain from '@component/post-main'
-import PostCritiques from '@component/post-critiques'
-// import { Image } from '@chakra-ui/react'
+import CreatePost from '@component/post/create-post'
+import { TextArea } from '@chakra-ui/react'
+import PostMain from '@component/post/post-main'
+import PostCritiques from '@component/post/post-critiques'
 
 const breakpoints = createBreakpoints({
     sm: '320px',
@@ -36,6 +35,11 @@ const breakpoints = createBreakpoints({
 const theme = extendTheme({ breakpoints })
 
 export default function CritiquePost(){
+
+    const deletePost = async() =>{
+
+    }
+
     return(
         <>
         <main className={styles.container}>

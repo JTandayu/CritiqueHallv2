@@ -18,6 +18,9 @@ import styles from "@styles/Feedback.module.css";
 import { extendTheme } from '@chakra-ui/react'
 import { createBreakpoints } from '@chakra-ui/theme-tools'
 import { Radio, RadioGroup } from '@chakra-ui/react'
+import { useState } from 'react';
+import { Stack } from '@chakra-ui/react'
+
 
 const breakpoints = createBreakpoints({
     sm: '320px',
@@ -30,6 +33,25 @@ const breakpoints = createBreakpoints({
 const theme = extendTheme({ breakpoints })
 
 export default function FeedbackPage(){
+    const { API_URL } = process.env
+    const { API_KEY } = process.env
+
+    // const ans1, ans2, ans3, ans4 = useState('')
+
+
+    // const SubmitFeedback = async() =>{
+        //const response =  await fetch(`${API_URL}/api/feedback`,  {
+            //     method: 'POST',
+            //     body: JSON.stringify({ans1, ans2, ans3, ans4}),
+            //     headers: {
+            //       'Content-Type': 'application/json',
+            //       'X-API-KEY': `${API_KEY}`
+            //     },
+            //   })
+            //   const data = await response.json()
+            //   console.log(data)
+    // }
+
     return(
         <main className={styles.container}>
             <Head>
@@ -38,60 +60,72 @@ export default function FeedbackPage(){
             <link rel="icon" href="/logo256.png" onLoad=""/>
             </Head>
 
-            <Box top="0" h="100%" mx="auto" mt="5vh">
+            <Box top="0" h="100%" mx="auto" mt="14vh">
                 <Heading size="2xl" align="center">WE'D LOVE TO HEAR FROM YOU!</Heading>
                 <Heading size="md" align="center" mt="5">Send your feedbacks and suggestions and we'll answer it for you.</Heading>
             </Box>
 
             <Box display={{lg: "flex", sm: 'block'}} w="95%" bg="blue.700" spacing="10px" top="0" h={{lg: "80vh", sm: "100%"}} mb="5vh" mt="10" py="10">
-                <Box w={{lg: "40%" , sm: '100%'}} mx="auto" h="70vh" p="6">
+                <Box w={{lg: "40%" , sm: '100%'}} mx="auto" h="70vh" p="6" color='white'>
                     <form action='' method='POST'>
                     <Heading color="white" mx="auto">Feedback</Heading>
-                    <FormLabel mt="5vh" >Hey</FormLabel>
-                    {/* <RadioGroup onChange={setValue} value={value}>
-                    <Stack direction='row'>
-                        <Radio value='1'>First</Radio>
-                        <Radio value='2'>Second</Radio>
-                        <Radio value='3'>Third</Radio>
-                    </Stack>
-                    </RadioGroup> */}
+                    <Box mt="5vh" display='flex'>
+                        <FormLabel >Duis amet dolor sint sunt minim proident do ullamco cillum ea do.</FormLabel>
+                        <RadioGroup>
+                        <Stack direction='row'>
+                            <Radio value='1'></Radio>
+                            <Radio value='2'></Radio>
+                            <Radio value='3'></Radio>
+                            <Radio value='4'></Radio>
+                        </Stack>
+                        </RadioGroup>
+                    </Box>
 
-                    <FormLabel mt="5vh">Hey</FormLabel>
-                    {/* <RadioGroup onChange={setValue} value={value}>
-                    <Stack direction='row'>
-                        <Radio value='1'>First</Radio>
-                        <Radio value='2'>Second</Radio>
-                        <Radio value='3'>Third</Radio>
-                    </Stack>
-                    </RadioGroup> */}
+                    <Box mt="5vh" display='flex'>
+                        <FormLabel>Duis amet dolor sint sunt minim proident do ullamco cillum ea do.</FormLabel>
+                        <RadioGroup>
+                        <Stack direction='row'>
+                            <Radio value='1'></Radio>
+                            <Radio value='2'></Radio>
+                            <Radio value='3'></Radio>
+                            <Radio value='4'></Radio>
+                        </Stack>
+                        </RadioGroup>
+                    </Box>
 
-                    <FormLabel mt="5vh">Hey</FormLabel>
-                    {/* <RadioGroup onChange={setValue} value={value}>
-                    <Stack direction='row'>
-                        <Radio value='1'>First</Radio>
-                        <Radio value='2'>Second</Radio>
-                        <Radio value='3'>Third</Radio>
-                    </Stack>
-                    </RadioGroup> */}
+                    <Box mt="5vh" display='flex'>
+                        <FormLabel>Duis amet dolor sint sunt minim proident do ullamco cillum ea do.</FormLabel>
+                        <RadioGroup>
+                        <Stack direction='row'>
+                            <Radio value='1'></Radio>
+                            <Radio value='2'></Radio>
+                            <Radio value='3'></Radio>
+                            <Radio value='4'></Radio>
+                        </Stack>
+                        </RadioGroup>
+                    </Box>
 
-                    <FormLabel mt="5vh">Hey</FormLabel>
-                    {/* <RadioGroup onChange={setValue} value={value}>
-                    <Stack direction='row'>
-                        <Radio value='1'>First</Radio>
-                        <Radio value='2'>Second</Radio>
-                        <Radio value='3'>Third</Radio>
-                    </Stack>
-                    </RadioGroup> */}
+                    <Box mt="5vh" display='flex'>
+                        <FormLabel>Duis amet dolor sint sunt minim proident do ullamco cillum ea do.</FormLabel>
+                        <RadioGroup>
+                        <Stack direction='row'>
+                            <Radio value='1'></Radio>
+                            <Radio value='2'></Radio>
+                            <Radio value='3'></Radio>
+                            <Radio value='4'></Radio>
+                        </Stack>
+                        </RadioGroup>
+                    </Box>
 
-                    <Center><Textarea w="100%" bg="white" mt="5vh" mx="auto" /></Center>
+                    <Center><Textarea w="100%" bg="light" mt="5vh" color='black' mx="auto" position='static' /></Center>
 
                     <Box w="100%">
-                        <Center><Button type='submit' mx='auto' mt="3">Submit</Button></Center>
+                        <Center><Button type='submit' mx='auto' colorScheme='blue' mt="3">Submit</Button></Center>
                     </Box>
                     </form>
                 </Box>
 
-                <Box w={{lg: "40%" , sm: '90%'}} bg="white" mx="auto" h="70vh" p="3" boxShadow="lg" borderRadius="lg">
+                <Box w={{lg: "40%" , sm: '90%'}} mt={{lg: '0', sm: '5vh'}} bg="white" mx="auto" h="70vh" p="3" boxShadow="lg" borderRadius="lg">
                     <Center><Heading mx="auto">Contact Information</Heading></Center>
                     
                     

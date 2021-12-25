@@ -18,6 +18,7 @@ import {
 import { ArrowRightIcon, ArrowLeftIcon, CheckIcon, InfoOutlineIcon } from '@chakra-ui/icons'
 import { Select } from "@chakra-ui/react"
 import { useState } from 'react';
+import { Box } from '@chakra-ui/react'
 
 const MotionButton = motion(Button)
 
@@ -35,7 +36,22 @@ function toPart1() {
   document.getElementById('motion-main').style.height = "100%";
 }
 
-export default function Register() {
+export async function getInitialProps(){
+  const { API_URL } = process.env
+  const { API_KEY } = process.env
+  const res = await fetch(`${API_URL}/api/specializations`)
+  const specialization = await res.json()
+  const res2 = await fetch(`${API_URL}/api/departments`)
+  const department = await res.json()
+
+  return{
+    props: {
+       specialization, department
+    }
+  }
+}
+
+export default function Register({specialization, department}) {
   const { API_URL } = process.env
   const { API_KEY } = process.env
 
@@ -53,6 +69,7 @@ export default function Register() {
     //   const data = await response.json()
     //   console.log(data)
     // }
+  // const getSpecializations
 
     return (
       <div className={styles.container}>
@@ -62,7 +79,7 @@ export default function Register() {
           <link rel="icon" href="/logo256.png" onLoad=""/>
         </Head>
   
-        <main className={styles.main} 
+        <Box bg='light' className={styles.main} 
           id="motion-main"
         >
           <center><FormControl id="registerpart1" isRequired>
@@ -74,20 +91,20 @@ export default function Register() {
             <Heading mb={2} as="h2" size="lg">Register</Heading>
             
               <FormLabel>First Name</FormLabel>
-                <input placeholder="First Name" className={styles.input_box} type="text"/>
+                <input placeholder="First Name" className={styles.input_box} type="text" value={first_name}/>
                 <br/>
                 <FormLabel>Last Name</FormLabel>
-                <input placeholder="Last Name" className={styles.input_box} type="text"/>
+                <input placeholder="Last Name" className={styles.input_box} type="text" value={last_name}/>
                 <br/>
                 <FormLabel>School E-Mail</FormLabel>
-                <input placeholder="School E-Mail" className={styles.input_box} type="text"/>
+                <input placeholder="School E-Mail" className={styles.input_box} type="text" value={email}/>
                 <FormHelperText className={styles.helperText}>format: ***@iacademy.edu.ph</FormHelperText>
                 {/* <br/> */}
               <FormLabel>Password</FormLabel>
-                <input placeholder="Password" className={styles.input_box} type="password"/>
+                <input placeholder="Password" className={styles.input_box} type="password" value={password}/>
                 <br/>
                 <FormLabel>Confirm Password</FormLabel>
-                <input placeholder="Confirm Password" className={styles.input_box} type="password"/>
+                <input placeholder="Confirm Password" className={styles.input_box} type="password" value={confirm_password}/>
                 <br/>
                 <VStack direction="column" spacing={8} align="center">
                 <MotionButton
@@ -113,12 +130,18 @@ export default function Register() {
             <Heading mb={2} as="h2" size="lg">Register</Heading>
                 <FormLabel>Department</FormLabel>
                 <Select placeholder="Select Department" size="sm">
+                  {department.map((department) => (
+                    <option value={department.id}>{department.name}</option>
+                  ))}
                 <option value="shs">Senior High School (SHS)</option>
                 <option value="col">College (COL)</option>
                 </Select>
                 <br />
                 <FormLabel>Strand / Specialization</FormLabel>
                 <Select placeholder="Select Strand / Specialization" size="sm">
+                {specialization.map((specialization) => (
+                  <option value={specialization.id}>{specialization.name}</option>
+                ))}
                 <option value="humss">SHS - Humanities and Social Sciences (HUMSS)</option>
                 <option value="abm">SHS - Accountancy and Business Management (ABM)</option>
                 <option value="audprod">SHS - Audio Production</option>
@@ -193,7 +216,8 @@ export default function Register() {
                   size="lg"
                   rightIcon={<CheckIcon />}
                   >
-                <Link href="/home">Register</Link>
+                {/* <Link href="/home">Register</Link> */}
+                <Button onClick={submitRegister}>Register</Button>
                 </MotionButton>
                 </HStack>
             
@@ -204,7 +228,7 @@ export default function Register() {
           </div>
           </FormControl></center>
 
-        </main>
+        </Box>
       </div>
     )
   }

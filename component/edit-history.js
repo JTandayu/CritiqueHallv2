@@ -27,24 +27,23 @@ function EditHistory() {
 
     return(
         <>
-        <button onClick={onOpen} className={styles.cpbutton}>Create Post</button>
-
+        <button onClick={onOpen} ml={5}>History</button>
 
         <form action='' method='POST'>
         <Modal isOpen={isOpen} onClose={onClose}>
             <ModalOverlay />
-                <ModalContent>
+                <ModalContent maxW="40rem" h='40vh'>
                 <ModalHeader>Edit History</ModalHeader>
                 <ModalCloseButton />
                 <ModalBody>
                     Hello
                 </ModalBody>
 
-                <ModalFooter>
+                {/* <ModalFooter>
                     <Button colorScheme='blue' mr={3} onClick={onClose}>
                     Close
                     </Button>
-                </ModalFooter>
+                </ModalFooter> */}
             </ModalContent>
         </Modal>
         </form>

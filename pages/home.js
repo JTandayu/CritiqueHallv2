@@ -55,23 +55,23 @@ export default function Home(){
             <link rel="icon" href="/logo256.png" onLoad=""/>
           </Head>
 
-          <Box w="100%" h="60vh" display={{lg: 'flex', md: 'flex', sm: 'block'}} borderBottom="1px solid black">
+          <Box position='static' w="100%" h="60vh" display={{lg: 'flex', md: 'flex', sm: 'block'}} z-index='-1' borderBottom="1px solid black">
               
           </Box>
 
-          <Box w="100%" h="50vh" display={{lg: 'flex', md: 'flex', sm: 'block'}} borderBottom="1px solid black">
+          <Box position='static' w="100%" h="50vh" display={{lg: 'flex', md: 'flex', sm: 'block'}} borderBottom="1px solid black">
               
           </Box>
 
-          <Divider />
+          {/* <Divider position='static' /> */}
 
-          <Box w="100%" h="50vh" display={{lg: 'flex', md: 'flex', sm: 'block'}} borderBottom="1px solid black">
+          <Box position='static' w="100%" h="50vh" display={{lg: 'flex', md: 'flex', sm: 'block'}} borderBottom="1px solid black">
               
           </Box>
 
-          <Divider />
+          {/* <Divider position='static' /> */}
 
-          <Box w="100%" h="50vh" display={{lg: 'flex', md: 'flex', sm: 'block'}}>
+          <Box position='static' w="100%" h="50vh" display={{lg: 'flex', md: 'flex', sm: 'block'}}>
               
           </Box>  
 

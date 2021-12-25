@@ -26,13 +26,13 @@ function EditProfile() {
 
     return(
         <>
-        <button onClick={onOpen} className={styles.cpbutton}>Create Post</button>
+        <Button onClick={onOpen} bg='blue.400' color='white' _hover={{background: 'blue.400'}} position='static'>Settings</Button>
 
 
         <form action='' method='POST'>
         <Modal isOpen={isOpen} onClose={onClose}>
             <ModalOverlay />
-                <ModalContent>
+                <ModalContent maxW="56rem">
                 <ModalHeader>Edit Profile</ModalHeader>
                 <ModalCloseButton />
                 <ModalBody>

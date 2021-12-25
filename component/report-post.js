@@ -22,13 +22,13 @@ function ReportPost() {
 
     return(
         <>
-        <button onClick={onOpen} className={styles.cpbutton}>Create Post</button>
+        <button onClick={onOpen}>Report</button>
 
 
         <form action='' method='POST'>
         <Modal isOpen={isOpen} onClose={onClose}>
             <ModalOverlay />
-                <ModalContent>
+                <ModalContent maxW="50rem">
                 <ModalHeader>Report Critique</ModalHeader>
                 <ModalCloseButton />
                 <ModalBody>
@@ -41,7 +41,7 @@ function ReportPost() {
                     <Button colorScheme='blue' mr={3} onClick={onClose}>
                     Close
                     </Button>
-                    <Button variant='ghost'>Post</Button>
+                    <Button variant='ghost'>Submit</Button>
                 </ModalFooter>
             </ModalContent>
         </Modal>

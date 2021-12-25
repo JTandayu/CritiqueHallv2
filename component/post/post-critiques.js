@@ -23,7 +23,6 @@ import {
   } from '@chakra-ui/react'
 import { Box } from '@chakra-ui/react'
 import { Switch } from '@chakra-ui/react'
-import CritiqueItem from './Critique';
 
 
 const MotionButton = motion(Button)
@@ -35,6 +34,16 @@ const MotionButton = motion(Button)
 // }
 
 export default function PostCritiques(){
+
+    const giveStar = async() =>{
+
+    }
+
+    const giveReply = async() =>{
+      
+    }
+
+
     return(
     <Box w="40%">
       {/* Header */}

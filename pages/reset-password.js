@@ -74,11 +74,11 @@ export default function ResetPassword(){
             {/* <p className={styles.description}>Kindly enter your E-mail Address to receive a link for further process in changing your password.</p> */}
             <center><FormControl id="forgotpassword" action="/home" isRequired>
                 <FormLabel>New Password</FormLabel>
-                <input placeholder="New Password" className={styles.input_box} type="password"/>
+                <input placeholder="New Password" className={styles.input_box} type="password" value={password} onChange={setPassword}/>
                 {/* <FormHelperText className={styles.helperText}>This field is required.</FormHelperText> */}
                 <br/>
                 <FormLabel>Confirm New Password</FormLabel>
-                <input placeholder="Confirm New Password" className={styles.input_box} type="password"/>
+                <input placeholder="Confirm New Password" className={styles.input_box} type="password" value={password}/>
                 <br/>
                 <Popover
                 placement="bottom"
@@ -90,6 +90,7 @@ export default function ResetPassword(){
                   className={styles.login_button}
                   colorScheme="green"
                   size="lg"
+                  onClick={resetPassword}
                   >
                 Reset Password
                 </MotionButton>

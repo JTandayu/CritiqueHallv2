@@ -69,7 +69,7 @@ export default function ForgotPassword(){
             <Heading mb={2} as="h2" size="lg">Forgot Password</Heading>
             <p className={styles.description}>Kindly enter your E-mail Address to receive a link for further process in changing your password.</p>
             <center><FormControl id="forgotpassword" action="/home" isRequired>
-                <input placeholder="E-mail Address" className={styles.input_box} type="text"/>
+                <input placeholder="E-mail Address" className={styles.input_box} type="text" value={email} onChange={setEmail}/>
                 <FormHelperText className={styles.helperText}>This field is required.</FormHelperText>
                 <br/>
                 <Popover
@@ -82,6 +82,7 @@ export default function ForgotPassword(){
                   className={styles.login_button}
                   colorScheme="messenger"
                   size="lg"
+                  onClick={forgotPassword}
                   >
                 Send
                 </MotionButton>

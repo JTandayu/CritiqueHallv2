@@ -12,6 +12,10 @@ import { Button } from '@chakra-ui/react'
 import styles from "@styles/Hall.module.css";
 import { Box } from '@chakra-ui/react'
 import { useState } from 'react';
+import { Input } from '@chakra-ui/react'
+import { Label } from '@chakra-ui/react'
+import { Center } from '@chakra-ui/react'
+import { Divider } from '@chakra-ui/react'
 
   
 
@@ -23,10 +27,8 @@ function CreatePost() {
     const [title, setTitle] = useState('')
     const [description, setPassword] = useState('')
 
-
-
     // const submitLogin = async () =>{
-    //   const response =  await fetch(`${API_URL}/api/post`,  {
+    //   const response =  await fetch(`${API_URL}/api/create_post`,  {
     //     method: 'POST',
     //     body: JSON.stringify({title, description}),
     //     headers: {
@@ -44,17 +46,20 @@ function CreatePost() {
 
 
         <form action='' method='POST'>
-        <Modal isOpen={isOpen} onClose={onClose} size="full">
+        <Modal isOpen={isOpen} onClose={onClose}>
             <ModalOverlay />
-                <ModalContent>
+                <ModalContent maxW="60rem">
                 <ModalHeader>Create Post</ModalHeader>
                 <ModalCloseButton />
                 <ModalBody>
                     Hey
-                    <Button variant='ghost'>Post</Button>
+                    <Center height='50vh' >
+                        <Divider orientation='vertical' borderColor='black'/>
+                    </Center>
+                    {/* <Button variant='ghost'>Post</Button>
                     <Button colorScheme='blue' mr={3} onClick={onClose}>
                     Cancel
-                    </Button>
+                    </Button> */}
                 </ModalBody>
                 <ModalFooter>
                     <Button colorScheme='blue' mr={3} onClick={onClose}>
