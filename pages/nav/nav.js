@@ -23,9 +23,13 @@ import {
 import { Box } from '@chakra-ui/react'
 import { Switch } from '@chakra-ui/react'
 import Sidebar from './sidebar/sidebar';
-import { useState } from 'react';
-import {Flex} from '@chakra-ui/react'
+import { useEffect, useState } from 'react';
+import {Flex, Text} from '@chakra-ui/react'
 import { createBreakpoints } from '@chakra-ui/theme-tools'
+import React from 'react';
+import Login from '../login'
+import { useCookies } from 'react-cookie';
+import axios from 'axios'
 
 const MotionButton = motion(Button)
 
@@ -36,64 +40,40 @@ const breakpoints = createBreakpoints({
     xl: '80em',
 })
 
-export default function Nav(){
+
+
+export default function Nav({id}){
     const [display, changeDisplay] = useState('none')
+    const [cookie, removeCookie] = useCookies('token')
+    const [search, setSearch] = useState('')
+
+    //Search Function
+    const searchItem = async()=>{
+
+        const config = {
+            headers: { 
+            'content-type': 'multipart/form-data',
+            'X-API-KEY': `${API_KEY}`,
+            'Authorization': 'Basic Y2Fwc3RvbmUyMDIxOjEyMzQ=',
+            // 'Accept-Encoding': 'gzip, deflate, br',
+            'Accept': 'application/json',
+            }
+        }
+
+        // axios.get('get')
+
+    }
+
+    //Log-out function
+    const logOut = async ()=>{
+        removeCookie('token');
+        removeCookie('id');
+        removeCookie('encrypted_id');
+    }
 
     return(
     <>
-    {/* <Box bg={useColorModeValue('white', '#1a202c')} className={styles.container} position='sticky' z-index='10000'>
-        <div className={styles.menu_button}>
-        <IconButton
-            aria-label='Open Menu'
-            size='lg'
-            mr={2}
-            icon={<HamburgerIcon/>}
-            />
-        </div>
-        <div className={styles.logo}>
-            <Link href="/home">
-                <Image src={Logo} alt="Critique Hall Logo"></Image>
-            </Link>
-        </div>
-        <nav>
-            <motion.ul 
-            animate={{ y: -5, stdDeviation: [1, 3, 2], opacity:1}}
-            initial={{opacity: 0 , y: -15}}>
-                <li>
-                    <form action="/search" method="GET">
-                        <input placeholder="Search" id="search" className={styles.input_box} type="text"/>
-                    </form>
-                </li>
-                <li><Link px={4} py={2} href="/home"><a>Home</a></Link></li>
-                <li><Link px={4} py={2} href="/critique/hall-page"><a>Critique</a></Link></li>
-                <li><Link px={4} py={2} href="/feedback"><a>Feedback</a></Link></li>
-                <li><Menu>
-                    <MenuButton
-                        px={4}
-                        py={2}
-                        transition='all 0.2s'
-                        // borderRadius='md'
-                        // borderWidth='1px'
-                        // _hover={{ bg: 'gray.400' }}
-                        // _expanded={{ bg: 'blue.400' }}
-                        // _focus={{ boxShadow: 'outline' }}
-                    >
-                        
-                        User 
-
-                        <ChevronDownIcon />
-                    </MenuButton>
-                    <MenuList>
-                        <MenuItem><Link href="/profile/profile" as="/profile">Profile</Link></MenuItem>
-                        <MenuItem color="red" _hover={{ bg: 'red.500' }}><Link href="/">Log Out</Link></MenuItem>
-                    </MenuList>
-                    </Menu></li>
-
-            
-        </nav>
-        
-    </Box> */}
-    <Flex boxShadow='md' w='100%' h='10vh' bg={useColorModeValue('white', '#1a202c')} pos='fixed'> 
+    <Flex boxShadow='md' w='100%' h='10vh' bg={useColorModeValue('white', '#1a202c')} pos='fixed' zIndex={100}> 
         <IconButton
                 aria-label='Open Menu'
                 size='lg'
@@ -161,18 +141,21 @@ export default function Nav(){
                 </Link>
                 <Menu>
                     <MenuButton
-                        px={4}
+                        px={7}
                         py={2}
                         transition='all 0.2s'
                         display='flex'
                         w='100%'
-                    >   
-                    User 
-                    <ChevronDownIcon />
+                    > 
+                    <Flex>
+                        User 
+                        {/* <Text ml={1} mr={3}>{user_id}</Text> */}
+                        <ChevronDownIcon mt={1} />
+                    </Flex>  
                     </MenuButton>
                     <MenuList>
                         <MenuItem><Link href="/profile/profile">Profile</Link></MenuItem>
-                        <MenuItem color="red" _hover={{ bg: 'red.500', color: 'white' }}><Link href="/">Log Out</Link></MenuItem>
+                        <MenuItem color="red" _hover={{ bg: 'red.500', color: 'white' }} onClick={logOut}><Link href="/">Log Out</Link></MenuItem>
                     </MenuList>
                 </Menu>
 
@@ -269,6 +252,7 @@ export default function Nav(){
                             color: 'white'
                         }}
                         rounded='none'
+                        onClick={logOut}
                     >
                         Logout
                     </Button>

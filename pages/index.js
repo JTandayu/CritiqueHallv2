@@ -32,7 +32,7 @@ export default function Welcome() {
       </Head>
 
 
-      <Box position='static' w="100%" h="70vh" display={{lg: 'flex', md: 'flex', sm: 'block'}} z-index='-1' borderBottom="1px solid black">
+      {/* <Box position='static' w="100%" h="70vh" display={{lg: 'flex', md: 'flex', sm: 'block'}} z-index='-1' borderBottom="1px solid black">
             <Flex mt={44} flexDir='column' align='center' w='50vw'>
               <Heading size='3xl' >WELCOME TO</Heading>
               <Image src='critiquehall.png' w='30vw' h='37vh' mt={5}/>
@@ -58,23 +58,79 @@ export default function Welcome() {
             </Flex>
               
           </Box>
+          <Box position='static' w="100%" h="70vh" display={{lg: 'flex', md: 'flex', sm: 'block'}} z-index='-1' borderBottom="1px solid black">
+            <Flex mt={44} flexDir='column' align='center' w={{lg: '50vw', md: '100%', sm: '100%'}}>
+              <Heading size='3xl' >WELCOME TO</Heading>
+              <Image src='critiquehall.png' w={{lg: '30vw', md: '100%', sm: '100%'}} h='37vh' mt={5}/>
+            </Flex>
+              
+          </Box>
+
+          <Box position='static' w="100%" h="70vh" display={{lg: 'flex', md: 'flex', sm: 'block'}} borderBottom="1px solid black">
+            <Flex flexDir={{lg: 'row', md: 'row', sm: 'column'}} >
+              <Flex w='45vw'>
+
+              </Flex>
+              <Spacer />
+              <Flex mt={16} flexDir='column' align='center' w={{lg: '45vw', md: '100%', sm: '100%'}}>
+                <Heading size='3xl'>WHAT IS</Heading>
+                <Flex flexDir={{lg: 'row', md: 'row', sm: 'column'}}>
+                  <Image src='critiquehall.png' w={{lg: '30vw', md: '100%', sm: '100%'}} h='37vh' mt={5}/>
+                  <Heading size='3xl' my='auto' mx={{lg: '0', md: '0', sm: 'auto'}}>?</Heading>
+                  
+                </Flex>
+                <Heading size='xl' w={{lg: '30vw', md: '100%', sm: '100%'}} align='center' mt={5}>An Open Forum Web Application for Students and Teachers</Heading>
+              </Flex>
+            </Flex>
+              
+          </Box>
+
+          {/* <Divider position='static' /> */}
+
+      <Box position='static' w="100%" h="70vh" display={{lg: 'flex', md: 'flex', sm: 'block'}} z-index='-1' borderBottom="1px solid black">
+            <Flex mt={44} flexDir='column' align='center' w={{lg: '50vw', md: '100%', sm: '100%'}}>
+              <Heading size='3xl' >WELCOME TO</Heading>
+              <Image src='critiquehall.png' w={{lg: '30vw', md: '100%', sm: '100%'}} h='37vh' mt={5}/>
+            </Flex>
+              
+          </Box>
+
+          <Box position='static' w="100%" h="70vh" display={{lg: 'flex', md: 'flex', sm: 'block'}} borderBottom="1px solid black">
+            <Flex flexDir={{lg: 'row', md: 'row', sm: 'column'}} >
+              <Flex w='45vw'>
+
+              </Flex>
+              <Spacer />
+              <Flex mt={16} flexDir='column' align='center' w={{lg: '45vw', md: '100%', sm: '100%'}}>
+                <Heading size='3xl'>WHAT IS</Heading>
+                <Flex flexDir={{lg: 'row', md: 'row', sm: 'column'}}>
+                  <Image src='critiquehall.png' w={{lg: '30vw', md: '100%', sm: '100%'}} h='37vh' mt={5}/>
+                  <Heading size='3xl' my='auto' mx={{lg: '0', md: '0', sm: 'auto'}}>?</Heading>
+                  
+                </Flex>
+                <Heading size='xl' w={{lg: '30vw', md: '100%', sm: '100%'}} align='center' mt={5}>An Open Forum Web Application for Students and Teachers</Heading>
+              </Flex>
+            </Flex>
+              
+          </Box>
 
           {/* <Divider position='static' /> */}
 
           <Box position='static' w="100%" h="70vh" display={{lg: 'flex', md: 'flex', sm: 'block'}} borderBottom="1px solid black">
 
-            <Flex>
-              <Flex mt={16} flexDir='column' align='center' w='45vw'>
+            <Flex flexDir={{lg: 'row', md: 'row', sm: 'column'}} >
+              <Flex mt={16} flexDir='column' align='center' w={{lg: '45vw', md: '100%', sm: '100%'}}>
                 <Heading size='3xl' >GOAL OF</Heading>
-                <Image src='critiquehall.png' w='30vw' h='37vh' mt={5}/>
+                <Image src='critiquehall.png' w={{lg: '30vw', md: '100%', sm: '100%'}} h='37vh' mt={5}/>
               </Flex>
               <Spacer />
-              <Flex mt={16} w='45vw'>
-                <Heading size='lg' w='45vw' align='center'>To meet the student and teacher’s needs with regards to academic lives and personal development.</Heading>
+              <Flex mt={{lg: 16, md: 5, sm: 5}} w={{lg: '45vw', md: '100%', sm: '100%'}}>
+                <Heading size='lg' w={{lg: '45vw', md: '100%', sm: '100%'}} align='center'>To meet the student and teacher’s needs with regards to academic lives and personal development.</Heading>
               </Flex>
             </Flex>
               
           </Box>
+
 
           {/* <Divider position='static' /> */}
 
@@ -85,25 +141,25 @@ export default function Welcome() {
               <Heading size='lg' align='center' w='100%' mt={5}>Send your feedbacks and suggestions and we’ll answer it for you.</Heading>
             </Flex>
             <form action='' method='POST'>
-              <Flex w='100%' align='center' mt={20}>
+              <Flex w='100%' flexDir={{lg: 'row', md: 'row', sm: 'column'}} align='center'  mt={20}>
                 <Box w='30vw'>
 
                 </Box>
               
                 <Flex flexDir='column' w='100%' align='center'>
                 
-                  <Flex align='center' w='40vw' color='black'>
-                      <Input type='text' w='13vw' placeholder='Email Address'></Input>
+                  <Flex align='center' flexDir={{lg: 'row', md: 'row', sm: 'column'}} w={{lg: '40vw', md: '40vw', sm: '100%'}} color='black'>
+                      <Input type='text' w={{lg: '13vw', md: '13vw', sm: '100%'}} placeholder='Email Address'></Input>
                       <Spacer />
-                      <Input type='text' w='13vw' placeholder='Full Name'></Input>
+                      <Input type='text' w={{lg: '13vw', md: '13vw', sm: '100%'}} mt={{lg: 0, md: 0, sm: 5}} placeholder='Full Name'></Input>
                       <Spacer />
-                      <Input type='text' w='13vw' placeholder='Subject'></Input>
+                      <Input type='text' w={{lg: '13vw', md: '13vw', sm: '100%'}} mt={{lg: 0, md: 0, sm: 5}} placeholder='Subject'></Input>
                   </Flex>
-                  <Textarea w='40vw' h='20vh' mt={5} placeholder='Message...' />
+                  <Textarea w={{lg: '40vw', md: '40vw', sm: '100%'}} h='20vh' mt={5} placeholder='Message...' mt={{lg: 0, md: 0, sm: 5}} />
                 
                 </Flex>
-                <Flex w='20vw' >
-                  <Button type='submit' colorScheme='blue' w='10vw' justify="flex-start" mr={48}>Submit</Button>
+                <Flex w={{lg: '20vw', md: '100%', sm: '100%'}} mt={{lg: 0, md: 0, sm: 5}} >
+                  <Button type='submit' colorScheme='blue' w={{lg: '10vw', md: '20vw', sm: '20vw'}} mr={{lg: 48, md: 0, sm: 0}} mx={{lg: 0, md: 0, sm: 'auto'}} >Submit</Button>
                 </Flex>
               </Flex>
               </form>

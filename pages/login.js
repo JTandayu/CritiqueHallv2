@@ -20,6 +20,11 @@ import { GetStaticProps } from 'next'
 import { useState } from 'react';
 import { ColorModeScript, useColorModeValue } from '@chakra-ui/react'
 import { Box } from '@chakra-ui/react'
+import axios from 'axios';
+import React from 'react';
+import cookie from "react-cookie";
+import { useCookies } from 'react-cookie'
+import { createBreakpoints } from '@chakra-ui/theme-tools'
 
 const MotionButton = motion(Button)
 
@@ -36,6 +41,16 @@ const MotionButton = motion(Button)
 //   }
 // }
 
+// axios.defaults.withCredentials = true;
+
+const breakpoints = createBreakpoints({
+  sm: '320px',
+  md: '768px',
+  lg: '960px',
+  xl: '1200px',
+  '2xl': '1536px',
+})
+
 
 
 export default function Login({user}) {
@@ -45,25 +60,73 @@ export default function Login({user}) {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
+  const [cookies, setCookies, removeCookies] = useCookies(['token', 'id', 'encrypted_id'])
 
 
-    // const submitLogin = async () =>{
-    //   const response =  await fetch(`${API_URL}/api/login`,  {
-    //     method: 'POST',
-    //     body: JSON.stringify({email, password}),
-    //     headers: {
-    //       'Content-Type': 'application/json',
-    //       'X-API-KEY': `${API_KEY}`
-    //     },
-    //   })
-    //   const data = await response.json()
-    //   console.log(data)
-    // 
+    const submitLogin = async (response) =>{
+
+      const login = {
+        email : email,
+        password : password
+      }
+
+      let formData = new FormData(); 
+      formData.append('email', email);   //append the values with key, value pair
+      formData.append('password', password);
+
+
+      const config = {
+        headers: { 
+          'content-type': 'multipart/form-data',
+          'X-API-KEY': `${API_KEY}`,
+          'Authorization': 'Basic Y2Fwc3RvbmUyMDIxOjEyMzQ=',
+          // 'Accept-Encoding': 'gzip, deflate, br',
+          'Accept': 'application/json',
+        }
+      }
+      // const user_id = ''
+
+      axios.post(`${API_URL}/api/login`, formData, config)
+      .then(response => {
+          console.log(response.data);
+          // const token = localStorage.setItem('token', response.data.token)
+          // const id = localStorage.setItem('id', response.data.id)
+          // setCookie('token', response.data.token, "/home");
+          setCookies('token', response.data.token)
+          setCookies('id', response.data.id)
+          setCookies('encrypted_id', response.data.encrypted_id)
+          
+          window.location.href = "/home"
+          // user_id = response.data.id;
+      })
+      .catch(error => {
+          console.log(error);
+          window.location.href = "/login"
+      });
+    
     //  return{
     //    props:{
-    //      data
+    //      user_id
     //    }
     //  }
+    }
+
+    // const getUserProfile = async () =>{
+
+    //   const config = {
+    //     headers: { 
+    //       'X-API-KEY': `${API_KEY}`,
+    //       'Authorization': 'Basic Y2Fwc3RvbmUyMDIxOjEyMzQ=',
+    //       'Accept': 'application/json',
+    //     }
+    //   }
+
+    //   const {}
+      
+
+    //   const { data } = await axios.get(`${API_URL}/api/display_profile`, config);
+    //   data.find
+    //   return data;
     // }
 
     return (
@@ -74,7 +137,7 @@ export default function Login({user}) {
           <link rel="icon" href="/logo256.png" onLoad=""/>
         </Head>
   
-        <Box as='main' bg={useColorModeValue('white', '#1a202c')} className={styles.main} 
+        <Box as='main' bg={useColorModeValue('white', '#1a202c')} w={{lg: '100ch' , md: '100%' , sm: '100%' }} className={styles.main} 
           // animate = {{y: 0 , opacity: 1}}
           // initial = {{y: -70, opacity: 0}}
           // transition ={{duration: .7}}
@@ -87,18 +150,18 @@ export default function Login({user}) {
             <Heading mb={2} as="h2" size="lg">Login</Heading>
             <center><FormControl id="loginform" isRequired>
               <FormLabel>Email Address</FormLabel>
-                {/* <input placeholder="Username" id="email" value={email} className={styles.input_box} type="email" onChange={e => setEmail(e.target.value)}/> */}
-                <input placeholder="Username" id="email" value={email} className={styles.input_box} type="email" />
+                <input placeholder="Username" id="email" value={email} className={styles.input_box} type="email" onChange={e => setEmail(e.target.value)}/>
+                {/* <input placeholder="Username" id="email" value={email} className={styles.input_box} type="email" /> */}
                 <br/>
               <FormLabel>Password</FormLabel>
-                {/* <input placeholder="Password" id="password" value={password} className={styles.input_box} type="password" onChange={e => setPassword(e.target.value)}/> */}
-                <input placeholder="Password" id="password" value={password} className={styles.input_box} type="password"/>
+                <input placeholder="Password" id="password" value={password} className={styles.input_box} type="password" onChange={e => setPassword(e.target.value)}/>
+                {/* <input placeholder="Password" id="password" value={password} className={styles.input_box} type="password"/> */}
                 <br/>
                 <p className={styles.register}>
                 <p><Link href="./forgot-password"><a>Forgot Password?</a></Link></p>
                 </p>
                 <VStack direction="row" spacing={8} align="center">
-                {/* <MotionButton
+                <MotionButton
                   whileHover={{ scale: 1.2 }}
                   whileTap={{ scale: 0.9 }}
                   className={styles.LoginButton} 
@@ -106,8 +169,8 @@ export default function Login({user}) {
                   type="submit" 
                   size="lg"
                   onClick={submitLogin}
-                  ></MotionButton> */}
-                  <MotionButton
+                  > Login </MotionButton>
+                  {/* <MotionButton
                   whileHover={{ scale: 1.2 }}
                   whileTap={{ scale: 0.9 }}
                   className={styles.LoginButton} 
@@ -116,8 +179,7 @@ export default function Login({user}) {
                   size="lg"
                   >
                   <Link href="/home">Login</Link>
-                  {/* Login */}
-                </MotionButton>
+                </MotionButton> */}
                 </VStack>
             </FormControl></center>
 

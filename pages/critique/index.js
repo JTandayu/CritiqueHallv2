@@ -2,7 +2,7 @@ import Head from 'next/head'
 import Image from 'next/image'
 import { css, cx } from '@emotion/react'
 import { motion } from "framer-motion"
-import { Center, Grid, GridItem } from "@chakra-ui/react"
+import { Center, Grid, GridItem, Select } from "@chakra-ui/react"
 import { Heading } from "@chakra-ui/react"
 import { Box } from "@chakra-ui/react"
 import Link from 'next/link'
@@ -37,6 +37,7 @@ import { Spacer } from '@chakra-ui/react'
 import Pagination from 'react-js-pagination'
 import CritiqueList from '@component/CritiqueList'
 import { Text } from '@chakra-ui/react'
+import { useEffect, useState } from 'react'
 
 
 const breakpoints = createBreakpoints({
@@ -49,7 +50,49 @@ const breakpoints = createBreakpoints({
 
 const theme = extendTheme({ breakpoints })
 
-export default function HallPage(){
+
+
+export async function getStaticProps(){
+    const { API_URL } = process.env
+    const { API_KEY } = process.env
+    
+    const res = await fetch(`${API_URL}/api/display_all_posts`, {
+        method: 'GET',
+        headers: {
+            'content-type': 'multipart/form-data',
+            'X-API-KEY': `${API_KEY}`,
+            'Authorization': 'Basic Y2Fwc3RvbmUyMDIxOjEyMzQ=',
+            // 'Accept-Encoding': 'gzip, deflate, br',
+            'Accept': 'application/json',
+        }
+    })
+
+    const res2 = await fetch(`${API_URL}/api/get_halls`, {
+        method: 'GET',
+        headers: {
+            'content-type': 'multipart/form-data',
+            'X-API-KEY': `${API_KEY}`,
+            'Authorization': 'Basic Y2Fwc3RvbmUyMDIxOjEyMzQ=',
+            // 'Accept-Encoding': 'gzip, deflate, br',
+            'Accept': 'application/json',
+        }
+    })
+
+    const data = await res.json()
+    const data2 = await res2.json()
+    // console.log(data2)
+    console.log(data)
+
+    return{
+        props:{
+            data: data.posts,
+            data2: data2.halls
+        }
+    }
+}
+
+export default function HallPage({data, data2}){
+
     return(
         <>
         <main className={styles.container}>
@@ -119,7 +162,7 @@ export default function HallPage(){
             </Box>
 
             <Box mt="3" w="100%" borderColor="gray" position='static' bg="light" border="1px solid gray" borderRadius="md" display={{lg: 'none', md: 'none', sm: 'block'}}>
-                <Menu position='static'>
+                {/* <Menu position='static'>
                     <MenuButton
                         px={4}
                         py={2}
@@ -134,7 +177,15 @@ export default function HallPage(){
                         <MenuItem>Technoloogy</MenuItem>
                         <MenuItem>Lounge</MenuItem>
                     </MenuList>
-                </Menu>
+                </Menu> */}
+                <Select position='static' 
+                        px={4}
+                        py={2}
+                        w="100%">
+                    {data2.map(halls => 
+                        <option value={halls.hall_name}>{halls.hall_name}</option>
+                    )}
+                </Select>
             </Box>
 
             <Box w={{lg: "70%", sm: "100%"}} mt="5" display="flex">
@@ -146,30 +197,32 @@ export default function HallPage(){
             <Box w="100%" h="100%" spacing="10px" mt="2">
                 <Box w={{lg: "70%" , sm: '100%'}} h="full" mx="auto" p="3" spacing="10" overflow="hidden">
                     {/* Critique Item */}
+                    {data.map(posts => 
                     <Box w="100%" display={{lg: 'flex', sm: 'block'}} mt='2ch' borderColor='white' border='1px solid'>
                         <Box p="3" w="100%" bg="light">
-                            Hall
+                            <Text>{posts.hall_id.name}</Text>
                         </Box>
                         <Box p="3" w="100%" bg="light">
-                            Image
+                            Image {posts.body}
                         </Box>
                         <Box p="3" w="100%" bg="light">
-                            Title
+                            <Text>{posts.title}</Text>
                         </Box>
                         <Box p="3" w="100%" bg="light">
-                            Posted by:
+                            Posted by: {posts.display_name}
                         </Box>
                         <Box p="3" w="100%" bg="light" display='flex'>
                             <Box w="100%" bg="light">
-                                Time
+                                {posts.created_at}
                             </Box>
                             <Box w="100%" bg="light">
                                 Options
                             </Box>      
                         </Box>                 
                     </Box>
+                    )}
                     {/* Critique Item */}
-                    <Box w="100%" display={{lg: 'flex', sm: 'block'}} mt='2ch'  borderColor='white' border='1px solid'>
+                    {/* <Box w="100%" display={{lg: 'flex', sm: 'block'}} mt='2ch'  borderColor='white' border='1px solid'>
                         <Box p="3" w="100%" bg="light">
                             Hall
                         </Box>
@@ -190,9 +243,9 @@ export default function HallPage(){
                                 Options
                             </Box>      
                         </Box>                 
-                    </Box>
+                    </Box> */}
                     {/* Critique Item */}
-                    <Box w="100%" display={{lg: 'flex', sm: 'block'}} mt='2ch'  borderColor='white' border='1px solid'>
+                    {/* <Box w="100%" display={{lg: 'flex', sm: 'block'}} mt='2ch'  borderColor='white' border='1px solid'>
                         <Box p="3" w="100%" bg="light">
                             Hall
                         </Box>
@@ -213,7 +266,7 @@ export default function HallPage(){
                                 Options
                             </Box>      
                         </Box>                 
-                    </Box>
+                    </Box> */}
                     
                     
 

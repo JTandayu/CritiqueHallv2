@@ -26,6 +26,20 @@ import {
   PopoverArrow,
   PopoverCloseButton,
 } from "@chakra-ui/react"
+import { useState } from 'react'
+import { useColorModeValue } from '@chakra-ui/react';
+import { createBreakpoints } from '@chakra-ui/theme-tools'
+import axios from "axios"
+
+
+const breakpoints = createBreakpoints({
+  sm: '320px',
+  md: '768px',
+  lg: '960px',
+  xl: '1200px',
+  '2xl': '1536px',
+})
+
 
 const MotionButton = motion(Button)
 
@@ -35,18 +49,34 @@ export default function ForgotPassword(){
 
   const [email, setEmail] = useState('')
 
-    // const forgotPassword = async () =>{
-    //   const response =  await fetch(`${API_URL}/api/login`,  {
-    //     method: 'POST',
-    //     body: JSON.stringify({email}),
-    //     headers: {
-    //       'Content-Type': 'application/json',
-    //       'X-API-KEY': `${API_KEY}`
-    //     },
-    //   })
-    //   const data = await response.json()
-    //   console.log(data)
-    // }
+  const forgotPassword = async () =>{
+
+        let formData = new FormData(); 
+        formData.append('email', email);
+        
+        const config = {
+          headers: { 
+            'content-type': 'multipart/form-data',
+            'X-API-KEY': `${API_KEY}`,
+            'Authorization': 'Basic Y2Fwc3RvbmUyMDIxOjEyMzQ=',
+            // 'Accept-Encoding': 'gzip, deflate, br',
+            'Accept': 'application/json',
+          }
+        }
+
+        // console.log(email)
+  
+        axios.post(`${API_URL}/api/forgot_password`, formData, config)
+        .then(response => {
+            console.log(response);
+            // window.location = "/home"
+        })
+        .catch(error => {
+            console.log(error);
+            console.log(error.response);
+            // window.location = "/forgot-password"
+        });
+    }
 
     return(
         <div className={styles.container} >
@@ -56,11 +86,7 @@ export default function ForgotPassword(){
           <link rel="icon" href="/logo256.png" onLoad=""/>
         </Head>
         
-        <motion.main className={styles.main} 
-          animate = {{opacity: 1}}
-          initial = {{opacity: 0}}
-          transition ={{duration: .7}}
-          >
+        <Box className={styles.main} bg={useColorModeValue('white', '#1a202c')} w={{lg: '100ch' , md: '100%' , sm: '100%' }} >
             <center>
             <div className={styles.logo}>
             <Link href="/"><Image src={Logo} alt="Critique Hall Logo"></Image></Link>
@@ -69,7 +95,7 @@ export default function ForgotPassword(){
             <Heading mb={2} as="h2" size="lg">Forgot Password</Heading>
             <p className={styles.description}>Kindly enter your E-mail Address to receive a link for further process in changing your password.</p>
             <center><FormControl id="forgotpassword" action="/home" isRequired>
-                <input placeholder="E-mail Address" className={styles.input_box} type="text" value={email} onChange={setEmail}/>
+                <input placeholder="E-mail Address" className={styles.input_box} type="text" value={email} onChange={e => setEmail(e.target.value)}/>
                 <FormHelperText className={styles.helperText}>This field is required.</FormHelperText>
                 <br/>
                 <Popover
@@ -103,7 +129,7 @@ export default function ForgotPassword(){
             </p>
             </center>
 
-        </motion.main>
+        </Box>
         </div>
     )
 }

@@ -16,8 +16,16 @@ import {
 import EditProfile from '@component/edit-profile'
 import styles from '@styles/Profile.module.css'
 
-export default function ProfilePage() {
+export default class ProfilePage extends React.Component {
 
+    componentDidMount() {
+
+    }
+
+
+    
+
+    render(){
     return(
         <main className={styles.container}>
 
@@ -27,25 +35,25 @@ export default function ProfilePage() {
                 <link rel="icon" href="/logo256.png" onLoad=""/>
             </Head>
 
-            <Box mx='auto' my='auto' bg='blue.200' w='90%' h='80vh' rounded='lg' mt={32} position='static'>
-                <Box display='flex' flexDir='row'>
-                    <Box w='100vh' h='35vh' bg='white' p={3} mt={5} ml={5} rounded='lg'>
-                        <Box w='20vh' h='20vh' bg='gray' mt={24} ml={5} rounded='full'></Box>
+            <Box mx={{lg: 'auto', md: '0', sm: '0'}} my='auto' bg='blue.200' w={{lg: '90%', md: '100%', sm: '100%'}} h={{lg: '80vh', md: '100vh', sm: '150vh'}} rounded='lg' mt={32} mb={{lg: 0, md: 0, sm: 10}} position='static'>
+                <Box display='flex' flexDir={{lg: 'row', md: 'column', sm: 'column'}} w='100%'>
+                    <Box w={{lg: '100vw', md: '100%', sm: '90%'}} h='35vh' bg='white' p={3} mt={5} ml={{lg: 8, md: 0, sm: 5}} rounded='lg'>
+                        <Box w='20vh' h='20vh' bg='gray' mt={24} ml={{lg: 5, md: 0, sm: 0}} mx={{lg: 0, md: 0, sm: 'auto'}} rounded='full'></Box>
                         
                     </Box>
-                    <Box w='70vh' h='35vh' bg='blue.500' p={3} mt={5} ml={8} rounded='lg'>
+                    <Box w={{lg: '70vw', md: '100%', sm: '90%'}} h={{lg: '35vh', md: '40vh', sm: '45vh'}} bg='blue.500' p={3} mt={5} ml={{lg: 8, md: 0, sm: 5}} mr={{lg: 5, md: 0, sm: 0}} rounded='lg'>
                         <Flex>
                         <Heading size='2xl' as='h3' color='white' mt={10}>About Me: </Heading>
                         <Spacer />
                             <EditProfile/>
                         </Flex>
-                        <Text w='65vh' fontSize='md' color="white">LoremMinim eu pariatur enim laborum. Excepteur veniam voluptate dolor voluptate dolor officia et ea commodo cupidatat consequat officia in. Dolor laboris mollit exercitation proident commodo quis aute enim laboris. </Text>
+                        <Text w={{lg: '65vh', md: '100%', sm: '100%'}} fontSize='md' color="white">LoremMinim eu pariatur enim laborum. Excepteur veniam voluptate dolor voluptate dolor officia et ea commodo cupidatat consequat officia in. Dolor laboris mollit exercitation proident commodo quis aute enim laboris. </Text>
                         <Heading size='md' color='white' mt={5}>Reputation Points: </Heading>
                         <Heading size='md' color='white' mt={5}>Strand/Specialization: </Heading>
                     </Box>
                 </Box>
-                <Box display='flex' w='30%' mt={5}>
-                    <Button ml={5} h='2em' position='static'>All</Button>
+                <Box display='flex' w={{lg: '30%', md: '100%', sm: '100%'}} mt={5}>
+                    {/* <Button ml={5} h='2em' position='static'>All</Button> */}
                     <Button ml={5} h='2em' position='static'>My Posts</Button>
                     <Button ml={5} h='2em' position='static'>My Critiques</Button>
                 </Box>
@@ -55,6 +63,8 @@ export default function ProfilePage() {
             </Box>
         </main>
     )
+
+    }
 
 
 };

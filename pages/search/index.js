@@ -16,12 +16,25 @@ import {
     Select,
     Text
   } from "@chakra-ui/react"
-import { Box } from '@chakra-ui/react'
+import { Box, Heading } from '@chakra-ui/react'
 import { Grid, GridItem } from '@chakra-ui/react'
 import Pagination from 'react-js-pagination'
 import styles from '@styles/Search.module.css'
+import {useState} from 'react'
 
+export async function getServerSideProps({req, res}){
+    const { API_URL } = process.env
+    const { API_KEY } = process.env
 
+    const [search, setSearch] = useState('')
+
+    const res = await fetch(`${API_URL}/api/display_posts`, {header:{'x-api-key': '1234'}})
+    const res2 = await fetch(`${API_URL}/api/display_profile` , {header:{'x-api-key': '1234'}})
+
+    const data = res.filter((res) => res.title.include(req))
+    // const data = 
+
+}
 
 export default function SearchResult(){
 
@@ -53,28 +66,32 @@ export default function SearchResult(){
                     </Select>
                 </Flex>
             </Flex>
+            <Heading>User</Heading>
+
+            <Heading>Posts</Heading>
+
             {/* Search Item */}
             <Box w={{lg: '70%', sm: '100%'}} display={{lg: 'flex', sm: 'block'}} mt='2ch' mx="auto" border='1px solid' borderColor='dark'>
                 <Box p="3" w="100%" bg="light">
-                            Hall
-                        </Box>
-                        <Box p="3" w="100%" bg="light">
-                            Image
-                        </Box>
-                        <Box p="3" w="100%" bg="light">
-                            Title
-                        </Box>
-                        <Box p="3" w="100%" bg="light">
-                            Posted by:
-                        </Box>
-                        <Box p="3" w="100%" bg="light" display='flex'>
-                            <Box w="100%" bg="light">
-                                Time
-                            </Box>
-                            <Box w="100%" bg="light">
-                                Options
-                            </Box>      
-                        </Box>       
+                    Hall
+                </Box>
+                <Box p="3" w="100%" bg="light">
+                    Image
+                </Box>
+                <Box p="3" w="100%" bg="light">
+                    Title
+                </Box>
+                <Box p="3" w="100%" bg="light">
+                    Posted by:
+                </Box>
+                <Box p="3" w="100%" bg="light" display='flex'>
+                    <Box w="100%" bg="light">
+                        Time
+                    </Box>
+                    <Box w="100%" bg="light">
+                        Options
+                    </Box>      
+                </Box>       
             </Box>
 
 

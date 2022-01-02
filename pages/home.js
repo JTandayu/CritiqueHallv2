@@ -59,27 +59,27 @@ export default function Home(){
           </Head>
 
           <Box position='static' w="100%" h="70vh" display={{lg: 'flex', md: 'flex', sm: 'block'}} z-index='-1' borderBottom="1px solid black">
-            <Flex mt={44} flexDir='column' align='center' w='50vw'>
+            <Flex mt={44} flexDir='column' align='center' w={{lg: '50vw', md: '100%', sm: '100%'}}>
               <Heading size='3xl' >WELCOME TO</Heading>
-              <Image src='critiquehall.png' w='30vw' h='37vh' mt={5}/>
+              <Image src='critiquehall.png' w={{lg: '30vw', md: '100%', sm: '100%'}} h='37vh' mt={5}/>
             </Flex>
               
           </Box>
 
           <Box position='static' w="100%" h="70vh" display={{lg: 'flex', md: 'flex', sm: 'block'}} borderBottom="1px solid black">
-            <Flex >
+            <Flex flexDir={{lg: 'row', md: 'row', sm: 'column'}} >
               <Flex w='45vw'>
 
               </Flex>
               <Spacer />
-              <Flex mt={16} flexDir='column' align='center' w='45vw'>
+              <Flex mt={16} flexDir='column' align='center' w={{lg: '45vw', md: '100%', sm: '100%'}}>
                 <Heading size='3xl'>WHAT IS</Heading>
-                <Flex>
-                  <Image src='critiquehall.png' w='30vw' h='37vh' mt={5}/>
-                  <Heading size='3xl' my='auto'>?</Heading>
+                <Flex flexDir={{lg: 'row', md: 'row', sm: 'column'}}>
+                  <Image src='critiquehall.png' w={{lg: '30vw', md: '100%', sm: '100%'}} h='37vh' mt={5}/>
+                  <Heading size='3xl' my='auto' mx={{lg: '0', md: '0', sm: 'auto'}}>?</Heading>
                   
                 </Flex>
-                <Heading size='xl' w='30vw' align='center' mt={5}>An Open Forum Web Application for Students and Teachers</Heading>
+                <Heading size='xl' w={{lg: '30vw', md: '100%', sm: '100%'}} align='center' mt={5}>An Open Forum Web Application for Students and Teachers</Heading>
               </Flex>
             </Flex>
               
@@ -89,14 +89,14 @@ export default function Home(){
 
           <Box position='static' w="100%" h="70vh" display={{lg: 'flex', md: 'flex', sm: 'block'}} borderBottom="1px solid black">
 
-            <Flex>
-              <Flex mt={16} flexDir='column' align='center' w='45vw'>
+            <Flex flexDir={{lg: 'row', md: 'row', sm: 'column'}} >
+              <Flex mt={16} flexDir='column' align='center' w={{lg: '45vw', md: '100%', sm: '100%'}}>
                 <Heading size='3xl' >GOAL OF</Heading>
-                <Image src='critiquehall.png' w='30vw' h='37vh' mt={5}/>
+                <Image src='critiquehall.png' w={{lg: '30vw', md: '100%', sm: '100%'}} h='37vh' mt={5}/>
               </Flex>
               <Spacer />
-              <Flex mt={16} w='45vw'>
-                <Heading size='lg' w='45vw' align='center'>To meet the student and teacher’s needs with regards to academic lives and personal development.</Heading>
+              <Flex mt={{lg: 16, md: 5, sm: 5}} w={{lg: '45vw', md: '100%', sm: '100%'}}>
+                <Heading size='lg' w={{lg: '45vw', md: '100%', sm: '100%'}} align='center'>To meet the student and teacher’s needs with regards to academic lives and personal development.</Heading>
               </Flex>
             </Flex>
               
