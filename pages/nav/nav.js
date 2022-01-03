@@ -44,8 +44,11 @@ const breakpoints = createBreakpoints({
 
 export default function Nav({id}){
     const [display, changeDisplay] = useState('none')
-    const [cookie, removeCookie] = useCookies('token')
+    const [cookies, removeCookie] = useCookies('token', 'id')
     const [search, setSearch] = useState('')
+
+
+    const user_id = cookies.id;
 
     //Search Function
     const searchItem = async()=>{
@@ -154,7 +157,7 @@ export default function Nav({id}){
                     </Flex>  
                     </MenuButton>
                     <MenuList>
-                        <MenuItem><Link href="/profile/profile">Profile</Link></MenuItem>
+                        <MenuItem><Link href="/profile/[id]" as={`/profile/${user_id}`}>Profile</Link></MenuItem>
                         <MenuItem color="red" _hover={{ bg: 'red.500', color: 'white' }} onClick={logOut}><Link href="/">Log Out</Link></MenuItem>
                     </MenuList>
                 </Menu>
@@ -228,7 +231,7 @@ export default function Nav({id}){
                         Feedback
                     </Button>
                 </Link>
-                <Link href="/profile/profile">
+                <Link href="/profile/[id]" as={`/profile/${user_id}`}>
                     <Button
                         as='a'
                         variant='ghost'

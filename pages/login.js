@@ -7,7 +7,7 @@ import { motion } from "framer-motion"
 import Home from './home'
 import Link from 'next/link'
 import Logo from "@public/critiquehall2.png";
-import { Button, ButtonGroup } from "@chakra-ui/react"
+import { Button, ButtonGroup, Center, Text } from "@chakra-ui/react"
 import { Stack, HStack, VStack } from "@chakra-ui/react"
 import { Heading } from '@chakra-ui/react'
 import {
@@ -84,50 +84,25 @@ export default function Login({user}) {
           'Accept': 'application/json',
         }
       }
-      // const user_id = ''
 
       axios.post(`${API_URL}/api/login`, formData, config)
       .then(response => {
           console.log(response.data);
-          // const token = localStorage.setItem('token', response.data.token)
-          // const id = localStorage.setItem('id', response.data.id)
-          // setCookie('token', response.data.token, "/home");
+
           setCookies('token', response.data.token)
           setCookies('id', response.data.id)
           setCookies('encrypted_id', response.data.encrypted_id)
-          
+          document.getElementById('warning1').hidden=true;
           window.location.href = "/home"
-          // user_id = response.data.id;
       })
       .catch(error => {
           console.log(error);
-          window.location.href = "/login"
+          document.getElementById('warning1').removeAttribute('hidden');
+          // window.location.href = "/login"
       });
-    
-    //  return{
-    //    props:{
-    //      user_id
-    //    }
-    //  }
     }
 
-    // const getUserProfile = async () =>{
-
-    //   const config = {
-    //     headers: { 
-    //       'X-API-KEY': `${API_KEY}`,
-    //       'Authorization': 'Basic Y2Fwc3RvbmUyMDIxOjEyMzQ=',
-    //       'Accept': 'application/json',
-    //     }
-    //   }
-
-    //   const {}
-      
-
-    //   const { data } = await axios.get(`${API_URL}/api/display_profile`, config);
-    //   data.find
-    //   return data;
-    // }
+    
 
     return (
       <div className={styles.container} >
@@ -148,6 +123,11 @@ export default function Login({user}) {
             </div>
             
             <Heading mb={2} as="h2" size="lg">Login</Heading>
+            <Box id='warning1' bg='red.100' w='30%' h='5vh' border='1px solid red' rounded='md' mb={4} mt={2} hidden>
+              <Center>
+                <Text mt='1vh'>Incorrect Email or Password</Text>
+              </Center>
+            </Box>
             <center><FormControl id="loginform" isRequired>
               <FormLabel>Email Address</FormLabel>
                 <input placeholder="Username" id="email" value={email} className={styles.input_box} type="email" onChange={e => setEmail(e.target.value)}/>

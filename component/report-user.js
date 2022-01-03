@@ -31,13 +31,13 @@ function ReportUser() {
 
     return(
         <>
-        <button onClick={onOpen} className={styles.cpbutton}>Create Post</button>
+        <button onClick={onOpen}>Report</button>
 
 
         <form action='' method='POST'>
         <Modal isOpen={isOpen} onClose={onClose}>
             <ModalOverlay />
-                <ModalContent maxW="50rem">
+                <ModalContent maxW="40rem">
                 <ModalHeader>Report User</ModalHeader>
                 <ModalCloseButton />
                 <ModalBody>
@@ -88,12 +88,12 @@ function ReportUser() {
                     </form>
                 </ModalBody>
 
-                <ModalFooter>
+                {/* <ModalFooter>
                     <Button colorScheme='blue' mr={3} onClick={onClose}>
                     Close
                     </Button>
                     <Button variant='ghost'>Post</Button>
-                </ModalFooter>
+                </ModalFooter> */}
             </ModalContent>
         </Modal>
         </form>
@@ -104,4 +104,4 @@ function ReportUser() {
 
 }
 
-export default ReportPost
+export default ReportUser

@@ -73,15 +73,14 @@ export async function getStaticProps(){
             'content-type': 'multipart/form-data',
             'X-API-KEY': `${API_KEY}`,
             'Authorization': 'Basic Y2Fwc3RvbmUyMDIxOjEyMzQ=',
-            // 'Accept-Encoding': 'gzip, deflate, br',
             'Accept': 'application/json',
         }
     })
 
     const data = await res.json()
     const data2 = await res2.json()
-    // console.log(data2)
-    console.log(data)
+    // console.log(data2.halls)
+    // console.log(data)
 
     return{
         props:{
@@ -92,6 +91,19 @@ export async function getStaticProps(){
 }
 
 export default function HallPage({data, data2}){
+
+    const getTechnology = async () =>{
+
+    }
+    const getArts = async () =>{
+        
+    }
+    const getBusiness = async () =>{
+        
+    }
+    const getLounge = async () =>{
+        
+    }
 
     return(
         <>
@@ -107,8 +119,8 @@ export default function HallPage({data, data2}){
             
             {/* Halls */}
             <Box mt="3vh" w="70%" display={{lg: 'flex', md: 'flex', sm: 'none'}} mx="auto" mb="" top="0">
-
-                <Button variant='ghost' w="20vh" h="10vh" bg="purple" rounded="lg" position='static' _hover={{backgroundColor: 'purple'}} _active={{backgroundColor: 'purple'}}>
+                
+                <Button variant='ghost' w="20vh" h="10vh" bg="purple" rounded="lg" position='static' _hover={{backgroundColor: 'purple'}} _active={{backgroundColor: 'purple'}} onClick={getTechnology}>
                 <Box w="20vh" h="10vh" ml={{lg: 0, sm: 0}}  px='5'>
                     <Center>
                     <Text fontSize="3xl" color="white" mt="5" textShadow="1px 1px #000">Technology</Text>
@@ -122,7 +134,7 @@ export default function HallPage({data, data2}){
 
                 <Spacer />
 
-                <Button variant='ghost' w="20vh" h="10vh" bg="blue.300" rounded="lg" position='static' _hover={{backgroundColor: 'blue.300'}} _active={{backgroundColor: 'blue.300'}}>
+                <Button variant='ghost' w="20vh" h="10vh" bg="blue.300" rounded="lg" position='static' _hover={{backgroundColor: 'blue.300'}} _active={{backgroundColor: 'blue.300'}} onClick={getArts}>
                 <Box w="20vh" h="10vh" ml={{lg: 0, sm: 0}} rounded="lg" px='9'>
                     <Center>
                     <Text fontSize="3xl" color="white" mt="5" textShadow="1px 1px #000">Arts</Text>
@@ -136,7 +148,7 @@ export default function HallPage({data, data2}){
 
                 <Spacer />
 
-                <Button variant='ghost' w="20vh" h="10vh" bg="red" rounded="lg" position='static' _hover={{backgroundColor: 'red'}} _active={{backgroundColor: 'red'}}>
+                <Button variant='ghost' w="20vh" h="10vh" bg="red" rounded="lg" position='static' _hover={{backgroundColor: 'red'}} _active={{backgroundColor: 'red'}} onClick={getBusiness}>
                 <Box w="20vh" h="10vh" ml={{lg: 0, sm: 0}} rounded="lg" px='9' >
                     <Center>
                     <Text fontSize="3xl" color="white" mt="5" textShadow="1px 1px #000">Business</Text>
@@ -149,7 +161,7 @@ export default function HallPage({data, data2}){
 
                 <Spacer />
 
-                <Button variant='ghost' w="20vh" h="10vh" bg="green.300" rounded="lg" position='static' _hover={{backgroundColor: 'green.300'}} _active={{backgroundColor: 'green.300'}} >
+                <Button variant='ghost' w="20vh" h="10vh" bg="green.300" rounded="lg" position='static' _hover={{backgroundColor: 'green.300'}} _active={{backgroundColor: 'green.300'}} onClick={getLounge}>
                 <Box w="100%" h="10vh" ml={{lg: 0, sm: 0}} rounded="lg" px='9'>
                     <Center>
                     <Text fontSize="3xl" color="white" mt="5" textShadow="1px 1px #000">Lounge</Text>
@@ -198,28 +210,32 @@ export default function HallPage({data, data2}){
                 <Box w={{lg: "70%" , sm: '100%'}} h="full" mx="auto" p="3" spacing="10" overflow="hidden">
                     {/* Critique Item */}
                     {data.map(posts => 
-                    <Box w="100%" display={{lg: 'flex', sm: 'block'}} mt='2ch' borderColor='white' border='1px solid'>
-                        <Box p="3" w="100%" bg="light">
-                            <Text>{posts.hall_id.name}</Text>
-                        </Box>
-                        <Box p="3" w="100%" bg="light">
-                            Image {posts.body}
-                        </Box>
-                        <Box p="3" w="100%" bg="light">
-                            <Text>{posts.title}</Text>
-                        </Box>
-                        <Box p="3" w="100%" bg="light">
-                            Posted by: {posts.display_name}
-                        </Box>
-                        <Box p="3" w="100%" bg="light" display='flex'>
-                            <Box w="100%" bg="light">
-                                {posts.created_at}
+                        <Link href='/post/[id]' as={`/post/${posts.post_id}`}>
+                            <a>
+                            <Box w="100%" display={{lg: 'flex', sm: 'block'}} mt='2ch' borderColor='white' border='1px solid'>
+                                <Box p="3" w="100%" bg="light">
+                                    <Text>{posts.hall_id.name}</Text>
+                                </Box>
+                                <Box p="3" w="100%" bg="light">
+                                    Image
+                                </Box>
+                                <Box p="3" w="100%" bg="light">
+                                    <Text>{posts.title}</Text>
+                                </Box>
+                                <Box p="3" w="100%" bg="light">
+                                    Posted by: {posts.display_name}
+                                </Box>
+                                <Box p="3" w="100%" bg="light" display='flex'>
+                                    <Box w="100%" bg="light">
+                                        {posts.created_at}
+                                    </Box>
+                                    <Box w="100%" bg="light">
+                                        Options
+                                    </Box>      
+                                </Box>                 
                             </Box>
-                            <Box w="100%" bg="light">
-                                Options
-                            </Box>      
-                        </Box>                 
-                    </Box>
+                            </a>
+                        </Link>
                     )}
                     {/* Critique Item */}
                     {/* <Box w="100%" display={{lg: 'flex', sm: 'block'}} mt='2ch'  borderColor='white' border='1px solid'>

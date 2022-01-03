@@ -26,6 +26,11 @@ import {
     Flex
   } from '@chakra-ui/react'
 import Logo from "@public/critiquehall.png";
+import { useRouter } from "next/router";
+import { useCookies } from 'react-cookie'
+// import firebase from '../firebase/firebaseConfig'
+
+// firebase()
 
 const breakpoints = createBreakpoints({
     sm: '320px',
@@ -37,19 +42,8 @@ const breakpoints = createBreakpoints({
 
 const theme = extendTheme({ breakpoints })
 
-// export const getStaticProps = async () => {
-//     const res = await fetch (`https://jsonplaceholder.typicode.com/posts`)
-//     const articles = await res.json()
+function Home(){
 
-//     return{
-//         props:{
-//             articles
-//         }
-//     }
-// }
-
-
-export default function Home(){
     return(
         <main className={styles.container} w="100%">
           <Head>
@@ -104,12 +98,30 @@ export default function Home(){
 
           {/* <Divider position='static' /> */}
 
-          <Box position='static' w="100%" h="80vh" display={{lg: 'flex', md: 'flex', sm: 'block'}}>
+          <Box position='static' w="100%" h="80vh" display={{lg: 'flex', md: 'flex', sm: 'block'}} flexDir='column'>
             <Heading size='3xl' align='center' w='100%' mt={5}>Halls</Heading>
-              
+            <Flex mt='10vh' w='90%' mx='auto'>
+              <Box w='20vw' h='40vh' bg='purple'>
+
+              </Box>
+              <Spacer />
+              <Box w='20vw' h='40vh' bg='blue.300'>
+
+              </Box>
+              <Spacer />
+              <Box w='20vw' h='40vh' bg='red'>
+
+              </Box>
+              <Spacer />
+              <Box w='20vw' h='40vh' bg='green.300'>
+
+              </Box>
+            </Flex>
           </Box>  
 
         </main>
     )
 }
+
+export default Home
 

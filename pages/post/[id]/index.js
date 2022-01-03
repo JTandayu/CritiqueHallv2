@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import Image from 'next/image'
+// import Image from 'next/image'
 import { css, cx } from '@emotion/react'
 import { motion } from "framer-motion"
 import { Grid, GridItem } from "@chakra-ui/react"
@@ -9,7 +9,7 @@ import Link from 'next/link'
 import styles from "@styles/Feedback.module.css";
 import { extendTheme } from '@chakra-ui/react'
 import { createBreakpoints } from '@chakra-ui/theme-tools'
-import { Button, ButtonGroup } from "@chakra-ui/react"
+import { Button, ButtonGroup, Spacer, Flex, Select } from "@chakra-ui/react"
 import {
     Modal,
     ModalOverlay,
@@ -20,11 +20,29 @@ import {
     ModalCloseButton,
   } from "@chakra-ui/react"
 import CreatePost from '@component/post/create-post'
-import { Textarea } from '@chakra-ui/react'
-import PostMain from '@component/post-main'
+import { Textarea, Image, Text } from '@chakra-ui/react'
+import PostMain from '@component/post/post-main'
 import PostCritiques from '@component/post/post-critiques'
-import { useRouter } from 'next/router'
-// import { Image } from '@chakra-ui/react'
+import {
+    Menu,
+    MenuButton,
+    MenuList,
+    MenuItem,
+    MenuItemOption,
+    MenuGroup,
+    MenuOptionGroup,
+    MenuIcon,
+    MenuCommand,
+    MenuDivider,
+  } from '@chakra-ui/react'
+  import { ChevronDownIcon } from '@chakra-ui/icons'
+import EditPost from '@component/post/options/edit';
+import EditHistory from '@component/edit-history';
+import ReportPost from '@component/report-post';
+import ReportUser from '@component/report-user';
+import { useCookies } from 'react-cookie'
+import axios from 'axios'
+import { useState } from 'react'
 
 const breakpoints = createBreakpoints({
     sm: '320px',
@@ -36,13 +54,74 @@ const breakpoints = createBreakpoints({
 
 const theme = extendTheme({ breakpoints })
 
-export default function CritiquePost(){
+export async function getServerSideProps(context) {
+    const { API_URL } = process.env
+    const { API_KEY } = process.env
 
-    // const deletePost = async() =>{
+    const res = await fetch(`${API_URL}/api/display_post/${context.params.id}`, {
+        method: 'GET',
+        headers: {
+            'content-type': 'multipart/form-data',
+            'X-API-KEY': `${API_KEY}`,
+            'Authorization': 'Basic Y2Fwc3RvbmUyMDIxOjEyMzQ=',
+            // 'Accept-Encoding': 'gzip, deflate, br',
+            'Accept': 'application/json',
+        },
+    })
 
-    // }
-    const router = useRouter()
-    const {id} = router.query
+    const data = await res.json()
+
+    // console.log(data.post)
+    
+  return {
+    props: {
+        data: data.post
+    }, // will be passed to the page component as props
+  }
+}
+
+export default function CritiquePost({data}){
+    const { API_URL } = process.env
+    const { API_KEY } = process.env
+
+    const [cookie, setCookie] = useCookies('token', 'id')
+    const token = cookie.token
+    const user_id = cookie.encrypted_id
+    const likes = null
+
+    const giveLike = async () =>{
+
+        let formData = new FormData();
+        formData.append('token', token)
+        formData.append('post_id', data.post_id_encrypted)
+        formData.append('user_id', user_id)
+        // console.log(data.post_id_encrypted)
+        // console.log(data.post_id_encrypted)
+
+        const config = {
+            headers: { 
+              'content-type': 'multipart/form-data',
+              'X-API-KEY': `${API_KEY}`,
+              'Authorization': 'Basic Y2Fwc3RvbmUyMDIxOjEyMzQ=',
+              // 'Accept-Encoding': 'gzip, deflate, br',
+              'Accept': 'application/json',
+            }
+        }
+
+        axios.post(`${API_URL}/api/like_post`, formData, config)
+        .then(response => {
+            console.log(response.data);
+            document.getElementById('likes').innerHTML=response.data.likes;
+        })
+        .catch(error => {
+            console.log(error);
+            // console.log(error.response);
+        });
+    }
+
+    const giveCritique = async() =>{
+        
+    }
 
 
     return(
@@ -57,10 +136,124 @@ export default function CritiquePost(){
             <Box w="100%" h="full" spacing="10px" mt="5">
                 <Box display="flex" p="3">
                     {/* Main */}
-                    <PostMain />
+                    {/* <PostMain /> */}
+                    <Box w="50%" bg='light' h='80vh' p={5} boxShadow='md' mt={28} ml='3vw'>
+                    <Heading mx="auto">{data.title}</Heading>
+                            
+                    {/* Image */}
+                        <Image mx="auto" w='30vh' h='30vh' onClick='' />
+                    {/* Options */}
+                    <Box display="flex" w="100%" mt={5}>
+                        <Button position='static' variant='ghost' onClick={giveLike}>Like <Text id='likes' ml={2}>{data.likes}</Text></Button>
+                        <Spacer />
+                        <Menu>
+                            <MenuButton
+                            px={4}
+                            py={2}
+                            transition='all 0.2s'
+                            >
+                            <ChevronDownIcon />
+                            </MenuButton>
+                            <MenuList p={3}>
+                            <MenuGroup>
+                                <MenuItem><EditPost /></MenuItem>
+                            </MenuGroup>
+                            <MenuDivider />
+                            <MenuGroup>
+                                <MenuItem><EditHistory /></MenuItem>
+                            </MenuGroup>
+                            <MenuDivider />
+                            <MenuGroup>
+                                <MenuItem><ReportPost /></MenuItem>
+                            </MenuGroup>
+                            </MenuList>
+                        </Menu>
+                    </Box>
+                    {/* Description */}
+                    <Box mt={5}>
+                        <Heading size='md'>Description</Heading>
+                        <Text w='45vw' mx='auto' mt={5}>{data.body}</Text>
+                    </Box>
+                    {/* Critique Input */}
+                    <Box display='flex' flexDir='column' mt={5}>
+                        <Textarea bg='white' boxShadow='md' w="90vh" mx="auto" mt={3}  />
+                        <Button w='10vh' mx='auto' mt={3}>Post</Button>
+                    </Box>
+        
+            </Box>
                     {/* Critique */}
-                    <p>This is post {id}</p>
-                    <PostCritiques />
+                    {/* <PostCritiques /> */}
+                    <Box w="40%" bg='light' h='80vh' p={5} boxShadow='md' mt={28} ml='3vw'>
+                    {/* Header */}
+                    <Box display='flex'>
+                        <Heading>Critiques</Heading>
+                        <Spacer />
+                        <Flex w='15vw' mt={1}>
+                        <Text mr={5} w={20} mt={2}>Sort By: </Text>
+                        <Select>
+                            <option value='oldest'>Oldest</option>
+                            <option value='newest'>Newest</option>
+                            <option value='most-star'>Most Stars</option>
+                            <option value='least-star'>Least Stars</option>
+                            <option value='has-badge'>Badge</option>
+                        </Select>
+                        </Flex>
+                        {/* <Menu>
+                            <MenuButton
+                            px={4}
+                            py={2}
+                            transition='all 0.2s'
+                            > 
+                            Sort By: 
+                            <ChevronDownIcon ml={2} />
+                            </MenuButton>
+                            <MenuList>
+                            <MenuItem><Link href="/profile/profile" as="/profile">Profile</Link></MenuItem>
+                            <MenuItem><Link href="/settings" as="/setting">Settings</Link></MenuItem>
+                            <MenuItem color="red" _hover={{ bg: 'red.500' }}><Link href="/">Log Out</Link></MenuItem>
+                            </MenuList>
+                        </Menu> */}
+                    </Box>
+                    {/* Critiques */}
+
+                    <Box p="2" overflow-y="auto" mt={5}>
+                        <Flex>
+                            <Image src="" w='3vh' h='3vh' mt={2} />
+                            <Heading size='sm' ml={3} mt={2}>Username</Heading>
+                            <Spacer />
+                            <Text fontSize='sm' mt={2}>Time</Text>
+
+                            <Menu>
+                                <MenuButton
+                                px={4}
+                                py={2}
+                                transition='all 0.2s'
+                                >
+                                <ChevronDownIcon />
+                                </MenuButton>
+                                <MenuList p={3}>
+                                <MenuGroup>
+                                    <MenuItem><EditHistory /></MenuItem>
+                                </MenuGroup>
+                                <MenuDivider />
+                                <MenuGroup>
+                                    <MenuItem><ReportUser /></MenuItem>
+                                </MenuGroup>
+                                </MenuList>
+                            </Menu>
+                        </Flex>
+                        <Box w='100%' mt={1}>
+                            <Text fontSize='md'>Lorem Adipisicing ut adipisicing ea aliqua ad esse amet eiusmod aliqua. Dolore tempor velit fugiat commodo consectetur eiusmod ad. Id in laborum aliquip et adipisicing ut esse adipisicing non et. Do nisi id in nisi anim fugiat excepteur quis pariatur magna incididunt non ipsum.</Text>
+                        </Box>
+                        <Flex w='20vw'>
+                            <Button variant='ghost'>Star 0</Button>
+                            <Button variant='ghost' ml={5}>Reply</Button>
+                        </Flex>
+
+                    </Box>
+                    
+                        
+                    </Box>
                 </Box>
             </Box>
 
