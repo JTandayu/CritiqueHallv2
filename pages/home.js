@@ -28,9 +28,10 @@ import {
 import Logo from "@public/critiquehall.png";
 import { useRouter } from "next/router";
 import { useCookies } from 'react-cookie'
-// import firebase from '../firebase/firebaseConfig'
+import { storage } from '../firebase.js'
+import { getDownloadURL, ref, uploadBytesResumable } from 'firebase/storage'
+import {useState} from 'react'
 
-// firebase()
 
 const breakpoints = createBreakpoints({
     sm: '320px',
@@ -44,7 +45,36 @@ const theme = extendTheme({ breakpoints })
 
 function Home(){
 
-    return(
+    const [progress, setProgress] = useState(0);
+    const [url, setUrl] = useState(''); 
+
+    const formHandler = (e) =>{
+      e.preventDefault();
+      const file = e.target[0].files[0];
+      // console.log(file)
+      uploadFiles(file); 
+    }
+
+    const uploadFiles = (file) => {
+      // console.log(storage)
+
+      if (!file) return;
+      const storageRef = ref(storage, `/files/${file.name}`)
+      const uploadTask = uploadBytesResumable(storageRef, file)
+      uploadTask.on("state_changed", (snapshot) => {
+        const prog = Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
+
+        setProgress(prog);
+      }, (err) => console.log(err),
+      () => {
+        getDownloadURL(uploadTask.snapshot.ref)
+        .then(url => console.log(url))
+      }
+      );
+
+    }
+
+    return( 
         <main className={styles.container} w="100%">
           <Head>
             <title>Home</title>
@@ -57,8 +87,13 @@ function Home(){
               <Heading size='3xl' >WELCOME TO</Heading>
               <Image src='critiquehall.png' w={{lg: '30vw', md: '100%', sm: '100%'}} h='37vh' mt={5}/>
             </Flex>
-              
           </Box>
+
+            {/* <form onSubmit={formHandler}>
+              <input type='file' />
+              <Button type='submit' />
+            </form>
+            <h3>Uploaded {progress} %</h3> */}
 
           <Box position='static' w="100%" h="70vh" display={{lg: 'flex', md: 'flex', sm: 'block'}} borderBottom="1px solid black">
             <Flex flexDir={{lg: 'row', md: 'row', sm: 'column'}} >
