@@ -27,6 +27,9 @@ import {
     FormHelperText,
   } from '@chakra-ui/react'
 import { useColorMode, useColorModeValue } from '@chakra-ui/react'
+import { useState } from 'react'
+import { storage } from '../firebase.js'
+import { getDownloadURL, ref, uploadBytesResumable } from 'firebase/storage'
 
 // export async function getServerSideProps(context) {
 //     const res = await fetch(`https://...`)
@@ -42,6 +45,35 @@ function EditProfile() {
     const { isOpen, onOpen, onClose } = useDisclosure()
     const { colorMode, toggleColorMode } = useColorMode()
     colorMode === 'light' ? 'Dark' : 'Light'
+
+    const [progress, setProgress] = useState(0);
+    const [url, setUrl] = useState(''); 
+
+    const formHandler = (e) =>{
+      e.preventDefault();
+      const file = e.target[0].files[0];
+      // console.log(file)
+      uploadFiles(file); 
+    }
+
+    const uploadFiles = (file) => {
+      // console.log(storage)
+
+      if (!file) return;
+      const storageRef = ref(storage, `/files/${file.name}`)
+      const uploadTask = uploadBytesResumable(storageRef, file)
+      uploadTask.on("state_changed", (snapshot) => {
+        const prog = Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
+
+        setProgress(prog);
+      }, (err) => console.log(err),
+      () => {
+        getDownloadURL(uploadTask.snapshot.ref)
+        .then(url => console.log(url))
+      }
+      );
+
+    }
 
     return(
         <>

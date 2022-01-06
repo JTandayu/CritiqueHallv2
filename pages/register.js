@@ -21,6 +21,8 @@ import { useState } from 'react';
 import { Box } from '@chakra-ui/react'
 import axios from 'axios';
 import { createBreakpoints } from '@chakra-ui/theme-tools'
+import { storage } from '../firebase.js'
+import { getDownloadURL, ref, uploadBytesResumable } from 'firebase/storage'
 
 const MotionButton = motion(Button)
 

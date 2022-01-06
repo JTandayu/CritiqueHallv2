@@ -38,6 +38,8 @@ import Pagination from 'react-js-pagination'
 import CritiqueList from '@component/CritiqueList'
 import { Text } from '@chakra-ui/react'
 import { useEffect, useState } from 'react'
+import axios from 'axios'
+import { Posts } from '@component/post/Posts'
 
 
 const breakpoints = createBreakpoints({
@@ -90,7 +92,66 @@ export async function getStaticProps(){
     }
 }
 
-export default function HallPage({data, data2}){
+export default function HallPage({}){
+    const { API_URL } = process.env
+    const { API_KEY } = process.env
+
+    const [posts, setPosts] = useState([])
+    const [loading, setLoading] = useState(false)
+    const [currentPage, setCurrentPage] = useState(1)
+    const [postsPerPage, setPostsPerPage] = useState(2)
+    
+
+    const indexOfLastPost =  currentPage*postsPerPage
+    const indexOfFirstPost = indexOfLastPost - postsPerPage
+    const currentPosts = data.slice(indexOfFirstPost, indexOfLastPost);
+
+    const pageNumbers = []
+
+    useEffect(() => {
+        const res = await fetch(`${API_URL}/api/display_all_posts`, {
+            method: 'GET',
+            headers: {
+                'content-type': 'multipart/form-data',
+                'X-API-KEY': `${API_KEY}`,
+                'Authorization': 'Basic Y2Fwc3RvbmUyMDIxOjEyMzQ=',
+                // 'Accept-Encoding': 'gzip, deflate, br',
+                'Accept': 'application/json',
+            }
+        })
+    
+        const res2 = await fetch(`${API_URL}/api/get_halls`, {
+            method: 'GET',
+            headers: {
+                'content-type': 'multipart/form-data',
+                'X-API-KEY': `${API_KEY}`,
+                'Authorization': 'Basic Y2Fwc3RvbmUyMDIxOjEyMzQ=',
+                'Accept': 'application/json',
+            }
+        })
+    
+        const data = await res.json()
+        const data2 = await res2.json()
+        // console.log(data2.halls)
+        // console.log(data)
+    
+        return{
+            props:{
+                data: data.posts,
+                data2: data2.halls
+            }
+        }
+        
+    }, [])
+
+    // console.log(data.length);
+
+    for(let i = 1; i<=Math.ceil(data.length / postsPerPage); i++){
+        pageNumbers.push(i);
+    }
+
+    const paginate = (pageNumber) => setCurrentPage(pageNumber)
+
 
     const getTechnology = async () =>{
 
@@ -174,22 +235,6 @@ export default function HallPage({data, data2}){
             </Box>
 
             <Box mt="3" w="100%" borderColor="gray" position='static' bg="light" border="1px solid gray" borderRadius="md" display={{lg: 'none', md: 'none', sm: 'block'}}>
-                {/* <Menu position='static'>
-                    <MenuButton
-                        px={4}
-                        py={2}
-                        transition='all 0.2s'
-                        w="100%"
-                    >          
-                    Technology 
-                    </MenuButton>
-                    <MenuList w="100%" position='static'>
-                        <MenuItem>Business</MenuItem>
-                        <MenuItem>Design</MenuItem>
-                        <MenuItem>Technoloogy</MenuItem>
-                        <MenuItem>Lounge</MenuItem>
-                    </MenuList>
-                </Menu> */}
                 <Select position='static' 
                         px={4}
                         py={2}
@@ -201,6 +246,17 @@ export default function HallPage({data, data2}){
             </Box>
 
             <Box w={{lg: "70%", sm: "100%"}} mt="5" display="flex">
+            <ul className='pagination'>
+                {pageNumbers.map(number=>(
+                    <li key={number} className='page-item'>
+                        <Link href='/critique'>
+                        <a onClick={()=>paginate(number)} className='page-link'>
+                            {number}
+                        </a>
+                        </Link>
+                    </li> 
+                ))}
+            </ul>
             {/* <Pagination></Pagination> */}
             <Box w="50%"></Box>
             <Spacer />
@@ -209,10 +265,10 @@ export default function HallPage({data, data2}){
             <Box w="100%" h="100%" spacing="10px" mt="2">
                 <Box w={{lg: "70%" , sm: '100%'}} h="full" mx="auto" p="3" spacing="10" overflow="hidden">
                     {/* Critique Item */}
-                    {data.map(posts => 
-                        <Link href='/post/[id]' as={`/post/${posts.post_id}`}>
+                    {currentPosts.map(posts => 
+                        <Link href='/post/[id]'  as={`/post/${posts.post_id}`}>
                             <a>
-                            <Box w="100%" display={{lg: 'flex', sm: 'block'}} mt='2ch' borderColor='white' border='1px solid'>
+                            <Box w="100%" display={{lg: 'flex', sm: 'block'}} key={posts.post_id} mt='2ch' borderColor='white' border='1px solid'>
                                 <Box p="3" w="100%" bg="light">
                                     <Text>{posts.hall_id.name}</Text>
                                 </Box>
@@ -237,6 +293,8 @@ export default function HallPage({data, data2}){
                             </a>
                         </Link>
                     )}
+
+                    {/* <Posts posts={posts} loading={loading} /> */}
                     {/* Critique Item */}
                     {/* <Box w="100%" display={{lg: 'flex', sm: 'block'}} mt='2ch'  borderColor='white' border='1px solid'>
                         <Box p="3" w="100%" bg="light">

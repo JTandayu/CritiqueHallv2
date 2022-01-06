@@ -21,8 +21,6 @@ import {
   } from "@chakra-ui/react"
 import CreatePost from '@component/post/create-post'
 import { Textarea, Image, Text } from '@chakra-ui/react'
-import PostMain from '@component/post/post-main'
-import PostCritiques from '@component/post/post-critiques'
 import {
     Menu,
     MenuButton,
@@ -71,11 +69,27 @@ export async function getServerSideProps(context) {
 
     const data = await res.json()
 
+    // const res2 = await fetch(`${API_URL}/api/display_all_critique/`, {
+    //     method: 'GET',
+    //     headers: {
+    //         'content-type': 'multipart/form-data',
+    //         'X-API-KEY': `${API_KEY}`,
+    //         'Authorization': 'Basic Y2Fwc3RvbmUyMDIxOjEyMzQ=',
+    //         // 'Accept-Encoding': 'gzip, deflate, br',
+    //         'Accept': 'application/json',
+    //     },
+
+    // })
+
+    // const data2 = await res2.json()
+
+
     // console.log(data.post)
     
   return {
     props: {
         data: data.post
+
     }, // will be passed to the page component as props
   }
 }

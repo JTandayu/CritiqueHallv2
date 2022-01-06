@@ -45,34 +45,7 @@ const theme = extendTheme({ breakpoints })
 
 function Home(){
 
-    const [progress, setProgress] = useState(0);
-    const [url, setUrl] = useState(''); 
-
-    const formHandler = (e) =>{
-      e.preventDefault();
-      const file = e.target[0].files[0];
-      // console.log(file)
-      uploadFiles(file); 
-    }
-
-    const uploadFiles = (file) => {
-      // console.log(storage)
-
-      if (!file) return;
-      const storageRef = ref(storage, `/files/${file.name}`)
-      const uploadTask = uploadBytesResumable(storageRef, file)
-      uploadTask.on("state_changed", (snapshot) => {
-        const prog = Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
-
-        setProgress(prog);
-      }, (err) => console.log(err),
-      () => {
-        getDownloadURL(uploadTask.snapshot.ref)
-        .then(url => console.log(url))
-      }
-      );
-
-    }
+    
 
     return( 
         <main className={styles.container} w="100%">
