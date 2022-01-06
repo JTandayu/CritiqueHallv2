@@ -34,12 +34,12 @@ import {
     MenuDivider,
   } from '@chakra-ui/react'
 import { Spacer } from '@chakra-ui/react'
-import Pagination from 'react-js-pagination'
 import CritiqueList from '@component/CritiqueList'
 import { Text } from '@chakra-ui/react'
 import { useEffect, useState } from 'react'
 import axios from 'axios'
-import { Posts } from '@component/post/Posts'
+import Pagination from '@choc-ui/paginator'
+import React,{forwardRef} from "react";
 
 
 const breakpoints = createBreakpoints({
@@ -51,7 +51,6 @@ const breakpoints = createBreakpoints({
   })
 
 const theme = extendTheme({ breakpoints })
-
 
 
 export async function getStaticProps(){
@@ -92,63 +91,53 @@ export async function getStaticProps(){
     }
 }
 
-export default function HallPage({}){
+export default function HallPage({data, data2}){
     const { API_URL } = process.env
     const { API_KEY } = process.env
 
     const [posts, setPosts] = useState([])
     const [loading, setLoading] = useState(false)
     const [currentPage, setCurrentPage] = useState(1)
-    const [postsPerPage, setPostsPerPage] = useState(2)
+    const [postsPerPage, setPostsPerPage] = useState(5)
+
     
+    useEffect(() => {
+        setPosts(data);
+    }, [])
+
+    // console.log(posts);
 
     const indexOfLastPost =  currentPage*postsPerPage
     const indexOfFirstPost = indexOfLastPost - postsPerPage
     const currentPosts = data.slice(indexOfFirstPost, indexOfLastPost);
 
+
     const pageNumbers = []
-
-    useEffect(() => {
-        const res = await fetch(`${API_URL}/api/display_all_posts`, {
-            method: 'GET',
-            headers: {
-                'content-type': 'multipart/form-data',
-                'X-API-KEY': `${API_KEY}`,
-                'Authorization': 'Basic Y2Fwc3RvbmUyMDIxOjEyMzQ=',
-                // 'Accept-Encoding': 'gzip, deflate, br',
-                'Accept': 'application/json',
-            }
-        })
-    
-        const res2 = await fetch(`${API_URL}/api/get_halls`, {
-            method: 'GET',
-            headers: {
-                'content-type': 'multipart/form-data',
-                'X-API-KEY': `${API_KEY}`,
-                'Authorization': 'Basic Y2Fwc3RvbmUyMDIxOjEyMzQ=',
-                'Accept': 'application/json',
-            }
-        })
-    
-        const data = await res.json()
-        const data2 = await res2.json()
-        // console.log(data2.halls)
-        // console.log(data)
-    
-        return{
-            props:{
-                data: data.posts,
-                data2: data2.halls
-            }
-        }
-        
-    }, [])
-
-    // console.log(data.length);
 
     for(let i = 1; i<=Math.ceil(data.length / postsPerPage); i++){
         pageNumbers.push(i);
     }
+
+    const Prev = forwardRef((props, ref) => (
+        <Button ref={ref} {...props}>
+          Prev
+        </Button>
+      ));
+
+    const Next = forwardRef((props, ref) => (
+        <Button ref={ref} {...props}>
+          Next
+        </Button>
+    ));
+
+    const itemRender = (_, type) => {
+        if (type === "prev") {
+          return Prev;
+        }
+        if (type === "next") {
+          return Next;
+        }
+      };
 
     const paginate = (pageNumber) => setCurrentPage(pageNumber)
 
@@ -246,7 +235,8 @@ export default function HallPage({}){
             </Box>
 
             <Box w={{lg: "70%", sm: "100%"}} mt="5" display="flex">
-            <ul className='pagination'>
+
+            {/* <ul className='pagination'>
                 {pageNumbers.map(number=>(
                     <li key={number} className='page-item'>
                         <Link href='/critique'>
@@ -256,7 +246,24 @@ export default function HallPage({}){
                         </Link>
                     </li> 
                 ))}
-            </ul>
+            </ul> */}
+
+            <Pagination
+                    defaultCurrent={5}
+                    current={currentPage}
+                    total={500}
+                    paginationProps={{ display: "flex", }}
+                    baseStyles={{ bg: "light", color: 'dark' }}
+                    activeStyles={{ bg: "gray.300", color: 'black' }}
+                    hoverStyles={{ bg: "gray.300" }}
+                    pageNeighbours={1}
+                    total={posts.length}
+                    pageSize={postsPerPage}
+                    onChange={(page) => {
+                        setCurrentPage(page);
+                      }}
+                    bg='dark'
+                />
             {/* <Pagination></Pagination> */}
             <Box w="50%"></Box>
             <Spacer />
@@ -265,25 +272,25 @@ export default function HallPage({}){
             <Box w="100%" h="100%" spacing="10px" mt="2">
                 <Box w={{lg: "70%" , sm: '100%'}} h="full" mx="auto" p="3" spacing="10" overflow="hidden">
                     {/* Critique Item */}
-                    {currentPosts.map(posts => 
-                        <Link href='/post/[id]'  as={`/post/${posts.post_id}`}>
+                    {currentPosts.map(post => 
+                        <Link href='/post/[id]'  as={`/post/${post.post_id}`}>
                             <a>
                             <Box w="100%" display={{lg: 'flex', sm: 'block'}} key={posts.post_id} mt='2ch' borderColor='white' border='1px solid'>
                                 <Box p="3" w="100%" bg="light">
-                                    <Text>{posts.hall_id.name}</Text>
+                                    <Text>{post.hall_id.name}</Text>
                                 </Box>
                                 <Box p="3" w="100%" bg="light">
                                     Image
                                 </Box>
                                 <Box p="3" w="100%" bg="light">
-                                    <Text>{posts.title}</Text>
+                                    <Text>{post.title}</Text>
                                 </Box>
                                 <Box p="3" w="100%" bg="light">
-                                    Posted by: {posts.display_name}
+                                    Posted by: {post.display_name}
                                 </Box>
                                 <Box p="3" w="100%" bg="light" display='flex'>
                                     <Box w="100%" bg="light">
-                                        {posts.created_at}
+                                        {post.created_at}
                                     </Box>
                                     <Box w="100%" bg="light">
                                         Options
