@@ -11,6 +11,8 @@ import {
     Spacer,
     Heading,
     Textarea,
+    Text,
+    Image
   } from "@chakra-ui/react"
 import { useDisclosure } from '@chakra-ui/react'
 import { Button } from '@chakra-ui/react'
@@ -27,7 +29,6 @@ import { useCookies, cookies } from 'react-cookie'
 import axios from 'axios'
 import { storage } from '../../firebase.js'
 import { getDownloadURL, ref, uploadBytesResumable } from 'firebase/storage'
-
 
 
 const breakpoints = createBreakpoints({
@@ -73,42 +74,72 @@ function CreatePost({data}) {
     const [title, setTitle] = useState('')
     const [description, setDescription] = useState('')
     const [hall_id, setHallID] = useState('1')
-
+    
     const [color, setColor] = useState('purple')
     const [cookies, setCookie, removeCookie] = useCookies(['token', 'id', 'encrypted_id']);
+    const [attachment1, setAttachment1] = useState('')
+    const [attachment2, setAttachment2] = useState('')
+    const [attachment3, setAttachment3] = useState('')
+    const [attachment4, setAttachment4] = useState('')
+    const [attachment5, setAttachment5] = useState('')
 
     const [progress, setProgress] = useState(0);
-    const [url, setUrl] = useState(''); 
+    const [image, setImage] = useState([])
+    const [fileName, setFileName] = useState([])
+    const [urls, setUrls] = useState([]); 
 
-    const formHandler = (e) =>{
-      e.preventDefault();
-      const file = e.target[0].files[0];
-      // console.log(file)
-      uploadFiles(file); 
+    const uploadFiles = () => {
+        if(urls.length > 4){
+                alert('Maximum of 5 files only. Please attach link of google drive file instead');
+                return;
+        }
+      const promises = []
+      if (!image) return;
+        image.map((image) => {
+            const storageRef = ref(storage, `/files/${image.name}`)
+            setFileName((prevState) => [...prevState, image.name])
+            const uploadTask = uploadBytesResumable(storageRef, image)
+            promises.push(uploadTask) 
+            uploadTask.on("state_changed", (snapshot) => {
+                const prog = Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
+
+                setProgress(prog);
+            }, (err) => console.log(err),
+            async () => {
+                await
+                getDownloadURL(uploadTask.snapshot.ref)
+                .then(urls => {
+                    console.log(urls)
+                    setUrls((prevState) => [...prevState, urls])
+                    setImage([])
+                })
+            }
+            );
+        })
+
+        Promise.all(promises);
+    }
+   
+
+    const handleChange = e =>{
+        for(let i = 0; i < e.target.files.length; i++){
+            // console.log(e.target.files[i].size)
+            if(e.target.files[i].size > 200000){
+                alert("File size is higher than the limit.")
+                console.log(image)
+                return;
+            }else{
+                const newImage = e.target.files[i]
+                newImage['id'] = Math.random()
+                setImage((prevState) => [...prevState, newImage])
+            }
+            
+        }
     }
 
-    const uploadFiles = (file) => {
-      // console.log(storage)
-
-      if (!file) return;
-      const storageRef = ref(storage, `/files/${file.name}`)
-      const uploadTask = uploadBytesResumable(storageRef, file)
-      uploadTask.on("state_changed", (snapshot) => {
-        const prog = Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
-
-        setProgress(prog);
-      }, (err) => console.log(err),
-      () => {
-        getDownloadURL(uploadTask.snapshot.ref)
-        .then(url => console.log(url))
-      }
-      );
+    const deleteFile = () =>{
 
     }
-
-    // const color = {
-    //     if 
-    // }
 
 
 
@@ -117,6 +148,24 @@ function CreatePost({data}) {
         const token = cookies.token
         const id = cookies.id
         const enc_id =  cookies.encrypted_id
+
+        for(let i = 0; i < urls.length; i++){
+            if(i === 0){
+                setAttachment1(urls[i])
+            }else if(i === 1){
+                setAttachment2(urls[i])
+            }
+            else if(i === 2){
+                setAttachment3(urls[i])
+            }
+            else if(i === 3){
+                setAttachment4(urls[i])
+            }
+            else if(i === 4){
+                setAttachment5(urls[i])
+            }
+        }
+        
 
         const post = {
             title : title,
@@ -165,7 +214,7 @@ function CreatePost({data}) {
         <form action='' method='POST'>
         <Modal isOpen={isOpen} onClose={onClose}>
             <ModalOverlay />
-                <ModalContent maxW="60rem">
+                <ModalContent maxW="70rem">
                 <ModalHeader>Create Post</ModalHeader>
                 <ModalCloseButton />
                 <ModalBody >
@@ -211,18 +260,30 @@ function CreatePost({data}) {
                 
 
                     <Box ml='2vw' w={{lg: '20vw', sm: '100%'}} p={5}>
-                        <Flex>
-                            <Heading size='sm'>Attachments</Heading>
-                            <Button bg='blue.400' color='white' ml={5} h='2em'>upload</Button>
+                        <Flex flexDir={{lg: 'row', sm: 'column'}} w='30vw'>
+                            <Heading size='sm' mr={3}>Attachments</Heading>
+                            {/* <Button bg='blue.400' color='white' ml={5} h='2em'>upload</Button> */}
+                            <input type='file' multiple onChange={handleChange} accept=".jpg, .png, .docx, .xls" />
+                            <Button onClick={uploadFiles}>Upload</Button>
                         </Flex>
                         <Flex bg='white' w={{lg: '19vw', sm: '100%'}} h='5vh' rounded='md' overflowX='auto' mt={3}>
-
+                            {fileName.map((file, i) => (
+                                <Flex ml={5}>
+                                    <Text fontSize='sm' key={i}>{file}</Text>
+                                    <Button onClick={deleteFile} mx='auto' h={5} variant='ghost'>X</Button>
+                                </Flex>
+                            ))}
                         </Flex>
 
                         <Heading size='sm' mt={5}>Attachments Preview</Heading>
-                        <Flex bg='white' w={{lg: '19vw', sm: '100%'}} h='20vh' rounded='md' overflowX='auto' mt={3}>
-                            
+                        <Flex bg='white' w={{lg: '20vw', sm: '100%'}} h='20vh' rounded='md' overflowX='auto' mt={3}>
+                            {urls.map((url, i) => (
+                                <Image src={url} key={i} w={{lg: '10vw', sm: '80vw'}} h='10vh' ml={5} />
+                            ))} 
                         </Flex>
+                        <Text fontSize='xs'>*5 Attachments Max</Text>
+                        <Text fontSize='xs'>*image and doc format only accepted</Text>
+                        <Text fontSize='xs'>*200kb file max size</Text>
                     </Box>
 
                     </Flex >

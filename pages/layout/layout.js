@@ -38,14 +38,14 @@ export default function Layout({children}){
             }
         }
 
-        axios.post(`${API_URL}/api/valid_user`, formData, config)
-        .then(response => {
-            console.log(response.data);
-        })
-        .catch(error => {
-            console.log(error);
-            window.location.href = '/login'
-        });
+        // axios.post(`${API_URL}/api/valid_user`, formData, config)
+        // .then(response => {
+        //     console.log(response.data);
+        // })
+        // .catch(error => {
+        //     console.log(error);
+        //     window.location.href = '/login'
+        // });
 
         if (token === 'undefined'){
             Router.replace('/login')

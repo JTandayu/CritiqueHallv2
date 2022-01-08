@@ -1,8 +1,8 @@
 import Head from 'next/head'
-import Image from 'next/image'
+// import Image from 'next/image'
 import { css, cx } from '@emotion/react'
 import { motion } from "framer-motion"
-import { Center, Grid, GridItem, Select } from "@chakra-ui/react"
+import { Center, Grid, GridItem, Select, Image } from "@chakra-ui/react"
 import { Heading } from "@chakra-ui/react"
 import { Box } from "@chakra-ui/react"
 import Link from 'next/link'
@@ -40,6 +40,7 @@ import { useEffect, useState } from 'react'
 import axios from 'axios'
 import Pagination from '@choc-ui/paginator'
 import React,{forwardRef} from "react";
+import { useCookies } from 'react-cookie'
 
 
 const breakpoints = createBreakpoints({
@@ -53,20 +54,20 @@ const breakpoints = createBreakpoints({
 const theme = extendTheme({ breakpoints })
 
 
-export async function getStaticProps(){
+export async function getStaticProps(ctx){
     const { API_URL } = process.env
     const { API_KEY } = process.env
     
-    const res = await fetch(`${API_URL}/api/display_all_posts`, {
-        method: 'GET',
-        headers: {
-            'content-type': 'multipart/form-data',
-            'X-API-KEY': `${API_KEY}`,
-            'Authorization': 'Basic Y2Fwc3RvbmUyMDIxOjEyMzQ=',
-            // 'Accept-Encoding': 'gzip, deflate, br',
-            'Accept': 'application/json',
-        }
-    })
+    // const res = await fetch(`${API_URL}/api/posts_pagination/1`, {
+    //     method: 'GET',
+    //     headers: {
+    //         'content-type': 'multipart/form-data',
+    //         'X-API-KEY': `${API_KEY}`,
+    //         'Authorization': 'Basic Y2Fwc3RvbmUyMDIxOjEyMzQ=',
+    //         // 'Accept-Encoding': 'gzip, deflate, br',
+    //         'Accept': 'application/json',
+    //     }
+    // })
 
     const res2 = await fetch(`${API_URL}/api/get_halls`, {
         method: 'GET',
@@ -78,20 +79,20 @@ export async function getStaticProps(){
         }
     })
 
-    const data = await res.json()
+    // const data = await res.json()
     const data2 = await res2.json()
     // console.log(data2.halls)
     // console.log(data)
 
     return{
         props:{
-            data: data.posts,
+            // data: data.posts,
             data2: data2.halls
         }
     }
 }
 
-export default function HallPage({data, data2}){
+export default function HallPage({data2}){
     const { API_URL } = process.env
     const { API_KEY } = process.env
 
@@ -99,60 +100,126 @@ export default function HallPage({data, data2}){
     const [loading, setLoading] = useState(false)
     const [currentPage, setCurrentPage] = useState(1)
     const [postsPerPage, setPostsPerPage] = useState(5)
+    const [hall, setHalls] =  useState('1')
 
-    
+    const [cookie, setCookie] = useCookies('token', 'encrypted_id', 'id')
+
+    const config = {
+        headers: { 
+          'content-type': 'multipart/form-data',
+          'X-API-KEY': `${API_KEY}`,
+          'Authorization': 'Basic Y2Fwc3RvbmUyMDIxOjEyMzQ=',
+          // 'Accept-Encoding': 'gzip, deflate, br',
+          'Accept': 'application/json',
+          'token': cookie.token,
+          'user_id': cookie.encrypted_id
+        }
+      }
+
+    // console.log(cookie.encrypted_id)
     useEffect(() => {
-        setPosts(data);
+        axios.get(`${API_URL}/api/posts_pagination/${hall}`, config)
+        .then(response => {
+            console.log(response.data.posts);
+            setPosts(response.data.posts);
+            console.log(posts)
+        })
+        .catch(error => {
+            console.log(error.response);
+        });
+
     }, [])
 
     // console.log(posts);
 
     const indexOfLastPost =  currentPage*postsPerPage
     const indexOfFirstPost = indexOfLastPost - postsPerPage
-    const currentPosts = data.slice(indexOfFirstPost, indexOfLastPost);
+    const currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost);
 
 
     const pageNumbers = []
 
-    for(let i = 1; i<=Math.ceil(data.length / postsPerPage); i++){
+    for(let i = 1; i<=Math.ceil(posts.length / postsPerPage); i++){
         pageNumbers.push(i);
     }
-
-    const Prev = forwardRef((props, ref) => (
-        <Button ref={ref} {...props}>
-          Prev
-        </Button>
-      ));
-
-    const Next = forwardRef((props, ref) => (
-        <Button ref={ref} {...props}>
-          Next
-        </Button>
-    ));
-
-    const itemRender = (_, type) => {
-        if (type === "prev") {
-          return Prev;
-        }
-        if (type === "next") {
-          return Next;
-        }
-      };
 
     const paginate = (pageNumber) => setCurrentPage(pageNumber)
 
 
     const getTechnology = async () =>{
 
+        axios.get(`${API_URL}/api/posts_pagination/1`, config)
+        .then(response => {
+            console.log(response.data.posts);
+            setPosts(response.data.posts);
+            setHalls(1)
+            console.log(posts)
+        })
+        .catch(error => {
+            console.log(error.response);
+        });
+
     }
+
+    const getPostDropDown = async (item) =>{
+        
+        setHalls(item)
+
+        axios.get(`${API_URL}/api/posts_pagination/${item}`, config)
+        .then(response => {
+            console.log(response.data.posts);
+            setPosts(response.data.posts);
+            setCurrentPage(1);
+            console.log(posts)
+        })
+        .catch(error => {
+            console.log(error.response);
+        });
+    }
+
     const getArts = async () =>{
-        
+        axios.get(`${API_URL}/api/posts_pagination/2`, config)
+        .then(response => {
+            console.log(response.data.posts);
+            setPosts(response.data.posts);
+            setCurrentPage(1);
+            setHalls(2)
+            console.log(posts)
+        })
+        .catch(error => {
+            console.log(error.response);
+        });
+
     }
+
     const getBusiness = async () =>{
-        
+
+        axios.get(`${API_URL}/api/posts_pagination/3`, config)
+        .then(response => {
+            console.log(response.data.posts);
+            setPosts(response.data.posts);
+            setCurrentPage(1);
+            setHalls(3)
+            console.log(posts)
+        })
+        .catch(error => {
+            console.log(error.response);
+        });
+
     }
+
     const getLounge = async () =>{
-        
+        axios.get(`${API_URL}/api/posts_pagination/4`, config)
+        .then(response => {
+            console.log(response.data.posts);
+            setPosts(response.data.posts);
+            setCurrentPage(1);
+            setHalls(4)
+            console.log(posts)
+        })
+        .catch(error => {
+            console.log(error.response);
+        });
     }
 
     return(
@@ -227,9 +294,10 @@ export default function HallPage({data, data2}){
                 <Select position='static' 
                         px={4}
                         py={2}
-                        w="100%">
+                        w="100%"
+                        onChange={(e) => getPostDropDown(e.target.value)} value={hall}>
                     {data2.map(halls => 
-                        <option value={halls.hall_name}>{halls.hall_name}</option>
+                        <option value={halls.hall_id}>{halls.hall_name}</option>
                     )}
                 </Select>
             </Box>
@@ -273,32 +341,36 @@ export default function HallPage({data, data2}){
                 <Box w={{lg: "70%" , sm: '100%'}} h="full" mx="auto" p="3" spacing="10" overflow="hidden">
                     {/* Critique Item */}
                     {currentPosts.map(post => 
-                        <Link href='/post/[id]'  as={`/post/${post.post_id}`}>
-                            <a>
+                        
                             <Box w="100%" display={{lg: 'flex', sm: 'block'}} key={posts.post_id} mt='2ch' borderColor='white' border='1px solid'>
-                                <Box p="3" w="100%" bg="light">
-                                    <Text>{post.hall_id.name}</Text>
-                                </Box>
-                                <Box p="3" w="100%" bg="light">
-                                    Image
-                                </Box>
-                                <Box p="3" w="100%" bg="light">
-                                    <Text>{post.title}</Text>
-                                </Box>
-                                <Box p="3" w="100%" bg="light">
-                                    Posted by: {post.display_name}
-                                </Box>
-                                <Box p="3" w="100%" bg="light" display='flex'>
-                                    <Box w="100%" bg="light">
-                                        {post.created_at}
+                                <Link href='/post/[id]'  as={`/post/${post.post_id}`}>
+                                <a>
+                                <Box display={{lg: 'flex', sm: 'block'}} w="50vw">
+                                    <Box p="3" w="100%" bg="light" my='auto'>
+                                        <Text>{post.hall_id}</Text>
                                     </Box>
-                                    <Box w="100%" bg="light">
+                                    <Box p="3" w="100%" bg="light" my='auto'>
+                                        <Image src="/hello.jpg" w='10vw' h='10vh' />
+                                    </Box>
+                                    <Box p="3" w="100%" bg="light" my='auto'>
+                                        <Text>{post.title}</Text>
+                                    </Box>
+                                    <Box p="3" w="100%" bg="light" my='auto'>
+                                        Posted by: {post.display_name}
+                                    </Box>
+                                </Box>
+                                </a>
+                                </Link>
+                                <Box p="3" w="100%" bg="light" display='flex'>
+                                    <Box w="100%" bg="light" my='auto'>
+                                        {post.time_ago}
+                                    </Box>
+                                    <Box w="100%" bg="light" my='auto'>
                                         Options
                                     </Box>      
                                 </Box>                 
                             </Box>
-                            </a>
-                        </Link>
+                            
                     )}
 
                     {/* <Posts posts={posts} loading={loading} /> */}

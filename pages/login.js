@@ -90,6 +90,7 @@ export default function Login({user}) {
           console.log(response.data);
 
           setCookies('token', response.data.token)
+          setCookies('display_name', response.data.display_name)
           setCookies('id', response.data.id)
           setCookies('encrypted_id', response.data.encrypted_id)
           document.getElementById('warning1').hidden=true;

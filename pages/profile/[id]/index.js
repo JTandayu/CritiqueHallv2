@@ -16,30 +16,32 @@ import {
 import EditProfile from '@component/edit-profile'
 import styles from '@styles/Profile.module.css'
 import axios from 'axios'
+import { useState, useEffect } from 'react'
 import { useCookies, cookies } from 'react-cookie'
 
 export async function getServerSideProps(context){
     const { API_URL } = process.env
     const { API_KEY } = process.env
 
-    const res = await fetch(`${API_URL}/api/display_profile?user_id=${context.params.id}`, {
-        method: 'GET',
-        headers: {
-            'content-type': 'multipart/form-data',
-            'X-API-KEY': `${API_KEY}`,
-            'Authorization': 'Basic Y2Fwc3RvbmUyMDIxOjEyMzQ=',
-            // 'Accept-Encoding': 'gzip, deflate, br',
-            'Accept': 'application/json',
-        },
-    })
+    // const res = await fetch(`${API_URL}/api/display_profile?user_id=${context.params.id}`, {
+    //     method: 'GET',
+    //     headers: {
+    //         'content-type': 'multipart/form-data',
+    //         'X-API-KEY': `${API_KEY}`,
+    //         'Authorization': 'Basic Y2Fwc3RvbmUyMDIxOjEyMzQ=',
+    //         // 'Accept-Encoding': 'gzip, deflate, br',
+    //         'Accept': 'application/json',
+    //     },
+    // })
 
-    const data = await res.json()
+    // const data = await res.json()
+    const data = context.params.id
 
-    console.log(data.id)
+    // console.log(data.id)
 
     return{
         props:{
-            data: data.data.user
+            data
         }
     }
 
@@ -50,50 +52,53 @@ export default function ProfilePage({data}){
     const { API_KEY } = process.env
 
     const [cookies, setCookies, removeCookies] = useCookies(['token', 'id', 'encrypted_id'])
+    const [userData, setUserData] = useState([])
+    const [userPosts, setUserPosts] = useState([])
+    const [userCritique, setUserCritique] = useState([])
 
-    const user_id = cookies.id
+    // const user_id = cookies.id
+    useEffect(() => {
+        const config = {
+            headers: { 
+                'content-type': 'multipart/form-data',
+                'X-API-KEY': `${API_KEY}`,
+                'Authorization': 'Basic Y2Fwc3RvbmUyMDIxOjEyMzQ=',
+                // 'Accept-Encoding': 'gzip, deflate, br',
+                'Accept': 'application/json',
+                'token': cookies.token,
+                'user_id': cookies.encrypted_id
+            }
+        }
 
-    
+        axios.get(`${API_URL}/api/display_profile/${cookies.display_name}`, config)
+        .then(response => {
+            console.log(response.data);      
+            setUserData(response.data.data.user)
+        })
+        .catch(error => {
+            console.log(error.response);
+        });
 
+        axios.get(`${API_URL}/api/display_posts`, config)
+        .then(response => {
+            console.log(response.data);      
+            setUserPosts(response.data.data.user)
+        })
+        .catch(error => {
+            console.log(error.response);
+        });
 
-        // const config = {
-        //     headers: { 
-        //         'content-type': 'multipart/form-data',
-        //         'X-API-KEY': `${API_KEY}`,
-        //         'Authorization': 'Basic Y2Fwc3RvbmUyMDIxOjEyMzQ=',
-        //         // 'Accept-Encoding': 'gzip, deflate, br',
-        //         'Accept': 'application/json',
-        //     },
-        //     user_id: user_id
-        // }
+        axios.get(`${API_URL}/api/display_critiques`, config)
+        .then(response => {
+            console.log(response.data);      
+            setUserCritique(response.data.data.user)
+        })
+        .catch(error => {
+            console.log(error.response);
+        });
 
-        // axios.get(`${API_URL}/api/login`, config)
-        // .then(response => {
-        //     console.log(response.data);      
-        //     // user_id = response.data.id;
-        // })
-        // .catch(error => {
-        //     console.log(error.response);
-        // });
+    }, [])
 
-        // const res = await fetch(`${API_URL}/api/display_profile`, {
-        //     method: 'GET',
-        //     headers: {
-        //         'content-type': 'multipart/form-data',
-        //         'X-API-KEY': `${API_KEY}`,
-        //         'Authorization': 'Basic Y2Fwc3RvbmUyMDIxOjEyMzQ=',
-        //         // 'Accept-Encoding': 'gzip, deflate, br',
-        //         'Accept': 'application/json',
-        //     },
-        //     user_id : user_id
-        // })
-
-        // const data = await res.json()
-        // console.log(data)
-        // console.log(user_id)
-
-
- 
     return(
         <main className={styles.container}>
 
@@ -105,8 +110,16 @@ export default function ProfilePage({data}){
 
             <Box mx={{lg: 'auto', md: '0', sm: '0'}} my='auto' bg='blue.200' w={{lg: '90%', md: '100%', sm: '100%'}} h={{lg: '80vh', md: '100vh', sm: '150vh'}} rounded='lg' mt={32} mb={{lg: 0, md: 0, sm: 10}} position='static'>
                 <Box display='flex' flexDir={{lg: 'row', md: 'column', sm: 'column'}} w='100%'>
-                    <Box w={{lg: '100vw', md: '100%', sm: '90%'}} h='35vh' bg='white' p={3} mt={5} ml={{lg: 8, md: 0, sm: 5}} rounded='lg'>
+                    <Box w={{lg: '100vw', md: '100%', sm: '90%'}} h={{lg: '35vh', md: '35vh', sm: '45vh'}} bg='white' p={3} display={{lg: 'flex', sm: 'block'}} mt={5} ml={{lg: 8, md: 0, sm: 5}} rounded='lg'>
                         <Box w='20vh' h='20vh' bg='gray' mt={24} ml={{lg: 5, md: 0, sm: 0}} mx={{lg: 0, md: 0, sm: 'auto'}} rounded='full'></Box>
+
+                        <Box w={{lg:'50vh'}} mx='auto' ml={{lg: '10vw', md: 0, sm: 0}} alignItems={{sm: "center"}}>
+                            <Heading size='2xl' ml={{lg: '12vw', md: 0, sm: 0}} mt={{lg: 48}}>{userData.display_name}</Heading>
+                            <Flex ml={{lg: '12vw', md: 0, sm: 0}} mt={1} mx='auto'>
+                                <Heading size='lg' mr={3}>{userData.first_name}</Heading>
+                                <Heading size='lg'>{userData.last_name}</Heading>
+                            </Flex>
+                        </Box>
                         
                     </Box>
                     <Box w={{lg: '70vw', md: '100%', sm: '90%'}} h={{lg: '35vh', md: '40vh', sm: '45vh'}} bg='blue.500' p={3} mt={5} ml={{lg: 8, md: 0, sm: 5}} mr={{lg: 5, md: 0, sm: 0}} rounded='lg'>
@@ -116,8 +129,8 @@ export default function ProfilePage({data}){
                             <EditProfile/>
                         </Flex>
                         <Text w={{lg: '65vh', md: '100%', sm: '100%'}} fontSize='md' color="white">LoremMinim eu pariatur enim laborum. Excepteur veniam voluptate dolor voluptate dolor officia et ea commodo cupidatat consequat officia in. Dolor laboris mollit exercitation proident commodo quis aute enim laboris. </Text>
-                        <Heading size='md' color='white' mt={5}>Reputation Points: {data.reputation_points}</Heading>
-                        <Heading size='md' color='white' mt={5}>Strand/Specialization: {data.specialization}</Heading>
+                        <Heading size='md' color='white' mt={5}>Reputation Points: {userData.reputation_points}</Heading>
+                        <Heading size='md' color='white' mt={5}>Strand/Specialization: {userData.specialization}</Heading>
                     </Box>
                 </Box>
                 <Box display='flex' w={{lg: '30%', md: '100%', sm: '100%'}} mt={5}>

@@ -40,7 +40,8 @@ import ReportPost from '@component/report-post';
 import ReportUser from '@component/report-user';
 import { useCookies } from 'react-cookie'
 import axios from 'axios'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import { CritiqueReply } from '@component/critique/CritiqueReply'
 
 const breakpoints = createBreakpoints({
     sm: '320px',
@@ -56,20 +57,7 @@ export async function getServerSideProps(context) {
     const { API_URL } = process.env
     const { API_KEY } = process.env
 
-    const res = await fetch(`${API_URL}/api/display_post/${context.params.id}`, {
-        method: 'GET',
-        headers: {
-            'content-type': 'multipart/form-data',
-            'X-API-KEY': `${API_KEY}`,
-            'Authorization': 'Basic Y2Fwc3RvbmUyMDIxOjEyMzQ=',
-            // 'Accept-Encoding': 'gzip, deflate, br',
-            'Accept': 'application/json',
-        },
-    })
-
-    const data = await res.json()
-
-    // const res2 = await fetch(`${API_URL}/api/display_all_critique/`, {
+    // const res = await fetch(`${API_URL}/api/display_post/${context.params.id}`, {
     //     method: 'GET',
     //     headers: {
     //         'content-type': 'multipart/form-data',
@@ -78,30 +66,59 @@ export async function getServerSideProps(context) {
     //         // 'Accept-Encoding': 'gzip, deflate, br',
     //         'Accept': 'application/json',
     //     },
-
     // })
 
-    // const data2 = await res2.json()
-
-
-    // console.log(data.post)
+    const post_id = context.params.id
     
   return {
     props: {
-        data: data.post
-
-    }, // will be passed to the page component as props
+        post_id
+    },
   }
 }
 
-export default function CritiquePost({data}){
+export default function CritiquePost(post_id){
     const { API_URL } = process.env
     const { API_KEY } = process.env
 
-    const [cookie, setCookie] = useCookies('token', 'id')
+    const [cookie, setCookie] = useCookies('token', 'id', 'encrypted_id')
+    const [critique, setCritique] = useState('')
     const token = cookie.token
     const user_id = cookie.encrypted_id
+    const id = cookie.id
     const likes = null
+    const [data, setData] = useState([])
+
+    useEffect(() => {
+        // console.log(post_id.post_id)
+        const config = {
+            headers: { 
+              'content-type': 'multipart/form-data',
+              'X-API-KEY': `${API_KEY}`,
+              'Authorization': 'Basic Y2Fwc3RvbmUyMDIxOjEyMzQ=',
+              'Accept': 'application/json',
+              'token': cookie.token,
+              'user_id': cookie.encrypted_id
+            }
+        }
+
+        axios.get(`${API_URL}/api/display_post/${post_id.post_id}`, config)
+        .then(response => {
+            console.log(response.data);
+            setData(response.data.post);
+
+            if(response.data.post.user_post === user_id){
+                document.getElementById('repPost').hidden=true;
+            }
+            // console.log(posts)
+        })
+        .catch(error => {
+            console.log(error.response);
+        });
+
+    }, [])
+
+    
 
     const giveLike = async () =>{
 
@@ -119,10 +136,12 @@ export default function CritiquePost({data}){
               'Authorization': 'Basic Y2Fwc3RvbmUyMDIxOjEyMzQ=',
               // 'Accept-Encoding': 'gzip, deflate, br',
               'Accept': 'application/json',
+              'token': cookie.token,
+              'user_id': cookie.encrypted_id
             }
         }
 
-        axios.post(`${API_URL}/api/like_post`, formData, config)
+        axios.post(`${API_URL}/api/like_post/${post_id.post_id}`, formData, config)
         .then(response => {
             console.log(response.data);
             document.getElementById('likes').innerHTML=response.data.likes;
@@ -134,7 +153,31 @@ export default function CritiquePost({data}){
     }
 
     const giveCritique = async() =>{
-        
+        let formData = new FormData();
+        formData.append('body', critique)
+        formData.append('post_id', post_id.post_id)
+
+        const config = {
+            headers: { 
+              'content-type': 'multipart/form-data',
+              'X-API-KEY': `${API_KEY}`,
+              'Authorization': 'Basic Y2Fwc3RvbmUyMDIxOjEyMzQ=',
+              // 'Accept-Encoding': 'gzip, deflate, br',
+              'Accept': 'application/json',
+              'token': cookie.token,
+              'user_id': cookie.encrypted_id
+            }
+        }
+
+        axios.post(`${API_URL}/api/create_critique`, formData, config)
+        .then(response => {
+            console.log(response.data);
+            // window.location=`post/${post_id.post_id}`
+        })
+        .catch(error => {
+            console.log(error.response);
+            // console.log(error.response);
+        });
     }
 
 
@@ -151,11 +194,19 @@ export default function CritiquePost({data}){
                 <Box display="flex" p="3">
                     {/* Main */}
                     {/* <PostMain /> */}
-                    <Box w="50%" bg='light' h='80vh' p={5} boxShadow='md' mt={28} ml='3vw'>
+                    <Box w="50%" bg='light' h='90vh' p={5} boxShadow='md' mt={28} ml='3vw'>
                     <Heading mx="auto">{data.title}</Heading>
                             
                     {/* Image */}
-                        <Image mx="auto" w='30vh' h='30vh' onClick='' />
+                    <Flex ml="10vh" mt={5}>
+                        <Image w='50vh' h='40vh' onClick='' />
+                            <Flex flexDir='column' spacing={5}>
+                                <Image w='20vh' h='10vh' onClick='' />
+                                <Image w='20vh' h='10vh' onClick='' />
+                                <Image w='20vh' h='10vh' onClick='' />
+                                <Image w='20vh' h='10vh' onClick='' />
+                            </Flex>
+                    </Flex>
                     {/* Options */}
                     <Box display="flex" w="100%" mt={5}>
                         <Button position='static' variant='ghost' onClick={giveLike}>Like <Text id='likes' ml={2}>{data.likes}</Text></Button>
@@ -177,7 +228,7 @@ export default function CritiquePost({data}){
                                 <MenuItem><EditHistory /></MenuItem>
                             </MenuGroup>
                             <MenuDivider />
-                            <MenuGroup>
+                            <MenuGroup id='repPost'>
                                 <MenuItem><ReportPost /></MenuItem>
                             </MenuGroup>
                             </MenuList>
@@ -190,14 +241,14 @@ export default function CritiquePost({data}){
                     </Box>
                     {/* Critique Input */}
                     <Box display='flex' flexDir='column' mt={5}>
-                        <Textarea bg='white' boxShadow='md' w="90vh" mx="auto" mt={3}  />
-                        <Button w='10vh' mx='auto' mt={3}>Post</Button>
+                        <Textarea bg='white' boxShadow='md' w="90vh" mx="auto" mt={3} onChange={e => setCritique(e.target.value)} />
+                        <Button w='10vh' mx='auto' mt={3} onClick={giveCritique}>Post</Button>
                     </Box>
         
             </Box>
                     {/* Critique */}
                     {/* <PostCritiques /> */}
-                    <Box w="40%" bg='light' h='80vh' p={5} boxShadow='md' mt={28} ml='3vw'>
+                    <Box w="40%" bg='light' h='90vh' p={5} boxShadow='md' mt={28} ml='3vw'>
                     {/* Header */}
                     <Box display='flex'>
                         <Heading>Critiques</Heading>
@@ -229,45 +280,49 @@ export default function CritiquePost({data}){
                         </Menu> */}
                     </Box>
                     {/* Critiques */}
+                    <Box overflowY="scroll" h='80vh'>
 
-                    <Box p="2" overflow-y="auto" mt={5}>
-                        <Flex>
-                            <Image src="" w='3vh' h='3vh' mt={2} />
-                            <Heading size='sm' ml={3} mt={2}>Username</Heading>
-                            <Spacer />
-                            <Text fontSize='sm' mt={2}>Time</Text>
+                        <Box p="2"mt={5}>
+                            <Flex>
+                                <Image src="" w='3vh' h='3vh' mt={2} />
+                                <Heading size='sm' ml={3} mt={2}>Username</Heading>
+                                <Spacer />
+                                <Text fontSize='sm' mt={2}>Time</Text>
 
-                            <Menu>
-                                <MenuButton
-                                px={4}
-                                py={2}
-                                transition='all 0.2s'
-                                >
-                                <ChevronDownIcon />
-                                </MenuButton>
-                                <MenuList p={3}>
-                                <MenuGroup>
-                                    <MenuItem><EditHistory /></MenuItem>
-                                </MenuGroup>
-                                <MenuDivider />
-                                <MenuGroup>
-                                    <MenuItem><ReportUser /></MenuItem>
-                                </MenuGroup>
-                                </MenuList>
-                            </Menu>
-                        </Flex>
-                        <Box w='100%' mt={1}>
-                            <Text fontSize='md'>Lorem Adipisicing ut adipisicing ea aliqua ad esse amet eiusmod aliqua. Dolore tempor velit fugiat commodo consectetur eiusmod ad. Id in laborum aliquip et adipisicing ut esse adipisicing non et. Do nisi id in nisi anim fugiat excepteur quis pariatur magna incididunt non ipsum.</Text>
+                                <Menu>
+                                    <MenuButton
+                                    px={4}
+                                    py={2}
+                                    transition='all 0.2s'
+                                    >
+                                    <ChevronDownIcon />
+                                    </MenuButton>
+                                    <MenuList p={3}>
+                                    <MenuGroup>
+                                        <MenuItem><EditHistory /></MenuItem>
+                                    </MenuGroup>
+                                    <MenuDivider />
+                                    <MenuGroup>
+                                        <MenuItem><ReportUser /></MenuItem>
+                                    </MenuGroup>
+                                    </MenuList>
+                                </Menu>
+                            </Flex>
+                            <Box w='100%' mt={1}>
+                                <Text fontSize='md'>Lorem Adipisicing ut adipisicing ea aliqua ad esse amet eiusmod aliqua. Dolore tempor velit fugiat commodo consectetur eiusmod ad. Id in laborum aliquip et adipisicing ut esse adipisicing non et. Do nisi id in nisi anim fugiat excepteur quis pariatur magna incididunt non ipsum.</Text>
+                            </Box>
+                            <Flex w='20vw'>
+                                <Button variant='ghost'>Star 0</Button>
+                                <Button variant='ghost' ml={5}>Reply</Button>
+                            </Flex>
+
                         </Box>
-                        <Flex w='20vw'>
-                            <Button variant='ghost'>Star 0</Button>
-                            <Button variant='ghost' ml={5}>Reply</Button>
-                        </Flex>
-
+                        <CritiqueReply id={post_id.post_id} />
                     </Box>
                     
                         
                     </Box>
+                    
                 </Box>
             </Box>
 

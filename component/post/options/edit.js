@@ -20,7 +20,7 @@ import { useState } from 'react';
 import { Divider, Center } from "@chakra-ui/react";
 import { Input } from '@chakra-ui/react'
 import { Label } from '@chakra-ui/react'
-import { Select } from '@chakra-ui/react'
+import { Select, Text } from '@chakra-ui/react'
 import { createBreakpoints } from '@chakra-ui/theme-tools'
 import { storage } from '../../../firebase.js'
 import { getDownloadURL, ref, uploadBytesResumable } from 'firebase/storage'
@@ -60,7 +60,9 @@ function EditPost(){
     const [description, setPassword] = useState('')
 
     const [progress, setProgress] = useState(0);
-    const [url, setUrl] = useState(''); 
+    const [image, setImage] = useState([])
+    const [fileName, setFileName] = useState([])
+    const [urls, setUrls] = useState([]);  
 
     const formHandler = (e) =>{
       e.preventDefault();
@@ -69,22 +71,50 @@ function EditPost(){
       uploadFiles(file); 
     }
 
-    const uploadFiles = (file) => {
-      // console.log(storage)
-
-      if (!file) return;
-      const storageRef = ref(storage, `/files/${file.name}`)
-      const uploadTask = uploadBytesResumable(storageRef, file)
-      uploadTask.on("state_changed", (snapshot) => {
-        const prog = Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
-
-        setProgress(prog);
-      }, (err) => console.log(err),
-      () => {
-        getDownloadURL(uploadTask.snapshot.ref)
-        .then(url => console.log(url))
+    const uploadFiles = () => {
+        const promises = []
+        if (!image) return;
+          image.map((image) => {
+              const storageRef = ref(storage, `/files/${image.name}`)
+              setFileName((prevState) => [...prevState, image.name])
+              const uploadTask = uploadBytesResumable(storageRef, image)
+              promises.push(uploadTask) 
+              uploadTask.on("state_changed", (snapshot) => {
+                  const prog = Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
+  
+                  setProgress(prog);
+              }, (err) => console.log(err),
+              async () => {
+                  await
+                  getDownloadURL(uploadTask.snapshot.ref)
+                  .then(urls => {
+                      console.log(urls)
+                      setUrls((prevState) => [...prevState, urls])
+                      
+                      setImage([])
+                  })
+              }
+              );
+          })
+  
+          Promise.all(promises);
+          console.log(urls)
       }
-      );
+
+    const handleChange = e =>{
+        
+        for(let i = 0; i < e.target.files.length; i++){
+            // if(e.target.files[i].size > 200){
+
+            // }
+            console.log(e.target.files[i].size)
+            const newImage = e.target.files[i]
+            newImage['id'] = Math.random()
+            setImage((prevState) => [...prevState, newImage])
+        }
+    }
+
+    const deleteFile = () =>{
 
     }
 
@@ -109,7 +139,7 @@ function EditPost(){
         <form action=" " method="POST">
         <Modal isOpen={isOpen} onClose={onClose}>
             <ModalOverlay />
-                <ModalContent maxW="60rem">
+                <ModalContent maxW="70rem">
                 <ModalHeader>Edit Post</ModalHeader>
                 <ModalCloseButton />
                 <ModalBody>
@@ -143,18 +173,29 @@ function EditPost(){
                 
 
                     <Box ml='2vw' w='20vw' p={5}>
-                        <Flex>
-                            <Heading size='sm'>Attachments</Heading>
-                            <Button bg='blue.400' color='white' ml={5} h='2em'>upload</Button>
+                    <Flex flexDir={{lg: 'row', sm: 'column'}} w='30vw'>
+                            <Heading size='sm' mr={3}>Attachments</Heading>
+                            {/* <Button bg='blue.400' color='white' ml={5} h='2em'>upload</Button> */}
+                            <input type='file' multiple onChange={handleChange} />
+                            <Button onClick={uploadFiles}>Upload</Button>
                         </Flex>
-                        <Flex bg='white' w='19vw' h='5vh' rounded='md' overflowX='auto' mt={3}>
-
+                        <Flex bg='white' w={{lg: '19vw', sm: '100%'}} h='5vh' rounded='md' overflowX='auto' mt={3}>
+                            {fileName.map((file, i) => (
+                                <Flex ml={5}>
+                                    <Text fontSize='sm' key={i}>{file}</Text>
+                                    <Button onClick={deleteFile} mx='auto' h={5} variant='ghost'>X</Button>
+                                </Flex>
+                            ))}
                         </Flex>
 
                         <Heading size='sm' mt={5}>Attachments Preview</Heading>
                         <Flex bg='white' w='19vw' h='20vh' rounded='md' overflowX='auto' mt={3}>
-                            
+                            {urls.map((url, i) => (
+                                <Image src={url} key={i} w={{lg: '10vw', sm: '80vw'}} h='10vh' ml={5} />
+                            ))} 
                         </Flex>
+                        <Text fontSize='xs'>*5 Attachments Max</Text>
+                        <Text fontSize='xs'>*image and doc format only accepted</Text>
                     </Box>
 
                     </Flex >
