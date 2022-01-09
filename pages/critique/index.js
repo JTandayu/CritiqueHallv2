@@ -42,6 +42,10 @@ import Pagination from '@choc-ui/paginator'
 import React,{forwardRef} from "react";
 import { useCookies } from 'react-cookie'
 
+import EditPost from '@component/post/options/edit'
+import ReportPost from '@component/report-post'
+import DeletePost from '@component/post/options/delete'
+
 
 const breakpoints = createBreakpoints({
     sm: '320px',
@@ -350,7 +354,7 @@ export default function HallPage({data2}){
                                         <Text>{post.hall_id}</Text>
                                     </Box>
                                     <Box p="3" w="100%" bg="light" my='auto'>
-                                        <Image src="/hello.jpg" w='10vw' h='10vh' />
+                                        <Image src={post.attachment1} w='10vw' h='10vh' />
                                     </Box>
                                     <Box p="3" w="100%" bg="light" my='auto'>
                                         <Text>{post.title}</Text>
@@ -366,7 +370,28 @@ export default function HallPage({data2}){
                                         {post.time_ago}
                                     </Box>
                                     <Box w="100%" bg="light" my='auto'>
-                                        Options
+                                    <Menu>
+                                        <MenuButton
+                                        px={4}
+                                        py={2}
+                                        transition='all 0.2s'
+                                        >
+                                        <ChevronDownIcon />
+                                        </MenuButton>
+                                        <MenuList p={3}>
+                                        <MenuGroup id='editPost'>
+                                            <MenuItem><EditPost id={post.post_id} /></MenuItem>
+                                        </MenuGroup>
+                                        <MenuDivider />
+                                        <MenuGroup id='repPost'>
+                                            <MenuItem><ReportPost /></MenuItem>
+                                        </MenuGroup>
+                                        <MenuDivider id='repPost' />
+                                        <MenuGroup>
+                                            <MenuItem><DeletePost /></MenuItem>
+                                        </MenuGroup>
+                                        </MenuList>
+                                    </Menu>
                                     </Box>      
                                 </Box>                 
                             </Box>

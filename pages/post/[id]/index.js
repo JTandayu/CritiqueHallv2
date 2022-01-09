@@ -42,6 +42,7 @@ import { useCookies } from 'react-cookie'
 import axios from 'axios'
 import { useState, useEffect } from 'react'
 import { CritiqueReply } from '@component/critique/CritiqueReply'
+import DeletePost from '@component/post/options/delete'
 
 const breakpoints = createBreakpoints({
     sm: '320px',
@@ -81,7 +82,7 @@ export default function CritiquePost(post_id){
     const { API_URL } = process.env
     const { API_KEY } = process.env
 
-    const [cookie, setCookie] = useCookies('token', 'id', 'encrypted_id')
+    const [cookie, setCookie] = useCookies('token', 'id', 'encrypted_id', 'display_name')
     const [critique, setCritique] = useState('')
     const token = cookie.token
     const user_id = cookie.encrypted_id
@@ -91,6 +92,7 @@ export default function CritiquePost(post_id){
 
     useEffect(() => {
         // console.log(post_id.post_id)
+
         const config = {
             headers: { 
               'content-type': 'multipart/form-data',
@@ -106,9 +108,12 @@ export default function CritiquePost(post_id){
         .then(response => {
             console.log(response.data);
             setData(response.data.post);
+            // console.log(cookie.display_name)
 
-            if(response.data.post.user_post === user_id){
-                document.getElementById('repPost').hidden=true;
+            if(response.data.post.display_name === cookie.display_name){
+                document.getElementById('diffAcc').hidden=true;
+            }else{
+                document.getElementById('sameAcc').hidden=true; 
             }
             // console.log(posts)
         })
@@ -199,40 +204,62 @@ export default function CritiquePost(post_id){
                             
                     {/* Image */}
                     <Flex ml="10vh" mt={5}>
-                        <Image w='50vh' h='40vh' onClick='' />
+                        <Image src={data.attachment1} w='50vh' h='40vh' onClick='' />
                             <Flex flexDir='column' spacing={5}>
-                                <Image w='20vh' h='10vh' onClick='' />
-                                <Image w='20vh' h='10vh' onClick='' />
-                                <Image w='20vh' h='10vh' onClick='' />
-                                <Image w='20vh' h='10vh' onClick='' />
+                                <Image w='20vh' h='10vh' onClick='' src={data.attachment2} />
+                                <Image w='20vh' h='10vh' onClick='' src={data.attachment3} />
+                                <Image w='20vh' h='10vh' onClick='' src={data.attachment4} />
+                                <Image w='20vh' h='10vh' onClick='' src={data.attachment5} />
                             </Flex>
                     </Flex>
                     {/* Options */}
                     <Box display="flex" w="100%" mt={5}>
                         <Button position='static' variant='ghost' onClick={giveLike}>Like <Text id='likes' ml={2}>{data.likes}</Text></Button>
                         <Spacer />
-                        <Menu>
-                            <MenuButton
-                            px={4}
-                            py={2}
-                            transition='all 0.2s'
-                            >
-                            <ChevronDownIcon />
-                            </MenuButton>
-                            <MenuList p={3}>
-                            <MenuGroup>
-                                <MenuItem><EditPost /></MenuItem>
-                            </MenuGroup>
-                            <MenuDivider />
-                            <MenuGroup>
-                                <MenuItem><EditHistory /></MenuItem>
-                            </MenuGroup>
-                            <MenuDivider />
-                            <MenuGroup id='repPost'>
-                                <MenuItem><ReportPost /></MenuItem>
-                            </MenuGroup>
-                            </MenuList>
-                        </Menu>
+                        <Box id='sameAcc' >
+                            <Menu >
+                                <MenuButton
+                                px={4}
+                                py={2}
+                                transition='all 0.2s'
+                                >
+                                <ChevronDownIcon />
+                                </MenuButton>
+                                <MenuList p={3}>
+                                <MenuGroup>
+                                    <MenuItem><EditPost /></MenuItem>
+                                </MenuGroup>
+                                <MenuDivider />
+                                <MenuGroup>
+                                    <MenuItem><EditHistory /></MenuItem>
+                                </MenuGroup>
+                                <MenuDivider />
+                                <MenuGroup>
+                                    <MenuItem><DeletePost /></MenuItem>
+                                </MenuGroup>
+                                </MenuList>
+                            </Menu>
+                        </Box> 
+                        <Box id='diffAcc'>
+                            <Menu>
+                                <MenuButton
+                                px={4}
+                                py={2}
+                                transition='all 0.2s'
+                                >
+                                <ChevronDownIcon />
+                                </MenuButton>
+                                <MenuList p={3}>
+                                <MenuGroup>
+                                    <MenuItem><EditHistory /></MenuItem>
+                                </MenuGroup>
+                                <MenuDivider />
+                                <MenuGroup >
+                                    <MenuItem><ReportPost /></MenuItem>
+                                </MenuGroup>
+                                </MenuList>
+                            </Menu>
+                        </Box>
                     </Box>
                     {/* Description */}
                     <Box mt={5}>

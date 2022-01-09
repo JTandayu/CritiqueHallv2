@@ -42,6 +42,9 @@ export default function Nav(){
     colorMode === 'light' ? 'Dark' : 'Light'
     const [display, changeDisplay] = useState('none')
 
+    const [darkMode ,setDarkMode] = useState('')
+
+
     return(
         <>
     {/* <Box bg='light' className={styles.container} position='sticky'>

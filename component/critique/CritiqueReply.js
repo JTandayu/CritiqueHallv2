@@ -32,10 +32,7 @@ export const CritiqueReply = ({id}) => {
         }
     }
 
-
-
     useEffect(() => {
-    
         const res = axios.get(`${API_URL}/api/display_all_critiques`, config)
     }, [])
 

@@ -16,6 +16,9 @@ import { storage } from '../../../firebase.js'
 import { getDownloadURL, ref, uploadBytesResumable } from 'firebase/storage'
 
 function DeletePost(){
+    const { isOpen, onOpen, onClose } = useDisclosure()
+    const { API_URL } = process.env
+    const { API_KEY } = process.env
 
 
     const [progress, setProgress] = useState(0);
@@ -46,30 +49,37 @@ function DeletePost(){
       );
 
     }
-    
-    <>
-    <button onClick={onOpen} className={styles.cpbutton}>Create Post</button>
+
+    const deletePost = async () =>{
+
+    }
 
 
-    <form action='' method='POST'>
-    <Modal isOpen={isOpen} onClose={onClose} size="full">
-        <ModalOverlay />
-            <ModalContent maxW="60rem">
-            <ModalHeader>Delete Post</ModalHeader>
-            <ModalCloseButton />
-            <ModalBody>
-                Are you Sure?
-            </ModalBody>
-            <ModalFooter>
-                <Button colorScheme='blue' mr={3} onClick={onClose}>
-                Close
-                </Button>
-                <Button variant='ghost'>Delete</Button>
-            </ModalFooter>
-        </ModalContent>
-    </Modal>
-    </form>
-    </>
+    return(
+      <>
+      <button onClick={onOpen}>Delete</button>
+
+
+      <form action='' method='POST'>
+      <Modal isOpen={isOpen} onClose={onClose}>
+          <ModalOverlay />
+              <ModalContent>
+              <ModalHeader>Delete Post</ModalHeader>
+              <ModalCloseButton />
+              <ModalBody>
+                  Are you Sure?
+              </ModalBody>
+              <ModalFooter>
+                  <Button colorScheme='blue' mr={3} onClick={onClose}>
+                  Close
+                  </Button>
+                  <Button variant='ghost'>Delete</Button>
+              </ModalFooter>
+          </ModalContent>
+      </Modal>
+      </form>
+      </>
+    )
 }
 
 export default DeletePost

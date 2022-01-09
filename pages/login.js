@@ -93,6 +93,7 @@ export default function Login({user}) {
           setCookies('display_name', response.data.display_name)
           setCookies('id', response.data.id)
           setCookies('encrypted_id', response.data.encrypted_id)
+          setCookies('profile_pic', response.data.profile_pic)
           document.getElementById('warning1').hidden=true;
           window.location.href = "/home"
       })

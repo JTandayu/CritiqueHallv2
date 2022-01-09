@@ -41,13 +41,16 @@ import { getDownloadURL, ref, uploadBytesResumable } from 'firebase/storage'
 //     }
 // } 
 
-function EditProfile() {
+function EditProfile({data}) {
     const { isOpen, onOpen, onClose } = useDisclosure()
     const { colorMode, toggleColorMode } = useColorMode()
     colorMode === 'light' ? 'Dark' : 'Light'
 
     const [progress, setProgress] = useState(0);
     const [url, setUrl] = useState(''); 
+    // console.log(data);
+
+    // const [darkState, setDarkState] = useState();
 
     const formHandler = (e) =>{
       e.preventDefault();
@@ -55,6 +58,11 @@ function EditProfile() {
       // console.log(file)
       uploadFiles(file); 
     }
+
+    // const setDarkMode = (value) =>{
+    //     toggleColorMode(value)
+    //     setDarkState(value)
+    // }
 
     const uploadFiles = (file) => {
       // console.log(storage)
@@ -95,7 +103,7 @@ function EditProfile() {
                     <Flex p={7}>
                         <Flex flexDir='column' align='center'>
                             <Heading size='md' mb={5}>Profile Picture</Heading>
-                            <Image src='' w='7vw' h='7vw'></Image>
+                            <Image src='https://www.clipartmax.com/png/middle/119-1198197_anonymous-person-svg-png-icon-free-download-anonymous-icon-png.png' w='7vw' h='7vw'></Image>
                             <Center mt={3}>
                                 <input type='file'  />
                             </Center>
@@ -103,34 +111,34 @@ function EditProfile() {
                         <Spacer />
                         <Flex flexDir='column' align='center'>
                             <Heading size='md' mb={3}>Cover Picture</Heading>
-                            <Image src='' w='7vw' h='7vw'></Image>
+                            <Image src='https://i.stack.imgur.com/SvWWN.png' w='14vw' h='7vw'></Image>
                             <Center mt={3}>
                                 <input type='file'  />
                             </Center>
                         </Flex>
                     </Flex>
-                    <Flex mb={5}>
+                    {/* <Flex mb={5}>
                         <FormLabel>Change Color Profile Background</FormLabel>
                         <Input type='text' w='5vw' bg="white" color='black' />
-                    </Flex>
+                    </Flex> */}
                     <Flex mb={5} >
                         <Flex>
                             <FormLabel w='7vw'>First Name</FormLabel>
-                            <Input type='text' bg="white" color='black' ml='23px' />
+                            <Input type='text' bg="white" value={data.first_name} color='black' ml='23px' />
                         </Flex>
                         <Spacer />
                         <Flex>
                             <FormLabel w='7vw'>Last Name</FormLabel>
-                            <Input type='text' bg="white" color='black' />
+                            <Input type='text' bg="white" value={data.last_name} color='black' />
                         </Flex>
                     </Flex>
                     <Flex mb={5}>
                         <FormLabel>Display Name</FormLabel>
-                        <Input type='text' w='10vw' bg="white" color='black' ml='10px' />
+                        <Input type='text' w='10vw' value={data.display_name} bg="white" color='black' ml='10px' />
                     </Flex>
                     <Flex mb={5}>
                         <FormLabel w='7vw'>About Me</FormLabel>
-                        <Textarea type='text' w='100%' h='15vh' bg="white" color='black' />
+                        <Textarea type='text' w='100%' h='15vh' value={data.about_me} bg="white" color='black' />
                     </Flex>
                     <Divider mb={5} />
                     <Flex>

@@ -76,7 +76,7 @@ function CreatePost({data}) {
     const [hall_id, setHallID] = useState('1')
     
     const [color, setColor] = useState('purple')
-    const [cookies, setCookie, removeCookie] = useCookies(['token', 'id', 'encrypted_id']);
+    const [cookies, setCookie, removeCookie] = useCookies(['token', 'id', 'encrypted_id', 'display_name']);
     const [attachment1, setAttachment1] = useState('')
     const [attachment2, setAttachment2] = useState('')
     const [attachment3, setAttachment3] = useState('')
@@ -93,10 +93,10 @@ function CreatePost({data}) {
                 alert('Maximum of 5 files only. Please attach link of google drive file instead');
                 return;
         }
-      const promises = []
-      if (!image) return;
+        const promises = []
+        if (!image) return;
         image.map((image) => {
-            const storageRef = ref(storage, `/files/${image.name}`)
+            const storageRef = ref(storage, `/files/${cookies.display_name}/${image.name}`)
             setFileName((prevState) => [...prevState, image.name])
             const uploadTask = uploadBytesResumable(storageRef, image)
             promises.push(uploadTask) 
@@ -138,7 +138,7 @@ function CreatePost({data}) {
     }
 
     const deleteFile = () =>{
-
+        
     }
 
 
@@ -167,22 +167,17 @@ function CreatePost({data}) {
         }
         
 
-        const post = {
-            title : title,
-            body : description,
-            hall_id: hall_id,
-            token : token,
-            user_id : id
-        }
-
         let formData = new FormData(); 
         formData.append('title', title);
         formData.append('body', description);
         formData.append('hall_id', hall_id);
-        formData.append('token', token);   //append the values with key, value pair
-        formData.append('user_id', enc_id);
+        formData.append('attachment1',attachment1);
+        formData.append('attachment2',attachment2);
+        formData.append('attachment3',attachment3);
+        formData.append('attachment4',attachment4);
+        formData.append('attachment5',attachment5);
 
-        // console.log(enc_id)
+        console.log(attachment1)
 
         const config = {
             headers: {
@@ -191,13 +186,15 @@ function CreatePost({data}) {
             'Authorization': 'Basic Y2Fwc3RvbmUyMDIxOjEyMzQ=',
             // 'Accept-Encoding': 'gzip, deflate, br',
             'Accept': 'application/json',
+            'token': token,
+            'user_id': enc_id
             }
         }
 
         axios.post(`${API_URL}/api/create_post`, formData, config)
         .then(response => {
           console.log(response.data);
-          window.location.href = "/critique"
+        //   window.location.href = "/critique"
         })
         .catch(error => {
             console.log(error);

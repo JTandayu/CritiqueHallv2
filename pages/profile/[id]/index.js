@@ -1,8 +1,8 @@
 import Head from 'next/head'
-import Image from 'next/image'
+// import Image from 'next/image'
 import { css, cx } from '@emotion/react'
 import { motion } from "framer-motion"
-import { Box, Button, Flex, Heading, Spacer, Text } from '@chakra-ui/react'
+import { Box, Button, Flex, Heading, Spacer, Text, Image, Center } from '@chakra-ui/react'
 import Link from 'next/link'
 import {
     Modal,
@@ -58,6 +58,10 @@ export default function ProfilePage({data}){
 
     // const user_id = cookies.id
     useEffect(() => {
+
+        document.getElementById('posts').removeAttribute('hidden');
+        document.getElementById('critiques').hidden=true;
+
         const config = {
             headers: { 
                 'content-type': 'multipart/form-data',
@@ -70,6 +74,8 @@ export default function ProfilePage({data}){
             }
         }
 
+        
+
         axios.get(`${API_URL}/api/display_profile/${cookies.display_name}`, config)
         .then(response => {
             console.log(response.data);      
@@ -79,7 +85,10 @@ export default function ProfilePage({data}){
             console.log(error.response);
         });
 
-        axios.get(`${API_URL}/api/display_posts`, config)
+        let formData = new FormData;
+        formData.append('id', userData.encrypted_id)
+
+        axios.post(`${API_URL}/api/display_posts`, formData, config)
         .then(response => {
             console.log(response.data);      
             setUserPosts(response.data.data.user)
@@ -87,8 +96,9 @@ export default function ProfilePage({data}){
         .catch(error => {
             console.log(error.response);
         });
+        
 
-        axios.get(`${API_URL}/api/display_critiques`, config)
+        axios.post(`${API_URL}/api/display_critiques`, formData, config)
         .then(response => {
             console.log(response.data);      
             setUserCritique(response.data.data.user)
@@ -98,6 +108,17 @@ export default function ProfilePage({data}){
         });
 
     }, [])
+
+
+    const OpenPost = async () =>{
+        document.getElementById('posts').removeAttribute('hidden');
+        document.getElementById('critiques').hidden=true
+    }
+
+    const OpenCritique = async () =>{
+        document.getElementById('posts').hidden=true
+        document.getElementById('critiques').removeAttribute('hidden');
+    }
 
     return(
         <main className={styles.container}>
@@ -110,14 +131,18 @@ export default function ProfilePage({data}){
 
             <Box mx={{lg: 'auto', md: '0', sm: '0'}} my='auto' bg='blue.200' w={{lg: '90%', md: '100%', sm: '100%'}} h={{lg: '80vh', md: '100vh', sm: '150vh'}} rounded='lg' mt={32} mb={{lg: 0, md: 0, sm: 10}} position='static'>
                 <Box display='flex' flexDir={{lg: 'row', md: 'column', sm: 'column'}} w='100%'>
-                    <Box w={{lg: '100vw', md: '100%', sm: '90%'}} h={{lg: '35vh', md: '35vh', sm: '45vh'}} bg='white' p={3} display={{lg: 'flex', sm: 'block'}} mt={5} ml={{lg: 8, md: 0, sm: 5}} rounded='lg'>
-                        <Box w='20vh' h='20vh' bg='gray' mt={24} ml={{lg: 5, md: 0, sm: 0}} mx={{lg: 0, md: 0, sm: 'auto'}} rounded='full'></Box>
+                    <Box w={{lg: '100vw', md: '100%', sm: '90%'}} h={{lg: '35vh', md: '35vh', sm: '45vh'}} bg='white' bgImage="url('https://i.stack.imgur.com/SvWWN.png')" p={3} display={{lg: 'flex', sm: 'block'}} mt={5} ml={{lg: 8, md: 0, sm: 5}} rounded='lg'>
+                        <Box w='20vh' h='20vh' bg='gray' mt={24} ml={{lg: 5, md: 0, sm: 0}} mx={{lg: 0, md: 0, sm: 'auto'}} rounded='full'>
+                            <Center>
+                                <Image w='18vh' h='18vh' rounded='full' src="https://www.clipartmax.com/png/middle/119-1198197_anonymous-person-svg-png-icon-free-download-anonymous-icon-png.png" mt={3}/>
+                            </Center>
+                        </Box>
 
                         <Box w={{lg:'50vh'}} mx='auto' ml={{lg: '10vw', md: 0, sm: 0}} alignItems={{sm: "center"}}>
-                            <Heading size='2xl' ml={{lg: '12vw', md: 0, sm: 0}} mt={{lg: 48}}>{userData.display_name}</Heading>
+                            <Heading size='2xl' color='white' ml={{lg: '12vw', md: 0, sm: 0}} mt={{lg: 48}}>{userData.display_name}</Heading>
                             <Flex ml={{lg: '12vw', md: 0, sm: 0}} mt={1} mx='auto'>
-                                <Heading size='lg' mr={3}>{userData.first_name}</Heading>
-                                <Heading size='lg'>{userData.last_name}</Heading>
+                                <Heading size='lg' mr={3} color='white'>{userData.first_name}</Heading>
+                                <Heading size='lg' color='white'>{userData.last_name}</Heading>
                             </Flex>
                         </Box>
                         
@@ -126,20 +151,49 @@ export default function ProfilePage({data}){
                         <Flex>
                         <Heading size='2xl' as='h3' color='white' mt={10}>About Me: </Heading>
                         <Spacer />
-                            <EditProfile/>
+                            <EditProfile data={userData}/>
                         </Flex>
-                        <Text w={{lg: '65vh', md: '100%', sm: '100%'}} fontSize='md' color="white">LoremMinim eu pariatur enim laborum. Excepteur veniam voluptate dolor voluptate dolor officia et ea commodo cupidatat consequat officia in. Dolor laboris mollit exercitation proident commodo quis aute enim laboris. </Text>
+                        <Text w={{lg: '65vh', md: '100%', sm: '100%'}} fontSize='md' color="white">{userData.about_me}</Text>
                         <Heading size='md' color='white' mt={5}>Reputation Points: {userData.reputation_points}</Heading>
                         <Heading size='md' color='white' mt={5}>Strand/Specialization: {userData.specialization}</Heading>
                     </Box>
                 </Box>
                 <Box display='flex' w={{lg: '30%', md: '100%', sm: '100%'}} mt={5}>
                     {/* <Button ml={5} h='2em' position='static'>All</Button> */}
-                    <Button ml={5} h='2em' position='static'>My Posts</Button>
-                    <Button ml={5} h='2em' position='static'>My Critiques</Button>
+                    <Button ml={5} h='2em' position='static' onClick={OpenPost}>My Posts</Button>
+                    <Button ml={5} h='2em' position='static' onClick={OpenCritique}>My Critiques</Button>
                 </Box>
-                <Box display='flex' h='35vh' p={3} mt={5} ml={3} w='98%' rounded='lg'>
-
+                <Box display='flex' h='35vh' p={3} mt={5} ml={3}  rounded='lg' overflowX='auto'>
+                    <Box id='posts' display='flex'>
+                        <Box bg='white' w='15vw' h='33vh' ml={5}>
+                            <Center mt={3}>
+                                <Heading size='md' mx="auto">Title</Heading>
+                            </Center>
+                            <Center mt={3}>
+                                <Image w='10vw' h='20vh' src='https://www.clipartmax.com/png/middle/119-1198197_anonymous-person-svg-png-icon-free-download-anonymous-icon-png.png'></Image>
+                            </Center>
+                            <Flex w='100%' p={3}>
+                                <Text>Likes 0</Text>
+                                <Spacer />
+                                <Text>Critiques 0</Text>
+                            </Flex>
+                        </Box>
+                    </Box>
+                    <Box id='critiques' display='flex'>
+                        <Box bg='white' w='15vw' h='33vh' ml={5}>
+                            <Center mt={3}>
+                                <Heading size='md' mx="auto">Title</Heading>
+                            </Center>
+                            <Center mt={3}>
+                                <Image w='10vw' h='20vh'></Image>
+                            </Center>
+                            <Flex w='100%' p={3}>
+                                <Text>Star 0</Text>
+                                <Spacer />
+                                <Text>Critique</Text>
+                            </Flex>
+                        </Box>
+                    </Box>
                 </Box>
             </Box>
         </main>

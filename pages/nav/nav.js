@@ -5,7 +5,7 @@ import { motion } from "framer-motion"
 import styles from "@styles/component/Nav.module.css";
 import Link from 'next/link'
 import Logo from "@public/critiquehall.png";
-import { Button, ButtonGroup, IconButton, Input, Spacer, useColorModeValue } from "@chakra-ui/react"
+import { Button, ButtonGroup, IconButton, Input, Spacer, useColorModeValue, Img } from "@chakra-ui/react"
 import { CloseIcon, HamburgerIcon } from '@chakra-ui/icons'
 import { ChevronDownIcon } from '@chakra-ui/icons'
 import {
@@ -43,13 +43,42 @@ const breakpoints = createBreakpoints({
 
 
 export default function Nav({id}){
+    const { API_URL } = process.env
+    const { API_KEY } = process.env
+    
     const [display, changeDisplay] = useState('none')
     const [cookies, removeCookie] = useCookies('token', 'id', 'display_name')
     const [search, setSearch] = useState('')
+    const [profPic, setProfilePic] = useState('')
 
 
     const user_id = cookies.id;
     const display_name =  cookies.display_name
+
+    useEffect(() => {
+        const config = {
+            headers: { 
+                'content-type': 'multipart/form-data',
+                'X-API-KEY': `${API_KEY}`,
+                'Authorization': 'Basic Y2Fwc3RvbmUyMDIxOjEyMzQ=',
+                // 'Accept-Encoding': 'gzip, deflate, br',
+                'Accept': 'application/json',
+                'token': cookies.token,
+                'user_id': cookies.encrypted_id
+            }
+        }
+
+        
+
+        axios.get(`${API_URL}/api/display_profile/${cookies.display_name}`, config)
+        .then(response => {
+            console.log(response.data);      
+            setProfilePic(response.data.data.user.profile_photo)
+        })
+        .catch(error => {
+            console.log(error.response);
+        });
+    }, [])
 
     //Search Function
     const searchItem = async()=>{
@@ -152,9 +181,11 @@ export default function Nav({id}){
                         w='100%'
                     > 
                     <Flex>
-                        {display_name} 
+                        {/* <Image src=""></Image> */}
+                        <Img src='https://www.clipartmax.com/png/middle/119-1198197_anonymous-person-svg-png-icon-free-download-anonymous-icon-png.png' w='2vw' h='2vw'></Img>
+                        <Text mt={2} ml={1}>{display_name}</Text>
                         {/* <Text ml={1} mr={3}>{user_id}</Text> */}
-                        <ChevronDownIcon mt={1} />
+                        <ChevronDownIcon ml={1} mt={3} />
                     </Flex>  
                     </MenuButton>
                     <MenuList>
