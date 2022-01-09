@@ -28,7 +28,7 @@ import { createBreakpoints } from '@chakra-ui/theme-tools'
 import { useCookies, cookies } from 'react-cookie'
 import axios from 'axios'
 import { storage } from '../../firebase.js'
-import { getDownloadURL, ref, uploadBytesResumable } from 'firebase/storage'
+import { getDownloadURL, ref, uploadBytesResumable, deleteObject  } from 'firebase/storage'
 
 
 const breakpoints = createBreakpoints({
@@ -90,8 +90,8 @@ function CreatePost({data}) {
 
     const uploadFiles = () => {
         if(urls.length > 4){
-                alert('Maximum of 5 files only. Please attach link of google drive file instead');
-                return;
+            alert('Maximum of 5 files only. Please attach link of google drive file instead');
+            return;
         }
         const promises = []
         if (!image) return;
@@ -109,7 +109,7 @@ function CreatePost({data}) {
                 await
                 getDownloadURL(uploadTask.snapshot.ref)
                 .then(urls => {
-                    console.log(urls)
+                    // console.log(urls)
                     setUrls((prevState) => [...prevState, urls])
                     setImage([])
                 })
@@ -126,7 +126,7 @@ function CreatePost({data}) {
             // console.log(e.target.files[i].size)
             if(e.target.files[i].size > 200000){
                 alert("File size is higher than the limit.")
-                console.log(image)
+                // console.log(image)
                 return;
             }else{
                 const newImage = e.target.files[i]
@@ -137,54 +137,60 @@ function CreatePost({data}) {
         }
     }
 
-    const deleteFile = () =>{
-        
+    const deleteFile = (filename) =>{
+        // const desertRef = ref(storage, `/files/${cookies.display_name}/${filename}`)
+        // console.log(desertRef)
+        // deleteObject(desertRef).then((response) => {
+        //     console.log(response.data)
+        //     alert("File deleted successfully")
+        //     document.getElementById(filename).hidden=true;
+        //     return;
+        // }).catch((error) => {
+        //     console.log(error)
+        // });
     }
 
 
 
     const submitPost = async () =>{
-
         const token = cookies.token
         const id = cookies.id
         const enc_id =  cookies.encrypted_id
 
-        for(let i = 0; i < urls.length; i++){
-            if(i === 0){
-                setAttachment1(urls[i])
-            }else if(i === 1){
-                setAttachment2(urls[i])
-            }
-            else if(i === 2){
-                setAttachment3(urls[i])
-            }
-            else if(i === 3){
-                setAttachment4(urls[i])
-            }
-            else if(i === 4){
-                setAttachment5(urls[i])
-            }
-        }
-        
+        // for(let i = 0; i < urls.length; i++){
+        //     if(i === 0){
+        //         setAttachment1(urls[i])
+        //     }else if(i === 1){
+        //         setAttachment2(urls[i])
+        //     }
+        //     else if(i === 2){
+        //         setAttachment3(urls[i])
+        //     }
+        //     else if(i === 3){
+        //         setAttachment4(urls[i])
+        //     }
+        //     else if(i === 4){
+        //         setAttachment5(urls[i])
+        //     }
+        // }
+
 
         let formData = new FormData(); 
         formData.append('title', title);
         formData.append('body', description);
         formData.append('hall_id', hall_id);
-        formData.append('attachment1',attachment1);
-        formData.append('attachment2',attachment2);
-        formData.append('attachment3',attachment3);
-        formData.append('attachment4',attachment4);
-        formData.append('attachment5',attachment5);
-
-        console.log(attachment1)
+        formData.append('attachment1',urls[0]);
+        formData.append('attachment2',urls[1]);
+        formData.append('attachment3',urls[2]);
+        formData.append('attachment4',urls[3]);
+        formData.append('attachment5',urls[4]);
+        // console.log(urls[1])
 
         const config = {
             headers: {
             'content-type': 'multipart/form-data',
             'X-API-KEY': `${API_KEY}`,
             'Authorization': 'Basic Y2Fwc3RvbmUyMDIxOjEyMzQ=',
-            // 'Accept-Encoding': 'gzip, deflate, br',
             'Accept': 'application/json',
             'token': token,
             'user_id': enc_id
@@ -199,7 +205,6 @@ function CreatePost({data}) {
         .catch(error => {
             console.log(error);
             console.log(error.response)
-            // window.location.href = "/login"
         });
     }
 
@@ -265,9 +270,9 @@ function CreatePost({data}) {
                         </Flex>
                         <Flex bg='white' w={{lg: '19vw', sm: '100%'}} h='5vh' rounded='md' overflowX='auto' mt={3}>
                             {fileName.map((file, i) => (
-                                <Flex ml={5}>
+                                <Flex ml={5} id={file}>
                                     <Text fontSize='sm' key={i}>{file}</Text>
-                                    <Button onClick={deleteFile} mx='auto' h={5} variant='ghost'>X</Button>
+                                    <Button onClick={deleteFile(file)} mx='auto' h={5} variant='ghost'>X</Button>
                                 </Flex>
                             ))}
                         </Flex>
@@ -284,16 +289,7 @@ function CreatePost({data}) {
                     </Box>
 
                     </Flex >
-                    {/* <Button variant='ghost'>Post</Button>
-                    <Button colorScheme='blue' mr={3} onClick={onClose}>
-                    Cancel
-                    </Button> */}
                 </ModalBody>
-                {/* <ModalFooter>
-                    <Button colorScheme='blue' mr={3} onClick={onClose}>
-                    Close
-                    </Button>
-                </ModalFooter> */}
             </ModalContent>
         </Modal>
         </form>

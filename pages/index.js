@@ -7,6 +7,8 @@ import { Stack, HStack, VStack, useColorMode, FormLabel, Input, Textarea } from 
 import { Button, ButtonGroup } from "@chakra-ui/react"
 import { ArrowForwardIcon, CheckIcon, InfoOutlineIcon } from '@chakra-ui/icons'
 import { Box, Divider, Flex, Heading, Spacer, Image } from "@chakra-ui/react"
+import axios from 'axios'
+import {useState} from 'react'
 
 
 const variants = {
@@ -20,7 +22,43 @@ const imageLoader = ({ src, width, quality }) => {
 
 const MotionButton = motion(Button)
 
-export default function Welcome() { 
+export default function Welcome() {
+  const { API_URL } = process.env
+  const { API_KEY } = process.env
+
+  const [email, setEmail] = useState('')
+  const [fullName, setFullName] = useState('')
+  const [subject, setSubject] = useState('')
+  const [message, setMessage] = useState('')
+
+  const sendMessage = () =>{
+
+      let formData = new FormData(); 
+      formData.append('email', email);   //append the values with key, value pair
+      formData.append('full_name', fullName);
+      formData.append('subject', subject);
+      formData.append('message', message);
+
+      const config = {
+        headers: { 
+          'content-type': 'multipart/form-data',
+          'X-API-KEY': `${API_KEY}`,
+          'Authorization': 'Basic Y2Fwc3RvbmUyMDIxOjEyMzQ=',
+          'Accept': 'application/json',
+        }
+      }
+
+      axios.post(`${API_URL}/api/email_suggestion`, formData, config)
+      .then(response => {
+          console.log(response.data);
+          window.location.href = "/"
+      })
+      .catch(error => {
+          console.log(error);
+      });
+
+  }
+  
   
 
   return (
@@ -32,60 +70,6 @@ export default function Welcome() {
       </Head>
 
 
-      {/* <Box position='static' w="100%" h="70vh" display={{lg: 'flex', md: 'flex', sm: 'block'}} z-index='-1' borderBottom="1px solid black">
-            <Flex mt={44} flexDir='column' align='center' w='50vw'>
-              <Heading size='3xl' >WELCOME TO</Heading>
-              <Image src='critiquehall.png' w='30vw' h='37vh' mt={5}/>
-            </Flex>
-              
-          </Box>
-
-          <Box position='static' w="100%" h="70vh" display={{lg: 'flex', md: 'flex', sm: 'block'}} borderBottom="1px solid black">
-            <Flex >
-              <Flex w='45vw'>
-
-              </Flex>
-              <Spacer />
-              <Flex mt={16} flexDir='column' align='center' w='45vw'>
-                <Heading size='3xl'>WHAT IS</Heading>
-                <Flex>
-                  <Image src='critiquehall.png' w='30vw' h='37vh' mt={5}/>
-                  <Heading size='3xl' my='auto'>?</Heading>
-                  
-                </Flex>
-                <Heading size='xl' w='30vw' align='center' mt={5}>An Open Forum Web Application for Students and Teachers</Heading>
-              </Flex>
-            </Flex>
-              
-          </Box>
-          <Box position='static' w="100%" h="70vh" display={{lg: 'flex', md: 'flex', sm: 'block'}} z-index='-1' borderBottom="1px solid black">
-            <Flex mt={44} flexDir='column' align='center' w={{lg: '50vw', md: '100%', sm: '100%'}}>
-              <Heading size='3xl' >WELCOME TO</Heading>
-              <Image src='critiquehall.png' w={{lg: '30vw', md: '100%', sm: '100%'}} h='37vh' mt={5}/>
-            </Flex>
-              
-          </Box>
-
-          <Box position='static' w="100%" h="70vh" display={{lg: 'flex', md: 'flex', sm: 'block'}} borderBottom="1px solid black">
-            <Flex flexDir={{lg: 'row', md: 'row', sm: 'column'}} >
-              <Flex w='45vw'>
-
-              </Flex>
-              <Spacer />
-              <Flex mt={16} flexDir='column' align='center' w={{lg: '45vw', md: '100%', sm: '100%'}}>
-                <Heading size='3xl'>WHAT IS</Heading>
-                <Flex flexDir={{lg: 'row', md: 'row', sm: 'column'}}>
-                  <Image src='critiquehall.png' w={{lg: '30vw', md: '100%', sm: '100%'}} h='37vh' mt={5}/>
-                  <Heading size='3xl' my='auto' mx={{lg: '0', md: '0', sm: 'auto'}}>?</Heading>
-                  
-                </Flex>
-                <Heading size='xl' w={{lg: '30vw', md: '100%', sm: '100%'}} align='center' mt={5}>An Open Forum Web Application for Students and Teachers</Heading>
-              </Flex>
-            </Flex>
-              
-          </Box>
-
-          {/* <Divider position='static' /> */}
 
       <Box position='static' w="100%" h="70vh" display={{lg: 'flex', md: 'flex', sm: 'block'}} z-index='-1' borderBottom="1px solid black">
             <Flex mt={44} flexDir='column' align='center' w={{lg: '50vw', md: '100%', sm: '100%'}}>

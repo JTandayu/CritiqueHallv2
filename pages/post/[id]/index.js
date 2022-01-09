@@ -227,7 +227,7 @@ export default function CritiquePost(post_id){
                                 </MenuButton>
                                 <MenuList p={3}>
                                 <MenuGroup>
-                                    <MenuItem><EditPost /></MenuItem>
+                                    <MenuItem><EditPost data={data} /></MenuItem>
                                 </MenuGroup>
                                 <MenuDivider />
                                 <MenuGroup>

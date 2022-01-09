@@ -53,7 +53,7 @@ export async function getServerSideProps(){
 
 }
 
-function EditPost({post_id}){
+function EditPost({}){
     const { isOpen, onOpen, onClose } = useDisclosure()
     const { API_URL } = process.env
     const { API_KEY } = process.env
