@@ -77,11 +77,11 @@ function CreatePost({data}) {
     
     const [color, setColor] = useState('purple')
     const [cookies, setCookie, removeCookie] = useCookies(['token', 'id', 'encrypted_id', 'display_name']);
-    const [attachment1, setAttachment1] = useState('')
-    const [attachment2, setAttachment2] = useState('')
-    const [attachment3, setAttachment3] = useState('')
-    const [attachment4, setAttachment4] = useState('')
-    const [attachment5, setAttachment5] = useState('')
+    // const [attachment1, setAttachment1] = useState('')
+    // const [attachment2, setAttachment2] = useState('')
+    // const [attachment3, setAttachment3] = useState('')
+    // const [attachment4, setAttachment4] = useState('')
+    // const [attachment5, setAttachment5] = useState('')
 
     const [progress, setProgress] = useState(0);
     const [image, setImage] = useState([])
@@ -124,7 +124,7 @@ function CreatePost({data}) {
     const handleChange = e =>{
         for(let i = 0; i < e.target.files.length; i++){
             // console.log(e.target.files[i].size)
-            if(e.target.files[i].size > 200000){
+            if(e.target.files[i].size > 25000000){
                 alert("File size is higher than the limit.")
                 // console.log(image)
                 return;
@@ -200,7 +200,7 @@ function CreatePost({data}) {
         axios.post(`${API_URL}/api/create_post`, formData, config)
         .then(response => {
           console.log(response.data);
-        //   window.location.href = "/critique"
+          window.location.href = "/critique"
         })
         .catch(error => {
             console.log(error);
