@@ -92,6 +92,7 @@ export default function Register({data, data2}) {
   // const first_name, last_name, email, password, confirm_password, department, specialization, profile_pic, cover_pic = useState('')
   const [first_name, setFirstName] = useState('')
   const [last_name, setLastName] = useState('')
+  const [user_name, setUserName] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [confirm_password, setConfirmPassword] = useState('')
@@ -103,6 +104,7 @@ export default function Register({data, data2}) {
       let formData = new FormData(); 
       formData.append('first-name', first_name);   //append the values with key, value pair
       formData.append('last_name', last_name);
+      formData.append('display_name', user_name);
       formData.append('email', email);
       formData.append('password', password);
       formData.append('confirm_password', confirm_password);
@@ -151,21 +153,24 @@ export default function Register({data, data2}) {
           
             <Heading mb={2} as="h2" size="lg">Register</Heading>
             
-              <FormLabel>First Name</FormLabel>
-                <input placeholder="First Name" className={styles.input_box} type="text" value={first_name} onChange={e => setFirstName(e.target.value)}/>
+                <FormLabel>First Name</FormLabel>
+                <input className={styles.input_box} type="text" value={first_name} onChange={e => setFirstName(e.target.value)}/>
                 <br/>
                 <FormLabel>Last Name</FormLabel>
-                <input placeholder="Last Name" className={styles.input_box} type="text" value={last_name} onChange={e => setLastName(e.target.value)}/>
+                <input className={styles.input_box} type="text" value={last_name} onChange={e => setLastName(e.target.value)}/>
                 <br/>
-                <FormLabel>School E-Mail</FormLabel>
-                <input placeholder="School E-Mail" className={styles.input_box} type="text" value={email} onChange={e => setEmail(e.target.value)}/>
-                <FormHelperText className={styles.helperText}>format: ***@iacademy.edu.ph</FormHelperText>
+                <FormLabel>Username</FormLabel>
+                <input className={styles.input_box} type="text" value={user_name} onChange={e => setUserName(e.target.value)}/>
+                <br/>
+                <FormLabel>Email Address</FormLabel>
+                <input placeholder="***@iacademy.edu.ph" className={styles.input_box} type="text" value={email} onChange={e => setEmail(e.target.value)}/>
+                {/* <FormHelperText className={styles.helperText}>format: ***@iacademy.edu.ph</FormHelperText> */}
                 {/* <br/> */}
               <FormLabel>Password</FormLabel>
-                <input placeholder="Password" className={styles.input_box} type="password" value={password} onChange={e => setPassword(e.target.value)}/>
+                <input className={styles.input_box} type="password" value={password} onChange={e => setPassword(e.target.value)}/>
                 <br/>
                 <FormLabel>Confirm Password</FormLabel>
-                <input placeholder="Confirm Password" className={styles.input_box} type="password" value={confirm_password} onChange={e => setConfirmPassword(e.target.value)}/>
+                <input className={styles.input_box} type="password" value={confirm_password} onChange={e => setConfirmPassword(e.target.value)}/>
                 <br/>
                 <VStack direction="column" spacing={8} align="center">
                 <MotionButton
@@ -200,7 +205,7 @@ export default function Register({data, data2}) {
                 <option value="col">College (COL)</option> */}
                 </Select>
                 <br />
-                <FormLabel>Strand / Specialization</FormLabel>
+                <FormLabel>Strand or Specialization</FormLabel>
                 <Select placeholder="Select Strand / Specialization" size="sm" onChange={e => setSpecialization(e.target.value)}>
                 {data.map(specialization => (
                   <option value={specialization.name}>{specialization.name}</option>
