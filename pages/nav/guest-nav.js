@@ -102,9 +102,10 @@ export default function Nav(){
                         aria-label='Home'
                         my={2}
                         w='100%'
+                        color={useColorModeValue('#1B1464')}
 
                     >
-                        Log-in
+                        LOG-IN
                     </Button>
                 </Link>
                 <Link href="/register">
@@ -114,9 +115,9 @@ export default function Nav(){
                         aria-label='Home'
                         my={2}
                         w='100%'
-
+                        color={useColorModeValue('#C1272D')}
                     >
-                        Register
+                        REGISTER
                     </Button>
                 </Link>
                     <Button
