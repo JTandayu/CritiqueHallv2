@@ -26,6 +26,10 @@ import {
     Flex
   } from '@chakra-ui/react'
 import Logo from "@public/critiquehall.png";
+import ArtBanner from "@public/Arts.png";
+import BusinessBanner from "@public/Business.png";
+import LoungeBanner from "@public/Lounge.png";
+import TechnologyBanner from "@public/Technology.png"; 
 import { useRouter } from "next/router";
 import { useCookies } from 'react-cookie'
 import { storage } from '../firebase.js'
