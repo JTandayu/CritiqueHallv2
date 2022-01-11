@@ -124,19 +124,19 @@ export default function Login({user}) {
             alt="Critique Hall Logo"></Image></Link>
             </div>
             
-            <Heading mb={2} as="h2" size="lg">Login</Heading>
+            <Heading mb={2} as="h2" size="lg" color={useColorModeValue('#1B1464')}>LOG-IN</Heading>
             <Box id='warning1' bg='red.100' w='30%' h='5vh' border='1px solid red' rounded='md' mb={4} mt={2} hidden>
               <Center>
                 <Text mt='1vh'>Incorrect Email or Password</Text>
               </Center>
             </Box>
             <center><FormControl id="loginform" isRequired>
-              <FormLabel>Email Address</FormLabel>
-                <input placeholder="Username" id="email" value={email} className={styles.input_box} type="email" onChange={e => setEmail(e.target.value)}/>
+              <FormLabel>iACADEMY Email</FormLabel>
+                <input id="email" value={email} className={styles.input_box} type="email" onChange={e => setEmail(e.target.value)}/>
                 {/* <input placeholder="Username" id="email" value={email} className={styles.input_box} type="email" /> */}
                 <br/>
               <FormLabel>Password</FormLabel>
-                <input placeholder="Password" id="password" value={password} className={styles.input_box} type="password" onChange={e => setPassword(e.target.value)}/>
+                <input id="password" value={password} className={styles.input_box} type="password" onChange={e => setPassword(e.target.value)}/>
                 {/* <input placeholder="Password" id="password" value={password} className={styles.input_box} type="password"/> */}
                 <br/>
                 <p className={styles.register}>
@@ -151,7 +151,7 @@ export default function Login({user}) {
                   type="submit" 
                   size="lg"
                   onClick={submitLogin}
-                  > Login </MotionButton>
+                  > LOG-IN </MotionButton>
                   {/* <MotionButton
                   whileHover={{ scale: 1.2 }}
                   whileTap={{ scale: 0.9 }}

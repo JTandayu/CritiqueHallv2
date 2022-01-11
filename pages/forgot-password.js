@@ -92,10 +92,10 @@ export default function ForgotPassword(){
             <Link href="/"><Image src={Logo} alt="Critique Hall Logo"></Image></Link>
             </div>
 
-            <Heading mb={2} as="h2" size="lg">Forgot Password</Heading>
-            <p className={styles.description}>Kindly enter your E-mail Address to receive a link for further process in changing your password.</p>
+            <Heading mb={2} as="h2" size="lg">FORGOT PASSWORD</Heading>
+            <p className={styles.description}>Kindly enter your iACADEMY Email to receive a link for further process in changing your password.</p>
             <center><FormControl id="forgotpassword" action="/home" isRequired>
-                <input placeholder="E-mail Address" className={styles.input_box} type="text" value={email} onChange={e => setEmail(e.target.value)}/>
+                <input placeholder="iACADEMY Email" className={styles.input_box} type="text" value={email} onChange={e => setEmail(e.target.value)}/>
                 <FormHelperText className={styles.helperText}>This field is required.</FormHelperText>
                 <br/>
                 <Popover

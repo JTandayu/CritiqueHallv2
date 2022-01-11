@@ -170,6 +170,7 @@ export default function Nav(){
                         aria-label='Home'
                         my={5}
                         w='100%'
+                        color={useColorModeValue('#1B1464')}
                     >
                         LOG-IN
                     </Button>
@@ -181,6 +182,7 @@ export default function Nav(){
                         aria-label='Home'
                         my={5}
                         w='100%'
+                        color={useColorModeValue('#C1272D')}
                     >
                         REGISTER
                     </Button>
