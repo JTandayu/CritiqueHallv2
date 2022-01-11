@@ -145,7 +145,7 @@ export default function Nav({id}){
                         w='100%'
 
                     >
-                        Home
+                        HOME
                     </Button>
                 </Link>
                 <Link href="/critique" as='/critique'>
@@ -157,7 +157,7 @@ export default function Nav({id}){
                         w='100%'
 
                     >
-                        Critique
+                        CRITIQUE
                     </Button>
                 </Link>
                 <Link href="/feedback" >
@@ -169,7 +169,7 @@ export default function Nav({id}){
                         w='100%'
 
                     >
-                        Feedback
+                        FEEDBACK
                     </Button>
                 </Link>
                 <Menu>
