@@ -13,7 +13,7 @@ import {
     Textarea,
   } from "@chakra-ui/react"
 import { useDisclosure } from '@chakra-ui/react'
-import { Button } from '@chakra-ui/react'
+import { Button, Image } from '@chakra-ui/react'
 import styles from "@styles/Hall.module.css";
 import { Box } from '@chakra-ui/react'
 import { useState, useEffect } from 'react';
@@ -38,22 +38,22 @@ const breakpoints = createBreakpoints({
 })
 
 
-export async function getServerSideProps(){
-    const { API_URL } = process.env
-    const { API_KEY } = process.env
+// export async function getServerSideProps(){
+//     const { API_URL } = process.env
+//     const { API_KEY } = process.env
 
-    const res = await fetch(`${API_URL}/api/edit_post`)
-    const data = await res.json()
+//     const res = await fetch(`${API_URL}/api/edit_post`)
+//     const data = await res.json()
 
-    return {
-        props: {
-            data
-        }
-    }
+//     return {
+//         props: {
+//             data
+//         }
+//     }
 
-}
+// }
 
-function EditPost({}){
+function EditPost({data}){
     const { isOpen, onOpen, onClose } = useDisclosure()
     const { API_URL } = process.env
     const { API_KEY } = process.env
@@ -62,50 +62,42 @@ function EditPost({}){
     const [description, setPassword] = useState('')
 
     const [cookies, setCookie, removeCookie] = useCookies(['token', 'id', 'encrypted_id']);
-    const [attachment1, setAttachment1] = useState('')
-    const [attachment2, setAttachment2] = useState('')
-    const [attachment3, setAttachment3] = useState('')
-    const [attachment4, setAttachment4] = useState('')
-    const [attachment5, setAttachment5] = useState('')
-    const [data, setData] =  useState([])
+    // const [data, setData] =  useState([])
 
     const [progress, setProgress] = useState(0);
     const [image, setImage] = useState([])
     const [fileName, setFileName] = useState([])
-    const [urls, setUrls] = useState([]);  
+    const [urls, setUrls] = useState([]); 
 
 
-    // useEffect(() => {
+    useEffect(() => {
 
-    //     const config = {
-    //                 headers: {
-    //                 'content-type': 'multipart/form-data',
-    //                 'X-API-KEY': `${API_KEY}`,
-    //                 'Authorization': 'Basic Y2Fwc3RvbmUyMDIxOjEyMzQ=',
-    //                 // 'Accept-Encoding': 'gzip, deflate, br',
-    //                 'Accept': 'application/json',
-    //                 'token': cookies.token,
-    //                 'user_id': cookies.encrypted_id
-    //                 }
-    //     }
+        // console.log(data)
+        // setFileName((prevState) => [...prevState, storage.refFromURL(data.attachment1)])
 
-    //     axios.get(`${API_URL}/api/display_post/${post_id.post_id}`, config)
-    //     .then(response => {
-    //         console.log(response.data);
-    //         setData(response.data.post);
-
-    //         urls.push(response.data.post.attachment1)
-    //         urls.push(response.data.post.attachment2)
-    //         urls.push(response.data.post.attachment3)
-    //         urls.push(response.data.post.attachment4)
-    //         urls.push(response.data.post.attachment5)
-    //         // console.log(posts)
-    //     })
-    //     .catch(error => {
-    //         console.log(error.response);
-    //     });
+        if(data.attachment1 != 'undefined'){
+            setUrls((prevState) => [...prevState, data.attachment1])
+            // setFileName((prevState) => [...prevState, storage.refFromURL(data.attachment1)])
+            if(data.attachment2 != 'undefined'){
+                setUrls((prevState) => [...prevState, data.attachment2])
+                if(data.attachment3 != 'undefined'){
+                    setUrls((prevState) => [...prevState, data.attachment3])
+                    if(data.attachment4 != 'undefined'){
+                        setUrls((prevState) => [...prevState, data.attachment4])
+                        if(data.attachment5 != 'undefined'){
+                            setUrls((prevState) => [...prevState, data.attachment5])
+                        }
+                    }
+                }
+            }
+        }
         
-    // }, [])
+        
+        
+        
+        
+        
+    }, [])
 
     const uploadFiles = () => {
         if(urls.length > 4){
@@ -155,32 +147,28 @@ function EditPost({}){
         }
     }
 
-    const deleteFile = () =>{
+    // const deleteFile = async (filename, i) =>{
+            
+    //     const desertRef = ref(storage, `/files/${cookies.display_name}/${filename}`)
+    //     fileName.splice(i, 1)
+    //     image.splice(i, 1)
+    //     urls.splice(i, 1)
 
-    }
+    //     setFileName(fileName => fileName.filter(e => e !== i))
+    //     deleteObject(desertRef).then((response) => {
+    //         // console.log(response.data)
+    //         alert("File deleted successfully")
+    //         return;
+    //     }).catch((error) => {
+    //         console.log(error)
+    //     });
+    // }
 
     const submitPost = async () =>{
 
         const token = cookies.token
         const id = cookies.id
         const enc_id =  cookies.encrypted_id
-
-        for(let i = 0; i < urls.length; i++){
-            if(i === 0){
-                setAttachment1(urls[i])
-            }else if(i === 1){
-                setAttachment2(urls[i])
-            }
-            else if(i === 2){
-                setAttachment3(urls[i])
-            }
-            else if(i === 3){
-                setAttachment4(urls[i])
-            }
-            else if(i === 4){
-                setAttachment5(urls[i])
-            }
-        }
         
         const post = {
             title : title,
@@ -243,7 +231,7 @@ function EditPost({}){
                     
 
                     <Center mt={10}>
-                        <Button type="submit" colorScheme='blue' mr={2}>
+                        <Button type="submit" colorScheme='blue' mr={2} onClick={submitPost}>
                             Submit
                         </Button>
 
@@ -271,7 +259,7 @@ function EditPost({}){
                             {fileName.map((file, i) => (
                                 <Flex ml={5}>
                                     <Text fontSize='sm' key={i}>{file}</Text>
-                                    <Button onClick={deleteFile} mx='auto' h={5} variant='ghost'>X</Button>
+                                    <Button onClick={() => {deleteFile(file, i)}} mx='auto' h={5} variant='ghost'>X</Button>
                                 </Flex>
                             ))}
                         </Flex>

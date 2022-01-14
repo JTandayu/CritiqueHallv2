@@ -30,6 +30,7 @@ import { useColorMode, useColorModeValue } from '@chakra-ui/react'
 import { useState } from 'react'
 import { storage } from '../firebase.js'
 import { getDownloadURL, ref, uploadBytesResumable } from 'firebase/storage'
+import {useCookies} from 'react-cookie'
 
 // export async function getServerSideProps(context) {
 //     const res = await fetch(`https://...`)
@@ -42,12 +43,36 @@ import { getDownloadURL, ref, uploadBytesResumable } from 'firebase/storage'
 // } 
 
 function EditProfile({data}) {
+    const { API_URL } = process.env
+    const { API_KEY } = process.env
+
     const { isOpen, onOpen, onClose } = useDisclosure()
     const { colorMode, toggleColorMode } = useColorMode()
     colorMode === 'light' ? 'Dark' : 'Light'
 
+    const [cookie, setCookie] = useCookies('token', 'id', 'encrypted_id', 'display_name')
+
     const [progress, setProgress] = useState(0);
     const [url, setUrl] = useState(''); 
+    const [firstName, setFirstName] = useState('')
+    const [lastName, setLastName] = useState('')
+    const [displayName, setDisplayName] = useState('')
+    const [aboutMe, setAboutMe] = useState('')
+    const [currentPassword, setCurrentPassword] = useState('')
+    const [newPassword, setNewPassword] = useState('')
+
+    const config = {
+        headers: { 
+          'content-type': 'multipart/form-data',
+          'X-API-KEY': `${API_KEY}`,
+          'Authorization': 'Basic Y2Fwc3RvbmUyMDIxOjEyMzQ=',
+          // 'Accept-Encoding': 'gzip, deflate, br',
+          'Accept': 'application/json',
+          'token': cookie.token,
+          'user_id': cookie.encrypted_id
+        }
+    }
+
     // console.log(data);
 
     // const [darkState, setDarkState] = useState();
@@ -81,6 +106,35 @@ function EditProfile({data}) {
       }
       );
 
+    }
+
+    const SubmitPersonalInformation = async () =>{
+
+        let formData =  new FormData;
+        formData.append('first_name', firstName)
+        formData.append('last_name', lastName)
+        formData.append('display_name', displayName)
+        formData.append('about_me', aboutMe)
+
+        axios.post(`${API_URL}/api/change_profile`, formData, config)
+        .then((response) => (
+            console.log(response)
+        )).catch((error) => (
+            console.log(error)
+        ))
+    }
+
+    const submitPassword = async () =>{
+        let formData =  new FormData;
+        formData.append('current_password', currentPassword)
+        formData.append('new_password', newPassword)
+
+        axios.post(`${API_URL}/api/change_password`, formData, config)
+        .then((response) => (
+            console.log(response)
+        )).catch((error) => (
+            console.log(error)
+        ))
     }
 
     return(
@@ -124,23 +178,27 @@ function EditProfile({data}) {
                     <Flex mb={5} >
                         <Flex>
                             <FormLabel w='7vw'>First Name</FormLabel>
-                            <Input type='text' bg="white" value={data.first_name} color='black' ml='23px' />
+                            <Input type='text' bg="white" value={data.first_name} onChange={(e) => setFirstName(e.target.value)} color='black' ml='23px' />
                         </Flex>
                         <Spacer />
                         <Flex>
                             <FormLabel w='7vw'>Last Name</FormLabel>
-                            <Input type='text' bg="white" value={data.last_name} color='black' />
+                            <Input type='text' bg="white" value={data.last_name} color='black' onChange={(e) => setLastName(e.target.value)} />
                         </Flex>
                     </Flex>
                     <Flex mb={5}>
                         <FormLabel>Display Name</FormLabel>
-                        <Input type='text' w='10vw' value={data.display_name} bg="white" color='black' ml='10px' />
+                        <Input type='text' w='10vw' value={data.display_name} bg="white" color='black' ml='10px' onChange={(e) => setDisplayName(e.target.value)} />
                     </Flex>
                     <Flex mb={5}>
                         <FormLabel w='7vw'>About Me</FormLabel>
-                        <Textarea type='text' w='100%' h='15vh' value={data.about_me} bg="white" color='black' />
+                        <Textarea type='text' w='100%' h='15vh' value={data.about_me} bg="white" color='black' onChange={(e) => setAboutMe(e.target.value)} />
                     </Flex>
-                    <Divider mb={5} />
+                    <Flex>
+                        <Spacer />
+                        <Button colorScheme='blue' mr={3} onClick={SubmitPersonalInformation}>Save</Button>
+                    </Flex>
+                    <Divider mb={5} mt={5}/>
                     <Flex>
                         <Heading size='md' mb={5}>Privacy and Security</Heading>
                         <Spacer />
@@ -149,15 +207,18 @@ function EditProfile({data}) {
                     <Center display='flex' flexDir='column' mb={5}>
                         <Flex mb={3}>
                             <FormLabel>Current Password</FormLabel>
-                            <Input type='text' w='10vw' bg="white" color='black' ml='10px' />
+                            <Input type='text' w='10vw' bg="white" color='black' ml='10px' onChange={(e) => setCurrentPassword(e.target.value)} />
                         </Flex>
                         <Flex >
                             <FormLabel mr={8}>New Password</FormLabel>
-                            <Input type='text' w='10vw' bg="white" color='black' ml='10px' mr='1px' />
+                            <Input type='text' w='10vw' bg="white" color='black' ml='10px' mr='1px' onChange={(e) => setNewPassword(e.target.value)}/>
                         </Flex>
                     </Center>
-
-                    <Divider mb={5} />
+                    <Flex w='100%'>
+                        <Spacer />
+                        <Button colorScheme='blue' mr={3} onClick={submitPassword}>Save</Button>
+                    </Flex>
+                    <Divider mb={5} mt={5} />
 
                     <Heading size='md' mb={5}>Preferences</Heading>
                     <Center display='flex' mb={10}>
@@ -168,7 +229,7 @@ function EditProfile({data}) {
                 </ModalBody>
 
                 <ModalFooter>
-                    <Button colorScheme='blue' mr={3}>Save</Button>
+                    {/* <Button colorScheme='blue' mr={3}>Save</Button> */}
                     <Button colorScheme='red'  onClick={onClose}>
                     Cancel
                     </Button>

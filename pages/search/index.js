@@ -63,9 +63,6 @@ export default function SearchResult(){
                     <Select>
                         <option value='oldest'>Oldest</option>
                         <option value='newest'>Newest</option>
-                        <option value='most-star'>Most Stars</option>
-                        <option value='least-star'>Least Stars</option>
-                        <option value='has-badge'>Badge</option>
                     </Select>
                 </Flex>
             </Flex>

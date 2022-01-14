@@ -118,6 +118,7 @@ function CreatePost({data}) {
         })
 
         Promise.all(promises);
+        document.getElementById('image-input').value=null;
     }
    
 
@@ -132,22 +133,29 @@ function CreatePost({data}) {
                 const newImage = e.target.files[i]
                 newImage['id'] = Math.random()
                 setImage((prevState) => [...prevState, newImage])
+                
             }
             
         }
     }
 
-    const deleteFile = (filename) =>{
-        // const desertRef = ref(storage, `/files/${cookies.display_name}/${filename}`)
-        // console.log(desertRef)
-        // deleteObject(desertRef).then((response) => {
-        //     console.log(response.data)
-        //     alert("File deleted successfully")
-        //     document.getElementById(filename).hidden=true;
-        //     return;
-        // }).catch((error) => {
-        //     console.log(error)
-        // });
+    const deleteFile = async (filename, i) =>{
+            
+            const desertRef = ref(storage, `/files/${cookies.display_name}/${filename}`)
+            fileName.splice(i, 1)
+            image.splice(i, 1)
+            urls.splice(i, 1)
+
+            setFileName(fileName => fileName.filter(e => e !== i))
+
+            // console.log(desertRef)
+            deleteObject(desertRef).then((response) => {
+                // console.log(response.data)
+                alert("File deleted successfully")
+                return;
+            }).catch((error) => {
+                console.log(error)
+            });
     }
 
 
@@ -156,24 +164,6 @@ function CreatePost({data}) {
         const token = cookies.token
         const id = cookies.id
         const enc_id =  cookies.encrypted_id
-
-        // for(let i = 0; i < urls.length; i++){
-        //     if(i === 0){
-        //         setAttachment1(urls[i])
-        //     }else if(i === 1){
-        //         setAttachment2(urls[i])
-        //     }
-        //     else if(i === 2){
-        //         setAttachment3(urls[i])
-        //     }
-        //     else if(i === 3){
-        //         setAttachment4(urls[i])
-        //     }
-        //     else if(i === 4){
-        //         setAttachment5(urls[i])
-        //     }
-        // }
-
 
         let formData = new FormData(); 
         formData.append('title', title);
@@ -265,14 +255,14 @@ function CreatePost({data}) {
                         <Flex flexDir={{lg: 'row', sm: 'column'}} w='30vw'>
                             <Heading size='sm' mr={3}>Attachments</Heading>
                             {/* <Button bg='blue.400' color='white' ml={5} h='2em'>upload</Button> */}
-                            <input type='file' multiple onChange={handleChange} accept=".jpg, .png, .docx, .xls" />
+                            <input type='file' multiple onChange={handleChange} accept=".jpg, .png, .docx, .xls" id='image-input' />
                             <Button onClick={uploadFiles}>Upload</Button>
                         </Flex>
-                        <Flex bg='white' w={{lg: '19vw', sm: '100%'}} h='5vh' rounded='md' overflowX='auto' mt={3}>
+                        <Flex bg='white' w={{lg: '19vw', sm: '100%'}} h='7vh' rounded='md' overflowX='auto' mt={3}>
                             {fileName.map((file, i) => (
                                 <Flex ml={5} id={file}>
                                     <Text fontSize='sm' key={i}>{file}</Text>
-                                    <Button onClick={deleteFile(file)} mx='auto' h={5} variant='ghost'>X</Button>
+                                    <Button onClick={()=>{deleteFile(file, i)}} mx='auto' h={5} ml={1} variant='ghost'>X</Button>
                                 </Flex>
                             ))}
                         </Flex>

@@ -165,34 +165,42 @@ export default function ProfilePage({data}){
                 </Box>
                 <Box display='flex' h='35vh' p={3} mt={5} ml={3}  rounded='lg' overflowX='auto'>
                     <Box id='posts' display='flex'>
-                        <Box bg='white' w='15vw' h='33vh' ml={5}>
-                            <Center mt={3}>
-                                <Heading size='md' mx="auto">Title</Heading>
-                            </Center>
-                            <Center mt={3}>
-                                <Image w='10vw' h='20vh' src='https://www.clipartmax.com/png/middle/119-1198197_anonymous-person-svg-png-icon-free-download-anonymous-icon-png.png'></Image>
-                            </Center>
-                            <Flex w='100%' p={3}>
-                                <Text>Likes 0</Text>
-                                <Spacer />
-                                <Text>Critiques 0</Text>
-                            </Flex>
-                        </Box>
+                        {userPosts.map((posts) => (
+                            <Link href={`/post/${posts.post_id}`}>
+                                <Box bg='white' w='15vw' h='33vh' ml={5}>
+                                    <Center mt={3}>
+                                        <Heading size='md' mx="auto">{posts.title}</Heading>
+                                    </Center>
+                                    <Center mt={3}>
+                                        <Image w='10vw' h='20vh' src='https://www.clipartmax.com/png/middle/119-1198197_anonymous-person-svg-png-icon-free-download-anonymous-icon-png.png'></Image>
+                                    </Center>
+                                    <Flex w='100%' p={3}>
+                                        <Text>Likes {posts.likes}</Text>
+                                        <Spacer />
+                                        <Text>Critiques {posts.critiques}</Text>
+                                    </Flex>
+                                </Box>
+                            </Link>
+                        ))}
                     </Box>
                     <Box id='critiques' display='flex'>
-                        <Box bg='white' w='15vw' h='33vh' ml={5}>
-                            <Center mt={3}>
-                                <Heading size='md' mx="auto">Title</Heading>
-                            </Center>
-                            <Center mt={3}>
-                                <Image w='10vw' h='20vh'></Image>
-                            </Center>
-                            <Flex w='100%' p={3}>
-                                <Text>Star 0</Text>
-                                <Spacer />
-                                <Text>Critique</Text>
-                            </Flex>
-                        </Box>
+                        {userCritique.map((critique) => (
+                            <Link href={`/post/${critique.post_id}`}>
+                                <Box bg='white' w='15vw' h='33vh' ml={5}>
+                                    <Center mt={3}>
+                                        <Heading size='md' mx="auto">{critique.title}</Heading>
+                                    </Center>
+                                    <Center mt={3}>
+                                        <Image w='10vw' h='20vh'></Image>
+                                    </Center>
+                                    <Flex w='100%' p={3}>
+                                        <Text>Star {critique.star}</Text>
+                                        <Spacer />
+                                        <Text>{critique.body}</Text>
+                                    </Flex>
+                                </Box>
+                            </Link>
+                        ))}
                     </Box>
                 </Box>
             </Box>

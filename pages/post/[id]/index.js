@@ -43,6 +43,7 @@ import axios from 'axios'
 import { useState, useEffect } from 'react'
 import { CritiqueReply } from '@component/critique/CritiqueReply'
 import DeletePost from '@component/post/options/delete'
+import { Critiques } from '@component/critique/Critiques'
 
 const breakpoints = createBreakpoints({
     sm: '320px',
@@ -106,7 +107,7 @@ export default function CritiquePost(post_id){
 
         axios.get(`${API_URL}/api/display_post/${post_id.post_id}`, config)
         .then(response => {
-            console.log(response.data);
+            // console.log(response.data);
             setData(response.data.post);
             // console.log(cookie.display_name)
 
@@ -196,20 +197,26 @@ export default function CritiquePost(post_id){
             </Head>
 
             <Box w="100%" h="full" spacing="10px" mt="5">
-                <Box display="flex" p="3">
+                <Box display="flex" flexDir={{lg: 'row', sm: 'column'}} p="3">
                     {/* Main */}
                     {/* <PostMain /> */}
-                    <Box w="50%" bg='light' h='90vh' p={5} boxShadow='md' mt={28} ml='3vw'>
+                    <Box w={{lg: '50%', sm: '100%'}} bg='light' h={{lg: "90vh", sm: "100%"}} p={5} boxShadow='md' mt={28} ml='3vw'>
                     <Heading mx="auto">{data.title}</Heading>
+
+                    {/* Description */}
+                    <Box mt={5}>
+                        <Heading size='md'>Description</Heading>
+                        <Text Critiq w={{lg: '45vw', sm: '100%'}} mx='auto' mt={5}>{data.body}</Text>
+                    </Box>
                             
                     {/* Image */}
-                    <Flex ml="10vh" mt={5}>
+                    <Flex ml={{lg: "10vh", sm: 5}} flexDir={{lg: "row", sm: 'column'}} mt={5}>
                         <Image src={data.attachment1} w='50vh' h='40vh' onClick='' />
                             <Flex flexDir='column' spacing={5}>
-                                <Image w='20vh' h='10vh' onClick='' src={data.attachment2} />
-                                <Image w='20vh' h='10vh' onClick='' src={data.attachment3} />
-                                <Image w='20vh' h='10vh' onClick='' src={data.attachment4} />
-                                <Image w='20vh' h='10vh' onClick='' src={data.attachment5} />
+                                <Image w={{lg: "20vh", sm: '45vh'}} h='10vh' onClick='' src={data.attachment2} />
+                                <Image w={{lg: "20vh", sm: '45vh'}} h='10vh' onClick='' src={data.attachment3} />
+                                <Image w={{lg: "20vh", sm: '45vh'}} h='10vh' onClick='' src={data.attachment4} />
+                                <Image w={{lg: "20vh", sm: '45vh'}} h='10vh' onClick='' src={data.attachment5} />
                             </Flex>
                     </Flex>
                     {/* Options */}
@@ -230,10 +237,10 @@ export default function CritiquePost(post_id){
                                     <MenuItem><EditPost data={data} /></MenuItem>
                                 </MenuGroup>
                                 <MenuDivider />
-                                <MenuGroup>
+                                {/* <MenuGroup>
                                     <MenuItem><EditHistory /></MenuItem>
                                 </MenuGroup>
-                                <MenuDivider />
+                                <MenuDivider /> */}
                                 <MenuGroup>
                                     <MenuItem><DeletePost /></MenuItem>
                                 </MenuGroup>
@@ -241,7 +248,7 @@ export default function CritiquePost(post_id){
                             </Menu>
                         </Box> 
                         <Box id='diffAcc'>
-                            <Menu>
+                            {/* <Menu>
                                 <MenuButton
                                 px={4}
                                 py={2}
@@ -258,36 +265,30 @@ export default function CritiquePost(post_id){
                                     <MenuItem><ReportPost /></MenuItem>
                                 </MenuGroup>
                                 </MenuList>
-                            </Menu>
+                            </Menu> */}
                         </Box>
-                    </Box>
-                    {/* Description */}
-                    <Box mt={5}>
-                        <Heading size='md'>Description</Heading>
-                        <Text w='45vw' mx='auto' mt={5}>{data.body}</Text>
                     </Box>
                     {/* Critique Input */}
                     <Box display='flex' flexDir='column' mt={5}>
-                        <Textarea bg='white' boxShadow='md' w="90vh" mx="auto" mt={3} onChange={e => setCritique(e.target.value)} />
-                        <Button w='10vh' mx='auto' mt={3} onClick={giveCritique}>Post</Button>
+                        <Textarea placeholder='Critique this...' bg='white' boxShadow='md' w={{lg: '90vh', sm: '100%'}} mx="auto" mt={3} onChange={e => setCritique(e.target.value)} />
+                        <Button w='10vh' mx='auto' mt={3} onClick={giveCritique}>Submit</Button>
                     </Box>
         
             </Box>
                     {/* Critique */}
                     {/* <PostCritiques /> */}
-                    <Box w="40%" bg='light' h='90vh' p={5} boxShadow='md' mt={28} ml='3vw'>
+                    <Box w={{lg: '40%', sm: '100%'}} bg='light' h='90vh' p={5} boxShadow='md' mt={28} ml='3vw'>
                     {/* Header */}
                     <Box display='flex'>
                         <Heading>Critiques</Heading>
                         <Spacer />
-                        <Flex w='15vw' mt={1}>
-                        <Text mr={5} w={20} mt={2}>Sort By: </Text>
+                        <Flex w={{lg: '15vw', sm: '50%'}} mt={1}>
+                        <Text mr={{lg: 5, sm: 1}} w={20} mt={2}>Sort by: </Text>
                         <Select>
-                            <option value='oldest'>Oldest</option>
                             <option value='newest'>Newest</option>
+                            <option value='oldest'>Oldest</option>
                             <option value='most-star'>Most Stars</option>
                             <option value='least-star'>Least Stars</option>
-                            <option value='has-badge'>Badge</option>
                         </Select>
                         </Flex>
                         {/* <Menu>
@@ -307,9 +308,9 @@ export default function CritiquePost(post_id){
                         </Menu> */}
                     </Box>
                     {/* Critiques */}
-                    <Box overflowY="scroll" h='80vh'>
+                    <Box overflowY="scroll" h={{lg: '80vh', sm: '70vh'}} mt={5}>
 
-                        <Box p="2"mt={5}>
+                        {/* <Box p="2"mt={5}>
                             <Flex>
                                 <Image src="" w='3vh' h='3vh' mt={2} />
                                 <Heading size='sm' ml={3} mt={2}>Username</Heading>
@@ -343,8 +344,8 @@ export default function CritiquePost(post_id){
                                 <Button variant='ghost' ml={5}>Reply</Button>
                             </Flex>
 
-                        </Box>
-                        <CritiqueReply id={post_id.post_id} />
+                        </Box> */}
+                        <Critiques id={post_id.post_id} />
                     </Box>
                     
                         

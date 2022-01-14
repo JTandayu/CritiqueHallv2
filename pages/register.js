@@ -162,7 +162,7 @@ export default function Register({data, data2}) {
                 <FormLabel>Username</FormLabel>
                 <input className={styles.input_box} type="text" value={user_name} onChange={e => setUserName(e.target.value)}/>
                 <br/>
-                <FormLabel>Email Address</FormLabel>
+                <FormLabel>iACADEMY Email</FormLabel>
                 <input placeholder="***@iacademy.edu.ph" className={styles.input_box} type="text" value={email} onChange={e => setEmail(e.target.value)}/>
                 {/* <FormHelperText className={styles.helperText}>format: ***@iacademy.edu.ph</FormHelperText> */}
                 {/* <br/> */}
@@ -235,7 +235,7 @@ export default function Register({data, data2}) {
                 <option value="ba-mpsd">COL - BA - Music Production and Sound Design</option> */}
                 </Select>
                 <br />
-                <FormLabel>Profile Picture</FormLabel>
+                {/* <FormLabel>Profile Picture</FormLabel>
                 <HStack direction="column" spacing={5} align="center">
                 <MotionButton
                   whileHover={{ scale: 1.2 }}
@@ -260,7 +260,7 @@ export default function Register({data, data2}) {
                   >Upload Picture</MotionButton>
                   <FormHelperText>supported formats: JPEG (JPG), PNG, GIF, TIFF, and RAW.</FormHelperText>
                   </HStack>
-                <br />
+                <br /> */}
                 <HStack direction="row" spacing={8} align="center">
                 <MotionButton
                   whileHover={{ scale: 1.2 }}

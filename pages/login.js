@@ -131,12 +131,12 @@ export default function Login({user}) {
               </Center>
             </Box>
             <center><FormControl id="loginform" isRequired>
-              <FormLabel>Email Address</FormLabel>
-                <input placeholder="Username" id="email" value={email} className={styles.input_box} type="email" onChange={e => setEmail(e.target.value)}/>
+              <FormLabel>iACADEMY Email</FormLabel>
+                <input id="email" value={email} className={styles.input_box} type="email" onChange={e => setEmail(e.target.value)}/>
                 {/* <input placeholder="Username" id="email" value={email} className={styles.input_box} type="email" /> */}
                 <br/>
               <FormLabel>Password</FormLabel>
-                <input placeholder="Password" id="password" value={password} className={styles.input_box} type="password" onChange={e => setPassword(e.target.value)}/>
+                <input id="password" value={password} className={styles.input_box} type="password" onChange={e => setPassword(e.target.value)}/>
                 {/* <input placeholder="Password" id="password" value={password} className={styles.input_box} type="password"/> */}
                 <br/>
                 <p className={styles.register}>

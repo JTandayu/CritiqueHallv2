@@ -9,6 +9,7 @@ import {useCookies} from 'react-cookie'
 import { useEffect } from 'react'
 import axios from 'axios';
 import WindowEventHandlersImpl from 'jsdom/lib/jsdom/living/nodes/WindowEventHandlers-impl';
+import { responseSymbol } from 'next/dist/server/web/spec-compliant/fetch-event';
 
 // import Nav from "@component/nav";
 // import styles from '../../styles/layout/Layout.module.css'

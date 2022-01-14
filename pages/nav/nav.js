@@ -72,7 +72,7 @@ export default function Nav({id}){
 
         axios.get(`${API_URL}/api/display_profile/${cookies.display_name}`, config)
         .then(response => {
-            console.log(response.data);      
+            // console.log(response.data);      
             setProfilePic(response.data.data.user.profile_photo)
         })
         .catch(error => {
@@ -106,7 +106,7 @@ export default function Nav({id}){
 
     return(
     <>
-    <Flex boxShadow='md' w='100%' h='10vh' bg={useColorModeValue('white', '#1a202c')} pos='fixed' zIndex={100}> 
+    <Flex boxShadow='md' w='100%' h='100px' bg={useColorModeValue('white', '#1a202c')} pos='fixed' zIndex={100}> 
         <IconButton
                 aria-label='Open Menu'
                 size='lg'
