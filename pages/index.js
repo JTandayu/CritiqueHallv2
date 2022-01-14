@@ -1,5 +1,4 @@
 import Head from 'next/head'
-// import Image from 'next/image'
 import styles from "@styles/Welcome.module.css";
 import { motion } from "framer-motion"
 import Link from 'next/link'
@@ -7,8 +6,9 @@ import { Stack, HStack, VStack, useColorMode, FormLabel, Input, Textarea } from 
 import { Button, ButtonGroup } from "@chakra-ui/react"
 import { ArrowForwardIcon, CheckIcon, InfoOutlineIcon } from '@chakra-ui/icons'
 import { Box, Divider, Flex, Heading, Spacer, Image } from "@chakra-ui/react"
-import axios from 'axios'
-import {useState} from 'react'
+import axios from 'axios';
+import {useState} from 'react';
+import ManTexting from "@public/man-texting.png";
 
 
 const variants = {
@@ -75,8 +75,9 @@ export default function Welcome() {
             <Flex mt={44} flexDir='column' align='center' w={{lg: '50vw', md: '100%', sm: '100%'}}>
               <Heading size='3xl' >WELCOME TO</Heading>
               <Image src='critiquehall.png' w={{lg: '30vw', md: '100%', sm: '100%'}} h='37vh' mt={5}/>
+              <Link href="/login"><Button type='submit' colorScheme='red'>Get Started</Button></Link>
             </Flex>
-              
+            
           </Box>
 
           <Box position='static' w="100%" h="70vh" display={{lg: 'flex', md: 'flex', sm: 'block'}} borderBottom="1px solid black">

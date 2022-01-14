@@ -124,7 +124,7 @@ export default function Login({user}) {
             alt="Critique Hall Logo"></Image></Link>
             </div>
             
-            <Heading mb={2} as="h2" size="lg">Login</Heading>
+            <Heading mb={2} as="h2" size="lg" color={useColorModeValue('#1B1464')}>LOG-IN</Heading>
             <Box id='warning1' bg='red.100' w='30%' h='5vh' border='1px solid red' rounded='md' mb={4} mt={2} hidden>
               <Center>
                 <Text mt='1vh'>Incorrect Email or Password</Text>
@@ -151,7 +151,7 @@ export default function Login({user}) {
                   type="submit" 
                   size="lg"
                   onClick={submitLogin}
-                  > Login </MotionButton>
+                  > LOG-IN </MotionButton>
                   {/* <MotionButton
                   whileHover={{ scale: 1.2 }}
                   whileTap={{ scale: 0.9 }}

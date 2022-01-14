@@ -102,9 +102,9 @@ export default function Nav(){
                         aria-label='Home'
                         my={2}
                         w='100%'
-
+                        color={useColorModeValue('#1B1464')}
                     >
-                        Log-in
+                        LOG-IN
                     </Button>
                 </Link>
                 <Link href="/register">
@@ -114,9 +114,9 @@ export default function Nav(){
                         aria-label='Home'
                         my={2}
                         w='100%'
-
+                        color={useColorModeValue('#C1272D')}
                     >
-                        Register
+                        REGISTER
                     </Button>
                 </Link>
                     <Button
@@ -127,7 +127,7 @@ export default function Nav(){
                         w='100%'
                         onClick={toggleColorMode}
                     >
-                        Dark Mode
+                        DARK MODE
                     </Button>
 
             </Flex>
@@ -170,9 +170,9 @@ export default function Nav(){
                         aria-label='Home'
                         my={5}
                         w='100%'
-
+                        color={useColorModeValue('#1B1464')}
                     >
-                        Log-in
+                        LOG-IN
                     </Button>
                 </Link>
                 <Link href="/register">
@@ -182,9 +182,9 @@ export default function Nav(){
                         aria-label='Home'
                         my={5}
                         w='100%'
-
+                        color={useColorModeValue('#C1272D')}
                     >
-                        Register
+                        REGISTER
                     </Button>
                 </Link>
                     <Button
@@ -195,7 +195,7 @@ export default function Nav(){
                         w='100%'
                         onClick={toggleColorMode}
                     >
-                        Dark Mode
+                        DARK MODE
                     </Button>
             </Flex> 
         </Flex>
