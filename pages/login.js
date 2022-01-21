@@ -6,7 +6,7 @@ import { css, cx } from '@emotion/react'
 import { motion } from "framer-motion"
 import Home from './home'
 import Link from 'next/link'
-import Logo from "@public/critiquehall2.png";
+import Logo from "@public/critiquehall.png";
 import { Button, ButtonGroup, Center, Text } from "@chakra-ui/react"
 import { Stack, HStack, VStack } from "@chakra-ui/react"
 import { Heading } from '@chakra-ui/react'
@@ -88,12 +88,12 @@ export default function Login({user}) {
     return (
       <div className={styles.container} >
         <Head>
-          <title>Login to Critique Hall</title>
+          <title>Critique Hall | Login</title>
           <meta name="description" content="Critique Hall by create next app" />
           <link rel="icon" href="/logo256.png" onLoad=""/>
         </Head>
   
-        <Box as='main' bg={useColorModeValue('white', '#1a202c')} w={{lg: '100ch' , md: '100%' , sm: '100%' }} className={styles.main} 
+        <Box as='main' bg={useColorModeValue('white', '#212121')} w={{lg: '100ch' , md: '100%' , sm: '100%' }} className={styles.main} 
           // animate = {{y: 0 , opacity: 1}}
           // initial = {{y: -70, opacity: 0}}
           // transition ={{duration: .7}}
@@ -103,7 +103,7 @@ export default function Login({user}) {
             alt="Critique Hall Logo"></Image></Link>
             </div>
             
-            <Heading mb={2} as="h2" size="lg" color={useColorModeValue('#1B1464')}>LOG-IN</Heading>
+            <Heading mb={5} as="h2" size="lg" color={useColorModeValue('#1B1464')}>LOG-IN</Heading>
             <Box id='warning1' bg='red.100' w='30%' h='5vh' border='1px solid red' rounded='md' mb={4} mt={2} hidden>
               <Center>
                 <Text mt='1vh'>Incorrect Email or Password</Text>
@@ -114,9 +114,11 @@ export default function Login({user}) {
                 <input id="email" value={email} className={styles.input_box} type="email" onChange={e => setEmail(e.target.value)}/>
                 {/* <input placeholder="Username" id="email" value={email} className={styles.input_box} type="email" /> */}
                 <br/>
+                <br/>
               <FormLabel>Password</FormLabel>
                 <input id="password" value={password} className={styles.input_box} type="password" onChange={e => setPassword(e.target.value)}/>
                 {/* <input placeholder="Password" id="password" value={password} className={styles.input_box} type="password"/> */}
+                <br/>
                 <br/>
                 <p className={styles.register}>
                 <p><Link href="./forgot-password"><a>Forgot Password?</a></Link></p>
