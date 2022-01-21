@@ -14,11 +14,12 @@ import { Button } from '@chakra-ui/react'
 import styles from "@styles/Hall.module.css";
 import {useCookies} from 'react-cookie'
 
-const deleteCritique = () => {
+const deleteReply = ({id}) => {
     const { isOpen, onOpen, onClose } = useDisclosure()
     const { API_URL } = process.env
     const { API_KEY } = process.env
     const [cookies, setCookie, removeCookie] = useCookies(['token', 'id', 'encrypted_id']);
+
 
     const config = {
         headers: {
@@ -30,16 +31,16 @@ const deleteCritique = () => {
         'user_id': cookies.encrypted_id
         }
       }
-
-    const deleteCritiqueItem = async () =>{
-        axios.get(`${API_URL}api/delete_critique/${id}`, config)
+    
+    const deleteReply = async () =>{
+        axios.get(`${API_URL}api/delete_reply/${id}`, config)
         .then((response) => {
           console.log(response.data)
           onClose
         }).catch((error)=>{
           console.log(error)
         })
-    }
+      }
 
     return (
         <>
@@ -47,12 +48,12 @@ const deleteCritique = () => {
             <Modal isOpen={isOpen} onClose={onClose}>
                 <ModalOverlay />
                     <ModalContent maxW="40rem" h='40vh'>
-                    <ModalHeader>Delete Critique</ModalHeader>
+                    <ModalHeader>Delete Reply</ModalHeader>
                     <ModalCloseButton />
                     <ModalBody>
                         Are you sure you want to delete?
                         <Flex>
-                            <Button onClick={deleteCritiqueItem}>Yes</Button>
+                            <Button onClick={deleteReply}>Yes</Button>
                             <Button onClick={onClose}>No</Button>
                         </Flex>
                     </ModalBody>
@@ -64,5 +65,5 @@ const deleteCritique = () => {
     )
 }
 
-export default deleteCritique
+export default deleteReply
 

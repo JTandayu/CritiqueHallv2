@@ -134,17 +134,17 @@ export default function Welcome() {
                 <Flex flexDir='column' w='100%' align='center'>
                 
                   <Flex align='center' flexDir={{lg: 'row', md: 'row', sm: 'column'}} w={{lg: '40vw', md: '40vw', sm: '100%'}} color='black'>
-                      <Input type='text' w={{lg: '13vw', md: '13vw', sm: '100%'}} placeholder='Email Address'></Input>
+                      <Input type='text' w={{lg: '13vw', md: '13vw', sm: '100%'}} placeholder='Email Address' onChange={(e)=>setEmail(e.target.value)}></Input>
                       <Spacer />
-                      <Input type='text' w={{lg: '13vw', md: '13vw', sm: '100%'}} mt={{lg: 0, md: 0, sm: 5}} placeholder='Full Name'></Input>
+                      <Input type='text' w={{lg: '13vw', md: '13vw', sm: '100%'}} mt={{lg: 0, md: 0, sm: 5}} placeholder='Full Name' onChange={(e)=>setFullName(e.target.value)}></Input>
                       <Spacer />
-                      <Input type='text' w={{lg: '13vw', md: '13vw', sm: '100%'}} mt={{lg: 0, md: 0, sm: 5}} placeholder='Subject'></Input>
+                      <Input type='text' w={{lg: '13vw', md: '13vw', sm: '100%'}} mt={{lg: 0, md: 0, sm: 5}} placeholder='Subject' onChange={(e)=>setSubject(e.target.value)}></Input>
                   </Flex>
-                  <Textarea w={{lg: '40vw', md: '40vw', sm: '100%'}} h='20vh' mt={5} placeholder='Message...' mt={{lg: 0, md: 0, sm: 5}} />
+                  <Textarea w={{lg: '40vw', md: '40vw', sm: '100%'}} h='20vh' mt={5} placeholder='Message...' mt={{lg: 0, md: 0, sm: 5}} onChange={(e)=>setMessage(e.target.value)} />
                 
                 </Flex>
                 <Flex w={{lg: '20vw', md: '100%', sm: '100%'}} mt={{lg: 0, md: 0, sm: 5}} >
-                  <Button type='submit' colorScheme='blue' w={{lg: '10vw', md: '20vw', sm: '20vw'}} mr={{lg: 48, md: 0, sm: 0}} mx={{lg: 0, md: 0, sm: 'auto'}} >Submit</Button>
+                  <Button colorScheme='blue' w={{lg: '10vw', md: '20vw', sm: '20vw'}} mr={{lg: 48, md: 0, sm: 0}} mx={{lg: 0, md: 0, sm: 'auto'}} onClick={sendMessage} >Submit</Button>
                 </Flex>
               </Flex>
               </form>

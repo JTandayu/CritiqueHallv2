@@ -30,6 +30,18 @@ import React from 'react';
 import Login from '../login'
 import { useCookies } from 'react-cookie';
 import axios from 'axios'
+import { useRouter } from 'next/router';
+import {
+    Popover,
+    PopoverTrigger,
+    PopoverContent,
+    PopoverHeader,
+    PopoverBody,
+    PopoverFooter,
+    PopoverArrow,
+    PopoverCloseButton,
+    PopoverAnchor,
+  } from '@chakra-ui/react'
 
 const MotionButton = motion(Button)
 
@@ -47,13 +59,14 @@ export default function Nav({id}){
     const { API_KEY } = process.env
     
     const [display, changeDisplay] = useState('none')
-    const [cookies, removeCookie] = useCookies('token', 'id', 'display_name')
+    const [cookies, removeCookie] = useCookies(['token', 'display_name'])
     const [search, setSearch] = useState('')
     const [profPic, setProfilePic] = useState('')
 
 
     const user_id = cookies.id;
     const display_name =  cookies.display_name
+    const Router = useRouter()
 
     useEffect(() => {
         const config = {
@@ -68,15 +81,18 @@ export default function Nav({id}){
             }
         }
 
-        
 
         axios.get(`${API_URL}/api/display_profile/${cookies.display_name}`, config)
         .then(response => {
-            // console.log(response.data);      
+            console.log(response.data);      
             setProfilePic(response.data.data.user.profile_photo)
         })
         .catch(error => {
-            console.log(error.response);
+            console.log(error.response.data.error);
+            if(error.response.data.error ==  'Token Expired'){
+                Router.replace('/login')
+                return;
+            }
         });
     }, [])
 
@@ -93,6 +109,9 @@ export default function Nav({id}){
             }
         }
 
+        window.location = '/search'
+        localStorage.setItem("search-item", search);
+
         // axios.get('get')
 
     }
@@ -102,6 +121,8 @@ export default function Nav({id}){
         removeCookie('token');
         removeCookie('id');
         removeCookie('encrypted_id');
+        removeCookie('profile_pic');
+        removeCookie('display_name');
     }
 
     return(
@@ -124,8 +145,8 @@ export default function Nav({id}){
                 </Link>
             </Flex>
             <Spacer />
-                <form action='/search' method='POST'>
-                    <Input display={['none','none','flex','flex']} w='30vw' type='text' mt={7} mr='15vw' color='black' bg='white' />
+                <form action='/search' method='POST' onSubmit={searchItem}>
+                    <Input display={['none','none','flex','flex']} w='30vw' type='text' mt={7} mr='15vw' color='black' bg='white' onChange={(e)=>setSearch(e.target.value)} />
                 </form>
             <Spacer />
         <Flex
@@ -172,6 +193,21 @@ export default function Nav({id}){
                         FEEDBACK
                     </Button>
                 </Link>
+                <Popover>
+                    <PopoverTrigger>
+                        <Button as='a'
+                            variant='ghost'
+                            aria-label='Home'
+                            my={2}
+                            w='100%'>Notif</Button>
+                    </PopoverTrigger>
+                    <PopoverContent>
+                        <PopoverArrow />
+                        <PopoverCloseButton />
+                        <PopoverHeader>Notification</PopoverHeader>
+                        <PopoverBody>Are you sure you want to have that milkshake?</PopoverBody>
+                    </PopoverContent>
+                </Popover>
                 <Menu>
                     <MenuButton
                         px={7}
@@ -182,7 +218,8 @@ export default function Nav({id}){
                     > 
                     <Flex>
                         {/* <Image src=""></Image> */}
-                        <Img src='https://www.clipartmax.com/png/middle/119-1198197_anonymous-person-svg-png-icon-free-download-anonymous-icon-png.png' w='2vw' h='2vw'></Img>
+                        {/* <Img src='https://www.clipartmax.com/png/middle/119-1198197_anonymous-person-svg-png-icon-free-download-anonymous-icon-png.png' w='2vw' h='2vw'></Img> */}
+                        <Img src={profPic} w='2vw' h='2vw' rounded='full'></Img>
                         <Text mt={2} ml={1}>{display_name}</Text>
                         {/* <Text ml={1} mr={3}>{user_id}</Text> */}
                         <ChevronDownIcon ml={1} mt={3} />

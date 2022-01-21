@@ -21,6 +21,7 @@ import { CritiqueReply } from './CritiqueReply'
 import { useCookies } from 'react-cookie'
 import { createBreakpoints } from '@chakra-ui/theme-tools'
 import { extendTheme } from '@chakra-ui/react'
+import EditCritique from './options/edit-critique'
 
 const breakpoints = createBreakpoints({
     sm: '320px',
@@ -39,6 +40,8 @@ export const Critiques = ({id}) => {
     const [cookie, setCookie] = useCookies('token', 'id', 'encrypted_id', 'display_name')
     const [critiqueItems, setCritiqueItems] = useState([])
     const [reply, setReply] = useState('')
+    const [lastId, setLastID] =  useState('0')
+    // console.log(cookie.token)
     // const [data, setData] =  useState([])
 
     const config = {
@@ -46,7 +49,6 @@ export const Critiques = ({id}) => {
           'content-type': 'multipart/form-data',
           'X-API-KEY': `${API_KEY}`,
           'Authorization': 'Basic Y2Fwc3RvbmUyMDIxOjEyMzQ=',
-          // 'Accept-Encoding': 'gzip, deflate, br',
           'Accept': 'application/json',
           'token': cookie.token,
           'user_id': cookie.encrypted_id
@@ -54,8 +56,57 @@ export const Critiques = ({id}) => {
     }
 
     useEffect(() => {
-        // const res = axios.get(`${API_URL}/api/display_all_critiques`, config)
-        axios.get(`${API_URL}/api/display_all_critiques`, config)
+
+        let formData = new FormData;
+        formData.append('post_id', id);
+        formData.append('last_id', null);
+
+        axios.post(`${API_URL}/api/display_all_critiques`, formData, config)
+        .then((response) =>{
+            console.log(response.data)
+            setCritiqueItems(response.data.data)
+            document.getElementById(response.data.data.critique_id).hidden=true
+            
+            for(let i = 0; i < critiqueItems.length; i++){
+                if(i == critiqueItems.length - 1){
+                    setLastID(critiqueItems[i].critique_id)
+                }
+            }
+        }).catch((error) =>{
+            console.log(error.response)
+        })
+        
+    }, [])
+
+    const openReply = async(id) =>{
+        document.getElementById(id).removeAttribute('hidden');
+    }
+
+    const submitReply = async(critique_id) =>{
+        let formData = new FormData;
+        formData.append('critique_id', critique_id);
+        formData.append('body', reply);
+
+        axios.post(`${API_URL}/api/create_reply`, formData, config)
+        .then((response) =>{
+            console.log(response.data)
+            document.getElementById(critique_id).hidden=true;
+            window.location.href = `/post/${id}`;
+        }).catch((error) =>{
+            console.log(error.response)
+        })
+    }
+
+    const cancelReply = async(id) =>{
+        document.getElementById(id).hidden=true;
+    }
+
+    const loadMore = async() =>{
+        let formData = new FormData;
+        formData.append('post_id', id);
+        formData.append('last_id', lastId);
+
+        axios.post(`${API_URL}/api/display_all_critiques`, formData, config)
         .then((response) =>{
             console.log(response.data)
             setCritiqueItems(response.data)
@@ -63,34 +114,16 @@ export const Critiques = ({id}) => {
             console.log(error.response)
         })
         document.getElementById('reply').hidden=true;
-    }, [])
-
-    const openReply = async() =>{
-        document.getElementById('reply').removeAttribute('hidden');
     }
 
-    const submitReply = async() =>{
-        axios.post(`${API_URL}/api/create_reply`, config)
-        .then((response) =>{
-            console.log(response.data)
-            document.getElementById('reply').hidden=true;
-            window.location.href = `/post/${id}`;
-        }).catch((error) =>{
-            console.log(error.response)
-        })
-    }
-
-    const cancelReply = async() =>{
-        document.getElementById('reply').hidden=true;
-    }
-    const loadMore = async() =>{
+    const giveStar = async(id) =>{
+        let formData = new FormData;
+        formData.append('critique_id', id);
         
-    }
-
-    const giveStar = async() =>{
         axios.post(`${API_URL}/api/star_critique`, config)
         .then((response) =>{
             console.log(response.data)
+            document.getElementById(`star${id}`).innerHTML=response.data.likes;
         }).catch((error) =>{
             console.log(error.response)
         })
@@ -98,55 +131,105 @@ export const Critiques = ({id}) => {
 
     return (
         <div>
-            {critiqueItems.map((critique) => (
-                <>
-                <Box p="2" overflow-y="auto" w={{lg: '35vw', sm: '100%'}} mt={5} position='static'>
-                        <Flex>
-                            <Image src="" w='3vh' h='3vh' mt={2} />
-                            <Heading size='sm' ml={3} mt={2}>Username</Heading>
-                            <Spacer />
-                            <Text fontSize='sm' mt={2}>Time</Text>
+            {critiqueItems.map((critique) => { 
+                if(critique.display_name === cookie.display_name){
+                return(
+                    <>
+                    <Box p="2" overflow-y="auto" w={{lg: '35vw', sm: '100%'}} mt={5} position='static'>
+                            <Flex>
+                                <Image src="" w='3vh' h='3vh' mt={2} />
+                                <Heading size='sm' ml={3} mt={2}>{critique.display_name}</Heading>
+                                <Spacer />
+                                <Text fontSize='sm' mt={2}>{critique.time_ago}</Text>
 
-                            <Menu>
-                                <MenuButton
-                                px={4}
-                                py={2}
-                                transition='all 0.2s'
-                                >
-                                <ChevronDownIcon />
-                                </MenuButton>
-                                <MenuList p={3}>
-                                <MenuGroup>
-                                    <MenuItem><EditHistory /></MenuItem>
-                                </MenuGroup>
-                                <MenuDivider />
-                                <MenuGroup>
-                                    <MenuItem><ReportUser /></MenuItem>
-                                </MenuGroup>
-                                </MenuList>
-                            </Menu>
+                                <Menu>
+                                    <MenuButton
+                                    px={4}
+                                    py={2}
+                                    transition='all 0.2s'
+                                    >
+                                    <ChevronDownIcon />
+                                    </MenuButton>
+                                    <MenuList p={3}>
+                                    <MenuGroup>
+                                        <MenuItem><EditHistory /></MenuItem>
+                                    </MenuGroup>
+                                    <MenuDivider />
+                                    <MenuGroup>
+                                        <MenuItem><EditCritique data={critique} /></MenuItem>
+                                    </MenuGroup>
+                                    </MenuList>
+                                </Menu>
+                            </Flex>
+                            <Box w='100%' mt={1}>
+                                <Text fontSize='md'>{critique.body}</Text>
+                            </Box>
+                            <Flex w='20vw'>
+                                <Button variant='ghost' id={`star${critique.critique_id}`} onClick={()=>giveStar(critique.critique_id)}>Star {critique.stars}</Button>
+                                <Button variant='ghost' ml={5} onClick={()=>openReply(critique.critique_id)}>Reply</Button>
                         </Flex>
-                        <Box w='100%' mt={1}>
-                            <Text fontSize='md'>Lorem Adipisicing ut adipisicing ea aliqua ad esse amet eiusmod aliqua. Dolore tempor velit fugiat commodo consectetur eiusmod ad. Id in laborum aliquip et adipisicing ut esse adipisicing non et. Do nisi id in nisi anim fugiat excepteur quis pariatur magna incididunt non ipsum.</Text>
-                        </Box>
-                        <Flex w='20vw'>
-                            <Button variant='ghost' onClick={giveStar}>Star 0</Button>
-                            <Button variant='ghost' ml={5} onClick={openReply}>Reply</Button>
+                    </Box>
+                    <Box p="2" w='35vw' mt={1} id={critique.critique_id} hidden>
+                    <Textarea w="full" onChange={(e) => setReply(e.target.value)}/>
+                    <Flex>
+                        <Button mt={3} onClick={() => submitReply(critique.critique_id)}>Reply</Button>
+                        <Button mt={3} ml={3} onClick={ () => cancelReply(critique.critique_id)}>Cancel</Button>
                     </Flex>
-            </Box>
-            <Box p="2" w='35vw' mt={1} id='reply'>
-                <Textarea w="full" onChange={(e) => setReply(e.target.value)}/>
-                <Flex>
-                    <Button mt={3} onClick={submitReply}>Reply</Button>
-                    <Button mt={3} ml={3} onClick={cancelReply}>Cancel</Button>
-                </Flex>
-            </Box>
-            <CritiqueReply id={id} />
-            </>
-            ))}
+                    </Box>
+                    <CritiqueReply id={critique.critique_id} />
+                    </>
+            )
+            }
+
+            return(
+                    <>
+                    <Box p="2" overflow-y="auto" w={{lg: '35vw', sm: '100%'}} mt={5} position='static'>
+                            <Flex>
+                                <Image src="" w='3vh' h='3vh' mt={2} />
+                                <Heading size='sm' ml={3} mt={2}>{critique.display_name}</Heading>
+                                <Spacer />
+                                <Text fontSize='sm' mt={2}>{critique.time_ago}</Text>
+                                <Menu>
+                                    <MenuButton
+                                    px={4}
+                                    py={2}
+                                    transition='all 0.2s'
+                                    >
+                                    <ChevronDownIcon />
+                                    </MenuButton>
+                                    <MenuList p={3}>
+                                    <MenuGroup>
+                                        <MenuItem><EditHistory /></MenuItem>
+                                    </MenuGroup>
+                                    <MenuDivider />
+                                    <MenuGroup>
+                                        <MenuItem><ReportUser /></MenuItem>
+                                    </MenuGroup>
+                                    </MenuList>
+                                </Menu>
+                            </Flex>
+                            <Box w='100%' mt={1}>
+                                <Text fontSize='md'>{critique.body}</Text>
+                            </Box>
+                            <Flex w='20vw'>
+                                <Button variant='ghost' id={`star${critique.critique_id}`} onClick={()=>giveStar(critique.critique_id)}>Star {critique.stars}</Button>
+                                <Button variant='ghost' ml={5} onClick={()=>openReply(critique.critique_id)}>Reply</Button>
+                        </Flex>
+                </Box>
+                <Box p="2" w='35vw' mt={1} id={critique.critique_id} hidden>
+                    <Textarea w="full" onChange={(e) => setReply(e.target.value)}/>
+                    <Flex>
+                        <Button mt={3} onClick={() => submitReply(critique.critique_id)}>Reply</Button>
+                        <Button mt={3} ml={3} onClick={ () => cancelReply(critique.critique_id)}>Cancel</Button>
+                    </Flex>
+                </Box>
+                <CritiqueReply id={critique.critique_id} />
+                </>
+            )
+            })}
 
             <Center>
-            <Button variant='ghost' w="100%" onClick={loadMore}>Load More</Button>
+                <Button variant='ghost' w="100%" onClick={loadMore}>Load More</Button>
             </Center>
 
         </div>

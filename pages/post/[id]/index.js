@@ -44,6 +44,8 @@ import { useState, useEffect } from 'react'
 import { CritiqueReply } from '@component/critique/CritiqueReply'
 import DeletePost from '@component/post/options/delete'
 import { Critiques } from '@component/critique/Critiques'
+import { storage } from '../../../firebase.js'
+import { getDownloadURL, ref, uploadBytesResumable, deleteObject  } from 'firebase/storage'
 
 const breakpoints = createBreakpoints({
     sm: '320px',
@@ -83,13 +85,16 @@ export default function CritiquePost(post_id){
     const { API_URL } = process.env
     const { API_KEY } = process.env
 
-    const [cookie, setCookie] = useCookies('token', 'id', 'encrypted_id', 'display_name')
+    const [cookie, setCookie] = useCookies(['token', 'id', 'encrypted_id', 'display_name'])
     const [critique, setCritique] = useState('')
     const token = cookie.token
     const user_id = cookie.encrypted_id
     const id = cookie.id
     const likes = null
     const [data, setData] = useState([])
+    const [urls, setUrls] = useState([])
+    const [fileName, setFileName] = useState([])
+    
 
     useEffect(() => {
         // console.log(post_id.post_id)
@@ -108,19 +113,50 @@ export default function CritiquePost(post_id){
         axios.get(`${API_URL}/api/display_post/${post_id.post_id}`, config)
         .then(response => {
             // console.log(response.data);
+            const fileName1 = ref(storage, response.data.post.attachment1); 
+            const fileName2 = ref(storage, response.data.post.attachment2); 
+            const fileName3 = ref(storage, response.data.post.attachment3); 
+            const fileName4 = ref(storage, response.data.post.attachment4); 
+            const fileName5 = ref(storage, response.data.post.attachment5); 
+            // console.log(fileName1.name)
             setData(response.data.post);
-            // console.log(cookie.display_name)
+            // console.log(storage.refFromURL(response.data.post.attachment1))
+            // console.log(fileName)
 
             if(response.data.post.display_name === cookie.display_name){
                 document.getElementById('diffAcc').hidden=true;
             }else{
                 document.getElementById('sameAcc').hidden=true; 
             }
-            // console.log(posts)
+            
+            if(response.data.post.attachment1 !== 'undefined'){
+                setUrls((prevState) => [...prevState, response.data.post.attachment1])
+                setFileName((prevState) => [...prevState, fileName1.name])
+                if(response.data.post.attachment2 !== 'undefined'){
+                    setUrls((prevState) => [...prevState, response.data.post.attachment2])
+                    setFileName((prevState) => [...prevState, fileName2.name])
+                    if(response.data.post.attachment3 !== 'undefined'){
+                        setUrls((prevState) => [...prevState, response.data.post.attachment3])
+                        setFileName((prevState) => [...prevState, fileName3.name])
+                        if(response.data.post.attachment4 !== 'undefined'){
+                            setUrls((prevState) => [...prevState, response.data.post.attachment4])
+                            setFileName((prevState) => [...prevState, fileName4.name])
+                            if(response.data.post.attachment5 !== 'undefined'){
+                                setUrls((prevState) => [...prevState, response.data.post.attachment5])
+                                setFileName((prevState) => [...prevState, fileName5.name])
+                            }
+                        }
+                    }
+                }
+            }
+
+            
         })
         .catch(error => {
-            console.log(error.response);
+            console.log(error);
         });
+
+        
 
     }, [])
 
@@ -234,7 +270,7 @@ export default function CritiquePost(post_id){
                                 </MenuButton>
                                 <MenuList p={3}>
                                 <MenuGroup>
-                                    <MenuItem><EditPost data={data} /></MenuItem>
+                                    <MenuItem><EditPost data={data} url={urls} fileNames={fileName} /></MenuItem>
                                 </MenuGroup>
                                 <MenuDivider />
                                 {/* <MenuGroup>
@@ -291,60 +327,9 @@ export default function CritiquePost(post_id){
                             <option value='least-star'>Least Stars</option>
                         </Select>
                         </Flex>
-                        {/* <Menu>
-                            <MenuButton
-                            px={4}
-                            py={2}
-                            transition='all 0.2s'
-                            > 
-                            Sort By: 
-                            <ChevronDownIcon ml={2} />
-                            </MenuButton>
-                            <MenuList>
-                            <MenuItem><Link href="/profile/profile" as="/profile">Profile</Link></MenuItem>
-                            <MenuItem><Link href="/settings" as="/setting">Settings</Link></MenuItem>
-                            <MenuItem color="red" _hover={{ bg: 'red.500' }}><Link href="/">Log Out</Link></MenuItem>
-                            </MenuList>
-                        </Menu> */}
                     </Box>
                     {/* Critiques */}
                     <Box overflowY="scroll" h={{lg: '80vh', sm: '70vh'}} mt={5}>
-
-                        {/* <Box p="2"mt={5}>
-                            <Flex>
-                                <Image src="" w='3vh' h='3vh' mt={2} />
-                                <Heading size='sm' ml={3} mt={2}>Username</Heading>
-                                <Spacer />
-                                <Text fontSize='sm' mt={2}>Time</Text>
-
-                                <Menu>
-                                    <MenuButton
-                                    px={4}
-                                    py={2}
-                                    transition='all 0.2s'
-                                    >
-                                    <ChevronDownIcon />
-                                    </MenuButton>
-                                    <MenuList p={3}>
-                                    <MenuGroup>
-                                        <MenuItem><EditHistory /></MenuItem>
-                                    </MenuGroup>
-                                    <MenuDivider />
-                                    <MenuGroup>
-                                        <MenuItem><ReportUser /></MenuItem>
-                                    </MenuGroup>
-                                    </MenuList>
-                                </Menu>
-                            </Flex>
-                            <Box w='100%' mt={1}>
-                                <Text fontSize='md'>Lorem Adipisicing ut adipisicing ea aliqua ad esse amet eiusmod aliqua. Dolore tempor velit fugiat commodo consectetur eiusmod ad. Id in laborum aliquip et adipisicing ut esse adipisicing non et. Do nisi id in nisi anim fugiat excepteur quis pariatur magna incididunt non ipsum.</Text>
-                            </Box>
-                            <Flex w='20vw'>
-                                <Button variant='ghost'>Star 0</Button>
-                                <Button variant='ghost' ml={5}>Reply</Button>
-                            </Flex>
-
-                        </Box> */}
                         <Critiques id={post_id.post_id} />
                     </Box>
                     

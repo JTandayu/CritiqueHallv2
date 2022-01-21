@@ -51,6 +51,8 @@ function EditProfile({data}) {
     colorMode === 'light' ? 'Dark' : 'Light'
 
     const [cookie, setCookie] = useCookies('token', 'id', 'encrypted_id', 'display_name')
+    const [profileImage, setProfileImage] = useState([])
+    const [coverImage, setCoverImage] = useState([])
 
     const [progress, setProgress] = useState(0);
     const [url, setUrl] = useState(''); 
@@ -77,24 +79,26 @@ function EditProfile({data}) {
 
     // const [darkState, setDarkState] = useState();
 
-    const formHandler = (e) =>{
-      e.preventDefault();
-      const file = e.target[0].files[0];
-      // console.log(file)
-      uploadFiles(file); 
-    }
+    // const formHandler = (e) =>{
+    //   e.preventDefault();
+    //   const file = e.target[0].files[0];
+    //   // console.log(file)
+    //   uploadFiles(file); 
+    // }
 
     // const setDarkMode = (value) =>{
     //     toggleColorMode(value)
     //     setDarkState(value)
     // }
 
-    const uploadFiles = (file) => {
+    const uploadFiles = async() => {
       // console.log(storage)
 
       if (!file) return;
       const storageRef = ref(storage, `/files/${file.name}`)
-      const uploadTask = uploadBytesResumable(storageRef, file)
+
+      const uploadProfile = uploadBytesResumable(storageRef, file)
+      const uploadCover = uploadBytesResumable(storageRef, file)
       uploadTask.on("state_changed", (snapshot) => {
         const prog = Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
 
@@ -108,6 +112,21 @@ function EditProfile({data}) {
 
     }
 
+    const handleChange = e =>{
+            // console.log(e.target.files[i].size)
+            if(e.target.files[i].size > 25000000){
+                alert("File size is higher than the limit.")
+                // console.log(image)
+                return;
+            }else{
+                const newImage = e.target.files[i]
+                newImage['id'] = Math.random()
+                setImage((prevState) => [...prevState, newImage])
+                
+            }
+            
+    }
+
     const SubmitPersonalInformation = async () =>{
 
         let formData =  new FormData;
@@ -115,6 +134,7 @@ function EditProfile({data}) {
         formData.append('last_name', lastName)
         formData.append('display_name', displayName)
         formData.append('about_me', aboutMe)
+        uploadFiles();
 
         axios.post(`${API_URL}/api/change_profile`, formData, config)
         .then((response) => (
@@ -157,7 +177,7 @@ function EditProfile({data}) {
                     <Flex p={7}>
                         <Flex flexDir='column' align='center'>
                             <Heading size='md' mb={5}>Profile Picture</Heading>
-                            <Image src='https://www.clipartmax.com/png/middle/119-1198197_anonymous-person-svg-png-icon-free-download-anonymous-icon-png.png' w='7vw' h='7vw'></Image>
+                            <Image rounded='full' src={data.profile_photo} w='7vw' h='7vw'></Image>
                             <Center mt={3}>
                                 <input type='file'  />
                             </Center>
@@ -165,7 +185,7 @@ function EditProfile({data}) {
                         <Spacer />
                         <Flex flexDir='column' align='center'>
                             <Heading size='md' mb={3}>Cover Picture</Heading>
-                            <Image src='https://i.stack.imgur.com/SvWWN.png' w='14vw' h='7vw'></Image>
+                            <Image src={data.cover_photo} w='14vw' h='7vw'></Image>
                             <Center mt={3}>
                                 <input type='file'  />
                             </Center>
@@ -221,8 +241,12 @@ function EditProfile({data}) {
                     <Divider mb={5} mt={5} />
 
                     <Heading size='md' mb={5}>Preferences</Heading>
-                    <Center display='flex' mb={10}>
+                    <Center display='flex' mb={5}>
                             <FormLabel>Dark Mode</FormLabel>
+                            <Switch onChange={toggleColorMode}/>
+                    </Center>
+                    <Center display='flex' mb={10}>
+                            <FormLabel>Enable Updates</FormLabel>
                             <Switch onChange={toggleColorMode}/>
                     </Center>
                     <Divider mb={5} />

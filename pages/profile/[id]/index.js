@@ -85,13 +85,16 @@ export default function ProfilePage({data}){
             console.log(error.response);
         });
 
+
+
         let formData = new FormData;
-        formData.append('id', userData.encrypted_id)
+        formData.append('user_id', cookies.encrypted_id)
+        console.log(cookies.id)
 
         axios.post(`${API_URL}/api/display_posts`, formData, config)
         .then(response => {
             console.log(response.data);      
-            setUserPosts(response.data.data.user)
+            setUserPosts(response.data.posts)
         })
         .catch(error => {
             console.log(error.response);
@@ -101,7 +104,7 @@ export default function ProfilePage({data}){
         axios.post(`${API_URL}/api/display_critiques`, formData, config)
         .then(response => {
             console.log(response.data);      
-            setUserCritique(response.data.data.user)
+            setUserCritique(response.data.critiques)
         })
         .catch(error => {
             console.log(error.response);
@@ -131,10 +134,10 @@ export default function ProfilePage({data}){
 
             <Box mx={{lg: 'auto', md: '0', sm: '0'}} my='auto' bg='blue.200' w={{lg: '90%', md: '100%', sm: '100%'}} h={{lg: '80vh', md: '100vh', sm: '150vh'}} rounded='lg' mt={32} mb={{lg: 0, md: 0, sm: 10}} position='static'>
                 <Box display='flex' flexDir={{lg: 'row', md: 'column', sm: 'column'}} w='100%'>
-                    <Box w={{lg: '100vw', md: '100%', sm: '90%'}} h={{lg: '35vh', md: '35vh', sm: '45vh'}} bg='white' bgImage="url('https://i.stack.imgur.com/SvWWN.png')" p={3} display={{lg: 'flex', sm: 'block'}} mt={5} ml={{lg: 8, md: 0, sm: 5}} rounded='lg'>
+                    <Box w={{lg: '100vw', md: '100%', sm: '90%'}} h={{lg: '35vh', md: '35vh', sm: '45vh'}} bg='white' bgImage={`url('${userData.cover_photo}')`} p={3} display={{lg: 'flex', sm: 'block'}} mt={5} ml={{lg: 8, md: 0, sm: 5}} rounded='lg'>
                         <Box w='20vh' h='20vh' bg='gray' mt={24} ml={{lg: 5, md: 0, sm: 0}} mx={{lg: 0, md: 0, sm: 'auto'}} rounded='full'>
                             <Center>
-                                <Image w='18vh' h='18vh' rounded='full' src="https://www.clipartmax.com/png/middle/119-1198197_anonymous-person-svg-png-icon-free-download-anonymous-icon-png.png" mt={3}/>
+                                <Image w='18vh' h='18vh' rounded='full' src={userData.profile_photo} mt={3}/>
                             </Center>
                         </Box>
 

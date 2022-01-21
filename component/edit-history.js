@@ -25,6 +25,8 @@ import styles from "@styles/Hall.module.css";
 function EditHistory() {
     const { isOpen, onOpen, onClose } = useDisclosure()
 
+    
+
     return(
         <>
         <button onClick={onOpen} ml={5}>History</button>

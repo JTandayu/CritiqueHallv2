@@ -18,8 +18,10 @@ import styles from "@styles/Feedback.module.css";
 import { extendTheme } from '@chakra-ui/react'
 import { createBreakpoints } from '@chakra-ui/theme-tools'
 import { Radio, RadioGroup } from '@chakra-ui/react'
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Stack } from '@chakra-ui/react'
+import axios from 'axios'
+import { useCookies } from 'react-cookie'
 
 
 const breakpoints = createBreakpoints({
@@ -38,19 +40,41 @@ export default function FeedbackPage(){
 
     // const ans1, ans2, ans3, ans4 = useState('')
 
+    const[ans1, setAns1] = useState(0)
+    const[ans2, setAns2] = useState(0)
+    const[ans3, setAns3] = useState(0)
+    const[ans4, setAns4] = useState(0)
+    const[feedback, setFeedback] = useState('')
+    const [cookie, setCookies] = useCookies('token', 'encrypte_id')
 
-    // const SubmitFeedback = async() =>{
-        //const response =  await fetch(`${API_URL}/api/feedback`,  {
-            //     method: 'POST',
-            //     body: JSON.stringify({ans1, ans2, ans3, ans4}),
-            //     headers: {
-            //       'Content-Type': 'application/json',
-            //       'X-API-KEY': `${API_KEY}`
-            //     },
-            //   })
-            //   const data = await response.json()
-            //   console.log(data)
-    // }
+    const config = {
+        headers: { 
+          'content-type': 'multipart/form-data',
+          'X-API-KEY': `${API_KEY}`,
+          'Authorization': 'Basic Y2Fwc3RvbmUyMDIxOjEyMzQ=',
+          // 'Accept-Encoding': 'gzip, deflate, br',
+          'Accept': 'application/json',
+          'token': cookie.token,
+          'user_id': cookie.encrypted_id
+        }
+    }
+
+    const SubmitFeedback = async() =>{
+        let formData = new FormData;
+        formData.append('answer_1', ans1)
+        formData.append('answer_2', ans2)
+        formData.append('answer_3', ans3)
+        formData.append('answer_4', ans4)
+        formData.append('body', feedback)
+
+
+        axios.post(`${API_URL}/api/feedback`, formData, config)
+        .then((response)=>{
+            console.log(response.data)
+        }).catch((error)=>{
+            console.log(error)
+        })
+    }
 
     return(
         <main className={styles.container}>
@@ -71,7 +95,7 @@ export default function FeedbackPage(){
                     <Heading color="white" mx="auto">Feedback</Heading>
                     <Box mt="5vh" display='flex'>
                         <FormLabel >Duis amet dolor sint sunt minim proident do ullamco cillum ea do.</FormLabel>
-                        <RadioGroup>
+                        <RadioGroup onChange={(e)=>setAns1(e.target.value)}>
                         <Stack direction='row'>
                             <Radio value='1'></Radio>
                             <Radio value='2'></Radio>
@@ -83,7 +107,7 @@ export default function FeedbackPage(){
 
                     <Box mt="5vh" display='flex'>
                         <FormLabel>Duis amet dolor sint sunt minim proident do ullamco cillum ea do.</FormLabel>
-                        <RadioGroup>
+                        <RadioGroup onChange={(e)=>setAns2(e.target.value)}>
                         <Stack direction='row'>
                             <Radio value='1'></Radio>
                             <Radio value='2'></Radio>
@@ -95,7 +119,7 @@ export default function FeedbackPage(){
 
                     <Box mt="5vh" display='flex'>
                         <FormLabel>Duis amet dolor sint sunt minim proident do ullamco cillum ea do.</FormLabel>
-                        <RadioGroup>
+                        <RadioGroup onChange={(e)=>setAns3(e.target.value)}>
                         <Stack direction='row'>
                             <Radio value='1'></Radio>
                             <Radio value='2'></Radio>
@@ -107,7 +131,7 @@ export default function FeedbackPage(){
 
                     <Box mt="5vh" display='flex'>
                         <FormLabel>Duis amet dolor sint sunt minim proident do ullamco cillum ea do.</FormLabel>
-                        <RadioGroup>
+                        <RadioGroup onChange={(e)=>setAns4(e.target.value)}>
                         <Stack direction='row'>
                             <Radio value='1'></Radio>
                             <Radio value='2'></Radio>
@@ -117,10 +141,10 @@ export default function FeedbackPage(){
                         </RadioGroup>
                     </Box>
 
-                    <Center><Textarea w="100%" bg="light" mt="5vh" color='black' mx="auto" position='static' /></Center>
+                    <Center><Textarea w="100%" bg="light" mt="5vh" color='black' mx="auto" position='static' onChange={(e)=>setFeedback(e.target.value)}/></Center>
 
                     <Box w="100%">
-                        <Center><Button type='submit' mx='auto' colorScheme='blue' mt="3">Submit</Button></Center>
+                        <Center><Button type='submit' mx='auto' colorScheme='blue' mt="3" onClick={SubmitFeedback}>Submit</Button></Center>
                     </Box>
                     </form>
                 </Box>

@@ -14,22 +14,47 @@ import { Input,Button } from '@chakra-ui/react'
 import styles from "@styles/Hall.module.css";
 import axios from 'axios'
 import {useState, useEffect} from 'react' 
+import {useCookies} from 'react-cookie'
 
-const editCritique = () => {
+const EditCritique = ({data}) => {
     const { isOpen, onOpen, onClose } = useDisclosure()
     const { API_URL } = process.env
     const { API_KEY } = process.env
+    const [critique, setCritique] = useState('')
+    const [cookies, setCookie, removeCookie] = useCookies(['token', 'id', 'encrypted_id']);
+
+    const config = {
+        headers: {
+        'content-type': 'multipart/form-data',
+        'X-API-KEY': `${API_KEY}`,
+        'Authorization': 'Basic Y2Fwc3RvbmUyMDIxOjEyMzQ=',
+        'Accept': 'application/json',
+        'token': cookies.token,
+        'user_id': cookies.encrypted_id
+        }
+      }
 
     useEffect(() => {
         
     }, [])
 
     const editCritiqueItem = () => {
-
+        let formData = new FormData;
+        formData.append('body', critique)
+        
+        axios.post(`${API_URL}api/update_critique`, formData, config)
+        .then((response) => {
+            console.log(response.data)
+            onClose
+          }).catch((error)=>{
+            console.log(error)
+        })
     }
 
     return (
         <>
+            <button onClick={onOpen} width='10vw'>Edit</button>
+
             <form action='' method='POST'>
             <Modal isOpen={isOpen} onClose={onClose}>
                 <ModalOverlay />
@@ -37,8 +62,8 @@ const editCritique = () => {
                     <ModalHeader>Edit Critique</ModalHeader>
                     <ModalCloseButton />
                     <ModalBody>
-                        <Textarea w='100%'></Textarea>
-                        <Button>Save</Button>
+                        <Textarea w='100%' value={data.body} onChange={(e)=>setCritique(e.target.value)}></Textarea>
+                        <Button onClick={editCritiqueItem}>Save</Button>
                         <Button onClick={onClose}>Cancel</Button>
                         
                     </ModalBody>
@@ -50,4 +75,4 @@ const editCritique = () => {
     )
 }
 
-export default editCritique
+export default EditCritique

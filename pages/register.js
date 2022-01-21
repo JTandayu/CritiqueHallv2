@@ -17,7 +17,7 @@ import {
 } from "@chakra-ui/react"
 import { ArrowRightIcon, ArrowLeftIcon, CheckIcon, InfoOutlineIcon } from '@chakra-ui/icons'
 import { Select } from "@chakra-ui/react"
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Box } from '@chakra-ui/react'
 import axios from 'axios';
 import { createBreakpoints } from '@chakra-ui/theme-tools'
@@ -48,20 +48,7 @@ export async function getStaticProps(){
   const { API_URL } = process.env
   const { API_KEY } = process.env
 
-  const res = await fetch(`${API_URL}/api/specializations` , {
-    method: 'GET',
-    headers: {
-        'content-type': 'multipart/form-data',
-        'X-API-KEY': `${API_KEY}`,
-        'Authorization': 'Basic Y2Fwc3RvbmUyMDIxOjEyMzQ=',
-        // 'Accept-Encoding': 'gzip, deflate, br',
-        'Accept': 'application/json',
-    }
-  })
-
-  const data = await res.json()
-
-  const res2 = await fetch(`${API_URL}/api/departments` , {
+  const res2 = await fetch(`${API_URL}/api/get_departments` , {
     method: 'GET',
     headers: {
         'content-type': 'multipart/form-data',
@@ -74,18 +61,18 @@ export async function getStaticProps(){
 
   const data2 = await res2.json()
 
-  console.log(data)
-  console.log(data2)
+  // console.log(data)
+  // console.log(data2)
 
   return{
     props: {
-       data: data.specialization, 
-       data2: data2.departments
+      //  data: data.specialization, 
+       data2
     }
   }
 }
 
-export default function Register({data, data2}) {
+export default function Register({data2}) {
   const { API_URL } = process.env
   const { API_KEY } = process.env
 
@@ -98,6 +85,56 @@ export default function Register({data, data2}) {
   const [confirm_password, setConfirmPassword] = useState('')
   const [department, setDepartment] = useState('')
   const [specialization, setSpecialization] = useState('')
+  const [specList, setSpecList] = useState([])
+  const [depList, setDepList] = useState([])
+  const [gender, setGender] = useState('')
+
+    useEffect(() => {
+      const config = {
+        headers: { 
+          'content-type': 'multipart/form-data',
+          'X-API-KEY': `${API_KEY}`,
+          'Authorization': 'Basic Y2Fwc3RvbmUyMDIxOjEyMzQ=',
+          'Accept': 'application/json',
+        }
+      }
+
+      axios.get(`${API_URL}/api/get_departments`, config)
+      .then(response => {
+          console.log(response.data);
+          setDepList(response.data.Departments);
+      })
+      .catch(error => {
+          console.log(error);
+      });
+
+      
+    }, [])
+
+    const getSpecList = e =>{
+
+      // console.log(e)
+
+      setDepartment(e)
+
+      const config = {
+        headers: { 
+          'content-type': 'multipart/form-data',
+          'X-API-KEY': `${API_KEY}`,
+          'Authorization': 'Basic Y2Fwc3RvbmUyMDIxOjEyMzQ=',
+          'Accept': 'application/json',
+        }
+      }
+
+      axios.get(`${API_URL}/api/get_dept_special/${e}`, config)
+      .then(response => {
+          console.log(response);
+          setSpecList(response.data.specializations);
+      })
+      .catch(error => {
+          console.log(error);
+      });
+    } 
 
 
     const submitRegister = async () =>{
@@ -195,72 +232,27 @@ export default function Register({data, data2}) {
           
             <Heading mb={2} as="h2" size="lg">Register</Heading>
                 <FormLabel>Department</FormLabel>
-                <Select placeholder="Select Department" size="sm" onChange={e => setDepartment(e.target.value)}>
-
-                  {data2.map(department => (
+                <Select placeholder="Select Department" size="sm" onChange={e => getSpecList(e.target.value)}>
+                  {depList.map(department => (
                     <option value={department.name}>{department.name}</option>
                   ))}
-
                 {/* <option value="shs">Senior High School (SHS)</option>
                 <option value="col">College (COL)</option> */}
                 </Select>
                 <br />
                 <FormLabel>Strand or Specialization</FormLabel>
                 <Select placeholder="Select Strand / Specialization" size="sm" onChange={e => setSpecialization(e.target.value)}>
-                {data.map(specialization => (
+                {specList.map(specialization => (
                   <option value={specialization.name}>{specialization.name}</option>
                 ))}
-                {/* <option value="humss">SHS - Humanities and Social Sciences (HUMSS)</option>
-                <option value="abm">SHS - Accountancy and Business Management (ABM)</option>
-                <option value="audprod">SHS - Audio Production</option>
-                <option value="mma">SHS - Media and Visual Arts with specialization in Multimedia Arts</option>
-                <option value="ani">SHS - Animation</option>
-                <option value="ani">SHS - Software Development</option>
-                <option value="graph">SHS - Graphic Illustration</option>
-                <option value="fd">SHS - Fashion Design</option>
-                <option value="rob">SHS - Robotics</option>
-                <option value="bscs-se">COL - BSCS - Software Engineering</option>
-                <option value="bscs-ds">COL - BSCS - Data Science</option>
-                <option value="bscs-ds">COL - BSCS - Cloud Computing and Network Engineering</option>
-                <option value="bsemc-gd">COL - BSEMC - Game Development</option>
-                <option value="bsit-wd">COL - BSIT - Web Development</option>
-                <option value="bsba-mm">COL - BSBA - Marketing Management</option>
-                <option value="bs-rem">COL - BS - Real Estate Management</option>
-                <option value="bs-acc">COL - BS - Accountancy</option>
-                <option value="ba-psy">COL - BA - Psychology</option>
-                <option value="bs-ani">COL - BS - Animation</option>
-                <option value="bs-mma">COL - BS - Multimedia Arts and Design</option>
-                <option value="ba-fd">COL - BA - Fashion Design and Technology</option>
-                <option value="ba-fvx">COL - BA - Film and Visual Effects</option>
-                <option value="ba-mpsd">COL - BA - Music Production and Sound Design</option> */}
                 </Select>
                 <br />
-                {/* <FormLabel>Profile Picture</FormLabel>
-                <HStack direction="column" spacing={5} align="center">
-                <MotionButton
-                  whileHover={{ scale: 1.2 }}
-                  whileTap={{ scale: 0.9 }}
-                  className={styles.RegisterButton} 
-                  colorScheme="messenger" 
-                  type="submit" 
-                  size="sm"
-                  >Upload Picture</MotionButton>
-                  <FormHelperText>supported formats: JPEG (JPG), PNG, GIF, TIFF, and RAW.</FormHelperText>
-                  </HStack>
+                <FormLabel>Gender</FormLabel>
+                <Select placeholder="Select Gender" size="sm" onChange={e => setGender(e.target.value)}>
+                  <option value='m'>Male</option>
+                  <option value='f'>Female</option>
+                </Select>
                 <br />
-                <FormLabel>Cover Picture</FormLabel>
-                <HStack direction="column" spacing={5} align="center">
-                <MotionButton
-                  whileHover={{ scale: 1.2 }}
-                  whileTap={{ scale: 0.9 }}
-                  className={styles.RegisterButton} 
-                  colorScheme="messenger" 
-                  type="submit" 
-                  size="sm"
-                  >Upload Picture</MotionButton>
-                  <FormHelperText>supported formats: JPEG (JPG), PNG, GIF, TIFF, and RAW.</FormHelperText>
-                  </HStack>
-                <br /> */}
                 <HStack direction="row" spacing={8} align="center">
                 <MotionButton
                   whileHover={{ scale: 1.2 }}

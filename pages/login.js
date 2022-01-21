@@ -28,21 +28,6 @@ import { createBreakpoints } from '@chakra-ui/theme-tools'
 
 const MotionButton = motion(Button)
 
-// export async function getServerSideProps(){
-//   const { API_URL } = process.env
-
-//   const res = await fetch(`${API_URL}/api/login`)
-//   const data = await res.json()
-
-//   return {
-//     props: { 
-//       status: data
-//     },
-//   }
-// }
-
-// axios.defaults.withCredentials = true;
-
 const breakpoints = createBreakpoints({
   sm: '320px',
   md: '768px',
@@ -63,12 +48,7 @@ export default function Login({user}) {
   const [cookies, setCookies, removeCookies] = useCookies(['token', 'id', 'encrypted_id'])
 
 
-    const submitLogin = async (response) =>{
-
-      const login = {
-        email : email,
-        password : password
-      }
+    const submitLogin = async () =>{
 
       let formData = new FormData(); 
       formData.append('email', email);   //append the values with key, value pair
@@ -88,10 +68,9 @@ export default function Login({user}) {
       axios.post(`${API_URL}/api/login`, formData, config)
       .then(response => {
           console.log(response.data);
-
           setCookies('token', response.data.token)
           setCookies('display_name', response.data.display_name)
-          setCookies('id', response.data.id)
+          // setCookies('id', response.data.id)
           setCookies('encrypted_id', response.data.encrypted_id)
           setCookies('profile_pic', response.data.profile_pic)
           document.getElementById('warning1').hidden=true;

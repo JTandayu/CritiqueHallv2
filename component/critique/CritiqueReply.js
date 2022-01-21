@@ -20,6 +20,7 @@ import axios from 'axios'
 import { useCookies } from 'react-cookie'
 import { createBreakpoints } from '@chakra-ui/theme-tools'
 import { extendTheme } from '@chakra-ui/react'
+import EditReply from './options/edit-reply'
 
 const breakpoints = createBreakpoints({
     sm: '320px',
@@ -51,33 +52,99 @@ export const CritiqueReply = ({id}) => {
 
     useEffect(() => {
         // const res = axios.get(`${API_URL}/api/display_all_critiques`, config)
-        axios.get(`${API_URL}/api/display_replies`, config)
+
+        let formData = new FormData;
+        formData.append('critique_id', id);
+        formData.append('last_id', null);
+
+        axios.post(`${API_URL}/api/display_replies`, formData, config)
         .then((response) =>{
             console.log(response.data)
-            setCritiqueReply(response.data)
+            setCritiqueReply(response.data.data)
         }).catch((error) =>{
             console.log(error.response)
         })
     }, [])
 
-    const giveStar = async() =>{
-        axios.post(`${API_URL}/api/star_reply`, config)
+    const giveStar = async (id) =>{
+        let formData = new FormData;
+        formData.append('reply_id', id);
+
+        axios.post(`${API_URL}/api/star_reply`, formData, config)
         .then((response) =>{
             console.log(response.data)
+            document.getElementById(id).innerHTML=response.data.likes;
         }).catch((error) =>{
             console.log(error.response)
         })
     }
 
+    const loadMore = async() =>{
+        let formData = new FormData;
+        formData.append('post_id', id);
+        formData.append('last_id', lastId);
+
+        axios.post(`${API_URL}/api/display_all_critiques`, formData, config)
+        .then((response) =>{
+            console.log(response.data)
+            setCritiqueItems(response.data)
+        }).catch((error) =>{
+            console.log(error.response)
+        })
+        document.getElementById('reply').hidden=true;
+    }
+
     return (
         <div>
-            {critiqueReply.map((reply)=>(
+            {critiqueReply.map((reply)=>{
+                if(reply.display_name === cookie.display_name){
+                return(
+            
                 <Box p="2" overflow-y="auto" w={{lg: '32vw', sm: '85%'}} ml={16} mt={5}>
                             <Flex>
                                 <Image src="" w='3vh' h='3vh' mt={2} />
-                                <Heading size='sm' ml={3} mt={2}>Username</Heading>
+                                <Heading size='sm' ml={3} mt={2}>{reply.display_name}</Heading>
                                 <Spacer />
-                                <Text fontSize='sm' mt={2}>Time</Text>
+                                <Text fontSize='sm' mt={2}>{reply.time_ago}</Text>
+
+                                <Menu>
+                                    <MenuButton
+                                    px={4}
+                                    py={2}
+                                    transition='all 0.2s'
+                                    >
+                                    <ChevronDownIcon />
+                                    </MenuButton>
+                                    <MenuList p={3}>
+                                    <MenuGroup>
+                                        <MenuItem><EditHistory /></MenuItem>
+                                    </MenuGroup>
+                                    <MenuDivider />
+                                    <MenuGroup>
+                                        <MenuItem><EditReply data={reply} /></MenuItem>
+                                    </MenuGroup>
+                                    </MenuList>
+                                </Menu>
+                            </Flex>
+                            <Box w='100%' mt={1}>
+                                <Text fontSize='md'>{reply.body}</Text>
+                            </Box>
+                            <Flex w='20vw'>
+                                <Button variant='ghost' id={reply.reply_id} onClick={()=>giveStar(reply.reply_id)}>Star {reply.stars}</Button>
+                                {/* <Button variant='ghost' ml={5}>Reply</Button> */}
+                        </Flex>
+
+                </Box>
+                )
+            }
+            return(
+            
+                <Box p="2" overflow-y="auto" w={{lg: '32vw', sm: '85%'}} ml={16} mt={5}>
+                            <Flex>
+                                <Image src="" w='3vh' h='3vh' mt={2} />
+                                <Heading size='sm' ml={3} mt={2}>{reply.display_name}</Heading>
+                                <Spacer />
+                                <Text fontSize='sm' mt={2}>{reply.time_ago}</Text>
 
                                 <Menu>
                                     <MenuButton
@@ -99,16 +166,16 @@ export const CritiqueReply = ({id}) => {
                                 </Menu>
                             </Flex>
                             <Box w='100%' mt={1}>
-                                <Text fontSize='md'>Lorem Adipisicing ut adipisicing ea aliqua ad esse amet eiusmod aliqua. Dolore tempor velit fugiat commodo consectetur eiusmod ad. Id in laborum aliquip et adipisicing ut esse adipisicing non et. Do nisi id in nisi anim fugiat excepteur quis pariatur magna incididunt non ipsum.</Text>
+                                <Text fontSize='md'>{reply.body}</Text>
                             </Box>
                             <Flex w='20vw'>
-                                <Button variant='ghost' onClick={giveStar}>Star 0</Button>
+                                <Button variant='ghost' id={reply.reply_id} onClick={()=>giveStar(reply.reply_id)}>Star {reply.stars}</Button>
                                 {/* <Button variant='ghost' ml={5}>Reply</Button> */}
                         </Flex>
 
                 </Box>
-            ))
-            }
+            )
+            })}
         </div>
     )
 }

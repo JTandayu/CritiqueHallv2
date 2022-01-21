@@ -53,7 +53,11 @@ const breakpoints = createBreakpoints({
 
 // }
 
-function EditPost({data}){
+function BeforeRender({}){
+    
+}
+
+function EditPost({data, url, fileNames}){
     const { isOpen, onOpen, onClose } = useDisclosure()
     const { API_URL } = process.env
     const { API_KEY } = process.env
@@ -68,38 +72,42 @@ function EditPost({data}){
     const [image, setImage] = useState([])
     const [fileName, setFileName] = useState([])
     const [urls, setUrls] = useState([]); 
+    // console.log(url)
 
 
     useEffect(() => {
 
+        setUrls(url)
+        setFileName(fileNames)
+
         // console.log(data)
         // setFileName((prevState) => [...prevState, storage.refFromURL(data.attachment1)])
 
-        if(data.attachment1 != 'undefined'){
-            setUrls((prevState) => [...prevState, data.attachment1])
-            // setFileName((prevState) => [...prevState, storage.refFromURL(data.attachment1)])
-            if(data.attachment2 != 'undefined'){
-                setUrls((prevState) => [...prevState, data.attachment2])
-                if(data.attachment3 != 'undefined'){
-                    setUrls((prevState) => [...prevState, data.attachment3])
-                    if(data.attachment4 != 'undefined'){
-                        setUrls((prevState) => [...prevState, data.attachment4])
-                        if(data.attachment5 != 'undefined'){
-                            setUrls((prevState) => [...prevState, data.attachment5])
-                        }
-                    }
-                }
-            }
-        }
+        // if(url[0] !== 'undefined'){
+        //     setUrls((prevState) => [...prevState, url[0]])
+        //     // setFileName((prevState) => [...prevState, storage.refFromURL(data.attachment1)])
+        //     if(url[1] !== 'undefined'){
+        //         setUrls((prevState) => [...prevState, url[1]])
+        //         // setFileName((prevState) => [...prevState, storage.refFromURL(data.attachment2)])
+        //         if(url[2] !== 'undefined'){
+        //             setUrls((prevState) => [...prevState, url[2]])
+        //             // setFileName((prevState) => [...prevState, storage.refFromURL(data.attachment3)])
+        //             if(url[3] !== 'undefined'){
+        //                 setUrls((prevState) => [...prevState, url[3]])
+        //                 // setFileName((prevState) => [...prevState, storage.refFromURL(data.attachment4)])
+        //                 if(url[4] !== 'undefined'){
+        //                     setUrls((prevState) => [...prevState, url[4]])
+        //                     // setFileName((prevState) => [...prevState, storage.refFromURL(data.attachment5)])
+        //                 }
+        //             }
+        //         }
+        //     }
+        // }
+        // return;
         
-        
-        
-        
-        
-        
-    }, [])
+    }, [url])
 
-    const uploadFiles = () => {
+    const uploadFiles = async () => {
         if(urls.length > 4){
                 alert('Maximum of 5 files only. Please attach link of google drive file instead');
                 return;
@@ -147,22 +155,22 @@ function EditPost({data}){
         }
     }
 
-    // const deleteFile = async (filename, i) =>{
+    const deleteFile = async (filename, i) =>{
             
-    //     const desertRef = ref(storage, `/files/${cookies.display_name}/${filename}`)
-    //     fileName.splice(i, 1)
-    //     image.splice(i, 1)
-    //     urls.splice(i, 1)
+        const desertRef = ref(storage, `/files/${cookies.display_name}/${filename}`)
+        fileName.splice(i, 1)
+        image.splice(i, 1)
+        urls.splice(i, 1)
 
-    //     setFileName(fileName => fileName.filter(e => e !== i))
-    //     deleteObject(desertRef).then((response) => {
-    //         // console.log(response.data)
-    //         alert("File deleted successfully")
-    //         return;
-    //     }).catch((error) => {
-    //         console.log(error)
-    //     });
-    // }
+        setFileName(fileName => fileName.filter(e => e !== i))
+        deleteObject(desertRef).then((response) => {
+            // console.log(response.data)
+            alert("File deleted successfully")
+            return;
+        }).catch((error) => {
+            console.log(error)
+        });
+    }
 
     const submitPost = async () =>{
 
@@ -190,10 +198,11 @@ function EditPost({data}){
             'content-type': 'multipart/form-data',
             'X-API-KEY': `${API_KEY}`,
             'Authorization': 'Basic Y2Fwc3RvbmUyMDIxOjEyMzQ=',
-            // 'Accept-Encoding': 'gzip, deflate, br',
             'Accept': 'application/json',
+            'token': cookies.token,
+            'user_id': cookies.encrypted_id
             }
-        }
+          }
 
         axios.post(`${API_URL}/api/create_post`, formData, config)
         .then(response => {

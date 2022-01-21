@@ -14,8 +14,10 @@ import { Box } from '@chakra-ui/react'
 import { useState } from 'react';
 import { storage } from '../../../firebase.js'
 import { getDownloadURL, ref, uploadBytesResumable } from 'firebase/storage'
+import axios from "axios";
+import {useCookies} from 'react-cookie'
 
-function DeletePost(){
+function DeletePost({id}){
     const { isOpen, onOpen, onClose } = useDisclosure()
     const { API_URL } = process.env
     const { API_KEY } = process.env
@@ -23,12 +25,24 @@ function DeletePost(){
 
     const [progress, setProgress] = useState(0);
     const [url, setUrl] = useState(''); 
+    const [cookies, setCookie, removeCookie] = useCookies(['token', 'id', 'encrypted_id']);
 
     const formHandler = (e) =>{
       e.preventDefault();
       const file = e.target[0].files[0];
       // console.log(file)
       uploadFiles(file); 
+    }
+
+    const config = {
+      headers: {
+      'content-type': 'multipart/form-data',
+      'X-API-KEY': `${API_KEY}`,
+      'Authorization': 'Basic Y2Fwc3RvbmUyMDIxOjEyMzQ=',
+      'Accept': 'application/json',
+      'token': cookies.token,
+      'user_id': cookies.encrypted_id
+      }
     }
 
     const uploadFiles = (file) => {
@@ -51,7 +65,13 @@ function DeletePost(){
     }
 
     const deletePost = async () =>{
-
+      axios.get(`${API_URL}api/delete_post/${id}`, config)
+      .then((response) => {
+        console.log(response.data)
+        onClose
+      }).catch((error)=>{
+        console.log(error)
+      })
     }
 
 
