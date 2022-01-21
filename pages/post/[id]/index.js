@@ -94,6 +94,7 @@ export default function CritiquePost(post_id){
     const [data, setData] = useState([])
     const [urls, setUrls] = useState([])
     const [fileName, setFileName] = useState([])
+    const [filter, setFilter] = useState('newest')
     
 
     useEffect(() => {
@@ -112,7 +113,7 @@ export default function CritiquePost(post_id){
 
         axios.get(`${API_URL}/api/display_post/${post_id.post_id}`, config)
         .then(response => {
-            // console.log(response.data);
+            console.log(response.data);
             const fileName1 = ref(storage, response.data.post.attachment1); 
             const fileName2 = ref(storage, response.data.post.attachment2); 
             const fileName3 = ref(storage, response.data.post.attachment3); 
@@ -320,7 +321,7 @@ export default function CritiquePost(post_id){
                         <Spacer />
                         <Flex w={{lg: '15vw', sm: '50%'}} mt={1}>
                         <Text mr={{lg: 5, sm: 1}} w={20} mt={2}>Sort by: </Text>
-                        <Select>
+                        <Select onChange={(e)=>setFilter(e.target.value)}>
                             <option value='newest'>Newest</option>
                             <option value='oldest'>Oldest</option>
                             <option value='most-star'>Most Stars</option>
@@ -330,7 +331,7 @@ export default function CritiquePost(post_id){
                     </Box>
                     {/* Critiques */}
                     <Box overflowY="scroll" h={{lg: '80vh', sm: '70vh'}} mt={5}>
-                        <Critiques id={post_id.post_id} />
+                        <Critiques id={post_id.post_id} filter={filter} />
                     </Box>
                     
                         

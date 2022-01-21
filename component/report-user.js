@@ -51,16 +51,16 @@ function ReportUser() {
                             <FormLabel>Type of Offense</FormLabel>
                             <Flex flexDir='column' ml={8}>
                                 <Checkbox size='md' mb={2}>
-                                    Checkbox
+                                    Inappropriate Post
                                 </Checkbox>
                                 <Checkbox size='md' mb={2}>
-                                    Checkbox
+                                    Inappropriate Critique
                                 </Checkbox>
                                 <Checkbox size='md' mb={2}>
-                                    Checkbox
+                                    Inappropriate Username
                                 </Checkbox>
                                 <Checkbox size='md' mb={2}>
-                                    Checkbox
+                                    Spamming
                                 </Checkbox>
                                 <Checkbox size='md' mb={2}>
                                     Checkbox

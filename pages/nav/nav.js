@@ -146,7 +146,7 @@ export default function Nav({id}){
             </Flex>
             <Spacer />
                 <form action='/search' method='POST' onSubmit={searchItem}>
-                    <Input display={['none','none','flex','flex']} w='30vw' type='text' mt={7} mr='15vw' color='black' bg='white' onChange={(e)=>setSearch(e.target.value)} />
+                    <Input display={['none','none','none','flex']} w='30vw' type='text' mt={7} mr='10vw' color='black' bg='white' borderColor='gray.400' onChange={(e)=>setSearch(e.target.value)} />
                 </form>
             <Spacer />
         <Flex
@@ -164,6 +164,7 @@ export default function Nav({id}){
                         aria-label='Home'
                         my={2}
                         w='100%'
+                        position='static'
 
                     >
                         HOME
@@ -176,6 +177,7 @@ export default function Nav({id}){
                         aria-label='Home'
                         my={2}
                         w='100%'
+                        position='static'
 
                     >
                         CRITIQUE
@@ -188,6 +190,7 @@ export default function Nav({id}){
                         aria-label='Home'
                         my={2}
                         w='100%'
+                        position='static'
 
                     >
                         FEEDBACK
@@ -199,7 +202,9 @@ export default function Nav({id}){
                             variant='ghost'
                             aria-label='Home'
                             my={2}
-                            w='100%'>Notif</Button>
+                            w='100%'
+                            position='static'
+                            >Notif</Button>
                     </PopoverTrigger>
                     <PopoverContent>
                         <PopoverArrow />
@@ -238,7 +243,7 @@ export default function Nav({id}){
 
         
         <Flex
-        w='40vw'
+        w='60vw'
         bg={useColorModeValue('white', '#1a202c')}
         zIndex={20}
         h='100vh'
@@ -264,6 +269,9 @@ export default function Nav({id}){
 
             </Flex>
         <Flex flexDir='column' align='center'>
+                <form action='/search' method='POST' onSubmit={searchItem}>
+                    <Input w='50vw' type='text' mt={7} color='black' bg='white' placeholder='Search' borderColor='gray.400' onChange={(e)=>setSearch(e.target.value)} />
+                </form>
                 <Link href="/home">
                     <Button
                         as='a'

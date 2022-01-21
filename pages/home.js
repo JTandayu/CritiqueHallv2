@@ -35,6 +35,7 @@ import { useCookies } from 'react-cookie'
 import { storage } from '../firebase.js'
 import { getDownloadURL, ref, uploadBytesResumable } from 'firebase/storage'
 import {useState} from 'react'
+import ShowHallDescription from '@component/show-hall-description'
 
 
 const breakpoints = createBreakpoints({
@@ -59,11 +60,13 @@ function Home(){
             <link rel="icon" href="/logo256.png" onLoad=""/>
           </Head>
 
-          <Box position='static' w="100%" h="70vh" display={{lg: 'flex', md: 'flex', sm: 'block'}} z-index='-1' borderBottom="1px solid black">
+          <Box position='static' w="100%" h={{lg: '70vh', md: '100%', sm: '100%'}} display={{lg: 'flex', md: 'flex', sm: 'block'}} z-index='-1' borderBottom="1px solid black">
             <Flex mt={44} flexDir='column' align='center' w={{lg: '50vw', md: '100%', sm: '100%'}}>
               <Heading size='3xl' >WELCOME TO</Heading>
               <Image src='critiquehall.png' w={{lg: '30vw', md: '100%', sm: '100%'}} h='37vh' mt={5}/>
             </Flex>
+            <Spacer />
+            <Image src='man-texting.png' w={{lg: '30vw', md: '100%', sm: '100%'}} h='60vh' mt='10vh' mr='10vw' align='center'/>
           </Box>
 
             {/* <form onSubmit={formHandler}>
@@ -112,21 +115,45 @@ function Home(){
 
           <Box position='static' w="100%" h="80vh" display={{lg: 'flex', md: 'flex', sm: 'block'}} flexDir='column'>
             <Heading size='3xl' align='center' w='100%' mt={5}>Halls</Heading>
-            <Flex mt='10vh' w='90%' mx='auto'>
-              <Box w='20vw' h='40vh' bg='purple'>
-
+            <Flex mt='10vh' w={{lg: '90%', md: '100vw', sm: '100vw'}} mx='auto' overflowX='auto'>
+              <Box w={{lg: '20vw', md: '100%', sm: '100%'}} h='40vh' bg='purple'>
+                <Heading align='center' mt={5} color='white' >Technology</Heading>
+                <Center>
+                  <Image src='SOC.png' align='center' w='10vw' h='20vh' mt={5}/>
+                </Center>
+                <Center mt='10'>
+                  <ShowHallDescription hall='Technology' color='#bd01bd' fontColor='white' />
+                </Center>
               </Box>
               <Spacer />
-              <Box w='20vw' h='40vh' bg='blue.300'>
-
+              <Box w={{lg: '20vw', md: '100%', sm: '100%'}} h='40vh' bg='blue.300' ml={{lg: '0', md: '0', sm: '20vw'}}>
+                <Heading align='center' mt={5} color='white'  >Arts</Heading>
+                <Center>
+                  <Image src='SODA.png' align='center' w='20vw' h='20vh' mt={5}/>
+                </Center>
+                <Center mt='10'>
+                  <ShowHallDescription hall='Arts' color='#91c9f2' fontColor='black' />
+                </Center>
               </Box>
               <Spacer />
-              <Box w='20vw' h='40vh' bg='red'>
-
+              <Box w={{lg: '20vw', md: '100%', sm: '100%'}} h='40vh' bg='red'>
+                <Heading align='center' mt={5} color='white' >Business</Heading>
+                <Center>
+                  <Image src='SOB.png' align='center' w='20vw' h='20vh' mt={5}/>
+                </Center>
+                <Center mt='10'>
+                  <ShowHallDescription hall='Business' color='#ff5656' fontColor='black'/>
+                </Center>
               </Box>
               <Spacer />
-              <Box w='20vw' h='40vh' bg='green.300'>
-
+              <Box w={{lg: '20vw', md: '100%', sm: '100%'}} h='40vh' bg='green.300'>
+                <Heading align='center' mt={5} color='white' >Lounge</Heading>
+                <Center>
+                  <Image src='discussions.png' align='center' w='15vw' h='20vh' mt={5}/>
+                </Center>
+                <Center mt='10'>
+                  <ShowHallDescription hall='Lounge' color='#9affc0' fontColor='black'/>
+                </Center>
               </Box>
             </Flex>
           </Box>  

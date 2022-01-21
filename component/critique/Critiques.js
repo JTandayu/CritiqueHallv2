@@ -33,7 +33,7 @@ const breakpoints = createBreakpoints({
 
 const theme = extendTheme({ breakpoints })
 
-export const Critiques = ({id}) => {
+export const Critiques = ({id, filter}) => {
     const { API_URL } = process.env
     const { API_KEY } = process.env
 
@@ -41,6 +41,8 @@ export const Critiques = ({id}) => {
     const [critiqueItems, setCritiqueItems] = useState([])
     const [reply, setReply] = useState('')
     const [lastId, setLastID] =  useState('0')
+    const filterCritique = filter;
+    // console.log(filter)
     // console.log(cookie.token)
     // const [data, setData] =  useState([])
 
@@ -65,15 +67,16 @@ export const Critiques = ({id}) => {
         .then((response) =>{
             console.log(response.data)
             setCritiqueItems(response.data.data)
-            document.getElementById(response.data.data.critique_id).hidden=true
+            // document.getElementById(response.data.data.critique_id).hidden=true
+            console.log(response.data.data[0])
             
-            for(let i = 0; i < critiqueItems.length; i++){
-                if(i == critiqueItems.length - 1){
-                    setLastID(critiqueItems[i].critique_id)
+            for(let i = 0; i < response.data.data.length; i++){
+                if(i == response.data.data.length - 1){
+                    setLastID(response.data.data[i].critique_id)
                 }
             }
         }).catch((error) =>{
-            console.log(error.response)
+            console.log(error)
         })
         
     }, [])
@@ -97,6 +100,10 @@ export const Critiques = ({id}) => {
         })
     }
 
+    const sortCritique = () =>{
+
+    }
+
     const cancelReply = async(id) =>{
         document.getElementById(id).hidden=true;
     }
@@ -105,15 +112,28 @@ export const Critiques = ({id}) => {
         let formData = new FormData;
         formData.append('post_id', id);
         formData.append('last_id', lastId);
+        console.log(lastId)
+        console.log(critiqueItems)
 
         axios.post(`${API_URL}/api/display_all_critiques`, formData, config)
         .then((response) =>{
             console.log(response.data)
-            setCritiqueItems(response.data)
+            // this.setState((prevState) => [...prevState, urls])
+            response.data.data.map((item)=>{
+                setCritiqueItems((prevState) => [...prevState, item])
+            })
+            
+
+            for(let i = 0; i < response.data.data.length; i++){
+                if(i == response.data.data.length - 1){
+                    setLastID(response.data.data[i].critique_id)
+                }
+            }
+
         }).catch((error) =>{
             console.log(error.response)
         })
-        document.getElementById('reply').hidden=true;
+        // document.getElementById('reply').hidden=true;
     }
 
     const giveStar = async(id) =>{
@@ -229,7 +249,7 @@ export const Critiques = ({id}) => {
             })}
 
             <Center>
-                <Button variant='ghost' w="100%" onClick={loadMore}>Load More</Button>
+                <Button variant='ghost' w="100%" onClick={loadMore} id='loadMore'>Load More</Button>
             </Center>
 
         </div>

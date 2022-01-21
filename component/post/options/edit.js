@@ -16,7 +16,7 @@ import { useDisclosure } from '@chakra-ui/react'
 import { Button, Image } from '@chakra-ui/react'
 import styles from "@styles/Hall.module.css";
 import { Box } from '@chakra-ui/react'
-import { useState, useEffect } from 'react';
+import { useState, useEffect, SetStateAction, forceUpdate } from 'react';
 import { Divider, Center } from "@chakra-ui/react";
 import { Input } from '@chakra-ui/react'
 import { Label } from '@chakra-ui/react'
@@ -65,47 +65,24 @@ function EditPost({data, url, fileNames}){
     const [title, setTitle] = useState('')
     const [description, setPassword] = useState('')
 
-    const [cookies, setCookie, removeCookie] = useCookies(['token', 'id', 'encrypted_id']);
+    const [cookies, setCookie, removeCookie] = useCookies(['token', 'id', 'encrypted_id', 'display_name']);
     // const [data, setData] =  useState([])
 
     const [progress, setProgress] = useState(0);
     const [image, setImage] = useState([])
     const [fileName, setFileName] = useState([])
     const [urls, setUrls] = useState([]); 
+    const [fileNameList, setFileNameList] = useState([])
+    const [urlList, setUrlList] = useState([])
     // console.log(url)
 
 
     useEffect(() => {
-
         setUrls(url)
         setFileName(fileNames)
-
-        // console.log(data)
-        // setFileName((prevState) => [...prevState, storage.refFromURL(data.attachment1)])
-
-        // if(url[0] !== 'undefined'){
-        //     setUrls((prevState) => [...prevState, url[0]])
-        //     // setFileName((prevState) => [...prevState, storage.refFromURL(data.attachment1)])
-        //     if(url[1] !== 'undefined'){
-        //         setUrls((prevState) => [...prevState, url[1]])
-        //         // setFileName((prevState) => [...prevState, storage.refFromURL(data.attachment2)])
-        //         if(url[2] !== 'undefined'){
-        //             setUrls((prevState) => [...prevState, url[2]])
-        //             // setFileName((prevState) => [...prevState, storage.refFromURL(data.attachment3)])
-        //             if(url[3] !== 'undefined'){
-        //                 setUrls((prevState) => [...prevState, url[3]])
-        //                 // setFileName((prevState) => [...prevState, storage.refFromURL(data.attachment4)])
-        //                 if(url[4] !== 'undefined'){
-        //                     setUrls((prevState) => [...prevState, url[4]])
-        //                     // setFileName((prevState) => [...prevState, storage.refFromURL(data.attachment5)])
-        //                 }
-        //             }
-        //         }
-        //     }
-        // }
-        // return;
-        
-    }, [url])
+        setUrlList(url)
+        setFileNameList(fileNames)
+    }, [fileNames])
 
     const uploadFiles = async () => {
         if(urls.length > 4){
@@ -163,6 +140,7 @@ function EditPost({data, url, fileNames}){
         urls.splice(i, 1)
 
         setFileName(fileName => fileName.filter(e => e !== i))
+
         deleteObject(desertRef).then((response) => {
             // console.log(response.data)
             alert("File deleted successfully")
@@ -172,24 +150,37 @@ function EditPost({data, url, fileNames}){
         });
     }
 
+    const closeModal = () =>{
+        setUrls(urlList)
+        setFileName(fileNameList)
+        console.log(urlList)
+        console.log(fileNameList)
+        onClose()
+    }
+
     const submitPost = async () =>{
 
         const token = cookies.token
         const id = cookies.id
         const enc_id =  cookies.encrypted_id
         
-        const post = {
-            title : title,
-            body : description,
-            hall_id: hall_id,
-            token : token,
-            user_id : id
-        }
+        // const post = {
+        //     title : title,
+        //     body : description,
+        //     hall_id: hall_id,
+        //     token : token,
+        //     user_id : id
+        // }
 
         let formData = new FormData(); 
         formData.append('title', data.title);
         formData.append('body', data.body);
-        // formData.append('hall_id', data.hall_id);
+        formData.append('hall_id', data.hall_id);
+        formData.append('attachment1',urls[0]);
+        formData.append('attachment2',urls[1]);
+        formData.append('attachment3',urls[2]);
+        formData.append('attachment4',urls[3]);
+        formData.append('attachment5',urls[4]);
 
         // console.log(enc_id)
 
@@ -204,7 +195,7 @@ function EditPost({data, url, fileNames}){
             }
           }
 
-        axios.post(`${API_URL}/api/create_post`, formData, config)
+        axios.post(`${API_URL}/api/edit_post`, formData, config)
         .then(response => {
           console.log(response.data);
           window.location.href = "/critique"
@@ -244,7 +235,7 @@ function EditPost({data, url, fileNames}){
                             Submit
                         </Button>
 
-                        <Button variant='ghost' mr={2} onClick={onClose}>
+                        <Button variant='ghost' mr={2} onClick={closeModal}>
                             Cancel
                         </Button>
                     </Center>

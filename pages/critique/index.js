@@ -349,7 +349,7 @@ export default function HallPage({data2}){
                 </Select>
             </Box>
 
-            <Box w={{lg: "70%", sm: "100%"}} mt="5" display="flex">
+            <Box w={{lg: "70%", sm: "100%"}} mt="5" display="flex" flexDir={{lg: 'row', sm: 'column-reverse'}}>
 
             {/* <ul className='pagination'>
                 {pageNumbers.map(number=>(
@@ -366,7 +366,7 @@ export default function HallPage({data2}){
             <Pagination
                     defaultCurrent={5}
                     current={currentPage}
-                    total={500}
+                    // total={500}
                     paginationProps={{ display: "flex", }}
                     baseStyles={{ bg: "light", color: 'dark' }}
                     activeStyles={{ bg: "gray.300", color: 'black' }}
@@ -380,118 +380,56 @@ export default function HallPage({data2}){
                     bg='dark'
                 />
             {/* <Pagination></Pagination> */}
-            <Box w="50%"></Box>
+            {/* <Box w="50%"></Box> */}
             <Spacer />
-            <CreatePost />
+            <Box mt={{lg: 0, sm: 5}} mb={{lg: 0, sm: 5}} >
+                <Center>
+                    <CreatePost />
+                </Center>
+            </Box>
             </Box>
             <Box w="100%" h="100%" spacing="10px" mt="2">
-                <Box w={{lg: "70%" , sm: '100%'}} h="full" mx="auto" p="3" spacing="10" overflow="hidden">
+                <Box w={{lg: "70%" , sm: '100%'}} h="full" mx="auto" p="3" spacing="10">
                     {/* Critique Item */}
                     {currentPosts.map(post => 
-                        
-                            <Box w="100%" display={{lg: 'flex', sm: 'block'}} key={posts.post_id} mt='2ch' borderColor='white' border='1px solid'>
+                            <Box w="100%" display={{lg: 'flex', sm: 'block'}} key={posts.post_id} mt='2ch' borderColor='white' border='1px solid gray.500' boxShadow='md' rounded='lg'>
                                 <Link href='/post/[id]'  as={`/post/${post.post_id}`}>
                                 <a>
-                                <Box display={{lg: 'flex', sm: 'block'}} w="50vw">
+                                <Box display={{lg: 'flex', sm: 'block'}} w={{lg: "50vw", sm: '100%'}}>
                                     <Box p="3" w="100%" bg="light" my='auto'>
+                                        <Center>
                                         <Text>{post.hall_id}</Text>
+                                        </Center>
                                     </Box>
                                     <Box p="3" w="100%" bg="light" my='auto'>
-                                        <Image src={post.attachment1} w='10vw' h='10vh' />
+                                        <Center>
+                                        <Image src={post.attachment1} w={{lg: '10vw', sm:'100%'}} h={{lg: '10vh', sm: '20vh'}} />
+                                        </Center>
                                     </Box>
                                     <Box p="3" w="100%" bg="light" my='auto'>
+                                        <Center>
                                         <Text>{post.title}</Text>
+                                        </Center>
                                     </Box>
                                     <Box p="3" w="100%" bg="light" my='auto'>
+                                        <Center>
                                         Posted by: {post.display_name}
+                                        </Center>
                                     </Box>
                                 </Box>
                                 </a>
-                                </Link>
+                                </Link> 
                                 <Box p="3" w="100%" bg="light" display='flex'>
                                     <Box w="100%" bg="light" my='auto'>
-                                        {post.time_ago}
+                                        <Center>
+                                            {post.time_ago}
+                                        </Center>
                                     </Box>
-                                    {/* <Box w="100%" bg="light" my='auto'>
-                                    <Menu>
-                                        <MenuButton
-                                        px={4}
-                                        py={2}
-                                        transition='all 0.2s'
-                                        >
-                                        <ChevronDownIcon />
-                                        </MenuButton>
-                                        <MenuList p={3}>
-                                        <MenuGroup id='editPost'>
-                                            <MenuItem><EditPost id={post.post_id} /></MenuItem>
-                                        </MenuGroup>
-                                        <MenuDivider />
-                                        <MenuGroup id='repPost'>
-                                            <MenuItem><ReportPost /></MenuItem>
-                                        </MenuGroup>
-                                        <MenuDivider id='repPost' />
-                                        <MenuGroup>
-                                            <MenuItem><DeletePost /></MenuItem>
-                                        </MenuGroup>
-                                        </MenuList>
-                                    </Menu>
-                                    </Box>       */}
-                                </Box>                 
+                                </Box> 
+                                               
                             </Box>
                             
                     )}
-
-                    {/* <Posts posts={posts} loading={loading} /> */}
-                    {/* Critique Item */}
-                    {/* <Box w="100%" display={{lg: 'flex', sm: 'block'}} mt='2ch'  borderColor='white' border='1px solid'>
-                        <Box p="3" w="100%" bg="light">
-                            Hall
-                        </Box>
-                        <Box p="3" w="100%" bg="light">
-                            Image
-                        </Box>
-                        <Box p="3" w="100%" bg="light">
-                            Title
-                        </Box>
-                        <Box p="3" w="100%" bg="light">
-                            Posted by:
-                        </Box>
-                        <Box p="3" w="100%" bg="light" display='flex'>
-                            <Box w="100%" bg="light">
-                                Time
-                            </Box>
-                            <Box w="100%" bg="light">
-                                Options
-                            </Box>      
-                        </Box>                 
-                    </Box> */}
-                    {/* Critique Item */}
-                    {/* <Box w="100%" display={{lg: 'flex', sm: 'block'}} mt='2ch'  borderColor='white' border='1px solid'>
-                        <Box p="3" w="100%" bg="light">
-                            Hall
-                        </Box>
-                        <Box p="3" w="100%" bg="light">
-                            Image
-                        </Box>
-                        <Box p="3" w="100%" bg="light">
-                            Title
-                        </Box>
-                        <Box p="3" w="100%" bg="light">
-                            Posted by:
-                        </Box>
-                        <Box p="3" w="100%" bg="light" display='flex'>
-                            <Box w="100%" bg="light">
-                                Time
-                            </Box>
-                            <Box w="100%" bg="light">
-                                Options
-                            </Box>      
-                        </Box>                 
-                    </Box> */}
-                    
-                    
-
-
                 </Box>
             </Box>
 

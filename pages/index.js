@@ -71,13 +71,13 @@ export default function Welcome() {
 
 
 
-      <Box position='static' w="100%" h="70vh" display={{lg: 'flex', md: 'flex', sm: 'block'}} z-index='-1' borderBottom="1px solid black">
+      <Box position='static' w="100%" h={{lg: '70vh', md: '100%', sm: '100%'}} display={{lg: 'flex', md: 'flex', sm: 'block'}} z-index='-1' borderBottom="1px solid black">
             <Flex mt={44} flexDir='column' align='center' w={{lg: '50vw', md: '100%', sm: '100%'}}>
               <Heading size='3xl' >WELCOME TO</Heading>
               <Image src='critiquehall.png' w={{lg: '30vw', md: '100%', sm: '100%'}} h='37vh' mt={5}/>
-              <Link href="/login"><Button type='submit' colorScheme='red'>Get Started</Button></Link>
+              <Link href="/login"><Button type='submit' colorScheme='red' position='static'>Get Started</Button></Link>
             </Flex>
-            
+            <Image src='man-texting.png' w={{lg: '30vw', md: '100%', sm: '100%'}} h='60vh' mt='10vh' mr='10vw' align='center'/>
           </Box>
 
           <Box position='static' w="100%" h="70vh" display={{lg: 'flex', md: 'flex', sm: 'block'}} borderBottom="1px solid black">
