@@ -85,7 +85,7 @@ export async function getStaticProps(ctx){
 
     // const data = await res.json()
     const data2 = await res2.json()
-    // console.log(data2.halls)
+    console.log(data2.halls)
     // console.log(data)
 
     return{
@@ -141,15 +141,11 @@ export default function HallPage({data2}){
         axios.get(`${API_URL}/api/posts_per_hall`, config)
         .then(response => {
             console.log(response.data);
-            setHallNum(response.data.data)
+            setHallNum(response.data.halls)
         })
         .catch(error => {
             console.log(error.response);
             console.log(error.response.status)
-            // if(error.response.status ==  '401'){
-            //     Router.replace('/login')
-            //     return;
-            // }
         });
 
     }, [])
@@ -290,7 +286,7 @@ export default function HallPage({data2}){
                     <Text fontSize="3xl" color="white" my="auto" mt="5" textShadow="1px 1px #000">Technology</Text>
                     </Center>
                     <Center>
-                        <Heading size="xs" color="white" mt="1" textShadow="1px 1px #000">Post: 50</Heading>
+                        <Heading size="xs" color="white" mt="1" textShadow="1px 1px #000">Post:</Heading>
                     </Center>
                     
                 </Box>
@@ -304,7 +300,7 @@ export default function HallPage({data2}){
                     <Text fontSize="3xl" color="white" my="auto" mt="5" textShadow="1px 1px #000">Arts</Text>
                     </Center>
                     <Center>
-                        <Heading size="xs" color="white" mt="1" textShadow="1px 1px #000">Post: 50</Heading>
+                        <Heading size="xs" color="white" mt="1" textShadow="1px 1px #000">Post:</Heading>
                     </Center>
                     
                 </Box>
@@ -318,7 +314,7 @@ export default function HallPage({data2}){
                     <Text fontSize="3xl" color="white" my="auto" mt="5" textShadow="1px 1px #000">Business</Text>
                     </Center>
                     <Center>
-                        <Heading size="xs" color="white" mt="1" textShadow="1px 1px #000">Post: 50</Heading>
+                        <Heading size="xs" color="white" mt="1" textShadow="1px 1px #000">Post: </Heading>
                     </Center>
                 </Box>
                 </Button>
@@ -331,7 +327,7 @@ export default function HallPage({data2}){
                     <Text fontSize="3xl" color="white" my="auto" mt="5" textShadow="1px 1px #000">Lounge</Text>
                     </Center>
                     <Center>
-                        <Heading size="xs" color="white" mt="1" textShadow="1px 1px #000">Post: 50</Heading>
+                        <Heading size="xs" color="white" mt="1" textShadow="1px 1px #000">Post: </Heading>
                     </Center>
                 </Box>
                 </Button>
@@ -391,8 +387,8 @@ export default function HallPage({data2}){
             <Box w="100%" h="100%" spacing="10px" mt="2">
                 <Box w={{lg: "70%" , sm: '100%'}} h="full" mx="auto" p="3" spacing="10">
                     {/* Critique Item */}
-                    {currentPosts.map(post => 
-                            <Box w="100%" display={{lg: 'flex', sm: 'block'}} key={posts.post_id} mt='2ch' borderColor='white' border='1px solid gray.500' boxShadow='md' rounded='lg'>
+                    {currentPosts.map((post, i) => 
+                            <Box w="100%" display={{lg: 'flex', sm: 'block'}} key={i} mt='2ch' borderColor='white' border='1px solid gray.500' boxShadow='md' rounded='lg'>
                                 <Link href='/post/[id]'  as={`/post/${post.post_id}`}>
                                 <a>
                                 <Box display={{lg: 'flex', sm: 'block'}} w={{lg: "50vw", sm: '100%'}}>

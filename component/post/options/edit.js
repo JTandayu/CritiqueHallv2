@@ -62,8 +62,8 @@ function EditPost({data, url, fileNames}){
     const { API_URL } = process.env
     const { API_KEY } = process.env
 
-    const [title, setTitle] = useState('')
-    const [description, setPassword] = useState('')
+    const [title, setTitle] = useState(data.title)
+    const [description, setDescription] = useState(data.body)
 
     const [cookies, setCookie, removeCookie] = useCookies(['token', 'id', 'encrypted_id', 'display_name']);
     // const [data, setData] =  useState([])
@@ -74,7 +74,7 @@ function EditPost({data, url, fileNames}){
     const [urls, setUrls] = useState([]); 
     const [fileNameList, setFileNameList] = useState([])
     const [urlList, setUrlList] = useState([])
-    // console.log(url)
+    console.log(url)
 
 
     useEffect(() => {
@@ -173,8 +173,8 @@ function EditPost({data, url, fileNames}){
         // }
 
         let formData = new FormData(); 
-        formData.append('title', data.title);
-        formData.append('body', data.body);
+        formData.append('title', title);
+        formData.append('body', description);
         formData.append('hall_id', data.hall_id);
         formData.append('attachment1',urls[0]);
         formData.append('attachment2',urls[1]);
@@ -223,12 +223,11 @@ function EditPost({data, url, fileNames}){
                     <Box w='24vw'>
                     <Flex mt='3vh'>
                         <FormLabel>Title</FormLabel>
-                        <Input type='text' w='20vw' ml='11px' bg='white' color='black' value={data.title}  />
+                        <Input type='text' w='20vw' ml='11px' bg='white' color='black' value={title} onChange={(e) => setTitle(e.target.value)}  />
                     </Flex>
 
                     <FormLabel mt={2}>Description</FormLabel>
-                    <Textarea type='text' w='23vw' h='20vh' color='black' bg='white' value={data.body} />
-                    
+                        <Textarea type='text' w='23vw' h='20vh' color='black' bg='white' value={description} onChange={(e) => setDescription(e.target.value)} />
 
                     <Center mt={10}>
                         <Button type="submit" colorScheme='blue' mr={2} onClick={submitPost}>

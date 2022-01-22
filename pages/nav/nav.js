@@ -5,7 +5,7 @@ import { motion } from "framer-motion"
 import styles from "@styles/component/Nav.module.css";
 import Link from 'next/link'
 import Logo from "@public/critiquehall2.png";
-import { Button, ButtonGroup, IconButton, Input, Spacer, useColorModeValue, Img } from "@chakra-ui/react"
+import { Button, ButtonGroup, IconButton, Input, Spacer, useColorModeValue, Img, Divider } from "@chakra-ui/react"
 import { CloseIcon, HamburgerIcon } from '@chakra-ui/icons'
 import { ChevronDownIcon } from '@chakra-ui/icons'
 import {

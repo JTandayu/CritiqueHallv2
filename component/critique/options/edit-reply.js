@@ -20,7 +20,7 @@ const EditReply = ({data}) => {
     const { isOpen, onOpen, onClose } = useDisclosure()
     const { API_URL } = process.env
     const { API_KEY } = process.env
-    const [reply, setReply] = useState('')
+    const [reply, setReply] = useState(data.body)
     const [cookies, setCookie, removeCookie] = useCookies(['token', 'id', 'encrypted_id']);
 
     const config = {
@@ -62,7 +62,7 @@ const EditReply = ({data}) => {
                     <ModalHeader>Edit Reply</ModalHeader>
                     <ModalCloseButton />
                     <ModalBody>
-                        <Textarea w='100%' value={data.body} onChange={(e)=>setReply(e.target.value)}></Textarea>
+                        <Textarea w='100%' value={reply} onChange={(e)=>setReply(e.target.value)}></Textarea>
                         <Button onClick={editReply}>Save</Button>
                         <Button onClick={onClose}>Cancel</Button>
                         

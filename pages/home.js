@@ -120,7 +120,7 @@ function Home(){
               <Box w={{lg: '20vw', md: '100%', sm: '100%'}} h='40vh' bg='purple'>
                 <Heading align='center' mt={5} color='white' >Technology</Heading>
                 <Center>
-                  <Image src='SOC.png' align='center' w='10vw' h='20vh' mt={5}/>
+                  <Image src='SOC.png' alt='School of Computing' align='center' w='10vw' h='20vh' mt={5}/>
                 </Center>
                 <Center mt='10'>
                   <ShowHallDescription hall='Technology' color='#bd01bd' fontColor='white' />
@@ -130,7 +130,7 @@ function Home(){
               <Box w={{lg: '20vw', md: '100%', sm: '100%'}} h='40vh' bg='blue.300' ml={{lg: '0', md: '0', sm: '20vw'}}>
                 <Heading align='center' mt={5} color='white'  >Arts</Heading>
                 <Center>
-                  <Image src='SODA.png' align='center' w='20vw' h='20vh' mt={5}/>
+                  <Image src='SODA.png' alt='School of Design and Arts' align='center' w='20vw' h='20vh' mt={5}/>
                 </Center>
                 <Center mt='10'>
                   <ShowHallDescription hall='Arts' color='#91c9f2' fontColor='black' />
@@ -140,7 +140,7 @@ function Home(){
               <Box w={{lg: '20vw', md: '100%', sm: '100%'}} h='40vh' bg='red'>
                 <Heading align='center' mt={5} color='white' >Business</Heading>
                 <Center>
-                  <Image src='SOB.png' align='center' w='20vw' h='20vh' mt={5}/>
+                  <Image src='SOB.png' alt='School of Business' align='center' w='20vw' h='20vh' mt={5}/>
                 </Center>
                 <Center mt='10'>
                   <ShowHallDescription hall='Business' color='#ff5656' fontColor='black'/>
@@ -150,7 +150,7 @@ function Home(){
               <Box w={{lg: '20vw', md: '100%', sm: '100%'}} h='40vh' bg='green.300'>
                 <Heading align='center' mt={5} color='white' >Lounge</Heading>
                 <Center>
-                  <Image src='discussions.png' align='center' w='15vw' h='20vh' mt={5}/>
+                  <Image src='discussions.png' alt='Lounge' align='center' w='15vw' h='20vh' mt={5}/>
                 </Center>
                 <Center mt='10'>
                   <ShowHallDescription hall='Lounge' color='#9affc0' fontColor='black'/>

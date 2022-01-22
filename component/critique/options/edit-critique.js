@@ -20,7 +20,7 @@ const EditCritique = ({data}) => {
     const { isOpen, onOpen, onClose } = useDisclosure()
     const { API_URL } = process.env
     const { API_KEY } = process.env
-    const [critique, setCritique] = useState('')
+    const [critique, setCritique] = useState(data.body)
     const [cookies, setCookie, removeCookie] = useCookies(['token', 'id', 'encrypted_id']);
 
     const config = {
@@ -62,7 +62,7 @@ const EditCritique = ({data}) => {
                     <ModalHeader>Edit Critique</ModalHeader>
                     <ModalCloseButton />
                     <ModalBody>
-                        <Textarea w='100%' value={data.body} onChange={(e)=>setCritique(e.target.value)}></Textarea>
+                        <Textarea w='100%' value={critique} onChange={(e)=>setCritique(e.target.value)}></Textarea>
                         <Button onClick={editCritiqueItem}>Save</Button>
                         <Button onClick={onClose}>Cancel</Button>
                         

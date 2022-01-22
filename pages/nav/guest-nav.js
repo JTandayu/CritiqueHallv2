@@ -124,6 +124,7 @@ export default function Nav(){
                         variant='ghost'
                         aria-label='Home'
                         my={2}
+                        mr={5}
                         w='100%'
                         color={useColorModeValue('#1B1464')}
                         _hover={{cursor:'pointer', textDecoration:'underline'}}
@@ -133,6 +134,7 @@ export default function Nav(){
                     </Button>
                     </a>
                 </Link>
+
                 <Link href="/register">
                     <a>
                     <Button
@@ -150,17 +152,19 @@ export default function Nav(){
                     </Button>
                     </a>
                 </Link>
+
                     <Button
                         as='a'
                         variant='ghost'
                         aria-label='Home'
                         my={2}
+                        ml={4}
                         w='100%'
                         onClick={changeDarkAndLightIcon}
                         _hover={{cursor:'pointer'}}
                         _active={{bgColor: 'none'}}
                     >
-                        <Image src={ImgUrl} alt="moon" w="2em" h="2em" ml={-2} />
+                        <Image src={ImgUrl} alt="moon" w="3em" h="3em" ml={-2} />
                     </Button>
 
             </Flex>
