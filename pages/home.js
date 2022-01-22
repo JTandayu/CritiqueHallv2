@@ -36,6 +36,7 @@ import { storage } from '../firebase.js'
 import { getDownloadURL, ref, uploadBytesResumable } from 'firebase/storage'
 import {useState} from 'react'
 import ShowHallDescription from '@component/show-hall-description'
+import { useColorModeValue } from "@chakra-ui/react";
 
 
 const breakpoints = createBreakpoints({
@@ -60,13 +61,13 @@ function Home(){
             <link rel="icon" href="/logo256.png" onLoad=""/>
           </Head>
 
-          <Box position='static' w="100%" h={{lg: '70vh', md: '100%', sm: '100%'}} display={{lg: 'flex', md: 'flex', sm: 'block'}} z-index='-1' borderBottom="1px solid black">
-            <Flex mt={44} flexDir='column' align='center' w={{lg: '50vw', md: '100%', sm: '100%'}}>
+          <Box position='static' bgColor={useColorModeValue('#E5E5E5', '#2E2E2E')} w="100%" h={{lg: '75vh', md: '100%', sm: '100%'}} display={{lg: 'flex', md: 'flex', sm: 'block'}} z-index='-1' boxShadow='lg' borderBottom="1px solid black">
+          <Flex mt={44} flexDir='column' align='center' w={{lg: '50vw', md: '100%', sm: '100%'}}>
               <Heading size='3xl' >WELCOME TO</Heading>
-              <Image src='critiquehall.png' w={{lg: '30vw', md: '100%', sm: '100%'}} h='37vh' mt={5}/>
+              <Image src='critiquehall.png' w={{lg: '500px', md: '500px', sm: '500px'}} h='37vh' mt={5}/>
+              {/* <Link href="/login"><Button type='submit' mt={5} colorScheme='red' position='static'>Get Started</Button></Link> */}
             </Flex>
-            <Spacer />
-            <Image src='man-texting.png' w={{lg: '30vw', md: '100%', sm: '100%'}} h='60vh' mt='10vh' mr='10vw' align='center'/>
+            <Image src='man-texting.png' w={{lg: '600px', md: '600px', sm: '600px'}} h='60vh' mt='10vh' mb='5vh' mr='10vw' align='center' />
           </Box>
 
             {/* <form onSubmit={formHandler}>
@@ -75,37 +76,37 @@ function Home(){
             </form>
             <h3>Uploaded {progress} %</h3> */}
 
-          <Box position='static' w="100%" h="70vh" display={{lg: 'flex', md: 'flex', sm: 'block'}} borderBottom="1px solid black">
+          <Box position='static' bgColor={useColorModeValue('#EFEFEF', '#242424')} w="100%" h="100%" display={{lg: 'flex', md: 'flex', sm: 'block'}} boxShadow='lg' borderBottom="1px solid black">
             <Flex flexDir={{lg: 'row', md: 'row', sm: 'column'}} >
-              <Flex w='45vw'>
-
+              <Flex w={{lg: '45vw', md: '100%', sm: '100%'}}>
+              <Image src='discussions.png' w={{lg: '700px', md: '700px', sm: '700px'}} h='60vh' mt='10vh' ml='7vw' align='center'/>
               </Flex>
               <Spacer />
               <Flex mt={16} flexDir='column' align='center' w={{lg: '45vw', md: '100%', sm: '100%'}}>
                 <Heading size='3xl'>WHAT IS</Heading>
+                
                 <Flex flexDir={{lg: 'row', md: 'row', sm: 'column'}}>
-                  <Image src='critiquehall.png' w={{lg: '30vw', md: '100%', sm: '100%'}} h='37vh' mt={5}/>
+                  <Image src='critiquehall.png' w={{lg: '500px', md: '500px', sm: '500px'}} h='37vh' mt={5}/>
                   <Heading size='3xl' my='auto' mx={{lg: '0', md: '0', sm: 'auto'}}>?</Heading>
-                  
                 </Flex>
-                <Heading size='xl' w={{lg: '30vw', md: '100%', sm: '100%'}} align='center' mt={5}>An Open Forum Web Application for Students and Teachers</Heading>
+                <Heading size='xl' w={{lg: '30vw', md: '100%', sm: '100%'}} align='center' mt={5} mb={10}>An Open Forum Web Application for Students and Teachers</Heading>
               </Flex>
             </Flex>
-              
           </Box>
 
           {/* <Divider position='static' /> */}
 
-          <Box position='static' w="100%" h="70vh" display={{lg: 'flex', md: 'flex', sm: 'block'}} borderBottom="1px solid black">
+          <Box position='static' bgColor={useColorModeValue('#E5E5E5', '#2E2E2E')}  w="100%" h="100%" display={{lg: 'flex', md: 'flex', sm: 'block'}} boxShadow='lg' borderBottom="1px solid black">
 
             <Flex flexDir={{lg: 'row', md: 'row', sm: 'column'}} >
               <Flex mt={16} flexDir='column' align='center' w={{lg: '45vw', md: '100%', sm: '100%'}}>
                 <Heading size='3xl' >GOAL OF</Heading>
-                <Image src='critiquehall.png' w={{lg: '30vw', md: '100%', sm: '100%'}} h='37vh' mt={5}/>
+                <Image src='critiquehall.png' w={{lg: '500px', md: '500px', sm: '500px'}} h='37vh' mt={5}/>
               </Flex>
               <Spacer />
-              <Flex mt={{lg: 16, md: 5, sm: 5}} w={{lg: '45vw', md: '100%', sm: '100%'}}>
+              <Flex flexDir="column" mt={{lg: 16, md: 5, sm: 5}} w={{lg: '45vw', md: '100%', sm: '100%'}}>
                 <Heading size='lg' w={{lg: '45vw', md: '100%', sm: '100%'}} align='center'>To meet the student and teacher’s needs with regards to academic lives and personal development.</Heading>
+                <Image src='SOB.png' w={{lg: '900px', md: '900px', sm: '900px'}} h='60vh' mt='-2vh' mr='20vw' align='center'/>
               </Flex>
             </Flex>
               
@@ -113,7 +114,7 @@ function Home(){
 
           {/* <Divider position='static' /> */}
 
-          <Box position='static' w="100%" h="80vh" display={{lg: 'flex', md: 'flex', sm: 'block'}} flexDir='column'>
+          <Box position='static' boxShadow='lg' w="100%" h="80vh" display={{lg: 'flex', md: 'flex', sm: 'block'}} flexDir='column'>
             <Heading size='3xl' align='center' w='100%' mt={5}>Halls</Heading>
             <Flex mt='10vh' w={{lg: '90%', md: '100vw', sm: '100vw'}} mx='auto' overflowX='auto'>
               <Box w={{lg: '20vw', md: '100%', sm: '100%'}} h='40vh' bg='purple'>

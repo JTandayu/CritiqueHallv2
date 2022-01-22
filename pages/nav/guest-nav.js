@@ -1,5 +1,6 @@
 import Head from 'next/head'
-import Image from 'next/image'
+// import Image from 'next/image'
+import { Center, Image } from '@chakra-ui/react';
 import { css, cx } from '@emotion/react'
 import { motion } from "framer-motion"
 import styles from "@styles/component/Nav.module.css";
@@ -44,15 +45,27 @@ export default function Nav(){
 
     const [darkMode ,setDarkMode] = useState('')
 
-    const [ImgUrl, setImgUrl] = useState('')
+    const [ImgUrl, setImgUrl] = useState('dark-mode-icon.png')
 
-    const changePicture = () =>{
-      toggleColorMode()
-      if(colorMode === 'light'){
-        setImgUrl('image.png')
-      }
-      
+    const changeDarkAndLightIcon = () => {
+        toggleColorMode()
+        if(colorMode === 'light'){
+            setImgUrl('light-mode-icon.png')
+        }else{
+            setImgUrl('dark-mode-icon.png')
+        }
     }
+
+    // const changeDarkAndLight2 = () => {
+    //     toggleColorMode()
+    //     if(colorMode === 'light'){
+    //         setImgUrl('critiquehall2.png')
+    //     }else{
+    //         setImgUrl('critiquehall2-dark.png')
+    //     }
+    // }
+
+
 
     return(
         <>
@@ -78,7 +91,7 @@ export default function Nav(){
     </Box> */}
 
 
-    <Flex boxShadow='md' w='100%' h='10vh' bg={useColorModeValue('white', '#1a202c')} pos='fixed'> 
+    <Flex boxShadow='md' w='100%' h='10vh' bg={useColorModeValue('white', '#212121')} pos='fixed'> 
         <IconButton
                 aria-label='Open Menu'
                 size='lg'
@@ -91,8 +104,8 @@ export default function Nav(){
             />
             
             <Flex w='10em' h='3em' ml={[32,32,16,16]} mt={5}>
-                <Link href="/home">
-                    <Image src={Logo} alt="Critique Hall Logo"></Image>
+                <Link href="/">
+                    <Image src={'critiquehall2.png'} alt="Critique Hall Logo" w="10em" h="3em" _hover={{cursor:'pointer'}}></Image>
                 </Link>
             </Flex>
 
@@ -113,8 +126,10 @@ export default function Nav(){
                         my={2}
                         w='100%'
                         color={useColorModeValue('#1B1464')}
+                        _hover={{cursor:'pointer', textDecoration:'underline'}}
+                        _active={{bgColor: 'none'}}
                     >
-                        LOG-IN
+                        <Image src={'critique-user-icon.png'} alt="Critique Hall User Logo" w="2em" h="2em" mr={2} />LOG-IN
                     </Button>
                     </a>
                 </Link>
@@ -127,8 +142,11 @@ export default function Nav(){
                         my={2}
                         w='100%'
                         color={useColorModeValue('#C1272D')}
+                        onChange={changeDarkAndLightIcon}
+                        _hover={{cursor:'pointer', textDecoration:'underline'}}
+                        _active={{bgColor: 'none'}}
                     >
-                        REGISTER
+                        <Image src='critique-message-icon.png' alt="Critique Hall Message Logo" w="2em" h="2em" mr={2} />REGISTER
                     </Button>
                     </a>
                 </Link>
@@ -138,10 +156,11 @@ export default function Nav(){
                         aria-label='Home'
                         my={2}
                         w='100%'
-                        onClick={toggleColorMode}
-                        _hover={{cursor: 'pointer'}}
+                        onClick={changeDarkAndLightIcon}
+                        _hover={{cursor:'pointer'}}
+                        _active={{bgColor: 'none'}}
                     >
-                        DARK MODE
+                        <Image src={ImgUrl} alt="moon" w="2em" h="2em" ml={-2} />
                     </Button>
 
             </Flex>
@@ -152,7 +171,7 @@ export default function Nav(){
         
         <Flex
         w='40vw'
-        bg={useColorModeValue('white', '#1a202c')}
+        bg={useColorModeValue('white', '#212121')}
         zIndex={20}
         h='100vh'
         pos='fixed'
@@ -177,6 +196,20 @@ export default function Nav(){
 
             </Flex>
         <Flex flexDir='column' align='center'>
+                <Link href="/">
+                    <Button
+                        as='a'
+                        variant='ghost'
+                        aria-label='Home'
+                        my={5}
+                        w='100%'
+                        color={useColorModeValue('#1B1464')}
+                        _hover={{cursor:'pointer', textDecoration:'underline'}}
+                        _active={{bgColor: 'none'}}
+                    >
+                        <Image src='critiquehall.png' alt="Critique Hall Logo" w="100px" h="70px" mr={2} />
+                    </Button>
+                </Link>
                 <Link href="/login">
                     <Button
                         as='a'
@@ -185,8 +218,10 @@ export default function Nav(){
                         my={5}
                         w='100%'
                         color={useColorModeValue('#1B1464')}
+                        _hover={{cursor:'pointer', textDecoration:'underline'}}
+                        _active={{bgColor: 'none'}}
                     >
-                        LOG-IN
+                        <Image src='critique-user-icon.png' alt="Critique Hall User Logo" w="1.2em" h="2em" mr={2} />LOG-IN
                     </Button>
                 </Link>
                 <Link href="/register">
@@ -197,8 +232,10 @@ export default function Nav(){
                         my={5}
                         w='100%'
                         color={useColorModeValue('#C1272D')}
+                        _hover={{cursor:'pointer', textDecoration:'underline'}}
+                        _active={{bgColor: 'none'}}
                     >
-                        REGISTER
+                        <Image src='critique-message-icon.png' alt="Critique Hall Message Logo" w="2em" h="2em" mr={2} />REGISTER
                     </Button>
                 </Link>
                     <Button
@@ -207,9 +244,11 @@ export default function Nav(){
                         aria-label='Home'
                         my={5}
                         w='100%'
-                        onClick={toggleColorMode}
+                        onClick={changeDarkAndLightIcon}
+                        _hover={{cursor:'pointer'}}
+                        _active={{bgColor: 'none'}}
                     >
-                        DARK MODE
+                        <Image src={ImgUrl} alt="moon" w="3em" h="3em" />
                     </Button>
             </Flex> 
         </Flex>

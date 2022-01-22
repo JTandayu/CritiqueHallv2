@@ -4,8 +4,8 @@ import { css, cx } from '@emotion/react'
 import { motion } from "framer-motion"
 import styles from "@styles/component/Nav.module.css";
 import Link from 'next/link'
-import Logo from "@public/critiquehall.png";
-import { Button, ButtonGroup, IconButton, Input, Spacer, useColorModeValue, Img, Divider } from "@chakra-ui/react"
+import Logo from "@public/critiquehall2.png";
+import { Button, ButtonGroup, IconButton, Input, Spacer, useColorModeValue, Img } from "@chakra-ui/react"
 import { CloseIcon, HamburgerIcon } from '@chakra-ui/icons'
 import { ChevronDownIcon } from '@chakra-ui/icons'
 import {
@@ -157,7 +157,7 @@ export default function Nav({id}){
             
             <Flex w='8em' h='5em' ml={[32,32,16,16]} mt={1}>
                 <Link href="/home">
-                    <Image src={Logo} alt="Critique Hall Logo"></Image>
+                    <Image src={Logo} alt="Critique Hall Logo"  w="10em" h="3em"></Image>
                 </Link>
             </Flex>
             <Spacer />
