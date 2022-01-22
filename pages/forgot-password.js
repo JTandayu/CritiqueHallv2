@@ -89,7 +89,7 @@ export default function ForgotPassword(){
         <Box className={styles.main} bg={useColorModeValue('white', '#212121')} w={{lg: '100ch' , md: '100%' , sm: '100%' }} >
             <center>
             <div className={styles.logo}>
-            <Link href="/"><Image src={Logo} alt="Critique Hall Logo"></Image></Link>
+            <Link href="/" passHref><Image src={Logo} alt="Critique Hall Logo"></Image></Link>
             </div>
 
             <Heading mb={2} as="h2" size="lg" color={useColorModeValue('#1B1464')}>FORGOT PASSWORD</Heading>
@@ -125,7 +125,7 @@ export default function ForgotPassword(){
             </FormControl></center>
 
             <p className={styles.register}>
-              <p><Link href="./login"><a>Back to Login</a></Link></p>
+              <p><Link href="./login" passHref><a>Back to Login</a></Link></p>
             </p>
             </center>
 

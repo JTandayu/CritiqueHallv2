@@ -41,7 +41,6 @@ import axios from 'axios'
 import Pagination from '@choc-ui/paginator'
 import React,{forwardRef} from "react";
 import { useCookies } from 'react-cookie'
-import Router from 'next/router'
 import EditPost from '@component/post/options/edit'
 import ReportPost from '@component/report-post'
 import DeletePost from '@component/post/options/delete'
@@ -132,10 +131,10 @@ export default function HallPage({data2}){
         .catch(error => {
             console.log(error.response);
             console.log(error.response.status)
-            if(error.response.status ==  '401'){
-                Router.replace('/login')
-                return;
-            }
+            // if(error.response.status ==  '401'){
+            //     Router.replace('/login')
+            //     return;
+            // }
         });
 
         axios.get(`${API_URL}/api/posts_per_hall`, config)
@@ -339,8 +338,8 @@ export default function HallPage({data2}){
                         py={2}
                         w="100%"
                         onChange={(e) => getPostDropDown(e.target.value)} value={hall}>
-                    {data2.map((halls, i) => 
-                        <option key={i} value={halls.hall_id}>{halls.hall_name}</option>
+                    {data2.map((halls) => 
+                        <option key={halls.hall_id} value={halls.hall_id}>{halls.hall_name}</option>
                     )}
                 </Select>
             </Box>
@@ -388,8 +387,8 @@ export default function HallPage({data2}){
                 <Box w={{lg: "70%" , sm: '100%'}} h="full" mx="auto" p="3" spacing="10">
                     {/* Critique Item */}
                     {currentPosts.map((post, i) => 
-                            <Box w="100%" display={{lg: 'flex', sm: 'block'}} key={i} mt='2ch' borderColor='white' border='1px solid gray.500' boxShadow='md' rounded='lg'>
-                                <Link href='/post/[id]'  as={`/post/${post.post_id}`}>
+                            <Box w="100%" display={{lg: 'flex', sm: 'block'}} key={post.post_id} mt='2ch' borderColor='white' border='1px solid gray.500' boxShadow='md' rounded='lg'>
+                                <Link href='/post/[id]'  as={`/post/${post.post_id}`} passHref>
                                 <a>
                                 <Box display={{lg: 'flex', sm: 'block'}} w={{lg: "50vw", sm: '100%'}}>
                                     <Box p="3" w="100%" bg="light" my='auto'>

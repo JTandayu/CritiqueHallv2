@@ -27,7 +27,7 @@ import {
     FormHelperText,
   } from '@chakra-ui/react'
 import { useColorMode, useColorModeValue } from '@chakra-ui/react'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { storage } from '../firebase.js'
 import { getDownloadURL, ref, uploadBytesResumable } from 'firebase/storage'
 import {useCookies} from 'react-cookie'
@@ -53,6 +53,7 @@ function EditProfile({data}) {
     const [cookie, setCookie] = useCookies('token', 'id', 'encrypted_id', 'display_name')
     const [profileImage, setProfileImage] = useState([])
     const [coverImage, setCoverImage] = useState([])
+    
 
     const [progress, setProgress] = useState(0);
     const [url, setUrl] = useState(''); 
@@ -62,6 +63,14 @@ function EditProfile({data}) {
     const [aboutMe, setAboutMe] = useState('')
     const [currentPassword, setCurrentPassword] = useState('')
     const [newPassword, setNewPassword] = useState('')
+    
+    useEffect(() => {
+        setFirstName(data.first_name)
+        setLastName(data.last_name)
+        setDisplayName(data.display_name)
+        setAboutMe(data.about_me)
+    }, []);
+    
 
     const config = {
         headers: { 
@@ -198,21 +207,21 @@ function EditProfile({data}) {
                     <Flex mb={5} >
                         <Flex>
                             <FormLabel w='7vw'>First Name</FormLabel>
-                            <Input type='text' bg="white" value={data.first_name} onChange={(e) => setFirstName(e.target.value)} color='black' ml='23px' />
+                            <Input type='text' bg="white" value={firstName} onChange={(e) => setFirstName(e.target.value)} color='black' ml='23px' />
                         </Flex>
                         <Spacer />
                         <Flex>
                             <FormLabel w='7vw'>Last Name</FormLabel>
-                            <Input type='text' bg="white" value={data.last_name} color='black' onChange={(e) => setLastName(e.target.value)} />
+                            <Input type='text' bg="white" value={lastName} color='black' onChange={(e) => setLastName(e.target.value)} />
                         </Flex>
                     </Flex>
                     <Flex mb={5}>
                         <FormLabel>Display Name</FormLabel>
-                        <Input type='text' w='10vw' value={data.display_name} bg="white" color='black' ml='10px' onChange={(e) => setDisplayName(e.target.value)} />
+                        <Input type='text' w='10vw' value={displayName} bg="white" color='black' ml='10px' onChange={(e) => setDisplayName(e.target.value)} />
                     </Flex>
                     <Flex mb={5}>
                         <FormLabel w='7vw'>About Me</FormLabel>
-                        <Textarea type='text' w='100%' h='15vh' value={data.about_me} bg="white" color='black' onChange={(e) => setAboutMe(e.target.value)} />
+                        <Textarea type='text' w='100%' h='15vh' value={aboutMe} bg="white" color='black' onChange={(e) => setAboutMe(e.target.value)} />
                     </Flex>
                     <Flex>
                         <Spacer />

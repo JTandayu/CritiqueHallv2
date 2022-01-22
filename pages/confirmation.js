@@ -87,7 +87,7 @@ export default function ConfirmationPage(){
         <Box className={styles.main} bg={useColorModeValue('white', '#1a202c')} w={{lg: '100ch' , md: '100%' , sm: '100%' }} >
             <center>
             <div className={styles.logo}>
-            <Link href="/"><Image src={Logo} alt="Critique Hall Logo"></Image></Link>
+            <Link href="/" passHref><Image src={Logo} alt="Critique Hall Logo"></Image></Link>
             </div>
 
             <Heading mb={2} as="h2" size="lg" color={useColorModeValue('#1B1464')}>Confirmation</Heading>

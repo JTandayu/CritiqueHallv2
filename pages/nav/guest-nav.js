@@ -104,7 +104,7 @@ export default function Nav(){
             />
             
             <Flex w='10em' h='3em' ml={[32,32,16,16]} mt={5}>
-                <Link href="/">
+                <Link href="/" passHref>
                     <Image src={'critiquehall2.png'} alt="Critique Hall Logo" w="10em" h="3em" _hover={{cursor:'pointer'}}></Image>
                 </Link>
             </Flex>
@@ -117,7 +117,7 @@ export default function Nav(){
         >
 
             <Flex display={['none','none','flex','flex']}>
-                <Link href="/login">
+                <Link href="/login" passHref>
                     <a>
                     <Button
                         as='a'
@@ -134,8 +134,8 @@ export default function Nav(){
                     </Button>
                     </a>
                 </Link>
-
-                <Link href="/register">
+ 
+                <Link href="/register" passHref>
                     <a>
                     <Button
                         as='a'
@@ -200,7 +200,7 @@ export default function Nav(){
 
             </Flex>
         <Flex flexDir='column' align='center'>
-                <Link href="/">
+                <Link href="/" passHref>
                     <Button
                         as='a'
                         variant='ghost'
@@ -214,7 +214,7 @@ export default function Nav(){
                         <Image src='critiquehall.png' alt="Critique Hall Logo" w="100px" h="70px" mr={2} />
                     </Button>
                 </Link>
-                <Link href="/login">
+                <Link href="/login" passHref>
                     <Button
                         as='a'
                         variant='ghost'
@@ -228,7 +228,7 @@ export default function Nav(){
                         <Image src='critique-user-icon.png' alt="Critique Hall User Logo" w="1.2em" h="2em" mr={2} />LOG-IN
                     </Button>
                 </Link>
-                <Link href="/register">
+                <Link href="/register" passHref>
                     <Button
                         as='a'
                         variant='ghost'

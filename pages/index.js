@@ -77,7 +77,7 @@ export default function Welcome() {
             <Flex mt={44} flexDir='column' align='center' w={{lg: '50vw', md: '100%', sm: '100%'}}>
               <Heading size='3xl' >WELCOME TO</Heading>
               <Image src='critiquehall.png' w={{lg: '500px', md: '500px', sm: '500px'}} h='37vh' mt={5}/>
-              <Link href="/login"><Button size='lg' type='submit' mt={5} colorScheme='red' position='static'>Get Started</Button></Link>
+              <Link href="/login"><Button size='lg' type='submit' mt={5} colorScheme='red' position='static' passHref>Get Started</Button></Link>
             </Flex>
             <Image src='man-texting.png' w={{lg: '600px', md: '600px', sm: '600px'}} h='60vh' mt='10vh' mb='5vh' mr='10vw' align='center' />
           </Box>

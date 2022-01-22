@@ -156,7 +156,7 @@ export default function Nav({id}){
             />
             
             <Flex w='8em' h='5em' ml={[32,32,16,16]} mt={1}>
-                <Link href="/home">
+                <Link href="/home" passHref>
                     <Image src={Logo} alt="Critique Hall Logo"  w="10em" h="3em"></Image>
                 </Link>
             </Flex>
@@ -173,7 +173,7 @@ export default function Nav({id}){
         >
 
             <Flex display={['none','none','flex','flex']}>
-                <Link href="/home">
+                <Link href="/home" passHref>
                     <Button
                         as='a'
                         variant='ghost'
@@ -186,7 +186,7 @@ export default function Nav({id}){
                         HOME
                     </Button>
                 </Link>
-                <Link href="/critique" as='/critique'>
+                <Link href="/critique" as='/critique' passHref>
                     <Button
                         as='a'
                         variant='ghost'
@@ -199,7 +199,7 @@ export default function Nav({id}){
                         CRITIQUE
                     </Button>
                 </Link>
-                <Link href="/feedback" >
+                <Link href="/feedback" passHref>
                     <Button
                         as='a'
                         variant='ghost'
@@ -252,8 +252,8 @@ export default function Nav({id}){
                     </Flex>  
                     </MenuButton>
                     <MenuList>
-                        <MenuItem><Link href="/profile/[id]" as={`/profile/${display_name}`}>Profile</Link></MenuItem>
-                        <MenuItem color="red" _hover={{ bg: 'red.500', color: 'white' }} onClick={logOut}><Link href="/">Log Out</Link></MenuItem>
+                        <MenuItem><Link href="/profile/[id]" as={`/profile/${display_name}`} passHref>Profile</Link></MenuItem>
+                        <MenuItem color="red" _hover={{ bg: 'red.500', color: 'white' }} onClick={logOut}><Link href="/" passHref>Log Out</Link></MenuItem>
                     </MenuList>
                 </Menu>
 
@@ -293,7 +293,7 @@ export default function Nav({id}){
                 <form action='/search' method='POST' onSubmit={searchItem}>
                     <Input w='50vw' type='text' mt={7} color='black' bg='white' placeholder='Search' borderColor='gray.400' onChange={(e)=>setSearch(e.target.value)} />
                 </form>
-                <Link href="/home">
+                <Link href="/home" passHref>
                     <Button
                         as='a'
                         variant='ghost'
@@ -305,7 +305,7 @@ export default function Nav({id}){
                         Home
                     </Button>
                 </Link>
-                <Link href="/critique" as='/critique'>
+                <Link href="/critique" as='/critique' passHref>
                     <Button
                         as='a'
                         variant='ghost'
@@ -317,7 +317,7 @@ export default function Nav({id}){
                         Critique
                     </Button>
                 </Link>
-                <Link href="/feedback" >
+                <Link href="/feedback" passHref>
                     <Button
                         as='a'
                         variant='ghost'
@@ -329,7 +329,7 @@ export default function Nav({id}){
                         Feedback
                     </Button>
                 </Link>
-                <Link href="/profile/[id]" as={`/profile/${user_id}`}>
+                <Link href="/profile/[id]" as={`/profile/${user_id}`} passHref>
                     <Button
                         as='a'
                         variant='ghost'
@@ -341,7 +341,7 @@ export default function Nav({id}){
                         Profile
                     </Button>
                 </Link>
-                <Link href="/" >
+                <Link href="/" passHref>
                     <Button
                         as='a'
                         variant='ghost'

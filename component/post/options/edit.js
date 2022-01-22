@@ -62,8 +62,8 @@ function EditPost({data, url, fileNames}){
     const { API_URL } = process.env
     const { API_KEY } = process.env
 
-    const [title, setTitle] = useState(data.title)
-    const [description, setDescription] = useState(data.body)
+    const [title, setTitle] = useState('')
+    const [description, setDescription] = useState('')
 
     const [cookies, setCookie, removeCookie] = useCookies(['token', 'id', 'encrypted_id', 'display_name']);
     // const [data, setData] =  useState([])
@@ -82,6 +82,8 @@ function EditPost({data, url, fileNames}){
         setFileName(fileNames)
         setUrlList(url)
         setFileNameList(fileNames)
+        setTitle(data.title)
+        setDescription(data.body)
     }, [fileNames])
 
     const uploadFiles = async () => {

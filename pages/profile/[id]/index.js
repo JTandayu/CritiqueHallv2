@@ -203,7 +203,7 @@ export default function ProfilePage({data}){
                 <Box display='flex' h={{lg: '30vh', sm: '40vh'}} p={3} mt={5} ml={3} mr={3}  rounded='lg' overflowX='auto'>
                     <Box id='posts' display='flex'>
                         {userPosts.map((posts, i) => (
-                            <Link href={`/post/${posts.post_id}`} key={i}>
+                            <Link href={`/post/${posts.post_id}`} key={i} passHref>
                                 <Box bg='white' w={{lg: '15vw', sm: '300px'}} h='28vh' ml={5}>
                                     {/* <Center mt={3}>
                                         <Heading size='md' mx="auto">{posts.title}</Heading>
@@ -222,7 +222,7 @@ export default function ProfilePage({data}){
                     </Box>
                     <Box id='critiques' display='flex'>
                         {userCritique.map((critique, i) => (
-                            <Link href={`/post/${critique.post_id}`} key={i}>
+                            <Link href={`/post/${critique.post_id}`} key={i} passHref>
                                 <Box bg='white' w={{lg: '15vw', sm: '300px'}} h='28vh' ml={5}>
                                     {/* <Center mt={3}>
                                         <Heading size='md' mx="auto">{critique.title}</Heading>

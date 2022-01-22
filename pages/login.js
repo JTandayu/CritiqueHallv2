@@ -99,7 +99,7 @@ export default function Login({user}) {
           // transition ={{duration: .7}}
           >
             <div className={styles.logo}>
-            <Link href="/"><Image src={Logo} 
+            <Link href="/" passHref><Image src={Logo} 
             alt="Critique Hall Logo"></Image></Link>
             </div>
             
@@ -147,7 +147,7 @@ export default function Login({user}) {
             </FormControl></center>
 
             <p className={styles.register2}>
-              <p>New User? <Link href="./register"><a className={styles.signUpText}>Sign Up Now!</a></Link></p>
+              <p>New User? <Link href="./register" passHref><a className={styles.signUpText}>Sign Up Now!</a></Link></p>
             </p>
 
         </Box>
