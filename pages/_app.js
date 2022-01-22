@@ -10,7 +10,7 @@
 import { ChakraProvider } from "@chakra-ui/react"
 import Layout from './layout/layout'
 import GuestLayout from "./layout/guest-layout";
-import theme from './theme'
+import theme from '../component/theme'
 import {useCookies} from 'react-cookie'
 import Router from "next/router";
 
