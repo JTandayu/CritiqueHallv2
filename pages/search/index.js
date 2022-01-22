@@ -143,8 +143,8 @@ export default function SearchResult(){
 
             {/* User item */}
             <Text id='user' mx='auto' hidden>No Users Found</Text>
-            {searchUserData.map((user) => (
-            <Box w={{lg: '20%', sm: '100%'}} display={{lg: 'flex', sm: 'block'}} mt='2ch' mx="auto" border='1px solid' borderColor='dark' rounded='lg'>
+            {searchUserData.map((user, i) => (
+            <Box w={{lg: '20%', sm: '100%'}} display={{lg: 'flex', sm: 'block'}} key={i} mt='2ch' mx="auto" border='1px solid' borderColor='dark' rounded='lg'>
                 <Box p="3" w="100%" bg="light">
                     <Image src={user.profile_photo} w='30px' h='30px' rounded='full' />
                 </Box>
@@ -186,8 +186,8 @@ export default function SearchResult(){
             {/* Search Item */}
             <Text id='post' mx='auto' hidden>No Posts Found</Text>
 
-            {currentSearch.map((post) => (
-            <Box w={{lg: '70%', sm: '100%'}} mt='2ch' mx="auto" border='1px solid' borderColor='dark' rounded='lg'>
+            {currentSearch.map((post, i) => (
+            <Box w={{lg: '70%', sm: '100%'}} mt='2ch' mx="auto" border='1px solid' key={i} borderColor='dark' rounded='lg'>
                 <Link href='/post/[id]'  as={`/post/${post.post_id}`}>
                     <a>
                     <Box w='100%' display={{lg: 'flex', sm: 'block'}} >

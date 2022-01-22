@@ -233,8 +233,8 @@ export default function Register({data2}) {
             <Heading mb={2} as="h2" size="lg">Register</Heading>
                 <FormLabel>Department</FormLabel>
                 <Select placeholder="Select Department" size="sm" onChange={e => getSpecList(e.target.value)}>
-                  {depList.map(department => (
-                    <option value={department.name}>{department.name}</option>
+                  {depList.map((department, i) => (
+                    <option value={department.name} key={i}>{department.name}</option>
                   ))}
                 {/* <option value="shs">Senior High School (SHS)</option>
                 <option value="col">College (COL)</option> */}
@@ -242,8 +242,8 @@ export default function Register({data2}) {
                 <br />
                 <FormLabel>Strand or Specialization</FormLabel>
                 <Select placeholder="Select Strand / Specialization" size="sm" onChange={e => setSpecialization(e.target.value)}>
-                {specList.map(specialization => (
-                  <option value={specialization.name}>{specialization.name}</option>
+                {specList.map((specialization, i) => (
+                  <option value={specialization.name} key={i}>{specialization.name}</option>
                 ))}
                 </Select>
                 <br />

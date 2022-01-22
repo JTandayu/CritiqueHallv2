@@ -339,8 +339,8 @@ export default function HallPage({data2}){
                         py={2}
                         w="100%"
                         onChange={(e) => getPostDropDown(e.target.value)} value={hall}>
-                    {data2.map(halls => 
-                        <option value={halls.hall_id}>{halls.hall_name}</option>
+                    {data2.map((halls, i) => 
+                        <option key={i} value={halls.hall_id}>{halls.hall_name}</option>
                     )}
                 </Select>
             </Box>
