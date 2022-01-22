@@ -22,7 +22,6 @@ import {
   } from '@chakra-ui/react'
 import { Box } from '@chakra-ui/react'
 import { Switch } from '@chakra-ui/react'
-import Sidebar from './sidebar/sidebar';
 import { useEffect, useState } from 'react';
 import {Flex, Text} from '@chakra-ui/react'
 import { createBreakpoints } from '@chakra-ui/theme-tools'
