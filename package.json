@@ -28,8 +28,6 @@
     "react-bootstrap": "^2.1.0",
     "react-cookie": "^4.1.1",
     "react-dom": "17.0.2",
-    "react-infinite-scroll-component": "^6.1.0",
-    "react-js-pagination": "^3.0.3",
     "sass": "^1.45.0",
     "swr": "^1.1.2"
   },
