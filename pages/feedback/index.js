@@ -85,8 +85,8 @@ export default function FeedbackPage(){
             </Head>
 
             <Box top="0" h="100%" mx="auto" mt="14vh">
-                <Heading size="2xl" align="center">WE'D LOVE TO HEAR FROM YOU!</Heading>
-                <Heading size="md" align="center" mt="5">Send your feedbacks and suggestions and we'll answer it for you.</Heading>
+                <Heading size="2xl" align="center">WE&apos;D LOVE TO HEAR FROM YOU!</Heading>
+                <Heading size="md" align="center" mt="5">Send your feedbacks and suggestions and we&apos;ll answer it for you.</Heading>
             </Box>
 
             <Box display={{lg: "flex", sm: 'block'}} w="95%" bg="blue.700" spacing="10px" top="0" h={{lg: "80vh", sm: "100%"}} mb="5vh" mt="10" py="10">

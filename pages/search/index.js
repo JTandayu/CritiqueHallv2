@@ -129,7 +129,7 @@ export default function SearchResult(){
                 <link rel="icon" href="/logo256.png" onLoad=""/>
             </Head>
             <Box w="100%" mb="10" mt="15vh">
-                <Heading><Center>Search Result for "{search}"</Center></Heading>
+                <Heading><Center>Search Result for &quot;{search}&quot;</Center></Heading>
             </Box>
             
             
@@ -188,7 +188,7 @@ export default function SearchResult(){
 
             {currentSearch.map((post, i) => (
             <Box w={{lg: '70%', sm: '100%'}} mt='2ch' mx="auto" border='1px solid' key={post.post_id} borderColor='dark' rounded='lg'>
-                <Link href='/post/[id]'  as={`/post/${post.post_id}`}>
+                <Link href='/post/[id]'  as={`/post/${post.post_id}`} passHref>
                     <a>
                     <Box w='100%' display={{lg: 'flex', sm: 'block'}} >
                         <Box p="3" w="100%" bg="light">

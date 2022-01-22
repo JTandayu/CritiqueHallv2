@@ -111,7 +111,7 @@ export default function Welcome() {
               </Flex>
               <Spacer />
               <Flex flexDir="column" mt={{lg: 16, md: 5, sm: 5}} w={{lg: '45vw', md: '100%', sm: '100%'}}>
-                <Heading size='lg' w={{lg: '45vw', md: '100%', sm: '100%'}} align='center'>To meet the student and teacher’s needs with regards to academic lives and personal development.</Heading>
+                <Heading size='lg' w={{lg: '45vw', md: '100%', sm: '100%'}} align='center'>To meet the student and teacher&apos;s needs with regards to academic lives and personal development.</Heading>
                 <Image src='SOB.png' w={{lg: '900px', md: '900px', sm: '900px'}} h='60vh' mt='-2vh' mr='20vw' align='center'/>
               </Flex>
             </Flex>
@@ -125,7 +125,7 @@ export default function Welcome() {
             <Flex flexDir='column' w='100%'>
             <Flex flexDir='column' w='100%'>
               <Heading size='4xl' align='center' w='100%' mt={5}>WE'D LOVE TO HEAR FROM YOU</Heading>
-              <Heading size='lg' align='center' w='100%' mt={5}>Send your feedbacks and suggestions and we’ll answer it for you.</Heading>
+              <Heading size='lg' align='center' w='100%' mt={5}>Send your feedbacks and suggestions and we&apos;ll answer it for you.</Heading>
             </Flex>
             <form action='' method='POST'>
               <Flex w='100%' flexDir={{lg: 'row', md: 'column', sm: 'column'}} align='center'  mt={20}>
