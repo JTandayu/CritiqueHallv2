@@ -44,6 +44,15 @@ export default function Nav(){
 
     const [darkMode ,setDarkMode] = useState('')
 
+    const [ImgUrl, setImgUrl] = useState('')
+
+    const changePicture = () =>{
+      toggleColorMode()
+      if(colorMode === 'light'){
+        setImgUrl('image.png')
+      }
+      
+    }
 
     return(
         <>
@@ -96,6 +105,7 @@ export default function Nav(){
 
             <Flex display={['none','none','flex','flex']}>
                 <Link href="/login">
+                    <a>
                     <Button
                         as='a'
                         variant='ghost'
@@ -106,8 +116,10 @@ export default function Nav(){
                     >
                         LOG-IN
                     </Button>
+                    </a>
                 </Link>
                 <Link href="/register">
+                    <a>
                     <Button
                         as='a'
                         variant='ghost'
@@ -118,6 +130,7 @@ export default function Nav(){
                     >
                         REGISTER
                     </Button>
+                    </a>
                 </Link>
                     <Button
                         as='a'
@@ -126,6 +139,7 @@ export default function Nav(){
                         my={2}
                         w='100%'
                         onClick={toggleColorMode}
+                        _hover={{cursor: 'pointer'}}
                     >
                         DARK MODE
                     </Button>

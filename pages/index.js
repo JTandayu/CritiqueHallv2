@@ -5,7 +5,7 @@ import Link from 'next/link'
 import { Stack, HStack, VStack, useColorMode, FormLabel, Input, Textarea } from "@chakra-ui/react"
 import { Button, ButtonGroup } from "@chakra-ui/react"
 import { ArrowForwardIcon, CheckIcon, InfoOutlineIcon } from '@chakra-ui/icons'
-import { Box, Divider, Flex, Heading, Spacer, Image } from "@chakra-ui/react"
+import { Box, Divider, Flex, Heading, Spacer, Image, Center } from "@chakra-ui/react"
 import axios from 'axios';
 import {useState} from 'react';
 import ManTexting from "@public/man-texting.png";
@@ -71,7 +71,7 @@ export default function Welcome() {
 
 
 
-      <Box position='static' w="100%" h={{lg: '70vh', md: '100%', sm: '100%'}} display={{lg: 'flex', md: 'flex', sm: 'block'}} z-index='-1' borderBottom="1px solid black">
+          <Box position='static' w="100%" h={{lg: '70vh', md: '100%', sm: '100%'}} display={{lg: 'flex', md: 'flex', sm: 'block'}} z-index='-1' boxShadow='lg' borderBottom="1px solid black">
             <Flex mt={44} flexDir='column' align='center' w={{lg: '50vw', md: '100%', sm: '100%'}}>
               <Heading size='3xl' >WELCOME TO</Heading>
               <Image src='critiquehall.png' w={{lg: '30vw', md: '100%', sm: '100%'}} h='37vh' mt={5}/>
@@ -82,7 +82,7 @@ export default function Welcome() {
 
           <Box position='static' w="100%" h="70vh" display={{lg: 'flex', md: 'flex', sm: 'block'}} borderBottom="1px solid black">
             <Flex flexDir={{lg: 'row', md: 'row', sm: 'column'}} >
-              <Flex w='45vw'>
+              <Flex w={{lg: '45vw', md: '100%', sm: '100%'}}>
 
               </Flex>
               <Spacer />
@@ -111,6 +111,9 @@ export default function Welcome() {
               <Spacer />
               <Flex mt={{lg: 16, md: 5, sm: 5}} w={{lg: '45vw', md: '100%', sm: '100%'}}>
                 <Heading size='lg' w={{lg: '45vw', md: '100%', sm: '100%'}} align='center'>To meet the student and teacher’s needs with regards to academic lives and personal development.</Heading>
+                <Center>
+                  
+                </Center>
               </Flex>
             </Flex>
               
@@ -144,7 +147,7 @@ export default function Welcome() {
                 
                 </Flex>
                 <Flex w={{lg: '20vw', md: '100%', sm: '100%'}} mt={{lg: 0, md: 0, sm: 5}} >
-                  <Button colorScheme='blue' w={{lg: '10vw', md: '20vw', sm: '20vw'}} mr={{lg: 48, md: 0, sm: 0}} mx={{lg: 0, md: 0, sm: 'auto'}} onClick={sendMessage} >Submit</Button>
+                  <Button colorScheme='blue' w={{lg: '10vw', md: '20vw', sm: '20vw'}} mr={{lg: 48, md: 0, sm: 0}} mx={{lg: 0, md: 0, sm: 'auto'}} _hover={{bgColor: 'none'}} onClick={sendMessage} >Submit</Button>
                 </Flex>
               </Flex>
               </form>

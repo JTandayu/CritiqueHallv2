@@ -2,7 +2,7 @@ import Head from 'next/head'
 // import Image from 'next/image'
 import { css, cx } from '@emotion/react'
 import { motion } from "framer-motion"
-import { Box, Button, Flex, Heading, Spacer, Text, Image, Center } from '@chakra-ui/react'
+import { Box, Button, Flex, Heading, Spacer, Text, Image, Center, Select } from '@chakra-ui/react'
 import Link from 'next/link'
 import {
     Modal,
@@ -55,12 +55,15 @@ export default function ProfilePage({data}){
     const [userData, setUserData] = useState([])
     const [userPosts, setUserPosts] = useState([])
     const [userCritique, setUserCritique] = useState([])
+    const [filter, setFilter] = useState('newest')
 
     // const user_id = cookies.id
     useEffect(() => {
 
         document.getElementById('posts').removeAttribute('hidden');
         document.getElementById('critiques').hidden=true;
+        document.getElementById('postFilter').removeAttribute('hidden');
+        document.getElementById('critiqueFilter').hidden=true;
 
         const config = {
             headers: { 
@@ -112,15 +115,27 @@ export default function ProfilePage({data}){
 
     }, [])
 
+    const filterPost = (e) =>{
+
+    }
+
+    const filterCritique = (e) =>{
+        
+    }
+
 
     const OpenPost = async () =>{
         document.getElementById('posts').removeAttribute('hidden');
         document.getElementById('critiques').hidden=true
+        document.getElementById('postFilter').removeAttribute('hidden');
+        document.getElementById('critiqueFilter').hidden=true
     }
 
     const OpenCritique = async () =>{
         document.getElementById('posts').hidden=true
         document.getElementById('critiques').removeAttribute('hidden');
+        document.getElementById('postFilter').hidden=true
+        document.getElementById('critiqueFilter').removeAttribute('hidden');
     }
 
     return(
@@ -134,7 +149,7 @@ export default function ProfilePage({data}){
 
             <Box mx={{lg: 'auto', md: '0', sm: '0'}} my='auto' bg='blue.200' w={{lg: '90%', md: '100%', sm: '100%'}} h={{lg: '80vh', md: '100vh', sm: '150vh'}} rounded='lg' mt={32} mb={{lg: 0, md: 0, sm: 10}} position='static'>
                 <Box display='flex' flexDir={{lg: 'row', md: 'column', sm: 'column'}} w='100%'>
-                    <Box w={{lg: '100vw', md: '100%', sm: '90%'}} h={{lg: '35vh', md: '35vh', sm: '45vh'}} bg='white' bgImage={`url('${userData.cover_photo}')`} p={3} display={{lg: 'flex', sm: 'block'}} mt={5} ml={{lg: 8, md: 0, sm: 5}} rounded='lg'>
+                    <Box w={{lg: '100vw', md: '40vw', sm: '90%'}} h={{lg: '35vh', md: '35vh', sm: '45vh'}} bg='white' bgImage={`url('${userData.cover_photo}')`} p={3} display={{lg: 'flex', sm: 'block'}} mt={5} ml={{lg: 8, md: 0, sm: 5}} rounded='lg'>
                         <Box w='20vh' h='20vh' bg='gray' mt={24} ml={{lg: 5, md: 0, sm: 0}} mx={{lg: 0, md: 0, sm: 'auto'}} rounded='full'>
                             <Center>
                                 <Image w='18vh' h='18vh' rounded='full' src={userData.profile_photo} mt={3}/>
@@ -150,7 +165,7 @@ export default function ProfilePage({data}){
                         </Box>
                         
                     </Box>
-                    <Box w={{lg: '70vw', md: '100%', sm: '90%'}} h={{lg: '35vh', md: '40vh', sm: '45vh'}} bg='blue.500' p={3} mt={5} ml={{lg: 8, md: 0, sm: 5}} mr={{lg: 5, md: 0, sm: 0}} rounded='lg'>
+                    <Box w={{lg: '70vw', md: '100%', sm: '90%'}} h={{lg: '35vh', md: '30%', sm: '45vh'}} bg='blue.500' p={3} mt={5} ml={{lg: 8, md: 0, sm: 5}} mr={{lg: 5, md: 0, sm: 0}} rounded='lg'>
                         <Flex>
                         <Heading size='2xl' as='h3' color='white' mt={10}>About Me: </Heading>
                         <Spacer />
@@ -161,21 +176,40 @@ export default function ProfilePage({data}){
                         <Heading size='md' color='white' mt={5}>Strand/Specialization: {userData.specialization}</Heading>
                     </Box>
                 </Box>
-                <Box display='flex' w={{lg: '30%', md: '100%', sm: '100%'}} mt={5}>
+                <Box display='flex' w={{lg: '100%', md: '100%', sm: '100%'}} mt={5} ml={3} mr={5}>
                     {/* <Button ml={5} h='2em' position='static'>All</Button> */}
                     <Button ml={5} h='2em' position='static' onClick={OpenPost}>My Posts</Button>
                     <Button ml={5} h='2em' position='static' onClick={OpenCritique}>My Critiques</Button>
+                    <Spacer />
+                    <Flex w={{lg: '15vw', sm: '50%'}} mt={1} mr={5} id='postFilter'>
+                        <Text mr={{lg: 5, sm: 1}} w={20} mt={2}>Sort by: </Text>
+                        <Select onChange={(e)=>setFilter(e.target.value)}  bgColor='white'>
+                            <option value='newest'>Newest</option>
+                            <option value='oldest'>Oldest</option>
+                            <option value='most-star'>Most Post Stars</option>
+                            <option value='least-star'>Least Post Stars</option>
+                        </Select>
+                    </Flex>
+                    <Flex w={{lg: '15vw', sm: '50%'}} mt={1} mr={5} id='critiqueFilter'>
+                        <Text mr={{lg: 5, sm: 1}} w={20} mt={2}>Sort by: </Text>
+                        <Select onChange={(e)=>setFilter(e.target.value)}  bgColor='white'>
+                            <option value='newest'>Newest</option>
+                            <option value='oldest'>Oldest</option>
+                            <option value='most-star'>Most Critique Stars</option>
+                            <option value='least-star'>Least Critique Stars</option>
+                        </Select>
+                    </Flex>
                 </Box>
-                <Box display='flex' h='35vh' p={3} mt={5} ml={3}  rounded='lg' overflowX='auto'>
+                <Box display='flex' h={{lg: '30vh', sm: '40vh'}} p={3} mt={5} ml={3} mr={3}  rounded='lg' overflowX='auto'>
                     <Box id='posts' display='flex'>
                         {userPosts.map((posts) => (
                             <Link href={`/post/${posts.post_id}`}>
-                                <Box bg='white' w='15vw' h='33vh' ml={5}>
-                                    <Center mt={3}>
+                                <Box bg='white' w={{lg: '15vw', sm: '300px'}} h='28vh' ml={5}>
+                                    {/* <Center mt={3}>
                                         <Heading size='md' mx="auto">{posts.title}</Heading>
-                                    </Center>
-                                    <Center mt={3}>
-                                        <Image w='10vw' h='20vh' src='https://www.clipartmax.com/png/middle/119-1198197_anonymous-person-svg-png-icon-free-download-anonymous-icon-png.png'></Image>
+                                    </Center> */}
+                                    <Center mt={0}>
+                                        <Image w={{lg: '300px', sm: '300px'}} h='20vh' src='https://www.clipartmax.com/png/middle/119-1198197_anonymous-person-svg-png-icon-free-download-anonymous-icon-png.png'></Image>
                                     </Center>
                                     <Flex w='100%' p={3}>
                                         <Text>Likes {posts.likes}</Text>
@@ -189,12 +223,12 @@ export default function ProfilePage({data}){
                     <Box id='critiques' display='flex'>
                         {userCritique.map((critique) => (
                             <Link href={`/post/${critique.post_id}`}>
-                                <Box bg='white' w='15vw' h='33vh' ml={5}>
-                                    <Center mt={3}>
+                                <Box bg='white' w={{lg: '15vw', sm: '300px'}} h='28vh' ml={5}>
+                                    {/* <Center mt={3}>
                                         <Heading size='md' mx="auto">{critique.title}</Heading>
-                                    </Center>
-                                    <Center mt={3}>
-                                        <Image w='10vw' h='20vh'></Image>
+                                    </Center> */}
+                                    <Center mt={0}>
+                                        <Image w={{lg: '300px', sm: '300px'}} h='20vh'></Image>
                                     </Center>
                                     <Flex w='100%' p={3}>
                                         <Text>Star {critique.star}</Text>

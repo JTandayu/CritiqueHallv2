@@ -32,6 +32,8 @@ function MyApp({ Component, pageProps }) {
           return <ChakraProvider theme={theme}><Component {...pageProps} /></ChakraProvider>;
       case "ResetPassword":
           return <ChakraProvider theme={theme}><Component {...pageProps} /></ChakraProvider>;
+      case "ConfirmationPage":
+          return <ChakraProvider theme={theme}><Component {...pageProps} /></ChakraProvider>;
       case "Welcome":
           return <ChakraProvider theme={theme}><GuestLayout><Component {...pageProps} /></GuestLayout></ChakraProvider>;
       default:

@@ -5,7 +5,7 @@ import { motion } from "framer-motion"
 import styles from "@styles/component/Nav.module.css";
 import Link from 'next/link'
 import Logo from "@public/critiquehall.png";
-import { Button, ButtonGroup, IconButton, Input, Spacer, useColorModeValue, Img } from "@chakra-ui/react"
+import { Button, ButtonGroup, IconButton, Input, Spacer, useColorModeValue, Img, Divider } from "@chakra-ui/react"
 import { CloseIcon, HamburgerIcon } from '@chakra-ui/icons'
 import { ChevronDownIcon } from '@chakra-ui/icons'
 import {
@@ -63,10 +63,13 @@ export default function Nav({id}){
     const [search, setSearch] = useState('')
     const [profPic, setProfilePic] = useState('')
 
+    const [notif, setNotif] = useState([])
+
 
     const user_id = cookies.id;
     const display_name =  cookies.display_name
-    const Router = useRouter()
+    const Router = useRouter()  
+
 
     useEffect(() => {
         const config = {
@@ -86,6 +89,19 @@ export default function Nav({id}){
         .then(response => {
             console.log(response.data);      
             setProfilePic(response.data.data.user.profile_photo)
+        })
+        .catch(error => {
+            console.log(error.response.data.error);
+            if(error.response.data.error ==  'Token Expired'){
+                Router.replace('/login')
+                return;
+            }
+        });
+
+        axios.get(`${API_URL}/api/get_notifs`, config)
+        .then(response => {
+            console.log(response.data.Notifs);      
+            setNotif(response.data.Notifs)
         })
         .catch(error => {
             console.log(error.response.data.error);
@@ -210,7 +226,12 @@ export default function Nav({id}){
                         <PopoverArrow />
                         <PopoverCloseButton />
                         <PopoverHeader>Notification</PopoverHeader>
-                        <PopoverBody>Are you sure you want to have that milkshake?</PopoverBody>
+                        <PopoverBody>{notif.map((notification, i) =>
+                            <Box key={i}>
+                            <Text p={2}>{notification.action}</Text>
+                            <Divider />
+                            </Box>
+                        )}</PopoverBody>
                     </PopoverContent>
                 </Popover>
                 <Menu>

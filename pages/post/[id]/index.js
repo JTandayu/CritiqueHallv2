@@ -243,7 +243,7 @@ export default function CritiquePost(post_id){
                     {/* Description */}
                     <Box mt={5}>
                         <Heading size='md'>Description</Heading>
-                        <Text Critiq w={{lg: '45vw', sm: '100%'}} mx='auto' mt={5}>{data.body}</Text>
+                        <Text w={{lg: '45vw', sm: '100%'}} mx='auto' mt={5}>{data.body}</Text>
                     </Box>
                             
                     {/* Image */}
