@@ -124,7 +124,7 @@ export default function Welcome() {
           <Box position='static' bgColor={useColorModeValue('#EFEFEF', '#242424')} boxShadow='lg' w="100%" h="100%" display={{lg: 'flex', md: 'flex', sm: 'block'}}>
             <Flex flexDir='column' w='100%'>
             <Flex flexDir='column' w='100%'>
-              <Heading size='4xl' align='center' w='100%' mt={5}>WE'D LOVE TO HEAR FROM YOU</Heading>
+              <Heading size='4xl' align='center' w='100%' mt={5}>WE&apos;D LOVE TO HEAR FROM YOU</Heading>
               <Heading size='lg' align='center' w='100%' mt={5}>Send your feedbacks and suggestions and we&apos;ll answer it for you.</Heading>
             </Flex>
             <form action='' method='POST'>
