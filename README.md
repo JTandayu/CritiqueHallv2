@@ -1,6 +1,6 @@
 ## The Design and Implementation of "Critique Hall": A Discussion Forum Web Application for Students
 
-<img src="https://github.com/JTandayu/CritiqueHallv2/tree/main/public/critiquehall2-dark.png>
+![Image] (https://github.com/JTandayu/CritiqueHallv2/blob/main/public/critiquehall2-dark.png)
 
 Members:
 - Azariah Danizar G. Concepcion
