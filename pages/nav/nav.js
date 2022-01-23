@@ -156,12 +156,12 @@ export default function Nav({id}){
             
             <Flex w='8em' h='5em' ml={[32,32,16,16]} mt={1}>
                 <Link href="/home" passHref>
-                    <Image src={Logo} alt="Critique Hall Logo"  w="10em" h="3em"></Image>
+                    <Image src={Logo} alt="Critique Hall Logo"  w="5em" h="3em" _hover={{cursor:'pointer'}}></Image>
                 </Link>
             </Flex>
             <Spacer />
                 <form action='/search' method='POST' onSubmit={searchItem}>
-                    <Input display={['none','none','none','flex']} w='30vw' type='text' mt={7} mr='10vw' color='black' bg='white' borderColor='gray.400' onChange={(e)=>setSearch(e.target.value)} />
+                    <Input placeholder='SEARCH...' display={['none','none','none','flex']} w='30vw' type='text' mt={7} mr='10vw' color='black' bg='white' borderColor='gray.400' onChange={(e)=>setSearch(e.target.value)} boxShadow='lg' />
                 </form>
             <Spacer />
         <Flex
@@ -180,7 +180,9 @@ export default function Nav({id}){
                         my={2}
                         w='100%'
                         position='static'
-
+                        color={useColorModeValue('#1B1464')}
+                        _hover={{cursor:'pointer', textDecoration:'underline'}}
+                        _active={{bgColor: 'none', textDecoration:'underline'}}
                     >
                         HOME
                     </Button>
@@ -193,7 +195,9 @@ export default function Nav({id}){
                         my={2}
                         w='100%'
                         position='static'
-
+                        color={useColorModeValue('#1B1464')}
+                        _hover={{cursor:'pointer', textDecoration:'underline'}}
+                        _active={{bgColor: 'none'}}
                     >
                         CRITIQUE
                     </Button>
@@ -206,7 +210,7 @@ export default function Nav({id}){
                         my={2}
                         w='100%'
                         position='static'
-
+                        color={useColorModeValue('#1B1464')}
                     >
                         FEEDBACK
                     </Button>
@@ -219,7 +223,8 @@ export default function Nav({id}){
                             my={2}
                             w='100%'
                             position='static'
-                            >Notif</Button>
+                            color={useColorModeValue('#1B1464')}
+                            >Notification</Button>
                     </PopoverTrigger>
                     <PopoverContent>
                         <PopoverArrow />
@@ -301,7 +306,7 @@ export default function Nav({id}){
                         w='100%'
 
                     >
-                        Home
+                        HOME
                     </Button>
                 </Link>
                 <Link href="/critique" as='/critique' passHref>
@@ -313,7 +318,7 @@ export default function Nav({id}){
                         w='100%'
 
                     >
-                        Critique
+                        CRITIQUE
                     </Button>
                 </Link>
                 <Link href="/feedback" passHref>
@@ -325,7 +330,7 @@ export default function Nav({id}){
                         w='100%'
 
                     >
-                        Feedback
+                        FEEDBACK
                     </Button>
                 </Link>
                 <Link href="/profile/[id]" as={`/profile/${user_id}`} passHref>

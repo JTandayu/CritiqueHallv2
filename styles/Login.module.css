@@ -43,7 +43,7 @@
     margin-bottom: 1ch;
     border-radius: 1ch;
     /* border: 1px solid rgb(92, 92, 92); */
-    box-shadow: 0px 13px 4px rgba(0, 0, 0, 0.25);
+    box-shadow: 0px 10px 4px rgba(0, 0, 0, 0.25);
   }
 
   .login_button {
@@ -85,6 +85,7 @@
     width: 30ch;
     margin-bottom: 8ch;
     filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+    cursor: pointer;
   }
 
   .LoginButton {
@@ -97,4 +98,11 @@
 
   .signUpText:hover {
     text-decoration: underline;
+  }
+
+  .discussions {
+    width: 328px;
+    height: 228px;
+    left: 1592px;
+    top: 852px;
   }

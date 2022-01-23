@@ -7,6 +7,7 @@ import { motion } from "framer-motion"
 import Home from './home'
 import Link from 'next/link'
 import Logo from "@public/critiquehall.png";
+import Discussions from "@public/discussions.png";
 import { Button, ButtonGroup, Center, Text } from "@chakra-ui/react"
 import { Stack, HStack, VStack } from "@chakra-ui/react"
 import { Heading } from '@chakra-ui/react'
@@ -100,7 +101,7 @@ export default function Login({user}) {
           >
             <div className={styles.logo}>
             <Link href="/" passHref><Image src={Logo} 
-            alt="Critique Hall Logo"></Image></Link>
+             alt="Critique Hall Logo"></Image></Link>
             </div>
             
             <Heading mb={5} as="h2" size="lg" color={useColorModeValue('#1B1464')}>LOG-IN</Heading>
@@ -149,7 +150,7 @@ export default function Login({user}) {
             <p className={styles.register2}>
               <p>New User? <Link href="./register" passHref><a className={styles.signUpText}>Sign Up Now!</a></Link></p>
             </p>
-
+            
         </Box>
       </div>
     )
