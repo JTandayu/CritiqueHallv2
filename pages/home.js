@@ -63,7 +63,7 @@ function Home(){
 
           <Box position='static' bgColor={useColorModeValue('#E5E5E5', '#2E2E2E')} w="100%" h={{lg: '75vh', md: '100%', sm: '100%'}} display={{lg: 'flex', md: 'flex', sm: 'block'}} z-index='-1' boxShadow='lg' borderBottom="1px solid black">
           <Flex mt={44} flexDir='column' align='center' w={{lg: '50vw', md: '100%', sm: '100%'}}>
-              <Heading size='3xl' >WELCOME TO</Heading>
+              <Heading fontFamily={'Raleway'} size='3xl' >WELCOME TO</Heading>
               <Image src='critiquehall.png' w={{lg: '500px', md: '500px', sm: '500px'}} h='37vh' mt={5}/>
               {/* <Link href="/login"><Button type='submit' mt={5} colorScheme='red' position='static'>Get Started</Button></Link> */}
             </Flex>
@@ -83,13 +83,13 @@ function Home(){
               </Flex>
               <Spacer />
               <Flex mt={16} flexDir='column' align='center' w={{lg: '45vw', md: '100%', sm: '100%'}}>
-                <Heading size='3xl'>WHAT IS</Heading>
+                <Heading fontFamily={'Raleway'} size='3xl'>WHAT IS</Heading>
                 
                 <Flex flexDir={{lg: 'row', md: 'row', sm: 'column'}}>
                   <Image src='critiquehall.png' w={{lg: '500px', md: '500px', sm: '500px'}} h='37vh' mt={5}/>
-                  <Heading size='3xl' my='auto' mx={{lg: '0', md: '0', sm: 'auto'}}>?</Heading>
+                  <Heading fontFamily={'Raleway'}  size='3xl' my='auto' mx={{lg: '0', md: '0', sm: 'auto'}}>?</Heading>
                 </Flex>
-                <Heading size='xl' w={{lg: '30vw', md: '100%', sm: '100%'}} align='center' mt={5} mb={10}>An Open Forum Web Application for Students and Teachers</Heading>
+                <Heading fontFamily={'Raleway'} size='xl' w={{lg: '30vw', md: '100%', sm: '100%'}} align='center' mt={5} mb={10}>An Open Forum Web Application for Students and Teachers</Heading>
               </Flex>
             </Flex>
           </Box>
@@ -100,12 +100,12 @@ function Home(){
 
             <Flex flexDir={{lg: 'row', md: 'row', sm: 'column'}} >
               <Flex mt={16} flexDir='column' align='center' w={{lg: '45vw', md: '100%', sm: '100%'}}>
-                <Heading size='3xl' >GOAL OF</Heading>
+                <Heading fontFamily={'Raleway'} size='3xl' >GOAL OF</Heading>
                 <Image src='critiquehall.png' w={{lg: '500px', md: '500px', sm: '500px'}} h='37vh' mt={5}/>
               </Flex>
               <Spacer />
               <Flex flexDir="column" mt={{lg: 16, md: 5, sm: 5}} w={{lg: '45vw', md: '100%', sm: '100%'}}>
-                <Heading size='lg' w={{lg: '45vw', md: '100%', sm: '100%'}} align='center'>To meet the student and teacher’s needs with regards to academic lives and personal development.</Heading>
+                <Heading fontFamily={'Raleway'} size='lg' w={{lg: '45vw', md: '100%', sm: '100%'}} align='center'>To meet the student and teacher’s needs with regards to academic lives and personal development.</Heading>
                 <Image src='SOB.png' w={{lg: '900px', md: '900px', sm: '900px'}} h='60vh' mt='-2vh' mr='20vw' align='center'/>
               </Flex>
             </Flex>
@@ -114,46 +114,46 @@ function Home(){
 
           {/* <Divider position='static' /> */}
 
-          <Box position='static' boxShadow='lg' w="100%" h="80vh" display={{lg: 'flex', md: 'flex', sm: 'block'}} flexDir='column'>
-            <Heading size='3xl' align='center' w='100%' mt={5}>Halls</Heading>
+          <Box position='static' bgColor={useColorModeValue('#EFEFEF', '#242424')} boxShadow='lg' w="100%" h="65vh" display={{lg: 'flex', md: 'flex', sm: 'block'}} flexDir='column' className={styles.halls}>
+            <Heading fontFamily={'Raleway'} size='3xl' align='center' w='100%' mt={5}>HALLS</Heading>
             <Flex mt='10vh' w={{lg: '90%', md: '100vw', sm: '100vw'}} mx='auto' overflowX='auto'>
-              <Box w={{lg: '20vw', md: '100%', sm: '100%'}} h='40vh' bg='purple'>
-                <Heading align='center' mt={5} color='white' >Technology</Heading>
+              <Box w={{lg: '20vw', md: '100%', sm: '100%'}} h='40vh' bg='#92278F' borderRadius={5}>
+                <Heading fontFamily={'Raleway'} align='center' mt={5} color='white' >Technology</Heading>
                 <Center>
-                  <Image src='SOC.png' alt='School of Computing' align='center' w='10vw' h='20vh' mt={5}/>
+                  <Image src='tech-bg.png' alt='School of Computing' align='center' w='10vw' h='20vh' mt={5}/>
                 </Center>
                 <Center mt='10'>
-                  <ShowHallDescription hall='Technology' color='#bd01bd' fontColor='white' />
+                  <ShowHallDescription hall='Technology' color="#b303ff" fontColor='black' />
                 </Center>
               </Box>
               <Spacer />
-              <Box w={{lg: '20vw', md: '100%', sm: '100%'}} h='40vh' bg='blue.300' ml={{lg: '0', md: '0', sm: '20vw'}}>
-                <Heading align='center' mt={5} color='white'  >Arts</Heading>
+              <Box w={{lg: '20vw', md: '100%', sm: '100%'}} h='40vh' bg='#00AEEF' ml={{lg: '0', md: '0', sm: '20vw'}} borderRadius={5}>
+                <Heading fontFamily={'Raleway'} align='center' mt={5} color='white'>Arts</Heading>
                 <Center>
-                  <Image src='SODA.png' alt='School of Design and Arts' align='center' w='20vw' h='20vh' mt={5}/>
+                  <Image src='art-bg.png' alt='School of Design and Arts' align='center' w='20vw' h='20vh' mt={1}/>
                 </Center>
                 <Center mt='10'>
-                  <ShowHallDescription hall='Arts' color='#91c9f2' fontColor='black' />
+                  <ShowHallDescription hall='Arts' color='#6ec5ff' fontColor='black' />
                 </Center>
               </Box>
               <Spacer />
-              <Box w={{lg: '20vw', md: '100%', sm: '100%'}} h='40vh' bg='red'>
-                <Heading align='center' mt={5} color='white' >Business</Heading>
+              <Box w={{lg: '20vw', md: '100%', sm: '100%'}} h='40vh' bg='#9E0B0F' borderRadius={5}>
+                <Heading fontFamily={'Raleway'} align='center' mt={5} color='white' >Business</Heading>
                 <Center>
-                  <Image src='SOB.png' alt='School of Business' align='center' w='20vw' h='20vh' mt={5}/>
+                  <Image src='business-bg.png' alt='School of Business' align='center' w='10vw' h='20vh' mt={5}/>
                 </Center>
                 <Center mt='10'>
-                  <ShowHallDescription hall='Business' color='#ff5656' fontColor='black'/>
+                  <ShowHallDescription hall='Business' color='#fa3434' fontColor='black'/>
                 </Center>
               </Box>
               <Spacer />
-              <Box w={{lg: '20vw', md: '100%', sm: '100%'}} h='40vh' bg='green.300'>
-                <Heading align='center' mt={5} color='white' >Lounge</Heading>
+              <Box w={{lg: '20vw', md: '100%', sm: '100%'}} h='40vh' bg='#00A99D' borderRadius={5}>
+                <Heading fontFamily={'Raleway'} align='center' mt={5} color='white' >Lounge</Heading>
                 <Center>
-                  <Image src='discussions.png' alt='Lounge' align='center' w='15vw' h='20vh' mt={5}/>
+                  <Image src='lounge-bg.png' alt='Lounge' align='center' w='12vw' h='20vh' mt={5}/>
                 </Center>
                 <Center mt='10'>
-                  <ShowHallDescription hall='Lounge' color='#9affc0' fontColor='black'/>
+                  <ShowHallDescription hall='Lounge' color='#44fcd0' fontColor='black'/>
                 </Center>
               </Box>
             </Flex>

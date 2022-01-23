@@ -57,10 +57,53 @@
   }
 
   .cpbutton{
-    padding: 5px;
+    padding: 10px;
     background-color: rgb(46, 43, 255);
-    width: 100px;
+    width: 100%;
     color: rgb(255, 255, 255);
     border-radius: 10px;
     margin-right: 5px;
+    font-family: 'Raleway', sans-serif;
   }
+
+  .halls {
+    background-image: url("/discussions.png");
+    background-position: right;
+    background-repeat: no-repeat;
+    background-color: #3778DA;
+  }
+
+  .technology {
+    background-image: url("/tech-bg.png");
+    background-position: center;
+    background-size: 9em;
+    background-repeat: no-repeat;
+    background-color: #92278F;
+  }
+
+  .arts {
+    background-image: url("/art-bg.png");
+    background-position: center;
+    background-size: 25em;
+    background-repeat: no-repeat;
+    background-color: #00AEEF;
+  }
+
+  .business {
+    background-image: url("/business-bg.png");
+    background-position: center;
+    background-size: 8em;
+    background-repeat: no-repeat;
+    background-color: #9E0B0F;
+  }
+
+  .lounge {
+    background-image: url("/lounge-bg.png");
+    background-position: center;
+    background-size: 8em;
+    background-repeat: no-repeat;
+    background-color: #00A99D;
+  }
+
+
+

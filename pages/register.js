@@ -233,7 +233,7 @@ export default function Register({data2}) {
                 <FormLabel>Last Name</FormLabel>
                 <input className={styles.input_box} type="text" value={last_name} onChange={e => setLastName(e.target.value)}/>
                 <br/>
-                <FormLabel>Username</FormLabel>
+                <FormLabel>Display Name</FormLabel>
                 <input className={styles.input_box} type="text" value={user_name} onChange={e => setUserName(e.target.value)}/>
                 <br/>
                 <FormLabel>iACADEMY Email</FormLabel>
@@ -267,7 +267,7 @@ export default function Register({data2}) {
             <Link href="/"><Image src={Logo}  alt="Critique Hall Logo"></Image></Link>
             </div>
           
-            <Heading mb={2} as="h2" size="lg" color={useColorModeValue('#C1272D')}>REGISTER</Heading>
+            <Heading fontFamily={'Raleway'} mb={2} as="h2" size="lg" color={useColorModeValue('#C1272D')}>REGISTER</Heading>
                 <FormLabel>Department</FormLabel>
                 <Select className={styles.input_select} placeholder="Select Department" size="sm" onChange={e => getSpecList(e.target.value)}>
                   {depList.map((department, i) => (

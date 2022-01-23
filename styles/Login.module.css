@@ -1,7 +1,8 @@
 .container {
     background-image: url("/Banner.png");
     background-repeat: no-repeat;
-    background-size: auto;
+    background-color: #3778DA;
+    background-size: 50%;
     height: 100vh;
     padding: 0 0.5rem;
     display: flex;
