@@ -40,14 +40,15 @@ const EditReply = ({data}) => {
 
     const editReply = () => {
         let formData = new FormData;
+        formData.append('reply_id', data.reply_id)
         formData.append('body', reply)
 
-        axios.post(`${API_URL}api/update_reply`, formData, config)
+        axios.post(`${API_URL}/api/update_reply`, formData, config)
         .then((response) => {
             console.log(response.data)
-            onClose
+            onClose()
           }).catch((error)=>{
-            console.log(error)
+            console.log(error.response)
         })
     }
 
@@ -65,7 +66,6 @@ const EditReply = ({data}) => {
                         <Textarea w='100%' value={reply} onChange={(e)=>setReply(e.target.value)}></Textarea>
                         <Button onClick={editReply}>Save</Button>
                         <Button onClick={onClose}>Cancel</Button>
-                        
                     </ModalBody>
                 </ModalContent>
             </Modal>

@@ -104,11 +104,23 @@ function EditProfile({data}) {
       // console.log(storage)
 
       if (!file) return;
-      const storageRef = ref(storage, `/files/${file.name}`)
+      const storageProfRef = ref(storage, `/files/${profileImage.name}`)
+      const storageCoverRef = ref(storage, `/files/${coverImage.name}`)
 
-      const uploadProfile = uploadBytesResumable(storageRef, file)
-      const uploadCover = uploadBytesResumable(storageRef, file)
-      uploadTask.on("state_changed", (snapshot) => {
+      const uploadProfile = uploadBytesResumable(storageProfRef, file)
+      const uploadCover = uploadBytesResumable(storageCoverRef, file)
+      uploadProfile.on("state_changed", (snapshot) => {
+        const prog = Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
+
+        setProgress(prog);
+      }, (err) => console.log(err),
+      () => {
+        getDownloadURL(uploadTask.snapshot.ref)
+        .then(url => console.log(url))
+      }
+      );
+
+      uploadCover.on("state_changed", (snapshot) => {
         const prog = Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
 
         setProgress(prog);
@@ -143,6 +155,7 @@ function EditProfile({data}) {
         formData.append('last_name', lastName)
         formData.append('display_name', displayName)
         formData.append('about_me', aboutMe)
+        formData.append()
         uploadFiles();
 
         axios.post(`${API_URL}/api/change_profile`, formData, config)

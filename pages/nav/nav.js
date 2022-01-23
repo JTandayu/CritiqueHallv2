@@ -86,12 +86,12 @@ export default function Nav({id}){
 
         axios.get(`${API_URL}/api/display_profile/${cookies.display_name}`, config)
         .then(response => {
-            console.log(response.data);      
+            // console.log(response.data);      
             setProfilePic(response.data.data.user.profile_photo)
         })
         .catch(error => {
             console.log(error.response.data.error);
-            if(error.response.data.error ==  'Token Expired'){
+            if(error.response.data.error ==  'User does not exist'){
                 Router.replace('/login')
                 return;
             }
@@ -99,12 +99,12 @@ export default function Nav({id}){
 
         axios.get(`${API_URL}/api/get_notifs`, config)
         .then(response => {
-            console.log(response.data.Notifs);      
+            // console.log(response.data.Notifs);      
             setNotif(response.data.Notifs)
         })
         .catch(error => {
             console.log(error.response.data.error);
-            if(error.response.data.error ==  'Token Expired'){
+            if(error.response.data.error ==  'User does not exist'){
                 Router.replace('/login')
                 return;
             }

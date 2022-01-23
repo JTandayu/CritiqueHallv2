@@ -34,20 +34,21 @@ const EditCritique = ({data}) => {
         }
       }
 
-    useEffect(() => {
+    // useEffect(() => {
         
-    }, [])
+    // }, [])
 
     const editCritiqueItem = () => {
         let formData = new FormData;
+        formData.append('critique_id', data.critique_id)
         formData.append('body', critique)
         
-        axios.post(`${API_URL}api/update_critique`, formData, config)
+        axios.post(`${API_URL}/api/update_critique`, formData, config)
         .then((response) => {
             console.log(response.data)
-            onClose
+            onClose()
           }).catch((error)=>{
-            console.log(error)
+            console.log(error.response)
         })
     }
 

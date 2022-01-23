@@ -30,6 +30,7 @@ import { useState } from 'react'
 import { useColorModeValue } from '@chakra-ui/react';
 import { createBreakpoints } from '@chakra-ui/theme-tools'
 import axios from "axios"
+import { useCookies } from 'react-cookie';
 
 
 const breakpoints = createBreakpoints({
@@ -48,6 +49,7 @@ export default function ConfirmationPage(){
   const { API_KEY } = process.env
 
   const [code, setCode] = useState('')
+  const [cookies, setCookies, removeCookies] = useCookies(['token', 'id', 'encrypted_id'])
 
   const forgotPassword = async () =>{
 
@@ -61,6 +63,7 @@ export default function ConfirmationPage(){
             'Authorization': 'Basic Y2Fwc3RvbmUyMDIxOjEyMzQ=',
             // 'Accept-Encoding': 'gzip, deflate, br',
             'Accept': 'application/json',
+
           }
         }
 
@@ -69,6 +72,7 @@ export default function ConfirmationPage(){
         axios.post(`${API_URL}/api/confirm_verification`, formData, config)
         .then(response => {
             console.log(response);
+            setCookies('token', response.data.token)
             window.location = "/reset-password"
         })
         .catch(error => {
@@ -91,7 +95,7 @@ export default function ConfirmationPage(){
             </div>
 
             <Heading mb={2} as="h2" size="lg" color={useColorModeValue('#1B1464')}>Confirmation</Heading>
-            <p className={styles.description}>Kindly enter the verification code to reset your password</p>
+            <p className={styles.description}>Kindly enter the verification code to verify your account</p>
             <center><FormControl id="forgotpassword" isRequired>
                 <input placeholder="" className={styles.input_box} type="text" value={code} onChange={e => setCode(e.target.value)}/>
                 <FormHelperText className={styles.helperText}>This field is required.</FormHelperText>

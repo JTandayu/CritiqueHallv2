@@ -33,7 +33,7 @@ const breakpoints = createBreakpoints({
 
 const theme = extendTheme({ breakpoints })
 
-export const Critiques = ({id, filter}) => {
+export const Critiques = ({id, filter, newPost}) => {
     const { API_URL } = process.env
     const { API_KEY } = process.env
 
@@ -41,6 +41,7 @@ export const Critiques = ({id, filter}) => {
     const [critiqueItems, setCritiqueItems] = useState([])
     const [reply, setReply] = useState('')
     const [lastId, setLastID] =  useState('0')
+    const [newPostCritique, setNewPostCritique] = useState(newPost)
     const filterCritique = filter;
     // console.log(filter)
     // console.log(cookie.token)
@@ -55,7 +56,13 @@ export const Critiques = ({id, filter}) => {
           'token': cookie.token,
           'user_id': cookie.encrypted_id
         }
-    }
+    };
+
+    // componentDidUpdate(){
+    //     if(newPost !== newPostCritique){
+    //         this.setState(critiqueItems);
+    //     }
+    // }
 
     useEffect(() => {
 

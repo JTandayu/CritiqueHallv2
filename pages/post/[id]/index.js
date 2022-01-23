@@ -95,7 +95,7 @@ export default function CritiquePost(post_id){
     const [urls, setUrls] = useState([])
     const [fileName, setFileName] = useState([])
     const [filter, setFilter] = useState('newest')
-    
+    const [newPost, setNewPost] = useState(0)
 
     useEffect(() => {
         // console.log(post_id.post_id)
@@ -187,7 +187,7 @@ export default function CritiquePost(post_id){
         axios.post(`${API_URL}/api/like_post/${post_id.post_id}`, formData, config)
         .then(response => {
             console.log(response.data);
-            document.getElementById('likes').innerHTML=response.data.likes;
+            document.getElementById('likes').innerHTML=response.data.stars;
         })
         .catch(error => {
             console.log(error);
@@ -331,7 +331,7 @@ export default function CritiquePost(post_id){
                     </Box>
                     {/* Critiques */}
                     <Box overflowY="scroll" h={{lg: '80vh', sm: '70vh'}} mt={5}>
-                        <Critiques id={post_id.post_id} filter={filter} />
+                        <Critiques id={post_id.post_id} filter={filter} newPost={newPost} />
                     </Box>
                     
                         
