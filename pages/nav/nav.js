@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import Image from 'next/image'
+// import Image from 'next/image'
 import { css, cx } from '@emotion/react'
 import { motion } from "framer-motion"
 import styles from "@styles/component/Nav.module.css";
@@ -7,7 +7,7 @@ import Link from 'next/link'
 import Logo from "@public/critiquehall2.png";
 import { Button, ButtonGroup, IconButton, Input, Spacer, useColorModeValue, Img, Divider } from "@chakra-ui/react"
 import { CloseIcon, HamburgerIcon } from '@chakra-ui/icons'
-import { ChevronDownIcon } from '@chakra-ui/icons'
+import { ChevronDownIcon, Search2Icon } from '@chakra-ui/icons'
 import {
     Menu,
     MenuButton,
@@ -154,14 +154,14 @@ export default function Nav({id}){
                 onClick={() => changeDisplay('flex')}
             />
             
-            <Flex w='8em' h='5em' ml={[32,32,16,16]} mt={1}>
+            <Flex w='10em' h='3em' ml={[32,32,16,16]} mt={5}>
                 <Link href="/home" passHref>
-                    <Image src={Logo} alt="Critique Hall Logo"  w="5em" h="3em" _hover={{cursor:'pointer'}}></Image>
+                    <Img src='critiquehall2.png' className={styles.critique_logo} alt="Critique Hall Logo"  w="10em" h="3em" _hover={{cursor:'pointer'}}></Img>
                 </Link>
             </Flex>
             <Spacer />
                 <form action='/search' method='POST' onSubmit={searchItem}>
-                    <Input placeholder='SEARCH...' display={['none','none','none','flex']} w='30vw' type='text' mt={7} mr='10vw' color='black' bg='white' borderColor='gray.400' onChange={(e)=>setSearch(e.target.value)} boxShadow='lg' />
+                    <Input fontFamily={'Raleway'} fontWeight={'bold'} fontStyle={'italic'} placeholder='SEARCH' display={['none','none','none','flex']} w='30vw' type='text' mt={7} mr='25vw' color='black' bg='white'  onChange={(e)=>setSearch(e.target.value)} boxShadow='md' />
                 </form>
             <Spacer />
         <Flex
@@ -180,9 +180,12 @@ export default function Nav({id}){
                         my={2}
                         w='100%'
                         position='static'
-                        color={useColorModeValue('#1B1464')}
+                        color={Router.pathname === "/home" ? '#C1272D' : '#1B1464'}
+                        textDecoration={Router.pathname === "/home" ? 'underline' : 'none'}
                         _hover={{cursor:'pointer', color: '#C1272D', textDecoration:'underline'}}
-                        _active={{bgColor: 'none', color: '#C1272D', textDecoration:'underline'}}
+                        fontFamily={'Raleway'}
+                        fontWeight={'bold'}
+                        size='lg'
                     >
                         HOME
                     </Button>
@@ -193,11 +196,15 @@ export default function Nav({id}){
                         variant='ghost'
                         aria-label='Home'
                         my={2}
+                        mr={2}
                         w='100%'
                         position='static'
-                        color={useColorModeValue('#1B1464')}
+                        color={Router.pathname === "/critique" ?  '#C1272D' : '#1B1464'} 
+                        textDecoration={Router.pathname === "/critique" ? 'underline' : 'none'}
                         _hover={{cursor:'pointer', color: '#C1272D', textDecoration:'underline'}}
-                        _active={{bgColor: 'none', color: '#C1272D', textDecoration:'underline'}}
+                        fontFamily={'Raleway'}
+                        fontWeight={'bold'}
+                        size='lg'
                     >
                         CRITIQUE
                     </Button>
@@ -210,9 +217,12 @@ export default function Nav({id}){
                         my={2}
                         w='100%'
                         position='static'
-                        color={useColorModeValue('#1B1464')}
+                        color={Router.pathname === "/feedback" ?  '#C1272D' : '#1B1464'}
+                        textDecoration={Router.pathname === "/feedback" ? 'underline' : 'none'}
                         _hover={{cursor:'pointer', color: '#C1272D', textDecoration:'underline'}}
-                        _active={{bgColor: 'none', color: '#C1272D',  textDecoration:'underline'}}
+                        fontFamily={'Raleway'}
+                        fontWeight={'bold'}
+                        size='lg'
                     >
                         FEEDBACK
                     </Button>
@@ -228,7 +238,7 @@ export default function Nav({id}){
                             color={useColorModeValue('#1B1464')}
                             _hover={{cursor:'pointer', textDecoration:'underline'}}
                         _active={{bgColor: 'none', textDecoration:'underline'}}
-                            >Notification</Button>
+                            > <Img src='notification-alert-icon.png' alt="Notification" w="2em" h="2em" ml={-5} /></Button>
                     </PopoverTrigger>
                     <PopoverContent>
                         <PopoverArrow />
@@ -253,7 +263,7 @@ export default function Nav({id}){
                     <Flex>
                         {/* <Image src=""></Image> */}
                         {/* <Img src='https://www.clipartmax.com/png/middle/119-1198197_anonymous-person-svg-png-icon-free-download-anonymous-icon-png.png' w='2vw' h='2vw'></Img> */}
-                        <Img src={profPic} w='2vw' h='2vw' rounded='full'></Img>
+                        <Img src={profPic} w='2vw' h='2vw'></Img>
                         <Text mt={2} ml={1}>{display_name}</Text>
                         {/* <Text ml={1} mr={3}>{user_id}</Text> */}
                         <ChevronDownIcon ml={1} mt={3} />
@@ -299,7 +309,7 @@ export default function Nav({id}){
             </Flex>
         <Flex flexDir='column' align='center'>
                 <form action='/search' method='POST' onSubmit={searchItem}>
-                    <Input w='50vw' type='text' mt={7} color='black' bg='white' placeholder='Search' borderColor='gray.400' onChange={(e)=>setSearch(e.target.value)} />
+                    <Input fontFamily={'Raleway'} fontWeight={'bold'} fontStyle={'italic'} w='50vw' type='text' mt={7} color='black' bg='white' placeholder='SEARCH' borderColor='gray.400' onChange={(e)=>setSearch(e.target.value)} />
                 </form>
                 <Link href="/home" passHref>
                     <Button
@@ -354,7 +364,7 @@ export default function Nav({id}){
                         _hover={{cursor:'pointer', color: '#C1272D', textDecoration:'underline'}}
                         _active={{bgColor: 'none', color: '#C1272D',  textDecoration:'underline'}}
                     >
-                        Profile
+                        <Link href="/profile/[id]" as={`/profile/${display_name}`} passHref>PROFILE</Link>
                     </Button>
                 </Link>
                 <Link href="/" passHref>
@@ -371,7 +381,7 @@ export default function Nav({id}){
                         rounded='none'
                         onClick={logOut}
                     >
-                        Logout
+                        <Img src='power-icon-dark.png' alt="Critique Hall Message Logo" w="2em" h="2em" mr={2} />LOG OUT
                     </Button>
                 </Link>
             </Flex> 
