@@ -203,7 +203,6 @@ function CreatePost({data}) {
         <button onClick={onOpen} className={styles.cpbutton}>Create Post</button>
 
 
-        <form action='' method='POST'>
         <Modal isOpen={isOpen} onClose={onClose}>
             <ModalOverlay />
                 <ModalContent maxW="70rem">
@@ -232,11 +231,11 @@ function CreatePost({data}) {
                     
 
                     <Center mt={10}>
-                        <Button type="submit" colorScheme='blue' mr={2} onClick={submitPost}>
+                        <Button colorScheme='blue' mr={2} onClick={submitPost}>
                             Submit
                         </Button>
 
-                        <Button type="submit" variant='ghost' mr={2} onClick={onClose}>
+                        <Button variant='ghost' mr={2} onClick={onClose}>
                             Cancel
                         </Button>
                     </Center>
@@ -282,7 +281,6 @@ function CreatePost({data}) {
                 </ModalBody>
             </ModalContent>
         </Modal>
-        </form>
         
         
         </>

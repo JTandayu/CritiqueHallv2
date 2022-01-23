@@ -101,6 +101,7 @@ export const Critiques = ({id, filter, newPost}) => {
         .then((response) =>{
             console.log(response.data)
             document.getElementById(critique_id).hidden=true;
+            setCritiqueItems(critiqueItems => critiqueItems.filter())
             window.location.href = `/post/${id}`;
         }).catch((error) =>{
             console.log(error.response)

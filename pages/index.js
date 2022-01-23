@@ -80,7 +80,7 @@ export default function Welcome() {
       <Box position='static' bgColor={useColorModeValue('#E5E5E5', '#2E2E2E')} w="100%" h={{lg: '75vh', md: '100%', sm: '100%'}} display={{lg: 'flex', md: 'flex', sm: 'block'}} z-index='-1' borderBottom="1px solid black">
             <Flex mt={44} flexDir='column' align='center' w={{lg: '50vw', md: '100%', sm: '100%'}}>
               <Heading fontFamily={'Raleway'} size='3xl'>WELCOME TO</Heading>
-              <Image className={styles.drop_shadow} src='critiquehall.png' w={{lg: '500px', md: '500px', sm: '500px'}} h='37vh' mt={5}/>
+              <Image className={styles.drop_shadow} position='static' src='critiquehall.png' w={{lg: '500px', md: '500px', sm: '500px'}} h='37vh' mt={5}/>
               <Link href="/login"><Button size='lg' type='submit' mt={5} colorScheme='red' position='static' passHref>Get Started</Button></Link>
             </Flex>
             <Image className={styles.drop_shadow} src='man-texting.png' w={{lg: '600px', md: '600px', sm: '600px'}} h='60vh' mt='10vh' mb='5vh' mr='10vw' align='center' />

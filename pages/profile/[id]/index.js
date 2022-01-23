@@ -18,23 +18,34 @@ import styles from '@styles/Profile.module.css'
 import axios from 'axios'
 import { useState, useEffect } from 'react'
 import { useCookies, cookies } from 'react-cookie'
+import ReportUser from '@component/report-user'
 
 export async function getServerSideProps(context){
     const { API_URL } = process.env
     const { API_KEY } = process.env
 
-    // const res = await fetch(`${API_URL}/api/display_profile?user_id=${context.params.id}`, {
-    //     method: 'GET',
-    //     headers: {
+    // const cookies = context.req.headers.cookie;
+    // const cookie = await cookies.json()
+    // const data = []
+    // console.log(cookie);
+
+    // const config = {
+    //     method: 'Get',
+    //     headers: { 
     //         'content-type': 'multipart/form-data',
     //         'X-API-KEY': `${API_KEY}`,
     //         'Authorization': 'Basic Y2Fwc3RvbmUyMDIxOjEyMzQ=',
     //         // 'Accept-Encoding': 'gzip, deflate, br',
     //         'Accept': 'application/json',
-    //     },
-    // })
+    //         'token': cookies.token,
+    //         'user_id': cookies.encrypted_id
+    //     }
+    // }
+
+    // const res = await fetch(`${API_URL}/api/display_profile/${cookies.display_name}`, config)
 
     // const data = await res.json()
+
     const data = context.params.id
 
     // console.log(data.id)
@@ -52,10 +63,22 @@ export default function ProfilePage({data}){
     const { API_KEY } = process.env
 
     const [cookies, setCookies, removeCookies] = useCookies(['token', 'id', 'encrypted_id'])
-    const [userData, setUserData] = useState([])
+    const [userData, setUserData] = useState('')
     const [userPosts, setUserPosts] = useState([])
     const [userCritique, setUserCritique] = useState([])
     const [filter, setFilter] = useState('newest')
+
+    const config = {
+        headers: { 
+            'content-type': 'multipart/form-data',
+            'X-API-KEY': `${API_KEY}`,
+            'Authorization': 'Basic Y2Fwc3RvbmUyMDIxOjEyMzQ=',
+            // 'Accept-Encoding': 'gzip, deflate, br',
+            'Accept': 'application/json',
+            'token': cookies.token,
+            'user_id': cookies.encrypted_id
+        }
+    }
 
     // const user_id = cookies.id
     useEffect(() => {
@@ -65,34 +88,26 @@ export default function ProfilePage({data}){
         document.getElementById('postFilter').removeAttribute('hidden');
         document.getElementById('critiqueFilter').hidden=true;
 
-        const config = {
-            headers: { 
-                'content-type': 'multipart/form-data',
-                'X-API-KEY': `${API_KEY}`,
-                'Authorization': 'Basic Y2Fwc3RvbmUyMDIxOjEyMzQ=',
-                // 'Accept-Encoding': 'gzip, deflate, br',
-                'Accept': 'application/json',
-                'token': cookies.token,
-                'user_id': cookies.encrypted_id
-            }
-        }
-
         
 
-        axios.get(`${API_URL}/api/display_profile/${cookies.display_name}`, config)
+        axios.get(`${API_URL}/api/display_profile/${data}`, config)
         .then(response => {
             console.log(response.data);      
             setUserData(response.data.data.user)
+            displayPostCritique(response.data.data.user.encrypted_id)
         })
         .catch(error => {
             console.log(error.response);
         });
 
+        
 
+    }, [])
 
+    const displayPostCritique = (enc_id) => {
         let formData = new FormData;
-        formData.append('user_id', cookies.encrypted_id)
-        console.log(cookies.id)
+        formData.append('user_id', enc_id)
+        // console.log(cookies.id)
 
         axios.post(`${API_URL}/api/display_posts`, formData, config)
         .then(response => {
@@ -112,8 +127,7 @@ export default function ProfilePage({data}){
         .catch(error => {
             console.log(error.response);
         });
-
-    }, [])
+    }
 
     const filterPost = (e) =>{
 
@@ -148,8 +162,10 @@ export default function ProfilePage({data}){
             </Head>
 
             <Box mx={{lg: 'auto', md: '0', sm: '0'}} my='auto' bg='blue.200' w={{lg: '90%', md: '100%', sm: '100%'}} h={{lg: '80vh', md: '100vh', sm: '150vh'}} rounded='lg' mt={32} mb={{lg: 0, md: 0, sm: 10}} position='static'>
+             
                 <Box display='flex' flexDir={{lg: 'row', md: 'column', sm: 'column'}} w='100%'>
                     <Box w={{lg: '100vw', md: '40vw', sm: '90%'}} h={{lg: '35vh', md: '35vh', sm: '45vh'}} bg='white' bgImage={`url('${userData.cover_photo}')`} p={3} display={{lg: 'flex', sm: 'block'}} mt={5} ml={{lg: 8, md: 0, sm: 5}} rounded='lg'>
+                        {userData && userData.display_name !== cookies.display_name ? <ReportUser data={userData} /> : null}
                         <Box w='20vh' h='20vh' bg='gray' mt={24} ml={{lg: 5, md: 0, sm: 0}} mx={{lg: 0, md: 0, sm: 'auto'}} rounded='full'>
                             <Center>
                                 <Image w='18vh' h='18vh' rounded='full' src={userData.profile_photo} mt={3}/>
@@ -169,7 +185,7 @@ export default function ProfilePage({data}){
                         <Flex>
                         <Heading size='2xl' as='h3' color='white' mt={10}>About Me: </Heading>
                         <Spacer />
-                            <EditProfile data={userData}/>
+                            {userData && userData.display_name === cookies.display_name ? <EditProfile data={userData}/> : null}
                         </Flex>
                         <Text w={{lg: '65vh', md: '100%', sm: '100%'}} fontSize='md' color="white">{userData.about_me}</Text>
                         <Heading size='md' color='white' mt={5}>Reputation Points: {userData.reputation_points}</Heading>

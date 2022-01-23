@@ -144,14 +144,21 @@ export default function SearchResult(){
             {/* User item */}
             <Text id='user' mx='auto' hidden>No Users Found</Text>
             {searchUserData.map((user) => (
-            <Box w={{lg: '20%', sm: '100%'}} display={{lg: 'flex', sm: 'block'}} key={user.user_id} mt='2ch' mx="auto" border='1px solid' borderColor='dark' rounded='lg'>
-                <Box p="3" w="100%" bg="light">
-                    <Image src={user.profile_photo} w='30px' h='30px' rounded='full' />
-                </Box>
+            <Box w='100%'>
+            <Link href="/profile/[id]" as={`/profile/${user.display_name}`} passHref>
+                <a>
+                <Box w={{lg: '20%', sm: '100%'}} display={{lg: 'flex', sm: 'block'}} key={user.user_id} mt='2ch' mx="auto" border='1px solid' borderColor='dark' rounded='lg'>
+                    <Box p="3" w="100%" bg="light">
+                        <Image src={user.profile_photo} w='30px' h='30px' rounded='full' />
+                    </Box>
 
-                <Box p="3" w="100%" bg="light">
-                    {user.display_name}
-                </Box>      
+                    <Box p="3" w="100%" bg="light">
+                        {user.display_name}
+                    </Box>      
+                </Box>
+                
+                </a>
+            </Link>
             </Box>
             ))}
             <Heading>Posts</Heading>
