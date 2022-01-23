@@ -123,7 +123,7 @@ function Home(){
                   <Image src='tech-bg.png' alt='School of Computing' align='center' w='10vw' h='20vh' mt={5}/>
                 </Center>
                 <Center mt='10'>
-                  <ShowHallDescription hall='Technology' color="#b303ff" fontColor='white' />
+                  <ShowHallDescription hall='Technology' color="#b303ff" fontColor='black' />
                 </Center>
               </Box>
               <Spacer />
@@ -133,7 +133,7 @@ function Home(){
                   <Image src='art-bg.png' alt='School of Design and Arts' align='center' w='20vw' h='20vh' mt={1}/>
                 </Center>
                 <Center mt='10'>
-                  <ShowHallDescription hall='Arts' color='#6ec5ff' fontColor='white' />
+                  <ShowHallDescription hall='Arts' color='#6ec5ff' fontColor='black' />
                 </Center>
               </Box>
               <Spacer />
@@ -143,7 +143,7 @@ function Home(){
                   <Image src='business-bg.png' alt='School of Business' align='center' w='10vw' h='20vh' mt={5}/>
                 </Center>
                 <Center mt='10'>
-                  <ShowHallDescription hall='Business' color='#fa3434' fontColor='white'/>
+                  <ShowHallDescription hall='Business' color='#fa3434' fontColor='black'/>
                 </Center>
               </Box>
               <Spacer />
@@ -153,7 +153,7 @@ function Home(){
                   <Image src='lounge-bg.png' alt='Lounge' align='center' w='12vw' h='20vh' mt={5}/>
                 </Center>
                 <Center mt='10'>
-                  <ShowHallDescription hall='Lounge' color='#44fcd0' fontColor='white'/>
+                  <ShowHallDescription hall='Lounge' color='#44fcd0' fontColor='black'/>
                 </Center>
               </Box>
             </Flex>

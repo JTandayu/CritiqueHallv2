@@ -90,7 +90,7 @@ export default function FeedbackPage(){
                 <Heading fontFamily={'Raleway'} color={'#29226E'} size="md" align="center" mt="5">Send your feedbacks and suggestions and we&apos;ll answer it for you.</Heading>
             </Box>
 
-            <Box display={{lg: "flex", sm: 'block'}} w="95%" bg="#29226E" spacing="10px" top="0" h={{lg: "65vh", sm: "100%"}} mb="5vh" mt="10" py="10">
+            <Box display={{lg: "flex", sm: 'block'}} w="90%" className={styles.box} spacing="10px" top="0" h={{lg: "70vh", sm: "100%"}} mb="5vh" mt="10" py="10">
                 <Box w={{lg: "40%" , sm: '100%'}} mx="auto" h="70vh" p="6" color='white'>
                     <form action='' method='POST'>
                     {/* <Heading color="white" mx="auto">Feedback</Heading> */}
@@ -145,17 +145,26 @@ export default function FeedbackPage(){
                     <Center><Textarea fontFamily={'Raleway'} fontWeight={'extrabold'} placeholder='Message...' w="100%" bg="light" mt="5vh" color='black' mx="auto" position='static' onChange={(e)=>setFeedback(e.target.value)}/></Center>
 
                     <Box w="100%">
-                        <Center><Button type='submit' mx='auto' colorScheme='blue' mt="3" onClick={SubmitFeedback}>Submit</Button></Center>
+                        <Center><Button size={'lg'} type='submit' mx='auto' colorScheme='blue' mt="3" onClick={SubmitFeedback}>Submit</Button></Center>
                     </Box>
                     </form>
                 </Box>
 
-                <Box w={{lg: "40%" , sm: '90%'}} mt={{lg: '0', sm: '5vh'}} bg="white" mx="auto" h="50vh" p="3" boxShadow="lg" borderRadius="lg">
+                <Box w={{lg: "40%" , sm: '90%'}} mt={{lg: '0', sm: '5vh'}} bg="white" mx="auto" h={{lg: '50vh', md: '55vh', sm: '60vh'}} p="3" boxShadow="lg" borderRadius="lg">
                     <Center><Heading fontFamily={'Raleway'} fontWeight={'extrabold'} color={'#C1272D'} mx="auto">Contact Information</Heading></Center>
-                    <Box w={{lg: "90%" , sm: '90%'}} mt={{lg: '0', sm: '5vh'}} bg="white" mx="auto" h="20vh" p="3">
+                    <Box w={{lg: "90%" , sm: '90%'}} mt={{lg: '0vh', md: '2vh', sm: '2vh'}} bg="white" mx="auto" h="20vh" p="3">
                     <br />
-                    <Text fontSize='2xl' fontWeight={'bold'}> Azariah Danizar G. Concepcion</Text>
-                    <Text fontSize='2xl' fontWeight={'bold'}> Jomari L. Matias</Text>
+                    <Center><Text fontSize='2xl' fontWeight={'bold'} color={'#29226E'}> Azariah Danizar G. Concepcion</Text></Center>
+                    <Center><Text fontSize='md' fontWeight={'bold'} fontStyle={'italic'} color={'#BF7604'}> Full-Stack Developer | 201801130@iacademy.edu.ph | (+63) 949-846-0846</Text></Center>
+                    <br />
+                    <Center><Text fontSize='2xl' fontWeight={'bold'} color={'#29226E'}> Jomari L. Matias</Text></Center>
+                    <Center><Text fontSize='md' fontWeight={'bold'} fontStyle={'italic'} color={'#BF7604'}> UX Designer | 201801253@iacademy.edu.ph | (+63) 998-084-4162</Text></Center>
+                    <br />
+                    <Center><Text fontSize='2xl' fontWeight={'bold'} color={'#29226E'}> Richie Gene R. Tan</Text></Center>
+                    <Center><Text fontSize='md' fontWeight={'bold'} fontStyle={'italic'} color={'#BF7604'}> Full-Stack Developer / Creative Director | 201801273@iacademy.edu.ph | (+63) 916-424-9531</Text></Center>
+                    <br />
+                    <Center><Text fontSize='2xl' fontWeight={'bold'} color={'#29226E'}> Jose Luis P. Tandayu</Text></Center>
+                    <Center><Text fontSize='md' fontWeight={'bold'} fontStyle={'italic'} color={'#BF7604'}> Full-Stack Developer | 201801312@iacademy.edu.ph | (+63) 916-418-7235</Text></Center>
                     </Box>
                     
                 </Box>
