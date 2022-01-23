@@ -263,13 +263,13 @@ function EditProfile({data}) {
                     <Divider mb={5} mt={5} />
 
                     <Heading size='md' mb={5}>Preferences</Heading>
-                    <Center display='flex' mb={5}>
+                    {/* <Center display='flex' mb={5}>
                             <FormLabel>Dark Mode</FormLabel>
                             <Switch onChange={toggleColorMode}/>
-                    </Center>
+                    </Center> */}
                     <Center display='flex' mb={10}>
                             <FormLabel>Enable Updates</FormLabel>
-                            <Switch onChange={toggleColorMode}/>
+                            <Switch />
                     </Center>
                     <Divider mb={5} />
                 </ModalBody>

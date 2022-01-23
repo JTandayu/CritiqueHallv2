@@ -1,8 +1,8 @@
 .container {
-    background-image: url("/discussions.png");
+    /* background-image: url("/discussions.png");
     background-repeat: no-repeat;
     background-position: right;
-    background-size: 100vh;
+    background-size: 100vh; */
     background-color: #F4F4F4;
     opacity: 1;
     min-height: 88vh;

@@ -5,7 +5,7 @@ import { motion } from "framer-motion"
 import styles from "@styles/component/Nav.module.css";
 import Link from 'next/link'
 import Logo from "@public/critiquehall2.png";
-import { Button, ButtonGroup, IconButton, Input, Spacer, useColorModeValue, Img, Divider } from "@chakra-ui/react"
+import { Button, ButtonGroup, IconButton, Input, Spacer, useColorMode, useColorModeValue, Img, Divider } from "@chakra-ui/react"
 import { CloseIcon, HamburgerIcon } from '@chakra-ui/icons'
 import { ChevronDownIcon, Search2Icon } from '@chakra-ui/icons'
 import {
@@ -56,6 +56,21 @@ const breakpoints = createBreakpoints({
 export default function Nav({id}){
     const { API_URL } = process.env
     const { API_KEY } = process.env
+
+    const { colorMode, toggleColorMode } = useColorMode()
+    colorMode === 'light' ? 'Dark' : 'Light'
+
+    const [darkMode ,setDarkMode] = useState('')
+    const [ImgUrl, setImgUrl] = useState('dark-mode-icon.png')
+
+    const changeDarkAndLightIcon = () => {
+        toggleColorMode()
+        if(colorMode === 'light'){
+            setImgUrl('light-mode-icon.png')
+        }else{
+            setImgUrl('dark-mode-icon.png')
+        }
+    }
     
     const [display, changeDisplay] = useState('none')
     const [cookies, removeCookie] = useCookies(['token', 'display_name'])
@@ -240,6 +255,16 @@ export default function Nav({id}){
                         _active={{bgColor: 'none', textDecoration:'underline'}}
                             > <Img src='notification-alert-icon.png' alt="Notification" w="2em" h="2em" ml={-5} /></Button>
                     </PopoverTrigger>
+                    <Button as='a'
+                            variant='ghost'
+                            aria-label='Home'
+                            my={2}
+                            w='100%'
+                            position='static'
+                            onClick={changeDarkAndLightIcon}
+                            _hover={{cursor:'pointer'}}
+                            _active={{bgColor: 'none'}}
+                            > <Img src={ImgUrl} alt="moon" w="2em" h="2em" ml={-20} /></Button>
                     <PopoverContent>
                         <PopoverArrow />
                         <PopoverCloseButton />
@@ -308,8 +333,22 @@ export default function Nav({id}){
 
             </Flex>
         <Flex flexDir='column' align='center'>
+            <Link href="/home" passHref>
+                    <Button
+                        as='a'
+                        variant='ghost'
+                        aria-label='Home'
+                        my={5}
+                        w='100%'
+                        color={useColorModeValue('#1B1464')}
+                        _hover={{cursor:'pointer', textDecoration:'underline'}}
+                        _active={{bgColor: 'none'}}
+                    >
+                        <Img src='critiquehall.png' alt="Critique Hall Logo" w="100px" h="70px" mr={2} />
+                    </Button>
+                </Link>
                 <form action='/search' method='POST' onSubmit={searchItem}>
-                    <Input fontFamily={'Raleway'} fontWeight={'bold'} fontStyle={'italic'} w='50vw' type='text' mt={7} color='black' bg='white' placeholder='SEARCH' borderColor='gray.400' onChange={(e)=>setSearch(e.target.value)} />
+                    <Input fontFamily={'Raleway'} fontWeight={'bold'} fontStyle={'italic'} w='50vw' type='text' mt={7} color='black' bg='white' placeholder='SEARCH' onChange={(e)=>setSearch(e.target.value)} boxShadow={'md'} />
                 </form>
                 <Link href="/home" passHref>
                     <Button
