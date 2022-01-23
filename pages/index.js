@@ -2,14 +2,14 @@ import Head from 'next/head'
 import styles from "@styles/Welcome.module.css";
 import { motion } from "framer-motion"
 import Link from 'next/link'
-import { Stack, HStack, VStack, useColorMode, FormLabel, Input, Textarea } from "@chakra-ui/react"
+import { Stack, HStack, VStack, FormLabel, Input, Textarea } from "@chakra-ui/react"
 import { Button, ButtonGroup } from "@chakra-ui/react"
 import { ArrowForwardIcon, CheckIcon, InfoOutlineIcon } from '@chakra-ui/icons'
 import { Box, Divider, Flex, Heading, Spacer, Image, Center } from "@chakra-ui/react"
 import axios from 'axios';
 import {useState} from 'react';
 import ManTexting from "@public/man-texting.png";
-import { useColorModeValue } from "@chakra-ui/react";
+import { useColorMode, useColorModeValue } from "@chakra-ui/react";
 
 
 const variants = {
@@ -27,10 +27,14 @@ export default function Welcome() {
   const { API_URL } = process.env
   const { API_KEY } = process.env
 
+  const { colorMode, toggleColorMode } = useColorMode()
+  colorMode === 'light' ? 'Dark' : 'Light'
+
   const [email, setEmail] = useState('')
   const [fullName, setFullName] = useState('')
   const [subject, setSubject] = useState('')
   const [message, setMessage] = useState('')
+  
 
   const sendMessage = () =>{
 
@@ -75,7 +79,7 @@ export default function Welcome() {
 
       <Box position='static' bgColor={useColorModeValue('#E5E5E5', '#2E2E2E')} w="100%" h={{lg: '75vh', md: '100%', sm: '100%'}} display={{lg: 'flex', md: 'flex', sm: 'block'}} z-index='-1' borderBottom="1px solid black">
             <Flex mt={44} flexDir='column' align='center' w={{lg: '50vw', md: '100%', sm: '100%'}}>
-              <Heading size='3xl'>WELCOME TO</Heading>
+              <Heading fontFamily={'Raleway'} size='3xl'>WELCOME TO</Heading>
               <Image className={styles.drop_shadow} src='critiquehall.png' w={{lg: '500px', md: '500px', sm: '500px'}} h='37vh' mt={5}/>
               <Link href="/login"><Button size='lg' type='submit' mt={5} colorScheme='red' position='static' passHref>Get Started</Button></Link>
             </Flex>
@@ -89,13 +93,13 @@ export default function Welcome() {
               </Flex>
               <Spacer />
               <Flex mt={16} flexDir='column' align='center' w={{lg: '45vw', md: '100%', sm: '100%'}}>
-                <Heading size='3xl'>WHAT IS</Heading>
+                <Heading fontFamily={'Raleway'} size='3xl'>WHAT IS</Heading>
                 
                 <Flex flexDir={{lg: 'row', md: 'row', sm: 'column'}}>
                   <Image className={styles.drop_shadow} src='critiquehall.png' w={{lg: '500px', md: '500px', sm: '500px'}} h='37vh' mt={5}/>
                   <Heading size='3xl' my='auto' mx={{lg: '0', md: '0', sm: 'auto'}}>?</Heading>
                 </Flex>
-                <Heading size='xl' w={{lg: '30vw', md: '100%', sm: '100%'}} align='center' mt={5} mb={10}>An Open Forum Web Application for Students and Teachers</Heading>
+                <Heading fontFamily={'Raleway'} size='xl' w={{lg: '30vw', md: '100%', sm: '100%'}} align='center' mt={5} mb={10}>An Open Forum Web Application for Students and Teachers</Heading>
               </Flex>
             </Flex>
           </Box>
@@ -106,12 +110,12 @@ export default function Welcome() {
 
             <Flex flexDir={{lg: 'row', md: 'row', sm: 'column'}} >
               <Flex mt={16} flexDir='column' align='center' w={{lg: '45vw', md: '100%', sm: '100%'}}>
-                <Heading size='3xl' >GOAL OF</Heading>
+                <Heading fontFamily={'Raleway'} size='3xl' >GOAL OF</Heading>
                 <Image className={styles.drop_shadow} src='critiquehall.png' w={{lg: '500px', md: '500px', sm: '500px'}} h='37vh' mt={5}/>
               </Flex>
               <Spacer />
               <Flex flexDir="column" mt={{lg: 16, md: 5, sm: 5}} w={{lg: '45vw', md: '100%', sm: '100%'}}>
-                <Heading size='lg' w={{lg: '45vw', md: '100%', sm: '100%'}} align='center'>To meet the student and teacher&apos;s needs with regards to academic lives and personal development.</Heading>
+                <Heading fontFamily={'Raleway'} size='lg' w={{lg: '45vw', md: '100%', sm: '100%'}} align='center'>To meet the student and teacher&apos;s needs with regards to academic lives and personal development.</Heading>
                 <Image className={styles.drop_shadow} src='SOB.png' w={{lg: '900px', md: '900px', sm: '900px'}} h='60vh' mt='-2vh' mr='20vw' align='center'/>
               </Flex>
             </Flex>
@@ -124,19 +128,19 @@ export default function Welcome() {
           <Box position='static' bgColor={useColorModeValue('#EFEFEF', '#242424')} boxShadow='lg' w="100%" h="100%" display={{lg: 'flex', md: 'flex', sm: 'block'}}>
             <Flex flexDir='column' w='100%'>
             <Flex flexDir='column' w='100%'>
-              <Heading size='4xl' align='center' w='100%' mt={5}>WE&apos;D LOVE TO HEAR FROM YOU!</Heading>
-              <Heading size='lg' align='center' w='100%' mt={5}>Send your feedbacks and suggestions and we&apos;ll answer it for you.</Heading>
+              <Heading fontFamily={'Raleway'} size='4xl' align='center' w='100%' mt={5}>WE&apos;D LOVE TO HEAR FROM YOU!</Heading>
+              <Heading fontFamily={'Raleway'} size='lg' align='center' w='100%' mt={5}>Send your feedbacks and suggestions and we&apos;ll answer it for you.</Heading>
             </Flex>
             <form action='' method='POST'>
               <Flex w='100%' flexDir={{lg: 'row', md: 'column', sm: 'column'}} align='center'  mt={20}>
                 <Box w='30vw'>
-                <Image src='announcer.png' w={{lg: '300px', md: '300px', sm: '300px'}} h='300px' mt='-5vh' ml='5vw' align='center'/>
+                <Image className={styles.drop_shadow} src='announcer.png' w={{lg: '300px', md: '300px', sm: '300px'}} h='300px' mt='-5vh' ml='5vw' align='center'/>
                 </Box>
               
                 <Flex flexDir='column' w='100%' align='center'>
 
                   <Flex align='center' flexDir={{lg: 'row', md: 'row', sm: 'column'}} w={{lg: '40vw', md: '40vw', sm: '100%'}} color='black'>
-                      <Input className={styles.input_boxshadow} type='text' w={{lg: '13vw', md: '13vw', sm: '100%'}} placeholder='Email Address' onChange={(e)=>setEmail(e.target.value)}></Input>
+                      <Input className={styles.input_boxshadow} type='email' w={{lg: '13vw', md: '13vw', sm: '100%'}} placeholder='iACADEMY Email' onChange={(e)=>setEmail(e.target.value)}></Input>
                       <Spacer />
                       <Input className={styles.input_boxshadow} type='text' w={{lg: '13vw', md: '13vw', sm: '100%'}} mt={{lg: 0, md: 0, sm: 5}} placeholder='Full Name' onChange={(e)=>setFullName(e.target.value)}></Input>
                       <Spacer />

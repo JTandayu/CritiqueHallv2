@@ -142,7 +142,7 @@ export default function Nav({id}){
 
     return(
     <>
-    <Flex boxShadow='md' w='100%' h='100px' bg={useColorModeValue('white', '#1a202c')} pos='fixed' zIndex={100}> 
+    <Flex boxShadow='md' w='100%' h='100px' bg={useColorModeValue('white', '#212121')} pos='fixed' zIndex={100}> 
         <IconButton
                 aria-label='Open Menu'
                 size='lg'
@@ -181,8 +181,8 @@ export default function Nav({id}){
                         w='100%'
                         position='static'
                         color={useColorModeValue('#1B1464')}
-                        _hover={{cursor:'pointer', textDecoration:'underline'}}
-                        _active={{bgColor: 'none', textDecoration:'underline'}}
+                        _hover={{cursor:'pointer', color: '#C1272D', textDecoration:'underline'}}
+                        _active={{bgColor: 'none', color: '#C1272D', textDecoration:'underline'}}
                     >
                         HOME
                     </Button>
@@ -196,8 +196,8 @@ export default function Nav({id}){
                         w='100%'
                         position='static'
                         color={useColorModeValue('#1B1464')}
-                        _hover={{cursor:'pointer', textDecoration:'underline'}}
-                        _active={{bgColor: 'none'}}
+                        _hover={{cursor:'pointer', color: '#C1272D', textDecoration:'underline'}}
+                        _active={{bgColor: 'none', color: '#C1272D', textDecoration:'underline'}}
                     >
                         CRITIQUE
                     </Button>
@@ -211,6 +211,8 @@ export default function Nav({id}){
                         w='100%'
                         position='static'
                         color={useColorModeValue('#1B1464')}
+                        _hover={{cursor:'pointer', color: '#C1272D', textDecoration:'underline'}}
+                        _active={{bgColor: 'none', color: '#C1272D',  textDecoration:'underline'}}
                     >
                         FEEDBACK
                     </Button>
@@ -224,6 +226,8 @@ export default function Nav({id}){
                             w='100%'
                             position='static'
                             color={useColorModeValue('#1B1464')}
+                            _hover={{cursor:'pointer', textDecoration:'underline'}}
+                        _active={{bgColor: 'none', textDecoration:'underline'}}
                             >Notification</Button>
                     </PopoverTrigger>
                     <PopoverContent>
@@ -269,7 +273,7 @@ export default function Nav({id}){
         
         <Flex
         w='60vw'
-        bg={useColorModeValue('white', '#1a202c')}
+        bg={useColorModeValue('white', '#212121')}
         zIndex={20}
         h='100vh'
         pos='fixed'
@@ -304,7 +308,9 @@ export default function Nav({id}){
                         aria-label='Home'
                         my={5}
                         w='100%'
-
+                        color={useColorModeValue('#1B1464')}
+                        _hover={{cursor:'pointer', color: '#C1272D', textDecoration:'underline'}}
+                        _active={{bgColor: 'none', color: '#C1272D', textDecoration:'underline'}}
                     >
                         HOME
                     </Button>
@@ -316,7 +322,9 @@ export default function Nav({id}){
                         aria-label='Home'
                         my={5}
                         w='100%'
-
+                        color={useColorModeValue('#1B1464')}
+                        _hover={{cursor:'pointer', color: '#C1272D', textDecoration:'underline'}}
+                        _active={{bgColor: 'none', color: '#C1272D',  textDecoration:'underline'}}
                     >
                         CRITIQUE
                     </Button>
@@ -328,7 +336,9 @@ export default function Nav({id}){
                         aria-label='Home'
                         my={5}
                         w='100%'
-
+                        color={useColorModeValue('#1B1464')}
+                        _hover={{cursor:'pointer', color: '#C1272D', textDecoration:'underline'}}
+                        _active={{bgColor: 'none', color: '#C1272D',  textDecoration:'underline'}}
                     >
                         FEEDBACK
                     </Button>
@@ -340,7 +350,9 @@ export default function Nav({id}){
                         aria-label='Home'
                         my={5}
                         w='100%'
-
+                        color={useColorModeValue('#1B1464')}
+                        _hover={{cursor:'pointer', color: '#C1272D', textDecoration:'underline'}}
+                        _active={{bgColor: 'none', color: '#C1272D',  textDecoration:'underline'}}
                     >
                         Profile
                     </Button>

@@ -40,7 +40,9 @@ const MotionButton = motion(Button)
 
 export default function Nav(){
     const { colorMode, toggleColorMode } = useColorMode()
+
     colorMode === 'light' ? 'Dark' : 'Light'
+
     const [display, changeDisplay] = useState('none')
 
     const [darkMode ,setDarkMode] = useState('')
@@ -55,17 +57,6 @@ export default function Nav(){
             setImgUrl('dark-mode-icon.png')
         }
     }
-
-    // const changeDarkAndLight2 = () => {
-    //     toggleColorMode()
-    //     if(colorMode === 'light'){
-    //         setImgUrl('critiquehall2.png')
-    //     }else{
-    //         setImgUrl('critiquehall2-dark.png')
-    //     }
-    // }
-
-
 
     return(
         <>
@@ -129,6 +120,7 @@ export default function Nav(){
                         color={useColorModeValue('#1B1464')}
                         _hover={{cursor:'pointer', textDecoration:'underline'}}
                         _active={{bgColor: 'none'}}
+                        fontFamily={'Raleway'}                                                                             
                     >
                         <Image src={'critique-user-icon.png'} alt="Critique Hall User Logo" w="2em" h="2em" mr={2} />LOG-IN
                     </Button>
@@ -144,9 +136,9 @@ export default function Nav(){
                         my={2}
                         w='100%'
                         color={useColorModeValue('#C1272D')}
-                        onChange={changeDarkAndLightIcon}
                         _hover={{cursor:'pointer', textDecoration:'underline'}}
                         _active={{bgColor: 'none'}}
+                        fontFamily={'Raleway'}
                     >
                         <Image src='critique-message-icon.png' alt="Critique Hall Message Logo" w="2em" h="2em" mr={2} />REGISTER
                     </Button>

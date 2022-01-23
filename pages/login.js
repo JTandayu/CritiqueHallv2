@@ -46,6 +46,9 @@ export default function Login({user}) {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
+  // const { colorMode, toggleColorMode } = useColorMode()
+  // colorMode === 'light' ? 'Dark' : 'Light'
+
   const [cookies, setCookies, removeCookies] = useCookies(['token', 'id', 'encrypted_id'])
 
 
@@ -92,6 +95,7 @@ export default function Login({user}) {
           <title>Critique Hall | Login</title>
           <meta name="description" content="Critique Hall by create next app" />
           <link rel="icon" href="/logo256.png" onLoad=""/>
+          <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@700&display=swap" rel="stylesheet" />
         </Head>
   
         <Box as='main' bg={useColorModeValue('white', '#212121')} w={{lg: '100ch' , md: '100%' , sm: '100%' }} className={styles.main} 
@@ -104,7 +108,7 @@ export default function Login({user}) {
              alt="Critique Hall Logo"></Image></Link>
             </div>
             
-            <Heading mb={5} as="h2" size="lg" color={useColorModeValue('#1B1464')}>LOG-IN</Heading>
+            <Heading fontFamily={'Raleway'} mb={5} as="h2" size="lg" color={useColorModeValue('#1B1464')}>LOG-IN</Heading>
             <Box id='warning1' bg='red.100' w='30%' h='5vh' border='1px solid red' rounded='md' mb={4} mt={2} hidden>
               <Center>
                 <Text mt='1vh'>Incorrect Email or Password</Text>
