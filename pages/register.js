@@ -23,6 +23,7 @@ import axios from 'axios';
 import { createBreakpoints } from '@chakra-ui/theme-tools'
 import { storage } from '../firebase.js'
 import { getDownloadURL, ref, uploadBytesResumable } from 'firebase/storage'
+import { useCookies } from 'react-cookie';
 
 const MotionButton = motion(Button)
 
@@ -88,6 +89,7 @@ export default function Register({data2}) {
   const [specList, setSpecList] = useState([])
   const [depList, setDepList] = useState([])
   const [gender, setGender] = useState('')
+  const [cookies, setCookies, removeCookies] = useCookies(['token', 'id', 'encrypted_id'])
 
     useEffect(() => {
       const config = {
@@ -139,7 +141,7 @@ export default function Register({data2}) {
 
     const submitRegister = async () =>{
       let formData = new FormData(); 
-      formData.append('first-name', first_name);   //append the values with key, value pair
+      formData.append('first_name', first_name);   //append the values with key, value pair
       formData.append('last_name', last_name);
       formData.append('display_name', user_name);
       formData.append('email', email);
@@ -147,6 +149,7 @@ export default function Register({data2}) {
       formData.append('confirm_password', confirm_password);
       formData.append('department', department);
       formData.append('specialization', specialization);
+      formData.append('gender', gender)
 
 
       const config = {
@@ -160,16 +163,49 @@ export default function Register({data2}) {
 
       axios.post(`${API_URL}/api/register`, formData, config)
       .then(response => {
-          console.log(response);
-            window.location = "/home"
+          console.log(response.data);
+          submitLogin()
       })
       .catch(error => {
-          console.log(error);
-          window.location = "/register"
+          console.log(error.response);
+          // window.location = "/register"
       });
 
+      
+
     }
-  // const getSpecializations
+
+    const submitLogin = () =>{
+
+      const config = {
+        headers: { 
+          'content-type': 'multipart/form-data',
+          'X-API-KEY': `${API_KEY}`,
+          'Authorization': 'Basic Y2Fwc3RvbmUyMDIxOjEyMzQ=',
+          'Accept': 'application/json',
+        }
+      }
+
+      let formData2 = new FormData;
+      formData2.append('email', email);
+      formData2.append('password', password);
+      // console.log(email)
+
+      axios.post(`${API_URL}/api/login`, formData2, config)
+      .then(response => {
+          console.log(response.data);
+          setCookies('token', response.data.token)
+          setCookies('display_name', response.data.display_name)
+          // setCookies('id', response.data.id)
+          setCookies('encrypted_id', response.data.encrypted_id)
+          setCookies('profile_pic', response.data.profile_pic)
+
+          // window.location = "/confirmation"
+      })
+      .catch(error => {
+          console.log(error.response);
+      });
+    }
 
     return (
       <div className={styles.container}>

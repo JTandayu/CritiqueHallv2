@@ -74,7 +74,7 @@ function EditPost({data, url, fileNames}){
     const [urls, setUrls] = useState([]); 
     const [fileNameList, setFileNameList] = useState([])
     const [urlList, setUrlList] = useState([])
-    console.log(url)
+    // console.log(url)
 
 
     useEffect(() => {

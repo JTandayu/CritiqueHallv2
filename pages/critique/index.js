@@ -84,7 +84,7 @@ export async function getStaticProps(ctx){
 
     // const data = await res.json()
     const data2 = await res2.json()
-    console.log(data2.halls)
+    // console.log(data2.halls)
     // console.log(data)
 
     return{
