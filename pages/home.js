@@ -87,7 +87,7 @@ function Home(){
                 
                 <Flex flexDir={{lg: 'row', md: 'row', sm: 'column'}}>
                   <Image src='critiquehall.png' w={{lg: '500px', md: '500px', sm: '500px'}} h='37vh' mt={5}/>
-                  <Heading size='3xl' my='auto' mx={{lg: '0', md: '0', sm: 'auto'}}>?</Heading>
+                  <Heading fontFamily={'Raleway'}  size='3xl' my='auto' mx={{lg: '0', md: '0', sm: 'auto'}}>?</Heading>
                 </Flex>
                 <Heading fontFamily={'Raleway'} size='xl' w={{lg: '30vw', md: '100%', sm: '100%'}} align='center' mt={5} mb={10}>An Open Forum Web Application for Students and Teachers</Heading>
               </Flex>
@@ -114,26 +114,26 @@ function Home(){
 
           {/* <Divider position='static' /> */}
 
-          <Box position='static' boxShadow='lg' w="100%" h="80vh" display={{lg: 'flex', md: 'flex', sm: 'block'}} flexDir='column'>
+          <Box position='static' bgColor={useColorModeValue('#EFEFEF', '#242424')} boxShadow='lg' w="100%" h="65vh" display={{lg: 'flex', md: 'flex', sm: 'block'}} flexDir='column' className={styles.halls}>
             <Heading fontFamily={'Raleway'} size='3xl' align='center' w='100%' mt={5}>HALLS</Heading>
             <Flex mt='10vh' w={{lg: '90%', md: '100vw', sm: '100vw'}} mx='auto' overflowX='auto'>
-              <Box w={{lg: '20vw', md: '100%', sm: '100%'}} h='40vh' bg='#92278F'>
+              <Box w={{lg: '20vw', md: '100%', sm: '100%'}} h='40vh' bg='#92278F' borderRadius={5}>
                 <Heading fontFamily={'Raleway'} align='center' mt={5} color='white' >Technology</Heading>
                 <Center>
                   <Image src='tech-bg.png' alt='School of Computing' align='center' w='10vw' h='20vh' mt={5}/>
                 </Center>
                 <Center mt='10'>
-                  <ShowHallDescription hall='Technology' color='#92278F' fontColor='white' />
+                  <ShowHallDescription hall='Technology' color="#b303ff" fontColor='white' />
                 </Center>
               </Box>
               <Spacer />
-              <Box w={{lg: '20vw', md: '100%', sm: '100%'}} h='40vh' bg='#00AEEF' ml={{lg: '0', md: '0', sm: '20vw'}}>
+              <Box w={{lg: '20vw', md: '100%', sm: '100%'}} h='40vh' bg='#00AEEF' ml={{lg: '0', md: '0', sm: '20vw'}} borderRadius={5}>
                 <Heading fontFamily={'Raleway'} align='center' mt={5} color='white'>Arts</Heading>
                 <Center>
                   <Image src='art-bg.png' alt='School of Design and Arts' align='center' w='20vw' h='20vh' mt={1}/>
                 </Center>
                 <Center mt='10'>
-                  <ShowHallDescription hall='Arts' color='#91c9f2' fontColor='white' />
+                  <ShowHallDescription hall='Arts' color='#6ec5ff' fontColor='white' />
                 </Center>
               </Box>
               <Spacer />
@@ -143,17 +143,17 @@ function Home(){
                   <Image src='business-bg.png' alt='School of Business' align='center' w='10vw' h='20vh' mt={5}/>
                 </Center>
                 <Center mt='10'>
-                  <ShowHallDescription hall='Business' color='#9E0B0F' fontColor='white'/>
+                  <ShowHallDescription hall='Business' color='#fa3434' fontColor='white'/>
                 </Center>
               </Box>
               <Spacer />
               <Box w={{lg: '20vw', md: '100%', sm: '100%'}} h='40vh' bg='#00A99D' borderRadius={5}>
                 <Heading fontFamily={'Raleway'} align='center' mt={5} color='white' >Lounge</Heading>
                 <Center>
-                  <Image src='lounge-bg.png' alt='Lounge' align='center' w='15vw' h='20vh' mt={5}/>
+                  <Image src='lounge-bg.png' alt='Lounge' align='center' w='12vw' h='20vh' mt={5}/>
                 </Center>
                 <Center mt='10'>
-                  <ShowHallDescription hall='Lounge' color='#00A99D' fontColor='white'/>
+                  <ShowHallDescription hall='Lounge' color='#44fcd0' fontColor='white'/>
                 </Center>
               </Box>
             </Flex>

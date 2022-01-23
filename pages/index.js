@@ -98,7 +98,7 @@ export default function Welcome() {
                 
                 <Flex flexDir={{lg: 'row', md: 'row', sm: 'column'}}>
                   <Img  className={styles.drop_shadow} src='critiquehall.png' w={{lg: '500px', md: '500px', sm: '500px'}} h='37vh' mt={5}/>
-                  <Heading size='3xl' my='auto' mx={{lg: '0', md: '0', sm: 'auto'}}>?</Heading>
+                  <Heading fontFamily={'Raleway'} size='3xl' my='auto' mx={{lg: '0', md: '0', sm: 'auto'}}>?</Heading>
                 </Flex>
                 <Heading fontFamily={'Raleway'} size='xl' w={{lg: '30vw', md: '100%', sm: '100%'}} align='center' mt={5} mb={10}>An Open Forum Web Application for Students and Teachers</Heading>
               </Flex>

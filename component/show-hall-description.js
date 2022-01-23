@@ -29,15 +29,15 @@ function ShowHallDescription({hall, color, fontColor}) {
 
     return(
         <>
-        <Button onClick={onOpen} ml={5} bgColor={color} _hover={{bgColor: color}}>Read More</Button>
+        <Button onClick={onOpen} ml={5} bgColor={color} _hover={{bgColor: color}}>READ MORE</Button>
 
         <form action='' method='POST'>
         <Modal isOpen={isOpen} onClose={onClose}>
             <ModalOverlay />
                 <ModalContent maxW="40rem" h='40vh' bgColor={color} color={fontColor}>
-                <ModalHeader><Heading align='center' size='lg'>{hall}</Heading></ModalHeader>
+                <ModalHeader><Heading fontFamily={'Raleway'} align='center' size='lg'>{hall}</Heading></ModalHeader>
                 <ModalCloseButton />
-                <ModalBody>
+                <ModalBody fontFamily={'Raleway'}>
                     Hello
                 </ModalBody>
             </ModalContent>

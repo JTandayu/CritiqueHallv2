@@ -264,14 +264,14 @@ export default function Nav({id}){
                         {/* <Image src=""></Image> */}
                         {/* <Img src='https://www.clipartmax.com/png/middle/119-1198197_anonymous-person-svg-png-icon-free-download-anonymous-icon-png.png' w='2vw' h='2vw'></Img> */}
                         <Img src={profPic} w='2vw' h='2vw'></Img>
-                        <Text mt={2} ml={1}>{display_name}</Text>
+                        <Text fontFamily={'Raleway'} fontWeight={'bold'} mt={2} ml={1}>{display_name}</Text>
                         {/* <Text ml={1} mr={3}>{user_id}</Text> */}
                         <ChevronDownIcon ml={1} mt={3} />
                     </Flex>  
                     </MenuButton>
                     <MenuList>
-                        <MenuItem><Link href="/profile/[id]" as={`/profile/${display_name}`} passHref>Profile</Link></MenuItem>
-                        <MenuItem color="red" _hover={{ bg: 'red.500', color: 'white' }} onClick={logOut}><Link href="/" passHref>Log Out</Link></MenuItem>
+                        <MenuItem><Link href="/profile/[id]" as={`/profile/${display_name}`} passHref>PROFILE</Link></MenuItem>
+                        <MenuItem color="red" _hover={{ bg: 'red.500', color: 'white' }} onClick={logOut}><Link href="/" passHref>LOG OUT</Link></MenuItem>
                     </MenuList>
                 </Menu>
 
@@ -381,7 +381,7 @@ export default function Nav({id}){
                         rounded='none'
                         onClick={logOut}
                     >
-                        <Img src='power-icon-dark.png' alt="Critique Hall Message Logo" w="2em" h="2em" mr={2} />LOG OUT
+                    <Img src='power-icon-dark.png' alt="Critique Hall Message Logo" w="2em" h="2em" mr={2} />LOG OUT
                     </Button>
                 </Link>
             </Flex> 

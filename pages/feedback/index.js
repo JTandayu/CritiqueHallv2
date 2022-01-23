@@ -7,6 +7,7 @@ import {
     FormLabel,
     FormErrorMessage,
     FormHelperText,
+    Text,
     Textarea,
     Button,
     Center,
@@ -85,14 +86,14 @@ export default function FeedbackPage(){
             </Head>
 
             <Box top="0" h="100%" mx="auto" mt="14vh">
-                <Heading size="2xl" align="center">WE&apos;D LOVE TO HEAR FROM YOU!</Heading>
-                <Heading size="md" align="center" mt="5">Send your feedbacks and suggestions and we&apos;ll answer it for you.</Heading>
+                <Heading fontFamily={'Raleway'} color={'#29226E'} size="2xl" align="center">WE&apos;D LOVE TO HEAR FROM YOU!</Heading>
+                <Heading fontFamily={'Raleway'} color={'#29226E'} size="md" align="center" mt="5">Send your feedbacks and suggestions and we&apos;ll answer it for you.</Heading>
             </Box>
 
-            <Box display={{lg: "flex", sm: 'block'}} w="95%" bg="blue.700" spacing="10px" top="0" h={{lg: "80vh", sm: "100%"}} mb="5vh" mt="10" py="10">
+            <Box display={{lg: "flex", sm: 'block'}} w="95%" bg="#29226E" spacing="10px" top="0" h={{lg: "65vh", sm: "100%"}} mb="5vh" mt="10" py="10">
                 <Box w={{lg: "40%" , sm: '100%'}} mx="auto" h="70vh" p="6" color='white'>
                     <form action='' method='POST'>
-                    <Heading color="white" mx="auto">Feedback</Heading>
+                    {/* <Heading color="white" mx="auto">Feedback</Heading> */}
                     <Box mt="5vh" display='flex'>
                         <FormLabel >Duis amet dolor sint sunt minim proident do ullamco cillum ea do.</FormLabel>
                         <RadioGroup onChange={(e)=>setAns1(e.target.value)}>
@@ -141,7 +142,7 @@ export default function FeedbackPage(){
                         </RadioGroup>
                     </Box>
 
-                    <Center><Textarea w="100%" bg="light" mt="5vh" color='black' mx="auto" position='static' onChange={(e)=>setFeedback(e.target.value)}/></Center>
+                    <Center><Textarea fontFamily={'Raleway'} fontWeight={'extrabold'} placeholder='Message...' w="100%" bg="light" mt="5vh" color='black' mx="auto" position='static' onChange={(e)=>setFeedback(e.target.value)}/></Center>
 
                     <Box w="100%">
                         <Center><Button type='submit' mx='auto' colorScheme='blue' mt="3" onClick={SubmitFeedback}>Submit</Button></Center>
@@ -149,9 +150,13 @@ export default function FeedbackPage(){
                     </form>
                 </Box>
 
-                <Box w={{lg: "40%" , sm: '90%'}} mt={{lg: '0', sm: '5vh'}} bg="white" mx="auto" h="70vh" p="3" boxShadow="lg" borderRadius="lg">
-                    <Center><Heading mx="auto">Contact Information</Heading></Center>
-                    
+                <Box w={{lg: "40%" , sm: '90%'}} mt={{lg: '0', sm: '5vh'}} bg="white" mx="auto" h="50vh" p="3" boxShadow="lg" borderRadius="lg">
+                    <Center><Heading fontFamily={'Raleway'} fontWeight={'extrabold'} color={'#C1272D'} mx="auto">Contact Information</Heading></Center>
+                    <Box w={{lg: "90%" , sm: '90%'}} mt={{lg: '0', sm: '5vh'}} bg="white" mx="auto" h="20vh" p="3">
+                    <br />
+                    <Text fontSize='2xl' fontWeight={'bold'}> Azariah Danizar G. Concepcion</Text>
+                    <Text fontSize='2xl' fontWeight={'bold'}> Jomari L. Matias</Text>
+                    </Box>
                     
                 </Box>
             </Box>

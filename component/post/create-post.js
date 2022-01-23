@@ -14,6 +14,12 @@ import {
     Text,
     Image
   } from "@chakra-ui/react"
+  import {
+    Alert,
+    AlertIcon,
+    AlertTitle,
+    AlertDescription,
+  } from '@chakra-ui/react'
 import { useDisclosure } from '@chakra-ui/react'
 import { Button } from '@chakra-ui/react'
 import styles from "@styles/Hall.module.css";
@@ -212,7 +218,7 @@ function CreatePost({data}) {
                 <ModalBody >
                     <Flex mb={5} flexDir={{lg: 'row', sm: 'column'}}>
                     <Box w={{lg: '24vw', sm: '100%'}}>
-                    <Flex mt='3vh'>
+                    <Flex fontFamily={'Raleway'} mt='3vh'>
                         <FormLabel>Title</FormLabel>
                         <Input type='text' w={{lg: '20vw', sm: '100%'}} ml='11px' bg='white' color='black' onChange={e => setTitle(e.target.value)}  />
                     </Flex>
@@ -220,7 +226,7 @@ function CreatePost({data}) {
                     <FormLabel mt={2}>Description</FormLabel>
                     <Textarea type='text' w={{lg: '23vw', sm: '100%'}} h='20vh' color='black' bg='white' onChange={e => setDescription(e.target.value)} />
                     <Flex mt={5}>
-                        <FormLabel mt={2}>Post This to: </FormLabel>
+                        <FormLabel fontFamily={'Raleway'} mt={2}>Post This to: </FormLabel>
                         <Select w={{lg: '10vw', sm: '50vw'}} bg='light' onChange={e => setHallID(e.target.value)}>
                             <option value='1'>Technology</option>
                             <option value='2'>Business</option>
@@ -232,11 +238,11 @@ function CreatePost({data}) {
                     
 
                     <Center mt={10}>
-                        <Button type="submit" colorScheme='blue' mr={2} onClick={submitPost}>
+                        <Button fontFamily={'Raleway'} type="submit" colorScheme='blue' mr={2} onClick={submitPost}>
                             Submit
                         </Button>
 
-                        <Button type="submit" variant='ghost' mr={2} onClick={onClose}>
+                        <Button fontFamily={'Raleway'} type="submit" variant='ghost' mr={2} onClick={onClose}>
                             Cancel
                         </Button>
                     </Center>
@@ -253,7 +259,7 @@ function CreatePost({data}) {
 
                     <Box ml='2vw' w={{lg: '20vw', sm: '100%'}} p={5}>
                         <Flex flexDir={{lg: 'row', sm: 'column'}} w='30vw'>
-                            <Heading size='sm' mr={3}>Attachments</Heading>
+                            <Heading fontFamily={'Raleway'} size='sm' mr={3}>Attachments</Heading>
                             {/* <Button bg='blue.400' color='white' ml={5} h='2em'>upload</Button> */}
                             <input type='file' multiple onChange={handleChange} accept=".jpg, .png, .docx, .xls" id='image-input' />
                             <Button onClick={uploadFiles}>Upload</Button>
@@ -267,15 +273,16 @@ function CreatePost({data}) {
                             ))}
                         </Flex>
 
-                        <Heading size='sm' mt={5}>Attachments Preview</Heading>
+                        <Heading fontFamily={'Raleway'} size='sm' mt={5}>Attachments Preview</Heading>
                         <Flex bg='white' w={{lg: '20vw', sm: '100%'}} h='20vh' rounded='md' overflowX='auto' mt={3}>
                             {urls.map((url, i) => (
                                 <Image src={url} key={i} w={{lg: '10vw', sm: '80vw'}} h='10vh' ml={5} />
                             ))} 
                         </Flex>
-                        <Text fontSize='xs'>*5 Attachments Max</Text>
-                        <Text fontSize='xs'>*image and doc format only accepted</Text>
-                        <Text fontSize='xs'>*200kb file max size</Text>
+                        <br />
+                        <Text fontFamily={'Raleway'} fontSize='xs'>*5 Attachments Max</Text>
+                        <Text fontFamily={'Raleway'} fontSize='xs'>*image and doc format only accepted</Text>
+                        <Text fontFamily={'Raleway'} fontSize='xs'>*200kb file max size</Text>
                     </Box>
 
                     </Flex >

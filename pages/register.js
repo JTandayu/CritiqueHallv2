@@ -233,7 +233,7 @@ export default function Register({data2}) {
                 <FormLabel>Last Name</FormLabel>
                 <input className={styles.input_box} type="text" value={last_name} onChange={e => setLastName(e.target.value)}/>
                 <br/>
-                <FormLabel>Username</FormLabel>
+                <FormLabel>Display Name</FormLabel>
                 <input className={styles.input_box} type="text" value={user_name} onChange={e => setUserName(e.target.value)}/>
                 <br/>
                 <FormLabel>iACADEMY Email</FormLabel>
