@@ -105,7 +105,7 @@ export default function Nav(){
             
             <Flex w='10em' h='3em' ml={[32,32,16,16]} mt={5}>
                 <Link href="/" passHref>
-                    <Image src={'critiquehall2.png'} alt="Critique Hall Logo" w="10em" h="3em" _hover={{cursor:'pointer'}}></Image>
+                    <Image className={styles.critique_logo} src={'critiquehall2.png'} alt="Critique Hall Logo" w="10em" h="3em" _hover={{cursor:'pointer'}}></Image>
                 </Link>
             </Flex>
 
@@ -164,7 +164,7 @@ export default function Nav(){
                         _hover={{cursor:'pointer'}}
                         _active={{bgColor: 'none'}}
                     >
-                        <Image src={ImgUrl} alt="moon" w="3em" h="3em" ml={-2} />
+                        <Image src={ImgUrl} alt="moon" w="2em" h="2em" ml={-5} />
                     </Button>
 
             </Flex>
