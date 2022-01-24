@@ -12,7 +12,22 @@
   align-items: center;
   height: 100vh;
   margin: auto;
-  
+}
+
+.container2 {
+  background-image: url("/Banner-dark.png");
+  background-repeat: no-repeat;
+  background-color: #1D447E;
+  background-size: 50%;
+  background-size: display;
+  height: 100vh;
+  padding: 0 0.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: auto;
 }
 
 .main {

@@ -58,16 +58,16 @@ export default function Nav({id}){
     const { API_KEY } = process.env
 
     const { colorMode, toggleColorMode } = useColorMode()
-    colorMode === 'light' ? 'Dark' : 'Light'
+    colorMode === 'light' ? 'dark' : 'light'
 
     const [darkMode ,setDarkMode] = useState('')
-    const [ImgUrl, setImgUrl] = useState('dark-mode-icon.png')
+    const [ImgUrl, setImgUrl] = useState('dark-and-light.png')
 
     const changeDarkAndLightIcon = () => {
         toggleColorMode()
         if(colorMode === 'light'){
             setImgUrl('light-mode-icon.png')
-        }else{
+        }else {
             setImgUrl('dark-mode-icon.png')
         }
     }

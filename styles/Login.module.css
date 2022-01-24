@@ -10,8 +10,22 @@
     justify-content: center;
     align-items: center;
     height: 100vh;
-    margin: auto;
-    
+    margin: auto;   
+  }
+
+.container2 {
+    background-image: url("/Banner-dark.png");
+    background-repeat: no-repeat;
+    background-color: #1D447E;
+    background-size: 50%;
+    height: 100vh;
+    padding: 0 0.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: auto;   
   }
 
   .main {
@@ -40,7 +54,7 @@
   } */
 
   .input_box{
-    width: 30vh;
+    /* width: 30vh; */
     padding: 10px;
     margin-bottom: 1ch;
     border-radius: 1ch;
@@ -60,7 +74,8 @@
   }
 
   .register{
-    margin-top: 1ch;
+    margin-top: -1ch;
+    margin-right: 10ch;
     color: rgb(0, 60, 255);
     text-align: center;
     text-transform: uppercase;
@@ -94,9 +109,6 @@
     margin-top: 1rem;
   }
 
-  .signUpText {
-    color: rgb(0, 60, 255);
-  }
 
   .signUpText:hover {
     text-decoration: underline;
