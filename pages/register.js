@@ -226,7 +226,7 @@ export default function Register({data2}) {
              alt="Critique Hall Logo"/></Link>
             </div>
           
-            <Heading fontFamily={'Raleway'} mb={2} as="h2" size="lg"color={useColorModeValue('#1B1464','#B2A3FF')}>REGISTER</Heading>
+            <Heading fontFamily={'Raleway'} mb={2} as="h2" size="lg"color={useColorModeValue('#C1272D','#FF5C61')}>REGISTER</Heading>
             
                 <FormLabel>First Name</FormLabel>
                 <Input className={styles.input_box} type="text" value={first_name} onChange={e => setFirstName(e.target.value)}/>
@@ -271,7 +271,7 @@ export default function Register({data2}) {
              alt="Critique Hall Logo"/></Link>
             </div>
           
-            <Heading fontFamily={'Raleway'} mb={2} as="h2" size="lg" color={useColorModeValue('#1B1464','#B2A3FF')}>REGISTER</Heading>
+            <Heading fontFamily={'Raleway'} mb={2} as="h2" size="lg" color={useColorModeValue('#C1272D','#FF5C61')}>REGISTER</Heading>
                 <FormLabel>Department</FormLabel>
                 <Select className={styles.input_select} placeholder="Select Department" size="sm" onChange={e => getSpecList(e.target.value)}>
                   {depList.map((department, i) => (
