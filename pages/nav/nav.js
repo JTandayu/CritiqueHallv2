@@ -4,7 +4,7 @@ import { css, cx } from '@emotion/react'
 import { motion } from "framer-motion"
 import styles from "@styles/component/Nav.module.css";
 import Link from 'next/link'
-import Logo from "@public/critiquehall2.png";
+// import Logo from "@public/critiquehall2.png";
 import { Button, ButtonGroup, IconButton, Input, Spacer, useColorMode, useColorModeValue, Img, Divider } from "@chakra-ui/react"
 import { CloseIcon, HamburgerIcon } from '@chakra-ui/icons'
 import { ChevronDownIcon, Search2Icon } from '@chakra-ui/icons'
@@ -176,7 +176,7 @@ export default function Nav({id}){
             </Flex>
             <Spacer />
                 <form action='/search' method='POST' onSubmit={searchItem}>
-                    <Input fontFamily={'Raleway'} fontWeight={'bold'} fontStyle={'italic'} placeholder='SEARCH' display={['none','none','none','flex']} w='30vw' type='text' mt={7} mr='25vw' color='black' bg='white'  onChange={(e)=>setSearch(e.target.value)} boxShadow='md' />
+                    <Input fontFamily={'Raleway'} fontWeight={'bold'} fontStyle={'italic'} placeholder='SEARCH' display={['none','none','none','flex']} w='30vw' type='text' mt={7} mr='25vw' onChange={(e)=>setSearch(e.target.value)} boxShadow='md' />
                 </form>
             <Spacer />
         <Flex
@@ -344,11 +344,11 @@ export default function Nav({id}){
                         _hover={{cursor:'pointer', textDecoration:'underline'}}
                         _active={{bgColor: 'none'}}
                     >
-                        <Img src='critiquehall.png' alt="Critique Hall Logo" w="100px" h="70px" mr={2} />
+                        <Img src={useColorModeValue('critiquehall.png', 'critiquehall-dark.png')} alt="Critique Hall Logo" w="100px" h="70px" mr={2} />
                     </Button>
                 </Link>
                 <form action='/search' method='POST' onSubmit={searchItem}>
-                    <Input fontFamily={'Raleway'} fontWeight={'bold'} fontStyle={'italic'} w='50vw' type='text' mt={7} color='black' bg='white' placeholder='SEARCH' onChange={(e)=>setSearch(e.target.value)} boxShadow={'md'} />
+                    <Input fontFamily={'Raleway'} fontWeight={'bold'} fontStyle={'italic'} w='50vw' type='text' mt={7} placeholder='SEARCH' onChange={(e)=>setSearch(e.target.value)} boxShadow={'md'} />
                 </form>
                 <Link href="/home" passHref>
                     <Button
@@ -357,9 +357,9 @@ export default function Nav({id}){
                         aria-label='Home'
                         my={5}
                         w='100%'
-                        color={useColorModeValue('#1B1464')}
-                        _hover={{cursor:'pointer', color: '#C1272D', textDecoration:'underline'}}
-                        _active={{bgColor: 'none', color: '#C1272D', textDecoration:'underline'}}
+                        color={Router.pathname === "/home" ? useColorModeValue('#C1272D', '#FF5C61') : useColorModeValue('#1B1464', '#B2A3FF')}
+                        textDecoration={Router.pathname === "/home" ? 'underline' : 'none'}
+                        _hover={{cursor:'pointer', textDecoration:'underline', color: useColorModeValue('#C1272D', '#FF5C61')}}
                     >
                         HOME
                     </Button>
@@ -371,9 +371,9 @@ export default function Nav({id}){
                         aria-label='Home'
                         my={5}
                         w='100%'
-                        color={useColorModeValue('#1B1464')}
-                        _hover={{cursor:'pointer', color: '#C1272D', textDecoration:'underline'}}
-                        _active={{bgColor: 'none', color: '#C1272D',  textDecoration:'underline'}}
+                        color={Router.pathname === "/critique" ? useColorModeValue('#C1272D', '#FF5C61') : useColorModeValue('#1B1464', '#B2A3FF')}
+                        textDecoration={Router.pathname === "/critique" ? 'underline' : 'none'}
+                        _hover={{cursor:'pointer', textDecoration:'underline', color: useColorModeValue('#C1272D', '#FF5C61')}}
                     >
                         CRITIQUE
                     </Button>
@@ -385,9 +385,9 @@ export default function Nav({id}){
                         aria-label='Home'
                         my={5}
                         w='100%'
-                        color={useColorModeValue('#1B1464')}
-                        _hover={{cursor:'pointer', color: '#C1272D', textDecoration:'underline'}}
-                        _active={{bgColor: 'none', color: '#C1272D',  textDecoration:'underline'}}
+                        color={Router.pathname === "/feedback" ? useColorModeValue('#C1272D', '#FF5C61') : useColorModeValue('#1B1464', '#B2A3FF')}
+                        textDecoration={Router.pathname === "/feedback" ? 'underline' : 'none'}
+                        _hover={{cursor:'pointer', textDecoration:'underline', color: useColorModeValue('#C1272D', '#FF5C61')}}
                     >
                         FEEDBACK
                     </Button>
@@ -399,11 +399,11 @@ export default function Nav({id}){
                         aria-label='Home'
                         my={5}
                         w='100%'
-                        color={useColorModeValue('#1B1464')}
-                        _hover={{cursor:'pointer', color: '#C1272D', textDecoration:'underline'}}
-                        _active={{bgColor: 'none', color: '#C1272D',  textDecoration:'underline'}}
+                        color={Router.pathname === "/profile" ? useColorModeValue('#C1272D', '#FF5C61') : useColorModeValue('#1B1464', '#B2A3FF')}
+                        textDecoration={Router.pathname === "/profile" ? 'underline' : 'none'}
+                        _hover={{cursor:'pointer', textDecoration:'underline', color: useColorModeValue('#C1272D', '#FF5C61')}}
                     >
-                        <Link href="/profile/[id]" as={`/profile/${display_name}`} passHref>PROFILE</Link>
+                        <Link href={`/profile/${display_name}`} passHref>PROFILE</Link>
                     </Button>
                 </Link>
                 <Link href="/" passHref>
@@ -420,7 +420,7 @@ export default function Nav({id}){
                         rounded='none'
                         onClick={logOut}
                     >
-                    <Img src='power-icon-dark.png' alt="Critique Hall Message Logo" w="2em" h="2em" mr={2} />LOG OUT
+                    <Img src={useColorModeValue('power-icon-dark.png', 'power-icon.png')} alt="Critique Hall Message Logo" w="2em" h="2em" mr={2} />LOG OUT
                     </Button>
                 </Link>
             </Flex> 
