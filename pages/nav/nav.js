@@ -295,13 +295,8 @@ export default function Nav({id}){
                     </Flex>  
                     </MenuButton>
                     <MenuList>
-<<<<<<< HEAD
                         <MenuItem fontFamily={'Raleway'} fontWeight={'bold'}><Link href={`/profile/${display_name}`} passHref>PROFILE</Link></MenuItem>
                         <MenuItem fontFamily={'Raleway'} fontWeight={'bold'} color="red" _hover={{ bg: 'red.500', color: 'white' }} onClick={logOut}><Link href="/" passHref>LOG OUT</Link></MenuItem>
-=======
-                        <MenuItem><Link href={`/profile/${display_name}`} passHref>PROFILE</Link></MenuItem>
-                        <MenuItem color="red" _hover={{ bg: 'red.500', color: 'white' }} onClick={logOut}><Link href="/" passHref>LOG OUT</Link></MenuItem>
->>>>>>> 0335dcd30a8af94e2bdaa3153e4a5037932aa854
                     </MenuList>
                 </Menu>
 
