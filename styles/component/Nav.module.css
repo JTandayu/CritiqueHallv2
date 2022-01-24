@@ -87,6 +87,14 @@
   .critique_logo {
     filter: drop-shadow(0px 10px 1px rgba(0, 0, 0, 0.25));
   }
+
+  .critique_logo_2 {
+    filter: drop-shadow(0px 10px 1px rgba(0, 0, 0, 0.25));
+  }
+
+  .darkicon {
+    filter: drop-shadow(0px 10px 5px rgba(0, 0, 0, 0.25));
+  }
 }
 
 @media screen and (max-width: 1000px){
@@ -169,6 +177,14 @@
 
   .critique_logo {
     filter: drop-shadow(0px 10px 1px rgba(0, 0, 0, 0.25));
+  }
+
+  .critique_logo_2 {
+    filter: drop-shadow(0px 10px 1px rgba(0, 0, 0, 0.25));
+  }
+
+  .darkicon {
+    filter: drop-shadow(0px 10px 5px rgba(0, 0, 0, 0.25));
   }
 }
 
@@ -256,5 +272,12 @@
     filter: drop-shadow(0px 10px 1px rgba(0, 0, 0, 0.25));
   }
 
+  .critique_logo_2 {
+    filter: drop-shadow(0px 10px 1px rgba(0, 0, 0, 0.25));
+  }
+
+  .darkicon {
+    filter: drop-shadow(0px 10px 5px rgba(0, 0, 0, 0.25));
+  }
 }
 

@@ -96,7 +96,7 @@ export default function Nav(){
             
             <Flex w='10em' h='3em' ml={[32,32,16,16]} mt={5}>
                 <Link href="/" passHref>
-                    <Image className={styles.critique_logo} src='critiquehall2.png' alt="Critique Hall Logo" w="10em" h="3em" _hover={{cursor:'pointer'}}></Image>
+                    <Image className={styles.critique_logo} src={useColorModeValue('critiquehall2.png', 'critiquehall2-dark.png')} alt="Critique Hall Logo" w="10em" h="3em" _hover={{cursor:'pointer'}}></Image>
                 </Link>
             </Flex>
 
@@ -117,12 +117,12 @@ export default function Nav(){
                         my={2}
                         mr={5}
                         w='100%'
-                        color={useColorModeValue('#1B1464')}
+                        color={useColorModeValue('#1B1464', '#B2A3FF')}
                         _hover={{cursor:'pointer', textDecoration:'underline'}}
                         _active={{bgColor: 'none'}}
                         fontFamily={'Raleway'}                                                                             
                     >
-                        <Image src={'critique-user-icon.png'} alt="Critique Hall User Logo" w="2em" h="2em" mr={2} />LOG-IN
+                        <Image src={useColorModeValue('critique-user-icon.png', 'critique-user-icon-dark.png')} alt="Critique Hall User Logo" w="2em" h="2em" mr={2} />LOG-IN
                     </Button>
                     </a>
                 </Link>
@@ -135,12 +135,12 @@ export default function Nav(){
                         aria-label='Home'
                         my={2}
                         w='100%'
-                        color={useColorModeValue('#C1272D')}
+                        color={useColorModeValue('#C1272D', '#FF5C61')}
                         _hover={{cursor:'pointer', textDecoration:'underline'}}
                         _active={{bgColor: 'none'}}
                         fontFamily={'Raleway'}
                     >
-                        <Image src='critique-message-icon.png' alt="Critique Hall Message Logo" w="2em" h="2em" mr={2} />REGISTER
+                        <Image src={useColorModeValue('critique-message-icon.png', 'critique-message-icon-dark.png')} alt="Critique Hall Message Logo" w="2em" h="2em" mr={2} />REGISTER
                     </Button>
                     </a>
                 </Link>
@@ -156,7 +156,7 @@ export default function Nav(){
                         _hover={{cursor:'pointer'}}
                         _active={{bgColor: 'none'}}
                     >
-                        <Image src={ImgUrl} alt="moon" w="2em" h="2em" ml={-5} />
+                        <Image className={styles.darkicon} src={ImgUrl} alt="darkmode" w="2em" h="2em" ml={-5} />
                     </Button>
 
             </Flex>
@@ -167,7 +167,7 @@ export default function Nav(){
         
         <Flex
         w='40vw'
-        bg={useColorModeValue('white', '#212121')}
+        bg={useColorModeValue('#FFFFFF', '#212121')}
         zIndex={20}
         h='100vh'
         pos='fixed'
@@ -199,11 +199,11 @@ export default function Nav(){
                         aria-label='Home'
                         my={5}
                         w='100%'
-                        color={useColorModeValue('#1B1464')}
+                        // color={useColorModeValue('#1B1464')}
                         _hover={{cursor:'pointer', textDecoration:'underline'}}
                         _active={{bgColor: 'none'}}
                     >
-                        <Image src='critiquehall.png' alt="Critique Hall Logo" w="100px" h="70px" mr={2} />
+                        <Image className={styles.critique_logo_2} src={useColorModeValue('critiquehall.png', 'critiquehall-dark.png')} alt="Critique Hall Logo" w="100px" h="70px" mr={2} />
                     </Button>
                 </Link>
                 <Link href="/login" passHref>
@@ -213,11 +213,11 @@ export default function Nav(){
                         aria-label='Home'
                         my={5}
                         w='100%'
-                        color={useColorModeValue('#1B1464')}
+                        color={useColorModeValue('#1B1464', '#B2A3FF')}
                         _hover={{cursor:'pointer', textDecoration:'underline'}}
                         _active={{bgColor: 'none'}}
                     >
-                        <Image src='critique-user-icon.png' alt="Critique Hall User Logo" w="1.2em" h="2em" mr={2} />LOG-IN
+                        <Image src={useColorModeValue('critique-user-icon.png', 'critique-user-icon-dark.png')} alt="Critique Hall User Logo" w="1.2em" h="2em" mr={2} />LOG-IN
                     </Button>
                 </Link>
                 <Link href="/register" passHref>
@@ -227,11 +227,11 @@ export default function Nav(){
                         aria-label='Home'
                         my={5}
                         w='100%'
-                        color={useColorModeValue('#C1272D')}
+                        color={useColorModeValue('#C1272D', '#FF5C61')}
                         _hover={{cursor:'pointer', textDecoration:'underline'}}
                         _active={{bgColor: 'none'}}
                     >
-                        <Image src='critique-message-icon.png' alt="Critique Hall Message Logo" w="2em" h="2em" mr={2} />REGISTER
+                        <Image src={useColorModeValue('critique-message-icon.png', 'critique-message-icon-dark.png')} alt="Critique Hall Message Logo" w="2em" h="2em" mr={2} />REGISTER
                     </Button>
                 </Link>
                     <Button
@@ -244,7 +244,7 @@ export default function Nav(){
                         _hover={{cursor:'pointer'}}
                         _active={{bgColor: 'none'}}
                     >
-                        <Image src={ImgUrl} alt="moon" w="3em" h="3em" />
+                        <Image className={styles.darkicon} src={ImgUrl} alt="moon" w="3em" h="3em" />
                     </Button>
             </Flex> 
         </Flex>

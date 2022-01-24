@@ -1,14 +1,14 @@
 import Head from 'next/head'
-import Image from 'next/image'
+// import Image from 'next/image'
 // import styles from '../styles/Home.module.css'
 import styles from "@styles/Login.module.css";
 import { css, cx } from '@emotion/react'
 import { motion } from "framer-motion"
 import Home from './home'
 import Link from 'next/link'
-import Logo from "@public/critiquehall.png";
+// import Logo from "@public/critiquehall.png";
 import Discussions from "@public/discussions.png";
-import { Button, ButtonGroup, Center, Text } from "@chakra-ui/react"
+import { Button, ButtonGroup, Center, Text, Image, Input } from "@chakra-ui/react"
 import { Stack, HStack, VStack } from "@chakra-ui/react"
 import { Heading } from '@chakra-ui/react'
 import {
@@ -90,11 +90,11 @@ export default function Login({user}) {
     
 
     return (
-      <div className={styles.container} >
+      <div className={useColorModeValue(styles.container, styles.container2)}>
         <Head>
           <title>Critique Hall | Login</title>
           <meta name="description" content="Critique Hall by create next app" />
-          <link rel="icon" href="/logo256.png" onLoad=""/>
+          <link rel="icon" href={useColorModeValue('logo256.png', 'logo256-dark.png')} onLoad=""/>
           <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@700&display=swap" rel="stylesheet" />
         </Head>
   
@@ -104,11 +104,11 @@ export default function Login({user}) {
           // transition ={{duration: .7}}
           >
             <div className={styles.logo}>
-            <Link href="/" passHref><Image src={Logo} 
-             alt="Critique Hall Logo"></Image></Link>
+            <Link href="/" passHref><Image src={useColorModeValue('critiquehall.png', 'critiquehall-dark.png')} 
+             alt="Critique Hall Logo"/></Link>
             </div>
             
-            <Heading fontFamily={'Raleway'} mb={5} as="h2" size="lg" color={useColorModeValue('#1B1464')}>LOG-IN</Heading>
+            <Heading fontFamily={'Raleway'} mb={5} as="h2" size="lg" color={useColorModeValue('#1B1464','#B2A3FF')}>LOG-IN</Heading>
             <Box id='warning1' bg='red.100' w='30%' h='5vh' border='1px solid red' rounded='md' mb={4} mt={2} hidden>
               <Center>
                 <Text mt='1vh'>Incorrect Email or Password</Text>
@@ -116,28 +116,30 @@ export default function Login({user}) {
             </Box>
             <center><FormControl id="loginform" isRequired>
               <FormLabel>iACADEMY Email</FormLabel>
-                <input id="email" value={email} className={styles.input_box} type="email" onChange={e => setEmail(e.target.value)}/>
+                <Input size='lg' width={'30vh'} id="email" value={email} className={styles.input_box} type="email" onChange={e => setEmail(e.target.value)} />
                 {/* <input placeholder="Username" id="email" value={email} className={styles.input_box} type="email" /> */}
                 <br/>
                 <br/>
               <FormLabel>Password</FormLabel>
-                <input id="password" value={password} className={styles.input_box} type="password" onChange={e => setPassword(e.target.value)}/>
+                <Input size='lg' width={'30vh'} id="password" value={password} className={styles.input_box} type="password" onChange={e => setPassword(e.target.value)} />
                 {/* <input placeholder="Password" id="password" value={password} className={styles.input_box} type="password"/> */}
                 <br/>
                 <br/>
                 <p className={styles.register}>
-                <p><Link href="./forgot-password"><a>Forgot Password?</a></Link></p>
+                <Text fontSize='md' color={useColorModeValue('#1E9CE3', '#1BA3C1')}><Link href="./forgot-password"><a>Forgot Password?</a></Link></Text>
                 </p>
                 <VStack direction="row" spacing={8} align="center">
-                <MotionButton
-                  whileHover={{ scale: 1.2 }}
-                  whileTap={{ scale: 0.9 }}
+                <Button
+                  // whileHover={{ scale: 1.2 }}
+                  // whileTap={{ scale: 0.9 }}
                   className={styles.LoginButton} 
-                  colorScheme="messenger" 
+                  bgColor={useColorModeValue('#0C1F83', '#2346FF')}
+                  color={useColorModeValue('white', 'white')}
+                  _hover={{bgColor: 'blue'}} 
                   type="submit" 
                   size="lg"
                   onClick={submitLogin}
-                  > LOG-IN </MotionButton>
+                  > LOG-IN </Button>
                   {/* <MotionButton
                   whileHover={{ scale: 1.2 }}
                   whileTap={{ scale: 0.9 }}
@@ -152,7 +154,7 @@ export default function Login({user}) {
             </FormControl></center>
 
             <p className={styles.register2}>
-              <p>New User? <Link href="./register" passHref><a className={styles.signUpText}>Sign Up Now!</a></Link></p>
+              <Text fontSize='sm'>New user?<Link href="./register" passHref><Text _hover={{cursor:'pointer'}} fontSize='lg' className={styles.signUpText} color={useColorModeValue('#1E9CE3', '#1BA3C1')}>Sign Up Now!</Text></Link></Text>
             </p>
             
         </Box>
