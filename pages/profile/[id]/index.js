@@ -188,7 +188,7 @@ export default function ProfilePage({data}){
                             {userData && userData.display_name === cookies.display_name ? <EditProfile data={userData}/> : null}
                         </Flex>
                         <Text w={{lg: '65vh', md: '100%', sm: '100%'}} fontSize='md' color="white">{userData.about_me}</Text>
-                        <Heading size='md' color='white' mt={5}>Reputation Stars: {userData.reputation_points}<Image src={useColorModeValue('reputation-stars.png', 'reputation-stars.png')} alt="Reputation Stars" w="2em" h="2em"/></Heading>
+                        <Heading size='md' color='white' mt={5}>Reputation Stars: {userData.reputation_points}<Image src='reputation-stars.png' alt="Reputation Stars" w="2em" h="2em"/></Heading>
                         <Heading size='md' color='white' mt={5}>Strand/Specialization: {userData.specialization}</Heading>
                     </Box>
                 </Box>

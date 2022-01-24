@@ -2,7 +2,24 @@
     /* background-image: url("/BG.png");
     background-repeat: no-repeat;
     background-size: cover; */
-    /* background-color: #f3f3f3; */
+    background-color: #F4F4F4;
+    opacity: 1;
+    min-height: 88vh;
+    padding: 0 0.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* height: 85vh; */
+    max-height: 100%;
+    z-index: 0;
+  }
+
+  .container2 {
+    /* background-image: url("/BG.png");
+    background-repeat: no-repeat;
+    background-size: cover; */
+    background-color: #131313;
     opacity: 1;
     min-height: 88vh;
     padding: 0 0.5rem;

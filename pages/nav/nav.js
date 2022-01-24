@@ -71,6 +71,11 @@ export default function Nav({id}){
             setImgUrl('dark-mode-icon.png')
         }
     }
+
+    // const [isOpen, setIsOpen] = useState(false)
+    // const open = () => setIsOpen(!isOpen)
+    // const close = () => setIsOpen(false)
+
     
     const [display, changeDisplay] = useState('none')
     const [cookies, removeCookie] = useCookies(['token', 'display_name'])
