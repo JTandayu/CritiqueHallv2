@@ -218,14 +218,15 @@ export default function ProfilePage({data}){
                 </Box>
                 <Box display='flex' h={{lg: '30vh', sm: '40vh'}} p={3} mt={5} ml={3} mr={3}  rounded='lg' overflowX='auto'>
                     <Box id='posts' display='flex'>
-                        {userPosts.map((posts, i) => (
+                        {userPosts !== null ?
+                        userPosts.map((posts, i) => (
                             <Link href={`/post/${posts.post_id}`} key={i} passHref>
                                 <Box bg='white' w={{lg: '15vw', sm: '300px'}} h='28vh' ml={5}>
                                     {/* <Center mt={3}>
                                         <Heading size='md' mx="auto">{posts.title}</Heading>
                                     </Center> */}
                                     <Center mt={0}>
-                                        <Image w={{lg: '300px', sm: '300px'}} h='20vh' src='https://www.clipartmax.com/png/middle/119-1198197_anonymous-person-svg-png-icon-free-download-anonymous-icon-png.png'></Image>
+                                        <Image w={{lg: '300px', sm: '300px'}} h='20vh' src={posts.attachment1}></Image>
                                     </Center>
                                     <Flex w='100%' p={3}>
                                         <Text>Likes {posts.likes}</Text>
@@ -234,26 +235,27 @@ export default function ProfilePage({data}){
                                     </Flex>
                                 </Box>
                             </Link>
-                        ))}
+                        )) : null}
                     </Box>
                     <Box id='critiques' display='flex'>
-                        {userCritique.map((critique, i) => (
+                        {userCritique !== null ?
+                        userCritique.map((critique, i) => (
                             <Link href={`/post/${critique.post_id}`} key={i} passHref>
                                 <Box bg='white' w={{lg: '15vw', sm: '300px'}} h='28vh' ml={5}>
                                     {/* <Center mt={3}>
                                         <Heading size='md' mx="auto">{critique.title}</Heading>
                                     </Center> */}
                                     <Center mt={0}>
-                                        <Image w={{lg: '300px', sm: '300px'}} h='20vh'></Image>
+                                        <Image w={{lg: '300px', sm: '300px'}} h='20vh' src={critique.attachment1}></Image>
                                     </Center>
                                     <Flex w='100%' p={3}>
-                                        <Text>Star {critique.star}</Text>
+                                        <Text>Star {critique.stars}</Text>
                                         <Spacer />
                                         <Text>{critique.body}</Text>
                                     </Flex>
                                 </Box>
-                            </Link>
-                        ))}
+                            </Link>)    
+                        ) : null }
                     </Box>
                 </Box>
             </Box>

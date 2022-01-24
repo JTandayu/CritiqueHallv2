@@ -102,7 +102,7 @@ export const CritiqueReply = ({id}) => {
             
                 <Box p="2" overflow-y="auto" w={{lg: '32vw', sm: '85%'}} ml={16} mt={5}>
                             <Flex>
-                                <Image src="" w='3vh' h='3vh' mt={2} />
+                                <Image src={reply.profile_photo} w='3vh' h='3vh' mt={2} />
                                 <Heading size='sm' ml={3} mt={2}>{reply.display_name}</Heading>
                                 <Spacer />
                                 <Text fontSize='sm' mt={2}>{reply.time_ago}</Text>
@@ -141,7 +141,7 @@ export const CritiqueReply = ({id}) => {
             
                 <Box p="2" overflow-y="auto" w={{lg: '32vw', sm: '85%'}} ml={16} mt={5}>
                             <Flex>
-                                <Image src="" w='3vh' h='3vh' mt={2} />
+                                <Image src={reply.profile_photo} w='3vh' h='3vh' mt={2} />
                                 <Heading size='sm' ml={3} mt={2}>{reply.display_name}</Heading>
                                 <Spacer />
                                 <Text fontSize='sm' mt={2}>{reply.time_ago}</Text>

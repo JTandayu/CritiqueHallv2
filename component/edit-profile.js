@@ -296,18 +296,18 @@ function EditProfile({data}) {
                         <Spacer />
                         <Button colorScheme='blue' mr={3} onClick={submitPassword}>Save</Button>
                     </Flex>
-                    <Divider mb={5} mt={5} />
+                    {/* <Divider mb={5} mt={5} /> */}
 
-                    <Heading size='md' mb={5}>Preferences</Heading>
+                    {/* <Heading size='md' mb={5}>Preferences</Heading>
                     <Center display='flex' mb={5}>
                             <FormLabel>Dark Mode</FormLabel>
                             <Switch onChange={toggleColorMode}/>
-                    </Center>
+                    </Center> */}
                     {/* <Center display='flex' mb={10}>
                             <FormLabel>Enable Updates</FormLabel>
                             <Switch onChange={toggleColorMode}/>
                     </Center> */}
-                    <Divider mb={5} />
+                    {/* <Divider mb={5} /> */}
                 </ModalBody>
 
                 <ModalFooter>
