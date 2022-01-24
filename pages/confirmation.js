@@ -63,7 +63,7 @@ export default function ConfirmationPage(){
             'Authorization': 'Basic Y2Fwc3RvbmUyMDIxOjEyMzQ=',
             // 'Accept-Encoding': 'gzip, deflate, br',
             'Accept': 'application/json',
-
+            'user_id': cookies.encrypted_id
           }
         }
 
@@ -73,10 +73,10 @@ export default function ConfirmationPage(){
         .then(response => {
             console.log(response);
             setCookies('token', response.data.token)
-            window.location = "/reset-password"
+            window.location = "/home"
         })
         .catch(error => {
-            console.log(error);
+            console.log(error.response);
         });
     }
 

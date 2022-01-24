@@ -295,7 +295,7 @@ export default function Nav({id}){
                     </Flex>  
                     </MenuButton>
                     <MenuList>
-                        <MenuItem><Link href="/profile/[id]" as={`/profile/${display_name}`} passHref>PROFILE</Link></MenuItem>
+                        <MenuItem><Link href={`/profile/${display_name}`} passHref>PROFILE</Link></MenuItem>
                         <MenuItem color="red" _hover={{ bg: 'red.500', color: 'white' }} onClick={logOut}><Link href="/" passHref>LOG OUT</Link></MenuItem>
                     </MenuList>
                 </Menu>

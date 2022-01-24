@@ -200,7 +200,7 @@ export default function Register({data2}) {
           setCookies('encrypted_id', response.data.encrypted_id)
           setCookies('profile_pic', response.data.profile_pic)
 
-          // window.location = "/confirmation"
+          window.location = "/confirmation"
       })
       .catch(error => {
           console.log(error.response);

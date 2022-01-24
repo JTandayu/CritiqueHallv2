@@ -215,7 +215,7 @@ export default function CritiquePost(post_id){
         axios.post(`${API_URL}/api/create_critique`, formData, config)
         .then(response => {
             console.log(response.data);
-            window.location=`post/${post_id.post_id}`
+            window.location.href=`/post/${post_id.post_id}`
         })
         .catch(error => {
             console.log(error.response);
