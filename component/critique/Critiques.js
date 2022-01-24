@@ -1,6 +1,6 @@
 import React from 'react'
 import { useEffect, useState } from 'react'
-import {Box, Flex, Heading, Img, Spacer, Text, Button, Textarea, Center} from '@chakra-ui/react'
+import {Box, Flex, Heading, Image, Spacer, Text, Button, Textarea, Center} from '@chakra-ui/react'
 import {
     Menu,
     MenuButton,
