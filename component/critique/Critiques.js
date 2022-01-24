@@ -1,6 +1,6 @@
 import React from 'react'
 import { useEffect, useState } from 'react'
-import {Box, Flex, Heading, Img, Spacer, Text, Button, Textarea, Center} from '@chakra-ui/react'
+import {Box, Flex, Heading, Image, Spacer, Text, Button, Textarea, Center} from '@chakra-ui/react'
 import {
     Menu,
     MenuButton,
@@ -193,8 +193,8 @@ export const Critiques = ({id, filter, newPost}) => {
                                 <Text fontSize='md'>{critique.body}</Text>
                             </Box>
                             <Flex w='20vw'>
-                                <Button variant='ghost' id={`star${critique.critique_id}`} onClick={()=>giveStar(critique.critique_id)}>{critique.stars}</Button>
-                                <Button fontFamily={'Raleway'} variant='ghost' ml={5} onClick={()=>openReply(critique.critique_id)}>Reply</Button>
+                                <Button variant='ghost' id={`star${critique.critique_id}`} onClick={()=>giveStar(critique.critique_id)}>Star {critique.stars}</Button>
+                                <Button variant='ghost' ml={5} onClick={()=>openReply(critique.critique_id)}>Reply</Button>
                         </Flex>
                     </Box>
                     <Box p="2" w='35vw' mt={1} id={critique.critique_id} hidden>
@@ -247,8 +247,8 @@ export const Critiques = ({id, filter, newPost}) => {
                 <Box p="2" w='35vw' mt={1} id={critique.critique_id} hidden>
                     <Textarea w="full" onChange={(e) => setReply(e.target.value)}/>
                     <Flex>
-                        <Button fontFamily={'Raleway'} mt={3} onClick={() => submitReply(critique.critique_id)}>Reply</Button>
-                        <Button fontFamily={'Raleway'} mt={3} ml={3} onClick={ () => cancelReply(critique.critique_id)}>Cancel</Button>
+                        <Button mt={3} onClick={() => submitReply(critique.critique_id)}>Reply</Button>
+                        <Button mt={3} ml={3} onClick={ () => cancelReply(critique.critique_id)}>Cancel</Button>
                     </Flex>
                 </Box>
                 <CritiqueReply id={critique.critique_id} />
@@ -257,7 +257,7 @@ export const Critiques = ({id, filter, newPost}) => {
             })}
 
             <Center>
-                <Button fontFamily={'Raleway'} variant='ghost' w="100%" onClick={loadMore} id='loadMore'>Load More</Button>
+                <Button variant='ghost' w="100%" onClick={loadMore} id='loadMore'>Load More</Button>
             </Center>
 
         </div>
