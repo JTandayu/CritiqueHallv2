@@ -2,7 +2,7 @@ import Head from 'next/head'
 // import Image from 'next/image'
 import { css, cx } from '@emotion/react'
 import { motion } from "framer-motion"
-import { Box, Button, Flex, Heading, Spacer, Text, Image, Center, Select } from '@chakra-ui/react'
+import { Box, Button, Flex, Heading, Spacer, Text, Image, Center, Select, useColorModeValue } from '@chakra-ui/react'
 import Link from 'next/link'
 import {
     Modal,
@@ -188,7 +188,7 @@ export default function ProfilePage({data}){
                             {userData && userData.display_name === cookies.display_name ? <EditProfile data={userData}/> : null}
                         </Flex>
                         <Text w={{lg: '65vh', md: '100%', sm: '100%'}} fontSize='md' color="white">{userData.about_me}</Text>
-                        <Heading size='md' color='white' mt={5}>Reputation Points: {userData.reputation_points}</Heading>
+                        <Heading size='md' color='white' mt={5}>Reputation Stars: {userData.reputation_points}<Image src={useColorModeValue('reputation-stars.png', 'reputation-stars.png')} alt="Reputation Stars" w="2em" h="2em"/></Heading>
                         <Heading size='md' color='white' mt={5}>Strand/Specialization: {userData.specialization}</Heading>
                     </Box>
                 </Box>
