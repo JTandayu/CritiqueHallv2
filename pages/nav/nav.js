@@ -252,7 +252,7 @@ export default function Nav({id}){
                             position='static'
                             color={useColorModeValue('#1B1464')}
                             _hover={{cursor:'pointer', textDecoration:'underline'}}
-                        _active={{bgColor: 'none', textDecoration:'underline'}}
+                            _active={{bgColor: 'none', textDecoration:'underline'}}
                         ><Img src={useColorModeValue('notification-alert-icon.png', 'notification-alert-icon-dark.png')} alt="Notification" w="2em" h="2em" ml={-5} /></Button>
                     </PopoverTrigger>
                     <Button as='a'
@@ -268,10 +268,10 @@ export default function Nav({id}){
                     <PopoverContent>
                         <PopoverArrow />
                         <PopoverCloseButton />
-                        <PopoverHeader>Notification</PopoverHeader>
-                        <PopoverBody>{notif.map((notification, i) =>
+                        <PopoverHeader fontFamily={'Raleway'}>NOTIFICATIONS</PopoverHeader>
+                        <PopoverBody fontFamily={'Raleway'}>{notif.map((notification, i) =>
                             <Box key={i}>
-                            <Text p={2}>{notification.action}</Text>
+                            <Text fontFamily={'Raleway'} p={2}>{notification.action}</Text>
                             <Divider />
                             </Box>
                         )}</PopoverBody>
