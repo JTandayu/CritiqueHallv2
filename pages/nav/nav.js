@@ -171,7 +171,7 @@ export default function Nav({id}){
             
             <Flex w='10em' h='3em' ml={[32,32,16,16]} mt={5}>
                 <Link href="/home" passHref>
-                    <Img src='critiquehall2.png' className={styles.critique_logo} alt="Critique Hall Logo"  w="10em" h="3em" _hover={{cursor:'pointer'}}></Img>
+                <Img className={styles.critique_logo} src={useColorModeValue('critiquehall2.png', 'critiquehall2-dark.png')} alt="Critique Hall Logo" w="10em" h="3em" _hover={{cursor:'pointer'}}></Img>
                 </Link>
             </Flex>
             <Spacer />
@@ -195,9 +195,9 @@ export default function Nav({id}){
                         my={2}
                         w='100%'
                         position='static'
-                        color={Router.pathname === "/home" ? '#C1272D' : '#1B1464'}
+                        color={Router.pathname === "/home" ? useColorModeValue('#C1272D', '#FF5C61') : useColorModeValue('#1B1464', '#B2A3FF')}
                         textDecoration={Router.pathname === "/home" ? 'underline' : 'none'}
-                        _hover={{cursor:'pointer', color: '#C1272D', textDecoration:'underline'}}
+                        _hover={{cursor:'pointer', textDecoration:'underline', color: useColorModeValue('#C1272D', '#FF5C61')}}
                         fontFamily={'Raleway'}
                         fontWeight={'bold'}
                         size='lg'
@@ -214,9 +214,9 @@ export default function Nav({id}){
                         mr={2}
                         w='100%'
                         position='static'
-                        color={Router.pathname === "/critique" ?  '#C1272D' : '#1B1464'} 
+                        color={Router.pathname === "/critique" ?  useColorModeValue('#C1272D', '#FF5C61') : useColorModeValue('#1B1464', '#B2A3FF')} 
                         textDecoration={Router.pathname === "/critique" ? 'underline' : 'none'}
-                        _hover={{cursor:'pointer', color: '#C1272D', textDecoration:'underline'}}
+                        _hover={{cursor:'pointer', textDecoration:'underline', color: useColorModeValue('#C1272D', '#FF5C61')}}
                         fontFamily={'Raleway'}
                         fontWeight={'bold'}
                         size='lg'
@@ -232,9 +232,9 @@ export default function Nav({id}){
                         my={2}
                         w='100%'
                         position='static'
-                        color={Router.pathname === "/feedback" ?  '#C1272D' : '#1B1464'}
+                        color={Router.pathname === "/feedback" ?  useColorModeValue('#C1272D', '#FF5C61') : useColorModeValue('#1B1464', '#B2A3FF')}
                         textDecoration={Router.pathname === "/feedback" ? 'underline' : 'none'}
-                        _hover={{cursor:'pointer', color: '#C1272D', textDecoration:'underline'}}
+                        _hover={{cursor:'pointer', textDecoration:'underline', color: useColorModeValue('#C1272D', '#FF5C61')}}
                         fontFamily={'Raleway'}
                         fontWeight={'bold'}
                         size='lg'
@@ -253,7 +253,7 @@ export default function Nav({id}){
                             color={useColorModeValue('#1B1464')}
                             _hover={{cursor:'pointer', textDecoration:'underline'}}
                         _active={{bgColor: 'none', textDecoration:'underline'}}
-                            > <Img src='notification-alert-icon.png' alt="Notification" w="2em" h="2em" ml={-5} /></Button>
+                        ><Img src={useColorModeValue('notification-alert-icon.png', 'notification-alert-icon-dark.png')} alt="Notification" w="2em" h="2em" ml={-5} /></Button>
                     </PopoverTrigger>
                     <Button as='a'
                             variant='ghost'
@@ -295,8 +295,8 @@ export default function Nav({id}){
                     </Flex>  
                     </MenuButton>
                     <MenuList>
-                        <MenuItem><Link href="/profile/[id]" as={`/profile/${display_name}`} passHref>PROFILE</Link></MenuItem>
-                        <MenuItem color="red" _hover={{ bg: 'red.500', color: 'white' }} onClick={logOut}><Link href="/" passHref>LOG OUT</Link></MenuItem>
+                        <MenuItem fontFamily={'Raleway'} fontWeight={'bold'}><Link href="/profile/[id]" as={`/profile/${display_name}`} passHref>PROFILE</Link></MenuItem>
+                        <MenuItem fontFamily={'Raleway'} fontWeight={'bold'} color="red" _hover={{ bg: 'red.500', color: 'white' }} onClick={logOut}><Link href="/" passHref>LOG OUT</Link></MenuItem>
                     </MenuList>
                 </Menu>
 
