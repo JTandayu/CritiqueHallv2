@@ -26,6 +26,7 @@ import { storage } from '../../../firebase.js'
 import { getDownloadURL, ref, uploadBytesResumable } from 'firebase/storage'
 import axios from "axios";
 import { useCookies } from "react-cookie";
+import { useRouter } from "next/router";
 
 
 
@@ -58,12 +59,15 @@ function BeforeRender({}){
 }
 
 function EditPost({data, url, fileNames}){
+    const router = useRouter()
     const { isOpen, onOpen, onClose } = useDisclosure()
     const { API_URL } = process.env
     const { API_KEY } = process.env
 
-    const [title, setTitle] = useState('')
-    const [description, setDescription] = useState('')
+    console.log(data.title)
+
+    const [title, setTitle] = useState(data.title)
+    const [description, setDescription] = useState(data.body)
 
     const [cookies, setCookie, removeCookie] = useCookies(['token', 'id', 'encrypted_id', 'display_name']);
     // const [data, setData] =  useState([])
@@ -74,7 +78,7 @@ function EditPost({data, url, fileNames}){
     const [urls, setUrls] = useState([]); 
     const [fileNameList, setFileNameList] = useState([])
     const [urlList, setUrlList] = useState([])
-    // console.log(url)
+    console.log(data)
 
 
     useEffect(() => {
@@ -82,9 +86,12 @@ function EditPost({data, url, fileNames}){
         setFileName(fileNames)
         setUrlList(url)
         setFileNameList(fileNames)
+    }, [fileNames])
+
+    useEffect(() => {
         setTitle(data.title)
         setDescription(data.body)
-    }, [fileNames])
+    }, [data.body])
 
     const uploadFiles = async () => {
         if(urls.length > 4){
@@ -178,6 +185,7 @@ function EditPost({data, url, fileNames}){
         formData.append('title', title);
         formData.append('body', description);
         formData.append('hall_id', data.hall_id);
+        formData.append('post_id', data.post_id)
         formData.append('attachment1',urls[0]);
         formData.append('attachment2',urls[1]);
         formData.append('attachment3',urls[2]);
@@ -197,10 +205,11 @@ function EditPost({data, url, fileNames}){
             }
           }
 
-        axios.post(`${API_URL}/api/edit_post`, formData, config)
+        axios.post(`${API_URL}/api/update_post`, formData, config)
         .then(response => {
           console.log(response.data);
-          window.location.href = "/critique"
+        //   window.location.href = "/critique"
+            router.push(`/post/${data.post_id}`)
         })
         .catch(error => {
             console.log(error);

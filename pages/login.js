@@ -26,8 +26,11 @@ import React from 'react';
 import cookie from "react-cookie";
 import { useCookies } from 'react-cookie'
 import { createBreakpoints } from '@chakra-ui/theme-tools'
+import { useRouter } from 'next/router';
 
 const MotionButton = motion(Button)
+
+
 
 const breakpoints = createBreakpoints({
   sm: '320px',
@@ -42,6 +45,7 @@ const breakpoints = createBreakpoints({
 export default function Login({user}) {
   const { API_URL } = process.env
   const { API_KEY } = process.env
+  const router = useRouter()
 
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -78,7 +82,8 @@ export default function Login({user}) {
           setCookies('encrypted_id', response.data.encrypted_id)
           setCookies('profile_pic', response.data.profile_pic)
           document.getElementById('warning1').hidden=true;
-          window.location.href = "/home"
+          // window.location.href = "/home"
+          router.push("/home")
       })
       .catch(error => {
           console.log(error);

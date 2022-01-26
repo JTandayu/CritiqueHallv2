@@ -68,6 +68,7 @@ function EditProfile({data}) {
     const [currentPassword, setCurrentPassword] = useState('')
     const [newPassword, setNewPassword] = useState('')
     const [confirmPassword, setConfirmPassword] = useState('')
+    // console.log(profileImageUrl)
     
     // useEffect(() => {
     //     // setFirstName(data.first_name)

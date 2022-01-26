@@ -41,7 +41,7 @@ export default function Welcome() {
 
       let formData = new FormData(); 
       formData.append('email', email);   //append the values with key, value pair
-      formData.append('full_name', fullName);
+      formData.append('fullname', fullName);
       formData.append('subject', subject);
       formData.append('message', message);
 
@@ -57,7 +57,7 @@ export default function Welcome() {
       axios.post(`${API_URL}/api/email_suggestion`, formData, config)
       .then(response => {
           console.log(response.data);
-          window.location.href = "/"
+          // window.location.href = "/"
       })
       .catch(error => {
           console.log(error);
