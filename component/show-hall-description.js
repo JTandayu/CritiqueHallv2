@@ -29,7 +29,7 @@ function ShowHallDescription({hall, color, fontColor}) {
 
     return(
         <>
-        <Button onClick={onOpen} ml={5} bgColor={color} _hover={{bgColor: color}}>READ MORE</Button>
+        <Button fontFamily={'Raleway'} onClick={onOpen} ml={5} bgColor={color} _hover={{bgColor: color}}>READ MORE</Button>
 
         <form action='' method='POST'>
         <Modal isOpen={isOpen} onClose={onClose}>

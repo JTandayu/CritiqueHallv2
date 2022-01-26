@@ -20,7 +20,7 @@ import {
     AlertTitle,
     AlertDescription,
   } from '@chakra-ui/react'
-import { useDisclosure } from '@chakra-ui/react'
+import { useDisclosure, useColorModeValue } from '@chakra-ui/react'
 import { Button } from '@chakra-ui/react'
 import styles from "@styles/Hall.module.css";
 import { Box } from '@chakra-ui/react'
@@ -219,14 +219,14 @@ function CreatePost({data}) {
                     <Box w={{lg: '24vw', sm: '100%'}}>
                     <Flex fontFamily={'Raleway'} mt='3vh'>
                         <FormLabel>Title</FormLabel>
-                        <Input type='text' w={{lg: '20vw', sm: '100%'}} ml='11px' bg='white' color='black' onChange={e => setTitle(e.target.value)}  />
+                        <Input type='text' w={{lg: '20vw', sm: '100%'}} ml='11px' onChange={e => setTitle(e.target.value)}  />
                     </Flex>
 
                     <FormLabel mt={2}>Description</FormLabel>
-                    <Textarea type='text' w={{lg: '23vw', sm: '100%'}} h='20vh' color='black' bg='white' onChange={e => setDescription(e.target.value)} />
+                    <Textarea fontFamily={'Raleway'} type='text' w={{lg: '23vw', sm: '100%'}} h='20vh' onChange={e => setDescription(e.target.value)} />
                     <Flex mt={5}>
                         <FormLabel fontFamily={'Raleway'} mt={2}>Post This to: </FormLabel>
-                        <Select w={{lg: '10vw', sm: '50vw'}} bg='light' onChange={e => setHallID(e.target.value)}>
+                        <Select w={{lg: '10vw', sm: '50vw'}} onChange={e => setHallID(e.target.value)}>
                             <option value='1'>Technology</option>
                             <option value='2'>Arts</option>
                             <option value='3'>Business</option>
@@ -263,7 +263,7 @@ function CreatePost({data}) {
                             <input type='file' multiple onChange={handleChange} accept=".jpg, .png, .docx, .xls" id='image-input' />
                             <Button onClick={uploadFiles}>Upload</Button>
                         </Flex>
-                        <Flex bg='white' w={{lg: '19vw', sm: '100%'}} h='7vh' rounded='md' overflowX='auto' mt={3}>
+                        <Flex bgColor={useColorModeValue('#F4F4F4', '#2E2E2E')} w={{lg: '19vw', sm: '100%'}} h='7vh' rounded='md' overflowX='auto' mt={3}>
                             {fileName.map((file, i) => (
                                 <Flex ml={5} id={file}>
                                     <Text fontSize='sm' key={i}>{file}</Text>
@@ -273,15 +273,15 @@ function CreatePost({data}) {
                         </Flex>
 
                         <Heading fontFamily={'Raleway'} size='sm' mt={5}>Attachments Preview</Heading>
-                        <Flex bg='white' w={{lg: '20vw', sm: '100%'}} h='20vh' rounded='md' overflowX='auto' mt={3}>
+                        <Flex bgColor={useColorModeValue('#F4F4F4', '#2E2E2E')} w={{lg: '20vw', sm: '100%'}} h='20vh' rounded='md' overflowX='auto' mt={3}>
                             {urls.map((url, i) => (
                                 <Image src={url} key={i} w={{lg: '10vw', sm: '80vw'}} h='10vh' ml={5} />
                             ))} 
                         </Flex>
                         <br />
-                        <Text fontFamily={'Raleway'} fontSize='xs'>*5 Attachments Max</Text>
-                        <Text fontFamily={'Raleway'} fontSize='xs'>*image and doc format only accepted</Text>
-                        <Text fontFamily={'Raleway'} fontSize='xs'>*200kb file max size</Text>
+                        <Text fontFamily={'Raleway'} fontStyle={'italic'} fontSize='sm'>- 5 Attachments Max</Text>
+                        <Text fontFamily={'Raleway'} fontStyle={'italic'} fontSize='sm'>- Image and Document Format Only Accepted</Text>
+                        <Text fontFamily={'Raleway'} fontStyle={'italic'} fontSize='sm'>- 200KB File Max Size</Text>
                     </Box>
 
                     </Flex >
