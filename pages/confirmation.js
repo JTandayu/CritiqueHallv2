@@ -31,6 +31,8 @@ import { useColorModeValue } from '@chakra-ui/react';
 import { createBreakpoints } from '@chakra-ui/theme-tools'
 import axios from "axios"
 import { useCookies } from 'react-cookie';
+import React from 'react';
+import { useToast } from '@chakra-ui/react';
 
 
 const breakpoints = createBreakpoints({
@@ -51,7 +53,10 @@ export default function ConfirmationPage(){
   const [code, setCode] = useState('')
   const [cookies, setCookies, removeCookies] = useCookies(['token', 'id', 'encrypted_id'])
 
-  const forgotPassword = async () =>{
+  const toast = useToast()
+  const toastIdRef = React.useRef()
+
+  const accountVerification = async () =>{
 
         let formData = new FormData(); 
         formData.append('verification_code', code);
@@ -71,11 +76,13 @@ export default function ConfirmationPage(){
   
         axios.post(`${API_URL}/api/confirm_verification`, formData, config)
         .then(response => {
+            toastIdRef.current = toast({ title: 'Account Verification Successful!', description: 'Login with your newly registered account.', status: 'success', duration: 3000, isClosable: true })
             console.log(response);
             setCookies('token', response.data.token)
             window.location = "/home"
         })
         .catch(error => {
+            toastIdRef.current = toast({ title: 'Account Verification Unsuccessful!', description: 'Please try again.', status: 'error', duration: 3000, isClosable: true })
             console.log(error.response);
         });
     }
@@ -109,9 +116,9 @@ export default function ConfirmationPage(){
                   color={useColorModeValue('white', 'white')}
                   _hover={{bgColor: 'blue'}} 
                   size="lg"
-                  onClick={forgotPassword}
+                  onClick={accountVerification}
                   >
-                SUBMIT
+                VERIFY ACCOUNT
                 </Button>
                 {/* <Popover
                 placement="bottom"

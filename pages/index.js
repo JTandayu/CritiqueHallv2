@@ -6,11 +6,12 @@ import { Stack, HStack, VStack, FormLabel, Input, Textarea } from "@chakra-ui/re
 import { Button, ButtonGroup } from "@chakra-ui/react"
 import { ArrowForwardIcon, CheckIcon, InfoOutlineIcon } from '@chakra-ui/icons'
 import { Box, Divider, Flex, Heading, Spacer, Img, Center } from "@chakra-ui/react"
+import { useToast } from '@chakra-ui/react'
+import React from 'react';
 import axios from 'axios';
 import {useState} from 'react';
 import ManTexting from "@public/man-texting.png";
 import { useColorMode, useColorModeValue } from "@chakra-ui/react";
-
 
 
 const variants = {
@@ -35,9 +36,11 @@ export default function Welcome() {
   const [fullName, setFullName] = useState('')
   const [subject, setSubject] = useState('')
   const [message, setMessage] = useState('')
-  
 
-  const sendMessage = () =>{
+  const toast = useToast()
+  const toastIdRef = React.useRef()
+  
+  const sendMessage = () => {
 
       let formData = new FormData(); 
       formData.append('email', email);   //append the values with key, value pair
@@ -56,10 +59,12 @@ export default function Welcome() {
 
       axios.post(`${API_URL}/api/email_suggestion`, formData, config)
       .then(response => {
+        toastIdRef.current = toast({ title: 'Feedback sent successful!', description: 'We have received your feedback, please wait for our reply!', status: 'success', duration: 2000, isClosable: true })
           console.log(response.data);
           // window.location.href = "/"
       })
       .catch(error => {
+        toastIdRef.current = toast({ title: 'Feedback sent unsuccessful!', description: 'Your feedback did not send, please try again!', status: 'error', duration: 2000, isClosable: true })
           console.log(error);
       });
 

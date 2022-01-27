@@ -24,6 +24,8 @@ import { createBreakpoints } from '@chakra-ui/theme-tools'
 import { storage } from '../firebase.js'
 import { getDownloadURL, ref, uploadBytesResumable } from 'firebase/storage'
 import { useCookies } from 'react-cookie';
+import React from 'react';
+import { useToast } from '@chakra-ui/react';
 
 const MotionButton = motion(Button)
 
@@ -90,6 +92,9 @@ export default function Register({data2}) {
   const [depList, setDepList] = useState([])
   const [gender, setGender] = useState('')
   const [cookies, setCookies, removeCookies] = useCookies(['token', 'id', 'encrypted_id'])
+
+  const toast = useToast()
+  const toastIdRef = React.useRef()
 
     useEffect(() => {
       const config = {
@@ -163,10 +168,12 @@ export default function Register({data2}) {
 
       axios.post(`${API_URL}/api/register`, formData, config)
       .then(response => {
+        toastIdRef.current = toast({ title: 'Account Creation Successful!', description: 'Please check your Email for the 6-Digit Code Verification.', status: 'success', duration: 5000, isClosable: true })
           console.log(response.data);
           submitLogin()
       })
       .catch(error => {
+        toastIdRef.current = toast({ title: 'Account Creation Unsuccessful!', description: 'Please try again.', status: 'error', duration: 2000, isClosable: true })
           console.log(error.response);
           // window.location = "/register"
       });

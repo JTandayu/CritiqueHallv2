@@ -19,6 +19,7 @@ import {
 import { useState } from 'react'
 import { useColorModeValue } from '@chakra-ui/react';
 import { createBreakpoints } from '@chakra-ui/theme-tools'
+import React from 'react';
 import { useToast } from '@chakra-ui/react'
 import axios from "axios"
 
@@ -40,6 +41,7 @@ export default function ForgotPassword(){
 
   const [email, setEmail] = useState('')
   const toast = useToast()
+  const toastIdRef = React.useRef()
 
   const forgotPassword = async () =>{
 
@@ -60,10 +62,12 @@ export default function ForgotPassword(){
   
         axios.post(`${API_URL}/api/forgot_password`, formData, config)
         .then(response => {
+          toastIdRef.current = toast({ title: 'Reset Password Link Sent!', description: 'We have sent a reset password confirmation to your Email. Check on your primary or spam folder.', status: 'success', duration: 2000, isClosable: true })
             console.log(response);
             // window.location = "/home"
         })
         .catch(error => {
+          toastIdRef.current = toast({ title: 'Reset Password Link Error!', description: 'No iACADEMY Email is registered to the system. Please try again.', status: 'error', duration: 2000, isClosable: true })
             console.log(error);
             console.log(error.response);
             // window.location = "/forgot-password"
@@ -103,15 +107,7 @@ export default function ForgotPassword(){
                   color={useColorModeValue('white', 'white')}
                   _hover={{bgColor: 'blue'}}
                   size="lg"
-                  onClick={() =>
-                    toast({
-                      title: 'Reset Password Link Sent!',
-                      description: "We have sent a reset password confirmation to your Email. Check on your primary or spam folder.",
-                      status: 'success',
-                      duration: 2000,
-                      isClosable: true,
-                    })
-                  }
+                  onClick={forgotPassword}
                   >
                 SEND
                 </Button>

@@ -27,6 +27,7 @@ import cookie from "react-cookie";
 import { useCookies } from 'react-cookie'
 import { createBreakpoints } from '@chakra-ui/theme-tools'
 import { useRouter } from 'next/router';
+import { useToast } from '@chakra-ui/react';
 
 const MotionButton = motion(Button)
 
@@ -53,6 +54,9 @@ export default function Login({user}) {
   // const { colorMode, toggleColorMode } = useColorMode()
   // colorMode === 'light' ? 'Dark' : 'Light'
 
+  const toast = useToast()
+  const toastIdRef = React.useRef()
+
   const [cookies, setCookies, removeCookies] = useCookies(['token', 'id', 'encrypted_id'])
 
 
@@ -75,6 +79,7 @@ export default function Login({user}) {
 
       axios.post(`${API_URL}/api/login`, formData, config)
       .then(response => {
+          toastIdRef.current = toast({ title: 'Login Successful!', status: 'success', duration: 3000, isClosable: false })
           console.log(response.data);
           setCookies('token', response.data.token)
           setCookies('display_name', response.data.display_name)
@@ -86,6 +91,7 @@ export default function Login({user}) {
           router.push("/home")
       })
       .catch(error => {
+          toastIdRef.current = toast({ title: 'Login Unsuccessful!', status: 'error', duration: 3000, isClosable: false })
           console.log(error);
           document.getElementById('warning1').removeAttribute('hidden');
           // window.location.href = "/login"

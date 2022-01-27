@@ -26,6 +26,7 @@ import { useEffect, useState } from 'react';
 import {Flex, Text} from '@chakra-ui/react'
 import { createBreakpoints } from '@chakra-ui/theme-tools'
 import React from 'react';
+import { useToast } from '@chakra-ui/react';
 import Login from '../login'
 import { useCookies } from 'react-cookie';
 import axios from 'axios'
@@ -87,7 +88,10 @@ export default function Nav({id}){
 
     const user_id = cookies.id;
     const display_name =  cookies.display_name
-    const Router = useRouter()  
+    const Router = useRouter()
+    
+    const toast = useToast()
+    const toastIdRef = React.useRef()
 
 
     useEffect(() => {
@@ -153,6 +157,7 @@ export default function Nav({id}){
 
     //Log-out function
     const logOut = async ()=>{
+        toastIdRef.current = toast({ title: 'Logout Successful!', status: 'success', duration: 3000, isClosable: false })
         removeCookie('token');
         removeCookie('id');
         removeCookie('encrypted_id');

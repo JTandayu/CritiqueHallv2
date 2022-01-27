@@ -30,6 +30,7 @@ import { useState } from 'react';
 import { useColorModeValue } from '@chakra-ui/react';
 import { createBreakpoints } from '@chakra-ui/theme-tools'
 import { useToast } from '@chakra-ui/react'
+import React from 'react';
 
 
 
@@ -50,6 +51,7 @@ export default function ResetPassword(){
   const [password, setPassword] = useState('')
   const [confirm_password, setConfirmPassword] = useState('')
   const toast = useToast()
+  const toastIdRef = React.useRef()
 
 
 
@@ -72,10 +74,12 @@ export default function ResetPassword(){
   
         axios.post(`${API_URL}/api/reset-password`, formData, config)
         .then(response => {
+            toastIdRef.current = toast({ title: 'Reset Password Successful!', description: 'Please login with your new password.', status: 'success', duration: 2000, isClosable: true })
             console.log(response);
               window.location = "/login"
         })
         .catch(error => {
+          toastIdRef.current = toast({ title: 'Reset Password Unsuccessful!', description: 'Please try again.', status: 'error', duration: 2000, isClosable: true })
             console.log(error);
             window.location = "/reset-password"
         });
@@ -123,15 +127,7 @@ export default function ResetPassword(){
                   color={useColorModeValue('white', 'white')}
                   _hover={{bgColor: '#0C7A0A'}}
                   size="lg"
-                  onClick={() =>
-                    toast({
-                      title: 'Reset Password Successful!',
-                      description: "Your password has been successfully reset! Login with your new password.",
-                      status: 'success',
-                      duration: 2000,
-                      isClosable: true,
-                    })
-                  }
+                  onClick={resetPassword}
                   >
                 RESET PASSWORD
                 </Button>
