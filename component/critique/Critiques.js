@@ -1,6 +1,6 @@
 import React from 'react'
 import { useEffect, useState } from 'react'
-import {Box, Flex, Heading, Image, Spacer, Text, Button, Textarea, Center} from '@chakra-ui/react'
+import {Box, Flex, Heading, Image, Spacer, Text, Button, Textarea, Center, Select} from '@chakra-ui/react'
 import {
     Menu,
     MenuButton,
@@ -33,7 +33,7 @@ const breakpoints = createBreakpoints({
 
 const theme = extendTheme({ breakpoints })
 
-export const Critiques = ({id, filter, newPost}) => {
+export const Critiques = ({id}) => {
     const { API_URL } = process.env
     const { API_KEY } = process.env
 
@@ -41,8 +41,8 @@ export const Critiques = ({id, filter, newPost}) => {
     const [critiqueItems, setCritiqueItems] = useState([])
     const [reply, setReply] = useState('')
     const [lastId, setLastID] =  useState('0')
-    const [newPostCritique, setNewPostCritique] = useState(newPost)
-    const filterCritique = filter;
+    // const [newPostCritique, setNewPostCritique] = useState(newPost)
+    // const filterCritique = filter;
     // console.log(filter)
     // console.log(cookie.token)
     // const [data, setData] =  useState([])
@@ -57,12 +57,6 @@ export const Critiques = ({id, filter, newPost}) => {
           'user_id': cookie.encrypted_id
         }
     };
-
-    // componentDidUpdate(){
-    //     if(newPost !== newPostCritique){
-    //         this.setState(critiqueItems);
-    //     }
-    // }
 
     useEffect(() => {
 
@@ -159,6 +153,20 @@ export const Critiques = ({id, filter, newPost}) => {
 
     return (
         <div>
+            <Box display='flex'>
+                        <Heading>Critiques</Heading>
+                        <Spacer />
+                        <Flex w={{lg: '15vw', sm: '50%'}} mt={1}>
+                        <Text mr={{lg: 5, sm: 1}} w={20} mt={2}>Sort by: </Text>
+                        <Select onChange={(e)=>setFilter(e.target.value)}>
+                            <option value='newest'>Newest</option>
+                            <option value='oldest'>Oldest</option>
+                            <option value='most-star'>Most Stars</option>
+                            <option value='least-star'>Least Stars</option>
+                        </Select>
+                        </Flex>
+            </Box>
+            <Box overflowY="scroll" h={{lg: '80vh', sm: '70vh'}} mt={5}>
             {critiqueItems.map((critique) => { 
                 if(critique.display_name === cookie.display_name){
                 return(
@@ -251,6 +259,7 @@ export const Critiques = ({id, filter, newPost}) => {
                         <Button mt={3} ml={3} onClick={ () => cancelReply(critique.critique_id)}>Cancel</Button>
                     </Flex>
                 </Box>
+                {/* {console.log(critique.critique_id)} */}
                 <CritiqueReply id={critique.critique_id} />
                 </>
             )
@@ -259,6 +268,8 @@ export const Critiques = ({id, filter, newPost}) => {
             <Center>
                 <Button variant='ghost' w="100%" onClick={loadMore} id='loadMore'>Load More</Button>
             </Center>
+
+            </Box>
 
         </div>
     )

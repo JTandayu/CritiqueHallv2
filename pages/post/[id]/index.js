@@ -248,12 +248,12 @@ export default function CritiquePost(post_id){
                             
                     {/* Image */}
                     <Flex ml={{lg: "10vh", sm: 5}} flexDir={{lg: "row", sm: 'column'}} mt={5}>
-                        <Image src={data.attachment1} w='50vh' h='40vh' onClick='' />
+                        <Image src={data.attachment1} w='50vh' h='40vh' />
                             <Flex flexDir='column' spacing={5}>
-                                <Image w={{lg: "20vh", sm: '45vh'}} h='10vh' onClick='' src={data.attachment2} />
-                                <Image w={{lg: "20vh", sm: '45vh'}} h='10vh' onClick='' src={data.attachment3} />
-                                <Image w={{lg: "20vh", sm: '45vh'}} h='10vh' onClick='' src={data.attachment4} />
-                                <Image w={{lg: "20vh", sm: '45vh'}} h='10vh' onClick='' src={data.attachment5} />
+                                <Image w={{lg: "20vh", sm: '45vh'}} h='10vh' src={data.attachment2} />
+                                <Image w={{lg: "20vh", sm: '45vh'}} h='10vh' src={data.attachment3} />
+                                <Image w={{lg: "20vh", sm: '45vh'}} h='10vh' src={data.attachment4} />
+                                <Image w={{lg: "20vh", sm: '45vh'}} h='10vh' src={data.attachment5} />
                             </Flex>
                     </Flex>
                     {/* Options */}
@@ -316,7 +316,7 @@ export default function CritiquePost(post_id){
                     {/* <PostCritiques /> */}
                     <Box w={{lg: '40%', sm: '100%'}} bg='light' h='90vh' p={5} boxShadow='md' mt={28} ml='3vw'>
                     {/* Header */}
-                    <Box display='flex'>
+                    {/* <Box display='flex'>
                         <Heading>Critiques</Heading>
                         <Spacer />
                         <Flex w={{lg: '15vw', sm: '50%'}} mt={1}>
@@ -328,11 +328,11 @@ export default function CritiquePost(post_id){
                             <option value='least-star'>Least Stars</option>
                         </Select>
                         </Flex>
-                    </Box>
+                    </Box> */}
                     {/* Critiques */}
-                    <Box overflowY="scroll" h={{lg: '80vh', sm: '70vh'}} mt={5}>
-                        <Critiques id={post_id.post_id} filter={filter} newPost={newPost} />
-                    </Box>
+                    {/* <Box overflowY="scroll" h={{lg: '80vh', sm: '70vh'}} mt={5}> */}
+                        <Critiques id={post_id.post_id} />
+                    {/* </Box> */}
                     
                         
                     </Box>

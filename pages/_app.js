@@ -17,10 +17,6 @@ import Router from "next/router";
 
 function MyApp({ Component, pageProps }) {
 
-  const [cookies, setCookie] = useCookies('token')
-
-  const token = cookies.token
-
     switch (Component.name) {
       case "Login":
           return <ChakraProvider theme={theme}><Component {...pageProps} /></ChakraProvider>;

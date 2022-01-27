@@ -27,6 +27,7 @@ import { getDownloadURL, ref, uploadBytesResumable } from 'firebase/storage'
 import axios from "axios";
 import { useCookies } from "react-cookie";
 import { useRouter } from "next/router";
+import { toast } from "@chakra-ui/react";
 
 
 
@@ -64,7 +65,7 @@ function EditPost({data, url, fileNames}){
     const { API_URL } = process.env
     const { API_KEY } = process.env
 
-    console.log(data.title)
+    // console.log(data.title)
 
     const [title, setTitle] = useState(data.title)
     const [description, setDescription] = useState(data.body)
@@ -78,7 +79,7 @@ function EditPost({data, url, fileNames}){
     const [urls, setUrls] = useState([]); 
     const [fileNameList, setFileNameList] = useState([])
     const [urlList, setUrlList] = useState([])
-    console.log(data)
+    // console.log(data)
 
 
     useEffect(() => {

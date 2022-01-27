@@ -37,6 +37,7 @@ export const CritiqueReply = ({id}) => {
     const { API_KEY } = process.env
     const [cookie, setCookie] = useCookies('token', 'id', 'encrypted_id', 'display_name')
     const [critiqueReply, setCritiqueReply] =  useState([])
+    // console.log(id)
 
     const config = {
         headers: { 
@@ -62,7 +63,7 @@ export const CritiqueReply = ({id}) => {
             console.log(response.data)
             setCritiqueReply(response.data.data)
         }).catch((error) =>{
-            console.log(error.response)
+            console.log(error)
         })
     }, [])
 
