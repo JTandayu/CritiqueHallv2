@@ -141,13 +141,13 @@ export default function Welcome() {
                 <Flex flexDir='column' w='100%' align='center'>
 
                   <Flex align='center' flexDir={{lg: 'row', md: 'row', sm: 'column'}} w={{lg: '40vw', md: '40vw', sm: '100%'}} color='black'>
-                      <Input className={styles.input_boxshadow} type='email' w={{lg: '13vw', md: '13vw', sm: '100%'}} placeholder='iACADEMY Email' onChange={(e)=>setEmail(e.target.value)}></Input>
+                      <Input className={styles.input_boxshadow} type='email' w={{lg: '13vw', md: '13vw', sm: '100%'}} placeholder='iACADEMY Email' onChange={(e)=>setEmail(e.target.value)} color={useColorModeValue('#000000', '#FFFFFF')}></Input>
                       <Spacer />
-                      <Input className={styles.input_boxshadow} type='text' w={{lg: '13vw', md: '13vw', sm: '100%'}} mt={{lg: 0, md: 0, sm: 5}} placeholder='Full Name' onChange={(e)=>setFullName(e.target.value)}></Input>
+                      <Input className={styles.input_boxshadow} type='text' w={{lg: '13vw', md: '13vw', sm: '100%'}} mt={{lg: 0, md: 0, sm: 5}} placeholder='Full Name' onChange={(e)=>setFullName(e.target.value)} color={useColorModeValue('#000000', '#FFFFFF')}></Input>
                       <Spacer />
-                      <Input className={styles.input_boxshadow} type='text' w={{lg: '13vw', md: '13vw', sm: '100%'}} mt={{lg: 0, md: 0, sm: 5}} placeholder='Subject' onChange={(e)=>setSubject(e.target.value)}></Input>
+                      <Input className={styles.input_boxshadow} type='text' w={{lg: '13vw', md: '13vw', sm: '100%'}} mt={{lg: 0, md: 0, sm: 5}} placeholder='Subject' onChange={(e)=>setSubject(e.target.value)} color={useColorModeValue('#000000', '#FFFFFF')}></Input>
                   </Flex>
-                  <Textarea className={styles.input_boxshadow} w={{lg: '40vw', md: '40vw', sm: '100%'}} h='20vh' mt={5} placeholder='Message...' mr={{lg: 0, md: 0, sm: 5}} onChange={(e)=>setMessage(e.target.value)} />
+                  <Textarea className={styles.input_boxshadow} w={{lg: '40vw', md: '40vw', sm: '100%'}} h='20vh' mt={5} placeholder='Message...' mr={{lg: 0, md: 0, sm: 5}} onChange={(e)=>setMessage(e.target.value)} color={useColorModeValue('#000000', '#FFFFFF')} />
                 
                 </Flex>
                 <Flex w={{lg: '20vw', md: '100%', sm: '100%'}} mt={{lg: 0, md: 0, sm: 5}} >

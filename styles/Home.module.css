@@ -5,7 +5,6 @@
     background-color: #F4F4F4;
     opacity: 1;
     min-height: 88vh;
-    padding: 0 0.5rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -22,7 +21,6 @@
     background-color: #131313;
     opacity: 1;
     min-height: 88vh;
-    padding: 0 0.5rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
