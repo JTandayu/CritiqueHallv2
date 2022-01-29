@@ -46,6 +46,7 @@ import DeletePost from '@component/post/options/delete'
 import { Critiques } from '@component/critique/Critiques'
 import { storage } from '../../../firebase.js'
 import { getDownloadURL, ref, uploadBytesResumable, deleteObject  } from 'firebase/storage'
+import { useToast } from '@chakra-ui/react'
 
 const breakpoints = createBreakpoints({
     sm: '320px',
@@ -81,9 +82,11 @@ export async function getServerSideProps(context) {
   }
 }
 
+
 export default function CritiquePost(post_id){
     const { API_URL } = process.env
     const { API_KEY } = process.env
+    const toast = useToast()
 
     const [cookie, setCookie] = useCookies(['token', 'id', 'encrypted_id', 'display_name'])
     const [critique, setCritique] = useState('')
@@ -150,8 +153,7 @@ export default function CritiquePost(post_id){
                     }
                 }
             }
-
-            
+   
         })
         .catch(error => {
             console.log(error);
@@ -247,15 +249,36 @@ export default function CritiquePost(post_id){
                     </Box>
                             
                     {/* Image */}
+                    {/* { urls ?
                     <Flex ml={{lg: "10vh", sm: 5}} flexDir={{lg: "row", sm: 'column'}} mt={5}>
-                        <Image src={data.attachment1} w='50vh' h='40vh' />
+                        {data.attachment1 ? [ fileName[0].endsWith('.docx') == true || fileName[0].endsWith('.xls') == true ?
+                            <Image src={data.attachment1} w='50vh' h='40vh' /> :
+                            <Button>Download</Button>
+                            ] : null}
+
                             <Flex flexDir='column' spacing={5}>
-                                <Image w={{lg: "20vh", sm: '45vh'}} h='10vh' src={data.attachment2} />
-                                <Image w={{lg: "20vh", sm: '45vh'}} h='10vh' src={data.attachment3} />
-                                <Image w={{lg: "20vh", sm: '45vh'}} h='10vh' src={data.attachment4} />
-                                <Image w={{lg: "20vh", sm: '45vh'}} h='10vh' src={data.attachment5} />
+                            {data.attachment2 ? [ fileName[1].endsWith('.docx') == true || fileName[1].endsWith('.xls') == true ?
+                                <Image src={data.attachment1} w='50vh' h='40vh' /> :
+                                <Button>Download</Button>
+                                ] : null}
+
+                            {data.attachment3 ? [ fileName[2].endsWith('.docx') == true || fileName[2].endsWith('.xls') == true ?
+                                <Image src={data.attachment1} w='50vh' h='40vh' /> :
+                                <Button>Download</Button>
+                                ] : null}
+
+                            {data.attachment4 ? [ fileName[3].endsWith('.docx') == true || fileName[3].endsWith('.xls') == true ?
+                                <Image src={data.attachment1} w='50vh' h='40vh' /> :
+                                <Button>Download</Button>
+                                ] : null}
+
+                            {data.attachment5 ? [ fileName[4].endsWith('.docx') == true || fileName[4].endsWith('.xls') == true ?
+                                <Image src={data.attachment1} w='50vh' h='40vh' /> :
+                                <Button>Download</Button>
+                                ] : null}
+                                
                             </Flex>
-                    </Flex>
+                    </Flex> : null} */}
                     {/* Options */}
                     <Box display="flex" w="100%" mt={5}>
                         <Button position='static' variant='ghost' onClick={giveLike}>Like <Text id='likes' ml={2}>{data.likes}</Text></Button>

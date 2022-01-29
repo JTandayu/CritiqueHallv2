@@ -41,6 +41,7 @@ export const Critiques = ({id}) => {
     const [critiqueItems, setCritiqueItems] = useState([])
     const [reply, setReply] = useState('')
     const [lastId, setLastID] =  useState('0')
+    const [filter, setFilter] = useState('newest')
     // const [newPostCritique, setNewPostCritique] = useState(newPost)
     // const filterCritique = filter;
     // console.log(filter)
@@ -102,8 +103,27 @@ export const Critiques = ({id}) => {
         })
     }
 
-    const sortCritique = () =>{
+    const sortCritique = (e) =>{
+        
+        let formData = new FormData;
+        formData.append('post_id', id);
+        formData.append('last_id', null);
 
+        axios.post(`${API_URL}/api/display_all_critiques`, formData, config)
+        .then((response) =>{
+            console.log(response.data)
+            setCritiqueItems(response.data.data)
+            // document.getElementById(response.data.data.critique_id).hidden=true
+            console.log(response.data.data[0])
+            
+            for(let i = 0; i < response.data.data.length; i++){
+                if(i == response.data.data.length - 1){
+                    setLastID(response.data.data[i].critique_id)
+                }
+            }
+        }).catch((error) =>{
+            console.log(error)
+        })
     }
 
     const cancelReply = async(id) =>{
@@ -158,7 +178,7 @@ export const Critiques = ({id}) => {
                         <Spacer />
                         <Flex w={{lg: '15vw', sm: '50%'}} mt={1}>
                         <Text mr={{lg: 5, sm: 1}} w={20} mt={2}>Sort by: </Text>
-                        <Select onChange={(e)=>setFilter(e.target.value)}>
+                        <Select onChange={(e)=>sortCritique(e.target.value)}>
                             <option value='newest'>Newest</option>
                             <option value='oldest'>Oldest</option>
                             <option value='most-star'>Most Stars</option>
@@ -166,6 +186,8 @@ export const Critiques = ({id}) => {
                         </Select>
                         </Flex>
             </Box>
+
+
             <Box overflowY="scroll" h={{lg: '80vh', sm: '70vh'}} mt={5}>
             {critiqueItems.map((critique) => { 
                 if(critique.display_name === cookie.display_name){

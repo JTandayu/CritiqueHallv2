@@ -27,7 +27,7 @@ import { getDownloadURL, ref, uploadBytesResumable } from 'firebase/storage'
 import axios from "axios";
 import { useCookies } from "react-cookie";
 import { useRouter } from "next/router";
-import { toast } from "@chakra-ui/react";
+// import { toast } from "@chakra-ui/react";
 
 
 
@@ -79,13 +79,17 @@ function EditPost({data, url, fileNames}){
     const [urls, setUrls] = useState([]); 
     const [fileNameList, setFileNameList] = useState([])
     const [urlList, setUrlList] = useState([])
+    const [imageState, setImageState] = useState(0)
     // console.log(data)
 
 
     useEffect(() => {
         setUrls(url)
-        setFileName(fileNames)
         setUrlList(url)
+    }, [url])
+
+    useEffect(() => {
+        setFileName(fileNames)
         setFileNameList(fileNames)
     }, [fileNames])
 
@@ -93,6 +97,11 @@ function EditPost({data, url, fileNames}){
         setTitle(data.title)
         setDescription(data.body)
     }, [data.body])
+
+    // useEffect(() => {
+    //     // setUrls(urlList)
+    //     // setFileName(fileNameList)
+    // }, [imageState])
 
     const uploadFiles = async () => {
         if(urls.length > 4){
@@ -143,21 +152,11 @@ function EditPost({data, url, fileNames}){
     }
 
     const deleteFile = async (filename, i) =>{
-            
-        const desertRef = ref(storage, `/files/${cookies.display_name}/${filename}`)
         fileName.splice(i, 1)
         image.splice(i, 1)
         urls.splice(i, 1)
 
         setFileName(fileName => fileName.filter(e => e !== i))
-
-        deleteObject(desertRef).then((response) => {
-            // console.log(response.data)
-            alert("File deleted successfully")
-            return;
-        }).catch((error) => {
-            console.log(error)
-        });
     }
 
     const closeModal = () =>{
@@ -174,13 +173,6 @@ function EditPost({data, url, fileNames}){
         const id = cookies.id
         const enc_id =  cookies.encrypted_id
         
-        // const post = {
-        //     title : title,
-        //     body : description,
-        //     hall_id: hall_id,
-        //     token : token,
-        //     user_id : id
-        // }
 
         let formData = new FormData(); 
         formData.append('title', title);
@@ -193,8 +185,6 @@ function EditPost({data, url, fileNames}){
         formData.append('attachment4',urls[3]);
         formData.append('attachment5',urls[4]);
 
-        // console.log(enc_id)
-
         const config = {
             headers: {
             'content-type': 'multipart/form-data',
@@ -204,7 +194,7 @@ function EditPost({data, url, fileNames}){
             'token': cookies.token,
             'user_id': cookies.encrypted_id
             }
-          }
+        }
 
         axios.post(`${API_URL}/api/update_post`, formData, config)
         .then(response => {

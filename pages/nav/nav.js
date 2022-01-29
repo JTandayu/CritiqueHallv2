@@ -62,14 +62,14 @@ export default function Nav({id}){
     colorMode === 'light' ? 'dark' : 'light'
 
     const [darkMode ,setDarkMode] = useState('')
-    const [ImgUrl, setImgUrl] = useState('dark-and-light.png')
+    const [ImgUrl, setImgUrl] = useState('/dark-and-light.png')
 
     const changeDarkAndLightIcon = () => {
         toggleColorMode()
         if(colorMode === 'light'){
-            setImgUrl('light-mode-icon.png')
+            setImgUrl('/light-mode-icon.png')
         }else {
-            setImgUrl('dark-mode-icon.png')
+            setImgUrl('/dark-mode-icon.png')
         }
     }
 
@@ -181,7 +181,7 @@ export default function Nav({id}){
             
             <Flex w='10em' h='3em' ml={[32,32,16,16]} mt={5}>
                 <Link href="/home" passHref>
-                <Img className={styles.critique_logo} src={useColorModeValue('critiquehall2.png', 'critiquehall2-dark.png')} alt="Critique Hall Logo" w="10em" h="3em" _hover={{cursor:'pointer'}}></Img>
+                <Img className={styles.critique_logo} src={useColorModeValue('/critiquehall2.png', '/critiquehall2-dark.png')} alt="Critique Hall Logo" w="10em" h="3em" _hover={{cursor:'pointer'}}></Img>
                 </Link>
             </Flex>
             <Spacer />
@@ -263,7 +263,7 @@ export default function Nav({id}){
                             color={useColorModeValue('#1B1464')}
                             _hover={{cursor:'pointer', textDecoration:'underline'}}
                             _active={{bgColor: 'none', textDecoration:'underline'}}
-                        ><Img src={useColorModeValue('notification-alert-icon.png', 'notification-alert-icon-dark.png')} alt="Notification" w="2em" h="2em" ml={-5} /></Button>
+                        ><Img src={useColorModeValue('/notification-alert-icon.png', '/notification-alert-icon-dark.png')} alt="Notification" w="2em" h="2em" ml={-5} /></Button>
                     </PopoverTrigger>
                     <Button as='a'
                             variant='ghost'
@@ -354,7 +354,7 @@ export default function Nav({id}){
                         _hover={{cursor:'pointer', textDecoration:'underline'}}
                         _active={{bgColor: 'none'}}
                     >
-                        <Img src={useColorModeValue('critiquehall.png', 'critiquehall-dark.png')} alt="Critique Hall Logo" w="100px" h="70px" mr={2} />
+                        <Img src={useColorModeValue('/critiquehall.png', '/critiquehall-dark.png')} alt="Critique Hall Logo" w="100px" h="70px" mr={2} />
                     </Button>
                 </Link>
                 <form action='/search' method='POST' onSubmit={searchItem}>
@@ -430,7 +430,7 @@ export default function Nav({id}){
                         rounded='none'
                         onClick={logOut}
                     >
-                    <Img src={useColorModeValue('power-icon-dark.png', 'power-icon.png')} alt="Critique Hall Message Logo" w="2em" h="2em" mr={2} />LOG OUT
+                    <Img src={useColorModeValue('/power-icon-dark.png', '/power-icon.png')} alt="Critique Hall Message Logo" w="2em" h="2em" mr={2} />LOG OUT
                     </Button>
                 </Link>
             </Flex> 

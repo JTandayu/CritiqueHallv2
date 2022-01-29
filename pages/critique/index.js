@@ -2,7 +2,7 @@ import Head from 'next/head'
 // import Image from 'next/image'
 import { css, cx } from '@emotion/react'
 import { motion } from "framer-motion"
-import { Center, Grid, GridItem, Select, Image } from "@chakra-ui/react"
+import { Center, Grid, GridItem, Select, Image, useToast } from "@chakra-ui/react"
 import { Heading } from "@chakra-ui/react"
 import { Box } from "@chakra-ui/react"
 import Link from 'next/link'
@@ -99,6 +99,7 @@ export async function getStaticProps(ctx){
 export default function HallPage({data2}){
     const { API_URL } = process.env
     const { API_KEY } = process.env
+    const toast = useToast()
 
     const [posts, setPosts] = useState([])
     const [loading, setLoading] = useState(false)

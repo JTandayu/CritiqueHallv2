@@ -117,8 +117,29 @@ export default function SearchResult(){
     const currentSearch = searchPostData.slice(indexOfFirstPostSearch, indexOfLastPostSearch);
 
     console.log(currentSearch)
+    
     const sortPostResult = async (e) =>{
-        
+
+        axios.post(`${API_URL}/api/search`, formData, config)
+        .then((response) => {
+            console.log(response.data);
+            setSearchUserData(response.data.data.users);
+            setSearchPostData(response.data.data.posts);
+            // console.log(searchUserData.length);
+            // console.log(searchPostData.length);
+            
+            if(response.data.data.users.length == 0){
+                document.getElementById('user').removeAttribute('hidden');
+            }
+            
+            if(response.data.data.posts.length == 0){
+                document.getElementById('post').removeAttribute('hidden');
+            }
+        })
+        .catch((error) => (
+            console.log(error.response)
+        ));
+
     }
 
     return(

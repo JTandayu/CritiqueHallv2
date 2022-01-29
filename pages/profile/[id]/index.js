@@ -129,12 +129,33 @@ export default function ProfilePage({data}){
         });
     }
 
-    const filterPost = (e) =>{
+    const sortPost = (e) =>{
+        let formData = new FormData;
+        formData.append('user_id', enc_id)
+        // console.log(cookies.id)
 
+        axios.post(`${API_URL}/api/display_posts`, formData, config)
+        .then(response => {
+            console.log(response.data);      
+            setUserPosts(response.data.posts)
+        })
+        .catch(error => {
+            console.log(error.response);
+        });
     }
 
-    const filterCritique = (e) =>{
+    const sortCritique = (e) =>{
+        let formData = new FormData;
+        formData.append('user_id', enc_id)
         
+        axios.post(`${API_URL}/api/display_critiques`, formData, config)
+        .then(response => {
+            console.log(response.data);      
+            setUserCritique(response.data.critiques)
+        })
+        .catch(error => {
+            console.log(error.response);
+        });
     }
 
 
@@ -199,7 +220,7 @@ export default function ProfilePage({data}){
                     <Spacer />
                     <Flex w={{lg: '15vw', sm: '50%'}} mt={1} mr={5} id='postFilter'>
                         <Text mr={{lg: 5, sm: 1}} w={20} mt={2}>Sort by: </Text>
-                        <Select onChange={(e)=>setFilter(e.target.value)}  bgColor='white'>
+                        <Select onChange={(e)=>sortPost(e.target.value)}  bgColor='white'>
                             <option value='newest'>Newest</option>
                             <option value='oldest'>Oldest</option>
                             <option value='most-star'>Most Post Stars</option>
@@ -208,7 +229,7 @@ export default function ProfilePage({data}){
                     </Flex>
                     <Flex w={{lg: '15vw', sm: '50%'}} mt={1} mr={5} id='critiqueFilter'>
                         <Text mr={{lg: 5, sm: 1}} w={20} mt={2}>Sort by: </Text>
-                        <Select onChange={(e)=>setFilter(e.target.value)}  bgColor='white'>
+                        <Select onChange={(e)=>sortCritique(e.target.value)}  bgColor='white'>
                             <option value='newest'>Newest</option>
                             <option value='oldest'>Oldest</option>
                             <option value='most-star'>Most Critique Stars</option>
