@@ -109,7 +109,7 @@ export default function Login({user}) {
           <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@700&display=swap" rel="stylesheet" />
         </Head>
   
-        <Box as='main' bg={useColorModeValue('white', '#212121')} w={{lg: '100ch' , md: '100%' , sm: '100%' }} className={styles.main} 
+        <Box as='main' bg={useColorModeValue('white', '#212121')} w={{lg: '100ch' , md: '100%' , sm: '100%', base: '100%'}} className={styles.main} 
           // animate = {{y: 0 , opacity: 1}}
           // initial = {{y: -70, opacity: 0}}
           // transition ={{duration: .7}}
