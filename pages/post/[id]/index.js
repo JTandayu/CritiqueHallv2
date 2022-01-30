@@ -47,6 +47,7 @@ import { Critiques } from '@component/critique/Critiques'
 import { storage } from '../../../firebase.js'
 import { getDownloadURL, ref, uploadBytesResumable, deleteObject  } from 'firebase/storage'
 import { useToast } from '@chakra-ui/react'
+import { SRLWrapper } from "simple-react-lightbox";
 
 const breakpoints = createBreakpoints({
     sm: '320px',
@@ -247,8 +248,18 @@ export default function CritiquePost(post_id){
                         <Heading size='md'>Description</Heading>
                         <Text w={{lg: '45vw', sm: '100%'}} mx='auto' mt={5}>{data.body}</Text>
                     </Box>
-                            
+
+                    <SRLWrapper>     
                     {/* Image */}
+                    <Flex ml={{lg: "10vh", sm: 5}} flexDir={{lg: "row", sm: 'column'}} mt={5}>
+                        <Image src={data.attachment1} w='50vh' h='40vh' />
+                        <Flex flexDir='column' spacing={5}>
+                            <Image src={data.attachment2} w='20vh' h='10vh' />
+                            <Image src={data.attachment3} w='20vh' h='10vh' />
+                            <Image src={data.attachment4} w='20vh' h='10vh' />
+                            <Image src={data.attachment5} w='20vh' h='10vh' />
+                        </Flex>
+                    </Flex>
                     {/* { urls ?
                     <Flex ml={{lg: "10vh", sm: 5}} flexDir={{lg: "row", sm: 'column'}} mt={5}>
                         {data.attachment1 ? [ fileName[0].endsWith('.docx') == true || fileName[0].endsWith('.xls') == true ?
@@ -279,6 +290,7 @@ export default function CritiquePost(post_id){
                                 
                             </Flex>
                     </Flex> : null} */}
+                    </SRLWrapper>
                     {/* Options */}
                     <Box display="flex" w="100%" mt={5}>
                         <Button position='static' variant='ghost' onClick={giveLike}>Like <Text id='likes' ml={2}>{data.likes}</Text></Button>

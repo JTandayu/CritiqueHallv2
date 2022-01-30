@@ -13,6 +13,7 @@ import GuestLayout from "./layout/guest-layout";
 import theme from '../component/theme'
 import {useCookies} from 'react-cookie'
 import Router from "next/router";
+import SimpleReactLightbox from 'simple-react-lightbox'
 
 
 function MyApp({ Component, pageProps }) {
@@ -36,7 +37,9 @@ function MyApp({ Component, pageProps }) {
         return (
           <ChakraProvider theme={theme}>
             <Layout>
-                <Component {...pageProps} />{" "}
+                <SimpleReactLightbox>
+                    <Component {...pageProps} />{" "}
+                </SimpleReactLightbox>
             </Layout>
           </ChakraProvider>
         );

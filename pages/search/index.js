@@ -60,7 +60,7 @@ export default function SearchResult(){
     const [searchPostsPerPage, setSearchPostsPerPage] = useState(5)
 
 
-    const searchItem = ''
+    // const searchItem = ''
     const [search, setSearch] = useState('')
     
 
@@ -80,7 +80,7 @@ export default function SearchResult(){
     
     useEffect(() => {
         // setSearchItem(localStorage.getItem('search-item'))
-        searchItem = localStorage.getItem('search-item')
+        const searchItem = localStorage.getItem('search-item')
         setSearch(searchItem)
         
 
@@ -119,6 +119,12 @@ export default function SearchResult(){
     console.log(currentSearch)
     
     const sortPostResult = async (e) =>{
+        const searchItem = localStorage.getItem('search-item')
+        setSearch(searchItem)
+
+        let formData = new FormData;
+        formData.append('search_data', searchItem)
+        formData.append('sort', e)
 
         axios.post(`${API_URL}/api/search`, formData, config)
         .then((response) => {
@@ -206,8 +212,8 @@ export default function SearchResult(){
                 <Flex w='15vw' mt={1}>
                     <Text mr={5} w={20} mt={2} >Sort By: </Text>
                     <Select onChange={(e) => sortPostResult(e.target.value)}>
-                        <option value='oldest'>Oldest</option>
-                        <option value='newest'>Newest</option>
+                        <option value='desc'>Newest</option>
+                        <option value='asc'>Oldest</option>
                     </Select>
                 </Flex>
             </Flex>

@@ -41,7 +41,7 @@ export const Critiques = ({id}) => {
     const [critiqueItems, setCritiqueItems] = useState([])
     const [reply, setReply] = useState('')
     const [lastId, setLastID] =  useState('0')
-    const [filter, setFilter] = useState('newest')
+    const [filter, setFilter] = useState('desc')
     // const [newPostCritique, setNewPostCritique] = useState(newPost)
     // const filterCritique = filter;
     // console.log(filter)
@@ -108,6 +108,7 @@ export const Critiques = ({id}) => {
         let formData = new FormData;
         formData.append('post_id', id);
         formData.append('last_id', null);
+        formData.append('sort', e)
 
         axios.post(`${API_URL}/api/display_all_critiques`, formData, config)
         .then((response) =>{
@@ -179,10 +180,10 @@ export const Critiques = ({id}) => {
                         <Flex w={{lg: '15vw', sm: '50%'}} mt={1}>
                         <Text mr={{lg: 5, sm: 1}} w={20} mt={2}>Sort by: </Text>
                         <Select onChange={(e)=>sortCritique(e.target.value)}>
-                            <option value='newest'>Newest</option>
-                            <option value='oldest'>Oldest</option>
-                            <option value='most-star'>Most Stars</option>
-                            <option value='least-star'>Least Stars</option>
+                            <option value='desc'>Newest</option>
+                            <option value='asc'>Oldest</option>
+                            <option value='most_stars'>Most Stars</option>
+                            <option value='most_interacted'>Most Interacted</option>
                         </Select>
                         </Flex>
             </Box>

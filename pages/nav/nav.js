@@ -63,6 +63,7 @@ export default function Nav({id}){
 
     const [darkMode ,setDarkMode] = useState('')
     const [ImgUrl, setImgUrl] = useState('/dark-and-light.png')
+    const router = useRouter();
 
     const changeDarkAndLightIcon = () => {
         toggleColorMode()
@@ -157,12 +158,42 @@ export default function Nav({id}){
 
     //Log-out function
     const logOut = async ()=>{
-        toastIdRef.current = toast({ title: 'Logout Successful!', status: 'success', duration: 3000, isClosable: false })
-        removeCookie('token');
-        removeCookie('id');
-        removeCookie('encrypted_id');
-        removeCookie('profile_pic');
-        removeCookie('display_name');
+        const config = {
+            headers: { 
+                'content-type': 'multipart/form-data',
+                'X-API-KEY': `${API_KEY}`,
+                'Authorization': 'Basic Y2Fwc3RvbmUyMDIxOjEyMzQ=',
+                // 'Accept-Encoding': 'gzip, deflate, br',
+                'Accept': 'application/json',
+                'token': cookies.token,
+                'user_id': cookies.encrypted_id
+            }
+        }
+        let formData = new FormData;
+
+
+        axios.post(`${API_URL}/api/logout`, formData, config)
+        .then((response)=>{
+            console.log(response)
+            toastIdRef.current = toast({ title: 'Logout Successful!', status: 'success', duration: 3000, isClosable: false })
+        })
+        .then(()=>{
+            removeCookie('token');
+            removeCookie('id');
+            removeCookie('encrypted_id');
+            removeCookie('profile_pic');
+            removeCookie('display_name');
+            router.push('/')
+        }).catch((error)=>console.log(error.response))
+
+
+        // toastIdRef.current = toast({ title: 'Logout Successful!', status: 'success', duration: 3000, isClosable: false })
+        
+        // removeCookie('token');
+        // removeCookie('id');
+        // removeCookie('encrypted_id');
+        // removeCookie('profile_pic');
+        // removeCookie('display_name');
     }
 
     return(
@@ -306,7 +337,7 @@ export default function Nav({id}){
                     </MenuButton>
                     <MenuList>
                         <MenuItem fontFamily={'Raleway'} fontWeight={'bold'}><Link href={`/profile/${display_name}`} passHref>PROFILE</Link></MenuItem>
-                        <MenuItem fontFamily={'Raleway'} fontWeight={'bold'} color="red" _hover={{ bg: 'red.500', color: 'white' }} onClick={logOut}><Link href="/" passHref>LOG OUT</Link></MenuItem>
+                        <MenuItem fontFamily={'Raleway'} fontWeight={'bold'} color="red" _hover={{ bg: 'red.500', color: 'white' }} onClick={logOut}>LOG OUT</MenuItem>
                     </MenuList>
                 </Menu>
 
@@ -416,7 +447,6 @@ export default function Nav({id}){
                         <Link href={`/profile/${display_name}`} passHref>PROFILE</Link>
                     </Button>
                 </Link>
-                <Link href="/" passHref>
                     <Button
                         as='a'
                         variant='ghost'
@@ -432,7 +462,6 @@ export default function Nav({id}){
                     >
                     <Img src={useColorModeValue('/power-icon-dark.png', '/power-icon.png')} alt="Critique Hall Message Logo" w="2em" h="2em" mr={2} />LOG OUT
                     </Button>
-                </Link>
             </Flex> 
         </Flex>
 

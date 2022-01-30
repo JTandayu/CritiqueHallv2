@@ -67,6 +67,7 @@ export default function ProfilePage({data}){
     const [userPosts, setUserPosts] = useState([])
     const [userCritique, setUserCritique] = useState([])
     const [filter, setFilter] = useState('newest')
+    const [encID, setEncId] = useState("")
 
     const config = {
         headers: { 
@@ -95,6 +96,7 @@ export default function ProfilePage({data}){
             console.log(response.data);      
             setUserData(response.data.data.user)
             displayPostCritique(response.data.data.user.encrypted_id)
+            setEncId(response.data.data.user.encrypted_id)
         })
         .catch(error => {
             console.log(error.response);
@@ -131,7 +133,8 @@ export default function ProfilePage({data}){
 
     const sortPost = (e) =>{
         let formData = new FormData;
-        formData.append('user_id', enc_id)
+        formData.append('user_id', encID)
+        formData.append('sort', e)
         // console.log(cookies.id)
 
         axios.post(`${API_URL}/api/display_posts`, formData, config)
@@ -146,7 +149,8 @@ export default function ProfilePage({data}){
 
     const sortCritique = (e) =>{
         let formData = new FormData;
-        formData.append('user_id', enc_id)
+        formData.append('user_id', encID)
+        formData.append('sort', e)
         
         axios.post(`${API_URL}/api/display_critiques`, formData, config)
         .then(response => {
@@ -221,19 +225,19 @@ export default function ProfilePage({data}){
                     <Flex w={{lg: '15vw', sm: '50%'}} mt={1} mr={5} id='postFilter'>
                         <Text mr={{lg: 5, sm: 1}} w={20} mt={2}>Sort by: </Text>
                         <Select onChange={(e)=>sortPost(e.target.value)}  bgColor='white'>
-                            <option value='newest'>Newest</option>
-                            <option value='oldest'>Oldest</option>
-                            <option value='most-star'>Most Post Stars</option>
-                            <option value='least-star'>Least Post Stars</option>
+                            <option value='desc'>Newest</option>
+                            <option value='asc'>Oldest</option>
+                            <option value='most_stars'>Most Post Stars</option>
+                            <option value='most_interacted'>Most Interacted</option>
                         </Select>
                     </Flex>
                     <Flex w={{lg: '15vw', sm: '50%'}} mt={1} mr={5} id='critiqueFilter'>
                         <Text mr={{lg: 5, sm: 1}} w={20} mt={2}>Sort by: </Text>
                         <Select onChange={(e)=>sortCritique(e.target.value)}  bgColor='white'>
-                            <option value='newest'>Newest</option>
-                            <option value='oldest'>Oldest</option>
-                            <option value='most-star'>Most Critique Stars</option>
-                            <option value='least-star'>Least Critique Stars</option>
+                            <option value='desc'>Newest</option>
+                            <option value='asc'>Oldest</option>
+                            <option value='most_stars'>Most Critique Stars</option>
+                            <option value='most_interacted'>Most Interacted</option>
                         </Select>
                     </Flex>
                 </Box>
