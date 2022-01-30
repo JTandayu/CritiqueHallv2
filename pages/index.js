@@ -10,7 +10,7 @@ import { useToast } from '@chakra-ui/react'
 import React from 'react';
 import axios from 'axios';
 import {useState} from 'react';
-import ManTexting from "@public/man-texting.png";
+// import ManTexting from "@public/man-texting.png";
 import { useColorMode, useColorModeValue } from "@chakra-ui/react";
 
 

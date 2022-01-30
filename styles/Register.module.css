@@ -1,5 +1,5 @@
 .container {
-  background-image: url("/Banner.png");
+  background-image: url("/register.png");
   background-repeat: no-repeat;
   background-color: #3778DA;
   background-size: 50%;
@@ -15,7 +15,7 @@
 }
 
 .container2 {
-  background-image: url("/Banner-dark.png");
+  background-image: url("/register-dark.png");
   background-repeat: no-repeat;
   background-color: #1D447E;
   background-size: 50%;
