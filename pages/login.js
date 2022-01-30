@@ -91,8 +91,8 @@ export default function Login({user}) {
           router.push("/home")
       })
       .catch(error => {
-          toastIdRef.current = toast({ title: 'Login Unsuccessful!', status: 'error', duration: 3000, isClosable: false })
-          console.log(error);
+          // toastIdRef.current = toast({ title: 'Login Unsuccessful!', status: 'error', duration: 3000, isClosable: false })
+          console.log(error.reponse);
           document.getElementById('warning1').removeAttribute('hidden');
           // window.location.href = "/login"
       });
@@ -119,38 +119,43 @@ export default function Login({user}) {
              alt="Critique Hall Logo"/></Link>
             </div>
             
-            <Heading fontFamily={'Raleway'} mb={5} as="h2" size="lg" color={useColorModeValue('#1B1464','#B2A3FF')}>LOG-IN</Heading>
-            <Box id='warning1' bg='red.100' w='30%' h='5vh' border='1px solid red' rounded='md' mb={4} mt={2} hidden>
+            {/* <Heading fontFamily={'Raleway'} mb={5} as="h2" size="lg" color={useColorModeValue('#1B1464','#B2A3FF')}>LOG-IN</Heading> */}
+            <Box id='warning1' color='red' w='30%' h='5vh' mb={4} mt={2} hidden>
               <Center>
-                <Text mt='1vh'>Incorrect Email or Password</Text>
+                <Text mt='1vh'>Invalid Credentials</Text>
               </Center>
             </Box>
-            <center><FormControl id="loginform" isRequired>
+            <Box id='warning2' color='red' w='30%' h='5vh' mb={4} mt={2} hidden>
+              <Center>
+                <Text mt='1vh'>What are you doing?</Text>
+              </Center>
+            </Box>
+            <center><FormControl id="loginform" >
               <FormLabel>iACADEMY Email</FormLabel>
-                <Input size='lg' width={'30vh'} id="email" value={email} className={styles.input_box} type="email" onChange={e => setEmail(e.target.value)} />
+                <Input borderColor={'black'} size='lg' width={'40vh'} id="email" value={email} className={styles.input_box} type="email" onChange={e => setEmail(e.target.value)} />
                 {/* <input placeholder="Username" id="email" value={email} className={styles.input_box} type="email" /> */}
                 <br/>
                 <br/>
               <FormLabel>Password</FormLabel>
-                <Input size='lg' width={'30vh'} id="password" value={password} className={styles.input_box} type="password" onChange={e => setPassword(e.target.value)} />
+                <Input borderColor={'black'} size='lg' width={'40vh'} id="password" value={password} className={styles.input_box} type="password" onChange={e => setPassword(e.target.value)} />
                 {/* <input placeholder="Password" id="password" value={password} className={styles.input_box} type="password"/> */}
                 <br/>
                 <br/>
                 <p className={styles.register}>
-                <Text fontSize='md' color={useColorModeValue('#1E9CE3', '#1BA3C1')}><Link href="./forgot-password"><a>Forgot Password?</a></Link></Text>
+                <Text fontSize='md' color={useColorModeValue('#1BA3C1', '#1BA3C1')}><Link href="./forgot-password"><a>Forgot Password?</a></Link></Text>
                 </p>
                 <VStack direction="row" spacing={8} align="center">
                 <Button
                   // whileHover={{ scale: 1.2 }}
                   // whileTap={{ scale: 0.9 }}
                   className={styles.LoginButton} 
-                  bgColor={useColorModeValue('#0C1F83', '#2346FF')}
+                  bgColor={useColorModeValue('#0C1F83', '#1D447E')}
                   color={useColorModeValue('white', 'white')}
-                  _hover={{bgColor: 'blue'}} 
+                  _hover={{bgColor: useColorModeValue('#173cff', '#428eff')}}
                   type="submit" 
                   size="lg"
                   onClick={submitLogin}
-                  > LOG-IN </Button>
+                  > Login </Button>
                   {/* <MotionButton
                   whileHover={{ scale: 1.2 }}
                   whileTap={{ scale: 0.9 }}
@@ -165,7 +170,7 @@ export default function Login({user}) {
             </FormControl></center>
 
             <p className={styles.register2}>
-              <Text fontSize='sm'>New user?<Link href="./register" passHref><Text _hover={{cursor:'pointer'}} fontSize='lg' className={styles.signUpText} color={useColorModeValue('#1E9CE3', '#1BA3C1')}>Sign Up Now!</Text></Link></Text>
+              <Text fontSize='lg'>New user?<Link href="./register" passHref><Text _hover={{cursor:'pointer'}} fontSize='xl' className={styles.signUpText} color={useColorModeValue('#1BA3C1', '#1BA3C1')}>Sign up now!</Text></Link></Text>
             </p>
             
         </Box>

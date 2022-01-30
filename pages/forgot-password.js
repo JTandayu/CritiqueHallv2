@@ -67,7 +67,7 @@ export default function ForgotPassword(){
             // window.location = "/home"
         })
         .catch(error => {
-          toastIdRef.current = toast({ title: 'Reset Password Link Error!', description: 'No iACADEMY Email is registered to the system. Please try again.', status: 'error', duration: 2000, isClosable: true })
+          toastIdRef.current = toast({ title: 'Reset Password Link Error!', description: 'Please try again!', status: 'error', duration: 2000, isClosable: true })
             console.log(error);
             console.log(error.response);
             // window.location = "/forgot-password"
@@ -89,11 +89,11 @@ export default function ForgotPassword(){
             <Link href="/" passHref><Image src={useColorModeValue('critiquehall.png', 'critiquehall-dark.png')} alt="Critique Hall Logo"/></Link>
             </div>
 
-            <Heading fontFamily={'Raleway'} mb={2} as="h2" size="lg" color={useColorModeValue('#1B1464','#B2A3FF')}>FORGOT PASSWORD</Heading>
-            <p className={styles.description}>Kindly enter your iACADEMY Email to receive a link for further process in changing your password.</p>
-            <center><FormControl id="forgotpassword" action="/home" isRequired>
-                <Input size='lg' width={'40vh'} placeholder="iACADEMY Email" className={styles.input_box} type="email" value={email} onChange={e => setEmail(e.target.value)}/>
-                <FormHelperText className={styles.helperText}>This field is required.</FormHelperText>
+            <Heading fontFamily={'Raleway'} mb={'10%'} as="h2" size="lg" color={useColorModeValue('#1B1464','#B2A3FF')}>Forgot Password</Heading>
+            <center><FormControl id="forgotpassword" action="/home">
+                <FormLabel>iACADEMY Email</FormLabel>
+                <Input borderColor={'black'} size='lg' width={'40vh'} className={styles.input_box} type="email" value={email} onChange={e => setEmail(e.target.value)}/>
+                {/* <FormHelperText className={styles.helperText}>This field is required.</FormHelperText> */}
                 <br/>
                 {/* <Popover
                 placement="bottom"
@@ -103,13 +103,13 @@ export default function ForgotPassword(){
                   // whileHover={{ scale: 1.2 }}
                   // whileTap={{ scale: 0.9 }}
                   className={styles.login_button}
-                  bgColor={useColorModeValue('#0C1F83', '#2346FF')}
+                  bgColor={useColorModeValue('#0C1F83', '#1D447E')}
                   color={useColorModeValue('white', 'white')}
-                  _hover={{bgColor: 'blue'}}
+                  _hover={{bgColor: useColorModeValue('#173cff', '#428eff')}}
                   size="lg"
                   onClick={forgotPassword}
                   >
-                SEND
+                Send
                 </Button>
                 {/* </PopoverTrigger>
                 <PopoverContent color="white" bg="blue.800" borderColor="blue.800">
@@ -124,7 +124,7 @@ export default function ForgotPassword(){
             </FormControl></center>
 
             <p className={styles.register}>
-            <Link href="./login" passHref><Text _hover={{cursor:'pointer'}} fontSize='md' color={useColorModeValue('#1E9CE3', '#1BA3C1')}><a>Back to Login</a></Text></Link>
+            <Link href="./login" passHref><Text _hover={{cursor:'pointer'}} fontSize='md' color={useColorModeValue('#1BA3C1', '#1BA3C1')}><a>Back to Login</a></Text></Link>
             </p>
             </center>
 

@@ -1,5 +1,5 @@
 .container {
-    background-image: url("/Banner.png");
+    background-image: url("/login.png");
     background-repeat: no-repeat;
     background-color: #3778DA;
     background-size: 50%;
@@ -14,7 +14,7 @@
   }
 
 .container2 {
-    background-image: url("/Banner-dark.png");
+    background-image: url("/login-dark.png");
     background-repeat: no-repeat;
     background-color: #1D447E;
     background-size: 50%;
@@ -55,9 +55,9 @@
 
   .input_box{
     /* width: 30vh; */
-    padding: 10px;
+    padding: 20px;
     margin-bottom: 1ch;
-    border-radius: 1ch;
+    border-radius: 15px;
     /* border: 1px solid rgb(92, 92, 92); */
     box-shadow: 0px 10px 4px rgba(0, 0, 0, 0.25);
   }
@@ -75,10 +75,10 @@
 
   .register{
     margin-top: -1ch;
-    margin-right: 10ch;
-    color: rgb(0, 60, 255);
+    margin-right: 20ch;
+    color: #1BA3C1;
     text-align: center;
-    text-transform: uppercase;
+    /* text-transform: uppercase; */
     font-weight: bold;
     font-family: 'Raleway', sans-serif;
   }
@@ -91,7 +91,7 @@
     margin-top: 2ch;
     /* color: rgb(0, 60, 255); */
     text-align: center;
-    text-transform: uppercase;
+    /* text-transform: uppercase; */
     /* text-decoration: underline; */
     font-weight: bold;
     font-family: 'Raleway', sans-serif;

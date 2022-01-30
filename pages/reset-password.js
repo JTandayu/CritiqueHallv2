@@ -79,7 +79,7 @@ export default function ResetPassword(){
               window.location = "/login"
         })
         .catch(error => {
-          toastIdRef.current = toast({ title: 'Reset Password Unsuccessful!', description: 'Please try again.', status: 'error', duration: 2000, isClosable: true })
+          toastIdRef.current = toast({ title: 'Reset Password Unsuccessful!', description: 'Please try again!', status: 'error', duration: 2000, isClosable: true })
             console.log(error);
             window.location = "/reset-password"
         });
@@ -100,18 +100,18 @@ export default function ResetPassword(){
             <Link href="/" passHref><Image src={useColorModeValue('critiquehall.png', 'critiquehall-dark.png')} alt="Critique Hall Logo"/></Link>
             </div>
 
-            <Heading fontFamily={'Raleway'} mb={2} as="h2" size="lg" color={useColorModeValue('#1B1464','#B2A3FF')}>RESET YOUR PASSWORD</Heading>
+            <Heading fontFamily={'Raleway'} mb={2} as="h2" size="lg" color={useColorModeValue('#1B1464','#B2A3FF')}>Reset Password</Heading>
             <br />
             {/* <p className={styles.description}>Kindly enter your E-mail Address to receive a link for further process in changing your password.</p> */}
-            <center><FormControl id="forgotpassword" action="/home" isRequired>
+            <center><FormControl id="forgotpassword" action="/home">
                 <FormLabel>New Password</FormLabel>
-                <Input size='lg' width={'40vh'} className={styles.input_box} type="password" value={password} onChange={e => setPassword(e.target.value)}/>
+                <Input borderColor={'black'} size='lg' width={'40vh'} className={styles.input_box} type="password" value={password} onChange={e => setPassword(e.target.value)}/>
                 {/* <input placeholder="New Password" className={styles.input_box} type="password" value={password} onChange={e => setPassword(e.target.value)}/> */}
                 {/* <FormHelperText className={styles.helperText}>This field is required.</FormHelperText> */}
                 <br/>
                 <br />
                 <FormLabel>Confirm New Password</FormLabel>
-                <Input size='lg' width={'40vh'} className={styles.input_box} type="password" value={confirm_password} onChange={e => setConfirmPassword(e.target.value)}/>
+                <Input borderColor={'black'} size='lg' width={'40vh'} className={styles.input_box} type="password" value={confirm_password} onChange={e => setConfirmPassword(e.target.value)}/>
                 {/* <input placeholder="Confirm New Password" className={styles.input_box} type="password" value={confirm_password} onChange={e => setConfirmPassword(e.target.value)}/> */}
                 <br/>
                 <br/>
@@ -123,13 +123,13 @@ export default function ResetPassword(){
                   // whileHover={{ scale: 1.2 }}
                   // whileTap={{ scale: 0.9 }}
                   className={styles.login_button}
-                  bgColor={useColorModeValue('darkgreen', 'darkgreen')}
+                  bgColor={useColorModeValue('#0C1F83', '#1D447E')}
                   color={useColorModeValue('white', 'white')}
-                  _hover={{bgColor: '#0C7A0A'}}
+                  _hover={{bgColor: useColorModeValue('#173cff', '#428eff')}}
                   size="lg"
                   onClick={resetPassword}
                   >
-                RESET PASSWORD
+                Reset
                 </Button>
                 {/* </PopoverTrigger>
                 <PopoverContent color="white" bg="green.800" borderColor="green.800">
