@@ -6,6 +6,7 @@ import {
     ModalFooter,
     ModalBody,
     ModalCloseButton,
+    useToast,
   } from "@chakra-ui/react"
 import { useDisclosure } from '@chakra-ui/react'
 import { Button } from '@chakra-ui/react'
@@ -16,11 +17,15 @@ import { storage } from '../../../firebase.js'
 import { getDownloadURL, ref, uploadBytesResumable } from 'firebase/storage'
 import axios from "axios";
 import {useCookies} from 'react-cookie'
+import { useRouter } from "next/router";
 
 function DeletePost({id}){
     const { isOpen, onOpen, onClose } = useDisclosure()
     const { API_URL } = process.env
     const { API_KEY } = process.env
+    const router = useRouter();
+    const toast = useToast()
+    console.log
 
 
     const [progress, setProgress] = useState(0);
@@ -65,12 +70,16 @@ function DeletePost({id}){
     }
 
     const deletePost = async () =>{
-      axios.get(`${API_URL}api/delete_post/${id}`, config)
+      axios.delete(`${API_URL}/api/delete_post/${id}`, config)
       .then((response) => {
         console.log(response.data)
-        onClose
+        toast("Post successfully deleted!")
+        onClose()
+      })
+      .then(()=>{
+        router.push("/critique")
       }).catch((error)=>{
-        console.log(error)
+        console.log(error.response)
       })
     }
 
@@ -93,7 +102,7 @@ function DeletePost({id}){
                   <Button colorScheme='blue' mr={3} onClick={onClose}>
                   Close
                   </Button>
-                  <Button variant='ghost'>Delete</Button>
+                  <Button variant='ghost' onClick={deletePost}>Delete</Button>
               </ModalFooter>
           </ModalContent>
       </Modal>

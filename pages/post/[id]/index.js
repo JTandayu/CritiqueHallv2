@@ -48,6 +48,7 @@ import { storage } from '../../../firebase.js'
 import { getDownloadURL, ref, uploadBytesResumable, deleteObject  } from 'firebase/storage'
 import { useToast } from '@chakra-ui/react'
 import { SRLWrapper } from "simple-react-lightbox";
+import { post } from 'jquery'
 
 const breakpoints = createBreakpoints({
     sm: '320px',
@@ -314,7 +315,7 @@ export default function CritiquePost(post_id){
                                 </MenuGroup>
                                 <MenuDivider /> */}
                                 <MenuGroup>
-                                    <MenuItem><DeletePost /></MenuItem>
+                                    <MenuItem><DeletePost id={data.post_id} /></MenuItem>
                                 </MenuGroup>
                                 </MenuList>
                             </Menu>

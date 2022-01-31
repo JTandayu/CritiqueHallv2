@@ -120,20 +120,37 @@ export default function Nav({id}){
                 Router.replace('/login')
                 return;
             }
-        });
-
-        axios.get(`${API_URL}/api/get_notifs`, config)
-        .then(response => {
-            // console.log(response.data.Notifs);      
-            setNotif(response.data.Notifs)
-        })
-        .catch(error => {
-            console.log(error.response.data.error);
-            if(error.response.data.error ==  'User does not exist'){
+            if(error.response.data.error ==  'Token Expired'){
+                Router.replace('/login')
+                return;
+            }
+            if(error.response.data.error ==  'Unauthorized'){
                 Router.replace('/login')
                 return;
             }
         });
+
+        axios.get(`${API_URL}/api/get_notifs`, config)
+            .then(response => {
+                console.log(response.data);      
+                setNotif(response.data.status)
+            })
+            .catch(error => {
+                console.log(error.response.data.error);
+            });
+
+        const getNotif = setInterval(()=>{
+            axios.get(`${API_URL}/api/get_notifs`, config)
+            .then(response => {
+                console.log(response.data);      
+                setNotif(response.data.status)
+            })
+            .catch(error => {
+                console.log(error.response.data.error);
+            });
+        }, 15000)
+
+        
     }, [])
 
     //Search Function
@@ -306,16 +323,21 @@ export default function Nav({id}){
                             _hover={{cursor:'pointer'}}
                             _active={{bgColor: 'none'}}
                             > <Img src={ImgUrl} alt="moon" w="2em" h="2em" ml={-20} /></Button>
-                    <PopoverContent>
+                    <PopoverContent w="400px">
                         <PopoverArrow />
                         <PopoverCloseButton />
                         <PopoverHeader fontFamily={'Raleway'}>NOTIFICATIONS</PopoverHeader>
-                        <PopoverBody fontFamily={'Raleway'}>{notif.map((notification, i) =>
-                            <Box key={i}>
-                            <Text fontFamily={'Raleway'} p={2}>{notification.action}</Text>
+                        <PopoverBody fontFamily={'Raleway'}>
+                            {notif.map((notification, i) =>
+                            <Box key={i} display='flex'>
+                                {notification.profile_photo ? <Img src={notification.profile_photo} mr={3} w="25px" h="25px" alt="Notification Image" /> : null}
+                                <Text mr={3} fontFamily={'Raleway'}>{notification.display_name}</Text>
+                                <Text mr={2} fontFamily={'Raleway'}>{notification.action}</Text>
+                                <Text w="full" fontFamily={'Raleway'}>{notification.title}</Text>
                             <Divider />
                             </Box>
-                        )}</PopoverBody>
+                            )}
+                        </PopoverBody>
                     </PopoverContent>
                 </Popover>
                 <Menu>

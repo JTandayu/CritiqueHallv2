@@ -10,6 +10,9 @@ import {
 import { useDisclosure } from '@chakra-ui/react'
 import { Button } from '@chakra-ui/react'
 import styles from "@styles/Hall.module.css";
+import axios from "axios";
+import { useEffect, useState } from "react";
+import {useCookies} from 'react-cookie'
 
 // export async function getStaticProps(context) {
 //     const res = await fetch(`https://...`)
@@ -22,12 +25,34 @@ import styles from "@styles/Hall.module.css";
 // } 
   
 
-function EditHistory() {
+function EditReplyHistory({id}) {
     const { isOpen, onOpen, onClose } = useDisclosure()
     const { API_URL } = process.env
     const { API_KEY } = process.env
+    const [cookies, setCookie, removeCookie] = useCookies(['token', 'id', 'encrypted_id']);
+    const [data, setData] = useState([])
 
+    const config = {
+        headers: {
+        'content-type': 'multipart/form-data',
+        'X-API-KEY': `${API_KEY}`,
+        'Authorization': 'Basic Y2Fwc3RvbmUyMDIxOjEyMzQ=',
+        'Accept': 'application/json',
+        'token': cookies.token,
+        'user_id': cookies.encrypted_id
+        }
+      }
 
+    useEffect(() => {
+        let formData = new FormData;
+        formData.append('reply_id', id)
+
+        axios.get(`${API_URL}/api/version_reply`, formData, config)
+        .then((response)=>{
+            console.log(response)
+        }).catch((error)=>console.log(error))
+    }, []);
+    
 
     return(
         <>
@@ -52,4 +77,4 @@ function EditHistory() {
 
 }
 
-export default EditHistory
+export default EditReplyHistory

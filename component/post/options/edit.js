@@ -217,7 +217,7 @@ function EditPost({data, url, fileNames}){
         <form action=" " method="POST">
         <Modal isOpen={isOpen} onClose={onClose}>
             <ModalOverlay />
-                <ModalContent maxW="70rem">
+                <ModalContent maxW="30rem">
                 <ModalHeader>Edit Post</ModalHeader>
                 <ModalCloseButton />
                 <ModalBody>
@@ -242,17 +242,16 @@ function EditPost({data, url, fileNames}){
                     </Center>
 
                     </Box>
-                    
+{/*                     
 
                     <Center height='50vh' >
                         <Divider orientation='vertical' borderColor='black'/>
-                    </Center>
+                    </Center> */}
                 
 
-                    <Box ml='2vw' w='20vw' p={5}>
+                    {/* <Box ml='2vw' w='20vw' p={5}>
                     <Flex flexDir={{lg: 'row', sm: 'column'}} w='30vw'>
                             <Heading size='sm' mr={3}>Attachments</Heading>
-                            {/* <Button bg='blue.400' color='white' ml={5} h='2em'>upload</Button> */}
                             <input type='file' multiple onChange={handleChange} />
                             <Button onClick={uploadFiles}>Upload</Button>
                         </Flex>
@@ -273,7 +272,7 @@ function EditPost({data, url, fileNames}){
                         </Flex>
                         <Text fontSize='xs'>*5 Attachments Max</Text>
                         <Text fontSize='xs'>*image and doc format only accepted</Text>
-                    </Box>
+                    </Box> */}
 
                     </Flex >
                 </ModalBody>

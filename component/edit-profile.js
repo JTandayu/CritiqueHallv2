@@ -160,7 +160,7 @@ function EditProfile({data}) {
 
     const SubmitInfo = async () =>{
         // console.log(profileImage)
-        uploadFiles().then(()=>SubmitPersonalInformation())
+        uploadFiles().then(()=>{SubmitPersonalInformation()})
     }
 
     const handleChange = e =>{

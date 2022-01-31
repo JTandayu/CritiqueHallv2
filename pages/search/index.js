@@ -171,11 +171,11 @@ export default function SearchResult(){
 
             {/* User item */}
             <Text id='user' mx='auto' hidden>No Users Found</Text>
-            {searchUserData.map((user) => (
-            <Box w='100%'>
+            {searchUserData.map((user, i) => (
+            <Box w='100%' key={user.user_id}>
             <Link href="/profile/[id]" as={`/profile/${user.display_name}`} passHref>
                 <a>
-                <Box w={{lg: '20%', sm: '100%'}} display={{lg: 'flex', sm: 'block'}} key={user.user_id} mt='2ch' mx="auto" border='1px solid' borderColor='dark' rounded='lg'>
+                <Box w={{lg: '20%', sm: '100%'}} display={{lg: 'flex', sm: 'block'}}  mt='2ch' mx="auto" border='1px solid' borderColor='dark' rounded='lg'>
                     <Box p="3" w="100%" bg="light">
                         <Image src={user.profile_photo} w='30px' h='30px' rounded='full' />
                     </Box>

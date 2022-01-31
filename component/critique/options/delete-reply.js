@@ -13,8 +13,9 @@ import { useDisclosure } from '@chakra-ui/react'
 import { Button } from '@chakra-ui/react'
 import styles from "@styles/Hall.module.css";
 import {useCookies} from 'react-cookie'
+import axios from 'axios';
 
-const deleteReply = ({id}) => {
+const DeleteReply = ({id}) => {
     const { isOpen, onOpen, onClose } = useDisclosure()
     const { API_URL } = process.env
     const { API_KEY } = process.env
@@ -33,10 +34,10 @@ const deleteReply = ({id}) => {
       }
     
     const deleteReply = async () =>{
-        axios.get(`${API_URL}api/delete_reply/${id}`, config)
+        axios.delete(`${API_URL}/api/delete_reply/${id}`, config)
         .then((response) => {
           console.log(response.data)
-          onClose
+          onClose()
         }).catch((error)=>{
           console.log(error)
         })
@@ -44,7 +45,8 @@ const deleteReply = ({id}) => {
 
     return (
         <>
-            <form action='' method='POST'>
+            <button onClick={onOpen} width='10vw'>Delete</button>
+          
             <Modal isOpen={isOpen} onClose={onClose}>
                 <ModalOverlay />
                     <ModalContent maxW="40rem" h='40vh'>
@@ -59,11 +61,10 @@ const deleteReply = ({id}) => {
                     </ModalBody>
                 </ModalContent>
             </Modal>
-            </form>
             
         </>
     )
 }
 
-export default deleteReply
+export default DeleteReply
 

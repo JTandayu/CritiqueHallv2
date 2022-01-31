@@ -58,45 +58,32 @@ const breakpoints = createBreakpoints({
 const theme = extendTheme({ breakpoints })
 
 
-export async function getStaticProps(ctx){
-    const { API_URL } = process.env
-    const { API_KEY } = process.env
+// export async function getStaticProps(ctx){
+//     const { API_URL } = process.env
+//     const { API_KEY } = process.env
     
-    // const res = await fetch(`${API_URL}/api/posts_pagination/1`, {
-    //     method: 'GET',
-    //     headers: {
-    //         'content-type': 'multipart/form-data',
-    //         'X-API-KEY': `${API_KEY}`,
-    //         'Authorization': 'Basic Y2Fwc3RvbmUyMDIxOjEyMzQ=',
-    //         // 'Accept-Encoding': 'gzip, deflate, br',
-    //         'Accept': 'application/json',
-    //     }
-    // })
 
-    const res2 = await fetch(`${API_URL}/api/get_halls`, {
-        method: 'GET',
-        headers: {
-            'content-type': 'multipart/form-data',
-            'X-API-KEY': `${API_KEY}`,
-            'Authorization': 'Basic Y2Fwc3RvbmUyMDIxOjEyMzQ=',
-            'Accept': 'application/json',
-        }
-    })
+//     const res2 = await fetch(`${API_URL}/api/get_halls`, {
+//         method: 'GET',
+//         headers: {
+//             'content-type': 'multipart/form-data',
+//             'X-API-KEY': `${API_KEY}`,
+//             'Authorization': 'Basic Y2Fwc3RvbmUyMDIxOjEyMzQ=',
+//             'Accept': 'application/json',
+//         }
+//     })
 
-    // const data = await res.json()
-    const data2 = await res2.json()
-    // console.log(data2.halls)
-    // console.log(data)
+//     const data2 = await res2.json()
 
-    return{
-        props:{
-            // data: data.posts,
-            data2: data2.halls
-        }
-    }
-}
 
-export default function HallPage({data2}){
+//     return{
+//         props:{
+//             data2: data2.halls
+//         }
+//     }
+// }
+
+export default function HallPage({}){
     const { API_URL } = process.env
     const { API_KEY } = process.env
     const toast = useToast()
@@ -107,6 +94,7 @@ export default function HallPage({data2}){
     const [postsPerPage, setPostsPerPage] = useState(5)
     const [hall, setHalls] =  useState('0')
     const [hallNum, setHallNum] = useState([])
+    const [hallList, setHallList] = useState([])
 
     const [cookie, setCookie] = useCookies('token', 'encrypted_id', 'id')
 
@@ -137,6 +125,16 @@ export default function HallPage({data2}){
             //     Router.replace('/login')
             //     return;
             // }
+        });
+
+        axios.get(`${API_URL}/api/get_halls`, config)
+        .then(response => {
+            console.log(response.data);
+            setHallList(response.data.halls)
+        })
+        .catch(error => {
+            console.log(error.response);
+            console.log(error.response.status)
         });
 
         axios.get(`${API_URL}/api/posts_per_hall`, config)
@@ -341,7 +339,7 @@ export default function HallPage({data2}){
                         py={2}
                         w="100%"
                         onChange={(e) => getPostDropDown(e.target.value)} value={hall}>
-                    {data2.map((halls) => 
+                    {hallList.map((halls) => 
                         <option key={halls.hall_id} value={halls.hall_id}>{halls.hall_name}</option>
                     )}
                 </Select>

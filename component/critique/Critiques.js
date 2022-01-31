@@ -22,6 +22,8 @@ import { useCookies } from 'react-cookie'
 import { createBreakpoints } from '@chakra-ui/theme-tools'
 import { extendTheme } from '@chakra-ui/react'
 import EditCritique from './options/edit-critique'
+import DeleteCritique from './options/delete-critique'
+import EditCritiqueHistory from './options/edit-critique-history'
 
 const breakpoints = createBreakpoints({
     sm: '320px',
@@ -163,7 +165,7 @@ export const Critiques = ({id}) => {
         let formData = new FormData;
         formData.append('critique_id', id);
         
-        axios.post(`${API_URL}/api/star_critique`, config)
+        axios.post(`${API_URL}/api/star_critique`, formData, config)
         .then((response) =>{
             console.log(response.data)
             document.getElementById(`star${id}`).innerHTML=response.data.likes;
@@ -211,11 +213,15 @@ export const Critiques = ({id}) => {
                                     </MenuButton>
                                     <MenuList p={3}>
                                     <MenuGroup>
-                                        <MenuItem><EditHistory /></MenuItem>
+                                        <MenuItem><EditCritiqueHistory id={critique.critique_id} /></MenuItem>
                                     </MenuGroup>
                                     <MenuDivider />
                                     <MenuGroup>
                                         <MenuItem><EditCritique data={critique} /></MenuItem>
+                                    </MenuGroup>
+                                    <MenuDivider />
+                                    <MenuGroup>
+                                        <MenuItem><DeleteCritique id={critique.critique_id} /></MenuItem>
                                     </MenuGroup>
                                     </MenuList>
                                 </Menu>
@@ -258,7 +264,7 @@ export const Critiques = ({id}) => {
                                     </MenuButton>
                                     <MenuList p={3}>
                                     <MenuGroup>
-                                        <MenuItem><EditHistory /></MenuItem>
+                                        <MenuItem><EditCritiqueHistory id={critique.critique_id} /></MenuItem>
                                     </MenuGroup>
                                     <MenuDivider />
                                     <MenuGroup>

@@ -21,6 +21,8 @@ import { useCookies } from 'react-cookie'
 import { createBreakpoints } from '@chakra-ui/theme-tools'
 import { extendTheme } from '@chakra-ui/react'
 import EditReply from './options/edit-reply'
+import DeleteReply from './options/delete-reply'
+import EditReplyHistory from './options/edit-reply-history'
 
 const breakpoints = createBreakpoints({
     sm: '320px',
@@ -85,7 +87,7 @@ export const CritiqueReply = ({id}) => {
         formData.append('post_id', id);
         formData.append('last_id', lastId);
 
-        axios.post(`${API_URL}/api/display_all_critiques`, formData, config)
+        axios.post(`${API_URL}/api/display_replies`, formData, config)
         .then((response) =>{
             console.log(response.data)
             setCritiqueItems(response.data)
@@ -97,6 +99,7 @@ export const CritiqueReply = ({id}) => {
 
     return (
         <div>
+            {critiqueReply ? <Button w="full" h="20px" onClick={loadMore}>Load More</Button> : null}
             {critiqueReply.map((reply)=>{
                 if(reply.display_name === cookie.display_name){
                 return(
@@ -118,11 +121,15 @@ export const CritiqueReply = ({id}) => {
                                     </MenuButton>
                                     <MenuList p={3}>
                                     <MenuGroup>
-                                        <MenuItem><EditHistory /></MenuItem>
+                                        <MenuItem><EditReplyHistory id={reply.reply_id} /></MenuItem>
                                     </MenuGroup>
                                     <MenuDivider />
                                     <MenuGroup>
                                         <MenuItem><EditReply data={reply} /></MenuItem>
+                                    </MenuGroup>
+                                    <MenuDivider />
+                                    <MenuGroup>
+                                        <MenuItem><DeleteReply id={reply.reply_id} /></MenuItem>
                                     </MenuGroup>
                                     </MenuList>
                                 </Menu>
@@ -157,7 +164,7 @@ export const CritiqueReply = ({id}) => {
                                     </MenuButton>
                                     <MenuList p={3}>
                                     <MenuGroup>
-                                        <MenuItem><EditHistory /></MenuItem>
+                                        <MenuItem><EditReplyHistory id={reply.reply_id} /></MenuItem>
                                     </MenuGroup>
                                     <MenuDivider />
                                     <MenuGroup>
