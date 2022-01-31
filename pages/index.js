@@ -133,6 +133,9 @@ export default function Welcome() {
 
 
           {/* <Divider position='static' /> */}
+          <Box position='static' bgColor={useColorModeValue('#EFEFEF', '#242424')} boxShadow='lg' w="100%" h="100%" display={{lg: 'flex', md: 'flex', sm: 'block'}}>
+          <Img src={useColorModeValue('halls-banner.png', 'halls-banner-dark.png')} h={{lg: '100%', md: '100%', sm: '100%', base: '100%'}} w={{lg: '100%', md: '100%', sm: '100%', base: '100%'}} alt="HallsBanner" />
+          </Box>
 
           <Box position='static' bgColor={useColorModeValue('#EFEFEF', '#242424')} boxShadow='lg' w="100%" h="100%" display={{lg: 'flex', md: 'flex', sm: 'block'}}>
             {/* <Flex flexDir='column' w='100%'>
@@ -164,8 +167,10 @@ export default function Welcome() {
               </Flex>
               </form>
             </Flex> */}
+
             
-            <Carousel autoFocus={true} infiniteLoop={true} autoPlay={true}  centerMode={true} interval={3000} width={{lg: '100%', base: '100%'}} showThumbs={false} emulateTouch={true} swipeable={true}>
+            
+            <Carousel autoFocus={true} infiniteLoop={true} autoPlay={true} centerMode={true} interval={3000} width={{lg: '100%', base: '100%'}} showThumbs={false} emulateTouch={true} swipeable={true}>
                 <div>
                 <Img src={useColorModeValue('technology-banner.png', 'technology-banner-dark.png')} h={{lg: '100%', md: '100%', sm: '100%', base: '100%'}} w={{lg: '100%', md: '100%', sm: '100%', base: '100%'}} alt="TechnologyBanner" />
                 <Text fontFamily={'Raleway'} className="legend" _hover={{cursor: 'pointer', textDecoration: 'underline'}}>Technology</Text>

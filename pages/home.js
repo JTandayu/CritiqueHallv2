@@ -118,6 +118,9 @@ function Home(){
           </Box>
 
           {/* <Divider position='static' /> */}
+          <Box position='static' bgColor={useColorModeValue('#EFEFEF', '#242424')} boxShadow='lg' w="100%" h="100%" display={{lg: 'flex', md: 'flex', sm: 'block'}}>
+          <Image src={useColorModeValue('halls-banner.png', 'halls-banner-dark.png')} h={{lg: '100%', md: '100%', sm: '100%', base: '100%'}} w={{lg: '100%', md: '100%', sm: '100%', base: '100%'}} alt="HallsBanner" />
+          </Box>
 
           <Box position='static' bgColor={useColorModeValue('#EFEFEF', '#242424')} boxShadow='lg' w="100%" h="65vh" display={{lg: 'flex', md: 'flex', sm: 'block'}} flexDir='column' className={styles.halls}>
             <Heading fontFamily={'Raleway'} size='3xl' align='center' w='100%' mt={5}>HALLS</Heading>
