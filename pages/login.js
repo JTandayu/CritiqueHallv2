@@ -132,12 +132,12 @@ export default function Login({user}) {
             </Box>
             <center><FormControl id="loginform" >
               <FormLabel>iACADEMY Email</FormLabel>
-                <Input borderColor={'black'} size='lg' width={'40vh'} id="email" value={email} className={styles.input_box} type="email" onChange={e => setEmail(e.target.value)} />
+                <Input borderColor={useColorModeValue('black', 'white')} size='lg' width={'40vh'} id="email" value={email} className={styles.input_box} type="email" onChange={e => setEmail(e.target.value)} />
                 {/* <input placeholder="Username" id="email" value={email} className={styles.input_box} type="email" /> */}
                 <br/>
                 <br/>
               <FormLabel>Password</FormLabel>
-                <Input borderColor={'black'} size='lg' width={'40vh'} id="password" value={password} className={styles.input_box} type="password" onChange={e => setPassword(e.target.value)} />
+                <Input borderColor={useColorModeValue('black', 'white')}  size='lg' width={'40vh'} id="password" value={password} className={styles.input_box} type="password" onChange={e => setPassword(e.target.value)} />
                 {/* <input placeholder="Password" id="password" value={password} className={styles.input_box} type="password"/> */}
                 <br/>
                 <br/>

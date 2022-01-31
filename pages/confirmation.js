@@ -105,7 +105,7 @@ export default function ConfirmationPage(){
             <Heading fontFamily={'Raleway'} mb={10} as="h2" size="lg" color={useColorModeValue('#1B1464','#B2A3FF')}>Confirm Verification</Heading>
             {/* <p className={styles.description}>Kindly enter the verification code to verify your account</p> */}
             <center><FormControl id="forgotpassword" isRequired>
-                <Input fontWeight={'bold'} size='lg' placeholder="6-Digit Code" className={styles.input_box} type="text" value={code} onChange={e => setCode(e.target.value)}/>
+                <Input borderColor={useColorModeValue('black', 'white')} fontWeight={'bold'} size='lg' placeholder="6-Digit Code" className={styles.input_box} type="text" value={code} onChange={e => setCode(e.target.value)}/>
                 {/* <FormHelperText className={styles.helperText}>This field is required.</FormHelperText> */}
                 <br/>
                 <Button
