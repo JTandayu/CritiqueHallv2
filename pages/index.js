@@ -5,9 +5,12 @@ import Link from 'next/link'
 import { Stack, HStack, VStack, FormLabel, Input, Textarea } from "@chakra-ui/react"
 import { Button, ButtonGroup } from "@chakra-ui/react"
 import { ArrowForwardIcon, CheckIcon, InfoOutlineIcon } from '@chakra-ui/icons'
-import { Box, Divider, Flex, Heading, Spacer, Img, Center } from "@chakra-ui/react"
+import { Box, Divider, Flex, Heading, Spacer, Img, Center, Text } from "@chakra-ui/react"
 import { useToast } from '@chakra-ui/react'
-import React from 'react';
+import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
+import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
+import { Carousel } from 'react-responsive-carousel';
 import axios from 'axios';
 import {useState} from 'react';
 // import ManTexting from "@public/man-texting.png";
@@ -83,7 +86,7 @@ export default function Welcome() {
 
 
 
-      <Box position='static' bgColor={useColorModeValue('#E5E5E5', '#2E2E2E')} w="100%" h={{lg: '75vh', md: '100%', sm: '100%'}} display={{lg: 'flex', md: 'flex', sm: 'block'}} z-index='-1' boxShadow='lg' borderBottom="1px solid black">
+      <Box position='static' bgColor={useColorModeValue('#E5E5E5', '#2E2E2E')} w="100%" h={{lg: '75vh', md: '100%', sm: '100%'}} display={{lg: 'flex', md: 'flex', sm: 'block'}} z-index='-1' boxShadow='lg'>
             <Flex mt={44} flexDir='column' align='center' w={{lg: '50vw', md: '100%', sm: '100%'}}>
               <Heading fontFamily={'Raleway'} size='3xl'>WELCOME TO</Heading>
               <Img className={styles.drop_shadow} src={useColorModeValue('critiquehall.png', 'critiquehall-dark.png')} w={{lg: '500px', md: '500px', sm: '500px'}} h='37vh' mt={5}/>
@@ -92,7 +95,7 @@ export default function Welcome() {
             <Img className={styles.drop_shadow} src='man-texting.png' w={{lg: '600px', md: '600px', sm: '600px'}} h='60vh' mt='10vh' mb='5vh' mr='10vw' align='center' />
           </Box>
 
-          <Box position='static' bgColor={useColorModeValue('#EFEFEF', '#242424')} w="100%" h="100%" display={{lg: 'flex', md: 'flex', sm: 'block'}} boxShadow='lg' borderBottom="1px solid black">
+          <Box position='static' bgColor={useColorModeValue('#EFEFEF', '#242424')} w="100%" h="100%" display={{lg: 'flex', md: 'flex', sm: 'block'}} boxShadow='lg'>
             <Flex flexDir={{lg: 'row', md: 'row', sm: 'column'}} >
               <Flex w={{lg: '45vw', md: '100%', sm: '100%'}}>
               <Img className={styles.drop_shadow} src='discussions.png' w={{lg: '700px', md: '700px', sm: '700px'}} h='60vh' mt='10vh' ml='7vw' align='center'/>
@@ -112,7 +115,7 @@ export default function Welcome() {
 
           {/* <Divider position='static' /> */}
 
-          <Box position='static' bgColor={useColorModeValue('#E5E5E5', '#2E2E2E')}  w="100%" h="100%" display={{lg: 'flex', md: 'flex', sm: 'block'}} boxShadow='lg' borderBottom="1px solid black">
+          <Box position='static' bgColor={useColorModeValue('#E5E5E5', '#2E2E2E')}  w="100%" h="100%" display={{lg: 'flex', md: 'flex', sm: 'block'}} boxShadow='lg'>
 
             <Flex flexDir={{lg: 'row', md: 'row', sm: 'column'}} >
               <Flex mt={16} flexDir='column' align='center' w={{lg: '45vw', md: '100%', sm: '100%'}}>
@@ -132,7 +135,7 @@ export default function Welcome() {
           {/* <Divider position='static' /> */}
 
           <Box position='static' bgColor={useColorModeValue('#EFEFEF', '#242424')} boxShadow='lg' w="100%" h="100%" display={{lg: 'flex', md: 'flex', sm: 'block'}}>
-            <Flex flexDir='column' w='100%'>
+            {/* <Flex flexDir='column' w='100%'>
             <Flex flexDir='column' w='100%'>
               <Heading fontFamily={'Raleway'} size='4xl' align='center' w='100%' mt={5}>WE&apos;D LOVE TO HEAR FROM YOU!</Heading>
               <Heading fontFamily={'Raleway'} size='lg' align='center' w='100%' mt={5}>Send your feedbacks and suggestions and we&apos;ll answer it for you.</Heading>
@@ -160,9 +163,26 @@ export default function Welcome() {
                 </Flex>
               </Flex>
               </form>
-            </Flex>
+            </Flex> */}
             
-              
+            <Carousel autoFocus={true} infiniteLoop={true} autoPlay={true}  centerMode={true} interval={3000} width={{lg: '100%', base: '100%'}} showThumbs={false} emulateTouch={true} swipeable={true}>
+                <div>
+                <Img src={useColorModeValue('technology-banner.png', 'technology-banner-dark.png')} h={{lg: '100%', md: '100%', sm: '100%', base: '100%'}} w={{lg: '100%', md: '100%', sm: '100%', base: '100%'}} alt="TechnologyBanner" />
+                <Text fontFamily={'Raleway'} className="legend" _hover={{cursor: 'pointer', textDecoration: 'underline'}}>Technology</Text>
+                </div>
+                <div>
+                <Img src={useColorModeValue('arts-banner.png', 'arts-banner-dark.png')} h={{lg: '100%', md: '100%', sm: '100%', base: '100%'}} w={{lg: '100%', md: '100%', sm: '100%', base: '100%'}} alt="ArtsBanner" />
+                <Text fontFamily={'Raleway'} className="legend" _hover={{cursor: 'pointer', textDecoration: 'underline'}}>Arts</Text>
+                </div>
+                <div>
+                <Img src={useColorModeValue('business-banner.png', 'business-banner-dark.png')} h={{lg: '100%', md: '100%', sm: '100%', base: '100%'}} w={{lg: '100%', md: '100%', sm: '100%', base: '100%'}} alt="BusinessBanner" />
+                <Text fontFamily={'Raleway'} className="legend" _hover={{cursor: 'pointer', textDecoration: 'underline'}}>Business</Text>
+                </div>
+                <div>
+                <Img src={useColorModeValue('lounge-banner.png', 'lounge-banner-dark.png')} h={{lg: '100%', md: '100%', sm: '100%', base: '100%'}} w={{lg: '100%', md: '100%', sm: '100%', base: '100%'}} alt="LoungeBanner" />
+                <Text fontFamily={'Raleway'} className="legend" _hover={{cursor: 'pointer', textDecoration: 'underline'}}>Lounge</Text>
+                </div>
+            </Carousel>
           </Box> 
 
 

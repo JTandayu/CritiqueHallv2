@@ -1,6 +1,6 @@
 import Head from 'next/head'
 // import Image from 'next/image'
-import { Center, Image } from '@chakra-ui/react'
+import { Center, Image, Text } from '@chakra-ui/react'
 import { css, cx } from '@emotion/react'
 import { motion } from "framer-motion"
 import Layout from './layout/layout'
@@ -37,6 +37,10 @@ import { getDownloadURL, ref, uploadBytesResumable } from 'firebase/storage'
 import {useState} from 'react'
 import ShowHallDescription from '@component/show-hall-description'
 import { useColorModeValue } from "@chakra-ui/react";
+import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
+import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
+import { Carousel } from 'react-responsive-carousel';
 
 
 const breakpoints = createBreakpoints({
@@ -117,7 +121,7 @@ function Home(){
 
           <Box position='static' bgColor={useColorModeValue('#EFEFEF', '#242424')} boxShadow='lg' w="100%" h="65vh" display={{lg: 'flex', md: 'flex', sm: 'block'}} flexDir='column' className={styles.halls}>
             <Heading fontFamily={'Raleway'} size='3xl' align='center' w='100%' mt={5}>HALLS</Heading>
-            <Flex mt='10vh' w={{lg: '90%', md: '100vw', sm: '100vw'}} mx='auto' overflowX='auto'>
+            {/* <Flex mt='10vh' w={{lg: '90%', md: '100vw', sm: '100vw'}} mx='auto' overflowX='auto'>
               <Box w={{lg: '20vw', md: '100%', sm: '100%'}} h='40vh' bg='#92278F' borderRadius={5}>
                 <Heading fontFamily={'Raleway'} align='center' mt={5} color='white' >Technology</Heading>
                 <Center>
@@ -157,7 +161,26 @@ function Home(){
                   <ShowHallDescription hall='Lounge' color='#44fcd0' fontColor='black'/>
                 </Center>
               </Box>
-            </Flex>
+            </Flex> */}
+
+              <Carousel autoFocus={true} infiniteLoop={true} autoPlay={true}  centerMode={true} interval={3000} width={{lg: '100%', base: '100%'}} showThumbs={false} emulateTouch={true} swipeable={true}>
+                <div>
+                <Image src={useColorModeValue('technology-banner.png', 'technology-banner-dark.png')} h={{lg: '100%', md: '100%', sm: '100%', base: '100%'}} w={{lg: '100%', md: '100%', sm: '100%', base: '100%'}} alt="TechnologyBanner" />
+                <Text fontFamily={'Raleway'} className="legend" _hover={{cursor: 'pointer', textDecoration: 'underline'}}>Technology</Text>
+                </div>
+                <div>
+                <Image src={useColorModeValue('arts-banner.png', 'arts-banner-dark.png')} h={{lg: '100%', md: '100%', sm: '100%', base: '100%'}} w={{lg: '100%', md: '100%', sm: '100%', base: '100%'}} alt="ArtsBanner" />
+                <Text fontFamily={'Raleway'} className="legend" _hover={{cursor: 'pointer', textDecoration: 'underline'}}>Arts</Text>
+                </div>
+                <div>
+                <Image src={useColorModeValue('business-banner.png', 'business-banner-dark.png')} h={{lg: '100%', md: '100%', sm: '100%', base: '100%'}} w={{lg: '100%', md: '100%', sm: '100%', base: '100%'}} alt="BusinessBanner" />
+                <Text fontFamily={'Raleway'} className="legend" _hover={{cursor: 'pointer', textDecoration: 'underline'}}>Business</Text>
+                </div>
+                <div>
+                <Image src={useColorModeValue('lounge-banner.png', 'lounge-banner-dark.png')} h={{lg: '100%', md: '100%', sm: '100%', base: '100%'}} w={{lg: '100%', md: '100%', sm: '100%', base: '100%'}} alt="LoungeBanner" />
+                <Text fontFamily={'Raleway'} className="legend" _hover={{cursor: 'pointer', textDecoration: 'underline'}}>Lounge</Text>
+                </div>
+            </Carousel>
           </Box>  
 
         </main>

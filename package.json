@@ -29,6 +29,7 @@
     "react-bootstrap": "^2.1.1",
     "react-cookie": "^4.1.1",
     "react-dom": "17.0.2",
+    "react-responsive-carousel": "^3.2.22",
     "sass": "^1.49.0",
     "simple-react-lightbox": "^3.6.9-0",
     "swr": "^1.2.0"
