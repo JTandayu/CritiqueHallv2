@@ -14,6 +14,16 @@ module.exports = {
     includePaths: [path.join(__dirname, 'styles')],
   },
 
+  async redirects() {
+    return [
+      {
+        source: '/',
+        destination: '/login',
+        permanent: true,
+      },
+    ]
+  },
+
   async headers() {
     return [
       {
