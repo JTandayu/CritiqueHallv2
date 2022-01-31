@@ -66,13 +66,13 @@ function Home(){
             <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@700&display=swap" rel="stylesheet" />
           </Head>
 
-          <Box position='static' bgColor={useColorModeValue('#E5E5E5', '#2E2E2E')} w="100%" h={{lg: '75vh', md: '100%', sm: '100%'}} display={{lg: 'flex', md: 'flex', sm: 'block'}} z-index='-1' boxShadow='lg' borderBottom="1px solid black">
+          <Box position='static' bgColor={useColorModeValue('#E5E5E5', '#2E2E2E')} w="100%" h={{lg: '75vh', md: '100%', sm: '100%'}} display={{lg: 'flex', md: 'flex', sm: 'block'}} z-index='-1' boxShadow='lg'>
           <Flex mt={44} flexDir='column' align='center' w={{lg: '50vw', md: '100%', sm: '100%'}}>
               <Heading fontFamily={'Raleway'} size='3xl' >WELCOME TO</Heading>
-              <Image className={styles.drop_shadow} src={useColorModeValue('critiquehall.png', 'critiquehall-dark.png')} w={{lg: '500px', md: '500px', sm: '500px'}} h='37vh' mt={5}/>
+              <Image className={styles.drop_shadow} src={useColorModeValue('critiquehall.png', 'critiquehall-dark.png')}  alt="Critique Hall Logo" w={{lg: '500px', md: '500px', sm: '500px'}} h='37vh' mt={5}/>
               {/* <Link href="/login"><Button type='submit' mt={5} colorScheme='red' position='static'>Get Started</Button></Link> */}
             </Flex>
-            <Image src='man-texting.png' w={{lg: '600px', md: '600px', sm: '600px'}} h='60vh' mt='10vh' mb='5vh' mr='10vw' align='center' />
+            <Image src='man-texting.png' w={{lg: '550px', md: '600px', sm: '600px'}} h='60vh' mt='10vh' mb='5vh' mr='10vw' align='center' alt="Man Texting"/>
           </Box>
 
             {/* <form onSubmit={formHandler}>
@@ -81,49 +81,49 @@ function Home(){
             </form>
             <h3>Uploaded {progress} %</h3> */}
 
-          <Box position='static' bgColor={useColorModeValue('#EFEFEF', '#242424')} w="100%" h="100%" display={{lg: 'flex', md: 'flex', sm: 'block'}} boxShadow='lg' borderBottom="1px solid black">
+          {/* <Box position='static' bgColor={useColorModeValue('#EFEFEF', '#242424')} w="100%" h="100%" display={{lg: 'flex', md: 'flex', sm: 'block'}} boxShadow='lg'>
             <Flex flexDir={{lg: 'row', md: 'row', sm: 'column'}} >
               <Flex w={{lg: '45vw', md: '100%', sm: '100%'}}>
-              <Image src='discussions.png' w={{lg: '700px', md: '700px', sm: '700px'}} h='60vh' mt='10vh' ml='7vw' align='center'/>
+              <Image src='discussions.png' w={{lg: '700px', md: '700px', sm: '700px'}} h='60vh' mt='10vh' ml='7vw' align='center' alt="Group Discussions"/>
               </Flex>
               <Spacer />
               <Flex mt={16} flexDir='column' align='center' w={{lg: '45vw', md: '100%', sm: '100%'}}>
                 <Heading fontFamily={'Raleway'} size='3xl'>WHAT IS</Heading>
                 
                 <Flex flexDir={{lg: 'row', md: 'row', sm: 'column'}}>
-                <Image className={styles.drop_shadow} src={useColorModeValue('critiquehall.png', 'critiquehall-dark.png')} w={{lg: '500px', md: '500px', sm: '500px'}} h='37vh' mt={5}/>
+                <Image className={styles.drop_shadow} src={useColorModeValue('critiquehall.png', 'critiquehall-dark.png')}  alt="Critique Hall Logo" w={{lg: '500px', md: '500px', sm: '500px'}} h='37vh' mt={5}/>
                   <Heading fontFamily={'Raleway'}  size='3xl' my='auto' mx={{lg: '0', md: '0', sm: 'auto'}}>?</Heading>
                 </Flex>
                 <Heading fontFamily={'Raleway'} size='xl' w={{lg: '30vw', md: '100%', sm: '100%'}} align='center' mt={5} mb={10}>An Open Forum Web Application for Students and Teachers</Heading>
               </Flex>
             </Flex>
-          </Box>
+          </Box> */}
 
           {/* <Divider position='static' /> */}
 
-          <Box position='static' bgColor={useColorModeValue('#E5E5E5', '#2E2E2E')}  w="100%" h="100%" display={{lg: 'flex', md: 'flex', sm: 'block'}} boxShadow='lg' borderBottom="1px solid black">
+          {/* <Box position='static' bgColor={useColorModeValue('#E5E5E5', '#2E2E2E')}  w="100%" h="100%" display={{lg: 'flex', md: 'flex', sm: 'block'}} boxShadow='lg'>
 
             <Flex flexDir={{lg: 'row', md: 'row', sm: 'column'}} >
               <Flex mt={16} flexDir='column' align='center' w={{lg: '45vw', md: '100%', sm: '100%'}}>
                 <Heading fontFamily={'Raleway'} size='3xl' >GOAL OF</Heading>
-                <Image className={styles.drop_shadow} src={useColorModeValue('critiquehall.png', 'critiquehall-dark.png')} w={{lg: '500px', md: '500px', sm: '500px'}} h='37vh' mt={5}/>
+                <Image className={styles.drop_shadow} src={useColorModeValue('critiquehall.png', 'critiquehall-dark.png')} alt="Critique Hall Logo" w={{lg: '500px', md: '500px', sm: '500px'}} h='37vh' mt={5}/>
               </Flex>
               <Spacer />
               <Flex flexDir="column" mt={{lg: 16, md: 5, sm: 5}} w={{lg: '45vw', md: '100%', sm: '100%'}}>
                 <Heading fontFamily={'Raleway'} size='lg' w={{lg: '45vw', md: '100%', sm: '100%'}} align='center'>To meet the student and teacher’s needs with regards to academic lives and personal development.</Heading>
-                <Image src='SOB.png' w={{lg: '900px', md: '900px', sm: '900px'}} h='60vh' mt='-2vh' mr='20vw' align='center'/>
+                <Image src='SOB.png' w={{lg: '900px', md: '900px', sm: '900px'}} h='60vh' mt='-2vh' mr='20vw' align='center' alt="SOB Image"/>
               </Flex>
             </Flex>
               
-          </Box>
+          </Box> */}
 
           {/* <Divider position='static' /> */}
-          <Box position='static' bgColor={useColorModeValue('#EFEFEF', '#242424')} boxShadow='lg' w="100%" h="100%" display={{lg: 'flex', md: 'flex', sm: 'block'}}>
-          <Image src={useColorModeValue('halls-banner.png', 'halls-banner-dark.png')} h={{lg: '100%', md: '100%', sm: '100%', base: '100%'}} w={{lg: '100%', md: '100%', sm: '100%', base: '100%'}} alt="HallsBanner" />
-          </Box>
+          {/* <Box position='static' bgColor={useColorModeValue('#EFEFEF', '#242424')} boxShadow='lg' w="100%" h="100%" display={{lg: 'flex', md: 'flex', sm: 'block'}}>
+          <Image src={useColorModeValue('halls-banner.png', 'halls-banner-dark.png')}  w={{lg: '100%', md: '100%', sm: '100%', base: '100%'}} alt="HallsBanner" />
+          </Box> */}
 
           <Box position='static' bgColor={useColorModeValue('#EFEFEF', '#242424')} boxShadow='lg' w="100%" h="65vh" display={{lg: 'flex', md: 'flex', sm: 'block'}} flexDir='column' className={styles.halls}>
-            <Heading fontFamily={'Raleway'} size='3xl' align='center' w='100%' mt={5}>HALLS</Heading>
+            {/* <Heading fontFamily={'Raleway'} size='3xl' align='center' w='100%' mt={5}>HALLS</Heading> */}
             {/* <Flex mt='10vh' w={{lg: '90%', md: '100vw', sm: '100vw'}} mx='auto' overflowX='auto'>
               <Box w={{lg: '20vw', md: '100%', sm: '100%'}} h='40vh' bg='#92278F' borderRadius={5}>
                 <Heading fontFamily={'Raleway'} align='center' mt={5} color='white' >Technology</Heading>
@@ -166,22 +166,22 @@ function Home(){
               </Box>
             </Flex> */}
 
-              <Carousel autoFocus={true} infiniteLoop={true} autoPlay={true}  centerMode={true} interval={3000} width={{lg: '100%', base: '100%'}} showThumbs={false} emulateTouch={true} swipeable={true}>
+              <Carousel autoFocus={true} infiniteLoop={true} centerMode={true} interval={3000} width={{lg: '100%', base: '100%'}} showThumbs={false} emulateTouch={true} swipeable={true}>
                 <div>
                 <Image src={useColorModeValue('technology-banner.png', 'technology-banner-dark.png')} h={{lg: '100%', md: '100%', sm: '100%', base: '100%'}} w={{lg: '100%', md: '100%', sm: '100%', base: '100%'}} alt="TechnologyBanner" />
-                <Text fontFamily={'Raleway'} className="legend" _hover={{cursor: 'pointer', textDecoration: 'underline'}}>Technology</Text>
+                {/* <Text fontFamily={'Raleway'} className="legend" _hover={{cursor: 'pointer', textDecoration: 'underline'}}><ShowHallDescription hall='Technology' color="#b303ff" fontColor='black' /></Text> */}
                 </div>
                 <div>
                 <Image src={useColorModeValue('arts-banner.png', 'arts-banner-dark.png')} h={{lg: '100%', md: '100%', sm: '100%', base: '100%'}} w={{lg: '100%', md: '100%', sm: '100%', base: '100%'}} alt="ArtsBanner" />
-                <Text fontFamily={'Raleway'} className="legend" _hover={{cursor: 'pointer', textDecoration: 'underline'}}>Arts</Text>
+                {/* <Text fontFamily={'Raleway'} className="legend" _hover={{cursor: 'pointer', textDecoration: 'underline'}}><ShowHallDescription hall='Arts' color='#6ec5ff' fontColor='black' /></Text> */}
                 </div>
                 <div>
                 <Image src={useColorModeValue('business-banner.png', 'business-banner-dark.png')} h={{lg: '100%', md: '100%', sm: '100%', base: '100%'}} w={{lg: '100%', md: '100%', sm: '100%', base: '100%'}} alt="BusinessBanner" />
-                <Text fontFamily={'Raleway'} className="legend" _hover={{cursor: 'pointer', textDecoration: 'underline'}}>Business</Text>
+                {/* <Text fontFamily={'Raleway'} className="legend" _hover={{cursor: 'pointer', textDecoration: 'underline'}}><ShowHallDescription hall='Business' color='#fa3434' fontColor='black'/></Text> */}
                 </div>
                 <div>
                 <Image src={useColorModeValue('lounge-banner.png', 'lounge-banner-dark.png')} h={{lg: '100%', md: '100%', sm: '100%', base: '100%'}} w={{lg: '100%', md: '100%', sm: '100%', base: '100%'}} alt="LoungeBanner" />
-                <Text fontFamily={'Raleway'} className="legend" _hover={{cursor: 'pointer', textDecoration: 'underline'}}>Lounge</Text>
+                {/* <Text fontFamily={'Raleway'} className="legend" _hover={{cursor: 'pointer', textDecoration: 'underline'}}><ShowHallDescription hall='Lounge' color='#44fcd0' fontColor='black'/></Text> */}
                 </div>
             </Carousel>
           </Box>  
