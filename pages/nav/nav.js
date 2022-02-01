@@ -58,6 +58,9 @@ export default function Nav({id}){
     const { API_URL } = process.env
     const { API_KEY } = process.env
 
+    const changeColor = useColorModeValue('#C1272D', '#FF5C61')
+    const changeColor2 = useColorModeValue('#1B1464', '#B2A3FF') 
+
     const { colorMode, toggleColorMode } = useColorMode()
     colorMode === 'light' ? 'dark' : 'light'
 
@@ -253,7 +256,7 @@ export default function Nav({id}){
                         my={2}
                         w='100%'
                         position='static'
-                        color={Router.pathname === "/home" ? useColorModeValue('#C1272D', '#FF5C61') : useColorModeValue('#1B1464', '#B2A3FF')}
+                        color={Router.pathname === "/home" ? changeColor : changeColor2}
                         textDecoration={Router.pathname === "/home" ? 'underline' : 'none'}
                         _hover={{cursor:'pointer', textDecoration:'underline', color: useColorModeValue('#C1272D', '#FF5C61')}}
                         fontFamily={'Raleway'}
@@ -272,7 +275,7 @@ export default function Nav({id}){
                         mr={2}
                         w='100%'
                         position='static'
-                        color={Router.pathname === "/critique" ?  useColorModeValue('#C1272D', '#FF5C61') : useColorModeValue('#1B1464', '#B2A3FF')} 
+                        color={Router.pathname === "/critique" ?  changeColor : changeColor2} 
                         textDecoration={Router.pathname === "/critique" ? 'underline' : 'none'}
                         _hover={{cursor:'pointer', textDecoration:'underline', color: useColorModeValue('#C1272D', '#FF5C61')}}
                         fontFamily={'Raleway'}
@@ -290,7 +293,7 @@ export default function Nav({id}){
                         my={2}
                         w='100%'
                         position='static'
-                        color={Router.pathname === "/feedback" ?  useColorModeValue('#C1272D', '#FF5C61') : useColorModeValue('#1B1464', '#B2A3FF')}
+                        color={Router.pathname === "/feedback" ?  changeColor : changeColor2}
                         textDecoration={Router.pathname === "/feedback" ? 'underline' : 'none'}
                         _hover={{cursor:'pointer', textDecoration:'underline', color: useColorModeValue('#C1272D', '#FF5C61')}}
                         fontFamily={'Raleway'}
@@ -420,11 +423,11 @@ export default function Nav({id}){
                         aria-label='Home'
                         my={5}
                         w='100%'
-                        color={Router.pathname === "/home" ? useColorModeValue('#C1272D', '#FF5C61') : useColorModeValue('#1B1464', '#B2A3FF')}
+                        color={Router.pathname === "/home" ? changeColor : changeColor2}
                         textDecoration={Router.pathname === "/home" ? 'underline' : 'none'}
                         _hover={{cursor:'pointer', textDecoration:'underline', color: useColorModeValue('#C1272D', '#FF5C61')}}
                     >
-                        HOME
+                        Home
                     </Button>
                 </Link>
                 <Link href="/critique" as='/critique' passHref>
@@ -434,11 +437,11 @@ export default function Nav({id}){
                         aria-label='Home'
                         my={5}
                         w='100%'
-                        color={Router.pathname === "/critique" ? useColorModeValue('#C1272D', '#FF5C61') : useColorModeValue('#1B1464', '#B2A3FF')}
+                        color={Router.pathname === "/critique" ? changeColor : changeColor2}
                         textDecoration={Router.pathname === "/critique" ? 'underline' : 'none'}
                         _hover={{cursor:'pointer', textDecoration:'underline', color: useColorModeValue('#C1272D', '#FF5C61')}}
                     >
-                        CRITIQUE
+                        Critique
                     </Button>
                 </Link>
                 <Link href="/feedback" passHref>
@@ -448,11 +451,11 @@ export default function Nav({id}){
                         aria-label='Home'
                         my={5}
                         w='100%'
-                        color={Router.pathname === "/feedback" ? useColorModeValue('#C1272D', '#FF5C61') : useColorModeValue('#1B1464', '#B2A3FF')}
+                        color={Router.pathname === "/feedback" ? changeColor : changeColor2}
                         textDecoration={Router.pathname === "/feedback" ? 'underline' : 'none'}
                         _hover={{cursor:'pointer', textDecoration:'underline', color: useColorModeValue('#C1272D', '#FF5C61')}}
                     >
-                        FEEDBACK
+                        Feedback
                     </Button>
                 </Link>
                 <Link href="/profile/[id]" as={`/profile/${user_id}`} passHref>
@@ -462,7 +465,7 @@ export default function Nav({id}){
                         aria-label='Home'
                         my={5}
                         w='100%'
-                        color={Router.pathname === "/profile" ? useColorModeValue('#C1272D', '#FF5C61') : useColorModeValue('#1B1464', '#B2A3FF')}
+                        color={Router.pathname === "/profile" ? changeColor: changeColor2}
                         textDecoration={Router.pathname === "/profile" ? 'underline' : 'none'}
                         _hover={{cursor:'pointer', textDecoration:'underline', color: useColorModeValue('#C1272D', '#FF5C61')}}
                     >

@@ -96,6 +96,8 @@ export default function HallPage({}){
     const [hallNum, setHallNum] = useState([])
     const [hallList, setHallList] = useState([])
 
+    const changeColor = useColorModeValue('#BAB9B9', '#1F1F1F')
+
 
     const [cookie, setCookie] = useCookies('token', 'encrypted_id', 'id')
 
@@ -389,7 +391,7 @@ export default function HallPage({}){
                 <Box w={{lg: "70%" , sm: '100%'}} h="full" mx="auto" p="3" spacing="10">
                     {/* Critique Item */}
                     {currentPosts.map((post, i) => 
-                            <Box bgColor={useColorModeValue('#BAB9B9', '#1F1F1F')} w="100%" display={{lg: 'flex', sm: 'block'}} key={post.post_id} mt='2ch' borderColor='white' border='1px solid gray.500' boxShadow='lg' rounded='lg'>
+                            <Box bgColor={changeColor} w="100%" display={{lg: 'flex', sm: 'block'}} key={post.post_id} mt='2ch' borderColor='white' border='1px solid gray.500' boxShadow='lg' rounded='lg'>
                                 <Link href='/post/[id]'  as={`/post/${post.post_id}`} passHref>
                                 <a>
                                 <Box display={{lg: 'flex', sm: 'block'}} w={{lg: "50vw", sm: '100%'}}>
