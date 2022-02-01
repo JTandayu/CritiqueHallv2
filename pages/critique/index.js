@@ -96,6 +96,7 @@ export default function HallPage({}){
     const [hallNum, setHallNum] = useState([])
     const [hallList, setHallList] = useState([])
 
+
     const [cookie, setCookie] = useCookies('token', 'encrypted_id', 'id')
 
     const config = {

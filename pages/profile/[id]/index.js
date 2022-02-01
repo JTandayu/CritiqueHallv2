@@ -186,7 +186,7 @@ export default function ProfilePage({data}){
                 <link rel="icon" href="/logo256.png" onLoad=""/>
             </Head>
 
-            <Box mx={{lg: 'auto', md: '0', sm: '0'}} my='auto' bg='blue.200' w={{lg: '90%', md: '100%', sm: '100%'}} h={{lg: '80vh', md: '100vh', sm: '150vh'}} rounded='lg' mt={32} mb={{lg: 0, md: 0, sm: 10}} position='static'>
+            <Box bgImage={'Background1.png'} mx={{lg: 'auto', md: '0', sm: '0'}} my='auto' bg='#E0EEFF' w={{lg: '90%', md: '100%', sm: '100%'}} h={{lg: '80vh', md: '100vh', sm: '150vh'}} rounded='lg' mt={32} mb={{lg: 0, md: 0, sm: 10}} position='static' boxShadow={'dark-lg'}>
              
                 <Box display='flex' flexDir={{lg: 'row', md: 'column', sm: 'column'}} w='100%'>
                     <Box w={{lg: '100vw', md: '40vw', sm: '90%'}} h={{lg: '35vh', md: '35vh', sm: '45vh'}} bg='white' bgImage={`url('${userData.cover_photo}')`} p={3} display={{lg: 'flex', sm: 'block'}} mt={5} ml={{lg: 8, md: 0, sm: 5}} rounded='lg'>
@@ -198,7 +198,7 @@ export default function ProfilePage({data}){
                         </Box>
 
                         <Box w={{lg:'50vh'}} mx='auto' ml={{lg: '10vw', md: 0, sm: 0}} alignItems={{sm: "center"}}>
-                            <Heading size='2xl' color='white' ml={{lg: '12vw', md: 0, sm: 0}} mt={{lg: 48}}>{userData.display_name}</Heading>
+                            <Heading fontFamily={'Raleway'} fontWeight={'black'} size='2xl' color='white' ml={{lg: '12vw', md: 0, sm: 0}} mt={{lg: 48}}>{userData.display_name}</Heading>
                             <Flex ml={{lg: '12vw', md: 0, sm: 0}} mt={1} mx='auto'>
                                 <Heading size='lg' mr={3} color='white'>{userData.first_name}</Heading>
                                 <Heading size='lg' color='white'>{userData.last_name}</Heading>
@@ -206,7 +206,7 @@ export default function ProfilePage({data}){
                         </Box>
                         
                     </Box>
-                    <Box w={{lg: '70vw', md: '100%', sm: '90%'}} h={{lg: '35vh', md: '30%', sm: '45vh'}} bg='blue.500' p={3} mt={5} ml={{lg: 8, md: 0, sm: 5}} mr={{lg: 5, md: 0, sm: 0}} rounded='lg'>
+                    <Box w={{lg: '70vw', md: '100%', sm: '90%'}} h={{lg: '35vh', md: '30%', sm: '45vh'}} bg='#81A4CF' p={3} mt={5} ml={{lg: 8, md: 0, sm: 5}} mr={{lg: 5, md: 0, sm: 0}} rounded='lg'>
                         <Flex>
                         <Heading size='2xl' as='h3' color='white' mt={10}>About Me: </Heading>
                         <Spacer />
@@ -214,26 +214,27 @@ export default function ProfilePage({data}){
                         </Flex>
                         <Text w={{lg: '65vh', md: '100%', sm: '100%'}} fontSize='md' color="white">{userData.about_me}</Text>
                         <Heading size='md' color='white' mt={5} display="flex">Reputation Stars: {userData.reputation_points}<Image src='/reputation-stars.png' alt="Reputation Stars" w="25px" h="25px" ml={2}/></Heading>
-                        <Heading size='md' color='white' mt={5}>Strand/Specialization: {userData.specialization}</Heading>
+                        <Heading size='md' color='white' mt={5}>Specialization: {userData.specialization}</Heading>
                     </Box>
                 </Box>
                 <Box display='flex' w={{lg: '100%', md: '100%', sm: '100%'}} mt={5} ml={3} mr={5}>
                     {/* <Button ml={5} h='2em' position='static'>All</Button> */}
-                    <Button ml={5} h='2em' position='static' onClick={OpenPost}>My Posts</Button>
-                    <Button ml={5} h='2em' position='static' onClick={OpenCritique}>My Critiques</Button>
+                    <Button fontFamily={'Raleway'} fontWeight={'bold'} ml={5} h='2em' position='static' onClick={OpenPost} boxShadow={'lg'}>My Posts</Button>
+                    <Button fontFamily={'Raleway'} fontWeight={'bold'} ml={5} h='2em' position='static' onClick={OpenCritique} boxShadow={'lg'}>My Critiques</Button>
                     <Spacer />
-                    <Flex w={{lg: '15vw', sm: '50%'}} mt={1} mr={5} id='postFilter'>
-                        <Text mr={{lg: 5, sm: 1}} w={20} mt={2}>Sort by: </Text>
-                        <Select onChange={(e)=>sortPost(e.target.value)}  bgColor='white'>
+                    <Flex w={{lg: '15vw', sm: '50%'}} mt={1} mr={8} id='postFilter'>
+                        {/* <Text fontFamily={'Raleway'} mr={{lg: 5, sm: 1}} w={20} mt={2}>Sort by: </Text> */}
+                        <Select fontFamily={'Raleway'} fontWeight={'bold'} onChange={(e)=>sortPost(e.target.value)}  bgColor='white' boxShadow={'lg'}>
+                            <option>Filter Item</option>
                             <option value='desc'>Newest</option>
                             <option value='asc'>Oldest</option>
                             <option value='most_stars'>Most Post Stars</option>
                             <option value='most_interacted'>Most Interacted</option>
                         </Select>
                     </Flex>
-                    <Flex w={{lg: '15vw', sm: '50%'}} mt={1} mr={5} id='critiqueFilter'>
-                        <Text mr={{lg: 5, sm: 1}} w={20} mt={2}>Sort by: </Text>
-                        <Select onChange={(e)=>sortCritique(e.target.value)}  bgColor='white'>
+                    <Flex w={{lg: '15vw', sm: '50%'}} mt={1} mr={8} id='critiqueFilter'>
+                        {/* <Text fontFamily={'Raleway'} mr={{lg: 5, sm: 1}} w={20} mt={2}>Sort by: </Text> */}
+                        <Select fontFamily={'Raleway'} fontWeight={'bold'} onChange={(e)=>sortPost(e.target.value)}  bgColor='white' boxShadow={'lg'}>
                             <option value='desc'>Newest</option>
                             <option value='asc'>Oldest</option>
                             <option value='most_stars'>Most Critique Stars</option>
@@ -254,9 +255,9 @@ export default function ProfilePage({data}){
                                         <Image w={{lg: '300px', sm: '300px'}} h='20vh' src={posts.attachment1}></Image>
                                     </Center>
                                     <Flex w='100%' p={3}>
-                                        <Text>Likes {posts.likes}</Text>
+                                    <Image src='/stars-clicked.png' alt="Stars" w="25px" h="25px" ml={2}/> {posts.likes}
                                         <Spacer />
-                                        <Text>Critiques {posts.critiques}</Text>
+                                        <Image src='/comments.png' alt="Critiques" w="25px" h="25px" ml={2}/>  {posts.critiques}
                                     </Flex>
                                 </Box>
                             </Link>
@@ -274,7 +275,7 @@ export default function ProfilePage({data}){
                                         <Image w={{lg: '300px', sm: '300px'}} h='20vh' src={critique.attachment1}></Image>
                                     </Center>
                                     <Flex w='100%' p={3}>
-                                        <Text>Star {critique.stars}</Text>
+                                    <Image src='/stars-clicked.png' alt="Stars" w="25px" h="25px" ml={2}/> {critique.stars}
                                         <Spacer />
                                         <Text>{critique.body}</Text>
                                     </Flex>

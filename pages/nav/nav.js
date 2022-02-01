@@ -234,7 +234,7 @@ export default function Nav({id}){
             </Flex>
             <Spacer />
                 <form action='/search' method='POST' onSubmit={searchItem}>
-                    <Input fontFamily={'Raleway'} fontWeight={'bold'} fontStyle={'italic'} placeholder='SEARCH' display={['none','none','none','flex']} w='30vw' type='text' mt={7} mr='25vw' onChange={(e)=>setSearch(e.target.value)} boxShadow='md' />
+                    <Input fontFamily={'Raleway'} fontWeight={'light'} placeholder='Looking for something?' display={['none','none','none','flex']} w='30vw' type='text' mt={7} mr='25vw' onChange={(e)=>setSearch(e.target.value)} borderColor={useColorModeValue('black', 'white')} />
                 </form>
             <Spacer />
         <Flex
@@ -326,7 +326,7 @@ export default function Nav({id}){
                     <PopoverContent w="400px">
                         <PopoverArrow />
                         <PopoverCloseButton />
-                        <PopoverHeader fontFamily={'Raleway'}>NOTIFICATIONS</PopoverHeader>
+                        <PopoverHeader fontFamily={'Raleway'}>Notifications</PopoverHeader>
                         <PopoverBody fontFamily={'Raleway'}>
                             {notif.map((notification, i) =>
                             <Box key={i} display='flex'>
@@ -352,14 +352,14 @@ export default function Nav({id}){
                         {/* <Image src=""></Image> */}
                         {/* <Img src='https://www.clipartmax.com/png/middle/119-1198197_anonymous-person-svg-png-icon-free-download-anonymous-icon-png.png' w='2vw' h='2vw'></Img> */}
                         <Img src={profPic} w='2vw' h='2vw'></Img>
-                        <Text fontFamily={'Raleway'} fontWeight={'bold'} mt={2} ml={1}>{display_name}</Text>
+                        {/* <Text fontFamily={'Raleway'} fontWeight={'bold'} mt={2} ml={1}>{display_name}</Text> */}
                         {/* <Text ml={1} mr={3}>{user_id}</Text> */}
                         <ChevronDownIcon ml={1} mt={3} />
                     </Flex>  
                     </MenuButton>
                     <MenuList>
-                        <MenuItem fontFamily={'Raleway'} fontWeight={'bold'}><Link href={`/profile/${display_name}`} passHref>PROFILE</Link></MenuItem>
-                        <MenuItem fontFamily={'Raleway'} fontWeight={'bold'} color="red" _hover={{ bg: 'red.500', color: 'white' }} onClick={logOut}>LOG OUT</MenuItem>
+                        <MenuItem fontFamily={'Raleway'} fontWeight={'bold'}><Link href={`/profile/${display_name}`} passHref>Profile</Link></MenuItem>
+                        <MenuItem fontFamily={'Raleway'} fontWeight={'bold'} color="red" _hover={{ bg: 'red.500', color: 'white' }} onClick={logOut}>Logout</MenuItem>
                     </MenuList>
                 </Menu>
 
