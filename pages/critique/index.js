@@ -288,9 +288,9 @@ export default function HallPage({}){
                     <Center>
                     <Text fontFamily={'Raleway'} fontSize="3xl" color="white" my="auto" mt="5" textShadow="1px 1px #000">Technology</Text>
                     </Center>
-                    <Center>
+                    {/* <Center>
                         <Heading fontFamily={'Raleway'} size="xs" color="white" mt="1" textShadow="1px 1px #000">Post:</Heading>
-                    </Center>
+                    </Center> */}
                     
                 </Box>
                 </Button>
@@ -302,9 +302,9 @@ export default function HallPage({}){
                     <Center>
                     <Text fontFamily={'Raleway'} fontSize="3xl" color="white" my="auto" mt="5" textShadow="1px 1px #000">Arts</Text>
                     </Center>
-                    <Center>
+                    {/* <Center>
                         <Heading fontFamily={'Raleway'} size="xs" color="white" mt="1" textShadow="1px 1px #000">Post:</Heading>
-                    </Center>
+                    </Center> */}
                     
                 </Box>
                 </Button>
@@ -316,9 +316,9 @@ export default function HallPage({}){
                     <Center>
                     <Text fontFamily={'Raleway'} fontSize="3xl" color="white" my="auto" mt="5" textShadow="1px 1px #000">Business</Text>
                     </Center>
-                    <Center>
+                    {/* <Center>
                         <Heading fontFamily={'Raleway'} size="xs" color="white" mt="1" textShadow="1px 1px #000">Post: </Heading>
-                    </Center>
+                    </Center> */}
                 </Box>
                 </Button>
 
@@ -327,11 +327,11 @@ export default function HallPage({}){
                 <Button variant='ghost' w="200px" h="100px" className={styles.lounge} rounded="lg" position='static' _hover={{backgroundColor: '#00A99D'}} _active={{backgroundColor: '#00A99D'}} onClick={getLounge} boxShadow={'lg'}>
                 <Box w="full" h="10vh" ml={{lg: 0, sm: 0}} rounded="lg" px='9'>
                     <Center>
-                    <Text fontFamily={'Raleway'} fontSize="3xl" color="white" my="auto" mt="5" textShadow="1px 1px #000">Lounge</Text>
+                    <Text fontFamily={'Raleway'} fontSize="3xl" color="white" my="auto" mt="5" borderColor={'black'}>Lounge</Text>
                     </Center>
-                    <Center>
+                    {/* <Center>
                         <Heading fontFamily={'Raleway'} size="xs" color="white" mt="1" textShadow="1px 1px #000">Post: </Heading>
-                    </Center>
+                    </Center> */}
                 </Box>
                 </Button>
             </Box>

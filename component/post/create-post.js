@@ -214,7 +214,7 @@ function CreatePost({data}) {
         <Modal isOpen={isOpen} onClose={onClose}>
             <ModalOverlay />
                 <ModalContent maxW="70rem">
-                <ModalHeader>Create Post</ModalHeader>
+                <ModalHeader fontFamily={'Raleway'}>Create Post</ModalHeader>
                 <ModalCloseButton />
                 <ModalBody >
                     <Flex mb={5} flexDir={{lg: 'row', sm: 'column'}}>
@@ -224,7 +224,7 @@ function CreatePost({data}) {
                         <Input type='text' w={{lg: '20vw', sm: '100%'}} ml='11px' onChange={e => setTitle(e.target.value)}  />
                     </Flex>
 
-                    <FormLabel mt={2}>Description</FormLabel>
+                    <FormLabel fontFamily={'Raleway'} mt={2}>Description</FormLabel>
                     <Textarea fontFamily={'Raleway'} type='text' w={{lg: '23vw', sm: '100%'}} h='20vh' onChange={e => setDescription(e.target.value)} />
                     <Flex mt={5}>
                         <FormLabel fontFamily={'Raleway'} mt={2}>Post This to: </FormLabel>

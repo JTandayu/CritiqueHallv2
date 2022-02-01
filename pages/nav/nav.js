@@ -414,7 +414,7 @@ export default function Nav({id}){
                     </Button>
                 </Link>
                 <form action='/search' method='POST' onSubmit={searchItem}>
-                    <Input fontFamily={'Raleway'} fontWeight={'bold'} fontStyle={'italic'} w='50vw' type='text' mt={7} placeholder='SEARCH' onChange={(e)=>setSearch(e.target.value)} boxShadow={'md'} />
+                    <Input fontFamily={'Raleway'} fontWeight={'light'} w='50vw' type='text' mt={7} placeholder='Looking for something?' onChange={(e)=>setSearch(e.target.value)} boxShadow={'md'} />
                 </form>
                 <Link href="/home" passHref>
                     <Button
@@ -469,7 +469,7 @@ export default function Nav({id}){
                         textDecoration={Router.pathname === "/profile" ? 'underline' : 'none'}
                         _hover={{cursor:'pointer', textDecoration:'underline', color: useColorModeValue('#C1272D', '#FF5C61')}}
                     >
-                        <Link href={`/profile/${display_name}`} passHref>PROFILE</Link>
+                        <Link href={`/profile/${display_name}`} passHref>Profile</Link>
                     </Button>
                 </Link>
                     <Button
@@ -485,7 +485,7 @@ export default function Nav({id}){
                         rounded='none'
                         onClick={logOut}
                     >
-                    <Img src={useColorModeValue('/power-icon-dark.png', '/power-icon.png')} alt="Critique Hall Message Logo" w="2em" h="2em" mr={2} />LOG OUT
+                    <Img src={useColorModeValue('/power-icon-dark.png', '/power-icon.png')} alt="Critique Hall Message Logo" w="2em" h="2em" mr={2} />Logout
                     </Button>
             </Flex> 
         </Flex>
