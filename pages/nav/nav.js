@@ -200,7 +200,7 @@ export default function Nav({id}){
             removeCookie('encrypted_id');
             removeCookie('profile_pic');
             removeCookie('display_name');
-            router.push('/')
+            router.push('/login')
         }).catch((error)=>console.log(error.response))
 
 
@@ -240,7 +240,7 @@ export default function Nav({id}){
         <Flex
             pos='fixed'
             top='1rem'
-            right='1rem'
+            right='3rem'
             align='center'
         >
 
@@ -260,7 +260,7 @@ export default function Nav({id}){
                         fontWeight={'bold'}
                         size='lg'
                     >
-                        HOME
+                        Home
                     </Button>
                 </Link>
                 <Link href="/critique" as='/critique' passHref>
@@ -279,7 +279,7 @@ export default function Nav({id}){
                         fontWeight={'bold'}
                         size='lg'
                     >
-                        CRITIQUE
+                        Critique
                     </Button>
                 </Link>
                 <Link href="/feedback" passHref>
@@ -297,7 +297,7 @@ export default function Nav({id}){
                         fontWeight={'bold'}
                         size='lg'
                     >
-                        FEEDBACK
+                        Feedback
                     </Button>
                 </Link>
                 <Popover>

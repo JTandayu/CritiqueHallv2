@@ -229,8 +229,8 @@ export default function Register({data2}) {
           <center><FormControl id="registerpart1">
           <div id="part1">
             <div className={styles.logo}>
-            <Link href="/" passHref><Image src={useColorModeValue('critiquehall.png', 'critiquehall-dark.png')} 
-             alt="Critique Hall Logo"/></Link>
+            <Image src={useColorModeValue('critiquehall.png', 'critiquehall-dark.png')} 
+             alt="Critique Hall Logo"/>
             </div>
           
             {/* <Heading fontFamily={'Raleway'} mb={2} as="h2" size="lg"color={useColorModeValue('#C1272D','#FF5C61')}>REGISTER</Heading> */}
@@ -274,8 +274,8 @@ export default function Register({data2}) {
 
           <div id="part2" hidden>
             <div className={styles.logo2}>
-            <Link href="/"><Image src={useColorModeValue('critiquehall.png', 'critiquehall-dark.png')} 
-             alt="Critique Hall Logo"/></Link>
+            <Image src={useColorModeValue('critiquehall.png', 'critiquehall-dark.png')} 
+             alt="Critique Hall Logo"/>
             </div>
           
             {/* <Heading fontFamily={'Raleway'} mb={2} as="h2" size="lg" color={useColorModeValue('#C1272D','#FF5C61')}>REGISTER</Heading> */}
