@@ -23,8 +23,8 @@ function MyApp({ Component, pageProps }) {
           return <ChakraProvider theme={theme}><Component {...pageProps} /></ChakraProvider>;
       case "Register":
           return <ChakraProvider theme={theme}><Component {...pageProps} /></ChakraProvider>;
-      case "Register2":
-          return <ChakraProvider theme={theme}><Component {...pageProps} /></ChakraProvider>;
+    //   case "Register2":
+    //       return <ChakraProvider theme={theme}><Component {...pageProps} /></ChakraProvider>;
       case "ForgotPassword":
           return <ChakraProvider theme={theme}><Component {...pageProps} /></ChakraProvider>;
       case "ResetPassword":
