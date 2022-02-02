@@ -110,7 +110,7 @@ export default function ConfirmationPage(){
         
         <Box className={styles.main} bg={useColorModeValue('white', '#212121')} w={{lg: '100ch' , md: '100%' , sm: '100%' }} >
             <center>
-            <Button
+            {/* <Button
                         as='a'
                         variant='ghost'
                         aria-label='Home'
@@ -122,7 +122,7 @@ export default function ConfirmationPage(){
                         _active={{bgColor: 'none'}}
                     >
                         <Image className={styles.darkicon} src={ImgUrl} alt="darkmode" w="2em" h="2em" ml={'15em'} />
-                    </Button>
+                    </Button> */}
             <div className={styles.logo}>
             <Link href="/login" passHref><Image src={useColorModeValue('critiquehall.png', 'critiquehall-dark.png')} 
              alt="Critique Hall Logo"/></Link>

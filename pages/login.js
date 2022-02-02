@@ -53,7 +53,7 @@ export default function Login({user}) {
 
   const { colorMode, toggleColorMode } = useColorMode()
   colorMode === 'light' ? 'Dark' : 'Light'
-  const [ImgUrl, setImgUrl] = useState('dark-and-light.png')
+  const [ImgUrl, setImgUrl] = useState('dark-mode-icon.png')
 
   const toast = useToast()
   const toastIdRef = React.useRef()
