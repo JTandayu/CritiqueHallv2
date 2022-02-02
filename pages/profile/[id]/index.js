@@ -132,6 +132,7 @@ export default function ProfilePage({data}){
     }
 
     const sortPost = (e) =>{
+        e.preventDefault()
         let formData = new FormData;
         formData.append('user_id', encID)
         formData.append('sort', e)
@@ -148,6 +149,7 @@ export default function ProfilePage({data}){
     }
 
     const sortCritique = (e) =>{
+        e.preventDefault()
         let formData = new FormData;
         formData.append('user_id', encID)
         formData.append('sort', e)

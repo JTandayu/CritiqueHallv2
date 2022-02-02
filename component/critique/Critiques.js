@@ -90,6 +90,8 @@ export const Critiques = ({id}) => {
     }
 
     const submitReply = async(critique_id) =>{
+        e.preventDefault();
+
         let formData = new FormData;
         formData.append('critique_id', critique_id);
         formData.append('body', reply);
@@ -106,7 +108,8 @@ export const Critiques = ({id}) => {
     }
 
     const sortCritique = (e) =>{
-        
+        e.preventDefault();
+
         let formData = new FormData;
         formData.append('post_id', id);
         formData.append('last_id', null);

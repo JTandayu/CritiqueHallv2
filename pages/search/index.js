@@ -119,6 +119,7 @@ export default function SearchResult(){
     console.log(currentSearch)
     
     const sortPostResult = async (e) =>{
+        e.preventDefault()
         const searchItem = localStorage.getItem('search-item')
         setSearch(searchItem)
 

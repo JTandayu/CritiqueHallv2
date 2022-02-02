@@ -199,7 +199,8 @@ export default function CritiquePost(post_id){
         });
     }
 
-    const giveCritique = async() =>{
+    const giveCritique = async(e) =>{
+        e.preventDefault();
         let formData = new FormData();
         formData.append('body', critique)
         formData.append('post_id', post_id.post_id)
