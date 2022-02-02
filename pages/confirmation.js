@@ -27,7 +27,7 @@ import {
   PopoverCloseButton,
 } from "@chakra-ui/react"
 import { useState } from 'react'
-import { useColorModeValue } from '@chakra-ui/react';
+import { useColorMode, useColorModeValue } from '@chakra-ui/react';
 import { createBreakpoints } from '@chakra-ui/theme-tools'
 import axios from "axios"
 import { useCookies } from 'react-cookie';
@@ -55,6 +55,19 @@ export default function ConfirmationPage(){
 
   const toast = useToast()
   const toastIdRef = React.useRef()
+
+  const { colorMode, toggleColorMode } = useColorMode()
+  colorMode === 'light' ? 'Dark' : 'Light'
+  const [ImgUrl, setImgUrl] = useState('dark-and-light.png')
+
+  const changeDarkAndLightIcon = () => {
+    toggleColorMode()
+    if(colorMode === 'light'){
+        setImgUrl('light-mode-icon.png')
+    }else {
+        setImgUrl('dark-mode-icon.png')
+    }
+  }
 
   const accountVerification = async () =>{
 
@@ -97,8 +110,21 @@ export default function ConfirmationPage(){
         
         <Box className={styles.main} bg={useColorModeValue('white', '#212121')} w={{lg: '100ch' , md: '100%' , sm: '100%' }} >
             <center>
+            <Button
+                        as='a'
+                        variant='ghost'
+                        aria-label='Home'
+                        my={2}
+                        ml={4}
+                        w='50%'
+                        onClick={changeDarkAndLightIcon}
+                        _hover={{cursor:'pointer'}}
+                        _active={{bgColor: 'none'}}
+                    >
+                        <Image className={styles.darkicon} src={ImgUrl} alt="darkmode" w="2em" h="2em" ml={'15em'} />
+                    </Button>
             <div className={styles.logo}>
-            <Link href="/" passHref><Image src={useColorModeValue('critiquehall.png', 'critiquehall-dark.png')} 
+            <Link href="/login" passHref><Image src={useColorModeValue('critiquehall.png', 'critiquehall-dark.png')} 
              alt="Critique Hall Logo"/></Link>
             </div>
 
