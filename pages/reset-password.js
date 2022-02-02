@@ -27,7 +27,7 @@ import {
   PopoverCloseButton,
 } from "@chakra-ui/react"
 import { useState } from 'react';
-import { useColorModeValue } from '@chakra-ui/react';
+import { useColorMode, useColorModeValue } from '@chakra-ui/react';
 import { createBreakpoints } from '@chakra-ui/theme-tools'
 import { useToast } from '@chakra-ui/react'
 import React from 'react';
@@ -53,7 +53,18 @@ export default function ResetPassword(){
   const toast = useToast()
   const toastIdRef = React.useRef()
 
+  const { colorMode, toggleColorMode } = useColorMode()
+  colorMode === 'light' ? 'Dark' : 'Light'
+  const [ImgUrl, setImgUrl] = useState('dark-and-light.png')
 
+  const changeDarkAndLightIcon = () => {
+    toggleColorMode()
+    if(colorMode === 'light'){
+        setImgUrl('light-mode-icon.png')
+    }else {
+        setImgUrl('dark-mode-icon.png')
+    }
+  }
 
     const resetPassword = async () =>{
         let formData = new FormData(); 
@@ -96,8 +107,21 @@ export default function ResetPassword(){
         
         <Box className={styles.main} bg={useColorModeValue('white', '#212121')} w={{lg: '100ch' , md: '100%' , sm: '100%', base: '100%'}}>
             <center>
+            <Button
+                        as='a'
+                        variant='ghost'
+                        aria-label='Home'
+                        my={2}
+                        ml={4}
+                        w='50%'
+                        onClick={changeDarkAndLightIcon}
+                        _hover={{cursor:'pointer'}}
+                        _active={{bgColor: 'none'}}
+                    >
+                        <Image className={styles.darkicon} src={ImgUrl} alt="darkmode" w="2em" h="2em" ml={'15em'} />
+                    </Button>
             <div className={styles.logo}>
-            <Link href="/" passHref><Image src={useColorModeValue('critiquehall.png', 'critiquehall-dark.png')} alt="Critique Hall Logo"/></Link>
+            <Image src={useColorModeValue('critiquehall.png', 'critiquehall-dark.png')} alt="Critique Hall Logo"/>
             </div>
 
             <Heading fontFamily={'Raleway'} mb={2} as="h2" size="lg" color={useColorModeValue('#1B1464','#B2A3FF')}>Reset Password</Heading>
@@ -105,13 +129,13 @@ export default function ResetPassword(){
             {/* <p className={styles.description}>Kindly enter your E-mail Address to receive a link for further process in changing your password.</p> */}
             <center><FormControl id="forgotpassword" action="/home">
                 <FormLabel>New Password</FormLabel>
-                <Input borderColor={'black'} size='lg' width={'40vh'} className={styles.input_box} type="password" value={password} onChange={e => setPassword(e.target.value)}/>
+                <Input borderColor={useColorModeValue('black', 'white')}  size='lg' width={'40vh'} className={styles.input_box} type="password" value={password} onChange={e => setPassword(e.target.value)}/>
                 {/* <input placeholder="New Password" className={styles.input_box} type="password" value={password} onChange={e => setPassword(e.target.value)}/> */}
                 {/* <FormHelperText className={styles.helperText}>This field is required.</FormHelperText> */}
                 <br/>
                 <br />
                 <FormLabel>Confirm New Password</FormLabel>
-                <Input borderColor={'black'} size='lg' width={'40vh'} className={styles.input_box} type="password" value={confirm_password} onChange={e => setConfirmPassword(e.target.value)}/>
+                <Input borderColor={useColorModeValue('black', 'white')}  size='lg' width={'40vh'} className={styles.input_box} type="password" value={confirm_password} onChange={e => setConfirmPassword(e.target.value)}/>
                 {/* <input placeholder="Confirm New Password" className={styles.input_box} type="password" value={confirm_password} onChange={e => setConfirmPassword(e.target.value)}/> */}
                 <br/>
                 <br/>
@@ -143,7 +167,7 @@ export default function ResetPassword(){
             </FormControl></center>
 
             <p className={styles.register}>
-            <Link href="./login" passHref><Text _hover={{cursor:'pointer'}} fontSize='md' color={useColorModeValue('#1E9CE3', '#1BA3C1')}><a>Back to Login</a></Text></Link>
+            <Link href="./login" passHref><Text _hover={{cursor:'pointer'}} fontSize='lg'  color={useColorModeValue('#1BA3C1', '#1BA3C1')}><a>Back to Login</a></Text></Link>
             </p>
             </center>
         </Box>

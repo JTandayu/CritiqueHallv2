@@ -19,7 +19,7 @@ import {
 } from "@chakra-ui/react"
 import { GetStaticProps } from 'next'
 import { useState } from 'react';
-import { ColorModeScript, useColorModeValue } from '@chakra-ui/react'
+import { ColorModeScript, useColorMode, useColorModeValue } from '@chakra-ui/react'
 import { Box } from '@chakra-ui/react'
 import axios from 'axios';
 import React from 'react';
@@ -51,13 +51,23 @@ export default function Login({user}) {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
-  // const { colorMode, toggleColorMode } = useColorMode()
-  // colorMode === 'light' ? 'Dark' : 'Light'
+  const { colorMode, toggleColorMode } = useColorMode()
+  colorMode === 'light' ? 'Dark' : 'Light'
+  const [ImgUrl, setImgUrl] = useState('dark-and-light.png')
 
   const toast = useToast()
   const toastIdRef = React.useRef()
 
   const [cookies, setCookies, removeCookies] = useCookies(['token', 'id', 'encrypted_id'])
+
+  const changeDarkAndLightIcon = () => {
+    toggleColorMode()
+    if(colorMode === 'light'){
+        setImgUrl('light-mode-icon.png')
+    }else {
+        setImgUrl('dark-mode-icon.png')
+    }
+  }
 
 
     const submitLogin = async () =>{
@@ -117,9 +127,23 @@ export default function Login({user}) {
           // initial = {{y: -70, opacity: 0}}
           // transition ={{duration: .7}}
           >
+            <Button
+                        as='a'
+                        variant='ghost'
+                        aria-label='Home'
+                        my={2}
+                        ml={4}
+                        w='50%'
+                        onClick={changeDarkAndLightIcon}
+                        _hover={{cursor:'pointer'}}
+                        _active={{bgColor: 'none'}}
+                    >
+                        <Image className={styles.darkicon} src={ImgUrl} alt="darkmode" w="2em" h="2em" ml={'15em'} />
+                    </Button>
+
             <div className={styles.logo}>
-            <Link href="/" passHref><Image src={useColorModeValue('critiquehall.png', 'critiquehall-dark.png')} 
-             alt="Critique Hall Logo"/></Link>
+            <Image src={useColorModeValue('critiquehall.png', 'critiquehall-dark.png')} 
+             alt="Critique Hall Logo"/>
             </div>
             
             {/* <Heading fontFamily={'Raleway'} mb={5} as="h2" size="lg" color={useColorModeValue('#1B1464','#B2A3FF')}>LOG-IN</Heading> */}
@@ -135,12 +159,12 @@ export default function Login({user}) {
             </Box>
             <center><FormControl id="loginform" >
               <FormLabel>iACADEMY Email</FormLabel>
-                <Input borderColor={'black'} size='lg' width={'40vh'} id="email" value={email} className={styles.input_box} type="email" onChange={e => setEmail(e.target.value)} />
+                <Input borderColor={useColorModeValue('black', 'white')} size='lg' width={'40vh'} id="email" value={email} className={styles.input_box} type="email" onChange={e => setEmail(e.target.value)} />
                 {/* <input placeholder="Username" id="email" value={email} className={styles.input_box} type="email" /> */}
                 <br/>
                 <br/>
               <FormLabel>Password</FormLabel>
-                <Input borderColor={'black'} size='lg' width={'40vh'} id="password" value={password} className={styles.input_box} type="password" onChange={e => setPassword(e.target.value)} />
+                <Input borderColor={useColorModeValue('black', 'white')}  size='lg' width={'40vh'} id="password" value={password} className={styles.input_box} type="password" onChange={e => setPassword(e.target.value)} />
                 {/* <input placeholder="Password" id="password" value={password} className={styles.input_box} type="password"/> */}
                 <br/>
                 <br/>

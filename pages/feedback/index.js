@@ -23,6 +23,7 @@ import { useState, useEffect } from 'react';
 import { Stack } from '@chakra-ui/react'
 import axios from 'axios'
 import { useCookies } from 'react-cookie'
+import ScrollToTop from "react-scroll-to-top";
 
 
 const breakpoints = createBreakpoints({
@@ -86,88 +87,105 @@ export default function FeedbackPage(){
             <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@700&display=swap" rel="stylesheet" />
             </Head>
 
+            <ScrollToTop color={'black'} width={40} boxShadow={'dark-lg'} smooth />
+
             <Box top="0" h="100%" mx="auto" mt="14vh">
                 <Heading fontFamily={'Raleway'} color={useColorModeValue('#1B1464', '#B2A3FF')} size="2xl" align="center">WE&apos;D LOVE TO HEAR FROM YOU!</Heading>
                 <Heading fontFamily={'Raleway'} color={useColorModeValue('#1B1464', '#B2A3FF')} size="md" align="center" mt="5">Send your feedbacks and suggestions and we&apos;ll answer it for you.</Heading>
             </Box>
 
-            <Box bgImage={'discussions.png'} bgSize={'60em'} bgPosition={'right'} bgRepeat={'no-repeat'} display={{lg: "flex", sm: 'block'}} w="90%" className={useColorModeValue(styles.box_light, styles.box_dark)} spacing="10px" top="0" h={{lg: "70vh", sm: "100%"}} mb="5vh" mt="10" py="10">
-                <Box w={{lg: "40%" , sm: '100%'}} mx="auto" h="70vh" p="6" color='white'>
+            <Box display={{lg: "flex", sm: 'block'}} w="70%" className={useColorModeValue(styles.box_light, styles.box_dark)} spacing="10px" top="0" h={{lg: "100%", sm: "100%", base: "100%"}} mb="5vh" mt="10" py="10" borderRadius={15}>
+                <Box w={{lg: "80%" , sm: '100%'}} mx="auto" h="100%" p="6" color='white'>
                     <form action='' method='POST'>
-                    {/* <Heading color="white" mx="auto">Feedback</Heading> */}
-                    <Box mt="5vh" display='flex'>
-                        <FormLabel >Duis amet dolor sint sunt minim proident do ullamco cillum ea do.</FormLabel>
-                        <RadioGroup onChange={(e)=>setAns1(e.target.value)}>
+                    <Heading fontFamily={'Raleway'} color="white" mx="auto">With regards to the website...</Heading>
+                    <Box mt="4vh" display='flex'>
+                        <FormLabel fontFamily={'Raleway'} fontSize={'lg'}>1. So, what do you think? Can you tell us a little bit about your experience?</FormLabel>
+                        {/* <RadioGroup onChange={(e)=>setAns1(e.target.value)}>
                         <Stack direction='row'>
                             <Radio value='1'></Radio>
                             <Radio value='2'></Radio>
                             <Radio value='3'></Radio>
                             <Radio value='4'></Radio>
                         </Stack>
-                        </RadioGroup>
+                        </RadioGroup> */}
                     </Box>
-
-                    <Box mt="5vh" display='flex'>
-                        <FormLabel>Duis amet dolor sint sunt minim proident do ullamco cillum ea do.</FormLabel>
-                        <RadioGroup onChange={(e)=>setAns2(e.target.value)}>
-                        <Stack direction='row'>
-                            <Radio value='1'></Radio>
-                            <Radio value='2'></Radio>
-                            <Radio value='3'></Radio>
-                            <Radio value='4'></Radio>
-                        </Stack>
-                        </RadioGroup>
+                    <Box mt="1vh" display='flex'>
+                        <Textarea className={styles.input_box} fontFamily={'Raleway'} bgColor={useColorModeValue('white', '#5E5E5E')} color={useColorModeValue('black', 'white')} onChange={(e)=>setFeedback(e.target.value)}></Textarea>
                     </Box>
-
-                    <Box mt="5vh" display='flex'>
-                        <FormLabel>Duis amet dolor sint sunt minim proident do ullamco cillum ea do.</FormLabel>
-                        <RadioGroup onChange={(e)=>setAns3(e.target.value)}>
-                        <Stack direction='row'>
-                            <Radio value='1'></Radio>
-                            <Radio value='2'></Radio>
-                            <Radio value='3'></Radio>
-                            <Radio value='4'></Radio>
-                        </Stack>
-                        </RadioGroup>
+                    <Box mt="4vh" display='flex'>
+                        <FormLabel fontFamily={'Raleway'} fontSize={'lg'}>2. How did we make you feel?</FormLabel>
                     </Box>
-
-                    <Box mt="5vh" display='flex'>
-                        <FormLabel>Duis amet dolor sint sunt minim proident do ullamco cillum ea do.</FormLabel>
-                        <RadioGroup onChange={(e)=>setAns4(e.target.value)}>
-                        <Stack direction='row'>
-                            <Radio value='1'></Radio>
-                            <Radio value='2'></Radio>
-                            <Radio value='3'></Radio>
-                            <Radio value='4'></Radio>
-                        </Stack>
-                        </RadioGroup>
+                    <Box mt="1vh" display='flex'>
+                        <Textarea className={styles.input_box} fontFamily={'Raleway'} bgColor={useColorModeValue('white', '#5E5E5E')} color={useColorModeValue('black', 'white')} onChange={(e)=>setFeedback(e.target.value)}></Textarea>
                     </Box>
-
-                    <Center><Textarea bgColor={useColorModeValue('#FFFFFF','#2E2E2E')} color={useColorModeValue('#000000', '#FFFFFF')} fontFamily={'Raleway'} fontWeight={'extrabold'} placeholder='Message...' w="100%"  mt="5vh" mx="auto" position='static' onChange={(e)=>setFeedback(e.target.value)}/></Center>
-
+                    <Box mt="4vh" display='flex'>
+                        <FormLabel fontFamily={'Raleway'} fontSize={'lg'}>3. Did you encounter any bugs or glitches?</FormLabel>
+                    </Box>
+                    <Box mt="1vh" display='flex'>
+                        <Textarea className={styles.input_box} fontFamily={'Raleway'} bgColor={useColorModeValue('white', '#5E5E5E')} color={useColorModeValue('black', 'white')} onChange={(e)=>setFeedback(e.target.value)}></Textarea>
+                    </Box>
+                    <Box mt="4vh" display='flex'>
+                        <FormLabel fontFamily={'Raleway'} fontSize={'lg'}>4. Which areas do you think the website needs more improvement on?</FormLabel>
+                    </Box>
+                    <Box mt="1vh" display='flex'>
+                        <Textarea className={styles.input_box} fontFamily={'Raleway'} bgColor={useColorModeValue('white', '#5E5E5E')} color={useColorModeValue('black', 'white')} onChange={(e)=>setFeedback(e.target.value)}></Textarea>
+                    </Box>
+                    <Heading fontFamily={'Raleway'} color="white" mx="auto" mt="5vh">With regards to your learning style...</Heading>
+                    <Box mt="4vh" display='flex'>
+                        <FormLabel fontFamily={'Raleway'} fontSize={'lg'}>5. What do you think about peer reviews and feedback?</FormLabel>
+                    </Box>
+                    <Box mt="1vh" display='flex'>
+                        <Textarea className={styles.input_box} fontFamily={'Raleway'} bgColor={useColorModeValue('white', '#5E5E5E')} color={useColorModeValue('black', 'white')} onChange={(e)=>setFeedback(e.target.value)}></Textarea>
+                    </Box>
+                    <Box mt="4vh" display='flex'>
+                        <FormLabel fontFamily={'Raleway'} fontSize={'lg'}>6. Which do you prefer, learning with others or through your own?</FormLabel>
+                    </Box>
+                    <Box mt="1vh" display='flex'>
+                        <Textarea className={styles.input_box} fontFamily={'Raleway'}  bgColor={useColorModeValue('white', '#5E5E5E')} color={useColorModeValue('black', 'white')} onChange={(e)=>setFeedback(e.target.value)}></Textarea>
+                    </Box>
+                    <Box mt="4vh" display='flex'>
+                        <FormLabel fontFamily={'Raleway'} fontSize={'lg'}>7. What skill did you learn or you think that you will learn from using Critique Hall?</FormLabel>
+                    </Box>
+                    <Box mt="1vh" display='flex'>
+                        <Textarea className={styles.input_box} fontFamily={'Raleway'}  bgColor={useColorModeValue('white', '#5E5E5E')} color={useColorModeValue('black', 'white')} onChange={(e)=>setFeedback(e.target.value)}></Textarea>
+                    </Box>
+                    <Heading fontFamily={'Raleway'} color="white" mx="auto" mt="5vh">With regards to your personal development...</Heading>
+                    <Box mt="4vh" display='flex'>
+                        <FormLabel fontFamily={'Raleway'} fontSize={'lg'}>8.  Have you tried publishing a post? If no, why not?</FormLabel>
+                    </Box>
+                    <Box mt="1vh" display='flex'>
+                        <Textarea className={styles.input_box} fontFamily={'Raleway'} bgColor={useColorModeValue('white', '#5E5E5E')} color={useColorModeValue('black', 'white')} onChange={(e)=>setFeedback(e.target.value)}></Textarea>
+                    </Box>
+                    <Box mt="4vh" display='flex'>
+                        <FormLabel fontFamily={'Raleway'} fontSize={'lg'}>9. Have you tried interacting with others through the website (giving or receiving stars/critiques)? If no, why not?</FormLabel>
+                    </Box>
+                    <Box mt="1vh" display='flex'>
+                        <Textarea className={styles.input_box} fontFamily={'Raleway'}  bgColor={useColorModeValue('white', '#5E5E5E')} color={useColorModeValue('black', 'white')} onChange={(e)=>setFeedback(e.target.value)}></Textarea>
+                    </Box>
+                    <Box mt="4vh" display='flex'>
+                        <FormLabel fontFamily={'Raleway'} fontSize={'lg'}>10. If you answered yes in question 8, would you consider the work/project that you posted your talent?</FormLabel>
+                    </Box>
+                    <Box mt="1vh" display='flex'>
+                        <Textarea className={styles.input_box} fontFamily={'Raleway'}  bgColor={useColorModeValue('white', '#5E5E5E')} color={useColorModeValue('black', 'white')} onChange={(e)=>setFeedback(e.target.value)}></Textarea>
+                    </Box>
+                    <Box mt="4vh" display='flex'>
+                        <FormLabel fontFamily={'Raleway'} fontSize={'lg'}>11. If you answered yes in question 8, did the critiques help you improve your work/project?</FormLabel>
+                    </Box>
+                    <Box mt="1vh" display='flex'>
+                        <Textarea className={styles.input_box} fontFamily={'Raleway'}  bgColor={useColorModeValue('white', '#5E5E5E')} color={useColorModeValue('black', 'white')} onChange={(e)=>setFeedback(e.target.value)}></Textarea>
+                    </Box>
+                    <Box mt="4vh" display='flex'>
+                        <FormLabel fontFamily={'Raleway'} fontSize={'lg'}>12. If you answered yes in question 8 and/or 9, how did doing those make you feel?</FormLabel>
+                    </Box>
+                    <Box mt="1vh" display='flex'>
+                        <Textarea className={styles.input_box} fontFamily={'Raleway'}  bgColor={useColorModeValue('white', '#5E5E5E')} color={useColorModeValue('black', 'white')} onChange={(e)=>setFeedback(e.target.value)}></Textarea>
+                    </Box>
+                    
                     <Box w="100%">
-                        <Center><Button size={'lg'} type='submit' mx='auto' bgColor={useColorModeValue('#2777C1','#0085FF')} color={useColorModeValue('#FFFFFF', '#FFFFFF')} _hover={{bgColor: 'blue'}} mt="3" onClick={SubmitFeedback}>SUBMIT</Button></Center>
+                        <Center><Button fontFamily={'Raleway'} size={'lg'} type='submit' mx='auto' bgColor={useColorModeValue('#2777C1','#0085FF')} color={useColorModeValue('#FFFFFF', '#FFFFFF')} _hover={{bgColor: useColorModeValue('#56AEFF', '#0B5090')}} mt="10" onClick={SubmitFeedback}>SUBMIT</Button></Center>
                     </Box>
                     </form>
-                </Box>
-
-                <Box w={{lg: "40%" , sm: '90%'}} mt={{lg: '0', sm: '5vh'}} bgColor={useColorModeValue('#FFFFFF','#2E2E2E')} mx="auto" h={{lg: '50vh', md: '55vh', sm: '60vh'}} p="3" boxShadow="lg" borderRadius="lg">
-                    <Center><Heading fontFamily={'Raleway'} fontWeight={'extrabold'} color={useColorModeValue('#C1272D', '#FF5C61')} mx="auto">Contact Information</Heading></Center>
-                    <Box bgColor={useColorModeValue('#FFFFFF','#2E2E2E')} w={{lg: "90%" , sm: '90%'}} mt={{lg: '0vh', md: '2vh', sm: '2vh'}}  mx="auto" h="20vh" p="3">
-                    <br />
-                    <Center><Text fontSize='2xl' fontWeight={'bold'} color={useColorModeValue('#29226E', '#B2A3FF')}> Azariah Danizar G. Concepcion</Text></Center>
-                    <Center><Text fontSize='md' fontWeight={'bold'} fontStyle={'italic'} color={useColorModeValue('#BF7604', '#FFA10F')}> Full-Stack Developer | 201801130@iacademy.edu.ph | (+63) 949-846-0846</Text></Center>
-                    <br />
-                    <Center><Text fontSize='2xl' fontWeight={'bold'} color={useColorModeValue('#29226E', '#B2A3FF')}> Jomari L. Matias</Text></Center>
-                    <Center><Text fontSize='sm' fontWeight={'bold'} fontStyle={'italic'} color={useColorModeValue('#BF7604', '#FFA10F')}> UX Designer / Content Manager | 201801253@iacademy.edu.ph | (+63) 998-084-4162</Text></Center>
-                    <br />
-                    <Center><Text fontSize='2xl' fontWeight={'bold'} color={useColorModeValue('#29226E', '#B2A3FF')}> Richie Gene R. Tan</Text></Center>
-                    <Center><Text fontSize='sm' fontWeight={'bold'} fontStyle={'italic'} color={useColorModeValue('#BF7604', '#FFA10F')}> Full-Stack Developer / Creative Director | 201801273@iacademy.edu.ph | (+63) 916-424-9531</Text></Center>
-                    <br />
-                    <Center><Text fontSize='2xl' fontWeight={'bold'} color={useColorModeValue('#29226E', '#B2A3FF')}> Jose Luis P. Tandayu</Text></Center>
-                    <Center><Text fontSize='md' fontWeight={'bold'} fontStyle={'italic'} color={useColorModeValue('#BF7604', '#FFA10F')}> Full-Stack Developer | 201801312@iacademy.edu.ph | (+63) 916-418-7235</Text></Center>
-                    </Box> 
-                </Box>
+                </Box>             
             </Box>
         </main>
     )

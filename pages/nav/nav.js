@@ -58,6 +58,9 @@ export default function Nav({id}){
     const { API_URL } = process.env
     const { API_KEY } = process.env
 
+    const changeColor = useColorModeValue('#C1272D', '#FF5C61')
+    const changeColor2 = useColorModeValue('#1B1464', '#B2A3FF') 
+
     const { colorMode, toggleColorMode } = useColorMode()
     colorMode === 'light' ? 'dark' : 'light'
 
@@ -200,7 +203,7 @@ export default function Nav({id}){
             removeCookie('encrypted_id');
             removeCookie('profile_pic');
             removeCookie('display_name');
-            router.push('/')
+            router.push('/login')
         }).catch((error)=>console.log(error.response))
 
 
@@ -234,13 +237,13 @@ export default function Nav({id}){
             </Flex>
             <Spacer />
                 <form action='/search' method='POST' onSubmit={searchItem}>
-                    <Input fontFamily={'Raleway'} fontWeight={'bold'} fontStyle={'italic'} placeholder='SEARCH' display={['none','none','none','flex']} w='30vw' type='text' mt={7} mr='25vw' onChange={(e)=>setSearch(e.target.value)} boxShadow='md' />
+                    <Input fontFamily={'Raleway'} fontWeight={'light'} placeholder='Looking for something?' display={['none','none','none','flex']} w='30vw' type='text' mt={7} mr='25vw' onChange={(e)=>setSearch(e.target.value)} borderColor={useColorModeValue('black', 'white')} />
                 </form>
             <Spacer />
         <Flex
             pos='fixed'
             top='1rem'
-            right='1rem'
+            right='3rem'
             align='center'
         >
 
@@ -253,14 +256,14 @@ export default function Nav({id}){
                         my={2}
                         w='100%'
                         position='static'
-                        color={Router.pathname === "/home" ? useColorModeValue('#C1272D', '#FF5C61') : useColorModeValue('#1B1464', '#B2A3FF')}
+                        color={Router.pathname === "/home" ? changeColor : changeColor2}
                         textDecoration={Router.pathname === "/home" ? 'underline' : 'none'}
                         _hover={{cursor:'pointer', textDecoration:'underline', color: useColorModeValue('#C1272D', '#FF5C61')}}
                         fontFamily={'Raleway'}
                         fontWeight={'bold'}
                         size='lg'
                     >
-                        HOME
+                        Home
                     </Button>
                 </Link>
                 <Link href="/critique" as='/critique' passHref>
@@ -272,14 +275,14 @@ export default function Nav({id}){
                         mr={2}
                         w='100%'
                         position='static'
-                        color={Router.pathname === "/critique" ?  useColorModeValue('#C1272D', '#FF5C61') : useColorModeValue('#1B1464', '#B2A3FF')} 
+                        color={Router.pathname === "/critique" ?  changeColor : changeColor2} 
                         textDecoration={Router.pathname === "/critique" ? 'underline' : 'none'}
                         _hover={{cursor:'pointer', textDecoration:'underline', color: useColorModeValue('#C1272D', '#FF5C61')}}
                         fontFamily={'Raleway'}
                         fontWeight={'bold'}
                         size='lg'
                     >
-                        CRITIQUE
+                        Critique
                     </Button>
                 </Link>
                 <Link href="/feedback" passHref>
@@ -290,14 +293,14 @@ export default function Nav({id}){
                         my={2}
                         w='100%'
                         position='static'
-                        color={Router.pathname === "/feedback" ?  useColorModeValue('#C1272D', '#FF5C61') : useColorModeValue('#1B1464', '#B2A3FF')}
+                        color={Router.pathname === "/feedback" ?  changeColor : changeColor2}
                         textDecoration={Router.pathname === "/feedback" ? 'underline' : 'none'}
                         _hover={{cursor:'pointer', textDecoration:'underline', color: useColorModeValue('#C1272D', '#FF5C61')}}
                         fontFamily={'Raleway'}
                         fontWeight={'bold'}
                         size='lg'
                     >
-                        FEEDBACK
+                        Feedback
                     </Button>
                 </Link>
                 <Popover>
@@ -326,7 +329,7 @@ export default function Nav({id}){
                     <PopoverContent w="400px">
                         <PopoverArrow />
                         <PopoverCloseButton />
-                        <PopoverHeader fontFamily={'Raleway'}>NOTIFICATIONS</PopoverHeader>
+                        <PopoverHeader fontFamily={'Raleway'}>Notifications</PopoverHeader>
                         <PopoverBody fontFamily={'Raleway'}>
                             {notif.map((notification, i) =>
                             <Box key={i} display='flex'>
@@ -352,14 +355,14 @@ export default function Nav({id}){
                         {/* <Image src=""></Image> */}
                         {/* <Img src='https://www.clipartmax.com/png/middle/119-1198197_anonymous-person-svg-png-icon-free-download-anonymous-icon-png.png' w='2vw' h='2vw'></Img> */}
                         <Img src={profPic} w='2vw' h='2vw'></Img>
-                        <Text fontFamily={'Raleway'} fontWeight={'bold'} mt={2} ml={1}>{display_name}</Text>
+                        {/* <Text fontFamily={'Raleway'} fontWeight={'bold'} mt={2} ml={1}>{display_name}</Text> */}
                         {/* <Text ml={1} mr={3}>{user_id}</Text> */}
                         <ChevronDownIcon ml={1} mt={3} />
                     </Flex>  
                     </MenuButton>
                     <MenuList>
-                        <MenuItem fontFamily={'Raleway'} fontWeight={'bold'}><Link href={`/profile/${display_name}`} passHref>PROFILE</Link></MenuItem>
-                        <MenuItem fontFamily={'Raleway'} fontWeight={'bold'} color="red" _hover={{ bg: 'red.500', color: 'white' }} onClick={logOut}>LOG OUT</MenuItem>
+                        <MenuItem fontFamily={'Raleway'} fontWeight={'bold'}><Link href={`/profile/${display_name}`} passHref>Profile</Link></MenuItem>
+                        <MenuItem fontFamily={'Raleway'} fontWeight={'bold'} color="red" _hover={{ bg: 'red.500', color: 'white' }} onClick={logOut}>Logout</MenuItem>
                     </MenuList>
                 </Menu>
 
@@ -411,7 +414,7 @@ export default function Nav({id}){
                     </Button>
                 </Link>
                 <form action='/search' method='POST' onSubmit={searchItem}>
-                    <Input fontFamily={'Raleway'} fontWeight={'bold'} fontStyle={'italic'} w='50vw' type='text' mt={7} placeholder='SEARCH' onChange={(e)=>setSearch(e.target.value)} boxShadow={'md'} />
+                    <Input fontFamily={'Raleway'} fontWeight={'light'} w='50vw' type='text' mt={7} placeholder='Looking for something?' onChange={(e)=>setSearch(e.target.value)} boxShadow={'md'} />
                 </form>
                 <Link href="/home" passHref>
                     <Button
@@ -420,11 +423,11 @@ export default function Nav({id}){
                         aria-label='Home'
                         my={5}
                         w='100%'
-                        color={Router.pathname === "/home" ? useColorModeValue('#C1272D', '#FF5C61') : useColorModeValue('#1B1464', '#B2A3FF')}
+                        color={Router.pathname === "/home" ? changeColor : changeColor2}
                         textDecoration={Router.pathname === "/home" ? 'underline' : 'none'}
                         _hover={{cursor:'pointer', textDecoration:'underline', color: useColorModeValue('#C1272D', '#FF5C61')}}
                     >
-                        HOME
+                        Home
                     </Button>
                 </Link>
                 <Link href="/critique" as='/critique' passHref>
@@ -434,11 +437,11 @@ export default function Nav({id}){
                         aria-label='Home'
                         my={5}
                         w='100%'
-                        color={Router.pathname === "/critique" ? useColorModeValue('#C1272D', '#FF5C61') : useColorModeValue('#1B1464', '#B2A3FF')}
+                        color={Router.pathname === "/critique" ? changeColor : changeColor2}
                         textDecoration={Router.pathname === "/critique" ? 'underline' : 'none'}
                         _hover={{cursor:'pointer', textDecoration:'underline', color: useColorModeValue('#C1272D', '#FF5C61')}}
                     >
-                        CRITIQUE
+                        Critique
                     </Button>
                 </Link>
                 <Link href="/feedback" passHref>
@@ -448,11 +451,11 @@ export default function Nav({id}){
                         aria-label='Home'
                         my={5}
                         w='100%'
-                        color={Router.pathname === "/feedback" ? useColorModeValue('#C1272D', '#FF5C61') : useColorModeValue('#1B1464', '#B2A3FF')}
+                        color={Router.pathname === "/feedback" ? changeColor : changeColor2}
                         textDecoration={Router.pathname === "/feedback" ? 'underline' : 'none'}
                         _hover={{cursor:'pointer', textDecoration:'underline', color: useColorModeValue('#C1272D', '#FF5C61')}}
                     >
-                        FEEDBACK
+                        Feedback
                     </Button>
                 </Link>
                 <Link href="/profile/[id]" as={`/profile/${user_id}`} passHref>
@@ -462,11 +465,11 @@ export default function Nav({id}){
                         aria-label='Home'
                         my={5}
                         w='100%'
-                        color={Router.pathname === "/profile" ? useColorModeValue('#C1272D', '#FF5C61') : useColorModeValue('#1B1464', '#B2A3FF')}
+                        color={Router.pathname === "/profile" ? changeColor: changeColor2}
                         textDecoration={Router.pathname === "/profile" ? 'underline' : 'none'}
                         _hover={{cursor:'pointer', textDecoration:'underline', color: useColorModeValue('#C1272D', '#FF5C61')}}
                     >
-                        <Link href={`/profile/${display_name}`} passHref>PROFILE</Link>
+                        <Link href={`/profile/${display_name}`} passHref>Profile</Link>
                     </Button>
                 </Link>
                     <Button
@@ -482,7 +485,7 @@ export default function Nav({id}){
                         rounded='none'
                         onClick={logOut}
                     >
-                    <Img src={useColorModeValue('/power-icon-dark.png', '/power-icon.png')} alt="Critique Hall Message Logo" w="2em" h="2em" mr={2} />LOG OUT
+                    <Img src={useColorModeValue('/power-icon-dark.png', '/power-icon.png')} alt="Critique Hall Message Logo" w="2em" h="2em" mr={2} />Logout
                     </Button>
             </Flex> 
         </Flex>

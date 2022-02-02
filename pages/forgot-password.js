@@ -17,7 +17,7 @@ import {
   FormHelperText,
 } from "@chakra-ui/react"
 import { useState } from 'react'
-import { useColorModeValue } from '@chakra-ui/react';
+import { useColorMode, useColorModeValue } from '@chakra-ui/react';
 import { createBreakpoints } from '@chakra-ui/theme-tools'
 import React from 'react';
 import { useToast } from '@chakra-ui/react'
@@ -42,6 +42,19 @@ export default function ForgotPassword(){
   const [email, setEmail] = useState('')
   const toast = useToast()
   const toastIdRef = React.useRef()
+
+  const { colorMode, toggleColorMode } = useColorMode()
+  colorMode === 'light' ? 'Dark' : 'Light'
+  const [ImgUrl, setImgUrl] = useState('dark-and-light.png')
+
+  const changeDarkAndLightIcon = () => {
+    toggleColorMode()
+    if(colorMode === 'light'){
+        setImgUrl('light-mode-icon.png')
+    }else {
+        setImgUrl('dark-mode-icon.png')
+    }
+  }
 
   const forgotPassword = async () =>{
 
@@ -85,14 +98,27 @@ export default function ForgotPassword(){
         
         <Box className={styles.main} bg={useColorModeValue('white', '#212121')} w={{lg: '100ch' , md: '100%' , sm: '100%', base: '100%' }} >
             <center>
+            <Button
+                        as='a'
+                        variant='ghost'
+                        aria-label='Home'
+                        my={2}
+                        ml={4}
+                        w='50%'
+                        onClick={changeDarkAndLightIcon}
+                        _hover={{cursor:'pointer'}}
+                        _active={{bgColor: 'none'}}
+                    >
+                        <Image className={styles.darkicon} src={ImgUrl} alt="darkmode" w="2em" h="2em" ml={'15em'} />
+                    </Button>
             <div className={styles.logo}>
-            <Link href="/" passHref><Image src={useColorModeValue('critiquehall.png', 'critiquehall-dark.png')} alt="Critique Hall Logo"/></Link>
+            <Image src={useColorModeValue('critiquehall.png', 'critiquehall-dark.png')} alt="Critique Hall Logo"/>
             </div>
 
             <Heading fontFamily={'Raleway'} mb={'10%'} as="h2" size="lg" color={useColorModeValue('#1B1464','#B2A3FF')}>Forgot Password</Heading>
             <center><FormControl id="forgotpassword" action="/home">
                 <FormLabel>iACADEMY Email</FormLabel>
-                <Input borderColor={'black'} size='lg' width={'40vh'} className={styles.input_box} type="email" value={email} onChange={e => setEmail(e.target.value)}/>
+                <Input borderColor={useColorModeValue('black', 'white')} size='lg' width={'40vh'} className={styles.input_box} type="email" value={email} onChange={e => setEmail(e.target.value)}/>
                 {/* <FormHelperText className={styles.helperText}>This field is required.</FormHelperText> */}
                 <br/>
                 {/* <Popover
@@ -124,7 +150,7 @@ export default function ForgotPassword(){
             </FormControl></center>
 
             <p className={styles.register}>
-            <Link href="./login" passHref><Text _hover={{cursor:'pointer'}} fontSize='md' color={useColorModeValue('#1BA3C1', '#1BA3C1')}><a>Back to Login</a></Text></Link>
+            <Link href="./login" passHref><Text _hover={{cursor:'pointer'}} fontSize='lg' color={useColorModeValue('#1BA3C1', '#1BA3C1')}><a>Back to Login</a></Text></Link>
             </p>
             </center>
 

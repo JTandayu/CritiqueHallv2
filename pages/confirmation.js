@@ -1,6 +1,6 @@
 import Head from 'next/head'
 // import Image from 'next/image'
-import styles from "@styles/ForgotPassword.module.css";
+import styles from "@styles/ConfirmAccount.module.css";
 import { css, cx } from '@emotion/react'
 import { motion } from "framer-motion"
 import Home from './home'
@@ -102,15 +102,13 @@ export default function ConfirmationPage(){
              alt="Critique Hall Logo"/></Link>
             </div>
 
-            <Heading fontFamily={'Raleway'} mb={2} as="h2" size="lg" color={useColorModeValue('#1B1464','#B2A3FF')}>CONFIRM VERIFICATION</Heading>
-            <p className={styles.description}>Kindly enter the verification code to verify your account</p>
+            <Heading fontFamily={'Raleway'} mb={10} as="h2" size="lg" color={useColorModeValue('#1B1464','#B2A3FF')}>Confirm Verification</Heading>
+            {/* <p className={styles.description}>Kindly enter the verification code to verify your account</p> */}
             <center><FormControl id="forgotpassword" isRequired>
-                <Input fontWeight={'bold'} size='lg' placeholder="6-Digit Code" className={styles.input_box} type="text" value={code} onChange={e => setCode(e.target.value)}/>
-                <FormHelperText className={styles.helperText}>This field is required.</FormHelperText>
+                <Input borderColor={useColorModeValue('black', 'white')} fontWeight={'bold'} size='lg' placeholder="6-Digit Code" className={styles.input_box} type="text" value={code} onChange={e => setCode(e.target.value)}/>
+                {/* <FormHelperText className={styles.helperText}>This field is required.</FormHelperText> */}
                 <br/>
                 <Button
-                  whileHover={{ scale: 1.2 }}
-                  whileTap={{ scale: 0.9 }}
                   className={styles.login_button}
                   bgColor={useColorModeValue('#0C1F83', '#2346FF')}
                   color={useColorModeValue('white', 'white')}
@@ -118,7 +116,7 @@ export default function ConfirmationPage(){
                   size="lg"
                   onClick={accountVerification}
                   >
-                VERIFY ACCOUNT
+                Verify
                 </Button>
                 {/* <Popover
                 placement="bottom"

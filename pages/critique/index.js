@@ -39,7 +39,7 @@ import { Text } from '@chakra-ui/react'
 import { useEffect, useState } from 'react'
 import axios from 'axios'
 import Pagination from '@choc-ui/paginator'
-import React,{forwardRef} from "react";
+import React, {forwardRef} from "react";
 import { useCookies } from 'react-cookie'
 import EditPost from '@component/post/options/edit'
 import ReportPost from '@component/report-post'
@@ -95,6 +95,9 @@ export default function HallPage({}){
     const [hall, setHalls] =  useState('0')
     const [hallNum, setHallNum] = useState([])
     const [hallList, setHallList] = useState([])
+
+    const changeColor = useColorModeValue('#BAB9B9', '#1F1F1F')
+
 
     const [cookie, setCookie] = useCookies('token', 'encrypted_id', 'id')
 
@@ -271,64 +274,64 @@ export default function HallPage({}){
             <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@700&display=swap" rel="stylesheet" />
             </Head>
             
-            <Button w={{lg: "70%" , sm: '100%'}} mb="5" mx="auto" p="4" mt="14vh" spacing="10" h="100px" top={0} className={styles.halls} variant="none" href="" onClick={getAll} boxShadow={'dark-lg'}>
+            <Button w={{lg: "70%" , sm: '100%'}} mb="5" mx="auto" p="4" mt="14vh"  h="100px" top={0} className={styles.halls} variant="none" href="" onClick={getAll} boxShadow={'lg'}>
                 {/* <Box w={{lg: "70%" , sm: '100%'}} mb="5" mx="auto" p="4" mt="14vh" spacing="10" h="100px" top={0} bg="blue.400"> */}
-                    <Center><Heading fontFamily={'Raleway'} size="2xl" align="center" mt="2" mb="4" color="white">HALLS</Heading></Center>
+                    <Heading fontFamily={'Raleway'} fontWeight={'black'} size="4xl" align="center" mt="4" mb="4" color="white">HALLS</Heading>
                 {/* </Box> */}
             </Button>
             
             {/* Halls */}
             <Box mt="3vh" w="70%" h='200px' display={{lg: 'flex', md: 'flex', sm: 'none'}} mx="auto" mb="" top="0">
                 
-                <Button variant='ghost' w="200px" h="100px" className={styles.technology} rounded="lg" position='static' _hover={{backgroundColor: '#92278F'}} _active={{backgroundColor: '#92278F'}} onClick={getTechnology} boxShadow={'dark-lg'}>
+                <Button variant='ghost' w="200px" h="100px" className={styles.technology} rounded="lg" position='static' _hover={{backgroundColor: '#92278F'}} _active={{backgroundColor: '#92278F'}} onClick={getTechnology} boxShadow={'lg'}>
                 <Box w="full" h="10vh" ml={{lg: 0, sm: 0}}  px='5'>
                     <Center>
                     <Text fontFamily={'Raleway'} fontSize="3xl" color="white" my="auto" mt="5" textShadow="1px 1px #000">Technology</Text>
                     </Center>
-                    <Center>
+                    {/* <Center>
                         <Heading fontFamily={'Raleway'} size="xs" color="white" mt="1" textShadow="1px 1px #000">Post:</Heading>
-                    </Center>
+                    </Center> */}
                     
                 </Box>
                 </Button>
 
                 <Spacer />
 
-                <Button variant='ghost' w="200px" h="100px" className={styles.arts} rounded="lg" position='static' _hover={{backgroundColor: '#00AEEF'}} _active={{backgroundColor: '#00AEEF'}} onClick={getArts} boxShadow={'dark-lg'}>
+                <Button variant='ghost' w="200px" h="100px" className={styles.arts} rounded="lg" position='static' _hover={{backgroundColor: '#00AEEF'}} _active={{backgroundColor: '#00AEEF'}} onClick={getArts} boxShadow={'lg'}>
                 <Box w="full" h="10vh" ml={{lg: 0, sm: 0}} rounded="lg" px='9'>
                     <Center>
                     <Text fontFamily={'Raleway'} fontSize="3xl" color="white" my="auto" mt="5" textShadow="1px 1px #000">Arts</Text>
                     </Center>
-                    <Center>
+                    {/* <Center>
                         <Heading fontFamily={'Raleway'} size="xs" color="white" mt="1" textShadow="1px 1px #000">Post:</Heading>
-                    </Center>
+                    </Center> */}
                     
                 </Box>
                 </Button>
 
                 <Spacer />
 
-                <Button variant='ghost' w="200px" h="100px" className={styles.business} rounded="lg" position='static' _hover={{backgroundColor: '#9E0B0F'}} _active={{backgroundColor: '#9E0B0F'}} onClick={getBusiness} boxShadow={'dark-lg'}>
+                <Button variant='ghost' w="200px" h="100px" className={styles.business} rounded="lg" position='static' _hover={{backgroundColor: '#9E0B0F'}} _active={{backgroundColor: '#9E0B0F'}} onClick={getBusiness} boxShadow={'lg'}>
                 <Box w="full" h="10vh" ml={{lg: 0, sm: 0}} rounded="lg" px='9' >
                     <Center>
                     <Text fontFamily={'Raleway'} fontSize="3xl" color="white" my="auto" mt="5" textShadow="1px 1px #000">Business</Text>
                     </Center>
-                    <Center>
+                    {/* <Center>
                         <Heading fontFamily={'Raleway'} size="xs" color="white" mt="1" textShadow="1px 1px #000">Post: </Heading>
-                    </Center>
+                    </Center> */}
                 </Box>
                 </Button>
 
                 <Spacer />
 
-                <Button variant='ghost' w="200px" h="100px" className={styles.lounge} rounded="lg" position='static' _hover={{backgroundColor: '#00A99D'}} _active={{backgroundColor: '#00A99D'}} onClick={getLounge} boxShadow={'dark-lg'}>
+                <Button variant='ghost' w="200px" h="100px" className={styles.lounge} rounded="lg" position='static' _hover={{backgroundColor: '#00A99D'}} _active={{backgroundColor: '#00A99D'}} onClick={getLounge} boxShadow={'lg'}>
                 <Box w="full" h="10vh" ml={{lg: 0, sm: 0}} rounded="lg" px='9'>
                     <Center>
-                    <Text fontFamily={'Raleway'} fontSize="3xl" color="white" my="auto" mt="5" textShadow="1px 1px #000">Lounge</Text>
+                    <Text fontFamily={'Raleway'} fontSize="3xl" color="white" my="auto" mt="5" borderColor={'black'}>Lounge</Text>
                     </Center>
-                    <Center>
+                    {/* <Center>
                         <Heading fontFamily={'Raleway'} size="xs" color="white" mt="1" textShadow="1px 1px #000">Post: </Heading>
-                    </Center>
+                    </Center> */}
                 </Box>
                 </Button>
             </Box>
@@ -388,7 +391,7 @@ export default function HallPage({}){
                 <Box w={{lg: "70%" , sm: '100%'}} h="full" mx="auto" p="3" spacing="10">
                     {/* Critique Item */}
                     {currentPosts.map((post, i) => 
-                            <Box bgColor={useColorModeValue('#BAB9B9', '#1F1F1F')} w="100%" display={{lg: 'flex', sm: 'block'}} key={post.post_id} mt='2ch' borderColor='white' border='1px solid gray.500' boxShadow='lg' rounded='lg'>
+                            <Box bgColor={changeColor} w="100%" display={{lg: 'flex', sm: 'block'}} key={post.post_id} mt='2ch' borderColor='white' border='1px solid gray.500' boxShadow='lg' rounded='lg'>
                                 <Link href='/post/[id]'  as={`/post/${post.post_id}`} passHref>
                                 <a>
                                 <Box display={{lg: 'flex', sm: 'block'}} w={{lg: "50vw", sm: '100%'}}>

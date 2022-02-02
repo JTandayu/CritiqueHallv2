@@ -84,9 +84,9 @@
   }
 
   .halls {
-    background-image: url("/discussions.png");
-    background-position: right;
-    background-repeat: no-repeat;
+    /* background-image: url("/discussions.png");
+    background-position: center;
+    background-repeat: repeat; */
     background-color: #3778DA;
   }
 

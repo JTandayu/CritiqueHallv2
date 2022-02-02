@@ -1,3 +1,22 @@
 .container {
+    background-image: url("/Background1.png");
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-position: bottom;
     background-color: #F4F4F4;
-}
+    opacity: 1;
+    min-height: 100vh;
+    max-height: 100%;
+
+  }
+
+  .container2 {
+    background-image: url("/Background1.png");
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-position: bottom;
+    background-color: #2E2E2E;
+    opacity: 1;
+    min-height: 100vh;
+    max-height: 100%;
+  }
