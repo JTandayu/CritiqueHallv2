@@ -87,6 +87,9 @@ export default function Login({user}) {
           setCookies('encrypted_id', response.data.encrypted_id)
           setCookies('profile_pic', response.data.profile_pic)
           document.getElementById('warning1').hidden=true;
+          if(response.data.status === "Email not verified"){
+            router.push("/confirmation")
+          }
           // window.location.href = "/home"
           router.push("/home")
       })
