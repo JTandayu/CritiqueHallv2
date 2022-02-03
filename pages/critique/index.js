@@ -89,7 +89,7 @@ export default function HallPage({}){
     const toast = useToast()
 
     const [posts, setPosts] = useState([])
-    const [loading, setLoading] = useState(false)
+    const [loading, setLoading] = useState(true)
     const [currentPage, setCurrentPage] = useState(1)
     const [postsPerPage, setPostsPerPage] = useState(5)
     const [hall, setHalls] =  useState('0')
@@ -266,6 +266,7 @@ export default function HallPage({}){
 
     return(
         <>
+        
         <main className={useColorModeValue(styles.container, styles.container2)}>
             <Head>
             <title>Critique Hall | Critique</title>
@@ -390,7 +391,8 @@ export default function HallPage({}){
             <Box w="100%" h="100%" spacing="10px" mt="2">
                 <Box w={{lg: "70%" , sm: '100%'}} h="full" mx="auto" p="3" spacing="10">
                     {/* Critique Item */}
-                    {currentPosts.map((post, i) => 
+                    {loading ? <Box>Loading...</Box> : 
+                    currentPosts.map((post, i) => 
                             <Box bgColor={changeColor} w="100%" display={{lg: 'flex', sm: 'block'}} key={post.post_id} mt='2ch' borderColor='white' border='1px solid gray.500' boxShadow='lg' rounded='lg'>
                                 <Link href='/post/[id]'  as={`/post/${post.post_id}`} passHref>
                                 <a>
@@ -428,7 +430,8 @@ export default function HallPage({}){
                                                
                             </Box>
                             
-                    )}
+                    )
+                    }
                 </Box>
             </Box>
 

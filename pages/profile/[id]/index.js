@@ -68,6 +68,7 @@ export default function ProfilePage({data}){
     const [userCritique, setUserCritique] = useState([])
     const [filter, setFilter] = useState('newest')
     const [encID, setEncId] = useState("")
+    const [loading, setLoading] = useState(true)
 
     const config = {
         headers: { 
@@ -244,6 +245,7 @@ export default function ProfilePage({data}){
                         </Select>
                     </Flex>
                 </Box>
+                {loading ? 
                 <Box display='flex' h={{lg: '30vh', sm: '40vh'}} p={3} mt={5} ml={3} mr={3}  rounded='lg' overflowX='auto'>
                     <Box id='posts' display='flex'>
                         {userPosts !== null ?
@@ -286,6 +288,7 @@ export default function ProfilePage({data}){
                         ) : null }
                     </Box>
                 </Box>
+                : null }
             </Box>
         </main>
     )

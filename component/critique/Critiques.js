@@ -44,6 +44,7 @@ export const Critiques = ({id}) => {
     const [reply, setReply] = useState('')
     const [lastId, setLastID] =  useState('0')
     const [filter, setFilter] = useState('desc')
+    const [loading, setLoading] = useState(true)
     // const [newPostCritique, setNewPostCritique] = useState(newPost)
     // const filterCritique = filter;
     // console.log(filter)
@@ -71,6 +72,7 @@ export const Critiques = ({id}) => {
         .then((response) =>{
             console.log(response.data)
             setCritiqueItems(response.data.data)
+            setLoading(true)
             // document.getElementById(response.data.data.critique_id).hidden=true
             console.log(response.data.data[0])
             
@@ -195,7 +197,8 @@ export const Critiques = ({id}) => {
 
 
             <Box overflowY="scroll" h={{lg: '80vh', sm: '70vh'}} mt={5}>
-            {critiqueItems.map((critique) => { 
+            {loading ? <Box>Loading...</Box> :
+            critiqueItems.map((critique) => { 
                 if(critique.display_name === cookie.display_name){
                 return(
                     <>

@@ -21,16 +21,21 @@ function MyApp({ Component, pageProps }) {
     switch (Component.name) {
       case "Login":
           return <ChakraProvider theme={theme}><Component {...pageProps} /></ChakraProvider>;
+          break;
       case "Register":
           return <ChakraProvider theme={theme}><Component {...pageProps} /></ChakraProvider>;
+          break;
     //   case "Register2":
     //       return <ChakraProvider theme={theme}><Component {...pageProps} /></ChakraProvider>;
       case "ForgotPassword":
           return <ChakraProvider theme={theme}><Component {...pageProps} /></ChakraProvider>;
+          break;
       case "ResetPassword":
           return <ChakraProvider theme={theme}><Component {...pageProps} /></ChakraProvider>;
+          break;
       case "ConfirmationPage":
           return <ChakraProvider theme={theme}><Component {...pageProps} /></ChakraProvider>;
+          break;
       case "Welcome":
           return <ChakraProvider theme={theme}><GuestLayout><Component {...pageProps} /></GuestLayout></ChakraProvider>;
       default:
@@ -43,6 +48,7 @@ function MyApp({ Component, pageProps }) {
             </Layout>
           </ChakraProvider>
         );
+        break;
     }
 }
 
