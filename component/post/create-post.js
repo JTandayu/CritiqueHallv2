@@ -190,8 +190,8 @@ function CreatePost({data}) {
             'X-API-KEY': `${API_KEY}`,
             'Authorization': 'Basic Y2Fwc3RvbmUyMDIxOjEyMzQ=',
             'Accept': 'application/json',
-            'token': token,
-            'user_id': enc_id
+            'Token': token,
+            'User-Id': enc_id
             }
         }
 

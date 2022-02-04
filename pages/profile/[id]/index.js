@@ -77,8 +77,8 @@ export default function ProfilePage({data}){
             'Authorization': 'Basic Y2Fwc3RvbmUyMDIxOjEyMzQ=',
             // 'Accept-Encoding': 'gzip, deflate, br',
             'Accept': 'application/json',
-            'token': cookies.token,
-            'user_id': cookies.encrypted_id
+            'Token': cookies.token,
+            'User-Id': cookies.encrypted_id
         }
     }
 

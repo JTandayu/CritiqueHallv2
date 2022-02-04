@@ -32,8 +32,8 @@ export default function Custom404() {
           'Authorization': 'Basic Y2Fwc3RvbmUyMDIxOjEyMzQ=',
           // 'Accept-Encoding': 'gzip, deflate, br',
           'Accept': 'application/json',
-          'token': cookie.token,
-          'user_id': cookie.encrypted_id
+          'Token': cookie.token,
+          'User-Id': cookie.encrypted_id
         }
     }
     

@@ -57,8 +57,8 @@ export const Critiques = ({id}) => {
           'X-API-KEY': `${API_KEY}`,
           'Authorization': 'Basic Y2Fwc3RvbmUyMDIxOjEyMzQ=',
           'Accept': 'application/json',
-          'token': cookie.token,
-          'user_id': cookie.encrypted_id
+          'Token': cookie.token,
+          'User-Id': cookie.encrypted_id
         }
     };
 

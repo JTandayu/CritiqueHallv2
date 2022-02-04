@@ -72,8 +72,8 @@ export default function SearchResult(){
             'Authorization': 'Basic Y2Fwc3RvbmUyMDIxOjEyMzQ=',
             // 'Accept-Encoding': 'gzip, deflate, br',
             'Accept': 'application/json',
-            'token': cookies.token,
-            'user_id': cookies.encrypted_id
+            'Token': cookies.token,
+            'User-Id': cookies.encrypted_id
         }
     }
     console.log(searchPostData.length)

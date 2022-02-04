@@ -106,8 +106,8 @@ export default function Nav({id}){
                 'Authorization': 'Basic Y2Fwc3RvbmUyMDIxOjEyMzQ=',
                 // 'Accept-Encoding': 'gzip, deflate, br',
                 'Accept': 'application/json',
-                'token': cookies.token,
-                'user_id': cookies.encrypted_id
+                'Token': cookies.token,
+                'User-Id': cookies.encrypted_id
             }
         }
 
@@ -185,8 +185,8 @@ export default function Nav({id}){
                 'Authorization': 'Basic Y2Fwc3RvbmUyMDIxOjEyMzQ=',
                 // 'Accept-Encoding': 'gzip, deflate, br',
                 'Accept': 'application/json',
-                'token': cookies.token,
-                'user_id': cookies.encrypted_id
+                'Token': cookies.token,
+                'User-Id': cookies.encrypted_id
             }
         }
         let formData = new FormData;
@@ -214,6 +214,12 @@ export default function Nav({id}){
         // removeCookie('encrypted_id');
         // removeCookie('profile_pic');
         // removeCookie('display_name');
+    }
+
+    const readNotif = () =>{
+        changeDarkAndLightIcon()
+
+        axios.get
     }
 
     return(
@@ -322,7 +328,7 @@ export default function Nav({id}){
                             my={2}
                             w='100%'
                             position='static'
-                            onClick={changeDarkAndLightIcon}
+                            onClick={readNotif}
                             _hover={{cursor:'pointer'}}
                             _active={{bgColor: 'none'}}
                             > <Img src={ImgUrl} alt="moon" w="2em" h="2em" ml={-20} /></Button>
