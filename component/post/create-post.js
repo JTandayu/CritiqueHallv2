@@ -20,7 +20,7 @@ import {
     AlertTitle,
     AlertDescription,
   } from '@chakra-ui/react'
-import { useDisclosure, useColorModeValue, useToast } from '@chakra-ui/react'
+import { useDisclosure, useColorModeValue } from '@chakra-ui/react'
 import { Button } from '@chakra-ui/react'
 import styles from "@styles/Hall.module.css";
 import { Box } from '@chakra-ui/react'
@@ -49,7 +49,7 @@ const breakpoints = createBreakpoints({
 export async function getStaticProps(){
     const { API_URL } = process.env
     const { API_KEY } = process.env
-    const toast = useToast()
+    // const toast = useToast()
 
     const res = await fetch(`${API_URL}/api/get_halls`, {
         method: 'GET',
