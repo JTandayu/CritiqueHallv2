@@ -32,6 +32,7 @@ import { storage } from '../firebase.js'
 import { getDownloadURL, ref, uploadBytesResumable } from 'firebase/storage'
 import {useCookies} from 'react-cookie'
 import axios from "axios";
+import { useRouter } from "next/router";
 
 // export async function getServerSideProps(context) {
 //     const res = await fetch(`https://...`)
@@ -50,6 +51,7 @@ function EditProfile({data}) {
     const { isOpen, onOpen, onClose } = useDisclosure()
     const { colorMode, toggleColorMode } = useColorMode()
     colorMode === 'light' ? 'Dark' : 'Light'
+    const router = useRouter();
 
     // console.log(data)
 
@@ -67,6 +69,8 @@ function EditProfile({data}) {
     const [aboutMe, setAboutMe] = useState(data.about_me)
     const [currentPassword, setCurrentPassword] = useState('')
     const [newPassword, setNewPassword] = useState('')
+    const [uploadProfileDone, setUploadProfileDone] = useState(false)
+    const [uploadCoverDone, setUploadCoverDone] = useState(false)
     const [confirmPassword, setConfirmPassword] = useState('')
     // console.log(profileImageUrl)
     
@@ -113,7 +117,7 @@ function EditProfile({data}) {
     //     setDarkState(value)
     // }
 
-    const uploadFiles = async() => {
+    const uploadFiles = () => {
       // console.log(storage)
 
     //   if (!profileImage) return;
@@ -131,7 +135,7 @@ function EditProfile({data}) {
         .then(url => {
         console.log(url)
         setProfileImageUrl(url)
-        
+        setUploadProfileDone(true);
         })
       }
       );
@@ -150,9 +154,14 @@ function EditProfile({data}) {
         .then(url => {
             console.log(url)
             setCoverImageUrl(url)
+            setUploadCoverDone(true);
         })
       }
       );
+    }
+    else{
+        setUploadProfileDone(true);
+        setUploadCoverDone(true);
     }
 
     // 
@@ -161,7 +170,10 @@ function EditProfile({data}) {
     const SubmitInfo = (e) =>{
         // console.log(profileImage)
         e.preventDefault()
-        uploadFiles().then(()=>{SubmitPersonalInformation()})
+        uploadFiles()
+        if(uploadProfileDone == true || uploadCoverDone == true){
+            SubmitPersonalInformation()
+        }     
     }
 
     const handleChange = e =>{
@@ -179,7 +191,7 @@ function EditProfile({data}) {
             
     }
 
-    const SubmitPersonalInformation = async () =>{
+    const SubmitPersonalInformation = () =>{
 
         let formData =  new FormData;
         formData.append('first_name', firstName)
@@ -192,9 +204,10 @@ function EditProfile({data}) {
         
         console.log(coverImageUrl)
         axios.post(`${API_URL}/api/change_profile`, formData, config)
-        .then((response) => (
+        .then((response) => {
             console.log(response)
-        )).catch((error) => (
+            router.reload();
+        }).catch((error) => (
             console.log(error.response)
         ))
     }
@@ -235,7 +248,7 @@ function EditProfile({data}) {
                             <Image rounded='full' src={data.profile_photo} w='7vw' h='7vw'></Image>
                             <Center mt={3}>
                                 <input type='file' onChange={(e)=>setProfileImage(e.target.files)}/>
-                                {console.log(profileImage)}
+                                {/* {console.log(profileImage)} */}
                             </Center>
                         </Flex>
                         <Spacer />
@@ -280,7 +293,7 @@ function EditProfile({data}) {
                     </Flex>
                     <Divider mb={5} mt={5}/>
                     <Flex>
-                        <Heading size='md' mb={5}>Privacy and Security</Heading>
+                        <Heading size='md' mb={5}>Change Password</Heading>
                         <Spacer />
                         {/* <Button>Edit</Button> */}
                     </Flex>

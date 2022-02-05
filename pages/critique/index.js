@@ -83,7 +83,7 @@ const theme = extendTheme({ breakpoints })
 //     }
 // }
 
-export default function HallPage({}){
+export default function HallPage(){
     const { API_URL } = process.env
     const { API_KEY } = process.env
     const toast = useToast()
@@ -115,6 +115,21 @@ export default function HallPage({}){
 
     // console.log(cookie.encrypted_id)
     useEffect(() => {
+        const { API_URL } = process.env
+        const { API_KEY } = process.env
+
+        const config = {
+            headers: { 
+              'content-type': 'multipart/form-data',
+              'X-API-KEY': `${API_KEY}`,
+              'Authorization': 'Basic Y2Fwc3RvbmUyMDIxOjEyMzQ=',
+              // 'Accept-Encoding': 'gzip, deflate, br',
+              'Accept': 'application/json',
+              'Token': cookie.token,
+              'User-Id': cookie.encrypted_id
+            }
+          }
+
         axios.get(`${API_URL}/api/posts_pagination/${hall}`, config)
         .then(response => {
             console.log(response.data.posts);
@@ -393,7 +408,7 @@ export default function HallPage({}){
                     {loading ? <Box>Loading...</Box> : 
                     currentPosts.map((post, i) => 
                             <Box bgColor={changeColor} w="100%" display={{lg: 'flex', sm: 'block'}} key={post.post_id} mt='2ch' borderColor='white' border='1px solid gray.500' boxShadow='lg' rounded='lg'>
-                                <Link href='/post/[id]'  as={`/post/${post.post_id}`} passHref>
+                                <Link href={`/post/${post.post_id}`}>
                                 <a>
                                 <Box display={{lg: 'flex', sm: 'block'}} w={{lg: "50vw", sm: '100%'}}>
                                     <Box fontFamily={'Raleway'} p="3" w="100%" bg="light" my='auto'>

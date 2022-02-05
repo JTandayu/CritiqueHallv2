@@ -1,6 +1,5 @@
 import Head from 'next/head'
 // import Image from 'next/image'
-import { css, cx } from '@emotion/react'
 import { motion } from "framer-motion"
 import styles from "@styles/component/Nav.module.css";
 import Link from 'next/link'
@@ -53,32 +52,50 @@ const breakpoints = createBreakpoints({
     xl: '80em',
 })
 
-export async function getServerSideProps(context){
-    const cookies = req.headers.cookie;
-    const data = JSON.parse(cookies)
-    console.log(cookies)
+// export async function getServerSideProps(context){
+//     const cookies = context.req.cookies;
+//     const { API_URL } = process.env
+//     const { API_KEY } = process.env
 
-    return{
-        props:{
-            item: cookies
-        }
-    }
-}
+//     // console.log(cookies)
+//     var profile_pic = '';
+
+//     const res = await fetch(`${API_URL}/api/display_profile/${cookies.display_name}`, {
+//             method: 'GET',
+//             headers: {
+//                 'content-type': 'multipart/form-data',
+//                 'X-API-KEY': `${API_KEY}`,
+//                 'Authorization': 'Basic Y2Fwc3RvbmUyMDIxOjEyMzQ=',
+//                 'Accept': 'application/json',
+//                 'Token': cookies.token,
+//                 'User-Id': cookies.encrypted_id
+//             },
+//         })
+//     const data = await res.json();
+//     console.log(data)
 
 
-export default function Nav({id, item}){
+//     return{
+//         props:{
+//             profile_pic,
+//             data
+//         }
+//     }
+// }
+
+
+export default function Nav(data, profile_pic){
     const { API_URL } = process.env
     const { API_KEY } = process.env
 
     const changeColor = useColorModeValue('#C1272D', '#FF5C61')
     const changeColor2 = useColorModeValue('#1B1464', '#B2A3FF')
-    // console.log(item)
 
     const { colorMode, toggleColorMode } = useColorMode()
     colorMode === 'light' ? 'dark' : 'light'
 
     const [darkMode ,setDarkMode] = useState('')
-    const [ImgUrl, setImgUrl] = useState('/dark-and-light.png')
+    const [ImgUrl, setImgUrl] = useState('/dark-mode-icon.png')
     const router = useRouter();
 
     const changeDarkAndLightIcon = () => {
@@ -112,6 +129,9 @@ export default function Nav({id, item}){
 
 
     useEffect(() => {
+        const { API_URL } = process.env
+        const { API_KEY } = process.env 
+        
         const config = {
             headers: { 
                 'content-type': 'multipart/form-data',
@@ -127,11 +147,11 @@ export default function Nav({id, item}){
 
         axios.get(`${API_URL}/api/display_profile/${cookies.display_name}`, config)
         .then(response => {
-            console.log(response.data);      
+            // console.log(response.data);      
             setProfilePic(response.data.data.user.profile_photo)
         })
         .catch(error => {
-            console.log(error.response.data.error);
+            // console.log(error.response.data.error);
             if(error.response.data.error ==  'User does not exist'){
                 Router.replace('/login')
                 return;
@@ -148,21 +168,21 @@ export default function Nav({id, item}){
 
         axios.get(`${API_URL}/api/get_notifs`, config)
             .then(response => {
-                console.log(response.data);      
+                // console.log(response.data);      
                 setNotif(response.data.status)
             })
             .catch(error => {
-                console.log(error.response.data.error);
+                // console.log(error.response.data.error);
             });
 
         const getNotif = setInterval(()=>{
             axios.get(`${API_URL}/api/get_notifs`, config)
             .then(response => {
-                console.log(response.data);      
+                // console.log(response.data);      
                 setNotif(response.data.status)
             })
             .catch(error => {
-                console.log(error.response.data.error);
+                // console.log(error.response.data.error);
             });
         }, 15000)
 
@@ -172,21 +192,8 @@ export default function Nav({id, item}){
     //Search Function
     const searchItem = async()=>{
 
-        const config = {
-            headers: { 
-            'content-type': 'multipart/form-data',
-            'X-API-KEY': `${API_KEY}`,
-            'Authorization': 'Basic Y2Fwc3RvbmUyMDIxOjEyMzQ=',
-            // 'Accept-Encoding': 'gzip, deflate, br',
-            'Accept': 'application/json',
-            }
-        }
-
         window.location = '/search'
         localStorage.setItem("search-item", search);
-
-        // axios.get('get')
-
     }
 
     //Log-out function

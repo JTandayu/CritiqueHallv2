@@ -29,25 +29,6 @@ export default function Layout({children}){
         formData.append('token', token)
         formData.append('user_id', id)
 
-        const config = {
-            headers: { 
-              'content-type': 'multipart/form-data',
-              'X-API-KEY': `${API_KEY}`,
-              'Authorization': 'Basic Y2Fwc3RvbmUyMDIxOjEyMzQ=',
-              // 'Accept-Encoding': 'gzip, deflate, br',
-              'Accept': 'application/json',
-            }
-        }
-
-        // axios.post(`${API_URL}/api/valid_user`, formData, config)
-        // .then(response => {
-        //     console.log(response.data);
-        // })
-        // .catch(error => {
-        //     console.log(error);
-        //     window.location.href = '/login'
-        // });
-
         if (token === 'undefined'){
             Router.replace('/login')
             return null;
