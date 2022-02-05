@@ -79,6 +79,22 @@ export default function SearchResult(){
     console.log(searchPostData.length)
     
     useEffect(() => {
+        const { API_URL } = process.env
+        const { API_KEY } = process.env
+
+        const config = {
+            headers: { 
+                'content-type': 'multipart/form-data',
+                'X-API-KEY': `${API_KEY}`,
+                'Authorization': 'Basic Y2Fwc3RvbmUyMDIxOjEyMzQ=',
+                // 'Accept-Encoding': 'gzip, deflate, br',
+                'Accept': 'application/json',
+                'Token': cookies.token,
+                'User-Id': cookies.encrypted_id
+            }
+        }
+
+
         // setSearchItem(localStorage.getItem('search-item'))
         const searchItem = localStorage.getItem('search-item')
         setSearch(searchItem)

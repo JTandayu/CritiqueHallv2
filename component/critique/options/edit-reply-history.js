@@ -50,25 +50,26 @@ function EditReplyHistory({id}) {
         axios.get(`${API_URL}/api/version_reply`, formData, config)
         .then((response)=>{
             console.log(response)
-        }).catch((error)=>console.log(error))
+        }).catch((error)=>console.log(error.response))
     }, []);
     
 
     return(
         <>
-        <button onClick={onOpen} ml={5}>History</button>
+        <button onClick={onOpen} ml={5}>Edit History</button>
 
+        
         <form action='' method='POST'>
-        <Modal isOpen={isOpen} onClose={onClose}>
-            <ModalOverlay />
-                <ModalContent maxW="40rem" h='40vh'>
-                <ModalHeader>Edit History</ModalHeader>
-                <ModalCloseButton />
-                <ModalBody>
-                    Hello
-                </ModalBody>
-            </ModalContent>
-        </Modal>
+            <Modal isOpen={isOpen} onClose={onClose}>
+                <ModalOverlay />
+                    <ModalContent maxW="40rem" h='40vh'>
+                    <ModalHeader>Edit History</ModalHeader>
+                    <ModalCloseButton />
+                    <ModalBody>
+                        Hello
+                    </ModalBody>
+                </ModalContent>
+            </Modal>
         </form>
         
         

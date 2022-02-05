@@ -39,6 +39,7 @@ export const CritiqueReply = ({id}) => {
     const { API_KEY } = process.env
     const [cookie, setCookie] = useCookies('token', 'id', 'encrypted_id', 'display_name')
     const [critiqueReply, setCritiqueReply] =  useState([])
+    const [lastId, setLastID] =  useState('0')
     // console.log(id)
 
     const config = {
@@ -64,9 +65,16 @@ export const CritiqueReply = ({id}) => {
         .then((response) =>{
             console.log(response.data)
             setCritiqueReply(response.data.data)
+
+            for(let i = 0; i < response.data.data.length; i++){
+                if(i == response.data.data.length - 1){
+                    setLastID(response.data.data[i].critique_id)
+                }
+            }
         }).catch((error) =>{
             console.log(error)
         })
+
     }, [])
 
     const giveStar = async (id) =>{
@@ -84,22 +92,31 @@ export const CritiqueReply = ({id}) => {
 
     const loadMore = async() =>{
         let formData = new FormData;
-        formData.append('post_id', id);
         formData.append('last_id', lastId);
+        formData.append('critique_id', id)
 
         axios.post(`${API_URL}/api/display_replies`, formData, config)
         .then((response) =>{
             console.log(response.data)
-            setCritiqueItems(response.data)
+
+            response.data.data.map((item)=>{
+                setCritiqueReply((prevState) => [...prevState, item])
+            })
+
+            for(let i = 0; i < response.data.data.length; i++){
+                if(i == response.data.data.length - 1){
+                    setLastID(response.data.data[i].reply_id)
+                }
+            }
+
         }).catch((error) =>{
             console.log(error.response)
         })
-        document.getElementById('reply').hidden=true;
     }
 
     return (
         <div>
-            {critiqueReply ? <Button w="full" h="20px" onClick={loadMore}>Load More</Button> : null}
+            {critiqueReply ? <Button w="full" h="20px" onClick={loadMore} id='loadMore'>Load More</Button> : null}
             {critiqueReply.map((reply)=>{
                 if(reply.display_name === cookie.display_name){
                 return(
@@ -127,10 +144,6 @@ export const CritiqueReply = ({id}) => {
                                     <MenuGroup>
                                         <MenuItem><EditReply data={reply} /></MenuItem>
                                     </MenuGroup>
-                                    <MenuDivider />
-                                    <MenuGroup>
-                                        <MenuItem><DeleteReply id={reply.reply_id} /></MenuItem>
-                                    </MenuGroup>
                                     </MenuList>
                                 </Menu>
                             </Flex>
@@ -138,7 +151,7 @@ export const CritiqueReply = ({id}) => {
                                 <Text fontSize='md'>{reply.body}</Text>
                             </Box>
                             <Flex w='20vw'>
-                                <Button variant='ghost' id={reply.reply_id} onClick={()=>giveStar(reply.reply_id)}>Star {reply.stars}</Button>
+                                <Button variant='ghost' id={reply.reply_id} onClick={()=>giveStar(reply.reply_id)}><Image src='/stars.png' alt="Stars" w="25px" h="25px" ml={2} mr={2}/> {reply.stars}</Button>
                                 {/* <Button variant='ghost' ml={5}>Reply</Button> */}
                         </Flex>
 
@@ -166,10 +179,6 @@ export const CritiqueReply = ({id}) => {
                                     <MenuGroup>
                                         <MenuItem><EditReplyHistory id={reply.reply_id} /></MenuItem>
                                     </MenuGroup>
-                                    <MenuDivider />
-                                    <MenuGroup>
-                                        <MenuItem><ReportUser /></MenuItem>
-                                    </MenuGroup>
                                     </MenuList>
                                 </Menu>
                             </Flex>
@@ -177,7 +186,7 @@ export const CritiqueReply = ({id}) => {
                                 <Text fontSize='md'>{reply.body}</Text>
                             </Box>
                             <Flex w='20vw'>
-                                <Button variant='ghost' id={reply.reply_id} onClick={()=>giveStar(reply.reply_id)}>Star {reply.stars}</Button>
+                                <Button variant='ghost' id={reply.reply_id} onClick={()=>giveStar(reply.reply_id)}><Image src='/stars.png' alt="Stars" w="25px" h="25px" ml={2} mr={2}/> {reply.stars}</Button>
                                 {/* <Button variant='ghost' ml={5}>Reply</Button> */}
                         </Flex>
 

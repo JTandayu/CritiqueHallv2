@@ -50,14 +50,14 @@ function EditCritiqueHistory({id}) {
         axios.get(`${API_URL}/api/version_critique`, formData, config)
         .then((response)=>{
             console.log(response)
-        }).catch((error)=>console.log(error))
+        }).catch((error)=>console.log(error.response))
     }, []);
     
 
 
     return(
         <>
-        <button onClick={onOpen} ml={5}>History</button>
+        <button onClick={onOpen} ml={5}>Edit History</button>
 
         <form action='' method='POST'>
         <Modal isOpen={isOpen} onClose={onClose}>

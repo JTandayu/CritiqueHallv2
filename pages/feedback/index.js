@@ -98,91 +98,98 @@ export default function FeedbackPage(){
                 <Box w={{lg: "80%" , sm: '100%'}} mx="auto" h="100%" p="6" color='white'>
                     <form action='' method='POST'>
                     <Heading fontFamily={'Raleway'} color="white" mx="auto">With regards to the website...</Heading>
-                    <Box mt="4vh" display='flex'>
-                        <FormLabel fontFamily={'Raleway'} fontSize={'lg'}>1. So, what do you think? Can you tell us a little bit about your experience?</FormLabel>
-                        {/* <RadioGroup onChange={(e)=>setAns1(e.target.value)}>
-                        <Stack direction='row'>
-                            <Radio value='1'></Radio>
-                            <Radio value='2'></Radio>
-                            <Radio value='3'></Radio>
-                            <Radio value='4'></Radio>
-                        </Stack>
-                        </RadioGroup> */}
+                    <Box ml={20}>
+                        <Box mt="4vh" display='flex'>
+                            <FormLabel fontFamily={'Raleway'} fontSize={'lg'}>1. So, what do you think? Can you tell us a little bit about your experience?</FormLabel>
+                            {/* <RadioGroup onChange={(e)=>setAns1(e.target.value)}>
+                            <Stack direction='row'>
+                                <Radio value='1'></Radio>
+                                <Radio value='2'></Radio>
+                                <Radio value='3'></Radio>
+                                <Radio value='4'></Radio>
+                            </Stack>
+                            </RadioGroup> */}
+                        </Box>
+                        <Box mt="1vh" display='flex'>
+                            <Textarea className={styles.input_box} fontFamily={'Raleway'} bgColor={useColorModeValue('white', '#5E5E5E')} color={useColorModeValue('black', 'white')} onChange={(e)=>setFeedback(e.target.value)}></Textarea>
+                        </Box>
+                        <Box mt="4vh" display='flex'>
+                            <FormLabel fontFamily={'Raleway'} fontSize={'lg'}>2. How did we make you feel?</FormLabel>
+                        </Box>
+                        <Box mt="1vh" display='flex'>
+                            <Textarea className={styles.input_box} fontFamily={'Raleway'} bgColor={useColorModeValue('white', '#5E5E5E')} color={useColorModeValue('black', 'white')} onChange={(e)=>setFeedback(e.target.value)}></Textarea>
+                        </Box>
+                        <Box mt="4vh" display='flex'>
+                            <FormLabel fontFamily={'Raleway'} fontSize={'lg'}>3. Did you encounter any bugs or glitches?</FormLabel>
+                        </Box>
+                        <Box mt="1vh" display='flex'>
+                            <Textarea className={styles.input_box} fontFamily={'Raleway'} bgColor={useColorModeValue('white', '#5E5E5E')} color={useColorModeValue('black', 'white')} onChange={(e)=>setFeedback(e.target.value)}></Textarea>
+                        </Box>
+                        <Box mt="4vh" display='flex'>
+                            <FormLabel fontFamily={'Raleway'} fontSize={'lg'}>4. Which areas do you think the website needs more improvement on?</FormLabel>
+                        </Box>
+                        <Box mt="1vh" display='flex'>
+                            <Textarea className={styles.input_box} fontFamily={'Raleway'} bgColor={useColorModeValue('white', '#5E5E5E')} color={useColorModeValue('black', 'white')} onChange={(e)=>setFeedback(e.target.value)}></Textarea>
+                        </Box>
                     </Box>
-                    <Box mt="1vh" display='flex'>
-                        <Textarea className={styles.input_box} fontFamily={'Raleway'} bgColor={useColorModeValue('white', '#5E5E5E')} color={useColorModeValue('black', 'white')} onChange={(e)=>setFeedback(e.target.value)}></Textarea>
-                    </Box>
-                    <Box mt="4vh" display='flex'>
-                        <FormLabel fontFamily={'Raleway'} fontSize={'lg'}>2. How did we make you feel?</FormLabel>
-                    </Box>
-                    <Box mt="1vh" display='flex'>
-                        <Textarea className={styles.input_box} fontFamily={'Raleway'} bgColor={useColorModeValue('white', '#5E5E5E')} color={useColorModeValue('black', 'white')} onChange={(e)=>setFeedback(e.target.value)}></Textarea>
-                    </Box>
-                    <Box mt="4vh" display='flex'>
-                        <FormLabel fontFamily={'Raleway'} fontSize={'lg'}>3. Did you encounter any bugs or glitches?</FormLabel>
-                    </Box>
-                    <Box mt="1vh" display='flex'>
-                        <Textarea className={styles.input_box} fontFamily={'Raleway'} bgColor={useColorModeValue('white', '#5E5E5E')} color={useColorModeValue('black', 'white')} onChange={(e)=>setFeedback(e.target.value)}></Textarea>
-                    </Box>
-                    <Box mt="4vh" display='flex'>
-                        <FormLabel fontFamily={'Raleway'} fontSize={'lg'}>4. Which areas do you think the website needs more improvement on?</FormLabel>
-                    </Box>
-                    <Box mt="1vh" display='flex'>
-                        <Textarea className={styles.input_box} fontFamily={'Raleway'} bgColor={useColorModeValue('white', '#5E5E5E')} color={useColorModeValue('black', 'white')} onChange={(e)=>setFeedback(e.target.value)}></Textarea>
-                    </Box>
-                    <Heading fontFamily={'Raleway'} color="white" mx="auto" mt="5vh">With regards to your learning style...</Heading>
-                    <Box mt="4vh" display='flex'>
-                        <FormLabel fontFamily={'Raleway'} fontSize={'lg'}>5. What do you think about peer reviews and feedback?</FormLabel>
-                    </Box>
-                    <Box mt="1vh" display='flex'>
-                        <Textarea className={styles.input_box} fontFamily={'Raleway'} bgColor={useColorModeValue('white', '#5E5E5E')} color={useColorModeValue('black', 'white')} onChange={(e)=>setFeedback(e.target.value)}></Textarea>
-                    </Box>
-                    <Box mt="4vh" display='flex'>
-                        <FormLabel fontFamily={'Raleway'} fontSize={'lg'}>6. Which do you prefer, learning with others or through your own?</FormLabel>
-                    </Box>
-                    <Box mt="1vh" display='flex'>
-                        <Textarea className={styles.input_box} fontFamily={'Raleway'}  bgColor={useColorModeValue('white', '#5E5E5E')} color={useColorModeValue('black', 'white')} onChange={(e)=>setFeedback(e.target.value)}></Textarea>
-                    </Box>
-                    <Box mt="4vh" display='flex'>
-                        <FormLabel fontFamily={'Raleway'} fontSize={'lg'}>7. What skill did you learn or you think that you will learn from using Critique Hall?</FormLabel>
-                    </Box>
-                    <Box mt="1vh" display='flex'>
-                        <Textarea className={styles.input_box} fontFamily={'Raleway'}  bgColor={useColorModeValue('white', '#5E5E5E')} color={useColorModeValue('black', 'white')} onChange={(e)=>setFeedback(e.target.value)}></Textarea>
-                    </Box>
-                    <Heading fontFamily={'Raleway'} color="white" mx="auto" mt="5vh">With regards to your personal development...</Heading>
-                    <Box mt="4vh" display='flex'>
-                        <FormLabel fontFamily={'Raleway'} fontSize={'lg'}>8.  Have you tried publishing a post? If no, why not?</FormLabel>
-                    </Box>
-                    <Box mt="1vh" display='flex'>
-                        <Textarea className={styles.input_box} fontFamily={'Raleway'} bgColor={useColorModeValue('white', '#5E5E5E')} color={useColorModeValue('black', 'white')} onChange={(e)=>setFeedback(e.target.value)}></Textarea>
-                    </Box>
-                    <Box mt="4vh" display='flex'>
-                        <FormLabel fontFamily={'Raleway'} fontSize={'lg'}>9. Have you tried interacting with others through the website (giving or receiving stars/critiques)? If no, why not?</FormLabel>
-                    </Box>
-                    <Box mt="1vh" display='flex'>
-                        <Textarea className={styles.input_box} fontFamily={'Raleway'}  bgColor={useColorModeValue('white', '#5E5E5E')} color={useColorModeValue('black', 'white')} onChange={(e)=>setFeedback(e.target.value)}></Textarea>
-                    </Box>
-                    <Box mt="4vh" display='flex'>
-                        <FormLabel fontFamily={'Raleway'} fontSize={'lg'}>10. If you answered yes in question 8, would you consider the work/project that you posted your talent?</FormLabel>
-                    </Box>
-                    <Box mt="1vh" display='flex'>
-                        <Textarea className={styles.input_box} fontFamily={'Raleway'}  bgColor={useColorModeValue('white', '#5E5E5E')} color={useColorModeValue('black', 'white')} onChange={(e)=>setFeedback(e.target.value)}></Textarea>
-                    </Box>
-                    <Box mt="4vh" display='flex'>
-                        <FormLabel fontFamily={'Raleway'} fontSize={'lg'}>11. If you answered yes in question 8, did the critiques help you improve your work/project?</FormLabel>
-                    </Box>
-                    <Box mt="1vh" display='flex'>
-                        <Textarea className={styles.input_box} fontFamily={'Raleway'}  bgColor={useColorModeValue('white', '#5E5E5E')} color={useColorModeValue('black', 'white')} onChange={(e)=>setFeedback(e.target.value)}></Textarea>
-                    </Box>
-                    <Box mt="4vh" display='flex'>
-                        <FormLabel fontFamily={'Raleway'} fontSize={'lg'}>12. If you answered yes in question 8 and/or 9, how did doing those make you feel?</FormLabel>
-                    </Box>
-                    <Box mt="1vh" display='flex'>
-                        <Textarea className={styles.input_box} fontFamily={'Raleway'}  bgColor={useColorModeValue('white', '#5E5E5E')} color={useColorModeValue('black', 'white')} onChange={(e)=>setFeedback(e.target.value)}></Textarea>
+                        <Heading fontFamily={'Raleway'} color="white" mx="auto" mt="5vh">With regards to your learning style...</Heading>
+                    <Box ml={20}>
+                        <Box mt="4vh" display='flex'>
+                            <FormLabel fontFamily={'Raleway'} fontSize={'lg'}>5. What do you think about peer reviews and feedback?</FormLabel>
+                        </Box>
+                        <Box mt="1vh" display='flex'>
+                            <Textarea className={styles.input_box} fontFamily={'Raleway'} bgColor={useColorModeValue('white', '#5E5E5E')} color={useColorModeValue('black', 'white')} onChange={(e)=>setFeedback(e.target.value)}></Textarea>
+                        </Box>
+                        <Box mt="4vh" display='flex'>
+                            <FormLabel fontFamily={'Raleway'} fontSize={'lg'}>6. Which do you prefer, learning with others or through your own?</FormLabel>
+                        </Box>
+                        <Box mt="1vh" display='flex'>
+                            <Textarea className={styles.input_box} fontFamily={'Raleway'}  bgColor={useColorModeValue('white', '#5E5E5E')} color={useColorModeValue('black', 'white')} onChange={(e)=>setFeedback(e.target.value)}></Textarea>
+                        </Box>
+                        <Box mt="4vh" display='flex'>
+                            <FormLabel fontFamily={'Raleway'} fontSize={'lg'}>7. What skill did you learn or you think that you will learn from using Critique Hall?</FormLabel>
+                        </Box>
+                        <Box mt="1vh" display='flex'>
+                            <Textarea className={styles.input_box} fontFamily={'Raleway'}  bgColor={useColorModeValue('white', '#5E5E5E')} color={useColorModeValue('black', 'white')} onChange={(e)=>setFeedback(e.target.value)}></Textarea>
+                        </Box>
                     </Box>
                     
-                    <Box w="100%">
-                        <Center><Button fontFamily={'Raleway'} size={'lg'} type='submit' mx='auto' bgColor={useColorModeValue('#2777C1','#0085FF')} color={useColorModeValue('#FFFFFF', '#FFFFFF')} _hover={{bgColor: useColorModeValue('#56AEFF', '#0B5090')}} mt="10" onClick={SubmitFeedback}>SUBMIT</Button></Center>
+                    <Heading fontFamily={'Raleway'} color="white" mx="auto" mt="5vh">With regards to your personal development...</Heading>
+                    <Box ml={20}>
+                        <Box mt="4vh" display='flex'>
+                            <FormLabel fontFamily={'Raleway'} fontSize={'lg'}>8.  Have you tried publishing a post? If no, why not?</FormLabel>
+                        </Box>
+                        <Box mt="1vh" display='flex'>
+                            <Textarea className={styles.input_box} fontFamily={'Raleway'} bgColor={useColorModeValue('white', '#5E5E5E')} color={useColorModeValue('black', 'white')} onChange={(e)=>setFeedback(e.target.value)}></Textarea>
+                        </Box>
+                        <Box mt="4vh" display='flex'>
+                            <FormLabel fontFamily={'Raleway'} fontSize={'lg'}>9. Have you tried interacting with others through the website (giving or receiving stars/critiques)? If no, why not?</FormLabel>
+                        </Box>
+                        <Box mt="1vh" display='flex'>
+                            <Textarea className={styles.input_box} fontFamily={'Raleway'}  bgColor={useColorModeValue('white', '#5E5E5E')} color={useColorModeValue('black', 'white')} onChange={(e)=>setFeedback(e.target.value)}></Textarea>
+                        </Box>
+                        <Box mt="4vh" display='flex'>
+                            <FormLabel fontFamily={'Raleway'} fontSize={'lg'}>10. If you answered yes in question 8, would you consider the work/project that you posted your talent?</FormLabel>
+                        </Box>
+                        <Box mt="1vh" display='flex'>
+                            <Textarea className={styles.input_box} fontFamily={'Raleway'}  bgColor={useColorModeValue('white', '#5E5E5E')} color={useColorModeValue('black', 'white')} onChange={(e)=>setFeedback(e.target.value)}></Textarea>
+                        </Box>
+                        <Box mt="4vh" display='flex'>
+                            <FormLabel fontFamily={'Raleway'} fontSize={'lg'}>11. If you answered yes in question 8, did the critiques help you improve your work/project?</FormLabel>
+                        </Box>
+                        <Box mt="1vh" display='flex'>
+                            <Textarea className={styles.input_box} fontFamily={'Raleway'}  bgColor={useColorModeValue('white', '#5E5E5E')} color={useColorModeValue('black', 'white')} onChange={(e)=>setFeedback(e.target.value)}></Textarea>
+                        </Box>
+                        <Box mt="4vh" display='flex'>
+                            <FormLabel fontFamily={'Raleway'} fontSize={'lg'}>12. If you answered yes in question 8 and/or 9, how did doing those make you feel?</FormLabel>
+                        </Box>
+                        <Box mt="1vh" display='flex'>
+                            <Textarea className={styles.input_box} fontFamily={'Raleway'}  bgColor={useColorModeValue('white', '#5E5E5E')} color={useColorModeValue('black', 'white')} onChange={(e)=>setFeedback(e.target.value)}></Textarea>
+                        </Box>
+                        
+                        <Box w="100%">
+                            <Center><Button fontFamily={'Raleway'} size={'lg'} type='submit' mx='auto' bgColor={useColorModeValue('#2777C1','#0085FF')} color={useColorModeValue('#FFFFFF', '#FFFFFF')} _hover={{bgColor: useColorModeValue('#56AEFF', '#0B5090')}} mt="10" onClick={SubmitFeedback}>SUBMIT</Button></Center>
+                        </Box>
                     </Box>
                     </form>
                 </Box>             

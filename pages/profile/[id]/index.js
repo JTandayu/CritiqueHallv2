@@ -133,7 +133,6 @@ export default function ProfilePage({data}){
     }
 
     const sortPost = (e) =>{
-        e.preventDefault()
         let formData = new FormData;
         formData.append('user_id', encID)
         formData.append('sort', e)
@@ -150,7 +149,6 @@ export default function ProfilePage({data}){
     }
 
     const sortCritique = (e) =>{
-        e.preventDefault()
         let formData = new FormData;
         formData.append('user_id', encID)
         formData.append('sort', e)
@@ -237,7 +235,7 @@ export default function ProfilePage({data}){
                     </Flex>
                     <Flex w={{lg: '15vw', sm: '50%'}} mt={1} mr={8} id='critiqueFilter'>
                         {/* <Text fontFamily={'Raleway'} mr={{lg: 5, sm: 1}} w={20} mt={2}>Sort by: </Text> */}
-                        <Select fontFamily={'Raleway'} fontWeight={'bold'} onChange={(e)=>sortPost(e.target.value)}  bgColor='white' boxShadow={'lg'}>
+                        <Select fontFamily={'Raleway'} fontWeight={'bold'} onChange={(e)=>sortCritique(e.target.value)}  bgColor='white' boxShadow={'lg'}>
                             <option value='desc'>Newest</option>
                             <option value='asc'>Oldest</option>
                             <option value='most_stars'>Most Critique Stars</option>

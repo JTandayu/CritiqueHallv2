@@ -65,31 +65,35 @@ export async function getServerSideProps(context) {
     const { API_URL } = process.env
     const { API_KEY } = process.env
 
+    const post_id = context.params.id
+    const cookie = context.req.cookies
+
     // const parsedCookies = cookie.parse(context.req.headers.cookie);
 
-    // const res = await fetch(`${API_URL}/api/display_post/${context.params.id}`, {
-    //     method: 'GET',
-    //     headers: {
-    //         'content-type': 'multipart/form-data',
-    //         'X-API-KEY': `${API_KEY}`,
-    //         'Authorization': 'Basic Y2Fwc3RvbmUyMDIxOjEyMzQ=',
-    //         // 'Accept-Encoding': 'gzip, deflate, br',
-    //         'Accept': 'application/json',
-    //     },
-    // })
-
-    const post_id = context.params.id
-    // console.log(parsedCookies)
+    const res = await fetch(`${API_URL}/api/display_post/${context.params.id}`, {
+        method: 'GET',
+        headers: {
+            'content-type': 'multipart/form-data',
+            'X-API-KEY': `${API_KEY}`,
+            'Authorization': 'Basic Y2Fwc3RvbmUyMDIxOjEyMzQ=',
+            'Accept': 'application/json',
+            'Token': cookie.token,
+            'User-Id': cookie.encrypted_id
+        },
+    })
+    const data = await res.json()
+    // console.log(data.post);
     
   return {
     props: {
-        post_id
+        post_id,
+        data1: data
     },
   }
 }
 
 
-export default function CritiquePost(post_id){
+export default function CritiquePost(post_id, data1){
     const { API_URL } = process.env
     const { API_KEY } = process.env
     const toast = useToast()
@@ -105,6 +109,16 @@ export default function CritiquePost(post_id){
     const [fileName, setFileName] = useState([])
     const [filter, setFilter] = useState('newest')
     const [newPost, setNewPost] = useState(0)
+    var fileName1 = ''
+    var fileName2 = ''
+    var fileName3 = ''
+    var fileName4 = ''
+    var fileName5 = ''
+    const [file1Doc, setfile1Doc] = useState(false)
+    const [file2Doc, setfile2Doc] = useState(false)
+    const [file3Doc, setfile3Doc] = useState(false)
+    const [file4Doc, setfile4Doc] = useState(false)
+    const [file5Doc, setfile5Doc] = useState(false)
 
     useEffect(() => {
         // console.log(post_id.post_id)
@@ -123,46 +137,41 @@ export default function CritiquePost(post_id){
         axios.get(`${API_URL}/api/display_post/${post_id.post_id}`, config)
         .then(response => {
             console.log(response.data);
-            const fileName1 = ref(storage, response.data.post.attachment1); 
-            const fileName2 = ref(storage, response.data.post.attachment2); 
-            const fileName3 = ref(storage, response.data.post.attachment3); 
-            const fileName4 = ref(storage, response.data.post.attachment4); 
-            const fileName5 = ref(storage, response.data.post.attachment5); 
-            // console.log(fileName1.name)
+            fileName1 = ref(storage, response.data.post.attachment1).name; 
+            fileName2 = ref(storage, response.data.post.attachment2).name; 
+            fileName3 = ref(storage, response.data.post.attachment3).name; 
+            fileName4 = ref(storage, response.data.post.attachment4).name;
+            fileName5 = ref(storage, response.data.post.attachment5).name; 
             setData(response.data.post);
             // console.log(storage.refFromURL(response.data.post.attachment1))
             // console.log(fileName)
 
-            if(response.data.post.display_name === cookie.display_name){
+            if(response.data.post.display_name === cookies.display_name){
                 document.getElementById('diffAcc').hidden=true;
             }else{
                 document.getElementById('sameAcc').hidden=true; 
             }
-            
-            if(response.data.post.attachment1 !== 'undefined'){
-                setUrls((prevState) => [...prevState, response.data.post.attachment1])
-                setFileName((prevState) => [...prevState, fileName1.name])
-                if(response.data.post.attachment2 !== 'undefined'){
-                    setUrls((prevState) => [...prevState, response.data.post.attachment2])
-                    setFileName((prevState) => [...prevState, fileName2.name])
-                    if(response.data.post.attachment3 !== 'undefined'){
-                        setUrls((prevState) => [...prevState, response.data.post.attachment3])
-                        setFileName((prevState) => [...prevState, fileName3.name])
-                        if(response.data.post.attachment4 !== 'undefined'){
-                            setUrls((prevState) => [...prevState, response.data.post.attachment4])
-                            setFileName((prevState) => [...prevState, fileName4.name])
-                            if(response.data.post.attachment5 !== 'undefined'){
-                                setUrls((prevState) => [...prevState, response.data.post.attachment5])
-                                setFileName((prevState) => [...prevState, fileName5.name])
-                            }
-                        }
-                    }
-                }
+
+            if(fileName1.endsWith('.docx') == true || fileName1.endsWith('.xls') == true){
+                setfile1Doc(true)
             }
-   
+            if(fileName2.endsWith('.docx') == true || fileName2.endsWith('.xls') == true){
+                setfile2Doc(true)
+            }
+            if(fileName3.endsWith('.docx') == true || fileName3.endsWith('.xls') == true){
+                setfile3Doc(true)
+            }
+            if(fileName4.endsWith('.docx') == true || fileName4.endsWith('.xls') == true){
+                setfile4Doc(true)
+            }
+            if(fileName5.endsWith('.docx') == true || fileName5.endsWith('.xls') == true){
+                setfile5Doc(true)
+            }
+
+            // console.log(file1Doc)
         })
         .catch(error => {
-            console.log(error);
+            console.log(error.response);
         });
 
         
@@ -251,13 +260,13 @@ export default function CritiquePost(post_id){
 
                     {/* Description */}
                     <Box mt={5}>
-                        <Heading size='md'>Description</Heading>
+                        {/* <Heading size='md'>Description</Heading> */}
                         <Text w={{lg: '45vw', sm: '100%'}} mx='auto' mt={5}>{data.body}</Text>
                     </Box>
 
                     <SRLWrapper>     
                     {/* Image */}
-                    <Flex ml={{lg: "10vh", sm: 5}} flexDir={{lg: "row", sm: 'column'}} mt={5}>
+                    {/* <Flex ml={{lg: "10vh", sm: 5}} flexDir={{lg: "row", sm: 'column'}} mt={5}>
                         <Image src={data.attachment1} w='50vh' h='40vh' />
                         <Flex flexDir='column' spacing={5}>
                             <Image src={data.attachment2} w='20vh' h='10vh' />
@@ -265,41 +274,50 @@ export default function CritiquePost(post_id){
                             <Image src={data.attachment4} w='20vh' h='10vh' />
                             <Image src={data.attachment5} w='20vh' h='10vh' />
                         </Flex>
-                    </Flex>
-                    {/* { urls ?
+                    </Flex> */}
+                    { data.attachment1 != 'undefined' ?
                     <Flex ml={{lg: "10vh", sm: 5}} flexDir={{lg: "row", sm: 'column'}} mt={5}>
-                        {data.attachment1 ? [ fileName[0].endsWith('.docx') == true || fileName[0].endsWith('.xls') == true ?
-                            <Image src={data.attachment1} w='50vh' h='40vh' /> :
-                            <Button>Download</Button>
-                            ] : null}
+                            {data.attachment1 != 'undefined' ? [ file1Doc != true || file1Doc != true ?
+                                <Image src={data.attachment1} w='50vh' h='40vh' cursor="pointer" /> :
+                                <Link href={data.attachment1} passHref>
+                                <Button>Download {fileName1} </Button>
+                                </Link>
+                                ] : null}
 
                             <Flex flexDir='column' spacing={5}>
-                            {data.attachment2 ? [ fileName[1].endsWith('.docx') == true || fileName[1].endsWith('.xls') == true ?
-                                <Image src={data.attachment1} w='50vh' h='40vh' /> :
-                                <Button>Download</Button>
+                            {data.attachment2 != 'undefined' ? [ file2Doc != true || file2Doc != true ?
+                                <Image src={data.attachment2} w='20vh' h='10vh' cursor="pointer" /> :
+                                <Link href={data.attachment2} passHref>
+                                    <Button>Download</Button>
+                                </Link>
                                 ] : null}
 
-                            {data.attachment3 ? [ fileName[2].endsWith('.docx') == true || fileName[2].endsWith('.xls') == true ?
-                                <Image src={data.attachment1} w='50vh' h='40vh' /> :
-                                <Button>Download</Button>
+                            {data.attachment3 != 'undefined' ? [ file3Doc != true || file3Doc != true ?
+                                <Image src={data.attachment3} w='20vh' h='10vh' cursor="pointer" /> :
+                                <Link href={data.attachment3} passHref>
+                                    <Button>Download</Button>
+                                </Link>
                                 ] : null}
 
-                            {data.attachment4 ? [ fileName[3].endsWith('.docx') == true || fileName[3].endsWith('.xls') == true ?
-                                <Image src={data.attachment1} w='50vh' h='40vh' /> :
-                                <Button>Download</Button>
+                            {data.attachment4 != 'undefined' ? [ file4Doc != true || file4Doc != true ?
+                                <Image src={data.attachment4} w='20vh' h='10vh' cursor="pointer" /> :
+                                <Link href={data.attachment4} passHref>
+                                    <Button>Download</Button>
+                                </Link>
                                 ] : null}
 
-                            {data.attachment5 ? [ fileName[4].endsWith('.docx') == true || fileName[4].endsWith('.xls') == true ?
-                                <Image src={data.attachment1} w='50vh' h='40vh' /> :
-                                <Button>Download</Button>
+                            {data.attachment5 != 'undefined' ? [ file5Doc != true || file5Doc != true ?
+                                <Image src={data.attachment5} w='20vh' h='10vh' cursor="pointer" /> :
+                                <Link href={data.attachment5} passHref>
+                                    <Button>Download</Button>
+                                </Link>
                                 ] : null}
-                                
                             </Flex>
-                    </Flex> : null} */}
+                    </Flex> : null}
                     </SRLWrapper>
                     {/* Options */}
                     <Box display="flex" w="100%" mt={5}>
-                        <Button position='static' variant='ghost' onClick={giveLike}>Like <Text id='likes' ml={2}>{data.likes}</Text></Button>
+                        <Button position='static' variant='ghost' onClick={giveLike}><Image src='/stars.png' alt="Stars" w="25px" h="25px" ml={2}/> <Text id='likes' ml={2}>{data.likes}</Text></Button>
                         <Spacer />
                         <Box id='sameAcc' >
                             <Menu >
@@ -356,28 +374,8 @@ export default function CritiquePost(post_id){
         
             </Box>
                     {/* Critique */}
-                    {/* <PostCritiques /> */}
-                    <Box w={{lg: '40%', sm: '100%'}} bg='light' h='90vh' p={5} boxShadow='md' mt={28} ml='3vw'>
-                    {/* Header */}
-                    {/* <Box display='flex'>
-                        <Heading>Critiques</Heading>
-                        <Spacer />
-                        <Flex w={{lg: '15vw', sm: '50%'}} mt={1}>
-                        <Text mr={{lg: 5, sm: 1}} w={20} mt={2}>Sort by: </Text>
-                        <Select onChange={(e)=>setFilter(e.target.value)}>
-                            <option value='newest'>Newest</option>
-                            <option value='oldest'>Oldest</option>
-                            <option value='most-star'>Most Stars</option>
-                            <option value='least-star'>Least Stars</option>
-                        </Select>
-                        </Flex>
-                    </Box> */}
-                    {/* Critiques */}
-                    {/* <Box overflowY="scroll" h={{lg: '80vh', sm: '70vh'}} mt={5}> */}
+                    <Box w={{lg: '40%', sm: '100%'}} bg='dark' h='90vh' p={5} boxShadow='md' mt={28} ml='3vw'>
                         <Critiques id={post_id.post_id} />
-                    {/* </Box> */}
-                    
-                        
                     </Box>
                     
                 </Box>
