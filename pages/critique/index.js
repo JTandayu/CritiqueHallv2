@@ -380,7 +380,6 @@ export default function HallPage(){
             <Pagination
                     defaultCurrent={5}
                     current={currentPage}
-                    // total={500}
                     paginationProps={{ display: "flex", }}
                     baseStyles={{ bg: "light", color: 'dark' }}
                     activeStyles={{ bg: "gray.300", color: 'black' }}
@@ -408,17 +407,16 @@ export default function HallPage(){
                     {loading ? <Box>Loading...</Box> : 
                     currentPosts.map((post, i) => 
                             <Box bgColor={changeColor} w="100%" display={{lg: 'flex', sm: 'block'}} key={post.post_id} mt='2ch' borderColor='white' border='1px solid gray.500' boxShadow='lg' rounded='lg'>
-                                <Link href={`/post/${post.post_id}`}>
+                                <Link href={`/post/${post.post_id}`} passHref>
                                 <a>
                                 <Box display={{lg: 'flex', sm: 'block'}} w={{lg: "50vw", sm: '100%'}}>
                                     <Box fontFamily={'Raleway'} p="3" w="100%" bg="light" my='auto'>
                                         <Center>
-                                        {/* <Text >{post.hall_id}</Text> */}
-                                        <Box bgColor={post.hall_color} w="150px" p={5} color="white" rounded="md" boxShadow="lg">
-                                            <Center>
-                                            {post.hall}
-                                            </Center>
-                                        </Box>
+                                            <Box bgColor={post.hall_color} w="150px" p={5} color="white" rounded="md" boxShadow="lg">
+                                                <Center>
+                                                    {post.hall}
+                                                </Center>
+                                            </Box>
                                         </Center>
                                     </Box>
                                     <Box p="3" w="100%" bg="light" my='auto'>

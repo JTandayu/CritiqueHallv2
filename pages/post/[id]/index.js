@@ -2,7 +2,7 @@ import Head from 'next/head'
 // import Image from 'next/image'
 import { css, cx } from '@emotion/react'
 import { motion } from "framer-motion"
-import { Grid, GridItem } from "@chakra-ui/react"
+import { Grid, GridItem, useColorModeValue } from "@chakra-ui/react"
 import { Heading } from "@chakra-ui/react"
 import { Box } from "@chakra-ui/react"
 import Link from 'next/link'
@@ -374,7 +374,7 @@ export default function CritiquePost(post_id, data1){
         
             </Box>
                     {/* Critique */}
-                    <Box w={{lg: '40%', sm: '100%'}} bg='dark' h='90vh' p={5} boxShadow='md' mt={28} ml='3vw'>
+                    <Box w={{lg: '40%', sm: '100%'}} bg={useColorModeValue('white', '#212121')} h='90vh' p={5} boxShadow='md' mt={28} ml='3vw'>
                         <Critiques id={post_id.post_id} />
                     </Box>
                     
