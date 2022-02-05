@@ -158,8 +158,9 @@ function EditProfile({data}) {
     // 
     }
 
-    const SubmitInfo = async () =>{
+    const SubmitInfo = (e) =>{
         // console.log(profileImage)
+        e.preventDefault()
         uploadFiles().then(()=>{SubmitPersonalInformation()})
     }
 

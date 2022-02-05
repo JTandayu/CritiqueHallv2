@@ -91,7 +91,7 @@ export default function HallPage({}){
     const [posts, setPosts] = useState([])
     const [loading, setLoading] = useState(true)
     const [currentPage, setCurrentPage] = useState(1)
-    const [postsPerPage, setPostsPerPage] = useState(5)
+    const [postsPerPage, setPostsPerPage] = useState(6)
     const [hall, setHalls] =  useState('0')
     const [hallNum, setHallNum] = useState([])
     const [hallList, setHallList] = useState([])
@@ -120,6 +120,7 @@ export default function HallPage({}){
             console.log(response.data.posts);
             setPosts(response.data.posts);
             console.log(posts) 
+            setLoading(false)
         })
         .catch(error => {
             console.log(error.response);
@@ -275,14 +276,12 @@ export default function HallPage({}){
             <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@700&display=swap" rel="stylesheet" />
             </Head>
             
-            <Button w={{lg: "70%" , sm: '100%'}} mb="5" mx="auto" p="4" mt="14vh"  h="100px" top={0} className={styles.halls} variant="none" href="" onClick={getAll} boxShadow={'lg'}>
-                {/* <Box w={{lg: "70%" , sm: '100%'}} mb="5" mx="auto" p="4" mt="14vh" spacing="10" h="100px" top={0} bg="blue.400"> */}
+            {/* <Button w={{lg: "70%" , sm: '100%'}} mb="5" mx="auto" p="4" mt="14vh"  h="100px" top={0} className={styles.halls} variant="none" href="" onClick={getAll} boxShadow={'lg'}>
                     <Heading fontFamily={'Raleway'} fontWeight={'black'} size="4xl" align="center" mt="4" mb="4" color="white">HALLS</Heading>
-                {/* </Box> */}
-            </Button>
+            </Button> */}
             
             {/* Halls */}
-            <Box mt="3vh" w="70%" h='200px' display={{lg: 'flex', md: 'flex', sm: 'none'}} mx="auto" mb="" top="0">
+            <Box mt="3vh" w="70%" h='200px' display={{lg: 'flex', md: 'flex', sm: 'none'}} mx="auto" mt="15vh" top="0">
                 
                 <Button variant='ghost' w="200px" h="100px" className={styles.technology} rounded="lg" position='static' _hover={{backgroundColor: '#92278F'}} _active={{backgroundColor: '#92278F'}} onClick={getTechnology} boxShadow={'lg'}>
                 <Box w="full" h="10vh" ml={{lg: 0, sm: 0}}  px='5'>
@@ -399,7 +398,12 @@ export default function HallPage({}){
                                 <Box display={{lg: 'flex', sm: 'block'}} w={{lg: "50vw", sm: '100%'}}>
                                     <Box fontFamily={'Raleway'} p="3" w="100%" bg="light" my='auto'>
                                         <Center>
-                                        <Text >{post.hall_id}</Text>
+                                        {/* <Text >{post.hall_id}</Text> */}
+                                        <Box bgColor={post.hall_color} w="150px" p={5} color="white" rounded="md" boxShadow="lg">
+                                            <Center>
+                                            {post.hall}
+                                            </Center>
+                                        </Box>
                                         </Center>
                                     </Box>
                                     <Box p="3" w="100%" bg="light" my='auto'>

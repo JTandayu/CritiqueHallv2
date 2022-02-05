@@ -223,28 +223,45 @@ export default function SearchResult(){
             <Text id='post' mx='auto' hidden>No Posts Found</Text>
 
             {currentSearch.map((post, i) => (
-            <Box w={{lg: '70%', sm: '100%'}} mt='2ch' mx="auto" border='1px solid' key={post.post_id} borderColor='dark' rounded='lg'>
-                <Link href='/post/[id]'  as={`/post/${post.post_id}`} passHref>
-                    <a>
-                    <Box w='100%' display={{lg: 'flex', sm: 'block'}} >
-                        <Box p="3" w="100%" bg="light">
-                            {post.hall_id}
-                        </Box>
-                        <Box p="3" w="100%" bg="light">
-                            Image
-                        </Box>
-                        <Box p="3" w="100%" bg="light">
-                            {post.title}
-                        </Box>
-                        <Box p="3" w="100%" bg="light">
-                            {post.display_name}
-                        </Box>
-                        <Box p="3" w="100%" bg="light">
-                            {post.time_ago}
-                        </Box>       
-                    </Box>
-                    </a>
-                </Link>
+            <Box w={{lg: '70%', sm: '100%'}} mt='2ch' mx="auto" border='1px solid' key={post.post_id} display="flex" borderColor='dark' rounded='lg'>
+                                <Link href='/post/[id]'  as={`/post/${post.post_id}`} passHref>
+                                <a>
+                                <Box display={{lg: 'flex', sm: 'block'}} w={{lg: "50vw", sm: '100%'}}>
+                                    <Box fontFamily={'Raleway'} p="3" w="100%" bg="light" my='auto'>
+                                        <Center>
+                                        {/* <Text >{post.hall_id}</Text> */}
+                                        <Box bgColor={post.hall_color} w="150px" p={5} color="white" rounded="md" boxShadow="lg">
+                                            <Center>
+                                            {post.hall_name}
+                                            </Center>
+                                        </Box>
+                                        </Center>
+                                    </Box>
+                                    <Box p="3" w="100%" bg="light" my='auto'>
+                                        <Center>
+                                        <Image src={post.attachment1} w={{lg: '10vw', sm:'100%'}} h={{lg: '10vh', sm: '20vh'}} />
+                                        </Center>
+                                    </Box>
+                                    <Box fontFamily={'Raleway'} p="3" w="100%" bg="light" my='auto'>
+                                        <Center>
+                                        <Text>{post.title}</Text>
+                                        </Center>
+                                    </Box>
+                                    <Box fontFamily={'Raleway'} p="3" w="100%" bg="light" my='auto'>
+                                        <Center>
+                                        Posted by: {post.display_name}
+                                        </Center>
+                                    </Box>
+                                </Box>
+                                </a>
+                                </Link> 
+                                <Box fontFamily={'Raleway'} p="3" w="100%" bg="light" display='flex'>
+                                    <Box w="100%" bg="light" my='auto'>
+                                        <Center>
+                                            {post.time_ago}
+                                        </Center>
+                                    </Box>
+                                </Box>
             </Box>
             ))}
 

@@ -41,12 +41,24 @@ const breakpoints = createBreakpoints({
   '2xl': '1536px',
 })
 
+export async function getServerSideProps(context){
+  // const cookies = context.req.headers.cookie;
+  // const data = JSON.parse(cookies)
+  // console.log(data)
+  return{
+      props:{
+        
+      }
+  }
+}
+
 
 
 export default function Login({user}) {
   const { API_URL } = process.env
   const { API_KEY } = process.env
   const router = useRouter()
+  // console.log(data)
 
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -58,7 +70,7 @@ export default function Login({user}) {
   const toast = useToast()
   const toastIdRef = React.useRef()
 
-  const [cookies, setCookies, removeCookies] = useCookies(['token', 'id', 'encrypted_id'])
+  const [cookie, setCookies, removeCookies] = useCookies(['token', 'id', 'encrypted_id'])
 
   const changeDarkAndLightIcon = () => {
     toggleColorMode()
@@ -105,7 +117,7 @@ export default function Login({user}) {
       })
       .catch(error => {
           // toastIdRef.current = toast({ title: 'Login Unsuccessful!', status: 'error', duration: 3000, isClosable: false })
-          console.log(error.reponse);
+          console.log(error.response);
           document.getElementById('warning1').removeAttribute('hidden');
           // window.location.href = "/login"
       });

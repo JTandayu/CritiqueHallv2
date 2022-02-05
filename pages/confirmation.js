@@ -81,7 +81,7 @@ export default function ConfirmationPage(){
             'Authorization': 'Basic Y2Fwc3RvbmUyMDIxOjEyMzQ=',
             // 'Accept-Encoding': 'gzip, deflate, br',
             'Accept': 'application/json',
-            'User-Id': cookies.encrypted_id
+            'user_id': cookies.encrypted_id
           }
         }
 

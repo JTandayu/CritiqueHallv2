@@ -63,7 +63,7 @@ export const Critiques = ({id}) => {
     };
 
     useEffect(() => {
-
+        
         let formData = new FormData;
         formData.append('post_id', id);
         formData.append('last_id', null);
@@ -72,7 +72,7 @@ export const Critiques = ({id}) => {
         .then((response) =>{
             console.log(response.data)
             setCritiqueItems(response.data.data)
-            setLoading(true)
+            setLoading(false)
             // document.getElementById(response.data.data.critique_id).hidden=true
             console.log(response.data.data[0])
             
@@ -85,14 +85,14 @@ export const Critiques = ({id}) => {
             console.log(error)
         })
         
-    }, [])
+    }, [loading])
 
     const openReply = async(id) =>{
         document.getElementById(id).removeAttribute('hidden');
     }
 
     const submitReply = async(critique_id) =>{
-        e.preventDefault();
+        // e.preventDefault();
 
         let formData = new FormData;
         formData.append('critique_id', critique_id);
@@ -102,15 +102,15 @@ export const Critiques = ({id}) => {
         .then((response) =>{
             console.log(response.data)
             document.getElementById(critique_id).hidden=true;
-            setCritiqueItems(critiqueItems => critiqueItems.filter())
-            window.location.href = `/post/${id}`;
+            // setCritiqueItems(critiqueItems => critiqueItems.filter())
+            // window.location.href = `/post/${id}`;
         }).catch((error) =>{
             console.log(error.response)
         })
     }
 
     const sortCritique = (e) =>{
-        e.preventDefault();
+        // e.preventDefault();
 
         let formData = new FormData;
         formData.append('post_id', id);
@@ -241,11 +241,13 @@ export const Critiques = ({id}) => {
                         </Flex>
                     </Box>
                     <Box p="2" w='35vw' mt={1} id={critique.critique_id} hidden>
+                    <form onSubmit={submitReply(critique.critique_id)}>
                     <Textarea w="full" onChange={(e) => setReply(e.target.value)}/>
                     <Flex>
-                        <Button mt={3} onClick={() => submitReply(critique.critique_id)}>Reply</Button>
+                        <Button mt={3} type="submit">Reply</Button>
                         <Button mt={3} ml={3} onClick={ () => cancelReply(critique.critique_id)}>Cancel</Button>
                     </Flex>
+                    </form>
                     </Box>
                     <CritiqueReply id={critique.critique_id} />
                     </>
@@ -288,11 +290,13 @@ export const Critiques = ({id}) => {
                         </Flex>
                 </Box>
                 <Box p="2" w='35vw' mt={1} id={critique.critique_id} hidden>
-                    <Textarea w="full" onChange={(e) => setReply(e.target.value)}/>
-                    <Flex>
-                        <Button mt={3} onClick={() => submitReply(critique.critique_id)}>Reply</Button>
-                        <Button mt={3} ml={3} onClick={ () => cancelReply(critique.critique_id)}>Cancel</Button>
-                    </Flex>
+                    <form onSubmit={submitReply(critique.critique_id)}>
+                        <Textarea w="full" onChange={(e) => setReply(e.target.value)}/>
+                        <Flex>
+                            <Button mt={3} type="submit">Reply</Button>
+                            <Button mt={3} ml={3} onClick={ () => cancelReply(critique.critique_id)}>Cancel</Button>
+                        </Flex>
+                    </form>
                 </Box>
                 {/* {console.log(critique.critique_id)} */}
                 <CritiqueReply id={critique.critique_id} />

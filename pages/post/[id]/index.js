@@ -49,6 +49,7 @@ import { getDownloadURL, ref, uploadBytesResumable, deleteObject  } from 'fireba
 import { useToast } from '@chakra-ui/react'
 import { SRLWrapper } from "simple-react-lightbox";
 import { post } from 'jquery'
+import { cookie } from 'cookie'
 
 const breakpoints = createBreakpoints({
     sm: '320px',
@@ -64,6 +65,8 @@ export async function getServerSideProps(context) {
     const { API_URL } = process.env
     const { API_KEY } = process.env
 
+    // const parsedCookies = cookie.parse(context.req.headers.cookie);
+
     // const res = await fetch(`${API_URL}/api/display_post/${context.params.id}`, {
     //     method: 'GET',
     //     headers: {
@@ -76,6 +79,7 @@ export async function getServerSideProps(context) {
     // })
 
     const post_id = context.params.id
+    // console.log(parsedCookies)
     
   return {
     props: {
@@ -90,11 +94,11 @@ export default function CritiquePost(post_id){
     const { API_KEY } = process.env
     const toast = useToast()
 
-    const [cookie, setCookie] = useCookies(['token', 'id', 'encrypted_id', 'display_name'])
+    const [cookies, setCookie] = useCookies(['token', 'id', 'encrypted_id', 'display_name'])
     const [critique, setCritique] = useState('')
-    const token = cookie.token
-    const user_id = cookie.encrypted_id
-    const id = cookie.id
+    const token = cookies.token
+    const user_id = cookies.encrypted_id
+    const id = cookies.id
     const likes = null
     const [data, setData] = useState([])
     const [urls, setUrls] = useState([])
@@ -111,8 +115,8 @@ export default function CritiquePost(post_id){
               'X-API-KEY': `${API_KEY}`,
               'Authorization': 'Basic Y2Fwc3RvbmUyMDIxOjEyMzQ=',
               'Accept': 'application/json',
-              'Token': cookie.token,
-              'User-Id': cookie.encrypted_id
+              'Token': cookies.token,
+              'User-Id': cookies.encrypted_id
             }
         }
 
@@ -183,8 +187,8 @@ export default function CritiquePost(post_id){
               'Authorization': 'Basic Y2Fwc3RvbmUyMDIxOjEyMzQ=',
               // 'Accept-Encoding': 'gzip, deflate, br',
               'Accept': 'application/json',
-              'Token': cookie.token,
-              'User-Id': cookie.encrypted_id
+              'Token': cookies.token,
+              'User-Id': cookies.encrypted_id
             }
         }
 
@@ -212,15 +216,15 @@ export default function CritiquePost(post_id){
               'Authorization': 'Basic Y2Fwc3RvbmUyMDIxOjEyMzQ=',
               // 'Accept-Encoding': 'gzip, deflate, br',
               'Accept': 'application/json',
-              'Token': cookie.token,
-              'User-Id': cookie.encrypted_id
+              'Token': cookies.token,
+              'User-Id': cookies.encrypted_id
             }
         }
 
         axios.post(`${API_URL}/api/create_critique`, formData, config)
         .then(response => {
             console.log(response.data);
-            window.location.href=`/post/${post_id.post_id}`
+            // window.location.href=`/post/${post_id.post_id}`
         })
         .catch(error => {
             console.log(error.response);
@@ -343,10 +347,12 @@ export default function CritiquePost(post_id){
                         </Box>
                     </Box>
                     {/* Critique Input */}
+                    <form onSubmit={giveCritique}>
                     <Box display='flex' flexDir='column' mt={5}>
                         <Textarea placeholder='Critique this...' bg='white' boxShadow='md' w={{lg: '90vh', sm: '100%'}} mx="auto" mt={3} onChange={e => setCritique(e.target.value)} />
-                        <Button w='10vh' mx='auto' mt={3} onClick={giveCritique}>Submit</Button>
+                        <Button type='submit' w='10vh' mx='auto' mt={3}>Submit</Button>
                     </Box>
+                    </form>
         
             </Box>
                     {/* Critique */}

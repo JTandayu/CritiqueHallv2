@@ -42,6 +42,7 @@ import {
     PopoverCloseButton,
     PopoverAnchor,
   } from '@chakra-ui/react'
+import {cookie} from 'cookie'
 
 const MotionButton = motion(Button)
 
@@ -52,14 +53,26 @@ const breakpoints = createBreakpoints({
     xl: '80em',
 })
 
+export async function getServerSideProps(context){
+    const cookies = req.headers.cookie;
+    const data = JSON.parse(cookies)
+    console.log(cookies)
+
+    return{
+        props:{
+            item: cookies
+        }
+    }
+}
 
 
-export default function Nav({id}){
+export default function Nav({id, item}){
     const { API_URL } = process.env
     const { API_KEY } = process.env
 
     const changeColor = useColorModeValue('#C1272D', '#FF5C61')
-    const changeColor2 = useColorModeValue('#1B1464', '#B2A3FF') 
+    const changeColor2 = useColorModeValue('#1B1464', '#B2A3FF')
+    // console.log(item)
 
     const { colorMode, toggleColorMode } = useColorMode()
     colorMode === 'light' ? 'dark' : 'light'
@@ -114,7 +127,7 @@ export default function Nav({id}){
 
         axios.get(`${API_URL}/api/display_profile/${cookies.display_name}`, config)
         .then(response => {
-            // console.log(response.data);      
+            console.log(response.data);      
             setProfilePic(response.data.data.user.profile_photo)
         })
         .catch(error => {
@@ -218,8 +231,10 @@ export default function Nav({id}){
 
     const readNotif = () =>{
         changeDarkAndLightIcon()
+        let formData = new FormData;
+        // formData.append('first_id', notif[0])
 
-        axios.get
+        // axios.post
     }
 
     return(

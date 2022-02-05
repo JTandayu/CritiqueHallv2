@@ -47,7 +47,7 @@ export default function Custom404() {
             
             <Box w={{lg: '100%', md: '100%', sm: '100%'}} h={{lg: '100%', md: '100%', sm: '100%'}} p={4}>
                 <Box w={{lg: '100%', md: '100%', sm: '100%'}} h={{lg: '100%', md: '100%', sm: '100%'}} p={4} mt='24em'>
-                <Center><Image src={useColorModeValue('404.png', '404-dark.png')} alt="404" /></Center>
+                <Center><Image src={useColorModeValue('/404.png', '/404-dark.png')} alt="404" /></Center>
                 </Box>
             
             </Box>
