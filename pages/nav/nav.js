@@ -237,7 +237,6 @@ export default function Nav(data, profile_pic){
     }
 
     const readNotif = () =>{
-        changeDarkAndLightIcon()
         let formData = new FormData;
         // formData.append('first_id', notif[0])
 
@@ -342,6 +341,7 @@ export default function Nav(data, profile_pic){
                             color={useColorModeValue('#1B1464')}
                             _hover={{cursor:'pointer', textDecoration:'underline'}}
                             _active={{bgColor: 'none', textDecoration:'underline'}}
+                            onClick={readNotif}
                         ><Img src={useColorModeValue('/notification-alert-icon.png', '/notification-alert-icon-dark.png')} alt="Notification" w="2em" h="2em" ml={-5} /></Button>
                     </PopoverTrigger>
                     <Button as='a'
@@ -350,9 +350,9 @@ export default function Nav(data, profile_pic){
                             my={2}
                             w='100%'
                             position='static'
-                            onClick={readNotif}
                             _hover={{cursor:'pointer'}}
                             _active={{bgColor: 'none'}}
+                            onClick={changeDarkAndLightIcon}
                             > <Img src={ImgUrl} alt="moon" w="2em" h="2em" ml={-20} /></Button>
                     <PopoverContent w="400px">
                         <PopoverArrow />

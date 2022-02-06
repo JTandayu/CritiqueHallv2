@@ -35,7 +35,7 @@ const breakpoints = createBreakpoints({
 
 const theme = extendTheme({ breakpoints })
 
-export const Critiques = ({id}) => {
+export const Critiques = ({id, newCritique}) => {
     const { API_URL } = process.env
     const { API_KEY } = process.env
 
@@ -45,6 +45,7 @@ export const Critiques = ({id}) => {
     const [lastId, setLastID] =  useState('0')
     const [filter, setFilter] = useState('desc')
     const [loading, setLoading] = useState(true)
+    const [newReply, setNewReply] = useState('')
     // const [newPostCritique, setNewPostCritique] = useState(newPost)
     // const filterCritique = filter;
     // console.log(filter)
@@ -67,6 +68,7 @@ export const Critiques = ({id}) => {
         let formData = new FormData;
         formData.append('post_id', id);
         formData.append('last_id', null);
+        formData.append('sort', filter)
 
         axios.post(`${API_URL}/api/display_all_critiques`, formData, config)
         .then((response) =>{
@@ -85,7 +87,7 @@ export const Critiques = ({id}) => {
             console.log(error)
         })
         
-    }, [])
+    }, [newCritique])
 
     const openReply = async(id) =>{
         document.getElementById(id).removeAttribute('hidden');
@@ -102,8 +104,8 @@ export const Critiques = ({id}) => {
         .then((response) =>{
             console.log(response.data)
             document.getElementById(critique_id).hidden=true;
-            // setCritiqueItems(critiqueItems => critiqueItems.filter())
-            // window.location.href = `/post/${id}`;
+            setNewReply(reply)
+
         }).catch((error) =>{
             console.log(error.response)
         })
@@ -203,9 +205,20 @@ export const Critiques = ({id}) => {
             </Box>
 
 
-            <Box overflowY="scroll" h={{lg: '80vh', sm: '70vh'}} mt={5}>
+            <Box overflowY="scroll" h={{lg: '80vh', sm: '70vh'}} css={{
+                    '&::-webkit-scrollbar': {
+                    width: '4px',
+                    },
+                    '&::-webkit-scrollbar-track': {
+                    width: '6px',
+                    },
+                    '&::-webkit-scrollbar-thumb': {
+                    background: '#212121',
+                    borderRadius: '24px',
+                    },
+                }} mt={5}>
             {loading ? <Box>Loading...</Box> :
-            [ critiqueItems ?
+             critiqueItems.length != 0 ?
                 critiqueItems.map((critique) => { 
                     if(critique.display_name === cookie.display_name){
                     return(
@@ -214,6 +227,8 @@ export const Critiques = ({id}) => {
                                 <Flex>
                                     <Image src={critique.profile_photo} w='3vh' h='3vh' mt={2} />
                                     <Heading size='sm' ml={3} mt={2}>{critique.display_name}</Heading>
+                                    {critique.starred_by_author == '1' ? <Image src='/reputation-stars.png' alt="Reputation Stars" w="25px" h="25px" ml={3} mt={2} /> : null}
+                                    {critique.reputation_points >= '50' ? <Image src='/badge-icon.png' alt="Badge" w="25px" h="25px" ml={3} mt={2} /> : null}
                                     <Spacer />
                                     <Text fontSize='sm' mt={2}>{critique.time_ago}</Text>
 
@@ -246,8 +261,8 @@ export const Critiques = ({id}) => {
                                 <Flex w='20vw'>
                                     <Button variant='ghost' id={`star${critique.critique_id}`} onClick={()=>giveStar(critique.critique_id)}><Image src='/stars.png' alt="Stars" w="25px" h="25px" ml={2} mr={2}/> {critique.stars}</Button>
                                     <Button variant='ghost' ml={5} onClick={()=>openReply(critique.critique_id)}>Reply</Button>
-                                    <Text>(Edited)</Text>
-                            </Flex>
+                                    <Text mt="9px" ml={5}>(Edited)</Text>
+                                </Flex>
                         </Box>
                         <Box p="2" w='35vw' mt={1} id={critique.critique_id} hidden>
                         <form onSubmit={()=>submitReply(critique.critique_id)}>
@@ -258,7 +273,7 @@ export const Critiques = ({id}) => {
                             </Flex>
                         </form>
                         </Box>
-                        <CritiqueReply id={critique.critique_id} />
+                        <CritiqueReply id={critique.critique_id} newReply={newReply} post_id={id} />
                         </>
                 )
                 }
@@ -269,6 +284,8 @@ export const Critiques = ({id}) => {
                                 <Flex>
                                     <Image src={critique.profile_photo} w='3vh' h='3vh' mt={2} />
                                     <Heading size='sm' ml={3} mt={2}>{critique.display_name}</Heading>
+                                    {critique.starred_by_author == '1' ? <Image src='/reputation-stars.png' alt="Reputation Stars" w="25px" h="25px" ml={3} mt={2} /> : null}
+                                    {critique.reputation_points >= '50' ? <Image src='/badge-icon.png' alt="Badge" w="25px" h="25px" ml={3} mt={2} /> : null}
                                     <Spacer />
                                     <Text fontSize='sm' mt={2}>{critique.time_ago}</Text>
                                     <Menu>
@@ -296,26 +313,26 @@ export const Critiques = ({id}) => {
                             </Flex>
                     </Box>
                     <Box p="2" w='35vw' mt={1} id={critique.critique_id} hidden>
-                        <form onSubmit={()=>submitReply(critique.critique_id)}>
                             <Textarea w="full" onChange={(e) => setReply(e.target.value)}/>
                             <Flex>
-                                <Button mt={3} type="submit">Reply</Button>
+                                <Button mt={3} onClick={()=>submitReply(critique.critique_id)}>Reply</Button>
                                 <Button mt={3} ml={3} onClick={ () => cancelReply(critique.critique_id)}>Cancel</Button>
                             </Flex>
-                        </form>
                     </Box>
                     {/* {console.log(critique.critique_id)} */}
-                    <CritiqueReply id={critique.critique_id} />
+                    <CritiqueReply id={critique.critique_id} newReply={newReply} post_id={id} />
                     </>
                 )
                 })
-            : <Center><Text>Be the first one to critique this!</Text></Center>
-            ]
+            : <Center><Heading size="md" fontFamily={'Raleway'}>Be the first one to critique this!</Heading></Center>
+            
             }
-
-            <Center>
-                <Button variant='ghost' w="100%" onClick={loadMore} id='loadMore'>Load More</Button>
-            </Center>
+            {/* { critiqueItems.length != 0 ? 
+                <Center>
+                    <Button variant='ghost' w="100%" onClick={loadMore} id='loadMore'>Load More</Button>
+                </Center>
+            : null } */}
+            
 
             </Box>
 

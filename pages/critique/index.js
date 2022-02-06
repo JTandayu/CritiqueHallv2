@@ -296,7 +296,7 @@ export default function HallPage(){
             </Button> */}
             
             {/* Halls */}
-            <Box w="70%" h='200px' display={{lg: 'flex', md: 'flex', sm: 'none'}} mx="auto" mt="15vh" top="0">
+            <Box mt="3vh" w="70%" h='200px' display={{lg: 'flex', md: 'flex', sm: 'none'}} mx="auto" mt="15vh" top="0">
                 
                 <Button variant='ghost' w="200px" h="100px" className={styles.technology} rounded="lg" position='static' _hover={{backgroundColor: '#92278F'}} _active={{backgroundColor: '#92278F'}} onClick={getTechnology} boxShadow={'lg'}>
                 <Box w="full" h="10vh" ml={{lg: 0, sm: 0}}  px='5'>
@@ -403,8 +403,10 @@ export default function HallPage(){
             </Box>
             <Box w="100%" h="100%" spacing="10px" mt="2">
                 <Box w={{lg: "70%" , sm: '100%'}} h="full" mx="auto" p="3" spacing="10">
+                    
                     {/* Critique Item */}
-                    {loading ? <Box>Loading...</Box> : 
+                    { posts.length != 0 ? 
+                    [loading ? <Box>Loading...</Box> : 
                     currentPosts.map((post, i) => 
                             <Box bgColor={changeColor} w="100%" display={{lg: 'flex', sm: 'block'}} key={post.post_id} mt='2ch' borderColor='white' border='1px solid gray.500' boxShadow='lg' rounded='lg'>
                                 <Link href={`/post/${post.post_id}`} passHref>
@@ -448,7 +450,8 @@ export default function HallPage(){
                             </Box>
                             
                     )
-                    }
+                    ]
+                    : <Center><Text>There is nothing in here... Sorry!</Text></Center>}
                 </Box>
             </Box>
 

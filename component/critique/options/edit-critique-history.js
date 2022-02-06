@@ -46,8 +46,9 @@ function EditCritiqueHistory({id}) {
     useEffect(() => {
         let formData = new FormData;
         formData.append('critique_id', id)
+        formData.append('last_id', null)
 
-        axios.get(`${API_URL}/api/version_critique`, formData, config)
+        axios.get(`${API_URL}/api/version_critique/${id}`, config)
         .then((response)=>{
             console.log(response)
         }).catch((error)=>console.log(error.response))

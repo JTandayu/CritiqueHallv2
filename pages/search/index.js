@@ -135,7 +135,6 @@ export default function SearchResult(){
     console.log(currentSearch)
     
     const sortPostResult = async (e) =>{
-        e.preventDefault()
         const searchItem = localStorage.getItem('search-item')
         setSearch(searchItem)
 
@@ -174,7 +173,7 @@ export default function SearchResult(){
                 <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@700&display=swap" rel="stylesheet" />
             </Head>
             <Box w="100%" mb="10" mt="15vh">
-                <Heading><Center>Search Result for &quot;{search}&quot;</Center></Heading>
+                <Heading fontFamily={'Raleway'}><Center>Search Result for &quot;{search}&quot;</Center></Heading>
             </Box>
             
             
@@ -184,21 +183,21 @@ export default function SearchResult(){
                 <Spacer />
                 
             </Flex>
-            <Heading>User</Heading>
+            <Heading fontFamily={'Raleway'}>User</Heading>
 
             {/* User item */}
-            <Text id='user' mx='auto' hidden>No Users Found</Text>
+            <Text id='user' mx='auto' my="50px" hidden fontFamily={'Raleway'}>No Users Found</Text>
             {searchUserData.map((user, i) => (
-            <Box w='100%' key={user.user_id}>
+            <Box w='50%' key={user.user_id} bgImage={`url('${user.cover_photo}')`} color="white" mt={5} rounded="lg">
             <Link href="/profile/[id]" as={`/profile/${user.display_name}`} passHref>
                 <a>
-                <Box w={{lg: '20%', sm: '100%'}} display={{lg: 'flex', sm: 'block'}}  mt='2ch' mx="auto" border='1px solid' borderColor='dark' rounded='lg'>
-                    <Box p="3" w="100%" bg="light">
-                        <Image src={user.profile_photo} w='30px' h='30px' rounded='full' />
+                <Box w={{lg: '100%', sm: '100%'}} display={{lg: 'flex', sm: 'block'}}   mt='2ch' mx="auto" borderColor='dark' rounded='lg' fontFamily={'Raleway'}>
+                    <Box p="3" w="100%" bg="light" ml="30px">
+                        <Image src={user.profile_photo} w='170px' h='170px' rounded='full' />
                     </Box>
-
-                    <Box p="3" w="100%" bg="light">
-                        {user.display_name}
+                    <Spacer />
+                    <Box p="3" w="100%" bg="light" ml="30vh">
+                        <Heading size="2xl" mt={28}>{user.display_name}</Heading>
                     </Box>      
                 </Box>
                 
@@ -206,8 +205,8 @@ export default function SearchResult(){
             </Link>
             </Box>
             ))}
-            <Heading>Posts</Heading>
-            <Flex w={{lg: '70%', sm: '100%'}}>
+            <Heading mt={5} fontFamily={'Raleway'}>Posts</Heading>
+            <Flex w={{lg: '70%', sm: '100%'}} my="30px">
 
                 <Pagination
                     defaultCurrent={5}
@@ -226,7 +225,7 @@ export default function SearchResult(){
                 />
                 <Spacer />
 
-                <Flex w='15vw' mt={1}>
+                <Flex w='15vw' mt={1} fontFamily={'Raleway'}>
                     <Text mr={5} w={20} mt={2} >Sort By: </Text>
                     <Select onChange={(e) => sortPostResult(e.target.value)}>
                         <option value='desc'>Newest</option>
@@ -236,10 +235,10 @@ export default function SearchResult(){
             </Flex>
 
             {/* Search Item */}
-            <Text id='post' mx='auto' hidden>No Posts Found</Text>
+            <Text id='post' mx='auto' hidden fontFamily={'Raleway'}>No Posts Found</Text>
 
             {currentSearch.map((post, i) => (
-            <Box w={{lg: '70%', sm: '100%'}} mt='2ch' mx="auto" border='1px solid' key={post.post_id} display="flex" borderColor='dark' rounded='lg'>
+            <Box w={{lg: '70%', sm: '100%'}} mt='2ch' mx="auto" border='1px solid' key={post.post_id} display="flex" borderColor='dark' rounded='lg' fontFamily={'Raleway'}>
                                 <Link href='/post/[id]'  as={`/post/${post.post_id}`} passHref>
                                 <a>
                                 <Box display={{lg: 'flex', sm: 'block'}} w={{lg: "50vw", sm: '100%'}}>

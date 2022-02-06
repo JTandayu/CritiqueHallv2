@@ -265,7 +265,19 @@ function CreatePost({data}) {
                             <input type='file' multiple onChange={handleChange} accept=".jpg, .png, .docx, .xls" id='image-input' />
                             <Button onClick={uploadFiles}>Upload</Button>
                         </Flex>
-                        <Flex bgColor={useColorModeValue('#F4F4F4', '#2E2E2E')} w={{lg: '19vw', sm: '100%'}} h='7vh' rounded='md' overflowX='auto' mt={3}>
+                        <Flex bgColor={useColorModeValue('#F4F4F4', '#2E2E2E')} w={{lg: '19vw', sm: '100%'}} h='7vh' rounded='md' overflowX='auto' mt={3}
+                        css={{
+                            '&::-webkit-scrollbar': {
+                            width: '4px',
+                            },
+                            '&::-webkit-scrollbar-track': {
+                            width: '6px',
+                            },
+                            '&::-webkit-scrollbar-thumb': {
+                            background: '#212121',
+                            borderRadius: '24px',
+                            },
+                        }}>
                             {fileName.map((file, i) => (
                                 <Flex ml={5} id={file}>
                                     <Text fontSize='sm' key={i}>{file}</Text>
@@ -275,7 +287,19 @@ function CreatePost({data}) {
                         </Flex>
 
                         <Heading fontFamily={'Raleway'} size='sm' mt={5}>Attachments Preview</Heading>
-                        <Flex bgColor={useColorModeValue('#F4F4F4', '#2E2E2E')} w={{lg: '20vw', sm: '100%'}} h='20vh' rounded='md' overflowX='auto' mt={3}>
+                        <Flex bgColor={useColorModeValue('#F4F4F4', '#2E2E2E')} w={{lg: '20vw', sm: '100%'}} h='20vh' rounded='md' overflowX='auto' css={{
+                                '&::-webkit-scrollbar': {
+                                width: '4px',
+                                },
+                                '&::-webkit-scrollbar-track': {
+                                width: '6px',
+                                },
+                                '&::-webkit-scrollbar-thumb': {
+                                background: '#212121',
+                                borderRadius: '24px',
+                                },
+                            }} mt={3}>
+
                             {urls.map((url, i) => (
                                 <Image src={url} key={i} w={{lg: '10vw', sm: '80vw'}} h='10vh' ml={5} />
                             ))} 
@@ -284,6 +308,7 @@ function CreatePost({data}) {
                         <Text fontFamily={'Raleway'} fontStyle={'italic'} fontSize='sm'>- 5 Attachments Max</Text>
                         <Text fontFamily={'Raleway'} fontStyle={'italic'} fontSize='sm'>- Image and Document Format Only Accepted</Text>
                         <Text fontFamily={'Raleway'} fontStyle={'italic'} fontSize='sm'>- 200KB File Max Size</Text>
+                        <Text fontFamily={'Raleway'} fontStyle={'italic'} fontSize='sm'>- Attachments cannot be changed once posted</Text>
                     </Box>
 
                     </Flex >

@@ -12,6 +12,8 @@ import {
     Text,
     Textarea,
     Center,
+    Spacer,
+    Image,
   } from "@chakra-ui/react"
 import { useDisclosure } from '@chakra-ui/react'
 import { Button } from '@chakra-ui/react'
@@ -21,6 +23,7 @@ import {useCookies} from 'react-cookie'
 import { useEffect, useState } from "react";
 import { Radio, RadioGroup, Stack } from '@chakra-ui/react'
 import axios from "axios";
+import { WarningIcon } from "@chakra-ui/icons";
 
 
 // export async function getServerSideProps(context) {
@@ -74,7 +77,7 @@ function ReportUser({data}) {
 
     return(
         <>
-        <button onClick={onOpen}>Report</button>
+        <Button bgColor="#212121" _hover={{bgColor: "#212121"}} _active={{bgColor: "#212121"}} onClick={onOpen} rounded="2xl"><Image src="/more-icon.png" w={7} h={7} /></Button>
 
         <Modal isOpen={isOpen} onClose={onClose}>
             <ModalOverlay />
