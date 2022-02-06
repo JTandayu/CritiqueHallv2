@@ -20,7 +20,7 @@ import axios from 'axios'
 import { CritiqueReply } from './CritiqueReply'
 import { useCookies } from 'react-cookie'
 import { createBreakpoints } from '@chakra-ui/theme-tools'
-import { extendTheme } from '@chakra-ui/react'
+import { extendTheme, useColorModeValue } from '@chakra-ui/react'
 import EditCritique from './options/edit-critique'
 import DeleteCritique from './options/delete-critique'
 import EditCritiqueHistory from './options/edit-critique-history'
@@ -192,8 +192,8 @@ export const Critiques = ({id}) => {
                         <Image src="/critiques-title.png" w='25vh' h='5vh' />
                         <Spacer />
                         <Flex w={{lg: '15vw', sm: '50%'}} mt={1}>
-                        <Text mr={{lg: 5, sm: 1}} w={20} mt={2}>Sort by: </Text>
-                        <Select onChange={(e)=>sortCritique(e.target.value)}>
+                        <Text fontFamily={'Raleway'} mr={{lg: 5, sm: 1}} w={20} mt={2}>Sort by: </Text>
+                        <Select borderColor={useColorModeValue('black', 'white')} fontFamily={'Raleway'} onChange={(e)=>sortCritique(e.target.value)}>
                             <option value='desc'>Newest</option>
                             <option value='asc'>Oldest</option>
                             <option value='most_stars'>Most Stars</option>
