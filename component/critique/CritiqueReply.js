@@ -117,11 +117,11 @@ export const CritiqueReply = ({id}) => {
     return (
         <div>
             {critiqueReply ? <Button w="full" h="20px" onClick={loadMore} id='loadMore'>Load More</Button> : null}
-            {critiqueReply.map((reply)=>{
+            {critiqueReply.map((reply, i)=>{
                 if(reply.display_name === cookie.display_name){
                 return(
             
-                <Box p="2" overflow-y="auto" w={{lg: '32vw', sm: '85%'}} ml={16} mt={5}>
+                <Box p="2" overflow-y="auto" w={{lg: '32vw', sm: '85%'}} ml={16} mt={5} key={i}>
                             <Flex>
                                 <Image src={reply.profile_photo} w='3vh' h='3vh' mt={2} />
                                 <Heading size='sm' ml={3} mt={2}>{reply.display_name}</Heading>
@@ -160,7 +160,7 @@ export const CritiqueReply = ({id}) => {
             }
             return(
             
-                <Box p="2" overflow-y="auto" w={{lg: '32vw', sm: '85%'}} ml={16} mt={5}>
+                <Box p="2" overflow-y="auto" w={{lg: '32vw', sm: '85%'}} ml={16} mt={5} key={i}>
                             <Flex>
                                 <Image src={reply.profile_photo} w='3vh' h='3vh' mt={2} />
                                 <Heading size='sm' ml={3} mt={2}>{reply.display_name}</Heading>
