@@ -188,7 +188,7 @@ export default function FeedbackPage(){
                         </Box>
                         
                         <Box w="100%">
-                            <Center><Button fontFamily={'Raleway'} size={'lg'} type='submit' mx='auto' bgColor={useColorModeValue('#2777C1','#0085FF')} color={useColorModeValue('#FFFFFF', '#FFFFFF')} _hover={{bgColor: useColorModeValue('#56AEFF', '#0B5090')}} mt="10" onClick={SubmitFeedback}>SUBMIT</Button></Center>
+                            <Center><Button fontFamily={'Raleway'} size={'lg'} type='submit' mx='auto' bgColor={useColorModeValue('#2777C1','#0085FF')} color={useColorModeValue('#FFFFFF', '#FFFFFF')} _hover={{bgColor: useColorModeValue('#56AEFF', '#0B5090')}} mt="10" onClick={SubmitFeedback}>Submit</Button></Center>
                         </Box>
                     </Box>
                     </form>

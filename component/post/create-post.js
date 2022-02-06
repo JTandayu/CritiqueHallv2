@@ -208,7 +208,7 @@ function CreatePost({data}) {
 
     return(
         <>
-        <button onClick={onOpen} className={styles.cpbutton}>Create Post</button>
+        <button onClick={onOpen} className={useColorModeValue(styles.cpbutton, styles.cpbutton2)}>Create Post</button>
 
 
         <Modal isOpen={isOpen} onClose={onClose}>
@@ -221,14 +221,14 @@ function CreatePost({data}) {
                     <Box w={{lg: '24vw', sm: '100%'}}>
                     <Flex fontFamily={'Raleway'} mt='3vh'>
                         <FormLabel>Title</FormLabel>
-                        <Input type='text' w={{lg: '20vw', sm: '100%'}} ml='11px' onChange={e => setTitle(e.target.value)}  />
+                        <Input borderColor={useColorModeValue('black', 'white')} type='text' w={{lg: '20vw', sm: '100%'}} ml='11px' onChange={e => setTitle(e.target.value)}  />
                     </Flex>
 
                     <FormLabel fontFamily={'Raleway'} mt={2}>Description</FormLabel>
-                    <Textarea fontFamily={'Raleway'} type='text' w={{lg: '23vw', sm: '100%'}} h='20vh' onChange={e => setDescription(e.target.value)} />
+                    <Textarea borderColor={useColorModeValue('black', 'white')} fontFamily={'Raleway'} type='text' w={{lg: '23vw', sm: '100%'}} h='20vh' onChange={e => setDescription(e.target.value)} />
                     <Flex mt={5}>
                         <FormLabel fontFamily={'Raleway'} mt={2}>Post This to: </FormLabel>
-                        <Select w={{lg: '10vw', sm: '50vw'}} onChange={e => setHallID(e.target.value)}>
+                        <Select  borderColor={useColorModeValue('black', 'white')} fontFamily={'Raleway'} w={{lg: '10vw', sm: '50vw'}} onChange={e => setHallID(e.target.value)}>
                             <option value='1'>Technology</option>
                             <option value='2'>Arts</option>
                             <option value='3'>Business</option>
@@ -239,7 +239,7 @@ function CreatePost({data}) {
                     
 
                     <Center mt={10}>
-                        <Button fontFamily={'Raleway'} colorScheme='blue' mr={2} onClick={submitPost}>
+                        <Button fontFamily={'Raleway'} bgColor={useColorModeValue('#2777C1','#0085FF')} color={useColorModeValue('#FFFFFF', '#FFFFFF')} _hover={{bgColor: useColorModeValue('#56AEFF', '#0B5090')}} mr={2} onClick={submitPost}>
                             Submit
                         </Button>
 

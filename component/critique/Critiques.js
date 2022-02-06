@@ -20,7 +20,7 @@ import axios from 'axios'
 import { CritiqueReply } from './CritiqueReply'
 import { useCookies } from 'react-cookie'
 import { createBreakpoints } from '@chakra-ui/theme-tools'
-import { extendTheme } from '@chakra-ui/react'
+import { extendTheme, useColorModeValue } from '@chakra-ui/react'
 import EditCritique from './options/edit-critique'
 import DeleteCritique from './options/delete-critique'
 import EditCritiqueHistory from './options/edit-critique-history'
@@ -51,6 +51,10 @@ export const Critiques = ({id, newCritique}) => {
     // console.log(filter)
     // console.log(cookie.token)
     // const [data, setData] =  useState([])
+
+    const beCritique = useColorModeValue('/be-first-critique.png', '/be-first-critique-dark.png')
+    const CritiqueTitle = useColorModeValue('/critiques-title.png', '/critiques-title-dark.png')
+    const TextareaBorderColor = useColorModeValue('black', 'white')
 
     const config = {
         headers: { 
@@ -191,11 +195,11 @@ export const Critiques = ({id, newCritique}) => {
     return (
         <div>
             <Box display='flex'>
-                        <Image src="/critiques-title.png" w='25vh' h='5vh' />
+                        <Image src={CritiqueTitle} w='25vh' h='5vh' />
                         <Spacer />
                         <Flex w={{lg: '15vw', sm: '50%'}} mt={1}>
-                        <Text mr={{lg: 5, sm: 1}} w={20} mt={2}>Sort by: </Text>
-                        <Select onChange={(e)=>sortCritique(e.target.value)}>
+                        <Text fontFamily={'Raleway'} mr={{lg: 5, sm: 1}} w={20} mt={2}>Sort by: </Text>
+                        <Select borderColor={useColorModeValue('black', 'white')} fontFamily={'Raleway'} onChange={(e)=>sortCritique(e.target.value)}>
                             <option value='desc'>Newest</option>
                             <option value='asc'>Oldest</option>
                             <option value='most_stars'>Most Stars</option>
@@ -226,11 +230,11 @@ export const Critiques = ({id, newCritique}) => {
                         <Box p="2" overflow-y="auto" w={{lg: '35vw', sm: '100%'}} mt={5} position='static'>
                                 <Flex>
                                     <Image src={critique.profile_photo} w='3vh' h='3vh' mt={2} />
-                                    <Heading size='sm' ml={3} mt={2}>{critique.display_name}</Heading>
+                                    <Heading fontFamily={'Raleway'} size='sm' ml={3} mt={2}>{critique.display_name}</Heading>
                                     {critique.starred_by_author == '1' ? <Image src='/reputation-stars.png' alt="Reputation Stars" w="25px" h="25px" ml={3} mt={2} /> : null}
                                     {critique.reputation_points >= '50' ? <Image src='/badge-icon.png' alt="Badge" w="25px" h="25px" ml={3} mt={2} /> : null}
                                     <Spacer />
-                                    <Text fontSize='sm' mt={2}>{critique.time_ago}</Text>
+                                    <Text fontFamily={'Raleway'} fontSize='sm' mt={2}>{critique.time_ago}</Text>
 
                                     <Menu>
                                         <MenuButton
@@ -242,34 +246,34 @@ export const Critiques = ({id, newCritique}) => {
                                         </MenuButton>
                                         <MenuList p={3}>
                                         <MenuGroup>
-                                            <MenuItem><EditCritiqueHistory id={critique.critique_id} /></MenuItem>
+                                            <MenuItem fontFamily={'Raleway'}><EditCritiqueHistory id={critique.critique_id} /></MenuItem>
                                         </MenuGroup>
                                         <MenuDivider />
                                         <MenuGroup>
-                                            <MenuItem><EditCritique data={critique} /></MenuItem>
+                                            <MenuItem fontFamily={'Raleway'}><EditCritique data={critique} /></MenuItem>
                                         </MenuGroup>
                                         <MenuDivider />
                                         <MenuGroup>
-                                            <MenuItem><DeleteCritique id={critique.critique_id} /></MenuItem>
+                                            <MenuItem fontFamily={'Raleway'}><DeleteCritique id={critique.critique_id} /></MenuItem>
                                         </MenuGroup>
                                         </MenuList>
                                     </Menu>
                                 </Flex>
                                 <Box w='100%' mt={1}>
-                                    <Text fontSize='md'>{critique.body}</Text>
+                                    <Text fontFamily={'Raleway'} fontSize='md'>{critique.body}</Text>
                                 </Box>
                                 <Flex w='20vw'>
                                     <Button variant='ghost' id={`star${critique.critique_id}`} onClick={()=>giveStar(critique.critique_id)}><Image src='/stars.png' alt="Stars" w="25px" h="25px" ml={2} mr={2}/> {critique.stars}</Button>
-                                    <Button variant='ghost' ml={5} onClick={()=>openReply(critique.critique_id)}>Reply</Button>
-                                    <Text mt="9px" ml={5}>(Edited)</Text>
+                                    <Button fontFamily={'Raleway'} variant='ghost' ml={5} onClick={()=>openReply(critique.critique_id)}>Reply</Button>
+                                    <Text fontFamily={'Raleway'} mt="9px" ml={5}>(Edited)</Text>
                                 </Flex>
                         </Box>
                         <Box p="2" w='35vw' mt={1} id={critique.critique_id} hidden>
                         <form onSubmit={()=>submitReply(critique.critique_id)}>
-                            <Textarea w="full" value={reply} onChange={(e) => setReply(e.target.value)}/>
+                            <Textarea borderColor={TextareaBorderColor} fontFamily={'Raleway'} w="full" value={reply} onChange={(e) => setReply(e.target.value)}/>
                             <Flex>
-                                <Button mt={3} type="submit">Reply</Button>
-                                <Button mt={3} ml={3} onClick={ () => cancelReply(critique.critique_id)}>Cancel</Button>
+                                <Button fontFamily={'Raleway'} mt={3} type="submit">Reply</Button>
+                                <Button fontFamily={'Raleway'} mt={3} ml={3} onClick={ () => cancelReply(critique.critique_id)}>Cancel</Button>
                             </Flex>
                         </form>
                         </Box>
@@ -283,11 +287,11 @@ export const Critiques = ({id, newCritique}) => {
                         <Box p="2" overflow-y="auto" w={{lg: '35vw', sm: '100%'}} mt={5} position='static'>
                                 <Flex>
                                     <Image src={critique.profile_photo} w='3vh' h='3vh' mt={2} />
-                                    <Heading size='sm' ml={3} mt={2}>{critique.display_name}</Heading>
+                                    <Heading fontFamily={'Raleway'} size='sm' ml={3} mt={2}>{critique.display_name}</Heading>
                                     {critique.starred_by_author == '1' ? <Image src='/reputation-stars.png' alt="Reputation Stars" w="25px" h="25px" ml={3} mt={2} /> : null}
                                     {critique.reputation_points >= '50' ? <Image src='/badge-icon.png' alt="Badge" w="25px" h="25px" ml={3} mt={2} /> : null}
                                     <Spacer />
-                                    <Text fontSize='sm' mt={2}>{critique.time_ago}</Text>
+                                    <Text fontFamily={'Raleway'} fontSize='sm' mt={2}>{critique.time_ago}</Text>
                                     <Menu>
                                         <MenuButton
                                         px={4}
@@ -298,25 +302,25 @@ export const Critiques = ({id, newCritique}) => {
                                         </MenuButton>
                                         <MenuList p={3}>
                                         <MenuGroup>
-                                            <MenuItem><EditCritiqueHistory id={critique.critique_id} /></MenuItem>
+                                            <MenuItem fontFamily={'Raleway'}><EditCritiqueHistory id={critique.critique_id} /></MenuItem>
                                         </MenuGroup>
                                         </MenuList>
                                     </Menu>
                                 </Flex>
                                 <Box w='100%' mt={1}>
-                                    <Text fontSize='md'>{critique.body}</Text>
+                                    <Text fontFamily={'Raleway'} fontSize='md'>{critique.body}</Text>
                                 </Box>
                                 <Flex w='20vw'>
                                     <Button variant='ghost' id={`star${critique.critique_id}`} onClick={()=>giveStar(critique.critique_id)}><Image src='/stars.png' alt="Stars" w="25px" h="25px" ml={2} mr={2}/> {critique.stars}</Button>
-                                    <Button variant='ghost' ml={5} onClick={()=>openReply(critique.critique_id)}>Reply</Button>
-                                    <Text>(Edited)</Text>
+                                    <Button fontFamily={'Raleway'} variant='ghost' ml={5} onClick={()=>openReply(critique.critique_id)}>Reply</Button>
+                                    <Text fontFamily={'Raleway'}>(Edited)</Text>
                             </Flex>
                     </Box>
                     <Box p="2" w='35vw' mt={1} id={critique.critique_id} hidden>
-                            <Textarea w="full" onChange={(e) => setReply(e.target.value)}/>
+                            <Textarea fontFamily={'Raleway'} w="full" onChange={(e) => setReply(e.target.value)}/>
                             <Flex>
-                                <Button mt={3} onClick={()=>submitReply(critique.critique_id)}>Reply</Button>
-                                <Button mt={3} ml={3} onClick={ () => cancelReply(critique.critique_id)}>Cancel</Button>
+                                <Button fontFamily={'Raleway'} mt={3} onClick={()=>submitReply(critique.critique_id)}>Reply</Button>
+                                <Button fontFamily={'Raleway'} mt={3} ml={3} onClick={ () => cancelReply(critique.critique_id)}>Cancel</Button>
                             </Flex>
                     </Box>
                     {/* {console.log(critique.critique_id)} */}
@@ -324,7 +328,7 @@ export const Critiques = ({id, newCritique}) => {
                     </>
                 )
                 })
-            : <Center><Heading size="md" fontFamily={'Raleway'}>Be the first one to critique this!</Heading></Center>
+            : <Center><Image src={beCritique} w='350px' h='30px' disabled/></Center>
             
             }
             {/* { critiqueItems.length != 0 ? 

@@ -118,11 +118,11 @@ export const CritiqueReply = ({id, post_id, newReply}) => {
                 <Box p="2" overflow-y="auto" w={{lg: '32vw', sm: '85%'}} ml={16} mt={5} key={i}>
                             <Flex>
                                 <Image src={reply.profile_photo} w='3vh' h='3vh' mt={2} />
-                                <Heading size='sm' ml={3} mt={2}>{reply.display_name}</Heading>
+                                <Heading fontFamily={'Raleway'} size='sm' ml={3} mt={2}>{reply.display_name}</Heading>
                                 {reply.starred_by_author == '1' ? <Image src='/reputation-stars.png' alt="Reputation Stars" w="25px" h="25px" ml={3} mt={2} /> : null}
                                 {reply.reputation_points >= '50' ? <Image src='/badge-icon.png' alt="Badge" w="25px" h="25px" ml={3} mt={2} /> : null}
                                 <Spacer />
-                                <Text fontSize='sm' mt={2}>{reply.time_ago}</Text>
+                                <Text fontFamily={'Raleway'} fontSize='sm' mt={2}>{reply.time_ago}</Text>
 
                                 <Menu>
                                     <MenuButton
@@ -134,17 +134,17 @@ export const CritiqueReply = ({id, post_id, newReply}) => {
                                     </MenuButton>
                                     <MenuList p={3}>
                                     <MenuGroup>
-                                        <MenuItem><EditReplyHistory id={reply.reply_id} /></MenuItem>
+                                        <MenuItem fontFamily={'Raleway'}><EditReplyHistory id={reply.reply_id} /></MenuItem>
                                     </MenuGroup>
                                     <MenuDivider />
                                     <MenuGroup>
-                                        <MenuItem><EditReply data={reply} /></MenuItem>
+                                        <MenuItem fontFamily={'Raleway'}><EditReply data={reply} /></MenuItem>
                                     </MenuGroup>
                                     </MenuList>
                                 </Menu>
                             </Flex>
                             <Box w='100%' mt={1}>
-                                <Text fontSize='md'>{reply.body}</Text>
+                                <Text fontFamily={'Raleway'} fontSize='md'>{reply.body}</Text>
                             </Box>
                             <Flex w='20vw'>
                                 <Button variant='ghost' id={reply.reply_id} onClick={()=>giveStar(reply.reply_id)}><Image src='/stars.png' alt="Stars" w="25px" h="25px" ml={2} mr={2}/> {reply.stars}</Button>
@@ -163,7 +163,7 @@ export const CritiqueReply = ({id, post_id, newReply}) => {
                                 {reply.starred_by_author == '1' ? <Image src='/reputation-stars.png' alt="Reputation Stars" w="25px" h="25px" ml={3} mt={2} /> : null}
                                 {reply.reputation_points >= '50' ? <Image src='/badge-icon.png' alt="Badge" w="25px" h="25px" ml={3} mt={2} /> : null}
                                 <Spacer />
-                                <Text fontSize='sm' mt={2}>{reply.time_ago}</Text>
+                                <Text fontFamily={'Raleway'} fontSize='sm' mt={2}>{reply.time_ago}</Text>
 
                                 <Menu>
                                     <MenuButton
@@ -175,7 +175,7 @@ export const CritiqueReply = ({id, post_id, newReply}) => {
                                     </MenuButton>
                                     <MenuList p={3}>
                                     <MenuGroup>
-                                        <MenuItem><EditReplyHistory id={reply.reply_id} /></MenuItem>
+                                        <MenuItem fontFamily={'Raleway'}><EditReplyHistory id={reply.reply_id} /></MenuItem>
                                     </MenuGroup>
                                     </MenuList>
                                 </Menu>

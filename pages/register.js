@@ -262,23 +262,23 @@ export default function Register({data2}) {
             {/* <Heading fontFamily={'Raleway'} mb={2} as="h2" size="lg"color={useColorModeValue('#C1272D','#FF5C61')}>REGISTER</Heading> */}
             
                 <FormLabel>First Name</FormLabel>
-                <Input borderColor={'black'} className={styles.input_box} type="text" value={first_name} onChange={e => setFirstName(e.target.value)}/>
+                <Input  borderColor={useColorModeValue('black', 'white')} className={styles.input_box} type="text" value={first_name} onChange={e => setFirstName(e.target.value)}/>
                 <br/>
                 <FormLabel>Last Name</FormLabel>
-                <Input borderColor={'black'}  className={styles.input_box} type="text" value={last_name} onChange={e => setLastName(e.target.value)}/>
+                <Input  borderColor={useColorModeValue('black', 'white')}  className={styles.input_box} type="text" value={last_name} onChange={e => setLastName(e.target.value)}/>
                 <br/>
                 <FormLabel>Display Name</FormLabel>
-                <Input borderColor={'black'}  className={styles.input_box} type="text" value={user_name} onChange={e => setUserName(e.target.value)}/>
+                <Input  borderColor={useColorModeValue('black', 'white')}  className={styles.input_box} type="text" value={user_name} onChange={e => setUserName(e.target.value)}/>
                 <br/>
                 <FormLabel>iACADEMY Email</FormLabel>
-                <Input borderColor={'black'}  placeholder="***@iacademy.edu.ph" className={styles.input_box} type="text" value={email} onChange={e => setEmail(e.target.value)}/>
+                <Input  borderColor={useColorModeValue('black', 'white')}  placeholder="***@iacademy.edu.ph" className={styles.input_box} type="text" value={email} onChange={e => setEmail(e.target.value)}/>
                 {/* <FormHelperText className={styles.helperText}>format: ***@iacademy.edu.ph</FormHelperText> */}
                 {/* <br/> */}
               <FormLabel>Password</FormLabel>
-                <Input borderColor={'black'}  className={styles.input_box} type="password" value={password} onChange={e => setPassword(e.target.value)}/>
+                <Input  borderColor={useColorModeValue('black', 'white')}  className={styles.input_box} type="password" value={password} onChange={e => setPassword(e.target.value)}/>
                 <br/>
                 <FormLabel>Confirm Password</FormLabel>
-                <Input borderColor={'black'}  className={styles.input_box} type="password" value={confirm_password} onChange={e => setConfirmPassword(e.target.value)}/>
+                <Input  borderColor={useColorModeValue('black', 'white')}  className={styles.input_box} type="password" value={confirm_password} onChange={e => setConfirmPassword(e.target.value)}/>
                 <br/>
                 <VStack direction="column" spacing={8} align="center">
                 <Button
@@ -306,7 +306,7 @@ export default function Register({data2}) {
           
             {/* <Heading fontFamily={'Raleway'} mb={2} as="h2" size="lg" color={useColorModeValue('#C1272D','#FF5C61')}>REGISTER</Heading> */}
                 <FormLabel>Department</FormLabel>
-                <Select borderColor={'black'}  className={styles.input_select} placeholder="Select Department" size="sm" onChange={e => getSpecList(e.target.value)}>
+                <Select borderColor={useColorModeValue('black', 'white')}  className={styles.input_select} placeholder="Select Department" size="sm" onChange={e => getSpecList(e.target.value)}>
                   {depList.map((department, i) => (
                     <option value={department.name} key={i}>{department.name}</option>
                   ))}
@@ -315,14 +315,14 @@ export default function Register({data2}) {
                 </Select>
                 <br />
                 <FormLabel>Strand or Specialization</FormLabel>
-                <Select borderColor={'black'}  className={styles.input_select} placeholder="Select Strand / Specialization" size="sm" onChange={e => setSpecialization(e.target.value)}>
+                <Select borderColor={useColorModeValue('black', 'white')}  className={styles.input_select} placeholder="Select Strand / Specialization" size="sm" onChange={e => setSpecialization(e.target.value)}>
                 {specList.map((specialization, i) => (
                   <option value={specialization.name} key={i}>{specialization.name}</option>
                 ))}
                 </Select>
                 <br />
                 <FormLabel>Gender</FormLabel>
-                <Select borderColor={'black'}  className={styles.input_select} placeholder="Select Gender" size="sm" onChange={e => setGender(e.target.value)}>
+                <Select  borderColor={useColorModeValue('black', 'white')}  className={styles.input_select} placeholder="Select Gender" size="sm" onChange={e => setGender(e.target.value)}>
                   <option value='m'>Male</option>
                   <option value='f'>Female</option>
                   <option value='o'>Other</option>
