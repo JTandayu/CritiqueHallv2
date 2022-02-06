@@ -46,8 +46,9 @@ function EditReplyHistory({id}) {
     useEffect(() => {
         let formData = new FormData;
         formData.append('reply_id', id)
+        formData.append('last_id', null)
 
-        axios.get(`${API_URL}/api/version_reply`, formData, config)
+        axios.get(`${API_URL}/api/version_reply/${id}`,  config)
         .then((response)=>{
             console.log(response)
         }).catch((error)=>console.log(error.response))

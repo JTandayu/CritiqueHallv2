@@ -179,11 +179,11 @@ function EditPost({data, url, fileNames}){
         formData.append('body', description);
         formData.append('hall_id', data.hall_id);
         formData.append('post_id', data.post_id)
-        formData.append('attachment1',urls[0]);
-        formData.append('attachment2',urls[1]);
-        formData.append('attachment3',urls[2]);
-        formData.append('attachment4',urls[3]);
-        formData.append('attachment5',urls[4]);
+        // formData.append('attachment1',urls[0]);
+        // formData.append('attachment2',urls[1]);
+        // formData.append('attachment3',urls[2]);
+        // formData.append('attachment4',urls[3]);
+        // formData.append('attachment5',urls[4]);
 
         const config = {
             headers: {

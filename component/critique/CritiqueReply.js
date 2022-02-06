@@ -34,13 +34,12 @@ const breakpoints = createBreakpoints({
 
 const theme = extendTheme({ breakpoints })
 
-export const CritiqueReply = ({id}) => {
+export const CritiqueReply = ({id, post_id, newReply}) => {
     const { API_URL } = process.env
     const { API_KEY } = process.env
     const [cookie, setCookie] = useCookies('token', 'id', 'encrypted_id', 'display_name')
     const [critiqueReply, setCritiqueReply] =  useState([])
-    const [lastId, setLastID] =  useState('0')
-    // console.log(id)
+    console.log(post_id)
 
     const config = {
         headers: { 
@@ -59,27 +58,22 @@ export const CritiqueReply = ({id}) => {
 
         let formData = new FormData;
         formData.append('critique_id', id);
-        formData.append('last_id', null);
 
         axios.post(`${API_URL}/api/display_replies`, formData, config)
         .then((response) =>{
             console.log(response.data)
             setCritiqueReply(response.data.data)
 
-            for(let i = 0; i < response.data.data.length; i++){
-                if(i == response.data.data.length - 1){
-                    setLastID(response.data.data[i].critique_id)
-                }
-            }
         }).catch((error) =>{
             console.log(error)
         })
 
-    }, [])
+    }, [newReply])
 
-    const giveStar = async (id) =>{
+    const giveStar = async (reply_id) =>{
         let formData = new FormData;
-        formData.append('reply_id', id);
+        formData.append('reply_id', reply_id);
+        formData.append('post_id', post_id)
 
         axios.post(`${API_URL}/api/star_reply`, formData, config)
         .then((response) =>{
@@ -116,7 +110,7 @@ export const CritiqueReply = ({id}) => {
 
     return (
         <div>
-            {critiqueReply ? <Button w="full" h="20px" onClick={loadMore} id='loadMore'>Load More</Button> : null}
+            {/* {critiqueReply ? <Button w="full" h="20px" onClick={loadMore} id='loadMore'>Load More</Button> : null} */}
             {critiqueReply.map((reply, i)=>{
                 if(reply.display_name === cookie.display_name){
                 return(
@@ -125,6 +119,8 @@ export const CritiqueReply = ({id}) => {
                             <Flex>
                                 <Image src={reply.profile_photo} w='3vh' h='3vh' mt={2} />
                                 <Heading size='sm' ml={3} mt={2}>{reply.display_name}</Heading>
+                                {reply.starred_by_author == '1' ? <Image src='/reputation-stars.png' alt="Reputation Stars" w="25px" h="25px" ml={3} mt={2} /> : null}
+                                {reply.reputation_points >= '50' ? <Image src='/badge-icon.png' alt="Badge" w="25px" h="25px" ml={3} mt={2} /> : null}
                                 <Spacer />
                                 <Text fontSize='sm' mt={2}>{reply.time_ago}</Text>
 
@@ -164,6 +160,8 @@ export const CritiqueReply = ({id}) => {
                             <Flex>
                                 <Image src={reply.profile_photo} w='3vh' h='3vh' mt={2} />
                                 <Heading size='sm' ml={3} mt={2}>{reply.display_name}</Heading>
+                                {reply.starred_by_author == '1' ? <Image src='/reputation-stars.png' alt="Reputation Stars" w="25px" h="25px" ml={3} mt={2} /> : null}
+                                {reply.reputation_points >= '50' ? <Image src='/badge-icon.png' alt="Badge" w="25px" h="25px" ml={3} mt={2} /> : null}
                                 <Spacer />
                                 <Text fontSize='sm' mt={2}>{reply.time_ago}</Text>
 
