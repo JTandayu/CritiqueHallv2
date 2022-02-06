@@ -52,6 +52,9 @@ export const Critiques = ({id, newCritique}) => {
     // console.log(cookie.token)
     // const [data, setData] =  useState([])
 
+    const beCritique = useColorModeValue('/be-first-critique.png', '/be-first-critique-dark.png')
+    const CritiqueTitle = useColorModeValue('/critiques-title.png', '/critiques-title-dark.png')
+
     const config = {
         headers: { 
           'content-type': 'multipart/form-data',
@@ -191,7 +194,7 @@ export const Critiques = ({id, newCritique}) => {
     return (
         <div>
             <Box display='flex'>
-                        <Image src="/critiques-title.png" w='25vh' h='5vh' />
+                        <Image src={CritiqueTitle} w='25vh' h='5vh' />
                         <Spacer />
                         <Flex w={{lg: '15vw', sm: '50%'}} mt={1}>
                         <Text fontFamily={'Raleway'} mr={{lg: 5, sm: 1}} w={20} mt={2}>Sort by: </Text>
@@ -324,7 +327,7 @@ export const Critiques = ({id, newCritique}) => {
                     </>
                 )
                 })
-            : <Center><Heading size="md" fontFamily={'Raleway'}>Be the first one to critique this!</Heading></Center>
+            : <Center><Image src={beCritique} w='350px' h='30px' disabled/></Center>
             
             }
             {/* { critiqueItems.length != 0 ? 

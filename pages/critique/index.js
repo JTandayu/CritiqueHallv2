@@ -97,6 +97,7 @@ export default function HallPage(){
     const [hallList, setHallList] = useState([])
 
     const changeColor = useColorModeValue('#BAB9B9', '#1F1F1F')
+    const thereIsNothing = useColorModeValue('/there-is-nothing.png', '/there-is-nothing-dark.png')
 
 
     const [cookie, setCookie] = useCookies('token', 'encrypted_id', 'id')
@@ -296,9 +297,9 @@ export default function HallPage(){
             </Button> */}
             
             {/* Halls */}
-            <Box mt="3vh" w="70%" h='200px' display={{lg: 'flex', md: 'flex', sm: 'none'}} mx="auto" mt="15vh" top="0">
+            <Box  w="70%" h='200px' display={{lg: 'flex', md: 'flex', sm: 'none'}} mx="auto" mt="15vh" top="0">
                 
-                <Button variant='ghost' w="200px" h="100px" className={styles.technology} rounded="lg" position='static' _hover={{backgroundColor: '#92278F'}} _active={{backgroundColor: '#92278F'}} onClick={getTechnology} boxShadow={'lg'}>
+                <Button variant='ghost' w="200px" h="100px" className={styles.technology} rounded="lg" position='static' _hover={{cursor: 'pointer'}} onClick={getTechnology} boxShadow={'lg'}>
                 <Box w="full" h="10vh" ml={{lg: 0, sm: 0}}  px='5'>
                     <Center>
                     <Text fontFamily={'Raleway'} fontSize="3xl" color="white" my="auto" mt="5" textShadow="1px 1px #000">Technology</Text>
@@ -312,7 +313,7 @@ export default function HallPage(){
 
                 <Spacer />
 
-                <Button variant='ghost' w="200px" h="100px" className={styles.arts} rounded="lg" position='static' _hover={{backgroundColor: '#00AEEF'}} _active={{backgroundColor: '#00AEEF'}} onClick={getArts} boxShadow={'lg'}>
+                <Button variant='ghost' w="200px" h="100px" className={styles.arts} rounded="lg" position='static' _hover={{cursor: 'pointer'}} onClick={getArts} boxShadow={'lg'}>
                 <Box w="full" h="10vh" ml={{lg: 0, sm: 0}} rounded="lg" px='9'>
                     <Center>
                     <Text fontFamily={'Raleway'} fontSize="3xl" color="white" my="auto" mt="5" textShadow="1px 1px #000">Arts</Text>
@@ -326,7 +327,7 @@ export default function HallPage(){
 
                 <Spacer />
 
-                <Button variant='ghost' w="200px" h="100px" className={styles.business} rounded="lg" position='static' _hover={{backgroundColor: '#9E0B0F'}} _active={{backgroundColor: '#9E0B0F'}} onClick={getBusiness} boxShadow={'lg'}>
+                <Button variant='ghost' w="200px" h="100px" className={styles.business} rounded="lg" position='static' _hover={{cursor: 'pointer'}} onClick={getBusiness} boxShadow={'lg'}>
                 <Box w="full" h="10vh" ml={{lg: 0, sm: 0}} rounded="lg" px='9' >
                     <Center>
                     <Text fontFamily={'Raleway'} fontSize="3xl" color="white" my="auto" mt="5" textShadow="1px 1px #000">Business</Text>
@@ -339,7 +340,7 @@ export default function HallPage(){
 
                 <Spacer />
 
-                <Button variant='ghost' w="200px" h="100px" className={styles.lounge} rounded="lg" position='static' _hover={{backgroundColor: '#00A99D'}} _active={{backgroundColor: '#00A99D'}} onClick={getLounge} boxShadow={'lg'}>
+                <Button variant='ghost' w="200px" h="100px" className={styles.lounge} rounded="lg" position='static' _hover={{cursor: 'pointer'}} onClick={getLounge} boxShadow={'lg'}>
                 <Box w="full" h="10vh" ml={{lg: 0, sm: 0}} rounded="lg" px='9'>
                     <Center>
                     <Text fontFamily={'Raleway'} fontSize="3xl" color="white" my="auto" mt="5" borderColor={'black'}>Lounge</Text>
@@ -451,7 +452,7 @@ export default function HallPage(){
                             
                     )
                     ]
-                    : <Center><Text>There is nothing in here... Sorry!</Text></Center>}
+                    : <Center><Image src={thereIsNothing} w='600px' h='50px' disabled /></Center>}
                 </Box>
             </Box>
 

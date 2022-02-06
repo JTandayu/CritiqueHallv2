@@ -267,13 +267,13 @@ export default function CritiquePost(post_id, data1){
                 <Box display="flex" flexDir={{lg: 'row', sm: 'column'}} p="3">
                     {/* Main */}
                     {/* <PostMain /> */}
-                <Box w={{lg: '50%', sm: '100%'}} bg='light' h={{lg: "90vh", sm: "100%"}} p={5} boxShadow='md' mt={28} ml='3vw'>
-                    <Heading mx="auto">{data.title}</Heading>
+                <Box  w={{lg: '50%', sm: '100%'}}  bg={useColorModeValue('white', '#212121')} h={{lg: "90vh", sm: "100%"}} p={5} boxShadow='dark-lg' borderRadius={10} mt={28} ml='3vw'>
+                    <Heading fontFamily={'Raleway'} mx="auto">{data.title}</Heading>
 
                     {/* Description */}
                     <Box mt={5}>
                         {/* <Heading size='md'>Description</Heading> */}
-                        <Text w={{lg: '45vw', sm: '100%'}} mx='auto' mt={5}>{data.body}</Text>
+                        <Text fontFamily={'Raleway'} w={{lg: '45vw', sm: '100%'}} mx='auto' mt={5}>{data.body}</Text>
                     </Box>
 
                     <SRLWrapper options={options}>     
@@ -338,7 +338,7 @@ export default function CritiquePost(post_id, data1){
                     </Flex> : 
                     
                     <Center>
-                        <Image src="/critiquehall.png" w='500px' h='300px' cursor="pointer"  disabled />
+                        <Image src="/no-preview-available.png" w='700px' h='300px' cursor="pointer"  disabled />
                     </Center>
                     }
                     </SRLWrapper>
@@ -395,13 +395,13 @@ export default function CritiquePost(post_id, data1){
                     <form onSubmit={giveCritique}>
                     <Box display='flex' flexDir='column' mt={5}>
                         <Textarea borderColor={useColorModeValue('black', 'white')} fontFamily={'Raleway'} placeholder='Critique this...' bg={useColorModeValue('white', '#212121')} boxShadow='md' w={{lg: '90vh', sm: '100%'}} mx="auto" mt={3} onChange={e => setCritique(e.target.value)} />
-                        <Button color={useColorModeValue('white', 'white')} _hover={{bgColor: useColorModeValue('#173cff', '#428eff')}} bgColor={useColorModeValue('#0C1F83', '#1D447E')} type='submit' w='10vh' mx='auto' mt={3}>Submit</Button>
+                        <Button fontFamily={'Raleway'} color={useColorModeValue('white', 'white')} _hover={{bgColor: useColorModeValue('#173cff', '#428eff')}} bgColor={useColorModeValue('#0C1F83', '#1D447E')} type='submit' w='10vh' mx='auto' mt={3}>Submit</Button>
                     </Box>
                     </form>
         
             </Box>
                     {/* Critique */}
-                    <Box w={{lg: '40%', sm: '100%'}} bg={useColorModeValue('white', '#212121')} h='90vh' p={5} boxShadow='md' mt={28} ml='3vw'>
+                    <Box w={{lg: '40%', sm: '100%'}} bg={useColorModeValue('white', '#212121')} borderRadius={10} h='90vh' p={5} boxShadow='dark-lg' mt={28} ml='3vw'>
                         <Critiques id={post_id.post_id} newCritique={newCritique} />
                     </Box>
                     

@@ -75,7 +75,17 @@
 
   .cpbutton{
     padding: 10px;
-    background-color: rgb(46, 43, 255);
+    background-color: #29226E;
+    width: 100%;
+    color: rgb(255, 255, 255);
+    border-radius: 10px;
+    margin-right: 5px;
+    font-family: 'Raleway', sans-serif;
+  }
+
+  .cpbutton2{
+    padding: 10px;
+    background-color: #1D447E;
     width: 100%;
     color: rgb(255, 255, 255);
     border-radius: 10px;
@@ -95,7 +105,7 @@
     background-position: center;
     background-size: 9em;
     background-repeat: no-repeat;
-    background-color: #92278F;
+    background-color: #4A79D4;
   }
 
   .arts {
@@ -103,7 +113,7 @@
     background-position: center;
     background-size: 25em;
     background-repeat: no-repeat;
-    background-color: #00AEEF;
+    background-color: #DCAF0F;
   }
 
   .business {
