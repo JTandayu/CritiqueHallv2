@@ -164,6 +164,11 @@ export default function SearchResult(){
 
     }
 
+    const addDefaultSrc = (e) => {
+        e.target.src = "/no-preview-available.png";
+        e.target.onerror = null;
+    }
+
     return(
         <div className={styles.container}>
             <Head>
@@ -254,7 +259,9 @@ export default function SearchResult(){
                                     </Box>
                                     <Box p="3" w="100%" bg="light" my='auto'>
                                         <Center>
-                                        <Image src={post.attachment1} w={{lg: '10vw', sm:'100%'}} h={{lg: '10vh', sm: '20vh'}} />
+                                        {post.attachment1 != 'undefined' ? 
+                                        <Image src={post.attachment1} w={{lg: '10vw', sm:'100%'}} h={{lg: '10vh', sm: '20vh'}} onError={addDefaultSrc} />
+                                        : <Image src="/no-image-preview.png" w={{lg: '10vw', sm:'100%'}} h={{lg: '10vh', sm: '20vh'}} />}
                                         </Center>
                                     </Box>
                                     <Box fontFamily={'Raleway'} p="3" w="100%" bg="light" my='auto'>

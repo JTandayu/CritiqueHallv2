@@ -15,7 +15,8 @@ import {
     Input,
     Textarea,
     Box,
-    Switch
+    Switch,
+    Spinner
   } from "@chakra-ui/react"
 import { useDisclosure } from '@chakra-ui/react'
 import { Button } from '@chakra-ui/react'
@@ -69,9 +70,11 @@ function EditProfile({data}) {
     const [aboutMe, setAboutMe] = useState(data.about_me)
     const [currentPassword, setCurrentPassword] = useState('')
     const [newPassword, setNewPassword] = useState('')
+    const [confirmNewPassword, setConfirmNewPassword] = useState('')
     const [uploadProfileDone, setUploadProfileDone] = useState(false)
     const [uploadCoverDone, setUploadCoverDone] = useState(false)
     const [confirmPassword, setConfirmPassword] = useState('')
+    const [loading, setLoading] = useState(false);
     // console.log(profileImageUrl)
     
     // useEffect(() => {
@@ -117,7 +120,9 @@ function EditProfile({data}) {
     //     setDarkState(value)
     // }
 
+    
     const uploadFiles = () => {
+    setLoading(true)
       // console.log(storage)
 
     //   if (!profileImage) return;
@@ -136,6 +141,7 @@ function EditProfile({data}) {
         console.log(url)
         setProfileImageUrl(url)
         setUploadProfileDone(true);
+        setLoading(false)
         })
       }
       );
@@ -155,6 +161,7 @@ function EditProfile({data}) {
             console.log(url)
             setCoverImageUrl(url)
             setUploadCoverDone(true);
+            setLoading(false)
         })
       }
       );
@@ -162,18 +169,16 @@ function EditProfile({data}) {
     else{
         setUploadProfileDone(true);
         setUploadCoverDone(true);
+        setLoading(false)
     }
 
     // 
     }
 
-    const SubmitInfo = (e) =>{
+    const SubmitInfo = () =>{
         // console.log(profileImage)
-        e.preventDefault()
+        // e.preventDefault()
         uploadFiles()
-        if(uploadProfileDone == true || uploadCoverDone == true){
-            SubmitPersonalInformation()
-        }     
     }
 
     const handleChange = e =>{
@@ -191,7 +196,7 @@ function EditProfile({data}) {
             
     }
 
-    const SubmitPersonalInformation = () =>{
+    const SubmitPersonalInformation = async() =>{
 
         let formData =  new FormData;
         formData.append('first_name', firstName)
@@ -216,6 +221,7 @@ function EditProfile({data}) {
         let formData =  new FormData;
         formData.append('current_password', currentPassword)
         formData.append('new_password', newPassword)
+        formData.append('confirm_new_password', confirmNewPassword)
 
         axios.post(`${API_URL}/api/change_password`, formData, config)
         .then((response) => (
@@ -260,6 +266,13 @@ function EditProfile({data}) {
                             </Center>
                         </Flex>
                     </Flex>
+
+                    <Box w="full" mb={8}>
+                        <Center>
+                            {loading ? <Spinner /> : null}
+                            <Button align="right" onClick={uploadFiles}>Upload Images</Button>          
+                        </Center>
+                    </Box>
                     {/* <Flex mb={5}>
                         <FormLabel>Change Color Profile Background</FormLabel>
                         <Input type='text' w='5vw' bg="white" color='black' />
@@ -289,7 +302,7 @@ function EditProfile({data}) {
                     </Flex>
                     <Flex>
                         <Spacer />
-                        <Button colorScheme='blue' mr={3} onClick={SubmitInfo}>Save</Button>
+                        <Button colorScheme='blue' mr={3} onClick={SubmitPersonalInformation}>Save</Button>
                     </Flex>
                     <Divider mb={5} mt={5}/>
                     <Flex>
@@ -305,6 +318,10 @@ function EditProfile({data}) {
                         <Flex >
                             <FormLabel mr={8}>New Password</FormLabel>
                             <Input type='password' w='10vw' bg="white" color='black' ml='10px' mr='1px' onChange={(e) => setNewPassword(e.target.value)}/>
+                        </Flex>
+                        <Flex >
+                            <FormLabel mr={8}>Confirm New Password</FormLabel>
+                            <Input type='password' w='10vw' bg="white" color='black' ml='10px' mr='1px' onChange={(e) => setConfirmNewPassword(e.target.value)}/>
                         </Flex>
                     </Center>
                     <Flex w='100%'>

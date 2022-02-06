@@ -178,6 +178,11 @@ export default function ProfilePage({data}){
         document.getElementById('critiqueFilter').removeAttribute('hidden');
     }
 
+    const addDefaultSrc = (e) => {
+        e.target.src = "/no-preview-available.png";
+        e.target.onerror = null;
+    }
+
     return(
         <main className={styles.container}>
 
@@ -266,12 +271,14 @@ export default function ProfilePage({data}){
                         {userPosts !== null ?
                         userPosts.map((posts, i) => (
                             <Link href={`/post/${posts.post_id}`} key={i} passHref>
-                                <Box bg='white' w={{lg: '15vw', sm: '300px'}} h='28vh' ml={5}>
+                                <Box bg='white' w={{lg: '20vw', sm: '300px'}} h='28vh' ml={5}>
                                     {/* <Center mt={3}>
                                         <Heading size='md' mx="auto">{posts.title}</Heading>
                                     </Center> */}
                                     <Center mt={0}>
-                                        <Image w={{lg: '300px', sm: '300px'}} h='20vh' src={posts.attachment1}></Image>
+                                        {posts.attachment1 != 'undefined' ? 
+                                        <Image src={posts.attachment1} w={{lg: '400px', sm: '300px'}} h='20vh' onError={addDefaultSrc} />
+                                        : <Image src="/no-image-preview.png" w={{lg: '400px', sm: '300px'}} h='20vh' />}
                                     </Center>
                                     <Flex w='100%' p={3}>
                                     <Image src='/stars-clicked.png' alt="Stars" w="25px" h="25px" ml={2}/> {posts.likes}
@@ -286,12 +293,14 @@ export default function ProfilePage({data}){
                         {userCritique !== null ?
                         userCritique.map((critique, i) => (
                             <Link href={`/post/${critique.post_id}`} key={i} passHref>
-                                <Box bg='white' w={{lg: '15vw', sm: '300px'}} h='28vh' ml={5}>
+                                <Box bg='white' w={{lg: '20vw', sm: '300px'}} h='28vh' ml={5}>
                                     {/* <Center mt={3}>
                                         <Heading size='md' mx="auto">{critique.title}</Heading>
                                     </Center> */}
                                     <Center mt={0}>
-                                        <Image w={{lg: '300px', sm: '300px'}} h='20vh' src={critique.attachment1}></Image>
+                                        {critique.attachment1 != 'undefined' ? 
+                                        <Image src={critique.attachment1} w={{lg: '400px', sm: '300px'}} h='20vh' onError={addDefaultSrc} />
+                                        : <Image src="/no-image-preview.png" w={{lg: '400px', sm: '300px'}} h='20vh' />}
                                     </Center>
                                     <Flex w='100%' p={3}>
                                     <Image src='/stars-clicked.png' alt="Stars" w="25px" h="25px" ml={2}/> {critique.stars}

@@ -118,6 +118,7 @@ export default function Nav(data, profile_pic){
     const [profPic, setProfilePic] = useState('')
 
     const [notif, setNotif] = useState([])
+    const [firstId, setFirstId] = useState('')
 
 
     const user_id = cookies.id;
@@ -170,6 +171,7 @@ export default function Nav(data, profile_pic){
             .then(response => {
                 // console.log(response.data);      
                 setNotif(response.data.status)
+                setFirstId(response.data.status[0].notifs_id)
             })
             .catch(error => {
                 // console.log(error.response.data.error);
@@ -180,6 +182,7 @@ export default function Nav(data, profile_pic){
             .then(response => {
                 // console.log(response.data);      
                 setNotif(response.data.status)
+                setFirstId(response.data.status[0].notifs_id)
             })
             .catch(error => {
                 // console.log(error.response.data.error);
@@ -238,9 +241,17 @@ export default function Nav(data, profile_pic){
 
     const readNotif = () =>{
         let formData = new FormData;
-        // formData.append('first_id', notif[0])
+        formData.append('first_id', firstId)
 
-        // axios.post
+        // axios.get(`${API_URL}/api/get_notifs`, config)
+        //     .then(response => {
+        //         // console.log(response.data);      
+        //         setNotif(response.data.status)
+        //         setFirstId(response.data.status[0].notifs_id)
+        //     })
+        //     .catch(error => {
+        //         // console.log(error.response.data.error);
+        // });
     }
 
     return(
