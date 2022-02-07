@@ -200,7 +200,7 @@ function EditPost({data, url, fileNames}){
         .then(response => {
           console.log(response.data);
         //   window.location.href = "/critique"
-            router.push(`/post/${data.post_id}`)
+            router.reload()
         })
         .catch(error => {
             console.log(error);

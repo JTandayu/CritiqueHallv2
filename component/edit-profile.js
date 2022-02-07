@@ -315,13 +315,13 @@ function EditProfile({data}) {
                             <FormLabel fontFamily={'Raleway'}>Current Password</FormLabel>
                             <Input fontFamily={'Raleway'} borderColor={useColorModeValue('black', 'white')} type='password' w='10vw' ml='10px' onChange={(e) => setCurrentPassword(e.target.value)} />
                         </Flex>
-                        <Flex >
+                        <Flex mb={3}>
                             <FormLabel fontFamily={'Raleway'} mr={8}>New Password</FormLabel>
                             <Input fontFamily={'Raleway'} borderColor={useColorModeValue('black', 'white')} type='password' w='10vw' ml='10px' mr='1px' onChange={(e) => setNewPassword(e.target.value)}/>
                         </Flex>
                         <Flex >
-                            <FormLabel mr={8}>Confirm New Password</FormLabel>
-                            <Input type='password' w='10vw' bg="white" color='black' ml='10px' mr='1px' onChange={(e) => setConfirmNewPassword(e.target.value)}/>
+                            <FormLabel fontFamily={'Raleway'} mr={8}>Confirm New Password</FormLabel>
+                            <Input fontFamily={'Raleway'} type='password' w='10vw' borderColor={useColorModeValue('black', 'white')} ml='10px' mr='1px' onChange={(e) => setConfirmNewPassword(e.target.value)}/>
                         </Flex>
                     </Center>
                     <Flex w='100%'>

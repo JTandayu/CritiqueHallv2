@@ -6,6 +6,10 @@ import {
     ModalFooter,
     ModalBody,
     ModalCloseButton,
+    Text,
+    Box,
+    Center,
+    Spacer
   } from "@chakra-ui/react"
 import { useDisclosure } from '@chakra-ui/react'
 import { Button } from '@chakra-ui/react'
@@ -50,7 +54,8 @@ function EditReplyHistory({id}) {
 
         axios.get(`${API_URL}/api/version_reply/${id}`,  config)
         .then((response)=>{
-            console.log(response)
+            console.log(response.data.data)
+            setData(response.data.data)
         }).catch((error)=>console.log(error.response))
     }, []);
     
@@ -60,18 +65,29 @@ function EditReplyHistory({id}) {
         <button onClick={onOpen} ml={5}>Edit History</button>
 
         
-        <form action='' method='POST'>
             <Modal isOpen={isOpen} onClose={onClose}>
                 <ModalOverlay />
                     <ModalContent maxW="40rem" h='40vh'>
                     <ModalHeader>Edit History</ModalHeader>
                     <ModalCloseButton />
                     <ModalBody>
-                        Hello
+                        {data.length != 0 ?
+                            data.map((history, i) => 
+                                <Box key={i} w="full">
+                                    <Center display="flex" flexDir="column">
+                                        <Box display="flex" flexDir="row" w="70%" mb={3}>
+                                            <Text fontFamily={'Raleway'}>{history.created_at}</Text>
+                                            <Spacer />
+                                            <Text fontFamily={'Raleway'}>{history.time_ago}</Text>
+                                        </Box>
+                                        <Text fontFamily={'Raleway'} w="70%">{history.body}</Text>
+                                    </Center>
+                                </Box>
+                            )
+                        : <Text color="black">There is nothing in here...</Text>}
                     </ModalBody>
                 </ModalContent>
             </Modal>
-        </form>
         
         
         </>

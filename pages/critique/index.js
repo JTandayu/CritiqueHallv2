@@ -357,7 +357,7 @@ export default function HallPage(){
                 </Button>
             </Box>
 
-            <Box mt="3px" w="100%" borderColor="gray" position='static' bg="light" border="1px solid gray" borderRadius="md" display={{lg: 'none', md: 'none', sm: 'block'}}>
+            <Box mt="20vh" w="100%" borderColor="gray" position='static' bg="light" border="1px solid gray" borderRadius="md" display={{lg: 'none', md: 'none', sm: 'block'}}>
                 <Select position='static' 
                         px={4}
                         py={2}

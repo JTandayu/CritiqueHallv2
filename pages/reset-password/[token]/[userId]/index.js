@@ -3,7 +3,7 @@ import Head from 'next/head'
 import styles from "@styles/ResetPassword.module.css";
 import { css, cx } from '@emotion/react'
 import { motion } from "framer-motion"
-import Home from './home'
+// import Home from './home'
 import Link from 'next/link'
 // import Logo from "@public/critiquehall.png";
 import { Heading } from '@chakra-ui/react'
@@ -44,9 +44,9 @@ const breakpoints = createBreakpoints({
 
 const MotionButton = motion(Button)
 
-export async function  getServerSideProps(context){
-  const token = context.param.token;
-  const userId = context.param.userId;
+export async function getServerSideProps(context){
+  const token = context.params.token;
+  const userId = context.params.userId;
 
   return{
     props:{
@@ -65,6 +65,9 @@ export default function ResetPassword({token, userId}){
   const toast = useToast()
   const toastIdRef = React.useRef()
 
+  // console.log(token);
+  // console.log(userId)
+
   const { colorMode, toggleColorMode } = useColorMode()
   colorMode === 'light' ? 'Dark' : 'Light'
   const [ImgUrl, setImgUrl] = useState('dark-and-light.png')
@@ -82,8 +85,8 @@ export default function ResetPassword({token, userId}){
         let formData = new FormData(); 
         formData.append('password', password);
         formData.append('confirm-password', confirm_password);
-        
-  
+        formData.append('token', token);
+        formData.append('user_id', userId);
   
         const config = {
           headers: { 
@@ -92,6 +95,7 @@ export default function ResetPassword({token, userId}){
             'Authorization': 'Basic Y2Fwc3RvbmUyMDIxOjEyMzQ=',
             // 'Accept-Encoding': 'gzip, deflate, br',
             'Accept': 'application/json',
+
           }
         }
   
@@ -119,21 +123,9 @@ export default function ResetPassword({token, userId}){
         
         <Box className={styles.main} bg={useColorModeValue('white', '#212121')} w={{lg: '100ch' , md: '100%' , sm: '100%', base: '100%'}}>
             <center>
-            {/* <Button
-                        as='a'
-                        variant='ghost'
-                        aria-label='Home'
-                        my={2}
-                        ml={4}
-                        w='50%'
-                        onClick={changeDarkAndLightIcon}
-                        _hover={{cursor:'pointer'}}
-                        _active={{bgColor: 'none'}}
-                    >
-                        <Image className={styles.darkicon} src={ImgUrl} alt="darkmode" w="2em" h="2em" ml={'15em'} />
-                    </Button> */}
+            
             <div className={styles.logo}>
-            <Image src={useColorModeValue('critiquehall.png', 'critiquehall-dark.png')} alt="Critique Hall Logo"/>
+            <Image src={useColorModeValue('/critiquehall.png', '/critiquehall-dark.png')} alt="Critique Hall Logo"/>
             </div>
 
             <Heading fontFamily={'Raleway'} mb={2} as="h2" size="lg" color={useColorModeValue('#1B1464','#B2A3FF')}>Reset Password</Heading>

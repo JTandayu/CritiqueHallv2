@@ -56,7 +56,6 @@ const EditReply = ({data}) => {
         <>
             <button onClick={onOpen} width='10vw'>Edit</button>
 
-            <form action='' method='POST'>
             <Modal isOpen={isOpen} onClose={onClose}>
                 <ModalOverlay />
                     <ModalContent maxW="40rem" h='40vh'>
@@ -69,7 +68,6 @@ const EditReply = ({data}) => {
                     </ModalBody>
                 </ModalContent>
             </Modal>
-            </form>
             
         </>
     )

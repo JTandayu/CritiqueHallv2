@@ -240,18 +240,28 @@ export default function Nav(data, profile_pic){
     }
 
     const readNotif = () =>{
+        const config = {
+            headers: { 
+                'content-type': 'multipart/form-data',
+                'X-API-KEY': `${API_KEY}`,
+                'Authorization': 'Basic Y2Fwc3RvbmUyMDIxOjEyMzQ=',
+                // 'Accept-Encoding': 'gzip, deflate, br',
+                'Accept': 'application/json',
+                'Token': cookies.token,
+                'User-Id': cookies.encrypted_id
+            }
+        }
+
         let formData = new FormData;
         formData.append('first_id', firstId)
 
-        // axios.get(`${API_URL}/api/get_notifs`, config)
-        //     .then(response => {
-        //         // console.log(response.data);      
-        //         setNotif(response.data.status)
-        //         setFirstId(response.data.status[0].notifs_id)
-        //     })
-        //     .catch(error => {
-        //         // console.log(error.response.data.error);
-        // });
+        axios.get(`${API_URL}/api/read_notifs/${firstId}`, config)
+            .then(response => {
+                console.log(response.data);      
+            })
+            .catch(error => {
+                console.log(error.response);
+        });
     }
 
     return(

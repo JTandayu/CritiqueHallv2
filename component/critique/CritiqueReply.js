@@ -181,7 +181,7 @@ export const CritiqueReply = ({id, post_id, newReply}) => {
                                 </Menu>
                             </Flex>
                             <Box w='100%' mt={1}>
-                                <Text fontSize='md'>{reply.body}</Text>
+                                <Text fontSize='md' fontFamily={'Raleway'}>{reply.body}</Text>
                             </Box>
                             <Flex w='20vw'>
                                 <Button variant='ghost' id={reply.reply_id} onClick={()=>giveStar(reply.reply_id)}><Image src='/stars.png' alt="Stars" w="25px" h="25px" ml={2} mr={2}/> {reply.stars}</Button>

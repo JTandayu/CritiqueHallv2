@@ -206,6 +206,11 @@ function CreatePost({data}) {
         });
     }
 
+    const addDefaultSrc = (e) => {
+        e.target.src = "/no-preview-available.png";
+        e.target.onerror = null;
+    }
+
     return(
         <>
         <button onClick={onOpen} className={useColorModeValue(styles.cpbutton, styles.cpbutton2)}>Create Post</button>
@@ -301,7 +306,7 @@ function CreatePost({data}) {
                             }} mt={3}>
 
                             {urls.map((url, i) => (
-                                <Image src={url} key={i} w={{lg: '10vw', sm: '80vw'}} h='10vh' ml={5} />
+                                <Image src={url} key={i} w={{lg: '10vw', sm: '80vw'}} h='10vh' ml={5} onError={addDefaultSrc} />
                             ))} 
                         </Flex>
                         <br />

@@ -14,12 +14,14 @@ import { Button } from '@chakra-ui/react'
 import styles from "@styles/Hall.module.css";
 import {useCookies} from 'react-cookie'
 import axios from 'axios';
+import { useRouter } from 'next/router';
 
 const DeleteReply = ({id}) => {
     const { isOpen, onOpen, onClose } = useDisclosure()
     const { API_URL } = process.env
     const { API_KEY } = process.env
     const [cookies, setCookie, removeCookie] = useCookies(['token', 'id', 'encrypted_id']);
+    const router = useRouter()
 
 
     const config = {
@@ -38,6 +40,7 @@ const DeleteReply = ({id}) => {
         .then((response) => {
           console.log(response.data)
           onClose()
+          router.reload()
         }).catch((error)=>{
           console.log(error)
         })
