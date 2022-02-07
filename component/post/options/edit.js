@@ -17,7 +17,7 @@ import { Button, Image } from '@chakra-ui/react'
 import styles from "@styles/Hall.module.css";
 import { Box } from '@chakra-ui/react'
 import { useState, useEffect, SetStateAction, forceUpdate } from 'react';
-import { Divider, Center } from "@chakra-ui/react";
+import { Divider, Center, useColorModeValue } from "@chakra-ui/react";
 import { Input } from '@chakra-ui/react'
 import { Label } from '@chakra-ui/react'
 import { Select, Text } from '@chakra-ui/react'
@@ -218,25 +218,25 @@ function EditPost({data, url, fileNames}){
         <Modal isOpen={isOpen} onClose={onClose}>
             <ModalOverlay />
                 <ModalContent maxW="30rem">
-                <ModalHeader>Edit Post</ModalHeader>
+                <ModalHeader fontFamily={'Raleway'}>Edit Post</ModalHeader>
                 <ModalCloseButton />
                 <ModalBody>
                 <Flex mb={5}>
                     <Box w='24vw'>
                     <Flex mt='3vh'>
-                        <FormLabel>Title</FormLabel>
-                        <Input type='text' w='20vw' ml='11px' bg='white' color='black' value={title} onChange={(e) => setTitle(e.target.value)}  />
+                        <FormLabel fontFamily={'Raleway'}>Title</FormLabel>
+                        <Input fontFamily={'Raleway'} borderColor={useColorModeValue('black', 'white')} type='text' w='20vw' ml='11px' value={title} onChange={(e) => setTitle(e.target.value)}  />
                     </Flex>
 
-                    <FormLabel mt={2}>Description</FormLabel>
-                        <Textarea type='text' w='23vw' h='20vh' color='black' bg='white' value={description} onChange={(e) => setDescription(e.target.value)} />
+                    <FormLabel mt={2} fontFamily={'Raleway'}>Description</FormLabel>
+                        <Textarea fontFamily={'Raleway'} borderColor={useColorModeValue('black', 'white')} type='text' w='23vw' h='20vh' value={description} onChange={(e) => setDescription(e.target.value)} />
 
                     <Center mt={10}>
-                        <Button type="submit" colorScheme='blue' mr={2} onClick={submitPost}>
+                        <Button fontFamily={'Raleway'} bgColor={useColorModeValue('#2777C1','#0085FF')} color={useColorModeValue('#FFFFFF', '#FFFFFF')} _hover={{bgColor: useColorModeValue('#56AEFF', '#0B5090')}} type="submit" colorScheme='blue' mr={2} onClick={submitPost}>
                             Submit
                         </Button>
 
-                        <Button variant='ghost' mr={2} onClick={closeModal}>
+                        <Button fontFamily={'Raleway'} bgColor={useColorModeValue('#C1272D', '#9E0B0F')} color={useColorModeValue('white', 'white')} _hover={{bgColor: useColorModeValue('#FF000A', '#470507')}} variant='ghost' mr={2} onClick={closeModal}>
                             Cancel
                         </Button>
                     </Center>

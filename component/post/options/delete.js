@@ -8,7 +8,7 @@ import {
     ModalCloseButton,
     useToast,
   } from "@chakra-ui/react"
-import { useDisclosure } from '@chakra-ui/react'
+import { useDisclosure, useColorModeValue } from '@chakra-ui/react'
 import { Button } from '@chakra-ui/react'
 import styles from "@styles/Hall.module.css";
 import { Box } from '@chakra-ui/react'
@@ -93,16 +93,16 @@ function DeletePost({id}){
       <Modal isOpen={isOpen} onClose={onClose}>
           <ModalOverlay />
               <ModalContent>
-              <ModalHeader>Delete Post</ModalHeader>
+              <ModalHeader fontFamily={'Raleway'}>Delete Post</ModalHeader>
               <ModalCloseButton />
-              <ModalBody>
+              <ModalBody fontFamily={'Raleway'}>
                   Are you Sure?
               </ModalBody>
               <ModalFooter>
-                  <Button colorScheme='blue' mr={3} onClick={onClose}>
+                  <Button fontFamily={'Raleway'} bgColor={useColorModeValue('#2777C1','#0085FF')} color={useColorModeValue('#FFFFFF', '#FFFFFF')} _hover={{bgColor: useColorModeValue('#56AEFF', '#0B5090')}} colorScheme='blue' mr={3} onClick={onClose}>
                   Close
                   </Button>
-                  <Button variant='ghost' onClick={deletePost}>Delete</Button>
+                  <Button fontFamily={'Raleway'} bgColor={useColorModeValue('#C1272D', '#9E0B0F')} color={useColorModeValue('white', 'white')} _hover={{bgColor: useColorModeValue('#FF000A', '#470507')}} variant='ghost' onClick={deletePost}>Delete</Button>
               </ModalFooter>
           </ModalContent>
       </Modal>

@@ -347,7 +347,7 @@ export default function CritiquePost(post_id, data1){
                         <Button position='static' variant='ghost' onClick={giveLike}><Image src='/stars.png' alt="Stars" w="25px" h="25px" ml={2}/> <Text id='likes' ml={2}>{data.likes}</Text></Button>
                         <Spacer />
                         <Box id='sameAcc' >
-                            <Menu >
+                            <Menu>
                                 <MenuButton
                                 px={4}
                                 py={2}
@@ -357,7 +357,7 @@ export default function CritiquePost(post_id, data1){
                                 </MenuButton>
                                 <MenuList p={3}>
                                 <MenuGroup>
-                                    <MenuItem><EditPost data={data} url={urls} fileNames={fileName} /></MenuItem>
+                                    <MenuItem fontFamily={'Raleway'}><EditPost data={data} url={urls} fileNames={fileName} /></MenuItem>
                                 </MenuGroup>
                                 <MenuDivider />
                                 {/* <MenuGroup>
@@ -365,7 +365,7 @@ export default function CritiquePost(post_id, data1){
                                 </MenuGroup>
                                 <MenuDivider /> */}
                                 <MenuGroup>
-                                    <MenuItem><DeletePost id={data.post_id} /></MenuItem>
+                                    <MenuItem fontFamily={'Raleway'}><DeletePost id={data.post_id} /></MenuItem>
                                 </MenuGroup>
                                 </MenuList>
                             </Menu>

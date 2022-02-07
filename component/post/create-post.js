@@ -243,7 +243,7 @@ function CreatePost({data}) {
                             Submit
                         </Button>
 
-                        <Button fontFamily={'Raleway'} fontFamily={'Raleway'} bgColor={useColorModeValue('#C1272D', '#9E0B0F')} color={useColorModeValue('white', 'white')} _hover={{bgColor: useColorModeValue('#FF000A', '#470507')}} variant='ghost' mr={2} onClick={onClose}>
+                        <Button fontFamily={'Raleway'} bgColor={useColorModeValue('#C1272D', '#9E0B0F')} color={useColorModeValue('white', 'white')} _hover={{bgColor: useColorModeValue('#FF000A', '#470507')}} variant='ghost' mr={2} onClick={onClose}>
                             Cancel
                         </Button>
                     </Center>
