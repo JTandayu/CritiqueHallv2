@@ -321,7 +321,7 @@ function EditProfile({data}) {
                         </Flex>
                         <Flex >
                             <FormLabel mr={8}>Confirm New Password</FormLabel>
-                            <Input type='password' w='10vw' bg="white" color='black' ml='10px' mr='1px' onChange={(e) => setConfirmNewPassword(e.target.value)}/>
+                            <Input fontFamily={'Raleway'} borderColor={useColorModeValue('black', 'white')} type='password' w='10vw' ml='10px' mr='1px' onChange={(e) => setConfirmNewPassword(e.target.value)}/>
                         </Flex>
                     </Center>
                     <Flex w='100%'>
