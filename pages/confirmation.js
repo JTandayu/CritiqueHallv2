@@ -124,8 +124,8 @@ export default function ConfirmationPage(){
                         <Image className={styles.darkicon} src={ImgUrl} alt="darkmode" w="2em" h="2em" ml={'15em'} />
                     </Button> */}
             <div className={styles.logo}>
-            <Link href="/login" passHref><Image src={useColorModeValue('critiquehall.png', 'critiquehall-dark.png')} 
-             alt="Critique Hall Logo"/></Link>
+            <Image src={useColorModeValue('critiquehall.png', 'critiquehall-dark.png')} 
+             alt="Critique Hall Logo"/>
             </div>
 
             <Heading fontFamily={'Raleway'} mb={10} as="h2" size="lg" color={useColorModeValue('#1B1464','#B2A3FF')}>Confirm Verification</Heading>
