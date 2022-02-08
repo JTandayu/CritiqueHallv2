@@ -787,9 +787,9 @@
     "@chakra-ui/utils" "1.10.0"
 
 "@choc-ui/paginator@^3.2.2":
-  "integrity" "sha512-BSm+0XMNRMMOQW39BpdzfHpWegG2mSv3tRCfKRoU7TNrIDmPjv/LKShmBnXFd93dosBqicuKOUS5gjWt+Tmagg=="
-  "resolved" "https://registry.npmjs.org/@choc-ui/paginator/-/paginator-3.2.2.tgz"
-  "version" "3.2.2"
+  "integrity" "sha512-JZ9Ep5m2W5r9I9J2NKuKvNevKh8wyxieX/o8NdcOxiQUzcaiEHZh0I/+R3H+k6W7nu2v4ti72xHJb1PeiZFZNw=="
+  "resolved" "https://registry.npmjs.org/@choc-ui/paginator/-/paginator-3.4.0.tgz"
+  "version" "3.4.0"
 
 "@ctrl/tinycolor@^3.4.0":
   "integrity" "sha512-JZButFdZ1+/xAfpguQHoabIXkcqRRKpMrWKBkpEZZyxfY9C1DpADFB8PEqGSTeFr135SaTRfKqGKx5xSCLI7ZQ=="
