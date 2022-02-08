@@ -101,35 +101,51 @@
   }
 
   .technology {
-    background-image: url("/tech-bg.png");
+    background-image: url("/Technology-Critique.png");
     background-position: center;
-    background-size: 9em;
+    background-size: 12em;
     background-repeat: no-repeat;
     background-color: #4A79D4;
   }
 
+  .technology:hover {
+    transform: scale(1.2); /* (120% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+  }
+
   .arts {
-    background-image: url("/art-bg.png");
+    background-image: url("/Arts-Critique.png");
     background-position: center;
-    background-size: 25em;
+    background-size: 12em;
     background-repeat: no-repeat;
     background-color: #DCAF0F;
   }
 
+  .arts:hover {
+    transform: scale(1.2); /* (120% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+  }
+
   .business {
-    background-image: url("/business-bg.png");
+    background-image: url("/Business-Critique.png");
     background-position: center;
-    background-size: 8em;
+    background-size: 12em;
     background-repeat: no-repeat;
     background-color: #9E0B0F;
   }
 
+  .business:hover {
+    transform: scale(1.2); /* (120% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+  }
+
   .lounge {
-    background-image: url("/lounge-bg.png");
+    background-image: url("/Lounge-Critique.png");
     background-position: center;
-    background-size: 8em;
+    background-size: 12em;
     background-repeat: no-repeat;
     background-color: #00A99D;
+  }
+
+  .lounge:hover {
+    transform: scale(1.2); /* (120% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
   }
 
 

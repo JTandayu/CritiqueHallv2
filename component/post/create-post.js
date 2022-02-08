@@ -20,7 +20,7 @@ import {
     AlertTitle,
     AlertDescription,
   } from '@chakra-ui/react'
-import { useDisclosure, useColorModeValue } from '@chakra-ui/react'
+import { useDisclosure, useColorModeValue, useToast } from '@chakra-ui/react'
 import { Button } from '@chakra-ui/react'
 import styles from "@styles/Hall.module.css";
 import { Box } from '@chakra-ui/react'
@@ -35,6 +35,7 @@ import { useCookies, cookies } from 'react-cookie'
 import axios from 'axios'
 import { storage } from '../../firebase.js'
 import { getDownloadURL, ref, uploadBytesResumable, deleteObject  } from 'firebase/storage'
+import React from "react";
 
 
 const breakpoints = createBreakpoints({
@@ -82,6 +83,9 @@ function CreatePost({data}) {
     const [description, setDescription] = useState('')
     const [hall_id, setHallID] = useState('1')
     
+    const toast = useToast()
+    const toastIdRef = React.useRef()
+
     const [color, setColor] = useState('purple')
     const [cookies, setCookie, removeCookie] = useCookies(['token', 'id', 'encrypted_id', 'display_name']);
     // const [attachment1, setAttachment1] = useState('')
@@ -198,9 +202,11 @@ function CreatePost({data}) {
         axios.post(`${API_URL}/api/create_post`, formData, config)
         .then(response => {
           console.log(response.data);
+          toastIdRef.current = toast({ title: 'Create post successful!', status: 'success', duration: 3000, isClosable: false })
           window.location.href = "/critique"
         })
         .catch(error => {
+            toastIdRef.current = toast({ title: 'Create post unsuccessful!', status: 'error', duration: 3000, isClosable: false })
             console.log(error);
             console.log(error.response)
         });
