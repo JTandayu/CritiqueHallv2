@@ -23,8 +23,9 @@ import styles from '@styles/Search.module.css'
 import {useState} from 'react'
 import {useEffect, forwardRef} from 'react'
 import axios from 'axios'
-import { useCookies } from 'react-cookie'
 import Pagination from '@choc-ui/paginator'
+import { useCookies } from 'react-cookie'
+
 
 export async function getServerSideProps(context){
     const { API_URL } = process.env
@@ -64,23 +65,6 @@ export default function SearchResult(){
 
     // const searchItem = ''
     const [search, setSearch] = useState('')
-
-    const Prev = forwardRef((props, ref) => (
-        <div></div>
-      ));
-    const Next = forwardRef((props, ref) => (
-        <div></div>
-      ));
-    
-    const itemRender = (_, type) => {
-        if (type === "prev") {
-          return Prev;
-        }
-        if (type === "next") {
-          return Next;
-        }
-    };
-    
 
     
     const config = {
@@ -232,7 +216,7 @@ export default function SearchResult(){
 
                 <Pagination
                     defaultCurrent={5}
-                    current={currentSearch}
+                    current={currentSearchPage}
                     paginationProps={{ display: "flex", }}
                     baseStyles={{ bg: "light", color: 'dark' }}
                     activeStyles={{ bg: "gray.300", color: 'black' }}
@@ -244,7 +228,7 @@ export default function SearchResult(){
                         setCurrentSearchPage(page);
                       }}
                     bg='dark'
-                    itemRender={itemRender}
+                    responsive
                 />
                 <Spacer />
 
