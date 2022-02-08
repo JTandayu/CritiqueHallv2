@@ -35,6 +35,7 @@ import {useCookies} from 'react-cookie'
 import axios from "axios";
 import { useRouter } from "next/router";
 import {useToast} from '@chakra-ui/react'
+import React from "react";
 
 // export async function getServerSideProps(context) {
 //     const res = await fetch(`https://...`)
@@ -55,6 +56,7 @@ function EditProfile({data}) {
     colorMode === 'light' ? 'Dark' : 'Light'
     const router = useRouter();
     const toast = useToast()
+    const toastIdRef = React.useRef()
 
     // console.log(data)
 
@@ -213,10 +215,10 @@ function EditProfile({data}) {
         axios.post(`${API_URL}/api/change_profile`, formData, config)
         .then((response) => {
             console.log(response)
-            toast({
+            toastIdRef.current = toast({
                 title: 'Profile changed successfully.',
                 status: 'success',
-                duration: 9000,
+                duration: 3000,
                 isClosable: true,
               })
             router.reload();
@@ -234,10 +236,10 @@ function EditProfile({data}) {
         axios.post(`${API_URL}/api/change_password`, formData, config)
         .then((response) => {
             console.log(response)
-            toast({
+            toastIdRef.current = toast({
                 title: 'Password changed successfully.',
                 status: 'success',
-                duration: 9000,
+                duration: 3000,
                 isClosable: true,
               })
             }).catch((error) => (

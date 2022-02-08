@@ -84,7 +84,7 @@ function EditReplyHistory({id}) {
                                     </Center>
                                 </Box>
                             )
-                        : <Text color="black">There is nothing in here...</Text>}
+                        : <Text fontFamily={'Raleway'} color="black">There is nothing in here...</Text>}
                     </ModalBody>
                 </ModalContent>
             </Modal>
