@@ -68,7 +68,7 @@ function EditCritiqueHistory({id}) {
         <Modal isOpen={isOpen} onClose={onClose}>
             <ModalOverlay />
                 <ModalContent maxW="40rem" h='40vh'>
-                <ModalHeader>Edit History</ModalHeader>
+                <ModalHeader fontFamily={'Raleway'}>Edit History</ModalHeader>
                 <ModalCloseButton />
                 <ModalBody>
                     {data.length != 0 ?

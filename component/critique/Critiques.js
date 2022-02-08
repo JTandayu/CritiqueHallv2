@@ -97,8 +97,8 @@ export const Critiques = ({id, newCritique}) => {
         document.getElementById(id).removeAttribute('hidden');
     }
 
-    const submitReply = (critique_id) =>{
-        // critique_id.preventDefault();
+    const submitReply = (critique_id, e) =>{
+        e.preventDefault();
 
         let formData = new FormData;
         formData.append('critique_id', critique_id);
@@ -111,7 +111,7 @@ export const Critiques = ({id, newCritique}) => {
             setNewReply(reply)
 
         }).catch((error) =>{
-            console.log(error.response)
+            console.log(error)
         })
     }
 
@@ -269,7 +269,7 @@ export const Critiques = ({id, newCritique}) => {
                                 </Flex>
                         </Box>
                         <Box p="2" w='35vw' mt={1} id={critique.critique_id} hidden>
-                        <form onSubmit={()=>submitReply(critique.critique_id)}>
+                        <form onSubmit={(e)=>submitReply(critique.critique_id, e)}>
                             <Textarea borderColor={TextareaBorderColor} fontFamily={'Raleway'} w="full" value={reply} onChange={(e) => setReply(e.target.value)}/>
                             <Flex>
                                 <Button fontFamily={'Raleway'} mt={3} type="submit">Reply</Button>
@@ -317,11 +317,13 @@ export const Critiques = ({id, newCritique}) => {
                             </Flex>
                     </Box>
                     <Box p="2" w='35vw' mt={1} id={critique.critique_id} hidden>
+                        <form onSubmit={(e)=>submitReply(critique.critique_id, e)}>
                             <Textarea fontFamily={'Raleway'} w="full" onChange={(e) => setReply(e.target.value)}/>
                             <Flex>
-                                <Button fontFamily={'Raleway'} mt={3} onClick={()=>submitReply(critique.critique_id)}>Reply</Button>
+                                <Button fontFamily={'Raleway'} mt={3} type='submit'>Reply</Button>
                                 <Button fontFamily={'Raleway'} mt={3} ml={3} onClick={ () => cancelReply(critique.critique_id)}>Cancel</Button>
                             </Flex>
+                        </form>
                     </Box>
                     {/* {console.log(critique.critique_id)} */}
                     <CritiqueReply id={critique.critique_id} newReply={newReply} post_id={id} />

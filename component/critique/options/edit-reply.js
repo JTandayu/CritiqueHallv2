@@ -9,8 +9,8 @@ import {
     ModalCloseButton,
     Textarea,
   } from "@chakra-ui/react"
-import { useDisclosure } from '@chakra-ui/react'
-import { Input,Button } from '@chakra-ui/react'
+import { useDisclosure, useColorModeValue } from '@chakra-ui/react'
+import { Input ,Button, Spacer } from '@chakra-ui/react'
 import styles from "@styles/Hall.module.css";
 import axios from 'axios'
 import {useState, useEffect} from 'react' 
@@ -59,12 +59,12 @@ const EditReply = ({data}) => {
             <Modal isOpen={isOpen} onClose={onClose}>
                 <ModalOverlay />
                     <ModalContent maxW="40rem" h='40vh'>
-                    <ModalHeader>Edit Reply</ModalHeader>
+                    <ModalHeader fontFamily={'Raleway'}>Edit Reply</ModalHeader>
                     <ModalCloseButton />
                     <ModalBody>
-                        <Textarea w='100%' value={reply} onChange={(e)=>setReply(e.target.value)}></Textarea>
-                        <Button onClick={editReply}>Save</Button>
-                        <Button onClick={onClose}>Cancel</Button>
+                        <Textarea borderColor={useColorModeValue('black', 'white')} fontFamily={'Raleway'} w='100%' h='70%' value={reply} onChange={(e)=>setReply(e.target.value)} mb={5}></Textarea>
+                        <Button fontFamily={'Raleway'} bgColor={useColorModeValue('#2777C1','#0085FF')} color={useColorModeValue('#FFFFFF', '#FFFFFF')} _hover={{bgColor: useColorModeValue('#56AEFF', '#0B5090')}} mr={3} onClick={editReply}>Save</Button>
+                        <Button fontFamily={'Raleway'} bgColor={useColorModeValue('#C1272D', '#9E0B0F')} color={useColorModeValue('white', 'white')} _hover={{bgColor: useColorModeValue('#FF000A', '#470507')}} onClick={onClose}>Cancel</Button>
                     </ModalBody>
                 </ModalContent>
             </Modal>

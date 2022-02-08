@@ -145,7 +145,11 @@ export default function Nav(data, profile_pic){
             }
         }
 
-
+        if (cookies.token === 'undefined' || cookies.encrypted_id === 'undefined'){
+            Router.replace('/login')
+            return null;
+        }
+        
         axios.get(`${API_URL}/api/display_profile/${cookies.display_name}`, config)
         .then(response => {
             // console.log(response.data);      
@@ -431,7 +435,7 @@ export default function Nav(data, profile_pic){
         left='0'
         overflowY='auto'
         flexDir='column'
-        display={display}
+        display={{sm: display, lg: 'none'}}
         boxShadow='lg'
         >
             <Flex justify='flex-start'>
