@@ -18,6 +18,7 @@ import { getDownloadURL, ref, uploadBytesResumable } from 'firebase/storage'
 import axios from "axios";
 import {useCookies} from 'react-cookie'
 import { useRouter } from "next/router";
+import React from 'react';
 
 function DeletePost({id}){
     const { isOpen, onOpen, onClose } = useDisclosure()
@@ -25,6 +26,7 @@ function DeletePost({id}){
     const { API_KEY } = process.env
     const router = useRouter();
     const toast = useToast()
+    const toastIdRef = React.useRef()
     console.log
 
 
@@ -73,12 +75,13 @@ function DeletePost({id}){
       axios.delete(`${API_URL}/api/delete_post/${id}`, config)
       .then((response) => {
         console.log(response.data)
-        toast("Post successfully deleted!")
+        toastIdRef.current = toast({ title: 'Post deleted successfully!', status: 'success', duration: 3000, isClosable: false })
         onClose()
       })
       .then(()=>{
         router.push("/critique")
       }).catch((error)=>{
+        toastIdRef.current = toast({ title: 'Delete post unsuccessful!', status: 'error', duration: 3000, isClosable: false })
         console.log(error.response)
       })
     }

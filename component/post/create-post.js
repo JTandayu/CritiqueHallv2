@@ -20,7 +20,7 @@ import {
     AlertTitle,
     AlertDescription,
   } from '@chakra-ui/react'
-import { useDisclosure, useColorModeValue } from '@chakra-ui/react'
+import { useDisclosure, useColorModeValue, useToast } from '@chakra-ui/react'
 import { Button } from '@chakra-ui/react'
 import styles from "@styles/Hall.module.css";
 import { Box } from '@chakra-ui/react'
@@ -35,6 +35,7 @@ import { useCookies, cookies } from 'react-cookie'
 import axios from 'axios'
 import { storage } from '../../firebase.js'
 import { getDownloadURL, ref, uploadBytesResumable, deleteObject  } from 'firebase/storage'
+import React from "react";
 
 
 const breakpoints = createBreakpoints({
@@ -82,6 +83,9 @@ function CreatePost({data}) {
     const [description, setDescription] = useState('')
     const [hall_id, setHallID] = useState('1')
     
+    const toast = useToast()
+    const toastIdRef = React.useRef()
+
     const [color, setColor] = useState('purple')
     const [cookies, setCookie, removeCookie] = useCookies(['token', 'id', 'encrypted_id', 'display_name']);
     // const [attachment1, setAttachment1] = useState('')
@@ -198,9 +202,11 @@ function CreatePost({data}) {
         axios.post(`${API_URL}/api/create_post`, formData, config)
         .then(response => {
           console.log(response.data);
+          toastIdRef.current = toast({ title: 'Create post successful!', status: 'success', duration: 3000, isClosable: false })
           window.location.href = "/critique"
         })
         .catch(error => {
+            toastIdRef.current = toast({ title: 'Create post unsuccessful!', status: 'error', duration: 3000, isClosable: false })
             console.log(error);
             console.log(error.response)
         });
@@ -310,12 +316,12 @@ function CreatePost({data}) {
                             ))} 
                         </Flex>
                         <br />
-                        <Text fontFamily={'Raleway'} fontStyle={'italic'} fontSize='sm'>due to storage and security limitations:</Text>
-                        <Text fontFamily={'Raleway'} fontStyle={'italic'} fontSize='sm'>- video and zip files cannot be uploaded</Text>
-                        <Text fontFamily={'Raleway'} fontStyle={'italic'} fontSize='sm'>- up to 5 attachments maximum only</Text>
-                        <Text fontFamily={'Raleway'} fontStyle={'italic'} fontSize='sm'>- each upload is limited to 25mb only</Text>
-                        <Text fontFamily={'Raleway'} fontStyle={'italic'} fontSize='sm'>- if you want to share more and/or larger than 25mb attachments, you can do so by sharing a google drive link within your description</Text>
-                        <Text fontFamily={'Raleway'} fontStyle={'italic'} fontSize='sm'>- attachments cannot be edited once published!</Text>
+                        <Text fontFamily={'Raleway'} fontSize='lg'>Due to storage and security limitations:</Text>
+                        <Text fontFamily={'Raleway'} fontStyle={'italic'} fontSize='md'>- video and zip files cannot be uploaded</Text>
+                        <Text fontFamily={'Raleway'} fontStyle={'italic'} fontSize='md'>- up to 5 attachments maximum only</Text>
+                        <Text fontFamily={'Raleway'} fontStyle={'italic'} fontSize='md'>- each upload is limited to 25mb only</Text>
+                        <Text fontFamily={'Raleway'} fontStyle={'italic'} fontSize='md'>- if you want to share more and/or larger than 25mb attachments, you can do so by sharing a google drive link within your description</Text>
+                        <Text fontFamily={'Raleway'} fontStyle={'italic'} fontSize='md'>- attachments cannot be edited once published!</Text>
                     </Box>
 
                     </Flex >

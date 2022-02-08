@@ -29,10 +29,10 @@ export default function Layout({children}){
         formData.append('token', token)
         formData.append('user_id', id)
 
-        if (token === 'undefined'){
-            Router.replace('/login')
-            return null;
-        }
+        // if (token === 'undefined'){
+        //     Router.replace('/login')
+        //     return null;
+        // }
         
     }, [])
 

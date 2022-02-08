@@ -320,8 +320,8 @@ function EditProfile({data}) {
                             <Input fontFamily={'Raleway'} borderColor={useColorModeValue('black', 'white')} type='password' w='10vw' ml='10px' mr='1px' onChange={(e) => setNewPassword(e.target.value)}/>
                         </Flex>
                         <Flex >
-                            <FormLabel fontFamily={'Raleway'} mr={8}>Confirm New Password</FormLabel>
-                            <Input fontFamily={'Raleway'} type='password' w='10vw' borderColor={useColorModeValue('black', 'white')} ml='10px' mr='1px' onChange={(e) => setConfirmNewPassword(e.target.value)}/>
+                            <FormLabel mr={8}>Confirm New Password</FormLabel>
+                            <Input fontFamily={'Raleway'} borderColor={useColorModeValue('black', 'white')} type='password' w='10vw' ml='10px' mr='1px' onChange={(e) => setConfirmNewPassword(e.target.value)}/>
                         </Flex>
                     </Center>
                     <Flex w='100%'>

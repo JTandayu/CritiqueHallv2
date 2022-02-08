@@ -302,12 +302,12 @@ export default function HallPage(){
             </Button> */}
             
             {/* Halls */}
-            <Box  w="70%" h='200px' display={{lg: 'flex', md: 'flex', sm: 'none'}} mx="auto" mt="15vh" top="0">
+            <Box bgImage={'/HallsCard-Critique.png'} bgRepeat={'no-repeat'} bgSize={'cover'} rounded="lg" w="70%" h='200px' display={{lg: 'flex', md: 'flex', sm: 'none'}} mx="auto" mt="15vh" top="0">
                 
-                <Button variant='ghost' w="200px" h="100px" className={styles.technology} rounded="lg" position='static' _hover={{cursor: 'pointer'}} onClick={getTechnology} boxShadow={'lg'}>
+                <Button variant='ghost' w="200px" h="100px" mt={5} className={styles.technology} rounded="lg" position='static' _hover={{cursor: 'pointer'}} onClick={getTechnology} boxShadow={'lg'}>
                 <Box w="full" h="10vh" ml={{lg: 0, sm: 0}}  px='5'>
                     <Center>
-                    <Text fontFamily={'Raleway'} fontSize="3xl" color="white" my="auto" mt="5" textShadow="1px 1px #000">Technology</Text>
+                    {/* <Text fontFamily={'Raleway'} fontSize="3xl" color="white" my="auto" mt="5" textShadow="1px 1px #000">Technology</Text> */}
                     </Center>
                     {/* <Center>
                         <Heading fontFamily={'Raleway'} size="xs" color="white" mt="1" textShadow="1px 1px #000">Post:</Heading>
@@ -318,10 +318,10 @@ export default function HallPage(){
 
                 <Spacer />
 
-                <Button variant='ghost' w="200px" h="100px" className={styles.arts} rounded="lg" position='static' _hover={{cursor: 'pointer'}} onClick={getArts} boxShadow={'lg'}>
+                <Button variant='ghost' w="200px" h="100px" mt={5} className={styles.arts} rounded="lg" position='static' _hover={{cursor: 'pointer'}} onClick={getArts} boxShadow={'lg'}>
                 <Box w="full" h="10vh" ml={{lg: 0, sm: 0}} rounded="lg" px='9'>
                     <Center>
-                    <Text fontFamily={'Raleway'} fontSize="3xl" color="white" my="auto" mt="5" textShadow="1px 1px #000">Arts</Text>
+                    {/* <Text fontFamily={'Raleway'} fontSize="3xl" color="white" my="auto" mt="5" textShadow="1px 1px #000">Arts</Text> */}
                     </Center>
                     {/* <Center>
                         <Heading fontFamily={'Raleway'} size="xs" color="white" mt="1" textShadow="1px 1px #000">Post:</Heading>
@@ -332,10 +332,10 @@ export default function HallPage(){
 
                 <Spacer />
 
-                <Button variant='ghost' w="200px" h="100px" className={styles.business} rounded="lg" position='static' _hover={{cursor: 'pointer'}} onClick={getBusiness} boxShadow={'lg'}>
+                <Button variant='ghost' w="200px" h="100px" mt={5} className={styles.business} rounded="lg" position='static' _hover={{cursor: 'pointer'}} onClick={getBusiness} boxShadow={'lg'}>
                 <Box w="full" h="10vh" ml={{lg: 0, sm: 0}} rounded="lg" px='9' >
                     <Center>
-                    <Text fontFamily={'Raleway'} fontSize="3xl" color="white" my="auto" mt="5" textShadow="1px 1px #000">Business</Text>
+                    {/* <Text fontFamily={'Raleway'} fontSize="3xl" color="white" my="auto" mt="5" textShadow="1px 1px #000">Business</Text> */}
                     </Center>
                     {/* <Center>
                         <Heading fontFamily={'Raleway'} size="xs" color="white" mt="1" textShadow="1px 1px #000">Post: </Heading>
@@ -345,10 +345,10 @@ export default function HallPage(){
 
                 <Spacer />
 
-                <Button variant='ghost' w="200px" h="100px" className={styles.lounge} rounded="lg" position='static' _hover={{cursor: 'pointer'}} onClick={getLounge} boxShadow={'lg'}>
+                <Button variant='ghost' w="200px" h="100px" mt={5} className={styles.lounge} rounded="lg" position='static' _hover={{cursor: 'pointer'}} onClick={getLounge} boxShadow={'lg'}>
                 <Box w="full" h="10vh" ml={{lg: 0, sm: 0}} rounded="lg" px='9'>
                     <Center>
-                    <Text fontFamily={'Raleway'} fontSize="3xl" color="white" my="auto" mt="5" borderColor={'black'}>Lounge</Text>
+                    {/* <Text fontFamily={'Raleway'} fontSize="3xl" color="white" my="auto" mt="5" borderColor={'black'}>Lounge</Text> */}
                     </Center>
                     {/* <Center>
                         <Heading fontFamily={'Raleway'} size="xs" color="white" mt="1" textShadow="1px 1px #000">Post: </Heading>
@@ -414,7 +414,7 @@ export default function HallPage(){
                     { posts.length != 0 ? 
                     [loading ? <Box>Loading...</Box> : 
                     currentPosts.map((post, i) => 
-                            <Box bgColor={changeColor} w="100%" display={{lg: 'flex', sm: 'block'}} key={post.post_id} mt='2ch' borderColor='white' border='1px solid gray.500' boxShadow='lg' rounded='lg'>
+                            <Box bgColor={changeColor} w="100%" display={{lg: 'flex', sm: 'block'}} key={post.post_id} mt='2ch' border='1px solid gray.500' boxShadow='lg' rounded='lg'>
                                 <Link href={`/post/${post.post_id}`} passHref>
                                 <a>
                                 <Box display={{lg: 'flex', sm: 'block'}} w={{lg: "50vw", sm: '100%'}}>

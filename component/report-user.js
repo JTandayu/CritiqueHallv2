@@ -82,15 +82,15 @@ function ReportUser({data}) {
         <Modal isOpen={isOpen} onClose={onClose}>
             <ModalOverlay />
                 <ModalContent maxW="40rem">
-                <ModalHeader>Report User</ModalHeader>
+                <ModalHeader fontFamily={'Raleway'}>Report User</ModalHeader>
                 <ModalCloseButton />
                 <ModalBody>
                         <Flex mt='3vh'>
-                            <FormLabel>Reportee</FormLabel>
+                            <FormLabel fontFamily={'Raleway'}>Reportee</FormLabel>
                             <Text ml={20}>{cookie.display_name}</Text>
                         </Flex>
                         <Flex mt='3vh'>
-                            <FormLabel>Type of Offense</FormLabel>
+                            <FormLabel fontFamily={'Raleway'}>Type of Offense</FormLabel>
                             {/* <Flex flexDir='column' ml={8}>
                                 <Checkbox size='md' mb={2}>
                                     Inappropriate Post
@@ -110,11 +110,11 @@ function ReportUser({data}) {
                             </Flex> */}
                             <RadioGroup name="offense" onChange={setOffense} value={offense}  ml={8}>
                                 <Stack direction='column'>
-                                    <Radio value='Inappropriate Username' mb={2}>Inappropriate Username</Radio>
-                                    <Radio value='Inappropriate Post' mb={2}>Inappropriate Post</Radio>
-                                    <Radio value='Inappropriate Critique' mb={2}>Inappropriate Critique</Radio>
-                                    <Radio value='Spamming' mb={2}>Spamming</Radio>
-                                    <Radio value='Other' mb={2}>Other</Radio>
+                                    <Radio fontFamily={'Raleway'} value='Inappropriate Username' mb={2}>Inappropriate Username</Radio>
+                                    <Radio fontFamily={'Raleway'} value='Inappropriate Post' mb={2}>Inappropriate Post</Radio>
+                                    <Radio fontFamily={'Raleway'} value='Inappropriate Critique' mb={2}>Inappropriate Critique</Radio>
+                                    <Radio fontFamily={'Raleway'} value='Spamming' mb={2}>Spamming</Radio>
+                                    <Radio fontFamily={'Raleway'} value='Other' mb={2}>Other</Radio>
                                 </Stack>
                             </RadioGroup>
                         </Flex>
@@ -122,10 +122,10 @@ function ReportUser({data}) {
                         <FormLabel>Description</FormLabel>
                         <Textarea w='30vw' bg='white' placeholder='Your detail report...' color='black' onChange={(e)=>setMessage(e.target.value)}/>
                         <Center mt={10} mb={10}>
-                            <Button colorScheme='blue' mr={3} onClick={submitReport} >
+                            <Button  fontFamily={'Raleway'} bgColor={useColorModeValue('#2777C1','#0085FF')} color={useColorModeValue('#FFFFFF', '#FFFFFF')} _hover={{bgColor: useColorModeValue('#56AEFF', '#0B5090')}} colorScheme='blue' mr={3} onClick={submitReport} >
                                 Submit
                             </Button>
-                            <Button variant='ghost' onClick={onClose}>
+                            <Button fontFamily={'Raleway'} bgColor={useColorModeValue('#C1272D', '#9E0B0F')} color={useColorModeValue('white', 'white')} _hover={{bgColor: useColorModeValue('#FF000A', '#470507')}} variant='ghost' onClick={onClose}>
                                 Cancel
                             </Button>
                         </Center>
