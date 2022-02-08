@@ -34,6 +34,7 @@ import { getDownloadURL, ref, uploadBytesResumable } from 'firebase/storage'
 import {useCookies} from 'react-cookie'
 import axios from "axios";
 import { useRouter } from "next/router";
+import {useToast} from '@chakra-ui/react'
 
 // export async function getServerSideProps(context) {
 //     const res = await fetch(`https://...`)
@@ -53,6 +54,7 @@ function EditProfile({data}) {
     const { colorMode, toggleColorMode } = useColorMode()
     colorMode === 'light' ? 'Dark' : 'Light'
     const router = useRouter();
+    const toast = useToast()
 
     // console.log(data)
 
@@ -211,6 +213,12 @@ function EditProfile({data}) {
         axios.post(`${API_URL}/api/change_profile`, formData, config)
         .then((response) => {
             console.log(response)
+            toast({
+                title: 'Profile changed successfully.',
+                status: 'success',
+                duration: 9000,
+                isClosable: true,
+              })
             router.reload();
         }).catch((error) => (
             console.log(error.response)
@@ -224,9 +232,15 @@ function EditProfile({data}) {
         formData.append('confirm_new_password', confirmNewPassword)
 
         axios.post(`${API_URL}/api/change_password`, formData, config)
-        .then((response) => (
+        .then((response) => {
             console.log(response)
-        )).catch((error) => (
+            toast({
+                title: 'Password changed successfully.',
+                status: 'success',
+                duration: 9000,
+                isClosable: true,
+              })
+            }).catch((error) => (
             console.log(error.response)
         ))
     }

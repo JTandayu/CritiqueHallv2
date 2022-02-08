@@ -159,15 +159,15 @@ export default function Nav(data, profile_pic){
             // console.log(error.response.data.error);
             if(error.response.data.error ==  'User does not exist'){
                 Router.replace('/login')
-                return;
+                return null;
             }
             if(error.response.data.error ==  'Token Expired'){
                 Router.replace('/login')
-                return;
+                return null;
             }
             if(error.response.data.error ==  'Unauthorized'){
                 Router.replace('/login')
-                return;
+                return null;
             }
         });
 
@@ -198,9 +198,8 @@ export default function Nav(data, profile_pic){
 
     //Search Function
     const searchItem = async()=>{
-
-        window.location = '/search'
         localStorage.setItem("search-item", search);
+        router.push('/search')
     }
 
     //Log-out function
@@ -288,18 +287,13 @@ export default function Nav(data, profile_pic){
                 </Link>
             </Flex>
             <Spacer />
-                <form action='/search' method='POST' onSubmit={searchItem}>
-                    <Input fontFamily={'Raleway'} fontWeight={'light'} placeholder='Looking for something?' display={['none','none','none','flex']} w='30vw' type='text' mt={7} mr='25vw' onChange={(e)=>setSearch(e.target.value)} borderColor={useColorModeValue('black', 'white')} />
-                </form>
-            <Spacer />
-        <Flex
+            <Flex
             pos='fixed'
             top='1rem'
-            right='3rem'
+            left='15rem'
             align='center'
-        >
-
-            <Flex display={['none','none','flex','flex']}>
+            >
+                <Flex display={['none','none','flex','flex']}>
                 <Link href="/home" passHref>
                     <Button
                         as='a'
@@ -355,6 +349,21 @@ export default function Nav(data, profile_pic){
                         Feedback
                     </Button>
                 </Link>
+                </Flex>
+            </Flex>
+            <Spacer />
+                <form action='/search' method='POST' onSubmit={searchItem}>
+                    <Input fontFamily={'Raleway'} fontWeight={'light'} placeholder='Looking for something?' display={['none','none','none','flex']} w='30vw' type='text' mt={7} mr='25vw' onChange={(e)=>setSearch(e.target.value)} borderColor={useColorModeValue('black', 'white')} />
+                </form>
+            <Spacer />
+        <Flex
+            pos='fixed'
+            top='1rem'
+            right='3rem'
+            align='center'
+            w="15em"
+        >
+            <Flex display={['none','none','flex','flex']} w="full">
                 <Popover>
                     <PopoverTrigger>
                         <Button as='a'

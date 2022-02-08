@@ -24,6 +24,7 @@ import { useEffect, useState } from "react";
 import { Radio, RadioGroup, Stack } from '@chakra-ui/react'
 import axios from "axios";
 import { WarningIcon } from "@chakra-ui/icons";
+import {useToast} from '@chakra-ui/react'
 
 
 // export async function getServerSideProps(context) {
@@ -41,6 +42,7 @@ function ReportUser({data}) {
     const [cookie, setCookie] = useCookies('token', 'id', 'encrypted_id', 'display_name')
     const [offense, setOffense] = useState('Inappropriate Username')
     const [message, setMessage] = useState('')
+    const toast = useToast()
     // console.log(data.encrypted_id)
 
     const config = {
@@ -68,6 +70,12 @@ function ReportUser({data}) {
         axios.post(`${API_URL}/api/submit_report`, formData, config)
         .then((response)=>{
             console.log(response.data)
+            toast({
+                title: 'Report Submitted Successfully.',
+                status: 'success',
+                duration: 9000,
+                isClosable: true,
+              })
         })
         .catch((error)=>{
             console.log(error.response)

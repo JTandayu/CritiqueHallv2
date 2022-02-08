@@ -397,6 +397,7 @@ export default function HallPage(){
                         setCurrentPage(page);
                       }}
                     bg='dark'
+                    responsive
                 />
             {/* <Pagination></Pagination> */}
             {/* <Box w="50%"></Box> */}
@@ -432,6 +433,12 @@ export default function HallPage(){
                                         {post.attachment1 != 'undefined' ? 
                                         <Image src={post.attachment1} w={{lg: '10vw', sm:'100%'}} h={{lg: '10vh', sm: '20vh'}} onError={addDefaultSrc} />
                                         : <Image src="/no-image-preview.png" w={{lg: '10vw', sm:'100%'}} h={{lg: '10vh', sm: '20vh'}} />}
+                                        {post.attachment2 != 'undefined' ? 
+                                        <Image src={post.attachment2} w={{lg: '10vw', sm:'100%'}} h={{lg: '10vh', sm: '20vh'}} onError={addDefaultSrc} />
+                                        : null}
+                                        {post.attachment3 != 'undefined' ? 
+                                        <Image src={post.attachment3} w={{lg: '10vw', sm:'100%'}} h={{lg: '10vh', sm: '20vh'}} onError={addDefaultSrc} />
+                                        : null}
                                         </Center>
                                     </Box>
                                     <Box fontFamily={'Raleway'} p="3" w="100%" bg="light" my='auto'>

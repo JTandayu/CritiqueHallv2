@@ -31,6 +31,7 @@ import { useColorMode, useColorModeValue } from '@chakra-ui/react';
 import { createBreakpoints } from '@chakra-ui/theme-tools'
 import { useToast } from '@chakra-ui/react'
 import React from 'react';
+import { useRouter } from 'next/router';
 
 
 
@@ -64,6 +65,7 @@ export default function ResetPassword({token, userId}){
   const [confirm_password, setConfirmPassword] = useState('')
   const toast = useToast()
   const toastIdRef = React.useRef()
+  const router = useRouter()
 
   // console.log(token);
   // console.log(userId)
@@ -103,12 +105,12 @@ export default function ResetPassword({token, userId}){
         .then(response => {
             toastIdRef.current = toast({ title: 'Reset Password Successful!', description: 'Please login with your new password.', status: 'success', duration: 2000, isClosable: true })
             console.log(response);
-              window.location = "/login"
+            router.replace('/login')
         })
         .catch(error => {
           toastIdRef.current = toast({ title: 'Reset Password Unsuccessful!', description: 'Please try again!', status: 'error', duration: 2000, isClosable: true })
             console.log(error);
-            window.location = "/reset-password"
+            // window.location = "/reset-password"
         });
     }
 
@@ -171,7 +173,7 @@ export default function ResetPassword({token, userId}){
             </FormControl></center>
 
             <p className={styles.register}>
-            <Link href="./login" passHref><Text _hover={{cursor:'pointer'}} fontSize='lg'  color={useColorModeValue('#1BA3C1', '#1BA3C1')}><a>Back to Login</a></Text></Link>
+            <Link href="/login" passHref><Text _hover={{cursor:'pointer'}} fontSize='lg'  color={useColorModeValue('#1BA3C1', '#1BA3C1')}><a>Back to Login</a></Text></Link>
             </p>
             </center>
         </Box>

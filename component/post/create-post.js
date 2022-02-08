@@ -101,7 +101,7 @@ function CreatePost({data}) {
 
     const uploadFiles = () => {
         if(urls.length > 4){
-            toast({title: 'Maximum of 5 files only. Please attach link of google drive file instead'
+            toastIdRef.current = toast({title: 'Maximum of 5 files only. Please attach link of google drive file instead'
                 ,status: 'error', isClosable: true});
             return;
         }
@@ -138,7 +138,11 @@ function CreatePost({data}) {
         for(let i = 0; i < e.target.files.length; i++){
             // console.log(e.target.files[i].size)
             if(e.target.files[i].size > 25000000){
-                alert("File size is higher than the limit.")
+                toastIdRef.current = toast({
+                    title: "File size is higher than the limit.",
+                    status: 'error',
+                    isClosable: true,
+                  })
                 // console.log(image)
                 return;
             }else{
@@ -163,7 +167,12 @@ function CreatePost({data}) {
             // console.log(desertRef)
             deleteObject(desertRef).then((response) => {
                 // console.log(response.data)
-                alert("File deleted successfully")
+                // alert("File deleted successfully")
+                toastIdRef.current = toast({
+                    title: "File deleted successfully",
+                    status: 'success',
+                    isClosable: true,
+                  })
                 return;
             }).catch((error) => {
                 console.log(error)

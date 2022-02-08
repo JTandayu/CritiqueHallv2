@@ -21,31 +21,29 @@ import { Box } from '@chakra-ui/react'
 import { Grid, GridItem } from '@chakra-ui/react'
 import styles from '@styles/Search.module.css'
 import {useState} from 'react'
-import {useEffect} from 'react'
+import {useEffect, forwardRef} from 'react'
 import axios from 'axios'
 import { useCookies } from 'react-cookie'
 import Pagination from '@choc-ui/paginator'
 
-export async function getServerSideProps(context){
-    const { API_URL } = process.env
-    const { API_KEY } = process.env
+// export async function getServerSideProps(context){
+//     const { API_URL } = process.env
+//     const { API_KEY } = process.env
 
+//     // const [search, setSearch] = useState('')
     
 
-    // const [search, setSearch] = useState('')
-    
+//     const res = await fetch(`${API_URL}/api/display_posts`, {header:{'x-api-key': '1234'}})
+//     const res2 = await fetch(`${API_URL}/api/display_profile` , {header:{'x-api-key': '1234'}})
 
-    const res = await fetch(`${API_URL}/api/display_posts`, {header:{'x-api-key': '1234'}})
-    const res2 = await fetch(`${API_URL}/api/display_profile` , {header:{'x-api-key': '1234'}})
-
-    const data = await res.json()
+//     const data = await res.json()
     
-    return{
-        props:{
-            data
-        }
-    }
-}
+//     return{
+//         props:{
+//             data
+//         }
+//     }
+// }
 
 export default function SearchResult(){
     const { API_URL } = process.env
@@ -58,12 +56,41 @@ export default function SearchResult(){
     const [searchPostData, setSearchPostData] = useState([])
     const [currentSearchPage, setCurrentSearchPage] = useState(1)
     const [searchPostsPerPage, setSearchPostsPerPage] = useState(5)
+    const [loading, setLoading] = useState(true)
 
     const changeColor = useColorModeValue('#BAB9B9', '#1F1F1F')
 
-
-    // const searchItem = ''
     const [search, setSearch] = useState('')
+
+    const indexOfLastPostSearch =  currentSearchPage*searchPostsPerPage
+    const indexOfFirstPostSearch = indexOfLastPostSearch - searchPostsPerPage
+    const currentSearch = searchPostData.slice(indexOfFirstPostSearch, indexOfLastPostSearch);
+
+    const pageNumbers = []
+
+    for(let i = 1; i<=Math.ceil(searchPostData.length / searchPostsPerPage); i++){
+        pageNumbers.push(i);
+    }
+
+    const paginate = (pageNumber) => setCurrentSearchPage(pageNumber)
+
+    const Prev = forwardRef((props, ref) => (
+        <>
+        </>
+      ));
+      const Next = forwardRef((props, ref) => (
+        <>
+        </>
+      ));
+    
+      const itemRender = (_, type) => {
+        if (type === "prev") {
+          return Prev;
+        }
+        if (type === "next") {
+          return Next;
+        }
+      };
     
 
     
@@ -78,7 +105,8 @@ export default function SearchResult(){
             'User-Id': cookies.encrypted_id
         }
     }
-    console.log(searchPostData.length)
+
+    // console.log(currentSearchPage)
     
     useEffect(() => {
         const { API_URL } = process.env
@@ -112,6 +140,7 @@ export default function SearchResult(){
             console.log(response.data);
             setSearchUserData(response.data.data.users);
             setSearchPostData(response.data.data.posts);
+            setLoading(false)
             // console.log(searchUserData.length);
             // console.log(searchPostData.length);
             
@@ -130,11 +159,6 @@ export default function SearchResult(){
         
     }, [])
 
-    const indexOfLastPostSearch =  currentSearchPage*searchPostsPerPage
-    const indexOfFirstPostSearch = indexOfLastPostSearch - searchPostsPerPage
-    const currentSearch = searchPostData.slice(indexOfFirstPostSearch, indexOfLastPostSearch);
-
-    console.log(currentSearch)
     
     const sortPostResult = async (e) =>{
         const searchItem = localStorage.getItem('search-item')
@@ -185,7 +209,6 @@ export default function SearchResult(){
             
             
             <Flex w="80%">
-                {/* <Pagination></Pagination> */}
                 <Box w='10vw'></Box>
                 <Spacer />
                 
@@ -222,13 +245,14 @@ export default function SearchResult(){
                     baseStyles={{ bg: "light", color: 'dark' }}
                     activeStyles={{ bg: "gray.300", color: 'black' }}
                     hoverStyles={{ bg: "gray.300" }}
-                    pageNeighbours={1}
                     total={searchPostData.length}
                     pageSize={searchPostsPerPage}
                     onChange={(page) => {
                         setCurrentSearchPage(page);
                       }}
+                    itemRender={itemRender}
                     bg='dark'
+                    responsive
                 />
                 <Spacer />
 
@@ -243,7 +267,7 @@ export default function SearchResult(){
 
             {/* Search Item */}
             <Text id='post' mx='auto' hidden fontFamily={'Raleway'} color={useColorModeValue('#1B1464', '#B2A3FF')}>No Posts Found</Text>
-
+            
             {currentSearch.map((post, i) => (
             <Box bgColor={changeColor} w={{lg: '70%', sm: '100%'}} mt='2ch' mx="auto" key={post.post_id} display="flex" boxShadow='lg' rounded='lg' fontFamily={'Raleway'}>
                                 <Link href='/post/[id]'  as={`/post/${post.post_id}`} passHref>
@@ -264,6 +288,12 @@ export default function SearchResult(){
                                         {post.attachment1 != 'undefined' ? 
                                         <Image src={post.attachment1} w={{lg: '10vw', sm:'100%'}} h={{lg: '10vh', sm: '20vh'}} onError={addDefaultSrc} />
                                         : <Image src="/no-image-preview.png" w={{lg: '10vw', sm:'100%'}} h={{lg: '10vh', sm: '20vh'}} />}
+                                        {post.attachment2 != 'undefined' ? 
+                                        <Image src={post.attachment2} w={{lg: '10vw', sm:'100%'}} h={{lg: '10vh', sm: '20vh'}} onError={addDefaultSrc} />
+                                        : null}
+                                        {post.attachment3 != 'undefined' ? 
+                                        <Image src={post.attachment3} w={{lg: '10vw', sm:'100%'}} h={{lg: '10vh', sm: '20vh'}} onError={addDefaultSrc} />
+                                        : null}
                                         </Center>
                                     </Box>
                                     <Box fontFamily={'Raleway'} p="3" w="100%" bg="light" my='auto'>
