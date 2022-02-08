@@ -204,7 +204,7 @@ export default function SearchResult(){
                     </Box>
                     <Spacer />
                     <Box p="3" w="100%" bg="light" ml="30vh">
-                        <Heading fontFamily={'Raleway'} size="2xl" mt={28}>{user.display_name}</Heading>
+                        <Heading fontFamily={'Raleway'} fontWeight={'black'} size='2xl' textShadow='2px 2px #000' mt={28}>{user.display_name}</Heading>
                     </Box>      
                 </Box>
                 
