@@ -289,7 +289,7 @@ export default function Register({data2}) {
                 </Box>
                 <Box>
                 <FormLabel>Department</FormLabel>
-                <Select borderColor={useColorModeValue('black', 'white')} borderRadius="lg" className={styles.input_select} placeholder="Select Department" size="sm" onChange={e => getSpecList(e.target.value)}>
+                <Select borderColor={useColorModeValue('black', 'white')} borderRadius="lg" className={styles.input_select} placeholder="Choose" size="sm" onChange={e => getSpecList(e.target.value)}>
                   {depList.map((department, i) => (
                     <option value={department.name} key={i}>{department.name}</option>
                   ))}
