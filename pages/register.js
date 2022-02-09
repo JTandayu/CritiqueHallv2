@@ -7,7 +7,7 @@ import Home from './home'
 import Link from 'next/link'
 // import Logo from "@public/critiquehall.png";
 import { Button, ButtonGroup, useColorModeValue, Image, useColorMode } from "@chakra-ui/react"
-import { Stack, HStack, VStack } from "@chakra-ui/react"
+import { Stack, HStack, VStack, SimpleGrid, Center } from "@chakra-ui/react"
 import { Heading, Input, Text } from '@chakra-ui/react'
 import {
   FormControl,
@@ -25,7 +25,8 @@ import { storage } from '../firebase.js'
 import { getDownloadURL, ref, uploadBytesResumable } from 'firebase/storage'
 import { useCookies } from 'react-cookie';
 import React from 'react';
-import { useToast } from '@chakra-ui/react';
+import { useToast, Checkbox, CheckboxGroup } from '@chakra-ui/react';
+import TermsAndConditions from '@component/terms-and-conditions';
 
 const MotionButton = motion(Button)
 
@@ -253,34 +254,60 @@ export default function Register({data2}) {
                     >
                         <Image className={styles.darkicon} src={ImgUrl} alt="darkmode" w="2em" h="2em" ml={'15em'} />
                     </Button>
-          <div id="part1">
-            <div className={styles.logo}>
+          
+            <Box className={styles.logo}>
             <Image src={useColorModeValue('critiquehall.png', 'critiquehall-dark.png')} 
              alt="Critique Hall Logo"/>
-            </div>
-          
+            </Box>
+            <SimpleGrid columns={2} spacing={10}>
             {/* <Heading fontFamily={'Raleway'} mb={2} as="h2" size="lg"color={useColorModeValue('#C1272D','#FF5C61')}>REGISTER</Heading> */}
-            
+                <Box>
                 <FormLabel>First Name</FormLabel>
                 <Input  borderColor={useColorModeValue('black', 'white')} className={styles.input_box} type="text" value={first_name} onChange={e => setFirstName(e.target.value)}/>
-                <br/>
+                </Box>
+                <Box>
                 <FormLabel>Last Name</FormLabel>
                 <Input  borderColor={useColorModeValue('black', 'white')}  className={styles.input_box} type="text" value={last_name} onChange={e => setLastName(e.target.value)}/>
-                <br/>
+                </Box>
+                <Box>
                 <FormLabel>Display Name</FormLabel>
                 <Input  borderColor={useColorModeValue('black', 'white')}  className={styles.input_box} type="text" value={user_name} onChange={e => setUserName(e.target.value)}/>
-                <br/>
+                </Box>
+                <Box>
                 <FormLabel>iACADEMY Email</FormLabel>
-                <Input  borderColor={useColorModeValue('black', 'white')}  placeholder="***@iacademy.edu.ph" className={styles.input_box} type="text" value={email} onChange={e => setEmail(e.target.value)}/>
+                <Input  borderColor={useColorModeValue('black', 'white')}  placeholder="yes, type the iacademy.edu.ph" className={styles.input_box} type="text" value={email} onChange={e => setEmail(e.target.value)}/>
+                </Box>
                 {/* <FormHelperText className={styles.helperText}>format: ***@iacademy.edu.ph</FormHelperText> */}
                 {/* <br/> */}
-              <FormLabel>Password</FormLabel>
-                <Input  borderColor={useColorModeValue('black', 'white')}  className={styles.input_box} type="password" value={password} onChange={e => setPassword(e.target.value)}/>
-                <br/>
+                <Box>
+                <FormLabel>Password</FormLabel>
+                <Input  borderColor={useColorModeValue('black', 'white')} placeholder="not your original one, obviously!"  className={styles.input_box} type="password" value={password} onChange={e => setPassword(e.target.value)}/>
+                </Box>
+                <Box>
                 <FormLabel>Confirm Password</FormLabel>
                 <Input  borderColor={useColorModeValue('black', 'white')}  className={styles.input_box} type="password" value={confirm_password} onChange={e => setConfirmPassword(e.target.value)}/>
-                <br/>
-                <VStack direction="column" spacing={8} align="center">
+                </Box>
+                <Box>
+                <FormLabel>Department</FormLabel>
+                <Select borderColor={useColorModeValue('black', 'white')} borderRadius="lg" className={styles.input_select} placeholder="Select Department" size="sm" onChange={e => getSpecList(e.target.value)}>
+                  {depList.map((department, i) => (
+                    <option value={department.name} key={i}>{department.name}</option>
+                  ))}
+                </Select>
+                </Box>
+                <Box>
+                <FormLabel display="flex">Strand / Specialization<Text fontSize="sm" color={useColorModeValue('gray', 'gray')} ml={2}>depends</Text></FormLabel>
+                <Select borderColor={useColorModeValue('black', 'white')} borderRadius="lg"  className={styles.input_select} placeholder="Choose" size="sm" onChange={e => setSpecialization(e.target.value)}>
+                {specList.map((specialization, i) => (
+                  <option value={specialization.name} key={i}>{specialization.name}</option>
+                ))}
+                </Select>
+                </Box>
+                <Box>
+                <Checkbox defaultIsChecked><Text display="flex" ml={1}>I accept the <Box ml={1}><TermsAndConditions /></Box></Text></Checkbox> 
+                </Box>
+          </SimpleGrid>
+          <Box>
                 <Button
                   // whileHover={{ scale: 1.2 }}
                   // whileTap={{ scale: 0.9 }}
@@ -290,14 +317,12 @@ export default function Register({data2}) {
                   _hover={{bgColor: 'blue'}} 
                   type="submit" 
                   size="lg"
-                  rightIcon={<ArrowRightIcon />}
-                  onClick={toPart2}
+                  // rightIcon={<ArrowRightIcon />}
+                  onClick={submitRegister}
                   >
-                Next Page
+                Submit
                 </Button>
-                </VStack>
-          </div>
-
+                </Box>
           <div id="part2" hidden>
             <div className={styles.logo2}>
             <Image src={useColorModeValue('critiquehall.png', 'critiquehall-dark.png')} 

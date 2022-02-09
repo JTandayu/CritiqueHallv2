@@ -142,6 +142,12 @@ function EditProfile({data}) {
       () => {
         getDownloadURL(uploadProfile.snapshot.ref)
         .then(url => {
+         toastIdRef.current = toast({
+            title: 'Profile photo uploaded successfully!',
+            status: 'success',
+            duration: 3000,
+            isClosable: true,
+          })
         console.log(url)
         setProfileImageUrl(url)
         setUploadProfileDone(true);
@@ -162,6 +168,12 @@ function EditProfile({data}) {
       () => {
         getDownloadURL(uploadCover.snapshot.ref)
         .then(url => {
+            toastIdRef.current = toast({
+                title: 'Cover photo uploaded successfully!',
+                status: 'success',
+                duration: 3000,
+                isClosable: true,
+              })
             console.log(url)
             setCoverImageUrl(url)
             setUploadCoverDone(true);
@@ -216,13 +228,14 @@ function EditProfile({data}) {
         .then((response) => {
             console.log(response)
             toastIdRef.current = toast({
-                title: 'Profile changed successfully.',
+                title: 'Profile changed successfully!',
                 status: 'success',
                 duration: 3000,
                 isClosable: true,
               })
             router.reload();
         }).catch((error) => (
+            toastIdRef.current = toast({ title: 'Error!', status: 'error', duration: 3000, isClosable: true }),
             console.log(error.response)
         ))
     }
@@ -237,12 +250,13 @@ function EditProfile({data}) {
         .then((response) => {
             console.log(response)
             toastIdRef.current = toast({
-                title: 'Password changed successfully.',
+                title: 'Password changed successfully!',
                 status: 'success',
                 duration: 3000,
                 isClosable: true,
               })
             }).catch((error) => (
+            toastIdRef.current = toast({ title: 'Error!', status: 'error', duration: 3000, isClosable: true }),
             console.log(error.response)
         ))
     }
@@ -286,7 +300,7 @@ function EditProfile({data}) {
                     <Box w="full" mb={8}>
                         <Center>
                             {loading ? <Spinner /> : null}
-                            <Button align="right" onClick={uploadFiles}>Upload Images</Button>          
+                            <Button bg='blue.400' color='white' _hover={{background: 'blue.400'}} align="right" onClick={uploadFiles}>Upload Images</Button>          
                         </Center>
                     </Box>
                     {/* <Flex mb={5}>
@@ -313,7 +327,7 @@ function EditProfile({data}) {
                         <Textarea fontFamily={'Raleway'} borderColor={useColorModeValue('black', 'white')} type='text' w='100%' h='15vh' value={aboutMe} onChange={(e) => setAboutMe(e.target.value)} />
                     </Flex>
                     <Flex mb={5}>
-                        <FormLabel fontFamily={'Raleway'}s>Confirm Password</FormLabel>
+                        <FormLabel fontFamily={'Raleway'}>Confirm Password</FormLabel>
                         <Input fontFamily={'Raleway'} borderColor={useColorModeValue('black', 'white')} type='password' w='10vw' ml='10px' onChange={(e) => setConfirmPassword(e.target.value)} />
                     </Flex>
                     <Flex>
@@ -336,7 +350,7 @@ function EditProfile({data}) {
                             <Input fontFamily={'Raleway'} borderColor={useColorModeValue('black', 'white')} type='password' w='10vw' ml='10px' mr='1px' onChange={(e) => setNewPassword(e.target.value)}/>
                         </Flex>
                         <Flex >
-                            <FormLabel mr={8}>Confirm New Password</FormLabel>
+                            <FormLabel fontFamily={'Raleway'} mr={8}>Confirm New Password</FormLabel>
                             <Input fontFamily={'Raleway'} borderColor={useColorModeValue('black', 'white')} type='password' w='10vw' ml='10px' mr='1px' onChange={(e) => setConfirmNewPassword(e.target.value)}/>
                         </Flex>
                     </Center>
