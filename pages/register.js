@@ -304,7 +304,7 @@ export default function Register({data2}) {
                 </Select>
                 </Box>
                 <Box>
-                <Checkbox defaultIsChecked><Text display="flex" ml={1}>I accept the <Box ml={1}><TermsAndConditions /></Box></Text></Checkbox> 
+                <Checkbox size="lg"><Text display="flex" ml={1}>I accept the <Box ml={1}><TermsAndConditions /></Box></Text></Checkbox> 
                 </Box>
           </SimpleGrid>
           <Box>
@@ -322,6 +322,7 @@ export default function Register({data2}) {
                   >
                 Submit
                 </Button>
+                <Link href="./login" passHref><Text _hover={{cursor:'pointer', textDecoration: 'underline'}} fontSize='lg' color={useColorModeValue('#1BA3C1', '#1BA3C1')} mt={5}><a>Back to Login</a></Text></Link>
                 </Box>
           <div id="part2" hidden>
             <div className={styles.logo2}>
