@@ -277,14 +277,14 @@ export default function ProfilePage({}){
                         {userPosts !== null ?
                         userPosts.map((posts, i) => (
                             <Link href={`/post/${posts.post_id}`} key={i} passHref>
-                                <Box bgColor={changeColorBox} w={{lg: '20vw', sm: '300px'}} h='28vh' ml={5} borderRadius={10}>
+                                <Box bgColor={changeColorBox} w={{lg: '20vw', sm: '300px'}} h='28vh' ml={5} borderRadius={10} boxShadow="md">
                                     {/* <Center mt={3}>
                                         <Heading size='md' mx="auto">{posts.title}</Heading>
                                     </Center> */}
                                     <Center mt={0}>
                                         {posts.attachment1 != 'undefined' ? 
-                                        <Image src={posts.attachment1} w={{lg: '400px', sm: '300px'}} h='20vh' onError={addDefaultSrc} borderRadius={10} />
-                                        : <Image src="/no-image-preview.png" w={{lg: '400px', sm: '300px'}} h='20vh' />}
+                                        <Image src={posts.attachment1} w={{lg: '400px', sm: '300px'}} h='20vh' onError={addDefaultSrc} borderRadius={10} boxShadow="md"/>
+                                        : <Image src="/no-image-preview.png" w={{lg: '400px', sm: '300px'}} h='20vh' borderRadius={10} boxShadow="md"/>}
                                     </Center>
                                     <Flex w='100%' p={3} fontFamily={'Raleway'}>
                                     <Image src='/stars-clicked.png' alt="Stars" w="25px" h="25px" ml={2}/> {posts.likes}
@@ -299,14 +299,14 @@ export default function ProfilePage({}){
                         {userCritique !== null ?
                         userCritique.map((critique, i) => (
                             <Link href={`/post/${critique.post_id}`} key={i} passHref>
-                                <Box bgColor={changeColorBox} w={{lg: '20vw', sm: '300px'}} h='28vh' ml={5} borderRadius={10}>
+                                <Box bgColor={changeColorBox} w={{lg: '20vw', sm: '300px'}} h='28vh' ml={5} borderRadius={10} boxShadow="md">
                                     {/* <Center mt={3}>
                                         <Heading size='md' mx="auto">{critique.title}</Heading>
                                     </Center> */}
                                     <Center mt={0}>
                                         {critique.attachment1 != 'undefined' ? 
-                                        <Image src={critique.attachment1} w={{lg: '400px', sm: '300px'}} h='20vh' onError={addDefaultSrc} borderRadius={10} />
-                                        : <Image src="/no-image-preview.png" w={{lg: '400px', sm: '300px'}} h='20vh' />}
+                                        <Image src={critique.attachment1} w={{lg: '400px', sm: '300px'}} h='20vh' onError={addDefaultSrc} borderRadius={10} boxShadow="md" />
+                                        : <Image src="/no-image-preview.png" w={{lg: '400px', sm: '300px'}} h='20vh' borderRadius={10} boxShadow="md"/>}
                                     </Center>
                                     <Flex w='100%' p={3} fontFamily={'Raleway'}>
                                     <Image src='/stars-clicked.png' alt="Stars" w="25px" h="25px" ml={2}/> {critique.stars}
