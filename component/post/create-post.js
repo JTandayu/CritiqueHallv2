@@ -283,7 +283,7 @@ function CreatePost({data}) {
                             <Heading fontFamily={'Raleway'} size='sm' mr={3}>Attachments</Heading>
                             {/* <Button bg='blue.400' color='white' ml={5} h='2em'>upload</Button> */}
                             <input type='file' multiple onChange={handleChange} accept=".jpg, .png, .docx, .xls" id='image-input' />
-                            <Button onClick={uploadFiles}>Upload</Button>
+                            <Button bg='blue.400' color='white' _hover={{background: 'blue.400'}} onClick={uploadFiles}>Upload Images</Button>
                         </Flex>
                         <Flex bgColor={useColorModeValue('#F4F4F4', '#2E2E2E')} w={{lg: '19vw', sm: '100%'}} h='7vh' rounded='md' overflowX='auto' mt={3}
                         css={{
