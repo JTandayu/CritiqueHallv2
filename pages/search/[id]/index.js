@@ -199,8 +199,8 @@ export default function SearchResult(){
             <Heading fontFamily={'Raleway'} color={useColorModeValue('#1B1464', '#B2A3FF')}>User:</Heading>
 
             {/* User item */}
-            {searchUserData.length == 0 ? <Text id='user' mx='auto' my="50px" hidden fontFamily={'Raleway'} color={changeColor2}>No Users Found</Text> :
-            [searchUserData.map((user, i) => (
+            <Text id='user' mx='auto' my="50px" hidden fontFamily={'Raleway'} color={changeColor2}>No Users Found</Text> 
+            {searchUserData.map((user, i) => (
             <Box w='50%' key={user.user_id} bgImage={`url('${user.cover_photo}')`} color="white" mt={5} rounded="lg">
             <Link href="/profile/[id]" as={`/profile/${user.display_name}`} passHref>
                 <a>
@@ -217,7 +217,7 @@ export default function SearchResult(){
                 </a>
             </Link>
             </Box>
-            ))]}
+            ))}
             <Heading mt={5} fontFamily={'Raleway'}  color={useColorModeValue('#1B1464', '#B2A3FF')}>Posts:</Heading>
             <Flex w={{lg: '70%', sm: '100%'}} my="30px">
 
@@ -249,10 +249,10 @@ export default function SearchResult(){
             </Flex>
 
             {/* Search Item */}
-            {searchPostData.length == 0 ?  
+
             <Text id='post' mx='auto' hidden fontFamily={'Raleway'} color={changeColor2}>No Posts Found</Text>
-            :
-            [currentSearch.map((post, i) => (
+            
+            {currentSearch.map((post, i) => (
             <Box bgColor={changeColor} w={{lg: '70%', sm: '100%'}} mt='2ch' mx="auto" key={post.post_id} display="flex" boxShadow='lg' rounded='lg' fontFamily={'Raleway'}>
                                 <Link href='/post/[id]'  as={`/post/${post.post_id}`} passHref>
                                 <a>
@@ -301,7 +301,7 @@ export default function SearchResult(){
                                     </Box>
                                 </Box>
             </Box>
-            ))]}
+            ))}
 
         </div>
     )
