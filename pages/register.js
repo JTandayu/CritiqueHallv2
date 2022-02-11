@@ -322,7 +322,7 @@ export default function Register({data2}) {
                   >
                 Submit
                 </Button>
-                <Link href="./login" passHref><Text _hover={{cursor:'pointer', textDecoration: 'underline'}} fontSize='lg' color={useColorModeValue('#1BA3C1', '#1BA3C1')} mt={5}><a>Back to Login</a></Text></Link>
+                <Link href="/" passHref><Text _hover={{cursor:'pointer', textDecoration: 'underline'}} fontSize='lg' color={useColorModeValue('#1BA3C1', '#1BA3C1')} mt={5}><a>Back to Login</a></Text></Link>
                 </Box>
           <div id="part2" hidden>
             <div className={styles.logo2}>
@@ -388,7 +388,7 @@ export default function Register({data2}) {
             
 
             <p className={styles.register}>
-            <Link href="./login" passHref><Text _hover={{cursor:'pointer'}} fontSize='md' color={useColorModeValue('#E32A1E', '#FF5C61')}><a>Return to Login</a></Text></Link>
+            <Link href="/" passHref><Text _hover={{cursor:'pointer'}} fontSize='md' color={useColorModeValue('#E32A1E', '#FF5C61')}><a>Return to Login</a></Text></Link>
             </p>
           </div>
           </FormControl></center>

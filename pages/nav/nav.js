@@ -26,7 +26,7 @@ import {Flex, Text} from '@chakra-ui/react'
 import { createBreakpoints } from '@chakra-ui/theme-tools'
 import React from 'react';
 import { useToast } from '@chakra-ui/react';
-import Login from '../login'
+import Login from '../index.js'
 import { useCookies } from 'react-cookie';
 import axios from 'axios'
 import { useRouter } from 'next/router';
@@ -146,7 +146,7 @@ export default function Nav(data, profile_pic){
         }
 
         if (cookies.token === 'undefined' || cookies.encrypted_id === 'undefined'){
-            Router.replace('/login')
+            Router.replace('/')
             return null;
         }
         
@@ -158,15 +158,15 @@ export default function Nav(data, profile_pic){
         .catch(error => {
             // console.log(error.response.data.error);
             if(error.response.data.error ==  'User does not exist'){
-                Router.replace('/login')
+                Router.replace('/')
                 return null;
             }
             if(error.response.data.error ==  'Token Expired'){
-                Router.replace('/login')
+                Router.replace('/')
                 return null;
             }
             if(error.response.data.error ==  'Unauthorized'){
-                Router.replace('/login')
+                Router.replace('/')
                 return null;
             }
         });
@@ -229,7 +229,7 @@ export default function Nav(data, profile_pic){
             removeCookie('encrypted_id');
             removeCookie('profile_pic');
             removeCookie('display_name');
-            router.push('/login')
+            router.push('/')
         }).catch((error)=>console.log(error.response))
 
 
