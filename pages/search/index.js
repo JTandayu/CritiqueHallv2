@@ -27,26 +27,26 @@ import Pagination from '@choc-ui/paginator'
 import { useCookies } from 'react-cookie'
 
 
-export async function getServerSideProps(context){
-    const { API_URL } = process.env
-    const { API_KEY } = process.env
+// export async function getServerSideProps(context){
+//     const { API_URL } = process.env
+//     const { API_KEY } = process.env
 
     
 
-    // const [search, setSearch] = useState('')
+//     // const [search, setSearch] = useState('')
     
 
-    const res = await fetch(`${API_URL}/api/display_posts`, {header:{'x-api-key': '1234'}})
-    const res2 = await fetch(`${API_URL}/api/display_profile` , {header:{'x-api-key': '1234'}})
+//     const res = await fetch(`${API_URL}/api/display_posts`, {header:{'x-api-key': '1234'}})
+//     const res2 = await fetch(`${API_URL}/api/display_profile` , {header:{'x-api-key': '1234'}})
 
-    const data = await res.json()
+//     const data = await res.json()
     
-    return{
-        props:{
-            data
-        }
-    }
-}
+//     return{
+//         props:{
+//             data
+//         }
+//     }
+// }
 
 export default function SearchResult(){
     const { API_URL } = process.env
