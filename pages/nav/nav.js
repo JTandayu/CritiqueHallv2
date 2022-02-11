@@ -200,7 +200,7 @@ export default function Nav(data, profile_pic){
     //Search Function
     const searchItem = async()=>{
         // localStorage.setItem("search-item", search);
-        // Router.push(`/search/${search}`)
+        Router.push(`/search/${search}`)
     }
 
     //Log-out function
@@ -353,7 +353,7 @@ export default function Nav(data, profile_pic){
                 </Flex>
             </Flex>
             <Spacer />
-                <form action={`/search/${search}`} method='POST' onSubmit={searchItem}>
+                <form onSubmit={searchItem}>
                     <Input fontFamily={'Raleway'} fontWeight={'light'} placeholder='Looking for something?' display={['none','none','none','flex']} w='30vw' type='text' mt={7} mr='25vw' onChange={(e)=>setSearch(e.target.value)} borderColor={useColorModeValue('black', 'white')} />
                 </form>
             <Spacer />
@@ -476,7 +476,7 @@ export default function Nav(data, profile_pic){
                         <Img src={useColorModeValue('/critiquehall.png', '/critiquehall-dark.png')} alt="Critique Hall Logo" w="100px" h="70px" mr={2} />
                     </Button>
                 </Link>
-                <form action={`/search/${search}`} method='POST' onSubmit={searchItem}>
+                <form onSubmit={searchItem}>
                     <Input fontFamily={'Raleway'} fontWeight={'light'} w='50vw' type='text' mt={7} placeholder='Looking for something?' onChange={(e)=>setSearch(e.target.value)} boxShadow={'md'} />
                 </form>
                 <Link href="/home" passHref>
