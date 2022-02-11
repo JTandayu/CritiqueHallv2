@@ -263,7 +263,7 @@ function EditProfile({data}) {
 
     return(
         <>
-        <Button fontFamily={'Raleway'} onClick={onOpen} bg='blue.400' color='white' _hover={{background: 'blue.400'}} position='static'>Settings</Button>
+        <Button fontFamily={'Raleway'} onClick={onOpen} bgColor={useColorModeValue('#29226E', '#7A6FAF')} color='white' _hover={{background: 'blue.400'}} position='static'>Settings</Button>
 
 
         <form action='' method='POST'>

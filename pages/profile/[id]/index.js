@@ -73,6 +73,9 @@ export default function ProfilePage({}){
     const [encID, setEncId] = useState("")
     const [loading, setLoading] = useState(true)
 
+    const changeColorBox = useColorModeValue('#E5E5E5', '#2E2E2E')
+    const changeBadgeIcon = useColorModeValue('/badge-icon.png', '/badge-icon-dark.png')
+
     const config = {
         headers: { 
             'content-type': 'multipart/form-data',
@@ -220,15 +223,15 @@ export default function ProfilePage({}){
                         </Box>
                         
                     </Box>
-                    <Box w={{lg: '70vw', md: '100%', sm: '90%'}} h={{lg: '35vh', md: '30%', sm: '45vh'}} bg='#81A4CF' p={3} mt={5} ml={{lg: 8, md: 0, sm: 5}} mr={{lg: 5, md: 0, sm: 0}} rounded='lg' fontFamily={'Raleway'}>
+                    <Box w={{lg: '70vw', md: '100%', sm: '90%'}} h={{lg: '35vh', md: '30%', sm: '45vh'}} bg={useColorModeValue('#81A4CF', '#0A1A2D')} p={3} mt={5} ml={{lg: 8, md: 0, sm: 5}} mr={{lg: 5, md: 0, sm: 0}} rounded='lg' fontFamily={'Raleway'}>
                         <Flex>
-                        <Heading size='2xl' as='h3' color='white' mt={10} fontFamily={'Raleway'}>About Me: </Heading>
+                        <Heading size='2xl' as='h3' color={useColorModeValue('#1B1464', '#B2A3FF')} mt={10} fontFamily={'Raleway'} display='flex'><Image src={useColorModeValue('/critique-user-icon.png', '/critique-user-icon-dark.png')} w='10%' mr={5}/>About Me: </Heading>
                         <Spacer />
                             {userData && userData.display_name === cookies.display_name ? <EditProfile data={userData}/> : null}
                         </Flex>
-                        <Text w={{lg: '65vh', md: '100%', sm: '100%'}} fontSize='md' color="white">{userData.about_me}</Text>
-                        <Heading size='md' color='white' mt={5} display="flex" fontFamily={'Raleway'}>Reputation Stars: {userData.reputation_points}{userData.reputation_points >= 50 ? <Image src='/reputation-stars.png' alt="Reputation Stars" w="25px" h="25px" ml={2}/> : null}</Heading>
-                        <Heading size='md' color='white' mt={5} fontFamily={'Raleway'}>Specialization: {userData.specialization}</Heading>
+                        <Text w={{lg: '65vh', md: '100%', sm: '100%'}} fontSize='3xl' color="white">{userData.about_me}</Text>
+                        <Heading size='xl' color={useColorModeValue('#1B1464', '#B2A3FF')} mt={5} display="flex" fontFamily={'Raleway'}>Reputation Stars: <Text fontFamily={'Raleway'} color={useColorModeValue('#C1272D', '#FF5C61')} ml={5} display='flex'>{userData.reputation_points}{userData.reputation_points >= 50 ? <Image src={changeBadgeIcon} alt="Badge Icon" w="50px" h="50px" ml={2}/> : null}</Text></Heading>
+                        <Heading size='xl' color={useColorModeValue('#1B1464', '#B2A3FF')} mt={5} fontFamily={'Raleway'} display='flex'>Specialization: <Text fontFamily={'Raleway'} color={useColorModeValue('#C1272D', '#FF5C61')} ml={5}>{userData.specialization}</Text></Heading>
                     </Box>
                 </Box>
                 <Box display='flex' w={{lg: '100%', md: '100%', sm: '100%'}} mt={5} ml={3} mr={5}>
@@ -274,16 +277,16 @@ export default function ProfilePage({}){
                         {userPosts !== null ?
                         userPosts.map((posts, i) => (
                             <Link href={`/post/${posts.post_id}`} key={i} passHref>
-                                <Box bg='white' w={{lg: '20vw', sm: '300px'}} h='28vh' ml={5}>
+                                <Box bgColor={changeColorBox} w={{lg: '20vw', sm: '300px'}} h='28vh' ml={5} borderRadius={10}>
                                     {/* <Center mt={3}>
                                         <Heading size='md' mx="auto">{posts.title}</Heading>
                                     </Center> */}
                                     <Center mt={0}>
                                         {posts.attachment1 != 'undefined' ? 
-                                        <Image src={posts.attachment1} w={{lg: '400px', sm: '300px'}} h='20vh' onError={addDefaultSrc} />
+                                        <Image src={posts.attachment1} w={{lg: '400px', sm: '300px'}} h='20vh' onError={addDefaultSrc} borderRadius={10} />
                                         : <Image src="/no-image-preview.png" w={{lg: '400px', sm: '300px'}} h='20vh' />}
                                     </Center>
-                                    <Flex w='100%' p={3}>
+                                    <Flex w='100%' p={3} fontFamily={'Raleway'}>
                                     <Image src='/stars-clicked.png' alt="Stars" w="25px" h="25px" ml={2}/> {posts.likes}
                                         <Spacer />
                                         <Image src='/comments.png' alt="Critiques" w="25px" h="25px" ml={2}/>  {posts.critiques}
@@ -296,16 +299,16 @@ export default function ProfilePage({}){
                         {userCritique !== null ?
                         userCritique.map((critique, i) => (
                             <Link href={`/post/${critique.post_id}`} key={i} passHref>
-                                <Box bg='white' w={{lg: '20vw', sm: '300px'}} h='28vh' ml={5}>
+                                <Box bgColor={changeColorBox} w={{lg: '20vw', sm: '300px'}} h='28vh' ml={5} borderRadius={10}>
                                     {/* <Center mt={3}>
                                         <Heading size='md' mx="auto">{critique.title}</Heading>
                                     </Center> */}
                                     <Center mt={0}>
                                         {critique.attachment1 != 'undefined' ? 
-                                        <Image src={critique.attachment1} w={{lg: '400px', sm: '300px'}} h='20vh' onError={addDefaultSrc} />
+                                        <Image src={critique.attachment1} w={{lg: '400px', sm: '300px'}} h='20vh' onError={addDefaultSrc} borderRadius={10} />
                                         : <Image src="/no-image-preview.png" w={{lg: '400px', sm: '300px'}} h='20vh' />}
                                     </Center>
-                                    <Flex w='100%' p={3}>
+                                    <Flex w='100%' p={3} fontFamily={'Raleway'}>
                                     <Image src='/stars-clicked.png' alt="Stars" w="25px" h="25px" ml={2}/> {critique.stars}
                                         <Spacer />
                                         <Text>{critique.body}</Text>
