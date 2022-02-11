@@ -198,7 +198,8 @@ export default function Nav(data, profile_pic){
     }, [])
 
     //Search Function
-    const searchItem = async()=>{
+    const searchItem = (e)=>{
+        e.preventDefault()
         // localStorage.setItem("search-item", search);
         Router.push(`/search/${search}`)
     }
