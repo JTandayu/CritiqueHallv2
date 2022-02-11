@@ -62,6 +62,7 @@ export default function SearchResult(){
     const [searchPostsPerPage, setSearchPostsPerPage] = useState(5)
 
     const changeColor = useColorModeValue('#BAB9B9', '#1F1F1F')
+    const changeColor2 = useColorModeValue('#1B1464', '#B2A3FF')
     const router = useRouter();
     
     // const searchItem = ;
@@ -198,7 +199,7 @@ export default function SearchResult(){
             <Heading fontFamily={'Raleway'} color={useColorModeValue('#1B1464', '#B2A3FF')}>User:</Heading>
 
             {/* User item */}
-            {searchUserData.length == 0 ? <Text id='user' mx='auto' my="50px" hidden fontFamily={'Raleway'} color={useColorModeValue('#1B1464', '#B2A3FF')}>No Users Found</Text> :
+            {searchUserData.length == 0 ? <Text id='user' mx='auto' my="50px" hidden fontFamily={'Raleway'} color={changeColor2}>No Users Found</Text> :
             [searchUserData.map((user, i) => (
             <Box w='50%' key={user.user_id} bgImage={`url('${user.cover_photo}')`} color="white" mt={5} rounded="lg">
             <Link href="/profile/[id]" as={`/profile/${user.display_name}`} passHref>
@@ -249,7 +250,7 @@ export default function SearchResult(){
 
             {/* Search Item */}
             {searchPostData.length == 0 ?  
-            <Text id='post' mx='auto' hidden fontFamily={'Raleway'} color={useColorModeValue('#1B1464', '#B2A3FF')}>No Posts Found</Text>
+            <Text id='post' mx='auto' hidden fontFamily={'Raleway'} color={changeColor2}>No Posts Found</Text>
             :
             [currentSearch.map((post, i) => (
             <Box bgColor={changeColor} w={{lg: '70%', sm: '100%'}} mt='2ch' mx="auto" key={post.post_id} display="flex" boxShadow='lg' rounded='lg' fontFamily={'Raleway'}>
