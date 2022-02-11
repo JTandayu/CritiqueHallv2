@@ -159,7 +159,7 @@ export const CritiqueReply = ({id, post_id, newReply}) => {
                 <Box p="2" overflow-y="auto" w={{lg: '32vw', sm: '85%'}} ml={16} mt={5} key={i}>
                             <Flex>
                                 <Image src={reply.profile_photo} w='3vh' h='3vh' mt={2} />
-                                <Heading size='sm' ml={3} mt={2}>{reply.display_name}</Heading>
+                                <Heading fontSize={'Raleway'} size='sm' ml={3} mt={2}>{reply.display_name}</Heading>
                                 {reply.starred_by_author == '1' ? <Image src='/reputation-stars.png' alt="Reputation Stars" w="25px" h="25px" ml={3} mt={2} /> : null}
                                 {reply.reputation_points >= '50' ? <Image src='/badge-icon.png' alt="Badge" w="25px" h="25px" ml={3} mt={2} /> : null}
                                 <Spacer />
