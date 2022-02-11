@@ -225,6 +225,13 @@ function CreatePost({data}) {
         e.target.src = "/no-preview-available.png";
         e.target.onerror = null;
     }
+    
+    const closeCreate = () => {
+        setFileName([])
+        setImage([])
+        setUrls([])
+        onClose()
+    }
 
     return(
         <>
@@ -263,7 +270,7 @@ function CreatePost({data}) {
                             Submit
                         </Button>
 
-                        <Button fontFamily={'Raleway'} bgColor={useColorModeValue('#C1272D', '#9E0B0F')} color={useColorModeValue('white', 'white')} _hover={{bgColor: useColorModeValue('#FF000A', '#470507')}} variant='ghost' mr={2} onClick={onClose}>
+                        <Button fontFamily={'Raleway'} bgColor={useColorModeValue('#C1272D', '#9E0B0F')} color={useColorModeValue('white', 'white')} _hover={{bgColor: useColorModeValue('#FF000A', '#470507')}} variant='ghost' mr={2} onClick={closeCreate}>
                             Cancel
                         </Button>
                     </Center>
@@ -285,10 +292,11 @@ function CreatePost({data}) {
                             <input type='file' multiple onChange={handleChange} accept=".jpg, .png, .docx, .xls" id='image-input' />
                             <Button bg='blue.400' color='white' _hover={{background: 'blue.400'}} onClick={uploadFiles}>Upload Images</Button>
                         </Flex>
-                        <Flex bgColor={useColorModeValue('#F4F4F4', '#2E2E2E')} w={{lg: '19vw', sm: '100%'}} h='7vh' rounded='md' overflowX='auto' mt={3}
+                        <Flex bgColor={useColorModeValue('#F4F4F4', '#2E2E2E')} w={{lg: '20vw', sm: '100%'}} h='10vh' rounded='md' overflowX='auto' mt={3}
                         css={{
                             '&::-webkit-scrollbar': {
                             width: '4px',
+                            height: '4px'
                             },
                             '&::-webkit-scrollbar-track': {
                             width: '6px',
@@ -299,17 +307,18 @@ function CreatePost({data}) {
                             },
                         }}>
                             {fileName.map((file, i) => (
-                                <Flex ml={5} id={file}>
+                                <Flex ml={5} id={file} w="full">
                                     <Text fontSize='sm' key={i}>{file}</Text>
-                                    <Button onClick={()=>{deleteFile(file, i)}} mx='auto' h={5} ml={1} variant='ghost'>X</Button>
+                                    <Button onClick={()=>{deleteFile(file, i)}} mx='auto' h={5} ml={1} variant='ghost'><Image src="/cross_icon.png" w="15px" h="15px" /></Button>
                                 </Flex>
                             ))}
                         </Flex>
 
                         <Heading fontFamily={'Raleway'} size='sm' mt={5}>Attachments Preview</Heading>
-                        <Flex bgColor={useColorModeValue('#F4F4F4', '#2E2E2E')} w={{lg: '20vw', sm: '100%'}} h='20vh' rounded='md' overflowX='auto' css={{
+                        <Flex bgColor={useColorModeValue('#F4F4F4', '#2E2E2E')} w={{lg: '20vw', sm: '100%'}} h='13vh' rounded='md' overflowX='auto' css={{
                                 '&::-webkit-scrollbar': {
                                 width: '4px',
+                                height: '4px'
                                 },
                                 '&::-webkit-scrollbar-track': {
                                 width: '6px',
