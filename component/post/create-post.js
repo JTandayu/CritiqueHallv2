@@ -334,11 +334,10 @@ function CreatePost({data}) {
                             ))} 
                         </Flex>
                         <br />
-                        <Text fontFamily={'Raleway'} fontSize='lg'>Due to storage and security limitations:</Text>
+                        <Text fontFamily={'Raleway'} fontSize='lg'>Due to storage limitations:</Text>
                         <Text fontFamily={'Raleway'} fontStyle={'italic'} fontSize='md'>- video and zip files cannot be uploaded</Text>
                         <Text fontFamily={'Raleway'} fontStyle={'italic'} fontSize='md'>- up to 5 attachments maximum only</Text>
                         <Text fontFamily={'Raleway'} fontStyle={'italic'} fontSize='md'>- each upload is limited to 25mb only</Text>
-                        <Text fontFamily={'Raleway'} fontStyle={'italic'} fontSize='md'>- if you want to share more and/or larger than 25mb attachments, you can do so by sharing a google drive link within your description</Text>
                         <Text fontFamily={'Raleway'} fontStyle={'italic'} fontSize='md'>- attachments cannot be edited once published!</Text>
                     </Box>
 
