@@ -309,7 +309,7 @@ function CreatePost({data}) {
                             {fileName.map((file, i) => (
                                 <Flex ml={5} id={file} w="full">
                                     <Text fontSize='sm' key={i}>{file}</Text>
-                                    <Button onClick={()=>{deleteFile(file, i)}} mx='auto' h={5} ml={1} variant='ghost'>X</Button>
+                                    <Button onClick={()=>{deleteFile(file, i)}} mx='auto' h={5} ml={1} variant='ghost'><Image src="/cross_icon.png" w="15px" h="15px" /></Button>
                                 </Flex>
                             ))}
                         </Flex>
