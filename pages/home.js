@@ -72,7 +72,7 @@ function Home(){
               <Image className={styles.drop_shadow} src={useColorModeValue('critiquehall.png', 'critiquehall-dark.png')}  alt="Critique Hall Logo" w={{lg: '500px', md: '500px', sm: '500px'}} h='37vh' mt={5}/>
               {/* <Link href="/login"><Button type='submit' mt={5} colorScheme='red' position='static'>Get Started</Button></Link> */}
             </Flex>
-            <Image src='man-texting.png' w={{lg: '550px', md: '600px', sm: '600px'}} h='60vh' mt='10vh' mb='5vh' mr='10vw' align='center' alt="Man Texting"/>
+            <Image src='PeopleDiscuss.png' w={{lg: '70%', md: '600px', sm: '600px'}} h='60vh' mt='10vh' mb='5vh' mr={5} align='center' alt="Man Texting"/>
           </Box>
 
             {/* <form onSubmit={formHandler}>
