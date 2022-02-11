@@ -149,7 +149,7 @@ export const Critiques = ({id, newCritique}) => {
 
     const cancelReply = async(id) =>{
         document.getElementById(id).hidden=true;
-        document.getElementById(`reply${critique_id}`).value=''
+        document.getElementById(`reply${id}`).value=''
     }
 
     const loadMore = async() =>{
@@ -194,7 +194,7 @@ export const Critiques = ({id, newCritique}) => {
         axios.post(`${API_URL}/api/star_critique`, formData, config)
         .then((response) =>{
             console.log(response.data)
-            document.getElementById(`star${id}`).innerHTML=response.data.likes;
+            document.getElementById(`star${crit_id}`).innerHTML=response.data.stars;
         }).catch((error) =>{
             console.log(error.response)
         })
@@ -271,7 +271,7 @@ export const Critiques = ({id, newCritique}) => {
                                     <Text fontFamily={'Raleway'} fontSize='md'>{critique.body}</Text>
                                 </Box>
                                 <Flex w='20vw'>
-                                    <Button variant='ghost' id={`star${critique.critique_id}`} onClick={()=>giveStar(critique.critique_id)}><Image src='/stars.png' alt="Stars" w="25px" h="25px" ml={2} mr={2}/> {critique.stars}</Button>
+                                    <Button variant='ghost' onClick={()=>giveStar(critique.critique_id)}><Image src='/stars.png' alt="Stars" w="25px" h="25px" ml={2} mr={2}/> <Text id={`star${critique.critique_id}`}>{critique.stars}</Text></Button>
                                     <Button fontFamily={'Raleway'} variant='ghost' ml={5} onClick={()=>openReply(critique.critique_id)}>Reply</Button>
                                     <Text fontFamily={'Raleway'} mt="9px" ml={5}>(Edited)</Text>
                                 </Flex>
@@ -319,7 +319,7 @@ export const Critiques = ({id, newCritique}) => {
                                     <Text fontFamily={'Raleway'} fontSize='md'>{critique.body}</Text>
                                 </Box>
                                 <Flex w='20vw'>
-                                    <Button variant='ghost' id={`star${critique.critique_id}`} onClick={()=>giveStar(critique.critique_id)}><Image src='/stars.png' alt="Stars" w="25px" h="25px" ml={2} mr={2}/> {critique.stars}</Button>
+                                    <Button variant='ghost' onClick={()=>giveStar(critique.critique_id)}><Image src='/stars.png' alt="Stars" w="25px" h="25px" ml={2} mr={2}/> <Text id={`star${critique.critique_id}`}>{critique.stars}</Text></Button>
                                     <Button fontFamily={'Raleway'} variant='ghost' ml={5} onClick={()=>openReply(critique.critique_id)}>Reply</Button>
                                     <Text fontFamily={'Raleway'}>(Edited)</Text>
                             </Flex>

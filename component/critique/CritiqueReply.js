@@ -70,7 +70,8 @@ export const CritiqueReply = ({id, post_id, newReply}) => {
 
     }, [newReply])
 
-    const giveStar = (reply_id) =>{
+    const giveStar = (reply_id, e) =>{
+        e.preventDefault()
         let formData = new FormData;
         formData.append('reply_id', reply_id);
         formData.append('post_id', post_id)
@@ -78,7 +79,7 @@ export const CritiqueReply = ({id, post_id, newReply}) => {
         axios.post(`${API_URL}/api/star_reply`, formData, config)
         .then((response) =>{
             console.log(response.data)
-            document.getElementById(id).innerHTML=response.data.likes;
+            document.getElementById(reply_id).innerHTML=response.data.stars;
         }).catch((error) =>{
             console.log(error.response)
         })
@@ -147,7 +148,7 @@ export const CritiqueReply = ({id, post_id, newReply}) => {
                                 <Text fontFamily={'Raleway'} fontSize='md'>{reply.body}</Text>
                             </Box>
                             <Flex w='20vw'>
-                                <Button variant='ghost' id={reply.reply_id} onClick={()=>giveStar(reply.reply_id)}><Image src='/stars.png' alt="Stars" w="25px" h="25px" ml={2} mr={2}/> {reply.stars}</Button>
+                                <Button variant='ghost' onClick={(e)=>giveStar(reply.reply_id, e)}><Image src='/stars.png' alt="Stars" w="25px" h="25px" ml={2} mr={2}/> <Text id={reply.reply_id}>{reply.stars}</Text></Button>
                                 {/* <Button variant='ghost' ml={5}>Reply</Button> */}
                         </Flex>
 
@@ -184,7 +185,7 @@ export const CritiqueReply = ({id, post_id, newReply}) => {
                                 <Text fontSize='md' fontFamily={'Raleway'}>{reply.body}</Text>
                             </Box>
                             <Flex w='20vw'>
-                                <Button variant='ghost' id={reply.reply_id} onClick={()=>giveStar(reply.reply_id)}><Image src='/stars.png' alt="Stars" w="25px" h="25px" ml={2} mr={2}/> {reply.stars}</Button>
+                                <Button variant='ghost' onClick={(e)=>giveStar(reply.reply_id, e)}><Image src='/stars.png' alt="Stars" w="25px" h="25px" ml={2} mr={2}/> <Text id={reply.reply_id}>{reply.stars}</Text></Button>
                                 {/* <Button variant='ghost' ml={5}>Reply</Button> */}
                         </Flex>
 
