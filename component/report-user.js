@@ -128,7 +128,7 @@ function ReportUser({data}) {
                         </Flex>
 
                         <FormLabel fontFamily={'Raleway'}>Description</FormLabel>
-                        <Textarea borderColor={useColorModeValue('black', 'white')} fontFamily={'Raleway'} w='30vw' bg='white' placeholder='Your detail report...' color='black' onChange={(e)=>setMessage(e.target.value)}/>
+                        <Textarea borderColor={useColorModeValue('black', 'white')} fontFamily={'Raleway'} w='30vw' bg='white' placeholder='Your detail report...' onChange={(e)=>setMessage(e.target.value)}/>
                         <Center mt={10} mb={10}>
                             <Button  fontFamily={'Raleway'} bgColor={useColorModeValue('#2777C1','#0085FF')} color={useColorModeValue('#FFFFFF', '#FFFFFF')} _hover={{bgColor: useColorModeValue('#56AEFF', '#0B5090')}} colorScheme='blue' mr={3} onClick={submitReport} >
                                 Submit
