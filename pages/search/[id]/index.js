@@ -121,13 +121,13 @@ export default function SearchResult(){
             // console.log(searchUserData.length);
             // console.log(searchPostData.length);
             
-            // if(response.data.data.users.length == 0){
-            //     document.getElementById('user').removeAttribute('hidden');
-            // }
+            if(response.data.data.users.length == 0){
+                document.getElementById('user').removeAttribute('hidden');
+            }
             
-            // if(response.data.data.posts.length == 0){
-            //     document.getElementById('post').removeAttribute('hidden');
-            // }
+            if(response.data.data.posts.length == 0){
+                document.getElementById('post').removeAttribute('hidden');
+            }
         })
         .catch((error) => (
             console.log(error.response)
