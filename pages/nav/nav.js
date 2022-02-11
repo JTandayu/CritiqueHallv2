@@ -145,7 +145,7 @@ export default function Nav(data, profile_pic){
             }
         }
 
-        if (cookies.token === 'undefined' || cookies.encrypted_id === 'undefined'){
+        if (cookies.token === 'undefined' || cookies.encrypted_id === 'undefined' || cookies == null){
             Router.replace('/')
             return null;
         }
