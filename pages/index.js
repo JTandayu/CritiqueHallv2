@@ -1,205 +1,242 @@
 import Head from 'next/head'
-import styles from "@styles/Welcome.module.css";
+// import Image from 'next/image'
+// import styles from '../styles/Home.module.css'
+import styles from "@styles/Login.module.css";
+import { css, cx } from '@emotion/react'
 import { motion } from "framer-motion"
+import Home from './home'
 import Link from 'next/link'
-import { Stack, HStack, VStack, FormLabel, Input, Textarea } from "@chakra-ui/react"
-import { Button, ButtonGroup } from "@chakra-ui/react"
-import { ArrowForwardIcon, CheckIcon, InfoOutlineIcon } from '@chakra-ui/icons'
-import { Box, Divider, Flex, Heading, Spacer, Img, Center, Text } from "@chakra-ui/react"
-import { useToast } from '@chakra-ui/react'
-import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
-import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
-import { Carousel } from 'react-responsive-carousel';
+// import Logo from "@public/critiquehall.png";
+import Discussions from "@public/discussions.png";
+import { Button, ButtonGroup, Center, Text, Image, Input } from "@chakra-ui/react"
+import { Stack, HStack, VStack } from "@chakra-ui/react"
+import { Heading } from '@chakra-ui/react'
+import {
+  FormControl,
+  FormLabel,
+  FormErrorMessage,
+  FormHelperText,
+} from "@chakra-ui/react"
+import { GetStaticProps } from 'next'
+import { useState } from 'react';
+import { ColorModeScript, useColorMode, useColorModeValue } from '@chakra-ui/react'
+import { Box } from '@chakra-ui/react'
 import axios from 'axios';
-import {useState} from 'react';
-// import ManTexting from "@public/man-texting.png";
-import { useColorMode, useColorModeValue } from "@chakra-ui/react";
-
-
-const variants = {
-  visible: { opacity: 1 },
-  hidden: { opacity: 0 },
-}
-
-const imageLoader = ({ src, width, quality }) => {
-  return `/${src}?=${width}&q=${quality || 100}`
-}
+import React from 'react';
+import cookie from "react-cookie";
+import { useCookies } from 'react-cookie'
+import { createBreakpoints } from '@chakra-ui/theme-tools'
+import { useRouter } from 'next/router';
+import { useToast } from '@chakra-ui/react';
+import { ChakraProvider } from "@chakra-ui/react"
+import SimpleReactLightbox from 'simple-react-lightbox'
+import theme from '../component/theme'
 
 const MotionButton = motion(Button)
 
-export default function Welcome() {
+
+
+const breakpoints = createBreakpoints({
+  sm: '320px',
+  md: '768px',
+  lg: '960px',
+  xl: '1200px',
+  '2xl': '1536px',
+})
+
+export async function getServerSideProps(context){
+  // const cookies = context.req.headers.cookie;
+  // const data = JSON.parse(cookies)
+  // console.log(data)
+  return{
+      props:{
+        
+      }
+  }
+}
+
+
+
+export default function Login({user}) {
   const { API_URL } = process.env
   const { API_KEY } = process.env
+  const router = useRouter()
+  // console.log(data)
+
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
 
   const { colorMode, toggleColorMode } = useColorMode()
   colorMode === 'light' ? 'Dark' : 'Light'
-
-  const [email, setEmail] = useState('')
-  const [fullName, setFullName] = useState('')
-  const [subject, setSubject] = useState('')
-  const [message, setMessage] = useState('')
+  const [ImgUrl, setImgUrl] = useState('dark-mode-icon.png')
 
   const toast = useToast()
   const toastIdRef = React.useRef()
-  
-  const sendMessage = () => {
+
+  const [cookie, setCookies, removeCookies] = useCookies(['token', 'id', 'encrypted_id'])
+
+  const changeDarkAndLightIcon = () => {
+    toggleColorMode()
+    if(colorMode === 'light'){
+        setImgUrl('light-mode-icon.png')
+    }else {
+        setImgUrl('dark-mode-icon.png')
+    }
+  }
+
+
+    const submitLogin = async () =>{
 
       let formData = new FormData(); 
       formData.append('email', email);   //append the values with key, value pair
-      formData.append('fullname', fullName);
-      formData.append('subject', subject);
-      formData.append('message', message);
+      formData.append('password', password);
 
       const config = {
         headers: { 
           'content-type': 'multipart/form-data',
           'X-API-KEY': `${API_KEY}`,
           'Authorization': 'Basic Y2Fwc3RvbmUyMDIxOjEyMzQ=',
+          // 'Accept-Encoding': 'gzip, deflate, br',
           'Accept': 'application/json',
         }
       }
 
-      axios.post(`${API_URL}/api/email_suggestion`, formData, config)
+      if(email ==  '' && password == ''){
+        document.getElementById('warning2').removeAttribute('hidden');
+        document.getElementById('warning1').hidden=true;
+      } else{
+      axios.post(`${API_URL}/api/login`, formData, config)
       .then(response => {
-        toastIdRef.current = toast({ title: 'Feedback sent successful!', description: 'We have received your feedback, please wait for our reply!', status: 'success', duration: 2000, isClosable: true })
+          toastIdRef.current = toast({ title: 'Login Successful!', status: 'success', duration: 3000, isClosable: false })
           console.log(response.data);
-          // window.location.href = "/"
+          setCookies('token', response.data.token)
+          setCookies('display_name', response.data.display_name)
+          // setCookies('id', response.data.id)
+          setCookies('encrypted_id', response.data.encrypted_id)
+          setCookies('profile_pic', response.data.profile_pic)
+          document.getElementById('warning1').hidden=true;
+          if(response.data.status === "Email not verified"){
+            router.push("/confirmation")
+          }
+          // window.location.href = "/home"
+          router.push("/home")
       })
       .catch(error => {
-        toastIdRef.current = toast({ title: 'Feedback sent unsuccessful!', description: 'Your feedback did not send, please try again!', status: 'error', duration: 2000, isClosable: true })
-          console.log(error);
+          // toastIdRef.current = toast({ title: 'Login Unsuccessful!', status: 'error', duration: 3000, isClosable: false })
+          console.log(error.response);
+          if(error.response.data.message == 'Wrong credentials'){
+            document.getElementById('warning1').removeAttribute('hidden');
+            document.getElementById('warning2').hidden=true;
+          }
+          else if(error.response.data.status == "Error"){
+            document.getElementById('warning1').removeAttribute('hidden');
+            document.getElementById('warning2').hidden=true;
+          }
+          
+          
+          // window.location.href = "/login"
       });
+    }
+    }
 
+    
+
+    return (
+      <div className={useColorModeValue(styles.container, styles.container2)}>
+        <Head>
+          <title>Critique Hall | Login</title>
+          <meta name="description" content="Critique Hall by create next app" />
+          <link rel="icon" href={useColorModeValue('logo256.png', 'logo256-dark.png')} onLoad=""/>
+          <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@700&display=swap" rel="stylesheet" />
+        </Head>
+  
+        <Box as='main' bg={useColorModeValue('white', '#212121')} w={{lg: '100ch' , md: '100%' , sm: '100%', base: '100%'}} className={styles.main} 
+          // animate = {{y: 0 , opacity: 1}}
+          // initial = {{y: -70, opacity: 0}}
+          // transition ={{duration: .7}}
+          >
+            <Button
+                        as='a'
+                        variant='ghost'
+                        aria-label='Home'
+                        my={2}
+                        ml={4}
+                        w='50%'
+                        onClick={changeDarkAndLightIcon}
+                        _hover={{cursor:'pointer'}}
+                        _active={{bgColor: 'none'}}
+                    >
+                        <Image className={styles.darkicon} src={ImgUrl} alt="darkmode" w="2em" h="2em" ml={'15em'} />
+                    </Button>
+
+            <div className={styles.logo}>
+            <Image src={useColorModeValue('critiquehall.png', 'critiquehall-dark.png')} 
+             alt="Critique Hall Logo"/>
+            </div>
+            
+            {/* <Heading fontFamily={'Raleway'} mb={5} as="h2" size="lg" color={useColorModeValue('#1B1464','#B2A3FF')}>LOG-IN</Heading> */}
+            <Box id='warning1' color='red' w='30%' h='5vh' mb={4} mt={2} hidden>
+              <Center>
+                <Text mt='1vh'>Invalid Credentials</Text>
+              </Center>
+            </Box>
+            <Box id='warning2' color='red' w='30%' h='5vh' mb={4} mt={2} hidden>
+              <Center>
+                <Text mt='1vh'>What are you doing?</Text>
+              </Center>
+            </Box>
+            <center><FormControl id="loginform" >
+              <FormLabel>iACADEMY Email</FormLabel>
+                <Input borderColor={useColorModeValue('black', 'white')} size='lg' width={'40vh'} id="email" value={email} className={styles.input_box} type="email" onChange={e => setEmail(e.target.value)} />
+                {/* <input placeholder="Username" id="email" value={email} className={styles.input_box} type="email" /> */}
+                <br/>
+                <br/>
+              <FormLabel>Password</FormLabel>
+                <Input borderColor={useColorModeValue('black', 'white')}  size='lg' width={'40vh'} id="password" value={password} className={styles.input_box} type="password" onChange={e => setPassword(e.target.value)} />
+                {/* <input placeholder="Password" id="password" value={password} className={styles.input_box} type="password"/> */}
+                <br/>
+                <br/>
+                <p className={styles.register}>
+                <Text fontSize='md' color={useColorModeValue('#1BA3C1', '#1BA3C1')}><Link href="./forgot-password"><a>Forgot Password?</a></Link></Text>
+                </p>
+                <VStack direction="row" spacing={8} align="center">
+                <Button
+                  // whileHover={{ scale: 1.2 }}
+                  // whileTap={{ scale: 0.9 }}
+                  className={styles.LoginButton} 
+                  bgColor={useColorModeValue('#0C1F83', '#1D447E')}
+                  color={useColorModeValue('white', 'white')}
+                  _hover={{bgColor: useColorModeValue('#173cff', '#428eff')}}
+                  type="submit" 
+                  size="lg"
+                  onClick={submitLogin}
+                  > Login </Button>
+                  {/* <MotionButton
+                  whileHover={{ scale: 1.2 }}
+                  whileTap={{ scale: 0.9 }}
+                  className={styles.LoginButton} 
+                  colorScheme="messenger" 
+                  type="submit" 
+                  size="lg"
+                  >
+                  <Link href="/home">Login</Link>
+                </MotionButton> */}
+                </VStack>
+            </FormControl></center>
+
+            <p className={styles.register2}>
+              <Text fontSize='lg'>New user?<Link href="./register" passHref><Text _hover={{cursor:'pointer'}} fontSize='xl' className={styles.signUpText} color={useColorModeValue('#1BA3C1', '#1BA3C1')}>Sign up now!</Text></Link></Text>
+            </p>
+            
+        </Box>
+      </div>
+    )
   }
-  
-  
 
-  return (
-    <div className={useColorModeValue(styles.container, styles.container2)}>
-      <Head>
-        <title>Critique Hall | Welcome</title>
-        <meta name="description" content="Critique Hall generated by Next App" />
-        <link rel="icon" href={useColorModeValue('logo256.png', 'logo256-dark.png')} onLoad=""/>
-        <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@700&display=swap" rel="stylesheet" />
-      </Head>
-
-
-
-      <Box position='static' bgColor={useColorModeValue('#E5E5E5', '#2E2E2E')} w="100%" h={{lg: '75vh', md: '100%', sm: '100%'}} display={{lg: 'flex', md: 'flex', sm: 'block'}} z-index='-1' boxShadow='lg'>
-            <Flex mt={44} flexDir='column' align='center' w={{lg: '50vw', md: '100%', sm: '100%'}}>
-              <Heading fontFamily={'Raleway'} size='3xl'>WELCOME TO</Heading>
-              <Img className={styles.drop_shadow} src={useColorModeValue('critiquehall.png', 'critiquehall-dark.png')} w={{lg: '500px', md: '500px', sm: '500px'}} h='37vh' mt={5}/>
-              <Link href="/login"><Button size='lg' type='submit' mt={5} bgColor={useColorModeValue('#C1272D', '#FF484F')} color={useColorModeValue('#FFFFFF', '#FFFFFF')} _hover={{bgColor: 'red'}} position='static' passHref>Get Started</Button></Link>
-            </Flex>
-            <Img className={styles.drop_shadow} src='man-texting.png' w={{lg: '600px', md: '600px', sm: '600px'}} h='60vh' mt='10vh' mb='5vh' mr='10vw' align='center' />
-          </Box>
-
-          <Box position='static' bgColor={useColorModeValue('#EFEFEF', '#242424')} w="100%" h="100%" display={{lg: 'flex', md: 'flex', sm: 'block'}} boxShadow='lg'>
-            <Flex flexDir={{lg: 'row', md: 'row', sm: 'column'}} >
-              <Flex w={{lg: '45vw', md: '100%', sm: '100%'}}>
-              <Img className={styles.drop_shadow} src='discussions.png' w={{lg: '700px', md: '700px', sm: '700px'}} h='60vh' mt='10vh' ml='7vw' align='center'/>
-              </Flex>
-              <Spacer />
-              <Flex mt={16} flexDir='column' align='center' w={{lg: '45vw', md: '100%', sm: '100%'}}>
-                <Heading fontFamily={'Raleway'} size='3xl'>WHAT IS</Heading>
-                
-                <Flex flexDir={{lg: 'row', md: 'row', sm: 'column'}}>
-                  <Img className={styles.drop_shadow} src={useColorModeValue('critiquehall.png', 'critiquehall-dark.png')} w={{lg: '500px', md: '500px', sm: '500px'}} h='37vh' mt={5}/>
-                  <Heading fontFamily={'Raleway'} size='3xl' my='auto' mx={{lg: '0', md: '0', sm: 'auto'}}>?</Heading>
-                </Flex>
-                <Heading fontFamily={'Raleway'} size='xl' w={{lg: '30vw', md: '100%', sm: '100%'}} align='center' mt={5} mb={10}>An Open Forum Web Application for Students and Teachers</Heading>
-              </Flex>
-            </Flex>
-          </Box>
-
-          {/* <Divider position='static' /> */}
-
-          <Box position='static' bgColor={useColorModeValue('#E5E5E5', '#2E2E2E')}  w="100%" h="100%" display={{lg: 'flex', md: 'flex', sm: 'block'}} boxShadow='lg'>
-
-            <Flex flexDir={{lg: 'row', md: 'row', sm: 'column'}} >
-              <Flex mt={16} flexDir='column' align='center' w={{lg: '45vw', md: '100%', sm: '100%'}}>
-                <Heading fontFamily={'Raleway'} size='3xl' >GOAL OF</Heading>
-                <Img className={styles.drop_shadow} src={useColorModeValue('critiquehall.png', 'critiquehall-dark.png')} w={{lg: '500px', md: '500px', sm: '500px'}} h='37vh' mt={5}/>
-              </Flex>
-              <Spacer />
-              <Flex flexDir="column" mt={{lg: 16, md: 5, sm: 5}} w={{lg: '45vw', md: '100%', sm: '100%'}}>
-                <Heading fontFamily={'Raleway'} size='lg' w={{lg: '45vw', md: '100%', sm: '100%'}} align='center'>To meet the student and teacher&apos;s needs with regards to academic lives and personal development.</Heading>
-                <Img className={styles.drop_shadow} src='SOB.png' w={{lg: '900px', md: '900px', sm: '900px'}} h='60vh' mt='-2vh' mr='20vw' align='center'/>
-              </Flex>
-            </Flex>
-              
-          </Box>
-
-
-          {/* <Divider position='static' /> */}
-          <Box position='static' bgColor={useColorModeValue('#EFEFEF', '#242424')} boxShadow='lg' w="100%" h="100%" display={{lg: 'flex', md: 'flex', sm: 'block'}}>
-          <Img src={useColorModeValue('halls-banner.png', 'halls-banner-dark.png')} h={{lg: '100%', md: '100%', sm: '100%', base: '100%'}} w={{lg: '100%', md: '100%', sm: '100%', base: '100%'}} alt="HallsBanner" />
-          </Box>
-
-          <Box position='static' bgColor={useColorModeValue('#EFEFEF', '#242424')} boxShadow='lg' w="100%" h="100%" display={{lg: 'flex', md: 'flex', sm: 'block'}}>
-            {/* <Flex flexDir='column' w='100%'>
-            <Flex flexDir='column' w='100%'>
-              <Heading fontFamily={'Raleway'} size='4xl' align='center' w='100%' mt={5}>WE&apos;D LOVE TO HEAR FROM YOU!</Heading>
-              <Heading fontFamily={'Raleway'} size='lg' align='center' w='100%' mt={5}>Send your feedbacks and suggestions and we&apos;ll answer it for you.</Heading>
-            </Flex>
-            <form action='' method='POST'>
-              <Flex w='100%' flexDir={{lg: 'row', md: 'column', sm: 'column'}} align='center'  mt={20}>
-                <Box w='30vw'>
-                <Img  className={styles.drop_shadow} src='announcer.png' w={{lg: '300px', md: '300px', sm: '300px'}} h='300px' mt='-5vh' ml='5vw' align='center'/>
-                </Box>
-              
-                <Flex flexDir='column' w='100%' align='center'>
-
-                  <Flex align='center' flexDir={{lg: 'row', md: 'row', sm: 'column'}} w={{lg: '40vw', md: '40vw', sm: '100%'}} color='black'>
-                      <Input className={styles.input_boxshadow} type='email' w={{lg: '13vw', md: '13vw', sm: '100%'}} placeholder='iACADEMY Email' onChange={(e)=>setEmail(e.target.value)} color={useColorModeValue('#000000', '#FFFFFF')}></Input>
-                      <Spacer />
-                      <Input className={styles.input_boxshadow} type='text' w={{lg: '13vw', md: '13vw', sm: '100%'}} mt={{lg: 0, md: 0, sm: 5}} placeholder='Full Name' onChange={(e)=>setFullName(e.target.value)} color={useColorModeValue('#000000', '#FFFFFF')}></Input>
-                      <Spacer />
-                      <Input className={styles.input_boxshadow} type='text' w={{lg: '13vw', md: '13vw', sm: '100%'}} mt={{lg: 0, md: 0, sm: 5}} placeholder='Subject' onChange={(e)=>setSubject(e.target.value)} color={useColorModeValue('#000000', '#FFFFFF')}></Input>
-                  </Flex>
-                  <Textarea className={styles.input_boxshadow} w={{lg: '40vw', md: '40vw', sm: '100%'}} h='20vh' mt={5} placeholder='Message...' mr={{lg: 0, md: 0, sm: 5}} onChange={(e)=>setMessage(e.target.value)} color={useColorModeValue('#000000', '#FFFFFF')} />
-                
-                </Flex>
-                <Flex w={{lg: '20vw', md: '100%', sm: '100%'}} mt={{lg: 0, md: 0, sm: 5}} >
-                  <Button size='lg' bgColor={useColorModeValue('#2777C1', '#3CA1FF')} color={useColorModeValue('#FFFFFF', '#FFFFFF')} _hover={{bgColor: 'blue'}} w={{lg: '10vw', md: '20vw', sm: '20vw'}} mr={{lg: 48, md: 0, sm: 0}} mx={{lg: 0, md: 0, sm: 'auto'}} onClick={sendMessage}>Submit</Button>
-                </Flex>
-              </Flex>
-              </form>
-            </Flex> */}
-
-            
-            
-            <Carousel autoFocus={true} infiniteLoop={true} autoPlay={true} centerMode={true} interval={3000} width={{lg: '100%', base: '100%'}} showThumbs={false} emulateTouch={true} swipeable={true}>
-                <div>
-                <Img src={useColorModeValue('technology-banner.png', 'technology-banner-dark.png')} h={{lg: '100%', md: '100%', sm: '100%', base: '100%'}} w={{lg: '100%', md: '100%', sm: '100%', base: '100%'}} alt="TechnologyBanner" />
-                <Text fontFamily={'Raleway'} className="legend" _hover={{cursor: 'pointer', textDecoration: 'underline'}}>Technology</Text>
-                </div>
-                <div>
-                <Img src={useColorModeValue('arts-banner.png', 'arts-banner-dark.png')} h={{lg: '100%', md: '100%', sm: '100%', base: '100%'}} w={{lg: '100%', md: '100%', sm: '100%', base: '100%'}} alt="ArtsBanner" />
-                <Text fontFamily={'Raleway'} className="legend" _hover={{cursor: 'pointer', textDecoration: 'underline'}}>Arts</Text>
-                </div>
-                <div>
-                <Img src={useColorModeValue('business-banner.png', 'business-banner-dark.png')} h={{lg: '100%', md: '100%', sm: '100%', base: '100%'}} w={{lg: '100%', md: '100%', sm: '100%', base: '100%'}} alt="BusinessBanner" />
-                <Text fontFamily={'Raleway'} className="legend" _hover={{cursor: 'pointer', textDecoration: 'underline'}}>Business</Text>
-                </div>
-                <div>
-                <Img src={useColorModeValue('lounge-banner.png', 'lounge-banner-dark.png')} h={{lg: '100%', md: '100%', sm: '100%', base: '100%'}} w={{lg: '100%', md: '100%', sm: '100%', base: '100%'}} alt="LoungeBanner" />
-                <Text fontFamily={'Raleway'} className="legend" _hover={{cursor: 'pointer', textDecoration: 'underline'}}>Lounge</Text>
-                </div>
-            </Carousel>
-          </Box> 
-
-
-      {/* <div className={styles.main}>
-
-      </div>
-      <div className={styles.main}>
-        
-      </div>
-      <div className={styles.main}>
-        
-      </div> */}
-    </div>
-  )
-}
+  Login.getLayout = function getLayout(page) {
+    return (
+      <ChakraProvider theme={theme}>
+          {page}
+      </ChakraProvider>
+    )
+  }

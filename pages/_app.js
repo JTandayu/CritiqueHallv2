@@ -43,7 +43,7 @@ function MyApp({ Component, pageProps, ...appProps }) {
     //       return <ChakraProvider theme={theme}><GuestLayout><Component {...pageProps} /></GuestLayout></ChakraProvider>;
     //   default:
 
-        if ([`/login`, `/register`, `/forgot-password`, `/confirmation`, `/reset-password/[token]/[userId]`, `/` ].includes(appProps.router.pathname))
+        if ([ `/register`, `/forgot-password`, `/confirmation`, `/reset-password/[token]/[userId]`, `/` ].includes(appProps.router.pathname))
             return <ChakraProvider theme={theme}><Component {...pageProps} /></ChakraProvider>;;
       
         return (
