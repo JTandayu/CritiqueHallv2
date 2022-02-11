@@ -19,7 +19,7 @@ import {
     MenuCommand,
     MenuDivider,
   } from '@chakra-ui/react'
-import { Box } from '@chakra-ui/react'
+import { Box, Center } from '@chakra-ui/react'
 import { Switch } from '@chakra-ui/react'
 import { useEffect, useState } from 'react';
 import {Flex, Text} from '@chakra-ui/react'
@@ -407,7 +407,7 @@ export default function Nav(data, profile_pic){
                 </Popover>
                 <Menu>
                     <MenuButton
-                        px={7}
+                        px={2}
                         py={2}
                         transition='all 0.2s'
                         display='flex'
@@ -422,9 +422,9 @@ export default function Nav(data, profile_pic){
                         <ChevronDownIcon ml={1} mt={3} />
                     </Flex>  
                     </MenuButton>
-                    <MenuList>
-                        <MenuItem fontFamily={'Raleway'} fontWeight={'bold'}><Link href={`/profile/${display_name}`} passHref><Box w="full">Profile</Box></Link></MenuItem>
-                        <MenuItem fontFamily={'Raleway'} fontWeight={'bold'} color="red" _hover={{ bg: 'red.500', color: 'white' }} onClick={logOut}><Box w="full">Logout</Box></MenuItem>
+                    <MenuList bgColor={useColorModeValue('#E5E5E5', '#2E2E2E')}>
+                        <MenuItem fontFamily={'Raleway'} fontWeight={'bold'} color={changeColor2}><Link href={`/profile/${display_name}`} passHref><Box w="full"><Center>Profile</Center></Box></Link></MenuItem>
+                        <MenuItem fontFamily={'Raleway'} fontWeight={'bold'} color={changeColor2} onClick={logOut}><Box w="full"><Center>Logout</Center></Box></MenuItem>
                     </MenuList>
                 </Menu>
 
