@@ -211,7 +211,7 @@ function EditPost({data, url, fileNames}){
 
     return(
         <>
-        <button onClick={onOpen} width='10vw'>Edit</button>
+        <Box onClick={onOpen} width='100%' justifyContent="flex-start" _hover={{bgColor: "none", cursor: "pointer"}}>Edit</Box>
 
 
         <form action=" " method="POST">

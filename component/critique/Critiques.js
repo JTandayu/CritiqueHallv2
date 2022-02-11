@@ -142,6 +142,7 @@ export const Critiques = ({id, newCritique}) => {
 
     const cancelReply = async(id) =>{
         document.getElementById(id).hidden=true;
+        setReply('')
     }
 
     const loadMore = async() =>{
@@ -318,7 +319,7 @@ export const Critiques = ({id, newCritique}) => {
                     </Box>
                     <Box p="2" w='35vw' mt={1} id={critique.critique_id} hidden>
                         <form onSubmit={(e)=>submitReply(critique.critique_id, e)}>
-                            <Textarea fontFamily={'Raleway'} w="full" onChange={(e) => setReply(e.target.value)}/>
+                            <Textarea fontFamily={'Raleway'} w="full" value={reply} onChange={(e) => setReply(e.target.value)}/>
                             <Flex>
                                 <Button fontFamily={'Raleway'} mt={3} type='submit'>Reply</Button>
                                 <Button fontFamily={'Raleway'} mt={3} ml={3} onClick={ () => cancelReply(critique.critique_id)}>Cancel</Button>

@@ -28,6 +28,9 @@ import { useCookies } from 'react-cookie'
 import { createBreakpoints } from '@chakra-ui/theme-tools'
 import { useRouter } from 'next/router';
 import { useToast } from '@chakra-ui/react';
+import { ChakraProvider } from "@chakra-ui/react"
+import SimpleReactLightbox from 'simple-react-lightbox'
+import theme from '../component/theme'
 
 const MotionButton = motion(Button)
 
@@ -88,7 +91,6 @@ export default function Login({user}) {
       formData.append('email', email);   //append the values with key, value pair
       formData.append('password', password);
 
-
       const config = {
         headers: { 
           'content-type': 'multipart/form-data',
@@ -99,6 +101,10 @@ export default function Login({user}) {
         }
       }
 
+      if(email ==  '' && password == ''){
+        document.getElementById('warning2').removeAttribute('hidden');
+        document.getElementById('warning1').hidden=true;
+      } else{
       axios.post(`${API_URL}/api/login`, formData, config)
       .then(response => {
           toastIdRef.current = toast({ title: 'Login Successful!', status: 'success', duration: 3000, isClosable: false })
@@ -118,9 +124,19 @@ export default function Login({user}) {
       .catch(error => {
           // toastIdRef.current = toast({ title: 'Login Unsuccessful!', status: 'error', duration: 3000, isClosable: false })
           console.log(error.response);
-          document.getElementById('warning1').removeAttribute('hidden');
+          if(error.response.data.message == 'Wrong credentials'){
+            document.getElementById('warning1').removeAttribute('hidden');
+            document.getElementById('warning2').hidden=true;
+          }
+          else if(error.response.data.status == "Error"){
+            document.getElementById('warning1').removeAttribute('hidden');
+            document.getElementById('warning2').hidden=true;
+          }
+          
+          
           // window.location.href = "/login"
       });
+    }
     }
 
     
@@ -214,5 +230,13 @@ export default function Login({user}) {
             
         </Box>
       </div>
+    )
+  }
+
+  Login.getLayout = function getLayout(page) {
+    return (
+      <ChakraProvider theme={theme}>
+          {page}
+      </ChakraProvider>
     )
   }

@@ -63,7 +63,7 @@ function EditCritiqueHistory({id}) {
 
     return(
         <>
-        <button onClick={onOpen} ml={5}>Edit History</button>
+        <Box onClick={onOpen} width='100%' justifyContent="flex-start" _hover={{bgColor: "none", cursor: "pointer"}}>Edit History</Box>
 
         <Modal isOpen={isOpen} onClose={onClose}>
             <ModalOverlay />

@@ -8,6 +8,7 @@ import {
     ModalBody,
     ModalCloseButton,
     Textarea,
+    Box
   } from "@chakra-ui/react"
 import { useDisclosure, useColorModeValue, Spacer } from '@chakra-ui/react'
 import { Input,Button } from '@chakra-ui/react'
@@ -54,7 +55,7 @@ const EditCritique = ({data}) => {
 
     return (
         <>
-            <button onClick={onOpen} width='10vw'>Edit</button>
+            <Box onClick={onOpen} width='100%' justifyContent="flex-start" _hover={{bgColor: "none", cursor: "pointer"}}>Edit</Box>
 
             <Modal isOpen={isOpen} onClose={onClose}>
                 <ModalOverlay />

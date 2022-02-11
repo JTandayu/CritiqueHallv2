@@ -89,7 +89,7 @@ function DeletePost({id}){
 
     return(
       <>
-      <button onClick={onOpen}>Delete</button>
+      <Box onClick={onOpen} width='100%' justifyContent="flex-start" _hover={{bgColor: "none", cursor: "pointer"}}>Delete</Box>
 
 
       <form action='' method='POST'>
