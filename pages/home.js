@@ -55,7 +55,9 @@ const theme = extendTheme({ breakpoints })
 
 function Home(){
 
-    
+  const HomeTitle = useColorModeValue('/WelcomeToCritiqueHall.png', '/WelcomeToCritiqueHall-Dark.png')
+  const Desc1 = useColorModeValue('/Desc1.png', '/Desc1-Dark.png')
+  const Desc2 = useColorModeValue('/Desc2.png', '/Desc2-Dark.png')
 
     return( 
         <main className={useColorModeValue(styles.container, styles.container2)} w="100%">
@@ -68,8 +70,12 @@ function Home(){
 
           <Box position='static' bgColor={useColorModeValue('#E5E5E5', '#2E2E2E')} w="100%" h={{lg: '75vh', md: '100%', sm: '100%'}} display={{lg: 'flex', md: 'flex', sm: 'block'}} z-index='-1' boxShadow='lg'>
           <Flex mt={44} flexDir='column' align='center' w={{lg: '50vw', md: '100%', sm: '100%'}}>
-              <Heading fontFamily={'Raleway'} size='3xl' >WELCOME TO</Heading>
-              <Image className={styles.drop_shadow} src={useColorModeValue('critiquehall.png', 'critiquehall-dark.png')}  alt="Critique Hall Logo" w={{lg: '500px', md: '500px', sm: '500px'}} h='37vh' mt={5}/>
+              <Image src={HomeTitle} w='550px' h='50px'/>
+              <br />
+              <Image src={Desc1} w='800px' h='150px' ml={'30%'}/>
+              <br />
+              <Image src={Desc2} w='700px' h='100px' ml={'18%'}/>
+              {/* <Image className={styles.drop_shadow} src={useColorModeValue('critiquehall.png', 'critiquehall-dark.png')}  alt="Critique Hall Logo" w={{lg: '500px', md: '500px', sm: '500px'}} h='37vh' mt={5}/> */}
               {/* <Link href="/login"><Button type='submit' mt={5} colorScheme='red' position='static'>Get Started</Button></Link> */}
             </Flex>
             <Image src='PeopleDiscuss.png' w={{lg: '70%', md: '600px', sm: '600px'}} h='60vh' mt='10vh' mb='5vh' mr={5} align='center' alt="Man Texting"/>
