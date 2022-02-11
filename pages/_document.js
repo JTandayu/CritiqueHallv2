@@ -6,7 +6,7 @@ export default class Document extends NextDocument {
   render() {
     return (
       <Html lang='en'>
-        <Head />
+        <Head><meta name="google-site-verification" content="sUvYsIUWImHfTkWIYvXMioXKxYtGLe8oq53x-vEMHX0" /></Head>
         <body>
           {/* 👇 Here's the script */}
           <ColorModeScript initialColorMode={theme.config.initialColorMode} />
