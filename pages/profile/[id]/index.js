@@ -19,48 +19,51 @@ import axios from 'axios'
 import { useState, useEffect } from 'react'
 import { useCookies, cookies } from 'react-cookie'
 import ReportUser from '@component/report-user'
+import { useRouter } from 'next/router'
 
-export async function getServerSideProps(context){
+// export async function getServerSideProps(context){
+//     const { API_URL } = process.env
+//     const { API_KEY } = process.env
+
+//     // const cookies = context.req.headers.cookie;
+//     // const cookie = await cookies.json()
+//     // const data = []
+//     // console.log(cookie);
+
+//     // const config = {
+//     //     method: 'Get',
+//     //     headers: { 
+//     //         'content-type': 'multipart/form-data',
+//     //         'X-API-KEY': `${API_KEY}`,
+//     //         'Authorization': 'Basic Y2Fwc3RvbmUyMDIxOjEyMzQ=',
+//     //         // 'Accept-Encoding': 'gzip, deflate, br',
+//     //         'Accept': 'application/json',
+//     //         'token': cookies.token,
+//     //         'user_id': cookies.encrypted_id
+//     //     }
+//     // }
+
+//     // const res = await fetch(`${API_URL}/api/display_profile/${cookies.display_name}`, config)
+
+//     // const data = await res.json()
+
+//     const data = context.params.id
+
+//     // console.log(data.id)
+
+//     return{
+//         props:{
+//             data
+//         }
+//     }
+
+// }
+
+export default function ProfilePage({}){
     const { API_URL } = process.env
     const { API_KEY } = process.env
-
-    // const cookies = context.req.headers.cookie;
-    // const cookie = await cookies.json()
-    // const data = []
-    // console.log(cookie);
-
-    // const config = {
-    //     method: 'Get',
-    //     headers: { 
-    //         'content-type': 'multipart/form-data',
-    //         'X-API-KEY': `${API_KEY}`,
-    //         'Authorization': 'Basic Y2Fwc3RvbmUyMDIxOjEyMzQ=',
-    //         // 'Accept-Encoding': 'gzip, deflate, br',
-    //         'Accept': 'application/json',
-    //         'token': cookies.token,
-    //         'user_id': cookies.encrypted_id
-    //     }
-    // }
-
-    // const res = await fetch(`${API_URL}/api/display_profile/${cookies.display_name}`, config)
-
-    // const data = await res.json()
-
-    const data = context.params.id
-
-    // console.log(data.id)
-
-    return{
-        props:{
-            data
-        }
-    }
-
-}
-
-export default function ProfilePage({data}){
-    const { API_URL } = process.env
-    const { API_KEY } = process.env
+    const router = useRouter()
+    const data = router.query.id
 
     const [cookies, setCookies, removeCookies] = useCookies(['token', 'id', 'encrypted_id'])
     const [userData, setUserData] = useState('')
