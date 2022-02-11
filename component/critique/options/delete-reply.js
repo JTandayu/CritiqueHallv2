@@ -8,6 +8,7 @@ import {
     ModalBody,
     ModalCloseButton,
     Flex,
+    Box
   } from "@chakra-ui/react"
 import { useDisclosure } from '@chakra-ui/react'
 import { Button } from '@chakra-ui/react'
@@ -48,7 +49,7 @@ const DeleteReply = ({id}) => {
 
     return (
         <>
-            <button onClick={onOpen} width='10vw'>Delete</button>
+            <Box onClick={onOpen} width='100%' justifyContent="flex-start" _hover={{bgColor: "none", cursor: "pointer"}}>Delete</Box>
           
             <Modal isOpen={isOpen} onClose={onClose}>
                 <ModalOverlay />

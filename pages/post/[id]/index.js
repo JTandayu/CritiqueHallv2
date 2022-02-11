@@ -51,6 +51,7 @@ import { useToast } from '@chakra-ui/react'
 import { SRLWrapper } from "simple-react-lightbox";
 import { post } from 'jquery'
 import { cookie } from 'cookie'
+import Linkify from 'linkify-react';
 
 const breakpoints = createBreakpoints({
     sm: '320px',
@@ -245,6 +246,7 @@ export default function CritiquePost(post_id, data1){
             console.log(response.data);
             setNewCritique(critique)
             // window.location.href=`/post/${post_id.post_id}`
+            setCritique('')
         })
         .catch(error => {
             console.log(error.response);
@@ -273,7 +275,9 @@ export default function CritiquePost(post_id, data1){
                     {/* Description */}
                     <Box mt={5}>
                         {/* <Heading size='md'>Description</Heading> */}
-                        <Text fontFamily={'Raleway'} w={{lg: '45vw', sm: '100%'}} mx='auto' mt={5}>{data.body}</Text>
+                        <Linkify>
+                            <Text fontFamily={'Raleway'} w={{lg: '45vw', sm: '100%'}} mx='auto' mt={5}>{data.body}</Text>
+                        </Linkify>
                     </Box>
 
                     <SRLWrapper options={options}>     
@@ -394,7 +398,7 @@ export default function CritiquePost(post_id, data1){
                     {/* Critique Input */}
                     <form onSubmit={giveCritique}>
                     <Box display='flex' flexDir='column' mt={5}>
-                        <Textarea borderColor={useColorModeValue('black', 'white')} fontFamily={'Raleway'} placeholder='Critique this...' bg={useColorModeValue('white', '#212121')} boxShadow='md' w={{lg: '90vh', sm: '100%'}} mx="auto" mt={3} onChange={e => setCritique(e.target.value)} />
+                        <Textarea borderColor={useColorModeValue('black', 'white')} fontFamily={'Raleway'} placeholder='Critique this...' bg={useColorModeValue('white', '#212121')} boxShadow='md' w={{lg: '90vh', sm: '100%'}} mx="auto" mt={3} onChange={e => setCritique(e.target.value)} value={critique} />
                         <Button fontFamily={'Raleway'} color={useColorModeValue('white', 'white')} _hover={{bgColor: useColorModeValue('#173cff', '#428eff')}} bgColor={useColorModeValue('#0C1F83', '#1D447E')} type='submit' w='10vh' mx='auto' mt={3}>Submit</Button>
                     </Box>
                     </form>
