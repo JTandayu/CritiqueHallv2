@@ -44,16 +44,16 @@ const breakpoints = createBreakpoints({
   '2xl': '1536px',
 })
 
-export async function getServerSideProps(context){
-  // const cookies = context.req.headers.cookie;
-  // const data = JSON.parse(cookies)
-  // console.log(data)
-  return{
-      props:{
+// export async function getServerSideProps(context){
+//   // const cookies = context.req.headers.cookie;
+//   // const data = JSON.parse(cookies)
+//   // console.log(data)
+//   return{
+//       props:{
         
-      }
-  }
-}
+//       }
+//   }
+// }
 
 
 
@@ -230,13 +230,5 @@ export default function Login({user}) {
             
         </Box>
       </div>
-    )
-  }
-
-  Login.getLayout = function getLayout(page) {
-    return (
-      <ChakraProvider theme={theme}>
-          {page}
-      </ChakraProvider>
     )
   }
