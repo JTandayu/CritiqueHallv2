@@ -312,9 +312,9 @@ export default function Register({data2}) {
                   // whileHover={{ scale: 1.2 }}
                   // whileTap={{ scale: 0.9 }}
                   className={styles.RegisterButton} 
-                  bgColor={useColorModeValue('#0C1F83', '#2346FF')}
+                  bgColor={useColorModeValue('#0C1F83', '#1D447E')}
                   color={useColorModeValue('white', 'white')}
-                  _hover={{bgColor: 'blue'}} 
+                  _hover={{bgColor: useColorModeValue('#173cff', '#428eff')}}
                   type="submit" 
                   size="lg"
                   // rightIcon={<ArrowRightIcon />}
