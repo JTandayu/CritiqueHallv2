@@ -48,33 +48,33 @@ const breakpoints = createBreakpoints({
   '2xl': '1536px',
 })
 
-export async function getStaticProps(){
-  const { API_URL } = process.env
-  const { API_KEY } = process.env
+// export async function getStaticProps(){
+//   const { API_URL } = process.env
+//   const { API_KEY } = process.env
 
-  const res2 = await fetch(`${API_URL}/api/get_departments` , {
-    method: 'GET',
-    headers: {
-        'content-type': 'multipart/form-data',
-        'X-API-KEY': `${API_KEY}`,
-        'Authorization': 'Basic Y2Fwc3RvbmUyMDIxOjEyMzQ=',
-        // 'Accept-Encoding': 'gzip, deflate, br',
-        'Accept': 'application/json',
-    }
-  })
+//   const res2 = await fetch(`${API_URL}/api/get_departments` , {
+//     method: 'GET',
+//     headers: {
+//         'content-type': 'multipart/form-data',
+//         'X-API-KEY': `${API_KEY}`,
+//         'Authorization': 'Basic Y2Fwc3RvbmUyMDIxOjEyMzQ=',
+//         // 'Accept-Encoding': 'gzip, deflate, br',
+//         'Accept': 'application/json',
+//     }
+//   })
 
-  const data2 = await res2.json()
+//   const data2 = await res2.json()
 
-  // console.log(data)
-  // console.log(data2)
+//   // console.log(data)
+//   // console.log(data2)
 
-  return{
-    props: {
-      //  data: data.specialization, 
-       data2
-    }
-  }
-}
+//   return{
+//     props: {
+//       //  data: data.specialization, 
+//        data2
+//     }
+//   }
+// }
 
 export default function Register({data2}) {
   const { API_URL } = process.env
