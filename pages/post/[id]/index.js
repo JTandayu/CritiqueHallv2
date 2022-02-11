@@ -52,6 +52,7 @@ import { SRLWrapper } from "simple-react-lightbox";
 import { post } from 'jquery'
 import { cookie } from 'cookie'
 import Linkify from 'linkify-react';
+import { useRouter } from 'next/router'
 
 const breakpoints = createBreakpoints({
     sm: '320px',
@@ -63,36 +64,36 @@ const breakpoints = createBreakpoints({
 
 const theme = extendTheme({ breakpoints })
 
-export async function getServerSideProps(context) {
-    const { API_URL } = process.env
-    const { API_KEY } = process.env
+// export async function getServerSideProps(context) {
+//     const { API_URL } = process.env
+//     const { API_KEY } = process.env
 
-    const post_id = context.params.id
-    const cookie = context.req.cookies
+//     const post_id = context.params.id
+//     const cookie = context.req.cookies
 
-    // const parsedCookies = cookie.parse(context.req.headers.cookie);
+//     // const parsedCookies = cookie.parse(context.req.headers.cookie);
 
-    const res = await fetch(`${API_URL}/api/display_post/${context.params.id}`, {
-        method: 'GET',
-        headers: {
-            'content-type': 'multipart/form-data',
-            'X-API-KEY': `${API_KEY}`,
-            'Authorization': 'Basic Y2Fwc3RvbmUyMDIxOjEyMzQ=',
-            'Accept': 'application/json',
-            'Token': cookie.token,
-            'User-Id': cookie.encrypted_id
-        },
-    })
-    const data = await res.json()
-    // console.log(data.post);
+//     const res = await fetch(`${API_URL}/api/display_post/${context.params.id}`, {
+//         method: 'GET',
+//         headers: {
+//             'content-type': 'multipart/form-data',
+//             'X-API-KEY': `${API_KEY}`,
+//             'Authorization': 'Basic Y2Fwc3RvbmUyMDIxOjEyMzQ=',
+//             'Accept': 'application/json',
+//             'Token': cookie.token,
+//             'User-Id': cookie.encrypted_id
+//         },
+//     })
+//     const data = await res.json()
+//     // console.log(data.post);
     
-  return {
-    props: {
-        post_id,
-        data1: data
-    },
-  }
-}
+//   return {
+//     props: {
+//         post_id,
+//         data1: data
+//     },
+//   }
+// }
 
 const options = {
     buttons: {
@@ -103,10 +104,14 @@ const options = {
 }
 
 
-export default function CritiquePost(post_id, data1){
+export default function CritiquePost(){
     const { API_URL } = process.env
     const { API_KEY } = process.env
     const toast = useToast()
+    const router = useRouter()
+    const post_id = router.query.id;
+    // console.log(post_id)
+
 
     const [cookies, setCookie] = useCookies(['token', 'id', 'encrypted_id', 'display_name'])
     const [critique, setCritique] = useState('')
@@ -145,7 +150,7 @@ export default function CritiquePost(post_id, data1){
             }
         }
 
-        axios.get(`${API_URL}/api/display_post/${post_id.post_id}`, config)
+        axios.get(`${API_URL}/api/display_post/${post_id}`, config)
         .then(response => {
             console.log(response.data);
             fileName1 = ref(storage, response.data.post.attachment1).name; 
@@ -212,7 +217,7 @@ export default function CritiquePost(post_id, data1){
             }
         }
 
-        axios.post(`${API_URL}/api/like_post/${post_id.post_id}`, formData, config)
+        axios.post(`${API_URL}/api/like_post/${post_id}`, formData, config)
         .then(response => {
             console.log(response.data);
             document.getElementById('likes').innerHTML=response.data.stars;
@@ -227,7 +232,7 @@ export default function CritiquePost(post_id, data1){
         e.preventDefault();
         let formData = new FormData();
         formData.append('body', critique)
-        formData.append('post_id', post_id.post_id)
+        formData.append('post_id', post_id)
 
         const config = {
             headers: { 
@@ -406,7 +411,7 @@ export default function CritiquePost(post_id, data1){
             </Box>
                     {/* Critique */}
                     <Box w={{lg: '40%', sm: '100%'}} bg={useColorModeValue('white', '#212121')} borderRadius={10} h='90vh' p={5} boxShadow='dark-lg' mt={28} ml='3vw'>
-                        <Critiques id={post_id.post_id} newCritique={newCritique} />
+                        <Critiques id={post_id} newCritique={newCritique} />
                     </Box>
                     
                 </Box>

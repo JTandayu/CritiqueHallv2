@@ -45,19 +45,19 @@ const breakpoints = createBreakpoints({
 
 const MotionButton = motion(Button)
 
-export async function getServerSideProps(context){
-  const token = context.params.token;
-  const userId = context.params.userId;
+// export async function getServerSideProps(context){
+//   const token = await context.params.token;
+//   const userId = await context.params.userId;
 
-  return{
-    props:{
-      token,
-      userId
-    }
-  }
-}
+//   return{
+//     props:{
+//       token,
+//       userId
+//     }
+//   }
+// }
 
-export default function ResetPassword({token, userId}){
+export default function ResetPassword({}){
   const { API_URL } = process.env
   const { API_KEY } = process.env
 
@@ -66,6 +66,9 @@ export default function ResetPassword({token, userId}){
   const toast = useToast()
   const toastIdRef = React.useRef()
   const router = useRouter()
+
+  const token = router.query.token;
+  const userId = router.query.userId;
 
   // console.log(token);
   // console.log(userId)
