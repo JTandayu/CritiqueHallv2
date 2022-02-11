@@ -87,6 +87,8 @@ export default function SearchResult(){
     useEffect(() => {
         const { API_URL } = process.env
         const { API_KEY } = process.env
+        document.getElementById('user').hidden=true;
+        document.getElementById('post').hidden=true;
 
         const config = {
             headers: { 
