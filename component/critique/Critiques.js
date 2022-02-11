@@ -41,7 +41,7 @@ export const Critiques = ({id, newCritique}) => {
 
     const [cookie, setCookie] = useCookies('token', 'id', 'encrypted_id', 'display_name')
     const [critiqueItems, setCritiqueItems] = useState([])
-    const [reply, setReply] = useState('')
+    const [reply, setReply] = useState([])
     const [lastId, setLastID] =  useState('0')
     const [filter, setFilter] = useState('desc')
     const [loading, setLoading] = useState(true)
@@ -95,6 +95,7 @@ export const Critiques = ({id, newCritique}) => {
 
     const openReply = async(id) =>{
         document.getElementById(id).removeAttribute('hidden');
+        // document.getElementById(!id).hidden=true;
     }
 
     const submitReply = (critique_id, e) =>{
@@ -102,17 +103,23 @@ export const Critiques = ({id, newCritique}) => {
 
         let formData = new FormData;
         formData.append('critique_id', critique_id);
-        formData.append('body', reply);
+        formData.append('body', reply[critique_id]);
 
         axios.post(`${API_URL}/api/create_reply`, formData, config)
         .then((response) =>{
             console.log(response.data)
             document.getElementById(critique_id).hidden=true;
-            setNewReply(reply)
+            document.getElementById(`reply${critique_id}`).value=''
+            setNewReply(reply[critique_id]);
 
         }).catch((error) =>{
             console.log(error)
         })
+    }
+
+    const handleChange = (e, i) =>{
+        e.preventDefault()
+        reply[i] = e.target.value;
     }
 
     const sortCritique = (e) =>{
@@ -142,7 +149,7 @@ export const Critiques = ({id, newCritique}) => {
 
     const cancelReply = async(id) =>{
         document.getElementById(id).hidden=true;
-        setReply('')
+        document.getElementById(`reply${critique_id}`).value=''
     }
 
     const loadMore = async() =>{
@@ -271,7 +278,7 @@ export const Critiques = ({id, newCritique}) => {
                         </Box>
                         <Box p="2" w='35vw' mt={1} id={critique.critique_id} hidden>
                         <form onSubmit={(e)=>submitReply(critique.critique_id, e)}>
-                            <Textarea borderColor={TextareaBorderColor} fontFamily={'Raleway'} w="full" value={reply} onChange={(e) => setReply(e.target.value)}/>
+                            <Textarea borderColor={TextareaBorderColor} fontFamily={'Raleway'} w="full" id={`reply${critique.critique_id}`} onChange={(e) => handleChange(e, critique.critique_id)}/>
                             <Flex>
                                 <Button fontFamily={'Raleway'} mt={3} type="submit">Reply</Button>
                                 <Button fontFamily={'Raleway'} mt={3} ml={3} onClick={ () => cancelReply(critique.critique_id)}>Cancel</Button>
@@ -319,7 +326,7 @@ export const Critiques = ({id, newCritique}) => {
                     </Box>
                     <Box p="2" w='35vw' mt={1} id={critique.critique_id} hidden>
                         <form onSubmit={(e)=>submitReply(critique.critique_id, e)}>
-                            <Textarea fontFamily={'Raleway'} w="full" value={reply} onChange={(e) => setReply(e.target.value)}/>
+                            <Textarea fontFamily={'Raleway'} w="full" id={`reply${critique.critique_id}`} onChange={(e) => handleChange(e, critique.critique_id)}/>
                             <Flex>
                                 <Button fontFamily={'Raleway'} mt={3} type='submit'>Reply</Button>
                                 <Button fontFamily={'Raleway'} mt={3} ml={3} onClick={ () => cancelReply(critique.critique_id)}>Cancel</Button>
