@@ -134,9 +134,10 @@ export const CritiqueReply = ({id, post_id, newReply}) => {
                                     <ChevronDownIcon />
                                     </MenuButton>
                                     <MenuList p={3}>
+                                    {reply.is_edited == 1 ?  
                                     <MenuGroup>
                                         <MenuItem fontFamily={'Raleway'}><EditReplyHistory id={reply.reply_id} /></MenuItem>
-                                    </MenuGroup>
+                                    </MenuGroup> : null}
                                     <MenuDivider />
                                     <MenuGroup>
                                         <MenuItem fontFamily={'Raleway'}><EditReply data={reply} /></MenuItem>
@@ -149,7 +150,7 @@ export const CritiqueReply = ({id, post_id, newReply}) => {
                             </Box>
                             <Flex w='20vw'>
                                 <Button variant='ghost' onClick={(e)=>giveStar(reply.reply_id, e)}><Image src='/stars.png' alt="Stars" w="25px" h="25px" ml={2} mr={2}/> <Text id={reply.reply_id}>{reply.stars}</Text></Button>
-                                {/* <Button variant='ghost' ml={5}>Reply</Button> */}
+                                {reply.is_edited == 1 ? <Text fontFamily={'Raleway'}>(Edited)</Text> : null}
                         </Flex>
 
                 </Box>
@@ -165,7 +166,7 @@ export const CritiqueReply = ({id, post_id, newReply}) => {
                                 {reply.reputation_points >= '50' ? <Image src='/badge-icon.png' alt="Badge" w="25px" h="25px" ml={3} mt={2} /> : null}
                                 <Spacer />
                                 <Text fontFamily={'Raleway'} fontSize='sm' mt={2}>{reply.time_ago}</Text>
-
+                                {critique.is_edited == 1 ?  
                                 <Menu>
                                     <MenuButton
                                     px={4}
@@ -179,14 +180,14 @@ export const CritiqueReply = ({id, post_id, newReply}) => {
                                         <MenuItem fontFamily={'Raleway'}><EditReplyHistory id={reply.reply_id} /></MenuItem>
                                     </MenuGroup>
                                     </MenuList>
-                                </Menu>
+                                </Menu>: <Box w={8}></Box>}
                             </Flex>
                             <Box w='100%' mt={1}>
                                 <Text fontSize='md' fontFamily={'Raleway'}>{reply.body}</Text>
                             </Box>
                             <Flex w='20vw'>
                                 <Button variant='ghost' onClick={(e)=>giveStar(reply.reply_id, e)}><Image src='/stars.png' alt="Stars" w="25px" h="25px" ml={2} mr={2}/> <Text id={reply.reply_id}>{reply.stars}</Text></Button>
-                                {/* <Button variant='ghost' ml={5}>Reply</Button> */}
+                                {reply.is_edited == 1 ? <Text fontFamily={'Raleway'}>(Edited)</Text> : null}
                         </Flex>
 
                 </Box>

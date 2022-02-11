@@ -253,10 +253,11 @@ export const Critiques = ({id, newCritique}) => {
                                         <ChevronDownIcon />
                                         </MenuButton>
                                         <MenuList p={3}>
+                                        {critique.is_edited == 1 ?  
                                         <MenuGroup>
                                             <MenuItem fontFamily={'Raleway'}><EditCritiqueHistory id={critique.critique_id} /></MenuItem>
-                                        </MenuGroup>
-                                        <MenuDivider />
+                                        </MenuGroup> : null}
+                                        <MenuDivider /> 
                                         <MenuGroup>
                                             <MenuItem fontFamily={'Raleway'}><EditCritique data={critique} /></MenuItem>
                                         </MenuGroup>
@@ -273,7 +274,7 @@ export const Critiques = ({id, newCritique}) => {
                                 <Flex w='20vw'>
                                     <Button variant='ghost' onClick={()=>giveStar(critique.critique_id)}><Image src='/stars.png' alt="Stars" w="25px" h="25px" ml={2} mr={2}/> <Text id={`star${critique.critique_id}`}>{critique.stars}</Text></Button>
                                     <Button fontFamily={'Raleway'} variant='ghost' ml={5} onClick={()=>openReply(critique.critique_id)}>Reply</Button>
-                                    <Text fontFamily={'Raleway'} mt="9px" ml={5}>(Edited)</Text>
+                                    {critique.is_edited == 1 ? <Text fontFamily={'Raleway'}>(Edited)</Text> : null}
                                 </Flex>
                         </Box>
                         <Box p="2" w='35vw' mt={1} id={critique.critique_id} hidden>
@@ -300,6 +301,7 @@ export const Critiques = ({id, newCritique}) => {
                                     {critique.reputation_points >= '50' ? <Image src='/badge-icon.png' alt="Badge" w="25px" h="25px" ml={3} mt={2} /> : null}
                                     <Spacer />
                                     <Text fontFamily={'Raleway'} fontSize='sm' mt={2}>{critique.time_ago}</Text>
+                                    {critique.is_edited == 1 ? 
                                     <Menu>
                                         <MenuButton
                                         px={4}
@@ -313,7 +315,7 @@ export const Critiques = ({id, newCritique}) => {
                                             <MenuItem fontFamily={'Raleway'}><EditCritiqueHistory id={critique.critique_id} /></MenuItem>
                                         </MenuGroup>
                                         </MenuList>
-                                    </Menu>
+                                    </Menu> : <Box w={8}></Box>}
                                 </Flex>
                                 <Box w='100%' mt={1}>
                                     <Text fontFamily={'Raleway'} fontSize='md'>{critique.body}</Text>
@@ -321,7 +323,7 @@ export const Critiques = ({id, newCritique}) => {
                                 <Flex w='20vw'>
                                     <Button variant='ghost' onClick={()=>giveStar(critique.critique_id)}><Image src='/stars.png' alt="Stars" w="25px" h="25px" ml={2} mr={2}/> <Text id={`star${critique.critique_id}`}>{critique.stars}</Text></Button>
                                     <Button fontFamily={'Raleway'} variant='ghost' ml={5} onClick={()=>openReply(critique.critique_id)}>Reply</Button>
-                                    <Text fontFamily={'Raleway'}>(Edited)</Text>
+                                    {critique.is_edited == 1 ? <Text fontFamily={'Raleway'}>(Edited)</Text> : null}
                             </Flex>
                     </Box>
                     <Box p="2" w='35vw' mt={1} id={critique.critique_id} hidden>

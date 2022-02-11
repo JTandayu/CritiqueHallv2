@@ -16,6 +16,7 @@ import styles from "@styles/Hall.module.css";
 import axios from 'axios'
 import {useState, useEffect} from 'react' 
 import {useCookies} from 'react-cookie'
+import { useRouter } from 'next/router';
 
 const EditCritique = ({data}) => {
     const { isOpen, onOpen, onClose } = useDisclosure()
@@ -23,6 +24,7 @@ const EditCritique = ({data}) => {
     const { API_KEY } = process.env
     const [critique, setCritique] = useState(data.body)
     const [cookies, setCookie, removeCookie] = useCookies(['token', 'id', 'encrypted_id']);
+    const router = useRouter()
 
     const config = {
         headers: {
@@ -48,6 +50,7 @@ const EditCritique = ({data}) => {
         .then((response) => {
             console.log(response.data)
             onClose()
+            router.reload()
           }).catch((error)=>{
             console.log(error.response)
         })
