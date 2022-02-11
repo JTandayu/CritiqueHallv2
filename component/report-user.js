@@ -25,6 +25,7 @@ import { Radio, RadioGroup, Stack } from '@chakra-ui/react'
 import axios from "axios";
 import { WarningIcon } from "@chakra-ui/icons";
 import {useToast, useColorModeValue} from '@chakra-ui/react'
+import React from "react";
 
 
 // export async function getServerSideProps(context) {
@@ -43,6 +44,7 @@ function ReportUser({data}) {
     const [offense, setOffense] = useState('Inappropriate Username')
     const [message, setMessage] = useState('')
     const toast = useToast()
+    const toastIdRef = React.useRef()
     // console.log(data.encrypted_id)
 
     const config = {
@@ -70,10 +72,10 @@ function ReportUser({data}) {
         axios.post(`${API_URL}/api/submit_report`, formData, config)
         .then((response)=>{
             console.log(response.data)
-            toast({
+            toastIdRef.current = toast({
                 title: 'Report Submitted Successfully.',
                 status: 'success',
-                duration: 9000,
+                duration: 3000,
                 isClosable: true,
               })
         })
