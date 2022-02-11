@@ -179,7 +179,7 @@ export const Critiques = ({id, newCritique}) => {
         // document.getElementById('reply').hidden=true;
     }
 
-    const giveStar = async(crit_id) =>{
+    const giveStar = (crit_id) =>{
         let formData = new FormData;
         formData.append('critique_id', crit_id);
         formData.append('post_id', id)

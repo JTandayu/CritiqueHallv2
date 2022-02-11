@@ -70,7 +70,7 @@ export const CritiqueReply = ({id, post_id, newReply}) => {
 
     }, [newReply])
 
-    const giveStar = async (reply_id) =>{
+    const giveStar = (reply_id) =>{
         let formData = new FormData;
         formData.append('reply_id', reply_id);
         formData.append('post_id', post_id)

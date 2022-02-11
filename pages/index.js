@@ -75,7 +75,7 @@ export default function Login({user}) {
 
   const [cookie, setCookies, removeCookies] = useCookies(['token', 'id', 'encrypted_id'])
 
-  console.log(cookie)
+  // console.log(cookie)
 
   const changeDarkAndLightIcon = () => {
     toggleColorMode()
