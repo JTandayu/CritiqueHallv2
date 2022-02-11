@@ -14,6 +14,7 @@ import theme from '../component/theme'
 import {useCookies} from 'react-cookie'
 import Router from "next/router";
 import SimpleReactLightbox from 'simple-react-lightbox'
+import NextNProgress from 'nextjs-progressbar';
 
 
 function MyApp({ Component, pageProps }) {
@@ -43,6 +44,7 @@ function MyApp({ Component, pageProps }) {
           <ChakraProvider theme={theme}>
             <Layout>
                 <SimpleReactLightbox>
+                <NextNProgress />
                     <Component {...pageProps} />{" "}
                 </SimpleReactLightbox>
             </Layout>

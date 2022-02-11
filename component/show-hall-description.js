@@ -24,21 +24,60 @@ import styles from "@styles/Hall.module.css";
 // } 
   
 
-function ShowHallDescription({hall, color, fontColor}) {
+function ShowHallDescription({hall_arts, hall_business, hall_technology, hall_lounge, color, fontColor}) {
     const { isOpen, onOpen, onClose } = useDisclosure()
 
     return(
         <>
-        <Button fontFamily={'Raleway'} onClick={onOpen} ml={5} bgColor={color} _hover={{bgColor: color}}>VIEW MORE</Button>
+        <Button size="lg" fontFamily={'Raleway'} onClick={onOpen} ml={5} bgColor={color} _hover={{bgColor: color}}>View</Button>
 
         <form action='' method='POST'>
         <Modal isOpen={isOpen} onClose={onClose}>
             <ModalOverlay />
                 <ModalContent maxW="40rem" h='40vh' bgColor={color} color={fontColor}>
-                <ModalHeader><Heading fontFamily={'Raleway'} align='center' size='lg'>{hall}</Heading></ModalHeader>
+                <ModalHeader><Heading fontFamily={'Raleway'} align='center' size='lg'>{hall_arts}</Heading></ModalHeader>
                 <ModalCloseButton />
                 <ModalBody fontFamily={'Raleway'}>
-                    Hello
+                    Arts
+                </ModalBody>
+            </ModalContent>
+        </Modal>
+        </form>
+
+        <form action='' method='POST'>
+        <Modal isOpen={isOpen} onClose={onClose}>
+            <ModalOverlay />
+                <ModalContent maxW="40rem" h='40vh' bgColor={color} color={fontColor}>
+                <ModalHeader><Heading fontFamily={'Raleway'} align='center' size='lg'>{hall_business}</Heading></ModalHeader>
+                <ModalCloseButton />
+                <ModalBody fontFamily={'Raleway'}>
+                    Business
+                </ModalBody>
+            </ModalContent>
+        </Modal>
+        </form>
+
+        <form action='' method='POST'>
+        <Modal isOpen={isOpen} onClose={onClose}>
+            <ModalOverlay />
+                <ModalContent maxW="40rem" h='40vh' bgColor={color} color={fontColor}>
+                <ModalHeader><Heading fontFamily={'Raleway'} align='center' size='lg'>{hall_technology}</Heading></ModalHeader>
+                <ModalCloseButton />
+                <ModalBody fontFamily={'Raleway'}>
+                    Technology
+                </ModalBody>
+            </ModalContent>
+        </Modal>
+        </form>
+
+        <form action='' method='POST'>
+        <Modal isOpen={isOpen} onClose={onClose}>
+            <ModalOverlay />
+                <ModalContent maxW="40rem" h='40vh' bgColor={color} color={fontColor}>
+                <ModalHeader><Heading fontFamily={'Raleway'} align='center' size='lg'>{hall_lounge}</Heading></ModalHeader>
+                <ModalCloseButton />
+                <ModalBody fontFamily={'Raleway'}>
+                    Lounge
                 </ModalBody>
             </ModalContent>
         </Modal>

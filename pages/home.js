@@ -122,68 +122,55 @@ function Home(){
           <Image src={useColorModeValue('halls-banner.png', 'halls-banner-dark.png')}  w={{lg: '100%', md: '100%', sm: '100%', base: '100%'}} alt="HallsBanner" />
           </Box> */}
 
-          <Box position='static' bgColor={useColorModeValue('#EFEFEF', '#242424')} boxShadow='lg' w="100%" h="65vh" display={{lg: 'flex', md: 'flex', sm: 'block'}} flexDir='column' className={styles.halls}>
+          <Box position='static' bgColor={useColorModeValue('#29226E', '#000000')} boxShadow='lg' w="100%" h="55vh" display={{lg: 'flex', md: 'flex', sm: 'block'}} flexDir='column' className={styles.halls}>
             {/* <Heading fontFamily={'Raleway'} size='3xl' align='center' w='100%' mt={5}>HALLS</Heading> */}
-            {/* <Flex mt='10vh' w={{lg: '90%', md: '100vw', sm: '100vw'}} mx='auto' overflowX='auto'>
-              <Box w={{lg: '20vw', md: '100%', sm: '100%'}} h='40vh' bg='#92278F' borderRadius={5}>
-                <Heading fontFamily={'Raleway'} align='center' mt={5} color='white' >Technology</Heading>
-                <Center>
-                  <Image src='tech-bg.png' alt='School of Computing' align='center' w='10vw' h='20vh' mt={5}/>
-                </Center>
-                <Center mt='10'>
-                  <ShowHallDescription hall='Technology' color="#b303ff" fontColor='black' />
+            <Flex mt='10vh' w={{lg: '90%', md: '100vw', sm: '100vw'}} mx='auto' overflowX='auto'>
+              <Box w={{lg: '20vw', md: '100%', sm: '100%'}} h='40vh' bgImage={'Arts.png'} bgPosition={'center'} bg borderRadius={10}>
+                <Center mt='80%'>
+                  <ShowHallDescription hall_arts='Arts' color='#DCAF0F' fontColor='white'/>
                 </Center>
               </Box>
               <Spacer />
-              <Box w={{lg: '20vw', md: '100%', sm: '100%'}} h='40vh' bg='#00AEEF' ml={{lg: '0', md: '0', sm: '20vw'}} borderRadius={5}>
-                <Heading fontFamily={'Raleway'} align='center' mt={5} color='white'>Arts</Heading>
-                <Center>
-                  <Image src='art-bg.png' alt='School of Design and Arts' align='center' w='20vw' h='20vh' mt={1}/>
-                </Center>
-                <Center mt='10'>
-                  <ShowHallDescription hall='Arts' color='#6ec5ff' fontColor='black' />
+              <Box w={{lg: '20vw', md: '100%', sm: '100%'}} h='40vh' bgImage={'Business.png'} bgPosition={'center'} ml={{lg: '0', md: '0', sm: '20vw'}} borderRadius={10}>
+                {/* <Heading fontFamily={'Raleway'} align='center' mt={5} color='white'>Business</Heading> */}
+                <Center mt='80%'>
+                  <ShowHallDescription hall_business='Business' color='#9E0B0F' fontColor='white' />
                 </Center>
               </Box>
               <Spacer />
-              <Box w={{lg: '20vw', md: '100%', sm: '100%'}} h='40vh' bg='#9E0B0F' borderRadius={5}>
-                <Heading fontFamily={'Raleway'} align='center' mt={5} color='white' >Business</Heading>
-                <Center>
-                  <Image src='business-bg.png' alt='School of Business' align='center' w='10vw' h='20vh' mt={5}/>
-                </Center>
-                <Center mt='10'>
-                  <ShowHallDescription hall='Business' color='#fa3434' fontColor='black'/>
+              <Box w={{lg: '20vw', md: '100%', sm: '100%'}} h='40vh' bgImage={'Technology.png'} bgPosition={'center'} borderRadius={10}>
+                {/* <Heading fontFamily={'Raleway'} align='center' mt={5} color='white' >Technology</Heading> */}
+                <Center mt='80%'>
+                  <ShowHallDescription hall_technology='Technology' color='#4A79D4' fontColor='white'/>
                 </Center>
               </Box>
               <Spacer />
-              <Box w={{lg: '20vw', md: '100%', sm: '100%'}} h='40vh' bg='#00A99D' borderRadius={5}>
-                <Heading fontFamily={'Raleway'} align='center' mt={5} color='white' >Lounge</Heading>
-                <Center>
-                  <Image src='lounge-bg.png' alt='Lounge' align='center' w='12vw' h='20vh' mt={5}/>
-                </Center>
-                <Center mt='10'>
-                  <ShowHallDescription hall='Lounge' color='#44fcd0' fontColor='black'/>
+              <Box w={{lg: '20vw', md: '100%', sm: '100%'}} h='40vh' bgImage={'Lounge.png'} bgPosition={'center'} borderRadius={10}>
+                {/* <Heading fontFamily={'Raleway'} align='center' mt={5} color='white' >Lounge</Heading> */}
+                <Center mt='80%'>
+                  <ShowHallDescription hall_lounge='Lounge' color='#00A99D' fontColor='white'/>
                 </Center>
               </Box>
-            </Flex> */}
+            </Flex>
 
-              <Carousel autoFocus={true} infiniteLoop={true} centerMode={true} interval={3000} width={{lg: '100%', base: '100%'}} showThumbs={false} emulateTouch={true} swipeable={true}>
+              {/* <Carousel autoFocus={true} infiniteLoop={true} centerMode={true} interval={3000} width={{lg: '100%', base: '100%'}} showThumbs={false} emulateTouch={true} swipeable={true}>
                 <div>
                 <Image src={useColorModeValue('technology-banner.png', 'technology-banner-dark.png')} h={{lg: '100%', md: '100%', sm: '100%', base: '100%'}} w={{lg: '100%', md: '100%', sm: '100%', base: '100%'}} alt="TechnologyBanner" />
-                {/* <Text fontFamily={'Raleway'} className="legend" _hover={{cursor: 'pointer', textDecoration: 'underline'}}><ShowHallDescription hall='Technology' color="#b303ff" fontColor='black' /></Text> */}
+                <Text fontFamily={'Raleway'} className="legend" _hover={{cursor: 'pointer', textDecoration: 'underline'}}><ShowHallDescription hall='Technology' color="#b303ff" fontColor='black' /></Text>
                 </div>
                 <div>
                 <Image src={useColorModeValue('arts-banner.png', 'arts-banner-dark.png')} h={{lg: '100%', md: '100%', sm: '100%', base: '100%'}} w={{lg: '100%', md: '100%', sm: '100%', base: '100%'}} alt="ArtsBanner" />
-                {/* <Text fontFamily={'Raleway'} className="legend" _hover={{cursor: 'pointer', textDecoration: 'underline'}}><ShowHallDescription hall='Arts' color='#6ec5ff' fontColor='black' /></Text> */}
+                <Text fontFamily={'Raleway'} className="legend" _hover={{cursor: 'pointer', textDecoration: 'underline'}}><ShowHallDescription hall='Arts' color='#6ec5ff' fontColor='black' /></Text>
                 </div>
                 <div>
                 <Image src={useColorModeValue('business-banner.png', 'business-banner-dark.png')} h={{lg: '100%', md: '100%', sm: '100%', base: '100%'}} w={{lg: '100%', md: '100%', sm: '100%', base: '100%'}} alt="BusinessBanner" />
-                {/* <Text fontFamily={'Raleway'} className="legend" _hover={{cursor: 'pointer', textDecoration: 'underline'}}><ShowHallDescription hall='Business' color='#fa3434' fontColor='black'/></Text> */}
+                <Text fontFamily={'Raleway'} className="legend" _hover={{cursor: 'pointer', textDecoration: 'underline'}}><ShowHallDescription hall='Business' color='#fa3434' fontColor='black'/></Text>
                 </div>
                 <div>
                 <Image src={useColorModeValue('lounge-banner.png', 'lounge-banner-dark.png')} h={{lg: '100%', md: '100%', sm: '100%', base: '100%'}} w={{lg: '100%', md: '100%', sm: '100%', base: '100%'}} alt="LoungeBanner" />
-                {/* <Text fontFamily={'Raleway'} className="legend" _hover={{cursor: 'pointer', textDecoration: 'underline'}}><ShowHallDescription hall='Lounge' color='#44fcd0' fontColor='black'/></Text> */}
+                <Text fontFamily={'Raleway'} className="legend" _hover={{cursor: 'pointer', textDecoration: 'underline'}}><ShowHallDescription hall='Lounge' color='#44fcd0' fontColor='black'/></Text>
                 </div>
-            </Carousel>
+            </Carousel> */}
           </Box>  
 
         </main>

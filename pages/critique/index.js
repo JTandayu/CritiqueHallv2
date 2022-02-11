@@ -304,7 +304,7 @@ export default function HallPage(){
             {/* Halls */}
             <Box bgImage={'/HallsCard-Critique.png'} bgRepeat={'no-repeat'} bgSize={'cover'} rounded="lg" w="70%" h='200px' display={{lg: 'flex', md: 'flex', sm: 'none'}} mx="auto" mt="15vh" top="0">
                 
-                <Button variant='ghost' w="200px" h="100px" mt={5} className={styles.technology} rounded="lg" position='static' _hover={{cursor: 'pointer'}} onClick={getTechnology} boxShadow={'lg'}>
+                <Button variant='ghost' w="200px" h="100px" mt={5} className={styles.arts} rounded="lg" position='static' _hover={{cursor: 'pointer'}} onClick={getArts} boxShadow={'lg'}>
                 <Box w="full" h="10vh" ml={{lg: 0, sm: 0}}  px='5'>
                     <Center>
                     {/* <Text fontFamily={'Raleway'} fontSize="3xl" color="white" my="auto" mt="5" textShadow="1px 1px #000">Technology</Text> */}
@@ -318,7 +318,7 @@ export default function HallPage(){
 
                 <Spacer />
 
-                <Button variant='ghost' w="200px" h="100px" mt={5} className={styles.arts} rounded="lg" position='static' _hover={{cursor: 'pointer'}} onClick={getArts} boxShadow={'lg'}>
+                <Button variant='ghost' w="200px" h="100px" mt={5} className={styles.business} rounded="lg" position='static' _hover={{cursor: 'pointer'}} onClick={getBusiness} boxShadow={'lg'}>
                 <Box w="full" h="10vh" ml={{lg: 0, sm: 0}} rounded="lg" px='9'>
                     <Center>
                     {/* <Text fontFamily={'Raleway'} fontSize="3xl" color="white" my="auto" mt="5" textShadow="1px 1px #000">Arts</Text> */}
@@ -332,7 +332,7 @@ export default function HallPage(){
 
                 <Spacer />
 
-                <Button variant='ghost' w="200px" h="100px" mt={5} className={styles.business} rounded="lg" position='static' _hover={{cursor: 'pointer'}} onClick={getBusiness} boxShadow={'lg'}>
+                <Button variant='ghost' w="200px" h="100px" mt={5} className={styles.technology} rounded="lg" position='static' _hover={{cursor: 'pointer'}} onClick={getTechnology} boxShadow={'lg'}>
                 <Box w="full" h="10vh" ml={{lg: 0, sm: 0}} rounded="lg" px='9' >
                     <Center>
                     {/* <Text fontFamily={'Raleway'} fontSize="3xl" color="white" my="auto" mt="5" textShadow="1px 1px #000">Business</Text> */}
