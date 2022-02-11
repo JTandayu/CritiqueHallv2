@@ -324,7 +324,7 @@ function EditProfile({data}) {
                     </Flex>
                     <Flex mb={5}>
                         <FormLabel fontFamily={'Raleway'} w='7vw'>About Me</FormLabel>
-                        <Textarea fontFamily={'Raleway'} borderColor={useColorModeValue('black', 'white')} type='text' w='100%' h='15vh' value={aboutMe} onChange={(e) => setAboutMe(e.target.value)} />
+                        <Textarea fontFamily={'Raleway'} placeholder='there is a limit so be careful!' borderColor={useColorModeValue('black', 'white')} type='text' w='100%' h='15vh' value={aboutMe} onChange={(e) => setAboutMe(e.target.value)} />
                     </Flex>
                     <Flex mb={5}>
                         <FormLabel fontFamily={'Raleway'}>Confirm Password</FormLabel>
