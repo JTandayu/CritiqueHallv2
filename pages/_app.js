@@ -16,10 +16,24 @@ import {useCookies} from 'react-cookie'
 import Router, { useRouter } from "next/router";
 import { AppProps } from "next/dist/shared/lib/router/router";
 import NextNProgress from 'nextjs-progressbar';
-
+import { useEffect } from "react";
+import Script from 'next/script'
 
 function MyApp({ Component, pageProps, ...appProps }) {
     const router = useRouter()
+
+    const handleRouteChange = (url) => {
+        window.gtag('config', 'G-BJ9NXYN9GV', {
+          page_path: url,
+        });
+      };
+
+      useEffect(() => {
+        router.events.on('routeChangeComplete', handleRouteChange);
+        return () => {
+          router.events.off('routeChangeComplete', handleRouteChange);
+        };
+      }, [router.events]);
 
     // switch (Component.name) {
     //   case "Login":

@@ -6,7 +6,25 @@ export default class Document extends NextDocument {
   render() {
     return (
       <Html lang='en'>
-        <Head><meta name="google-site-verification" content="sUvYsIUWImHfTkWIYvXMioXKxYtGLe8oq53x-vEMHX0" /></Head>
+        <Head>
+          <meta name="google-site-verification" content="sUvYsIUWImHfTkWIYvXMioXKxYtGLe8oq53x-vEMHX0" />
+          <script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=G-BJ9NXYN9GV"
+        />
+
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            
+            gtag('config', 'G-BJ9NXYN9GV');
+            `,
+          }}
+        />
+        </Head>
         <body>
           {/* 👇 Here's the script */}
           <ColorModeScript initialColorMode={theme.config.initialColorMode} />
