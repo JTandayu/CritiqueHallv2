@@ -15,7 +15,7 @@ import theme from '../component/theme'
 import {useCookies} from 'react-cookie'
 import Router, { useRouter } from "next/router";
 import { AppProps } from "next/dist/shared/lib/router/router";
-
+import NextNProgress from 'nextjs-progressbar';
 
 
 function MyApp({ Component, pageProps, ...appProps }) {
@@ -44,12 +44,13 @@ function MyApp({ Component, pageProps, ...appProps }) {
     //   default:
 
         if ([ `/register`, `/forgot-password`, `/confirmation`, `/reset-password/[token]/[userId]`, `/` ].includes(appProps.router.pathname))
-            return <ChakraProvider theme={theme}><Component {...pageProps} /></ChakraProvider>;;
+            return <ChakraProvider theme={theme}><NextNProgress /><Component {...pageProps} /></ChakraProvider>;;
       
         return (
           <ChakraProvider theme={theme}>
             <Layout>
                 <SimpleReactLightbox>
+                    <NextNProgress />
                     <Component {...pageProps} />{" "}
                 </SimpleReactLightbox>
             </Layout>
