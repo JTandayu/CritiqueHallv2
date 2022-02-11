@@ -133,28 +133,28 @@ function Home(){
             <Flex mt='10vh' w={{lg: '90%', md: '100vw', sm: '100vw'}} mx='auto' overflowX='auto'>
               <Box w={{lg: '20vw', md: '100%', sm: '100%'}} h='40vh' bgImage={'Arts.png'} bgPosition={'center'} bg borderRadius={10}>
                 <Center mt='80%'>
-                  <ShowHallDescription hall_arts='Arts' color='#DCAF0F' fontColor='white'/>
+                <Button size="lg" fontFamily={'Raleway'} fontSize="2xl" ml={5} bgColor={useColorModeValue('#A88816', '#A88816')} _hover={{bgColor: useColorModeValue('#483C10', '#483C10')}} color='white'>View</Button>
                 </Center>
               </Box>
               <Spacer />
               <Box w={{lg: '20vw', md: '100%', sm: '100%'}} h='40vh' bgImage={'Business.png'} bgPosition={'center'} ml={{lg: '0', md: '0', sm: '20vw'}} borderRadius={10}>
                 {/* <Heading fontFamily={'Raleway'} align='center' mt={5} color='white'>Business</Heading> */}
                 <Center mt='80%'>
-                  <ShowHallDescription hall_business='Business' color='#9E0B0F' fontColor='white' />
+                <Button size="lg" fontFamily={'Raleway'} fontSize="2xl" ml={5} bgColor={useColorModeValue('#850306', '#850306')} _hover={{bgColor: useColorModeValue('#4a0305', '#4a0305')}} color='white'>View</Button>
                 </Center>
               </Box>
               <Spacer />
               <Box w={{lg: '20vw', md: '100%', sm: '100%'}} h='40vh' bgImage={'Technology.png'} bgPosition={'center'} borderRadius={10}>
                 {/* <Heading fontFamily={'Raleway'} align='center' mt={5} color='white' >Technology</Heading> */}
                 <Center mt='80%'>
-                  <ShowHallDescription hall_technology='Technology' color='#4A79D4' fontColor='white'/>
+                <Button size="lg" fontFamily={'Raleway'} fontSize="2xl" ml={5} bgColor={useColorModeValue('#31518f', '#31518f')} _hover={{bgColor: useColorModeValue('#09255c', '#09255c')}} color='white'>View</Button>
                 </Center>
               </Box>
               <Spacer />
               <Box w={{lg: '20vw', md: '100%', sm: '100%'}} h='40vh' bgImage={'Lounge.png'} bgPosition={'center'} borderRadius={10}>
                 {/* <Heading fontFamily={'Raleway'} align='center' mt={5} color='white' >Lounge</Heading> */}
                 <Center mt='80%'>
-                  <ShowHallDescription hall_lounge='Lounge' color='#00A99D' fontColor='white'/>
+                <Button size="lg" fontFamily={'Raleway'} fontSize="2xl" ml={5} bgColor={useColorModeValue('#00786f', '#00786f')} _hover={{bgColor: useColorModeValue('#003834', '#003834')}} color='white'>View</Button>
                 </Center>
               </Box>
             </Flex>
