@@ -116,7 +116,6 @@ function CreatePost({data}) {
         if (!image) return;
         image.map((image) => {
             const storageRef = ref(storage, `/files/${cookies.display_name}/${image.name}`)
-            setFileName((prevState) => [...prevState, image.name])
             const uploadTask = uploadBytesResumable(storageRef, image)
             promises.push(uploadTask) 
             uploadTask.on("state_changed", (snapshot) => {
@@ -130,7 +129,9 @@ function CreatePost({data}) {
                 .then(urls => {
                     // console.log(urls)
                     setUrls((prevState) => [...prevState, urls])
+                    setFileName((prevState) => [...prevState, image.name])
                     setImage([])
+
                 })
             }
             );
@@ -143,7 +144,7 @@ function CreatePost({data}) {
 
     const handleChange = e =>{
 
-        if(e.target.files.length > 5 - (counter + 1)){
+        if(e.target.files.length > 5 - counter){
             toastIdRef.current = toast({title: 'Maximum of 5 files only. Please attach link of file instead'
                     ,status: 'error', isClosable: true});
             return null;

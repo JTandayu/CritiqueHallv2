@@ -289,7 +289,8 @@ export default function Register({data2}) {
                 </Box>
                 <Box>
                 <FormLabel>Department</FormLabel>
-                <Select borderColor={useColorModeValue('black', 'white')} borderRadius="lg" className={styles.input_select} placeholder="Choose" size="sm" onChange={e => getSpecList(e.target.value)}>
+                <Select borderColor={useColorModeValue('black', 'white')} borderRadius="lg" className={styles.input_select} size="sm" onChange={e => getSpecList(e.target.value)}>
+                  <option value="" disabled selected>Choose</option>
                   {depList.map((department, i) => (
                     <option disabled={department.name === "College" || department.name === "SHS" ? true : null} value={department.name} key={i}>{department.name}</option>
                   ))}
@@ -297,7 +298,8 @@ export default function Register({data2}) {
                 </Box>
                 <Box>
                 <FormLabel display="flex">Strand / Specialization<Text fontSize="sm" color={useColorModeValue('gray', 'gray')} ml={2}>depends</Text></FormLabel>
-                <Select borderColor={useColorModeValue('black', 'white')} borderRadius="lg"  className={styles.input_select} placeholder="Choose" size="sm" onChange={e => setSpecialization(e.target.value)}>
+                <Select borderColor={useColorModeValue('black', 'white')} borderRadius="lg"  className={styles.input_select} size="sm" onChange={e => setSpecialization(e.target.value)}>
+                <option value="" disabled selected>Choose</option>
                 {specList.map((specialization, i) => (
                   <option value={specialization.name} key={i}>{specialization.name}</option>
                 ))}
