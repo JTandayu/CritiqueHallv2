@@ -107,6 +107,7 @@ const theme = extendTheme({ breakpoints })
 //           }
 // }
 
+
 const options = {
     buttons: {
       showDownloadButton: false,
@@ -116,7 +117,7 @@ const options = {
 }
 
 
-export default function CritiquePost({}){
+export default function CritiquePost(){
     const { API_URL } = process.env
     const { API_KEY } = process.env
     const toast = useToast()
@@ -370,6 +371,7 @@ export default function CritiquePost({}){
                     <Box display="flex" w="100%" mt={5}>
                         <Button position='static' variant='ghost' onClick={giveLike}><Image src='/stars.png' alt="Stars" w="25px" h="25px" ml={2}/> <Text id='likes' ml={2}>{data.likes}</Text></Button>
                         <Spacer />
+                        {data.display_name == cookies.display_name ? 
                         <Box id='sameAcc' >
                             <Menu>
                                 <MenuButton
@@ -394,6 +396,7 @@ export default function CritiquePost({}){
                                 </MenuList>
                             </Menu>
                         </Box> 
+                        :
                         <Box id='diffAcc'>
                             {/* <Menu>
                                 <MenuButton
@@ -413,7 +416,7 @@ export default function CritiquePost({}){
                                 </MenuGroup>
                                 </MenuList>
                             </Menu> */}
-                        </Box>
+                        </Box>}
                     </Box>
                     {/* Critique Input */}
                     <form onSubmit={giveCritique}>
@@ -426,7 +429,7 @@ export default function CritiquePost({}){
             </Box>
                     {/* Critique */}
                     <Box w={{lg: '40%', sm: '100%'}} bg={useColorModeValue('white', '#212121')} borderRadius={10} h='90vh' p={5} boxShadow='dark-lg' mt={28} ml='3vw'>
-                        {post_id ? <Critiques id={post_id} newCritique={newCritique} /> : <Text>Something is wrong</Text>}
+                        <Critiques id={data.post_id} newCritique={newCritique} />
                     </Box>
                     
                 </Box>

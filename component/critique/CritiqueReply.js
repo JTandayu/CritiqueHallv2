@@ -70,7 +70,7 @@ export const CritiqueReply = ({id, post_id, newReply}) => {
             console.log(error)
         })
 
-    }, [newReply])
+    }, [newReply, id])
 
     const giveStar = (reply_id, e) =>{
         e.preventDefault()
