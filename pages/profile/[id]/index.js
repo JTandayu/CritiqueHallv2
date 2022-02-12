@@ -230,7 +230,7 @@ export default function ProfilePage({}){
                             {userData && userData.display_name === cookies.display_name ? <EditProfile data={userData}/> : null}
                         </Flex>
                         <Text w={{lg: '65vh', md: '100%', sm: '100%'}} fontSize='3xl' color="white">{userData.about_me}</Text>
-                        <Heading size='xl' color={useColorModeValue('#1B1464', '#B2A3FF')} mt={5} display="flex" fontFamily={'Raleway'}>Reputation Stars: <Text fontFamily={'Raleway'} color={useColorModeValue('#C1272D', '#FF5C61')} ml={5} display='flex'>{userData.reputation_points}{userData.reputation_points >= 50 ? <Image src={changeBadgeIcon} alt="Badge Icon" w="50px" h="50px" ml={2}/> : null}</Text></Heading>
+                        <Heading size='xl' color={useColorModeValue('#1B1464', '#B2A3FF')} mt={5} display="flex" fontFamily={'Raleway'}>Reputation Stars: <Text fontFamily={'Raleway'} color={useColorModeValue('#C1272D', '#FF5C61')} ml={5} display='flex'>{userData.reputation_points}{userData.reputation_points >= 10 ? <Image src={changeBadgeIcon} alt="Badge Icon" w="50px" h="50px" ml={2}/> : null}</Text></Heading>
                         <Heading size='xl' color={useColorModeValue('#1B1464', '#B2A3FF')} mt={5} fontFamily={'Raleway'} display='flex'>Specialization: <Text fontFamily={'Raleway'} color={useColorModeValue('#C1272D', '#FF5C61')} ml={5}>{userData.specialization}</Text></Heading>
                     </Box>
                 </Box>
