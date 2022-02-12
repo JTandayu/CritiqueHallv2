@@ -292,6 +292,8 @@ export default function ProfilePage({}){
                                     <Image src={changeStarIcon} alt="Stars" w="25px" h="25px" ml={2}/> {posts.likes}
                                         <Spacer />
                                         <Image src={changeCommentIcon} alt="Critiques" w="25px" h="25px" ml={2}/>  {posts.critiques}
+                                        <Spacer />
+                                        <Text ml={5} isTruncated>{posts.body}</Text>
                                     </Flex>
                                 </Box>
                             </Link>
