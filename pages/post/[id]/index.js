@@ -283,7 +283,7 @@ export default function CritiquePost(){
                     <Box mt={5}>
                         {/* <Heading size='md'>Description</Heading> */}
                         <Linkify>
-                            <Text fontFamily={'Raleway'} textAlign={'justify'} w={{lg: '45vw', sm: '100%'}} mx='auto' mt={5}>{data.body}</Text>
+                            <Text fontFamily={'Raleway'} fontSize='sm' textAlign={'justify'} w={{lg: '45vw', sm: '100%'}} mx='auto' mt={5}>{data.body}</Text>
                         </Linkify>
                     </Box>
 
