@@ -168,7 +168,7 @@ export const CritiqueReply = ({id, post_id, newReply}) => {
                                 {Number(reply.reputation_points) >= 50 ? <Image src='/badge-icon.png' alt="Badge" w="25px" h="25px" ml={3} mt={2} /> : null}
                                 <Spacer />
                                 <Text fontFamily={'Raleway'} fontSize='sm' mt={2}>{reply.time_ago}</Text>
-                                {critique.is_edited == 1 ?  
+                                {reply.is_edited == 1 ?  
                                 <Menu>
                                     <MenuButton
                                     px={4}
