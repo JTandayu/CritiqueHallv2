@@ -99,7 +99,7 @@ function CreatePost({data}) {
     const [counter, setCounter] = useState(0)
     const [fileName, setFileName] = useState([])
     const [urls, setUrls] = useState([]); 
-    console.log(image.length)
+    // console.log(image.length)
 
     const uploadFiles = () => {
         if(urls.length > 4){
@@ -107,7 +107,7 @@ function CreatePost({data}) {
                 ,status: 'error', isClosable: true});
             return;
         }
-        if (counter >= 5){
+        if (counter > 5){
             toastIdRef.current = toast({title: 'Maximum of 5 files only. Please attach link of file instead'
                 ,status: 'error', isClosable: true});
             return null;
@@ -143,33 +143,37 @@ function CreatePost({data}) {
    
 
     const handleChange = e =>{
+        console.log(counter)
+        console.log(e.target.files.length)
 
         if(e.target.files.length > 5 - counter){
             toastIdRef.current = toast({title: 'Maximum of 5 files only. Please attach link of file instead'
                     ,status: 'error', isClosable: true});
             return null;
-        }
-        
-        for(let i = 0; i < e.target.files.length; i++){
-            // console.log(e.target.files[i].size)
-            if(e.target.files[i].size > 25000000){
-                toastIdRef.current = toast({
-                    title: "File size is higher than the limit.",
-                    status: 'error',
-                    isClosable: true,
-                  })
-                // console.log(image)
-                return;
-            }
-            else{
-                const newImage = e.target.files[i]
-                newImage['id'] = Math.random()
-                setImage((prevState) => [...prevState, newImage])
-                setCounter(counter + 1)
+        }else{
+            for(let i = 0; i < e.target.files.length; i++){
+                // console.log(e.target.files[i].size)
+                if(e.target.files[i].size > 25000000){
+                    toastIdRef.current = toast({
+                        title: "File size is higher than the limit.",
+                        status: 'error',
+                        isClosable: true,
+                      })
+                    // console.log(image)
+                    return;
+                }
+                else{
+                    const newImage = e.target.files[i]
+                    newImage['id'] = Math.random()
+                    setImage((prevState) => [...prevState, newImage])
+                    setCounter(prevCount => prevCount + 1)
+                    
+                }
                 
             }
-            
         }
+        
+        
     }
 
     const deleteFile = async (filename, i) =>{
@@ -251,6 +255,10 @@ function CreatePost({data}) {
         onClose()
     }
 
+    const openInput = async() => {
+        document.getElementById('image-input').click();
+    }
+
     return(
         <>
         <button onClick={onOpen} className={useColorModeValue(styles.cpbutton, styles.cpbutton2)}>Create Post</button>
@@ -307,8 +315,8 @@ function CreatePost({data}) {
                         <Flex flexDir={{lg: 'row', sm: 'column'}} w='30vw'>
                             <Heading fontFamily={'Raleway'} size='sm' mr={3}>Attachments<Text fontSize="sm" color={useColorModeValue('gray', 'gray')}>(optional)</Text></Heading>
                             {/* <Button bg='blue.400' color='white' ml={5} h='2em'>upload</Button> */}
-                            <input type='file' multiple onChange={handleChange} accept=".jpg, .png, .docx, .xls" id='image-input' />
-                            {/* <Button bg='yellow.400' color='black' _hover={{background: 'yellow.500'}} onClick={handleChange} ml={5}>Choose Files</Button> */}
+                            <input type='file' multiple onChange={handleChange} accept=".jpg, .png, .docx, .xls" id='image-input' hidden />
+                            <Button bg='yellow.400' color='black' _hover={{background: 'yellow.500'}} onClick={openInput} ml={5}>Choose Files</Button>
                             <Button bg='blue.400' color='white' _hover={{background: 'blue.400'}} onClick={uploadFiles} ml={5}>Upload</Button>
                         </Flex>
                         <Flex bgColor={useColorModeValue('#F4F4F4', '#2E2E2E')} w={{lg: '20vw', sm: '100%'}} h='10vh' rounded='md' overflowX='auto' mt={3}

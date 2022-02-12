@@ -109,7 +109,6 @@ export default function Login({user}) {
       } else{
       axios.post(`${API_URL}/api/login`, formData, config)
       .then(response => {
-          toastIdRef.current = toast({ title: 'Login Successful!', status: 'success', duration: 3000, isClosable: false })
           console.log(response.data);
           setCookies('token', response.data.token)
           setCookies('display_name', response.data.display_name)
@@ -117,11 +116,16 @@ export default function Login({user}) {
           setCookies('encrypted_id', response.data.encrypted_id)
           setCookies('profile_pic', response.data.profile_pic)
           document.getElementById('warning1').hidden=true;
-          if(response.data.status === "Email not verified"){
-            router.push("/confirmation")
+
+          if(response.data.status === 'Email not verified'){
+            toastIdRef.current = toast({ title: 'Email Not Verified!', status: 'error', duration: 3000, isClosable: false })
+            router.replace("/confirmation")
+          }else{
+            toastIdRef.current = toast({ title: 'Login Successful!', status: 'success', duration: 3000, isClosable: false })
+            router.push("/home")
           }
           // window.location.href = "/home"
-          router.push("/home")
+          
       })
       .catch(error => {
           // toastIdRef.current = toast({ title: 'Login Unsuccessful!', status: 'error', duration: 3000, isClosable: false })
