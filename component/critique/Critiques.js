@@ -269,7 +269,7 @@ export const Critiques = ({id, newCritique}) => {
                                     </Menu>
                                 </Flex>
                                 <Box w='100%' mt={1}>
-                                    <Text fontFamily={'Raleway'} fontSize='md'>{critique.body}</Text>
+                                    <Text fontFamily={'Raleway'} textAlign={'justify'} fontSize='md'>{critique.body}</Text>
                                 </Box>
                                 <Flex w='20vw'>
                                     <Button variant='ghost' onClick={()=>giveStar(critique.critique_id)}><Image src='/stars.png' alt="Stars" w="25px" h="25px" ml={2} mr={2}/> <Text id={`star${critique.critique_id}`}>{critique.stars}</Text></Button>
