@@ -91,7 +91,7 @@ export const Critiques = ({id, newCritique}) => {
             console.log(error)
         })
         
-    }, [newCritique])
+    }, [newCritique, id])
 
     const openReply = async(id) =>{
         document.getElementById(id).removeAttribute('hidden');
