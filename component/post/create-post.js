@@ -96,14 +96,21 @@ function CreatePost({data}) {
 
     const [progress, setProgress] = useState(0);
     const [image, setImage] = useState([])
+    const [counter, setCounter] = useState(0)
     const [fileName, setFileName] = useState([])
     const [urls, setUrls] = useState([]); 
+    console.log(image.length)
 
     const uploadFiles = () => {
         if(urls.length > 4){
-            toastIdRef.current = toast({title: 'Maximum of 5 files only. Please attach link of google drive file instead'
+            toastIdRef.current = toast({title: 'Maximum of 5 files only. Please attach link of file instead'
                 ,status: 'error', isClosable: true});
             return;
+        }
+        if (counter >= 5){
+            toastIdRef.current = toast({title: 'Maximum of 5 files only. Please attach link of file instead'
+                ,status: 'error', isClosable: true});
+            return null;
         }
         const promises = []
         if (!image) return;
@@ -135,6 +142,13 @@ function CreatePost({data}) {
    
 
     const handleChange = e =>{
+
+        if(e.target.files.length > 5 - (counter + 1)){
+            toastIdRef.current = toast({title: 'Maximum of 5 files only. Please attach link of file instead'
+                    ,status: 'error', isClosable: true});
+            return null;
+        }
+        
         for(let i = 0; i < e.target.files.length; i++){
             // console.log(e.target.files[i].size)
             if(e.target.files[i].size > 25000000){
@@ -145,10 +159,12 @@ function CreatePost({data}) {
                   })
                 // console.log(image)
                 return;
-            }else{
+            }
+            else{
                 const newImage = e.target.files[i]
                 newImage['id'] = Math.random()
                 setImage((prevState) => [...prevState, newImage])
+                setCounter(counter + 1)
                 
             }
             
@@ -230,6 +246,7 @@ function CreatePost({data}) {
         setFileName([])
         setImage([])
         setUrls([])
+        setCounter(0)
         onClose()
     }
 
