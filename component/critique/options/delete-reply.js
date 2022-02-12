@@ -53,7 +53,7 @@ const DeleteReply = ({id}) => {
           
             <Modal isOpen={isOpen} onClose={onClose}>
                 <ModalOverlay />
-                    <ModalContent maxW="40rem" h='22vh'>
+                    <ModalContent maxW="40rem" h='20vh'>
                     <ModalHeader fontFamily={'Raleway'}>Delete Reply</ModalHeader>
                     <ModalCloseButton />
                     <ModalBody fontFamily={'Raleway'}>
