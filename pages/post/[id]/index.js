@@ -153,7 +153,7 @@ export default function CritiquePost(){
         axios.get(`${API_URL}/api/display_post/${post_id}`, config)
         .then(response => {
             console.log(response.data);
-            // setNewCritique('temp')
+            setNewCritique('temp')
             fileName1 = ref(storage, response.data.post.attachment1).name; 
             fileName2 = ref(storage, response.data.post.attachment2).name; 
             fileName3 = ref(storage, response.data.post.attachment3).name; 
@@ -189,12 +189,12 @@ export default function CritiquePost(){
             
         })
         .catch(error => {
-            console.log(error.response);
+            console.log(error);
         });
 
         
 
-    }, [router.isReady, post_id])
+    }, [router.isReady])
 
     
 

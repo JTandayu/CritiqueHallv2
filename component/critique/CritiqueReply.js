@@ -23,6 +23,7 @@ import { extendTheme } from '@chakra-ui/react'
 import EditReply from './options/edit-reply'
 import DeleteReply from './options/delete-reply'
 import EditReplyHistory from './options/edit-reply-history'
+import { useRouter } from 'next/router'
 
 const breakpoints = createBreakpoints({
     sm: '320px',
@@ -39,7 +40,8 @@ export const CritiqueReply = ({id, post_id, newReply}) => {
     const { API_KEY } = process.env
     const [cookie, setCookie] = useCookies('token', 'id', 'encrypted_id', 'display_name')
     const [critiqueReply, setCritiqueReply] =  useState([])
-    console.log(post_id)
+    const router = useRouter()
+    // console.log(post_id)
 
     const config = {
         headers: { 
@@ -61,14 +63,14 @@ export const CritiqueReply = ({id, post_id, newReply}) => {
 
         axios.post(`${API_URL}/api/display_replies`, formData, config)
         .then((response) =>{
-            console.log(response.data)
+            console.log(response)
             setCritiqueReply(response.data.data)
 
         }).catch((error) =>{
             console.log(error)
         })
 
-    }, [newReply, post_id])
+    }, [newReply])
 
     const giveStar = (reply_id, e) =>{
         e.preventDefault()
@@ -81,7 +83,7 @@ export const CritiqueReply = ({id, post_id, newReply}) => {
             console.log(response.data)
             document.getElementById(reply_id).innerHTML=response.data.stars;
         }).catch((error) =>{
-            console.log(error.response)
+            console.log(error)
         })
     }
 
@@ -105,7 +107,7 @@ export const CritiqueReply = ({id, post_id, newReply}) => {
             }
 
         }).catch((error) =>{
-            console.log(error.response)
+            console.log(error)
         })
     }
 
