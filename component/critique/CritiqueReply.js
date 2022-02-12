@@ -1,6 +1,6 @@
 import React from 'react'
 import { useEffect, useState } from 'react'
-import {Box, Flex, Heading, Image, Spacer, Text, Button} from '@chakra-ui/react'
+import {Box, Flex, Heading, Image, Spacer, Text, Button, useColorModeValue } from '@chakra-ui/react'
 import {
     Menu,
     MenuButton,
@@ -42,6 +42,9 @@ export const CritiqueReply = ({id, post_id, newReply}) => {
     const [critiqueReply, setCritiqueReply] =  useState([])
     const router = useRouter()
     // console.log(post_id)
+
+    const changeIcon = useColorModeValue('/stars.png', '/stars-dark.png')
+    const changeBadgeIcon = useColorModeValue('/badge-icon.png', '/badge-icon-dark.png')
 
     const config = {
         headers: { 
@@ -123,7 +126,7 @@ export const CritiqueReply = ({id, post_id, newReply}) => {
                                 <Image src={reply.profile_photo} w='3vh' h='3vh' mt={2} />
                                 <Heading fontFamily={'Raleway'} size='md' ml={3} mt={2}>{reply.display_name}</Heading>
                                 {reply.starred_by_author == '1' ? <Image src='/reputation-stars.png' alt="Reputation Stars" w="25px" h="25px" ml={3} mt={2} /> : null}
-                                {Number(reply.reputation_points) >= 50 ? <Image src='/badge-icon.png' alt="Badge" w="25px" h="25px" ml={3} mt={2} /> : null}
+                                {Number(reply.reputation_points) >= 50 ? <Image src={changeBadgeIcon} alt="Badge" w="25px" h="25px" ml={3} mt={2} /> : null}
                                 <Spacer />
                                 <Text fontFamily={'Raleway'} fontSize='sm' mt={2}>{reply.time_ago}</Text>
 
@@ -151,7 +154,7 @@ export const CritiqueReply = ({id, post_id, newReply}) => {
                                 <Text fontFamily={'Raleway'} fontSize='sm' textAlign={'justify'}>{reply.body}</Text>
                             </Box>
                             <Flex w='20vw'>
-                                <Button variant='ghost' onClick={(e)=>giveStar(reply.reply_id, e)}><Image src='/stars.png' alt="Stars" w="25px" h="25px" ml={2} mr={2}/> <Text id={reply.reply_id}>{reply.stars}</Text></Button>
+                                <Button variant='ghost' onClick={(e)=>giveStar(reply.reply_id, e)}><Image src={changeIcon} alt="Stars" w="25px" h="25px" ml={2} mr={2}/> <Text id={reply.reply_id}>{reply.stars}</Text></Button>
                                 {reply.is_edited == 1 ? <Text fontFamily={'Raleway'}>(Edited)</Text> : null}
                         </Flex>
 
@@ -165,7 +168,7 @@ export const CritiqueReply = ({id, post_id, newReply}) => {
                                 <Image src={reply.profile_photo} w='3vh' h='3vh' mt={2} />
                                 <Heading fontSize={'Raleway'} size='md' ml={3} mt={2}>{reply.display_name}</Heading>
                                 {reply.starred_by_author == '1' ? <Image src='/reputation-stars.png' alt="Reputation Stars" w="25px" h="25px" ml={3} mt={2} /> : null}
-                                {Number(reply.reputation_points) >= 50 ? <Image src='/badge-icon.png' alt="Badge" w="25px" h="25px" ml={3} mt={2} /> : null}
+                                {Number(reply.reputation_points) >= 50 ? <Image src={changeBadgeIcon} alt="Badge" w="25px" h="25px" ml={3} mt={2} /> : null}
                                 <Spacer />
                                 <Text fontFamily={'Raleway'} fontSize='sm' mt={2}>{reply.time_ago}</Text>
                                 {reply.is_edited == 1 ?  
@@ -188,7 +191,7 @@ export const CritiqueReply = ({id, post_id, newReply}) => {
                                 <Text fontSize='md' fontFamily={'Raleway'}  textAlign={'justify'}>{reply.body}</Text>
                             </Box>
                             <Flex w='20vw'>
-                                <Button variant='ghost' onClick={(e)=>giveStar(reply.reply_id, e)}><Image src='/stars.png' alt="Stars" w="25px" h="25px" ml={2} mr={2}/> <Text id={reply.reply_id}>{reply.stars}</Text></Button>
+                                <Button variant='ghost' onClick={(e)=>giveStar(reply.reply_id, e)}><Image src={changeIcon} alt="Stars" w="25px" h="25px" ml={2} mr={2}/> <Text id={reply.reply_id}>{reply.stars}</Text></Button>
                                 {reply.is_edited == 1 ? <Text fontFamily={'Raleway'}>(Edited)</Text> : null}
                         </Flex>
 

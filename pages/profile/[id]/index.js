@@ -75,6 +75,8 @@ export default function ProfilePage({}){
 
     const changeColorBox = useColorModeValue('#E5E5E5', '#2E2E2E')
     const changeBadgeIcon = useColorModeValue('/badge-icon.png', '/badge-icon-dark.png')
+    const changeStarIcon = useColorModeValue('/stars-clicked.png', '/stars-clicked-dark.png')
+    const changeCommentIcon = useColorModeValue('/comments.png', '/comments-dark.png')
 
     const config = {
         headers: { 
@@ -287,9 +289,9 @@ export default function ProfilePage({}){
                                         : <Image _hover={{cursor: 'pointer'}} src="/no-image-preview.png" w={{lg: '400px', sm: '300px'}} h='20vh' borderRadius={10} boxShadow="md"/>}
                                     </Center>
                                     <Flex w='100%' p={3} fontFamily={'Raleway'}>
-                                    <Image src='/stars-clicked.png' alt="Stars" w="25px" h="25px" ml={2}/> {posts.likes}
+                                    <Image src={changeStarIcon} alt="Stars" w="25px" h="25px" ml={2}/> {posts.likes}
                                         <Spacer />
-                                        <Image src='/comments.png' alt="Critiques" w="25px" h="25px" ml={2}/>  {posts.critiques}
+                                        <Image src={changeCommentIcon} alt="Critiques" w="25px" h="25px" ml={2}/>  {posts.critiques}
                                     </Flex>
                                 </Box>
                             </Link>
@@ -309,7 +311,7 @@ export default function ProfilePage({}){
                                         : <Image _hover={{cursor: 'pointer'}} src="/no-image-preview.png" w={{lg: '400px', sm: '300px'}} h='20vh' borderRadius={10} boxShadow="md"/>}
                                     </Center>
                                     <Flex w='100%' p={3} fontFamily={'Raleway'}>
-                                    <Image src='/stars-clicked.png' alt="Stars" w="25px" h="25px" ml={2}/> {critique.stars}
+                                    <Image src={changeStarIcon} alt="Stars" w="25px" h="25px" ml={2}/> {critique.stars}
                                         <Spacer />
                                         <Text>{critique.body}</Text>
                                     </Flex>
