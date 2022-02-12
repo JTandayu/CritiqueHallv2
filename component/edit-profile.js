@@ -294,7 +294,7 @@ function EditProfile({data}) {
                             <Image rounded='full' src={data.profile_photo} w='7vw' h='7vw'></Image>
                             <Center mt={3}>
                                 <input type='file' onChange={(e)=>setProfileImage(e.target.files)} id='profile-picture-input' hidden/>
-                                <Button bg='yellow.400' color='black' _hover={{background: 'yellow.500'}} onClick={openProfilePicture} ml={5}>Choose<EditIcon ml={2}/></Button>
+                                <Button fontFamily={'Raleway'} bg='yellow.400' color='black' _hover={{background: 'yellow.500'}} onClick={openProfilePicture} ml={5}>Choose<EditIcon ml={2}/></Button>
                                 {/* {console.log(profileImage)} */}
                             </Center>
                         </Flex>
@@ -304,7 +304,7 @@ function EditProfile({data}) {
                             <Image src={data.cover_photo} w='14vw' h='7vw'></Image>
                             <Center mt={3}>
                                 <input type='file' onChange={(e)=>setCoverImage(e.target.files)} id='cover-picture-input' hidden/>
-                                <Button bg='yellow.400' color='black' _hover={{background: 'yellow.500'}} onClick={openCoverPicture} ml={5}>Choose<EditIcon ml={2} /></Button>
+                                <Button fontFamily={'Raleway'} bg='yellow.400' color='black' _hover={{background: 'yellow.500'}} onClick={openCoverPicture} ml={5}>Choose<EditIcon ml={2} /></Button>
                             </Center>
                         </Flex>
                     </Flex>
@@ -312,7 +312,7 @@ function EditProfile({data}) {
                     <Box w="full" mb={8}>
                         <Center>
                             {loading ? <Spinner /> : null}
-                            <Button bg='blue.400' color='white' _hover={{background: 'blue.400'}} align="right" onClick={uploadFiles}>Upload Profile / Cover Picture</Button>          
+                            <Button fontFamily={'Raleway'} bg='blue.400' color='white' _hover={{background: 'blue.700'}} align="right" onClick={uploadFiles}>Upload Profile / Cover Picture</Button>          
                         </Center>
                     </Box>
                     {/* <Flex mb={5}>
