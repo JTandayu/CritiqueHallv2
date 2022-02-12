@@ -185,15 +185,16 @@ export default function Nav(data, profile_pic){
         const getNotif = setInterval(()=>{
             axios.get(`${API_URL}/api/get_notifs`, config)
             .then(response => {
-                // console.log(response.data);      
+                console.log(response.data);      
                 setNotif(response.data.status)
                 setFirstId(response.data.status[0].notifs_id)
             })
             .catch(error => {
                 // console.log(error.response.data.error);
             });
-        }, 300000)
+        }, 15000)
 
+        return () => clearInterval(getNotif)
         
     }, [])
 
@@ -390,17 +391,17 @@ export default function Nav(data, profile_pic){
                             _active={{bgColor: 'none'}}
                             onClick={changeDarkAndLightIcon}
                             > <Img src={ImgUrl} alt="moon" w="2em" h="2em" ml={-20} /></Button>
-                    <PopoverContent w="400px">
+                    <PopoverContent w="450px">
                         <PopoverArrow />
                         <PopoverCloseButton />
                         <PopoverHeader fontFamily={'Raleway'}>Notifications</PopoverHeader>
-                        <PopoverBody fontFamily={'Raleway'}>
+                        <PopoverBody fontFamily={'Raleway'} overflowY="auto">
                             {notif.map((notification, i) =>
-                            <Box key={i} display='flex'>
+                            <Box key={i} display='flex' w="full" p={3}>
                                 {notification.profile_photo ? <Img src={notification.profile_photo} mr={3} w="25px" h="25px" alt="Notification Image" /> : null}
                                 <Text mr={3} fontFamily={'Raleway'}>{notification.display_name}</Text>
                                 <Text mr={2} fontFamily={'Raleway'}>{notification.action}</Text>
-                                <Text w="full" fontFamily={'Raleway'}>{notification.title}</Text>
+                                <Text w="full" fontFamily={'Raleway'} isTruncated>{notification.title}</Text>
                             <Divider />
                             </Box>
                             )}
