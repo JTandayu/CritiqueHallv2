@@ -36,6 +36,7 @@ import axios from "axios";
 import { useRouter } from "next/router";
 import {useToast} from '@chakra-ui/react'
 import React from "react";
+import { EditIcon } from '@chakra-ui/icons'
 
 // export async function getServerSideProps(context) {
 //     const res = await fetch(`https://...`)
@@ -261,6 +262,14 @@ function EditProfile({data}) {
         ))
     }
 
+    const openProfilePicture = async() => {
+        document.getElementById('profile-picture-input').click();
+    }
+
+    const openCoverPicture = async() => {
+        document.getElementById('cover-picture-input').click();
+    }
+
     return(
         <>
         <Button fontFamily={'Raleway'} onClick={onOpen} bgColor={useColorModeValue('#29226E', '#7A6FAF')} color='white' _hover={{background: 'blue.400'}} position='static'>Settings</Button>
@@ -278,12 +287,14 @@ function EditProfile({data}) {
                         <Spacer />
                         {/* <Button>Edit</Button> */}
                     </Flex>
+                    <Divider mt={1}/>
                     <Flex p={7}>
                         <Flex flexDir='column' align='center'>
                             <Heading fontFamily={'Raleway'} size='md' mb={5}>Profile Picture</Heading>
                             <Image rounded='full' src={data.profile_photo} w='7vw' h='7vw'></Image>
                             <Center mt={3}>
-                                <input type='file' onChange={(e)=>setProfileImage(e.target.files)}/>
+                                <input type='file' onChange={(e)=>setProfileImage(e.target.files)} id='profile-picture-input' hidden/>
+                                <Button bg='yellow.400' color='black' _hover={{background: 'yellow.500'}} onClick={openProfilePicture} ml={5}>Choose<EditIcon ml={2}/></Button>
                                 {/* {console.log(profileImage)} */}
                             </Center>
                         </Flex>
@@ -292,7 +303,8 @@ function EditProfile({data}) {
                             <Heading fontFamily={'Raleway'} size='md' mb={3}>Cover Picture</Heading>
                             <Image src={data.cover_photo} w='14vw' h='7vw'></Image>
                             <Center mt={3}>
-                                <input type='file' onChange={(e)=>setCoverImage(e.target.files)}/>
+                                <input type='file' onChange={(e)=>setCoverImage(e.target.files)} id='cover-picture-input' hidden/>
+                                <Button bg='yellow.400' color='black' _hover={{background: 'yellow.500'}} onClick={openCoverPicture} ml={5}>Choose<EditIcon ml={2} /></Button>
                             </Center>
                         </Flex>
                     </Flex>
@@ -300,13 +312,14 @@ function EditProfile({data}) {
                     <Box w="full" mb={8}>
                         <Center>
                             {loading ? <Spinner /> : null}
-                            <Button bg='blue.400' color='white' _hover={{background: 'blue.400'}} align="right" onClick={uploadFiles}>Upload Images</Button>          
+                            <Button bg='blue.400' color='white' _hover={{background: 'blue.400'}} align="right" onClick={uploadFiles}>Upload Profile / Cover Picture</Button>          
                         </Center>
                     </Box>
                     {/* <Flex mb={5}>
                         <FormLabel>Change Color Profile Background</FormLabel>
                         <Input type='text' w='5vw' bg="white" color='black' />
                     </Flex> */}
+                    <Divider mb={5} mt={5}/>
                     <Flex mb={5} >
                         <Flex>
                             <FormLabel fontFamily={'Raleway'} w='7vw'>First Name</FormLabel>
