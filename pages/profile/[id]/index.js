@@ -311,7 +311,7 @@ export default function ProfilePage({}){
                                     <Flex w='100%' p={3} fontFamily={'Raleway'}>
                                     <Image src='/stars-clicked.png' alt="Stars" w="25px" h="25px" ml={2}/> {critique.stars}
                                         <Spacer />
-                                        <Text>{critique.body}</Text>
+                                        <Text isTruncated>{critique.critique}</Text>
                                     </Flex>
                                 </Box>
                             </Link>)    
