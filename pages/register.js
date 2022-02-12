@@ -291,7 +291,7 @@ export default function Register({data2}) {
                 <FormLabel>Department</FormLabel>
                 <Select borderColor={useColorModeValue('black', 'white')} borderRadius="lg" className={styles.input_select} placeholder="Choose" size="sm" onChange={e => getSpecList(e.target.value)}>
                   {depList.map((department, i) => (
-                    <option value={department.name} key={i}>{department.name}</option>
+                    <option disabled={department.name === "College" || department.name === "SHS" ? true : null} value={department.name} key={i}>{department.name}</option>
                   ))}
                 </Select>
                 </Box>
@@ -334,7 +334,7 @@ export default function Register({data2}) {
                 <FormLabel>Department</FormLabel>
                 <Select borderColor={useColorModeValue('black', 'white')}  className={styles.input_select} placeholder="Select Department" size="sm" onChange={e => getSpecList(e.target.value)}>
                   {depList.map((department, i) => (
-                    <option value={department.name} key={i}>{department.name}</option>
+                    <option disabled={department.name === "Shs" ? true : null} value={department.name} key={i}>{department.name}</option>
                   ))}
                 {/* <option value="shs">Senior High School (SHS)</option>
                 <option value="col">College (COL)</option> */}
