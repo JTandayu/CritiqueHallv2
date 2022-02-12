@@ -441,13 +441,13 @@ export default function Nav(data, profile_pic){
         w='60vw'
         bg={useColorModeValue('white', '#212121')}
         zIndex={20}
-        h='100vh'
+        h='full'
         pos='fixed'
         top='0'
         left='0'
         overflowY='auto'
         flexDir='column'
-        display={{sm: display, lg: 'none'}}
+        display={{sm: display, lg: 'none', base: display}}
         boxShadow='lg'
         >
             <Flex justify='flex-start'>

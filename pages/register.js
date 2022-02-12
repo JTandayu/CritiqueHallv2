@@ -138,6 +138,9 @@ export default function Register({data2}) {
 
       setDepartment(e)
 
+      let formData = new FormData;
+      formData.append('dept', e)
+
       const config = {
         headers: { 
           'content-type': 'multipart/form-data',
@@ -147,7 +150,7 @@ export default function Register({data2}) {
         }
       }
 
-      axios.get(`${API_URL}/api/get_dept_special/${e}`, config)
+      axios.post(`${API_URL}/api/get_dept_special`, formData, config)
       .then(response => {
           console.log(response);
           setSpecList(response.data.specializations);
