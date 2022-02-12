@@ -41,7 +41,7 @@ export const CritiqueReply = ({id, post_id, newReply}) => {
     const [cookie, setCookie] = useCookies('token', 'id', 'encrypted_id', 'display_name')
     const [critiqueReply, setCritiqueReply] =  useState([])
     const router = useRouter()
-    console.log(post_id)
+    // console.log(post_id)
 
     const config = {
         headers: { 
@@ -63,7 +63,7 @@ export const CritiqueReply = ({id, post_id, newReply}) => {
 
         axios.post(`${API_URL}/api/display_replies`, formData, config)
         .then((response) =>{
-            console.log(response.data)
+            console.log(response)
             setCritiqueReply(response.data.data)
 
         }).catch((error) =>{
@@ -83,7 +83,7 @@ export const CritiqueReply = ({id, post_id, newReply}) => {
             console.log(response.data)
             document.getElementById(reply_id).innerHTML=response.data.stars;
         }).catch((error) =>{
-            console.log(error.response)
+            console.log(error)
         })
     }
 
@@ -107,7 +107,7 @@ export const CritiqueReply = ({id, post_id, newReply}) => {
             }
 
         }).catch((error) =>{
-            console.log(error.response)
+            console.log(error)
         })
     }
 

@@ -78,37 +78,11 @@ export const Critiques = ({id, newCritique}) => {
 
         axios.post(`${API_URL}/api/display_all_critiques`, formData, config)
         .then((response) =>{
-            console.log(response.data)
+            console.log(response)
             setCritiqueItems(response.data.data)
             setLoading(false)
             // document.getElementById(response.data.data.critique_id).hidden=true
-            console.log(response.data.data[0])
-            
-            for(let i = 0; i < response.data.data.length; i++){
-                if(i == response.data.data.length - 1){
-                    setLastID(response.data.data[i].critique_id)
-                }
-            }
-        }).catch((error) =>{
-            console.log(error)
-        })
-        
-    }, [])
-
-    useEffect(() => {
-        
-        let formData = new FormData;
-        formData.append('post_id', id);
-        formData.append('last_id', null);
-        formData.append('sort', filter)
-
-        axios.post(`${API_URL}/api/display_all_critiques`, formData, config)
-        .then((response) =>{
-            console.log(response.data)
-            setCritiqueItems(response.data.data)
-            setLoading(false)
-            // document.getElementById(response.data.data.critique_id).hidden=true
-            console.log(response.data.data[0])
+            // console.log(response.data.data[0])
             
             for(let i = 0; i < response.data.data.length; i++){
                 if(i == response.data.data.length - 1){
@@ -259,11 +233,11 @@ export const Critiques = ({id, newCritique}) => {
                 }} mt={5}>
             {loading ? <Box>Loading...</Box> :
              critiqueItems.length != 0 ?
-                critiqueItems.map((critique) => { 
+                critiqueItems.map((critique, i) => { 
                     if(critique.display_name === cookie.display_name){
                     return(
                         <>
-                        <Box p="2" overflow-y="auto" w={{lg: '35vw', sm: '100%'}} mt={5} position='static'>
+                        <Box p="2" overflow-y="auto" w={{lg: '35vw', sm: '100%'}} mt={5} position='static' key={i}>
                                 <Flex>
                                     <Image src={critique.profile_photo} w='3vh' h='3vh' mt={2} />
                                     <Heading fontFamily={'Raleway'} size='md' ml={3} mt={2}>{critique.display_name}</Heading>
@@ -321,7 +295,7 @@ export const Critiques = ({id, newCritique}) => {
 
                 return(
                         <>
-                        <Box p="2" overflow-y="auto" w={{lg: '35vw', sm: '100%'}} mt={5} position='static'>
+                        <Box p="2" overflow-y="auto" w={{lg: '35vw', sm: '100%'}} mt={5} position='static' key={i}>
                                 <Flex>
                                     <Image src={critique.profile_photo} w='3vh' h='3vh' mt={2} />
                                     <Heading fontFamily={'Raleway'} size='sm' ml={3} mt={2}>{critique.display_name}</Heading>
