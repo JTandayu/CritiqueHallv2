@@ -428,7 +428,7 @@ export default function HallPage(){
                                             </Box>
                                         </Center>
                                     </Box>
-                                    <Box p="3" w="100%" bg="light" my='auto' ml={'20%'} mr={'20%'}>
+                                    <Box p="3" w="100%" bg="light" my='auto' ml={'20%'} mr={'15%'}>
                                         <Center>
                                         {post.attachment1 != 'undefined' ? 
                                         <Image src={post.attachment1} w={{lg: '10vw', sm:'100%'}} h={{lg: '10vh', sm: '20vh'}} onError={addDefaultSrc} borderRadius={10}/>
@@ -448,7 +448,7 @@ export default function HallPage(){
                                     </Box>
                                     <Box fontFamily={'Raleway'} p="3" w="100%" bg="light" my='auto'>
                                         <Center>
-                                        <Image src={post.profile_photo} w="25px" h="25px" mr={3}/> {post.display_name}
+                                        <Image src={post.profile_photo} w="50px" h="50px" mr={3} borderRadius={10}/> {post.display_name}
                                         </Center>
                                     </Box>
                                 </Box>

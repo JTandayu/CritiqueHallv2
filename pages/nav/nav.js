@@ -362,7 +362,7 @@ export default function Nav(data, profile_pic){
         <Flex
             pos='fixed'
             top='1rem'
-            right='3rem'
+            right='5rem'
             align='center'
             w="15em"
         >
@@ -379,7 +379,7 @@ export default function Nav(data, profile_pic){
                             _hover={{cursor:'pointer', textDecoration:'underline'}}
                             _active={{bgColor: 'none', textDecoration:'underline'}}
                             onClick={readNotif}
-                        ><Img src={useColorModeValue('/notification-alert-icon.png', '/notification-alert-icon-dark.png')} alt="Notification" w="2em" h="2em" ml={-5} /></Button>
+                        ><Img className={styles.darkicon2} src={useColorModeValue('/notification-alert-icon.png', '/notification-alert-icon-dark.png')} alt="Notification" w="2em" h="2em" ml={-5}/></Button>
                     </PopoverTrigger>
                     <Button as='a'
                             variant='ghost'
@@ -390,7 +390,7 @@ export default function Nav(data, profile_pic){
                             _hover={{cursor:'pointer'}}
                             _active={{bgColor: 'none'}}
                             onClick={changeDarkAndLightIcon}
-                            > <Img src={ImgUrl} alt="moon" w="2em" h="2em" ml={-20} /></Button>
+                            > <Img className={styles.darkicon2} src={ImgUrl} alt="moon" w="2em" h="2em" ml={-20} /></Button>
                     <PopoverContent w="450px">
                         <PopoverArrow />
                         <PopoverCloseButton />
@@ -419,7 +419,7 @@ export default function Nav(data, profile_pic){
                     <Flex>
                         {/* <Image src=""></Image> */}
                         {/* <Img src='https://www.clipartmax.com/png/middle/119-1198197_anonymous-person-svg-png-icon-free-download-anonymous-icon-png.png' w='2vw' h='2vw'></Img> */}
-                        <Img src={profPic} w='2vw' h='2vw'></Img>
+                        <Img src={profPic} w='3vw' h='3vw' borderRadius={10}></Img>
                         {/* <Text fontFamily={'Raleway'} fontWeight={'bold'} mt={2} ml={1}>{display_name}</Text> */}
                         {/* <Text ml={1} mr={3}>{user_id}</Text> */}
                         <ChevronDownIcon ml={1} mt={3} />
