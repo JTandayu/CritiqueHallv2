@@ -70,6 +70,7 @@ export const Critiques = ({id, newCritique}) => {
     };
 
     useEffect(() => {
+        if(!router.isReady) return;
         
         let formData = new FormData;
         formData.append('post_id', id);
