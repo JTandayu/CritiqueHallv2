@@ -63,7 +63,7 @@ export const CritiqueReply = ({id, post_id, newReply}) => {
 
         axios.post(`${API_URL}/api/display_replies`, formData, config)
         .then((response) =>{
-            console.log(response)
+            // console.log(response)
             setCritiqueReply(response.data.data)
 
         }).catch((error) =>{

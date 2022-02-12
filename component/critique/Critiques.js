@@ -78,7 +78,7 @@ export const Critiques = ({id, newCritique}) => {
 
         axios.post(`${API_URL}/api/display_all_critiques`, formData, config)
         .then((response) =>{
-            console.log(response)
+            // console.log(response)
             setCritiqueItems(response.data.data)
             setLoading(false)
             // document.getElementById(response.data.data.critique_id).hidden=true
@@ -236,8 +236,8 @@ export const Critiques = ({id, newCritique}) => {
                 critiqueItems.map((critique, i) => { 
                     if(critique.display_name === cookie.display_name){
                     return(
-                        <>
-                        <Box p="2" overflow-y="auto" w={{lg: '35vw', sm: '100%'}} mt={5} position='static' key={i}>
+                        <Box key={i}>
+                        <Box p="2" overflow-y="auto" w={{lg: '35vw', sm: '100%'}} mt={5} position='static' >
                                 <Flex>
                                     <Image src={critique.profile_photo} w='3vh' h='3vh' mt={2} />
                                     <Heading fontFamily={'Raleway'} size='md' ml={3} mt={2}>{critique.display_name}</Heading>
@@ -289,13 +289,13 @@ export const Critiques = ({id, newCritique}) => {
                         </form>
                         </Box>
                         <CritiqueReply id={critique.critique_id} newReply={newReply} post_id={id} />
-                        </>
+                        </Box>
                 )
                 }
 
                 return(
-                        <>
-                        <Box p="2" overflow-y="auto" w={{lg: '35vw', sm: '100%'}} mt={5} position='static' key={i}>
+                        <Box key={i}>
+                        <Box p="2" overflow-y="auto" w={{lg: '35vw', sm: '100%'}} mt={5} position='static' >
                                 <Flex>
                                     <Image src={critique.profile_photo} w='3vh' h='3vh' mt={2} />
                                     <Heading fontFamily={'Raleway'} size='sm' ml={3} mt={2}>{critique.display_name}</Heading>
@@ -339,7 +339,7 @@ export const Critiques = ({id, newCritique}) => {
                     </Box>
                     {/* {console.log(critique.critique_id)} */}
                     <CritiqueReply id={critique.critique_id} newReply={newReply} post_id={id} />
-                    </>
+                    </Box>
                 )
                 })
             : <Center><Image src={beCritique} w='350px' h='30px' disabled/></Center>
