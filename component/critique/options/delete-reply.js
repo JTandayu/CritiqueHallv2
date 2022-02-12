@@ -10,7 +10,7 @@ import {
     Flex,
     Box
   } from "@chakra-ui/react"
-import { useDisclosure } from '@chakra-ui/react'
+import { useDisclosure, useColorModeValue } from '@chakra-ui/react'
 import { Button } from '@chakra-ui/react'
 import styles from "@styles/Hall.module.css";
 import {useCookies} from 'react-cookie'
@@ -53,14 +53,14 @@ const DeleteReply = ({id}) => {
           
             <Modal isOpen={isOpen} onClose={onClose}>
                 <ModalOverlay />
-                    <ModalContent maxW="40rem" h='40vh'>
-                    <ModalHeader>Delete Reply</ModalHeader>
+                    <ModalContent maxW="40rem" h='22vh'>
+                    <ModalHeader fontFamily={'Raleway'}>Delete Reply</ModalHeader>
                     <ModalCloseButton />
-                    <ModalBody>
+                    <ModalBody fontFamily={'Raleway'}>
                         Are you sure you want to delete?
                         <Flex>
-                            <Button onClick={deleteReply}>Yes</Button>
-                            <Button onClick={onClose}>No</Button>
+                            <Button fontFamily={'Raleway'} bgColor={useColorModeValue('#2777C1','#0085FF')} color={useColorModeValue('#FFFFFF', '#FFFFFF')} _hover={{bgColor: useColorModeValue('#56AEFF', '#0B5090')}} onClick={deleteReply} mt={5} mr={3}>Yes</Button>
+                            <Button fontFamily={'Raleway'} bgColor={useColorModeValue('#C1272D', '#9E0B0F')} color={useColorModeValue('white', 'white')} _hover={{bgColor: useColorModeValue('#FF000A', '#470507')}} onClick={onClose} mt={5}>No</Button>
                         </Flex>
                     </ModalBody>
                 </ModalContent>
