@@ -95,17 +95,17 @@ const theme = extendTheme({ breakpoints })
 //   }
 // }
 
-export async function getServerSideProps(context){
-    const post_id = context.params.id
+// export async function getServerSideProps(context){
+//     const post_id = context.params.id
 
-    // console.log(post_id)
+//     // console.log(post_id)
 
-    return {
-            props: {
-                post_id
-            },
-          }
-}
+//     return {
+//             props: {
+//                 post_id
+//             },
+//           }
+// }
 
 const options = {
     buttons: {
@@ -116,12 +116,12 @@ const options = {
 }
 
 
-export default function CritiquePost({post_id}){
+export default function CritiquePost({}){
     const { API_URL } = process.env
     const { API_KEY } = process.env
     const toast = useToast()
     const router = useRouter()
-    // const post_id = router.query.id;
+    const post_id = router.query.id;
     // console.log(post_id)
 
 
@@ -150,6 +150,7 @@ export default function CritiquePost({post_id}){
 
     useEffect(() => {
         // console.log(post_id.post_id)
+        if(!router.isReady) return;
 
         const config = {
             headers: { 
