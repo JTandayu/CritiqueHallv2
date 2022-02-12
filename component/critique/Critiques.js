@@ -238,11 +238,11 @@ export const Critiques = ({id, newCritique}) => {
                         <Box p="2" overflow-y="auto" w={{lg: '35vw', sm: '100%'}} mt={5} position='static'>
                                 <Flex>
                                     <Image src={critique.profile_photo} w='3vh' h='3vh' mt={2} />
-                                    <Heading fontFamily={'Raleway'} size='sm' ml={3} mt={2}>{critique.display_name}</Heading>
+                                    <Heading fontFamily={'Raleway'} size='md' ml={3} mt={2}>{critique.display_name}</Heading>
                                     {critique.starred_by_author == '1' ? <Image src='/reputation-stars.png' alt="Reputation Stars" w="25px" h="25px" ml={3} mt={2} /> : null}
                                     {Number(critique.reputation_points) >= 50 ? <Image src='/badge-icon.png' alt="Badge" w="25px" h="25px" ml={3} mt={2} /> : null}
                                     <Spacer />
-                                    <Text fontFamily={'Raleway'} fontSize='sm' mt={2}>{critique.time_ago}</Text>
+                                    <Text fontFamily={'Raleway'} fontSize='md' mt={2}>{critique.time_ago}</Text>
 
                                     <Menu>
                                         <MenuButton
@@ -269,7 +269,7 @@ export const Critiques = ({id, newCritique}) => {
                                     </Menu>
                                 </Flex>
                                 <Box w='100%' mt={1}>
-                                    <Text fontFamily={'Raleway'} fontSize='md'>{critique.body}</Text>
+                                    <Text fontFamily={'Raleway'} textAlign={'justify'} fontSize='sm'>{critique.body}</Text>
                                 </Box>
                                 <Flex w='20vw'>
                                     <Button variant='ghost' onClick={()=>giveStar(critique.critique_id)}><Image src='/stars.png' alt="Stars" w="25px" h="25px" ml={2} mr={2}/> <Text id={`star${critique.critique_id}`}>{critique.stars}</Text></Button>
