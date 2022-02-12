@@ -292,7 +292,7 @@ export default function Register({data2}) {
                 <Select borderColor={useColorModeValue('black', 'white')} borderRadius="lg" className={styles.input_select} size="sm" onChange={e => getSpecList(e.target.value)}>
                   <option value="" disabled selected>Choose</option>
                   {depList.map((department, i) => (
-                    <option disabled={department.name === "College" || department.name === "SHS" ? true : null} value={department.name} key={i}>{department.name}</option>
+                    <option disabled={department.name === "College" || department.name === "Senior High School" ? true : null} value={department.name} key={i}>{department.name}</option>
                   ))}
                 </Select>
                 </Box>
