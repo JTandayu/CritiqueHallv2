@@ -89,8 +89,8 @@ export default function ResetPassword({}){
 
     const resetPassword = async () =>{
         let formData = new FormData(); 
-        formData.append('password', password);
-        formData.append('confirm-password', confirm_password);
+        formData.append('new_password', password);
+        formData.append('confirm_new_password', confirm_password);
         formData.append('token', token);
         formData.append('user_id', userId);
   
@@ -105,7 +105,7 @@ export default function ResetPassword({}){
           }
         }
   
-        axios.post(`${API_URL}/api/reset-password`, formData, config)
+        axios.post(`${API_URL}/api/reset_password`, formData, config)
         .then(response => {
             toastIdRef.current = toast({ title: 'Reset Password Successful!', description: 'Please login with your new password.', status: 'success', duration: 2000, isClosable: true })
             console.log(response);
