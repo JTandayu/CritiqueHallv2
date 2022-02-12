@@ -95,6 +95,18 @@ const theme = extendTheme({ breakpoints })
 //   }
 // }
 
+export async function getServerSideProps(context){
+    const post_id = context.params.id
+
+    console.log(post_id)
+
+    return {
+            props: {
+                post_id
+            },
+          }
+}
+
 const options = {
     buttons: {
       showDownloadButton: false,
@@ -104,12 +116,12 @@ const options = {
 }
 
 
-export default function CritiquePost(){
+export default function CritiquePost({post_id}){
     const { API_URL } = process.env
     const { API_KEY } = process.env
     const toast = useToast()
     const router = useRouter()
-    const post_id = router.query.id;
+    // const post_id = router.query.id;
     // console.log(post_id)
 
 
@@ -194,7 +206,7 @@ export default function CritiquePost(){
 
         
 
-    }, [router.isReady])
+    }, [])
 
     
 
