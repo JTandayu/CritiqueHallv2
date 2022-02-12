@@ -192,7 +192,7 @@ export default function Nav(data, profile_pic){
             .catch(error => {
                 // console.log(error.response.data.error);
             });
-        }, 15000)
+        }, 300000)
 
         
     }, [])
