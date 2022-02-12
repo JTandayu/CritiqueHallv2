@@ -177,11 +177,11 @@ export default function CritiquePost(){
             // console.log(storage.refFromURL(response.data.post.attachment1))
             // console.log(fileName)
 
-            // if(response.data.post.display_name === cookies.display_name){
-            //     document.getElementById('diffAcc').hidden=true;
-            // }else{
-            //     document.getElementById('sameAcc').hidden=true; 
-            // }
+            if(response.data.post.display_name === cookies.display_name){
+                document.getElementById('diffAcc').hidden=true;
+            }else{
+                document.getElementById('sameAcc').hidden=true; 
+            }
 
             if(fileName1.endsWith('.docx') == true || fileName1.endsWith('.xls') == true){
                 setfile1Doc(true)
@@ -313,6 +313,7 @@ export default function CritiquePost(){
                         </Flex>
                     </Flex> */}
                     { data.attachment1 != 'undefined' ?
+                    [ data.attachment2 != 'undefined' ?
                     <Flex ml={{lg: "10vh", sm: 5}} flexDir={{lg: "row", sm: 'column'}} mt={5}>
                             {data.attachment1 != 'undefined' ? [ file1Doc != true || file1Doc != true ?
                                 <Image src={data.attachment1} w='50vh' h='40vh' cursor="pointer" /> :
@@ -322,10 +323,10 @@ export default function CritiquePost(){
                                     </Link>
                                 </Center>
                                 ] : null}
-                            <Flex flexDir='column' w="full" spacing={5}>
+                            <Flex flexDir={{lg: 'column', sm: 'row'}} w="full" spacing={5}>
                             {data.attachment2 != 'undefined' ? [ file2Doc != true || file2Doc != true ?
                                 <Image src={data.attachment2} w='20vh' h='10vh' cursor="pointer" /> :
-                                <Center p={5}>
+                                <Center>
                                     <Link href={data.attachment2} passHref>
                                         <Button>Download</Button>
                                     </Link>
@@ -334,7 +335,7 @@ export default function CritiquePost(){
 
                             {data.attachment3 != 'undefined' ? [ file3Doc != true || file3Doc != true ?
                                 <Image src={data.attachment3} w='20vh' h='10vh' cursor="pointer" /> :
-                                <Center p={5}>
+                                <Center py={5}>
                                     <Link href={data.attachment3} passHref>
                                         <Button>Download</Button>
                                     </Link>
@@ -361,8 +362,12 @@ export default function CritiquePost(){
                                
                             </Flex>
                     </Flex> : 
+
+                    <Center my={10}>
+                        <Image src={data.attachment1} w='700px' h='300px' cursor="pointer"  disabled />
+                    </Center>] : 
                     
-                    <Center>
+                    <Center my={10}>
                         <Image src="/no-preview-available.png" w='700px' h='300px' cursor="pointer"  disabled />
                     </Center>
                     }
@@ -371,7 +376,6 @@ export default function CritiquePost(){
                     <Box display="flex" w="100%" mt={5}>
                         <Button position='static' variant='ghost' onClick={giveLike}><Image src={useColorModeValue('/stars.png', '/stars-dark.png')} alt="Stars" w="25px" h="25px" ml={2}/> <Text id='likes' ml={2}>{data.likes}</Text></Button>
                         <Spacer />
-                        {data.display_name == cookies.display_name ? 
                         <Box id='sameAcc' >
                             <Menu>
                                 <MenuButton
@@ -396,7 +400,7 @@ export default function CritiquePost(){
                                 </MenuList>
                             </Menu>
                         </Box> 
-                        :
+                        
                         <Box id='diffAcc'>
                             {/* <Menu>
                                 <MenuButton
@@ -416,7 +420,7 @@ export default function CritiquePost(){
                                 </MenuGroup>
                                 </MenuList>
                             </Menu> */}
-                        </Box>}
+                        </Box>
                     </Box>
                     {/* Critique Input */}
                     <form onSubmit={(e) => giveCritique(e)}>

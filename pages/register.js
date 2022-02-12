@@ -94,7 +94,13 @@ export default function Register({data2}) {
   const [gender, setGender] = useState('')
   const [cookies, setCookies, removeCookies] = useCookies(['token', 'id', 'encrypted_id'])
   const [tnc, setTnc] = useState(false);
+  
+  const handleClick = () => {
+    setTnc(!tnc)
+    
+  }
   console.log(tnc)
+  
 
   const toast = useToast()
   const toastIdRef = React.useRef()
@@ -185,20 +191,21 @@ export default function Register({data2}) {
         }
       }
 
-      axios.post(`${API_URL}/api/register`, formData, config)
-      .then(response => {
-        toastIdRef.current = toast({ title: 'Account Creation Successful!', description: 'Please check your Email for the 6-Digit Code Verification.', status: 'success', duration: 5000, isClosable: true })
-          console.log(response.data);
-          submitLogin()
-      })
-      .catch(error => {
-        toastIdRef.current = toast({ title: 'Account Creation Unsuccessful!', description: 'Please try again.', status: 'error', duration: 2000, isClosable: true })
-          console.log(error.response);
-          // window.location = "/register"
-      });
-
-      
-
+      if(tnc != true){
+        
+      }else{
+        axios.post(`${API_URL}/api/register`, formData, config)
+        .then(response => {
+          toastIdRef.current = toast({ title: 'Account Creation Successful!', description: 'Please check your Email for the 6-Digit Code Verification.', status: 'success', duration: 5000, isClosable: true })
+            console.log(response.data);
+            submitLogin()
+        })
+        .catch(error => {
+          toastIdRef.current = toast({ title: 'Account Creation Unsuccessful!', description: 'Please try again.', status: 'error', duration: 2000, isClosable: true })
+            console.log(error.response);
+            // window.location = "/register"
+        });
+      }
     }
 
     const submitLogin = () =>{
@@ -311,7 +318,7 @@ export default function Register({data2}) {
                 </Select>
                 </Box>
                 <Box>
-                <Checkbox size="lg" onChange={setTnc}><Text display="flex" ml={1}>I accept the <Box ml={1}><TermsAndConditions /></Box></Text></Checkbox> 
+                <Checkbox size="lg" onChange={handleClick} checked={tnc}><Text display="flex" ml={1}>I accept the <Box ml={1}><TermsAndConditions /></Box></Text></Checkbox> 
                 </Box>
           </SimpleGrid>
           <Box>
