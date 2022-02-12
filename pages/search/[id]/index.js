@@ -289,7 +289,7 @@ export default function SearchResult(){
                                     </Box>
                                     <Box fontFamily={'Raleway'} p="3" w="100%" bg="light" my='auto'>
                                         <Center>
-                                        Posted by: {post.display_name}
+                                        <Image src={post.profile_photo} w="50px" h="50px" mr={3} borderRadius={10}/> {post.display_name}
                                         </Center>
                                     </Box>
                                 </Box>
