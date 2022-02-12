@@ -206,7 +206,7 @@ export default function CritiquePost(){
 
         
 
-    }, [])
+    }, [router.isReady])
 
     
 
@@ -425,7 +425,7 @@ export default function CritiquePost(){
             </Box>
                     {/* Critique */}
                     <Box w={{lg: '40%', sm: '100%'}} bg={useColorModeValue('white', '#212121')} borderRadius={10} h='90vh' p={5} boxShadow='dark-lg' mt={28} ml='3vw'>
-                        <Critiques id={post_id} newCritique={newCritique} />
+                        {post_id ? <Critiques id={post_id} newCritique={newCritique} /> : <Text>Something is wrong</Text>}
                     </Box>
                     
                 </Box>
