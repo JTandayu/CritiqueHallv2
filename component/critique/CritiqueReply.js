@@ -23,6 +23,7 @@ import { extendTheme } from '@chakra-ui/react'
 import EditReply from './options/edit-reply'
 import DeleteReply from './options/delete-reply'
 import EditReplyHistory from './options/edit-reply-history'
+import { useRouter } from 'next/router'
 
 const breakpoints = createBreakpoints({
     sm: '320px',
@@ -39,6 +40,7 @@ export const CritiqueReply = ({id, post_id, newReply}) => {
     const { API_KEY } = process.env
     const [cookie, setCookie] = useCookies('token', 'id', 'encrypted_id', 'display_name')
     const [critiqueReply, setCritiqueReply] =  useState([])
+    const router = useRouter()
     console.log(post_id)
 
     const config = {
@@ -68,7 +70,7 @@ export const CritiqueReply = ({id, post_id, newReply}) => {
             console.log(error)
         })
 
-    }, [newReply, post_id])
+    }, [newReply])
 
     const giveStar = (reply_id, e) =>{
         e.preventDefault()

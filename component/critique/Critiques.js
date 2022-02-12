@@ -24,6 +24,7 @@ import { extendTheme, useColorModeValue } from '@chakra-ui/react'
 import EditCritique from './options/edit-critique'
 import DeleteCritique from './options/delete-critique'
 import EditCritiqueHistory from './options/edit-critique-history'
+import { useRouter } from 'next/router'
 
 const breakpoints = createBreakpoints({
     sm: '320px',
@@ -46,6 +47,7 @@ export const Critiques = ({id, newCritique}) => {
     const [filter, setFilter] = useState('desc')
     const [loading, setLoading] = useState(true)
     const [newReply, setNewReply] = useState('')
+    const router = useRouter()
     // const [newPostCritique, setNewPostCritique] = useState(newPost)
     // const filterCritique = filter;
     // console.log(filter)
@@ -91,7 +93,33 @@ export const Critiques = ({id, newCritique}) => {
             console.log(error)
         })
         
-    }, [newCritique, id])
+    }, [])
+
+    useEffect(() => {
+        
+        let formData = new FormData;
+        formData.append('post_id', id);
+        formData.append('last_id', null);
+        formData.append('sort', filter)
+
+        axios.post(`${API_URL}/api/display_all_critiques`, formData, config)
+        .then((response) =>{
+            console.log(response.data)
+            setCritiqueItems(response.data.data)
+            setLoading(false)
+            // document.getElementById(response.data.data.critique_id).hidden=true
+            console.log(response.data.data[0])
+            
+            for(let i = 0; i < response.data.data.length; i++){
+                if(i == response.data.data.length - 1){
+                    setLastID(response.data.data[i].critique_id)
+                }
+            }
+        }).catch((error) =>{
+            console.log(error)
+        })
+        
+    }, [newCritique])
 
     const openReply = async(id) =>{
         document.getElementById(id).removeAttribute('hidden');
