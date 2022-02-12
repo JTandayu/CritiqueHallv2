@@ -177,11 +177,11 @@ export default function CritiquePost(){
             // console.log(storage.refFromURL(response.data.post.attachment1))
             // console.log(fileName)
 
-            if(response.data.post.display_name === cookies.display_name){
-                document.getElementById('diffAcc').hidden=true;
-            }else{
-                document.getElementById('sameAcc').hidden=true; 
-            }
+            // if(response.data.post.display_name === cookies.display_name){
+            //     document.getElementById('diffAcc').hidden=true;
+            // }else{
+            //     document.getElementById('sameAcc').hidden=true; 
+            // }
 
             if(fileName1.endsWith('.docx') == true || fileName1.endsWith('.xls') == true){
                 setfile1Doc(true)
@@ -419,7 +419,7 @@ export default function CritiquePost(){
                         </Box>}
                     </Box>
                     {/* Critique Input */}
-                    <form onSubmit={giveCritique}>
+                    <form onSubmit={(e) => giveCritique(e)}>
                     <Box display='flex' flexDir='column' mt={5}>
                         <Textarea borderColor={useColorModeValue('black', 'white')} fontFamily={'Raleway'} placeholder='Critique this...' bg={useColorModeValue('white', '#212121')} boxShadow='md' w={{lg: '90vh', sm: '100%'}} mx="auto" mt={3} onChange={e => setCritique(e.target.value)} value={critique} />
                         <Button fontFamily={'Raleway'} color={useColorModeValue('white', 'white')} _hover={{bgColor: useColorModeValue('#173cff', '#428eff')}} bgColor={useColorModeValue('#0C1F83', '#1D447E')} type='submit' w='10vh' mx='auto' mt={3}>Submit</Button>
