@@ -113,7 +113,7 @@ export default function ResetPassword({}){
         })
         .catch(error => {
           toastIdRef.current = toast({ title: 'Reset Password Unsuccessful!', description: 'Please try again!', status: 'error', duration: 2000, isClosable: true })
-            console.log(error);
+            console.log(error.reponse);
             // window.location = "/reset-password"
         });
     }
