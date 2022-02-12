@@ -273,9 +273,9 @@ function CreatePost({data}) {
                     <Flex mt={5}>
                         <FormLabel fontFamily={'Raleway'} mt={2}>Post This to: </FormLabel>
                         <Select  borderColor={useColorModeValue('black', 'white')} fontFamily={'Raleway'} w={{lg: '10vw', sm: '50vw'}} onChange={e => setHallID(e.target.value)}>
-                            <option value='1'>Technology</option>
                             <option value='2'>Arts</option>
                             <option value='3'>Business</option>
+                            <option value='1'>Technology</option>
                             <option value='4'>Lounge</option>
                         </Select>
                     
