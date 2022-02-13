@@ -479,7 +479,7 @@ export default function Nav(data, profile_pic){
                     </Button>
                 </Link>
                 <form onSubmit={searchItem}>
-                    <Input fontFamily={'Raleway'} fontWeight={'light'} w='50vw' type='text' mt={7} placeholder='Looking for something?' onChange={(e)=>setSearch(e.target.value)} boxShadow={'md'} />
+                    <Input fontFamily={'Raleway'} fontSize="xs" fontWeight={'light'} w='50vw' type='text' mt={7} placeholder='Looking for something?' onChange={(e)=>setSearch(e.target.value)} boxShadow={'md'} />
                 </form>
                 <Link href="/home" passHref>
                     <Button
@@ -491,6 +491,7 @@ export default function Nav(data, profile_pic){
                         color={Router.pathname === "/home" ? changeColor : changeColor2}
                         textDecoration={Router.pathname === "/home" ? 'underline' : 'none'}
                         _hover={{cursor:'pointer', textDecoration:'underline', color: useColorModeValue('#C1272D', '#FF5C61')}}
+                        fontFamily={'Raleway'}
                     >
                         Home
                     </Button>
@@ -505,6 +506,7 @@ export default function Nav(data, profile_pic){
                         color={Router.pathname === "/critique" ? changeColor : changeColor2}
                         textDecoration={Router.pathname === "/critique" ? 'underline' : 'none'}
                         _hover={{cursor:'pointer', textDecoration:'underline', color: useColorModeValue('#C1272D', '#FF5C61')}}
+                        fontFamily={'Raleway'}
                     >
                         Critique
                     </Button>
@@ -519,6 +521,7 @@ export default function Nav(data, profile_pic){
                         color={Router.pathname === "/feedback" ? changeColor : changeColor2}
                         textDecoration={Router.pathname === "/feedback" ? 'underline' : 'none'}
                         _hover={{cursor:'pointer', textDecoration:'underline', color: useColorModeValue('#C1272D', '#FF5C61')}}
+                        fontFamily={'Raleway'}
                     >
                         Feedback
                     </Button>
@@ -533,6 +536,7 @@ export default function Nav(data, profile_pic){
                         color={Router.pathname === "/profile" ? changeColor: changeColor2}
                         textDecoration={Router.pathname === "/profile" ? 'underline' : 'none'}
                         _hover={{cursor:'pointer', textDecoration:'underline', color: useColorModeValue('#C1272D', '#FF5C61')}}
+                        fontFamily={'Raleway'}
                     >
                         <Link href={`/profile/${display_name}`} passHref>Profile</Link>
                     </Button>
@@ -543,14 +547,24 @@ export default function Nav(data, profile_pic){
                         aria-label='Home'
                         my={5}
                         w='100%'
-                        _hover={{
-                            bg: 'red',
-                            color: 'white'
-                        }}
+                        color={changeColor2}
                         rounded='none'
                         onClick={logOut}
+                        fontFamily={'Raleway'}
                     >
-                    <Img src={useColorModeValue('/power-icon-dark.png', '/power-icon.png')} alt="Critique Hall Message Logo" w="2em" h="2em" mr={2} />Logout
+                    Logout
+                    </Button>
+                    <Button
+                        as='a'
+                        variant='ghost'
+                        aria-label='Home'
+                        my={5}
+                        w='100%'
+                        onClick={changeDarkAndLightIcon}
+                        _hover={{cursor:'pointer'}}
+                        _active={{bgColor: 'none'}}
+                    >
+                    <Img className={styles.darkicon2} src={ImgUrl} alt="moon" w="2em" h="2em" ml={-2} />
                     </Button>
             </Flex> 
         </Flex>
