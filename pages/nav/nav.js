@@ -356,7 +356,7 @@ export default function Nav(data, profile_pic){
             </Flex>
             <Spacer />
                 <form onSubmit={searchItem}>
-                    <Input fontFamily={'Raleway'} fontWeight={'light'} placeholder='Looking for something?' display={['none','none','none','flex']} w='30vw' type='text' mt={7} mr={{lg: '25vw', md: '10vw'}} onChange={(e)=>setSearch(e.target.value)} borderColor={useColorModeValue('black', 'white')} />
+                    <Input fontFamily={'Raleway'} fontWeight={'light'} placeholder='Looking for something?' display={['none','none','none','flex']} w='30vw' type='text' mt={7} mr={{lg: '25vw', md: '10vw'}} onChange={(e)=>setSearch(e.target.value)} borderColor={useColorModeValue('black', 'white')}/>
                 </form>
             <Spacer />
         <Flex

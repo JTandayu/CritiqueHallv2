@@ -285,8 +285,8 @@ export default function ProfilePage({}){
                                     </Center> */}
                                     <Center mt={0}>
                                         {posts.attachment1 != 'undefined' ? 
-                                        <Image _hover={{cursor: 'pointer'}} src={posts.attachment1} w={{lg: '400px', sm: '300px'}} h='20vh' onError={addDefaultSrc} borderRadius={10} boxShadow="md"/>
-                                        : <Image _hover={{cursor: 'pointer'}} src="/no-image-preview.png" w={{lg: '400px', sm: '300px'}} h='20vh' borderRadius={10} boxShadow="md"/>}
+                                        <Text fontFamily={'Raleway'} bgColor={posts.hall_color} color="white" borderRadius={10} align="center"><Image _hover={{cursor: 'pointer'}} src={posts.attachment1} w={{lg: '400px', sm: '300px'}} h='20vh' onError={addDefaultSrc} borderRadius={10} boxShadow="md"/>{posts.hall}</Text>
+                                        : <Text fontFamily={'Raleway'} bgColor={posts.hall_color} color="white" borderRadius={10} align="center"><Image _hover={{cursor: 'pointer'}} src="/no-image-preview.png" w={{lg: '400px', sm: '300px'}} h='20vh' borderRadius={10} boxShadow="md"/>{posts.hall}</Text>}
                                     </Center>
                                     <Flex w='100%' p={3} fontFamily={'Raleway'}>
                                     <Image src={changeStarIcon} alt="Stars" w="25px" h="25px" ml={2}/> {posts.likes}
@@ -309,8 +309,8 @@ export default function ProfilePage({}){
                                     </Center> */}
                                     <Center mt={0}>
                                         {critique.attachment1 != 'undefined' ? 
-                                        <Image _hover={{cursor: 'pointer'}} src={critique.attachment1} w={{lg: '400px', sm: '300px'}} h='20vh' onError={addDefaultSrc} borderRadius={10} boxShadow="md" />
-                                        : <Image _hover={{cursor: 'pointer'}} src="/no-image-preview.png" w={{lg: '400px', sm: '300px'}} h='20vh' borderRadius={10} boxShadow="md"/>}
+                                         <Text fontFamily={'Raleway'} bgColor={critique.hall_color} color="white" borderRadius={10} align="center"><Image _hover={{cursor: 'pointer'}} src={critique.attachment1} w={{lg: '400px', sm: '300px'}} h='20vh' onError={addDefaultSrc} borderRadius={10} boxShadow="md" />{critique.hall}</Text>
+                                        : <Text fontFamily={'Raleway'} bgColor={critique.hall_color} color="white" borderRadius={10} align="center"><Image _hover={{cursor: 'pointer'}} src="/no-image-preview.png" w={{lg: '400px', sm: '300px'}} h='20vh' borderRadius={10} boxShadow="md"/>{critique.hall}</Text>}
                                     </Center>
                                     <Flex w='100%' p={3} fontFamily={'Raleway'}>
                                     <Image src={changeStarIcon} alt="Stars" w="25px" h="25px" ml={2}/> {critique.stars}

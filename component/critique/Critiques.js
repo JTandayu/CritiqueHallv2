@@ -58,6 +58,7 @@ export const Critiques = ({id, newCritique}) => {
     const CritiqueTitle = useColorModeValue('/critiques-title.png', '/critiques-title-dark.png')
     const TextareaBorderColor = useColorModeValue('black', 'white')
     const changeIcon = useColorModeValue('/stars.png', '/stars-dark.png')
+    const changeIcon2 = useColorModeValue('/stars-clicked.png', '/stars-clicked-dark.png')
     const changeBadgeIcon = useColorModeValue('/badge-icon.png', '/badge-icon-dark.png')
 
     const config = {
@@ -205,6 +206,10 @@ export const Critiques = ({id, newCritique}) => {
         })
     }
 
+    // function changeImage() {
+    //     document.getElementById("changeStarClicked").src = changeIcon2;
+    // }
+
     return (
         <div>
             <Box display='flex'>
@@ -277,7 +282,7 @@ export const Critiques = ({id, newCritique}) => {
                                     <Text fontFamily={'Raleway'} textAlign={'justify'} fontSize='sm'>{critique.body}</Text>
                                 </Box>
                                 <Flex w='20vw'>
-                                    <Button variant='ghost' onClick={()=>giveStar(critique.critique_id)}><Image src={changeIcon} alt="Stars" w="25px" h="25px" ml={2} mr={2}/> <Text id={`star${critique.critique_id}`}>{critique.stars}</Text></Button>
+                                    <Button variant='ghost' onClick={()=>giveStar(critique.critique_id)}><Image src={changeIcon} alt="Stars" w="25px" h="25px" ml={2} mr={2} id="changeStarClicked"/> <Text id={`star${critique.critique_id}`}>{critique.stars}</Text></Button>
                                     <Button fontFamily={'Raleway'} variant='ghost' ml={5} onClick={()=>openReply(critique.critique_id)}>Reply</Button>
                                     {critique.is_edited == 1 ? <Text fontFamily={'Raleway'}>(Edited)</Text> : null}
                                 </Flex>
@@ -326,7 +331,7 @@ export const Critiques = ({id, newCritique}) => {
                                     <Text fontFamily={'Raleway'} textAlign={'justify'} fontSize='sm'>{critique.body}</Text>
                                 </Box>
                                 <Flex w='20vw'>
-                                    <Button variant='ghost' onClick={()=>giveStar(critique.critique_id)}><Image src={changeIcon} alt="Stars" w="25px" h="25px" ml={2} mr={2}/> <Text id={`star${critique.critique_id}`}>{critique.stars}</Text></Button>
+                                    <Button variant='ghost' onClick={()=>giveStar(critique.critique_id)}><Image src={changeIcon} alt="Stars" w="25px" h="25px" ml={2} mr={2} id="changeStarClicked"/> <Text id={`star${critique.critique_id}`}>{critique.stars}</Text></Button>
                                     <Button fontFamily={'Raleway'} variant='ghost' ml={5} onClick={()=>openReply(critique.critique_id)}>Reply</Button>
                                     {critique.is_edited == 1 ? <Text fontFamily={'Raleway'}>(Edited)</Text> : null}
                             </Flex>
