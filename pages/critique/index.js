@@ -96,7 +96,7 @@ export default function HallPage(){
     const [loading, setLoading] = useState(true)
     const [currentPage, setCurrentPage] = useState(1)
     const [postsPerPage, setPostsPerPage] = useState(6)
-    const [hall, setHalls] =  useState(router.query.id)
+    const [hall, setHalls] =  useState('0')
     const [hallNum, setHallNum] = useState([])
     const [hallList, setHallList] = useState([])
 
