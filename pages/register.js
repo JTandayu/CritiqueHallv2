@@ -212,7 +212,7 @@ export default function Register({data2}) {
             submitLogin()
         })
         .catch(error => {
-          toastIdRef.current = toast({ title: 'Account Creation Unsuccessful!', description: 'Please try again.', status: 'error', duration: 2000, isClosable: true })
+          // toastIdRef.current = toast({ title: 'Account Creation Unsuccessful!', description: 'Please try again.', status: 'error', duration: 2000, isClosable: true })
             console.log(error.response);
             // window.location = "/register"
         });
