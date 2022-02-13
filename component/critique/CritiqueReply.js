@@ -96,7 +96,7 @@ export const CritiqueReply = ({id, post_id, newReply}) => {
         axios.post(`${API_URL}/api/star_reply`, formData, config)
         .then((response) =>{
             console.log(response.data)
-            document.getElementById(reply_id).innerHTML=response.data.stars;
+            document.getElementById(`star${reply_id}`).innerHTML=response.data.stars;
         }).catch((error) =>{
             console.log(error)
             if(error.response.data.status === "Account Muted"){
@@ -175,7 +175,7 @@ export const CritiqueReply = ({id, post_id, newReply}) => {
                                 <Text fontFamily={'Raleway'} fontSize='sm' textAlign={'justify'}>{reply.body}</Text>
                             </Box>
                             <Flex w='20vw'>
-                                <Button variant='ghost' onClick={(e)=>giveStar(reply.reply_id, e)}><Image src={changeIcon} alt="Stars" w="25px" h="25px" ml={2} mr={2}/> <Text id={reply.reply_id}>{reply.stars}</Text></Button>
+                                <Button variant='ghost' onClick={(e)=>giveStar(reply.reply_id, e)}><Image src={changeIcon} alt="Stars" w="25px" h="25px" ml={2} mr={2}/> <Text id={`star${reply.reply_id}`}>{reply.stars}</Text></Button>
                                 {reply.is_edited == 1 ? <Text fontFamily={'Raleway'}>(Edited)</Text> : null}
                         </Flex>
 
@@ -214,7 +214,7 @@ export const CritiqueReply = ({id, post_id, newReply}) => {
                                 <Text fontSize='md' fontFamily={'Raleway'}  textAlign={'justify'}>{reply.body}</Text>
                             </Box>
                             <Flex w='20vw'>
-                                <Button variant='ghost' onClick={(e)=>giveStar(reply.reply_id, e)}><Image src={changeIcon} alt="Stars" w="25px" h="25px" ml={2} mr={2}/> <Text id={reply.reply_id}>{reply.stars}</Text></Button>
+                                <Button variant='ghost' onClick={(e)=>giveStar(reply.reply_id, e)}><Image src={changeIcon} alt="Stars" w="25px" h="25px" ml={2} mr={2}/> <Text id={`star${reply.reply_id}`}>{reply.stars}</Text></Button>
                                 {reply.is_edited == 1 ? <Text fontFamily={'Raleway'}>(Edited)</Text> : null}
                         </Flex>
 
