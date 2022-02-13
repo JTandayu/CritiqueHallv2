@@ -69,7 +69,7 @@ function Home(){
             <link rel="icon" href={useColorModeValue('logo256.png', 'logo256-dark.png')} onLoad=""/>
             <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@700&display=swap" rel="stylesheet" />
           </Head>
-          
+
           <ScrollToTop color={'black'} width={40} boxShadow={'dark-lg'} smooth />
 
           <Box position='static' bgColor={useColorModeValue('#E5E5E5', '#2E2E2E')} w={{lg: "100%", base: "100%"}} h={{lg: '75vh', md: '100%', sm: '100%'}} display={{lg: 'flex', md: 'flex', sm: 'block', base: 'flex'}} z-index='-1' boxShadow='lg'>
@@ -139,28 +139,28 @@ function Home(){
             <Flex mt='10vh' w={{lg: '90%', md: '100vw', sm: '100vw'}} mx='auto' overflowX='auto'>
               <Box w={{lg: '20vw', md: '100%', sm: '100%'}} h='40vh' bgImage={'Arts.png'} bgPosition={'center'} bg borderRadius={10}>
                 <Center mt='80%'>
-                <Link href='/critique/2' passHref={true}><Button size="lg" fontFamily={'Raleway'} fontSize="2xl" ml={5} bgColor={useColorModeValue('#A88816', '#A88816')} _hover={{bgColor: useColorModeValue('#483C10', '#483C10')}} color='white'>View</Button></Link>
+                <Link href='/critique' passHref={true}><Button size="lg" fontFamily={'Raleway'} fontSize="2xl" ml={5} bgColor={useColorModeValue('#A88816', '#A88816')} _hover={{bgColor: useColorModeValue('#483C10', '#483C10')}} color='white'>View</Button></Link>
                 </Center>
               </Box>
               <Spacer />
               <Box w={{lg: '20vw', md: '100%', sm: '100%'}} h='40vh' bgImage={'Business.png'} bgPosition={'center'} ml={{lg: '0', md: '0', sm: '20vw'}} borderRadius={10}>
                 {/* <Heading fontFamily={'Raleway'} align='center' mt={5} color='white'>Business</Heading> */}
                 <Center mt='80%'>
-                <Link href='/critique/3' passHref={true}><Button size="lg" fontFamily={'Raleway'} fontSize="2xl" ml={5} bgColor={useColorModeValue('#850306', '#850306')} _hover={{bgColor: useColorModeValue('#4a0305', '#4a0305')}} color='white'>View</Button></Link>
+                <Link href='/critique' passHref={true}><Button size="lg" fontFamily={'Raleway'} fontSize="2xl" ml={5} bgColor={useColorModeValue('#850306', '#850306')} _hover={{bgColor: useColorModeValue('#4a0305', '#4a0305')}} color='white'>View</Button></Link>
                 </Center>
               </Box>
               <Spacer />
               <Box w={{lg: '20vw', md: '100%', sm: '100%'}} h='40vh' bgImage={'Technology.png'} bgPosition={'center'} borderRadius={10}>
                 {/* <Heading fontFamily={'Raleway'} align='center' mt={5} color='white' >Technology</Heading> */}
                 <Center mt='80%'>
-                <Link href='/critique/1' passHref={true}><Button size="lg" fontFamily={'Raleway'} fontSize="2xl" ml={5} bgColor={useColorModeValue('#31518f', '#31518f')} _hover={{bgColor: useColorModeValue('#09255c', '#09255c')}} color='white'>View</Button></Link>
+                <Link href='/critique' passHref={true}><Button size="lg" fontFamily={'Raleway'} fontSize="2xl" ml={5} bgColor={useColorModeValue('#31518f', '#31518f')} _hover={{bgColor: useColorModeValue('#09255c', '#09255c')}} color='white'>View</Button></Link>
                 </Center>
               </Box>
               <Spacer />
               <Box w={{lg: '20vw', md: '100%', sm: '100%'}} h='40vh' bgImage={'Lounge.png'} bgPosition={'center'} borderRadius={10}>
                 {/* <Heading fontFamily={'Raleway'} align='center' mt={5} color='white' >Lounge</Heading> */}
                 <Center mt='80%'>
-                <Link href='/critique/4' passHref={true}><Button size="lg" fontFamily={'Raleway'} fontSize="2xl" ml={5} bgColor={useColorModeValue('#00786f', '#00786f')} _hover={{bgColor: useColorModeValue('#003834', '#003834')}} color='white'>View</Button></Link>
+                <Link href='/critique' passHref={true}><Button size="lg" fontFamily={'Raleway'} fontSize="2xl" ml={5} bgColor={useColorModeValue('#00786f', '#00786f')} _hover={{bgColor: useColorModeValue('#003834', '#003834')}} color='white'>View</Button></Link>
                 </Center>
               </Box>
             </Flex>
