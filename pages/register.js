@@ -299,7 +299,7 @@ export default function Register({data2}) {
             </Box>
             <Box id='warning3' color='red' w='30%' h='5vh' mb={4} mt={2} hidden>
               <Center>
-                <Text mt='1vh'>Please fill up the forms</Text>
+                <Text mt='1vh'>What are you doing?</Text>
               </Center>
             </Box>
 
