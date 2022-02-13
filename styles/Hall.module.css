@@ -112,6 +112,10 @@
     transform: scale(1.2); /* (120% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
   }
 
+  .technology:focus {
+    transform: scale(1.2); /* (120% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+  }
+
   .arts {
     background-image: url("/Arts-Critique.png");
     background-position: center;
@@ -123,6 +127,11 @@
   .arts:hover {
     transform: scale(1.2); /* (120% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
   }
+
+  .arts:focus {
+    transform: scale(1.2); /* (120% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+  }
+
 
   .business {
     background-image: url("/Business-Critique.png");
@@ -136,6 +145,10 @@
     transform: scale(1.2); /* (120% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
   }
 
+  .business:focus {
+    transform: scale(1.2); /* (120% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+  }
+
   .lounge {
     background-image: url("/Lounge-Critique.png");
     background-position: center;
@@ -145,6 +158,10 @@
   }
 
   .lounge:hover {
+    transform: scale(1.2); /* (120% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+  }
+
+  .lounge:focus {
     transform: scale(1.2); /* (120% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
   }
 
