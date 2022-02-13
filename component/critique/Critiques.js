@@ -26,6 +26,7 @@ import DeleteCritique from './options/delete-critique'
 import EditCritiqueHistory from './options/edit-critique-history'
 import { useRouter } from 'next/router'
 import { useToast } from "@chakra-ui/react";
+import { getCookie } from 'cookies-next'
 
 const breakpoints = createBreakpoints({
     sm: '320px',
@@ -41,7 +42,11 @@ export const Critiques = ({id, newCritique}) => {
     const { API_URL } = process.env
     const { API_KEY } = process.env
 
-    const [cookie, setCookie] = useCookies('token', 'id', 'encrypted_id', 'display_name')
+    const [cookie] = useCookies()
+    const token = getCookie('token')
+    const user_id = getCookie('encrypted_id')
+    const display_name = getCookie('display_name')
+
     const [critiqueItems, setCritiqueItems] = useState([])
     const [reply, setReply] = useState([])
     const [lastId, setLastID] =  useState('0')
@@ -70,8 +75,8 @@ export const Critiques = ({id, newCritique}) => {
           'X-API-KEY': `${API_KEY}`,
           'Authorization': 'Basic Y2Fwc3RvbmUyMDIxOjEyMzQ=',
           'Accept': 'application/json',
-          'Token': cookie.token,
-          'User-Id': cookie.encrypted_id
+          'Token': token,
+          'User-Id': user_id
         }
     };
 
@@ -251,7 +256,7 @@ export const Critiques = ({id, newCritique}) => {
             {loading ? <Box>Loading...</Box> :
              critiqueItems.length != 0 ?
                 critiqueItems.map((critique, i) => { 
-                    if(critique.display_name === cookie.display_name){
+                    if(critique.display_name === display_name){
                     return(
                         <Box key={i}>
                         <Box p="2" overflow-y="auto" w={{lg: '35vw', sm: '100%'}} mt={5} position='static' >

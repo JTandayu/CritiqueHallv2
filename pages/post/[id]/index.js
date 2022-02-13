@@ -54,6 +54,7 @@ import { cookie } from 'cookie'
 import Linkify from 'linkify-react';
 import { useRouter } from 'next/router'
 import React from "react";
+import { getCookie } from 'cookies-next'
 
 const breakpoints = createBreakpoints({
     sm: '320px',
@@ -128,11 +129,12 @@ export default function CritiquePost(){
     // console.log(post_id)
 
 
-    const [cookies, setCookie] = useCookies(['token', 'id', 'encrypted_id', 'display_name'])
+    const [cookies] = useCookies([])
     const [critique, setCritique] = useState('')
-    const token = cookies.token
-    const user_id = cookies.encrypted_id
-    const id = cookies.id
+    const token = getCookie('token')
+    const user_id = getCookie('encrypted_id')
+    console.log(token)
+    console.log(user_id)
     const likes = null
     const [data, setData] = useState([])
     const [urls, setUrls] = useState([])
@@ -162,8 +164,8 @@ export default function CritiquePost(){
               'X-API-KEY': `${API_KEY}`,
               'Authorization': 'Basic Y2Fwc3RvbmUyMDIxOjEyMzQ=',
               'Accept': 'application/json',
-              'Token': cookies.token,
-              'User-Id': cookies.encrypted_id
+              'Token': token,
+              'User-Id': user_id
             }
         }
 
@@ -174,7 +176,7 @@ export default function CritiquePost(){
             fileName1 = ref(storage, response.data.post.attachment1).name; 
             fileName2 = ref(storage, response.data.post.attachment2).name; 
             fileName3 = ref(storage, response.data.post.attachment3).name; 
-            fileName4 = ref(storage, response.data.post.attachment4).name;
+            fileName4 = ref(storage, response.data.post.attachment4).name; 
             fileName5 = ref(storage, response.data.post.attachment5).name; 
             setData(response.data.post);
             // console.log(storage.refFromURL(response.data.post.attachment1))
@@ -235,8 +237,8 @@ export default function CritiquePost(){
               'Authorization': 'Basic Y2Fwc3RvbmUyMDIxOjEyMzQ=',
               // 'Accept-Encoding': 'gzip, deflate, br',
               'Accept': 'application/json',
-              'Token': cookies.token,
-              'User-Id': cookies.encrypted_id
+              'Token': token,
+              'User-Id': user_id
             }
         }
 
@@ -267,8 +269,8 @@ export default function CritiquePost(){
               'Authorization': 'Basic Y2Fwc3RvbmUyMDIxOjEyMzQ=',
               // 'Accept-Encoding': 'gzip, deflate, br',
               'Accept': 'application/json',
-              'Token': cookies.token,
-              'User-Id': cookies.encrypted_id
+              'Token': token,
+              'User-Id': user_id
             }
         }
 
@@ -300,7 +302,7 @@ export default function CritiquePost(){
             </Head>
 
             <Box w="100%" h="full" spacing="10px" mt="5">
-                <Box display="flex" flexDir={{lg: 'row', sm: 'column'}} p="3">
+                <Box display="flex" flexDir={{lg: 'row', sm: 'column', base: 'column'}} p="3">
                     {/* Main */}
                     {/* <PostMain /> */}
                 <Box  w={{lg: '50%', sm: '100%'}}  bg={useColorModeValue('white', '#212121')} h={{lg: "90vh", sm: "100%"}} p={5} boxShadow='dark-lg' borderRadius={10} mt={28} ml='3vw'>

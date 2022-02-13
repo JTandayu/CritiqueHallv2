@@ -19,6 +19,7 @@ import axios from "axios";
 import {useCookies} from 'react-cookie'
 import { useRouter } from "next/router";
 import React from 'react';
+import { getCookie } from 'cookies-next'
 
 function DeletePost({id}){
     const { isOpen, onOpen, onClose } = useDisclosure()
@@ -32,7 +33,9 @@ function DeletePost({id}){
 
     const [progress, setProgress] = useState(0);
     const [url, setUrl] = useState(''); 
-    const [cookies, setCookie, removeCookie] = useCookies(['token', 'id', 'encrypted_id']);
+    const [cookies] = useCookies([]);
+    const token = getCookie('token')
+    const user_id = getCookie('encrypted_id')
 
     const formHandler = (e) =>{
       e.preventDefault();
@@ -47,8 +50,8 @@ function DeletePost({id}){
       'X-API-KEY': `${API_KEY}`,
       'Authorization': 'Basic Y2Fwc3RvbmUyMDIxOjEyMzQ=',
       'Accept': 'application/json',
-      'Token': cookies.token,
-      'User-Id': cookies.encrypted_id
+      'Token': token,
+      'User-Id': user_id
       }
     }
 

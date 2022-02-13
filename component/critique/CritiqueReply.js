@@ -25,6 +25,7 @@ import DeleteReply from './options/delete-reply'
 import EditReplyHistory from './options/edit-reply-history'
 import { useRouter } from 'next/router'
 import { useToast } from "@chakra-ui/react";
+import { getCookie } from 'cookies-next'
 
 const breakpoints = createBreakpoints({
     sm: '320px',
@@ -39,7 +40,13 @@ const theme = extendTheme({ breakpoints })
 export const CritiqueReply = ({id, post_id, newReply}) => {
     const { API_URL } = process.env
     const { API_KEY } = process.env
-    const [cookie, setCookie] = useCookies('token', 'id', 'encrypted_id', 'display_name')
+    // const [cookie] = useCookies()
+
+    const token = getCookie('token')
+    const user_id = getCookie('encrypted_id')
+    const display_name = getCookie('display_name')
+
+
     const [critiqueReply, setCritiqueReply] =  useState([])
     const router = useRouter()
     const toast = useToast()
@@ -57,8 +64,8 @@ export const CritiqueReply = ({id, post_id, newReply}) => {
           'Authorization': 'Basic Y2Fwc3RvbmUyMDIxOjEyMzQ=',
           // 'Accept-Encoding': 'gzip, deflate, br',
           'Accept': 'application/json',
-          'Token': cookie.token,
-          'User-Id': cookie.encrypted_id
+          'Token': token,
+          'User-Id': user_id
         }
     }
 
@@ -125,7 +132,7 @@ export const CritiqueReply = ({id, post_id, newReply}) => {
         <div>
             {/* {critiqueReply ? <Button w="full" h="20px" onClick={loadMore} id='loadMore'>Load More</Button> : null} */}
             {critiqueReply.map((reply, i)=>{
-                if(reply.display_name === cookie.display_name){
+                if(reply.display_name === display_name){
                 return(
             
                 <Box p="2" overflow-y="auto" w={{lg: '32vw', sm: '85%'}} ml={16} mt={5} key={i}>

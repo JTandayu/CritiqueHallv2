@@ -19,22 +19,22 @@ export default function Layout({children}){
     const { API_URL } = process.env
     const { API_KEY } = process.env
 
-    const [cookies, setCookies] =  useCookies('token', 'encrypted_id')
-    const token = cookies.token
-    const id = cookies.encrypted_id
+    // const [cookies] =  useCookies()
+    // const token = cookies.token
+    // const id = cookies.encrypted_id
 
-    useEffect(() => {
-        // Always do navigations after the first render
-        let formData = new FormData();
-        formData.append('token', token)
-        formData.append('user_id', id)
+    // useEffect(() => {
+    //     // Always do navigations after the first render
+    //     let formData = new FormData();
+    //     formData.append('token', token)
+    //     formData.append('user_id', id)
 
-        // if (token === 'undefined'){
-        //     Router.replace('/login')
-        //     return null;
-        // }
+    //     // if (token === 'undefined'){
+    //     //     Router.replace('/login')
+    //     //     return null;
+    //     // }
         
-    }, [])
+    // }, [])
 
 
     return(

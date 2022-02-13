@@ -27,6 +27,7 @@ import { useCookies } from 'react-cookie';
 import React from 'react';
 import { useToast, Checkbox, CheckboxGroup } from '@chakra-ui/react';
 import TermsAndConditions from '@component/terms-and-conditions';
+import { getCookie, setCookies } from 'cookies-next'
 
 const MotionButton = motion(Button)
 
@@ -92,7 +93,7 @@ export default function Register({data2}) {
   const [specList, setSpecList] = useState([])
   const [depList, setDepList] = useState([])
   const [gender, setGender] = useState('')
-  const [cookies, setCookies, removeCookies] = useCookies(['token', 'id', 'encrypted_id'])
+  // const [cookies, setCookies, removeCookies] = useCookies()
   const [tnc, setTnc] = useState(false);
   
   const handleClick = () => {
@@ -239,9 +240,7 @@ export default function Register({data2}) {
           console.log(response.data);
           setCookies('token', response.data.token)
           setCookies('display_name', response.data.display_name)
-          // setCookies('id', response.data.id)
           setCookies('encrypted_id', response.data.encrypted_id)
-          setCookies('profile_pic', response.data.profile_pic)
 
           window.location = "/confirmation"
       })

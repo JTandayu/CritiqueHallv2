@@ -17,12 +17,17 @@ import {useCookies} from 'react-cookie'
 import axios from 'axios';
 import { useRouter } from 'next/router';
 import { useToast } from "@chakra-ui/react";
+import { getCookie } from 'cookies-next'
 
 const DeleteCritique = ({id}) => {
     const { isOpen, onOpen, onClose } = useDisclosure()
     const { API_URL } = process.env
     const { API_KEY } = process.env
-    const [cookies, setCookie, removeCookie] = useCookies(['token', 'id', 'encrypted_id']);
+    const [cookies] = useCookies();
+
+    const token = getCookie('token')
+    const user_id = getCookie('encrypted_id')
+
     const router = useRouter()
     const toast = useToast()
     const toastIdRef = React.useRef()
@@ -33,8 +38,8 @@ const DeleteCritique = ({id}) => {
         'X-API-KEY': `${API_KEY}`,
         'Authorization': 'Basic Y2Fwc3RvbmUyMDIxOjEyMzQ=',
         'Accept': 'application/json',
-        'Token': cookies.token,
-        'User-Id': cookies.encrypted_id
+        'Token': token,
+        'User-Id': user_id
         }
       }
 

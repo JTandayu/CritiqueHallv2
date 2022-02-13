@@ -45,33 +45,7 @@ function ReportPost() {
                             <Text ml={20}>Lorem Ipsum</Text>
                             
                         </Flex>
-                        <Flex mt='3vh'>
-                            <FormLabel>Type of Offense</FormLabel>
-                            <Flex flexDir='column' ml={8}>
-                                <Checkbox size='md' mb={2}>
-                                    Checkbox
-                                </Checkbox>
-                                <Checkbox size='md' mb={2}>
-                                    Checkbox
-                                </Checkbox>
-                                <Checkbox size='md' mb={2}>
-                                    Checkbox
-                                </Checkbox>
-                                <Checkbox size='md' mb={2}>
-                                    Checkbox
-                                </Checkbox>
-                                <Checkbox size='md' mb={2}>
-                                    Checkbox
-                                </Checkbox>
-                                <Checkbox size='md' mb={2}>
-                                    Checkbox
-                                </Checkbox>
-                            </Flex>
-                            
-
-                            
-                        </Flex>
-
+                        
                         <FormLabel>Description</FormLabel>
                         <Textarea w='30vw' bg='white' color='black' />
                         <Center mt={10} mb={10}>

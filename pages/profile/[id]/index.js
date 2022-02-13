@@ -31,6 +31,7 @@ import { useState, useEffect } from 'react'
 import { useCookies, cookies } from 'react-cookie'
 import ReportUser from '@component/report-user'
 import { useRouter } from 'next/router'
+import { getCookie } from 'cookies-next'
 
 // export async function getServerSideProps(context){
 //     const { API_URL } = process.env
@@ -76,13 +77,16 @@ export default function ProfilePage({}){
     const router = useRouter()
     const data = router.query.id
 
-    const [cookies, setCookies, removeCookies] = useCookies(['token', 'id', 'encrypted_id'])
+    // const [cookies] = useCookies()
     const [userData, setUserData] = useState('')
     const [userPosts, setUserPosts] = useState([])
     const [userCritique, setUserCritique] = useState([])
     const [filter, setFilter] = useState('newest')
     const [encID, setEncId] = useState("")
     const [loading, setLoading] = useState(true)
+    const token = getCookie('token')
+    const user_id = getCookie('encrypted_id')
+    const display_name = getCookie('display_name')
 
     const changeColorBox = useColorModeValue('#E5E5E5', '#2E2E2E')
     const changeBadgeIcon = useColorModeValue('/badge-icon.png', '/badge-icon-dark.png')
@@ -96,8 +100,8 @@ export default function ProfilePage({}){
             'Authorization': 'Basic Y2Fwc3RvbmUyMDIxOjEyMzQ=',
             // 'Accept-Encoding': 'gzip, deflate, br',
             'Accept': 'application/json',
-            'Token': cookies.token,
-            'User-Id': cookies.encrypted_id
+            'Token': token,
+            'User-Id': user_id
         }
     }
 
@@ -226,7 +230,7 @@ export default function ProfilePage({}){
 
                         <Box w={{lg:'50vh'}} mx='auto' ml={{lg: '10vw', md: 0, sm: 0}} alignItems={{sm: "center"}}>
                             <Box ml={16} mt={2} float="right">
-                                {userData && userData.display_name !== cookies.display_name ? <ReportUser data={userData}  /> : null}
+                                {userData && userData.display_name !== display_name ? <ReportUser data={userData}  /> : null}
                             </Box>
                             <Heading fontFamily={'Raleway'} fontWeight={'black'} size='2xl' textShadow='2px 2px #000' color='white' ml={{lg: '10vw', md: 0, sm: 0}} mt={{lg: 48}}>{userData.display_name}</Heading>
                             <Flex ml={{lg: '10vw', md: 0, sm: 0}} mt={1} mx='auto' textShadow='1px 1px #000' >
@@ -240,7 +244,7 @@ export default function ProfilePage({}){
                         <Flex>
                         <Heading size='2xl' as='h3' color={useColorModeValue('#1B1464', '#B2A3FF')} mt={10} fontFamily={'Raleway'} display='flex'><Image src={useColorModeValue('/critique-user-icon.png', '/critique-user-icon-dark.png')} w='10%' mr={5}/>About Me: </Heading>
                         <Spacer />
-                            {userData && userData.display_name === cookies.display_name ? <EditProfile data={userData}/> : null}
+                            {userData && userData.display_name === display_name ? <EditProfile data={userData}/> : null}
                         </Flex>
                         <Text w={{lg: '65vh', md: '100%', sm: '100%'}} fontSize='3xl' color="white">{userData.about_me}</Text>
                         <Heading size='xl' color={useColorModeValue('#1B1464', '#B2A3FF')} mt={5} display="flex" fontFamily={'Raleway'}>Reputation Stars: <Text fontFamily={'Raleway'} color={useColorModeValue('#C1272D', '#FF5C61')} ml={5} display='flex'>{userData.reputation_points}{userData.reputation_points >= 10 ? <Image src={changeBadgeIcon} alt="Badge Icon" w="50px" h="50px" ml={2}/> : null}

@@ -37,6 +37,7 @@ import { useRouter } from "next/router";
 import {useToast} from '@chakra-ui/react'
 import React from "react";
 import { EditIcon } from '@chakra-ui/icons'
+import { getCookie } from 'cookies-next'
 
 // export async function getServerSideProps(context) {
 //     const res = await fetch(`https://...`)
@@ -59,9 +60,12 @@ function EditProfile({data}) {
     const toast = useToast()
     const toastIdRef = React.useRef()
 
+    const token = getCookie('token')
+    const user_id = getCookie('encrypted_id')
+
     // console.log(data)
 
-    const [cookie, setCookie] = useCookies('token', 'id', 'encrypted_id', 'display_name')
+    // const [cookie] = useCookies()
     const [profileImage, setProfileImage] = useState([])
     const [coverImage, setCoverImage] = useState([])
     const [profileImageUrl, setProfileImageUrl] = useState(data.profile_photo)
@@ -104,8 +108,8 @@ function EditProfile({data}) {
           'Authorization': 'Basic Y2Fwc3RvbmUyMDIxOjEyMzQ=',
           // 'Accept-Encoding': 'gzip, deflate, br',
           'Accept': 'application/json',
-          'Token': cookie.token,
-          'User-Id': cookie.encrypted_id
+          'Token': token,
+          'User-Id': user_id
         }
     }
 

@@ -17,6 +17,7 @@ import styles from "@styles/Hall.module.css";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import {useCookies} from 'react-cookie'
+import { getCookie } from 'cookies-next'
 
 // export async function getStaticProps(context) {
 //     const res = await fetch(`https://...`)
@@ -33,7 +34,11 @@ function EditCritiqueHistory({id}) {
     const { isOpen, onOpen, onClose } = useDisclosure()
     const { API_URL } = process.env
     const { API_KEY } = process.env
-    const [cookies, setCookie, removeCookie] = useCookies(['token', 'id', 'encrypted_id']);
+    // const [cookies] = useCookies();
+    
+    const token = getCookie('token')
+    const user_id = getCookie('encrypted_id')
+
     const [data, setData] = useState([])
 
     const config = {
@@ -42,8 +47,8 @@ function EditCritiqueHistory({id}) {
         'X-API-KEY': `${API_KEY}`,
         'Authorization': 'Basic Y2Fwc3RvbmUyMDIxOjEyMzQ=',
         'Accept': 'application/json',
-        'Token': cookies.token,
-        'User-Id': cookies.encrypted_id
+        'Token': token,
+        'User-Id': user_id
         }
       }
 

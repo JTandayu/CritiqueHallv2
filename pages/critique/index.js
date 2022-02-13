@@ -45,6 +45,7 @@ import EditPost from '@component/post/options/edit'
 import ReportPost from '@component/report-post'
 import DeletePost from '@component/post/options/delete'
 import { useColorMode, useColorModeValue } from "@chakra-ui/react";
+import { getCookie } from 'cookies-next'
 
 
 const breakpoints = createBreakpoints({
@@ -100,7 +101,9 @@ export default function HallPage(){
     const thereIsNothing = useColorModeValue('/there-is-nothing.png', '/there-is-nothing-dark.png')
 
 
-    const [cookie, setCookie] = useCookies('token', 'encrypted_id', 'id')
+    // const [cookie] = useCookies()
+    const token = getCookie('token')
+    const user_id = getCookie('encrypted_id')
 
     const config = {
         headers: { 
@@ -109,8 +112,8 @@ export default function HallPage(){
           'Authorization': 'Basic Y2Fwc3RvbmUyMDIxOjEyMzQ=',
           // 'Accept-Encoding': 'gzip, deflate, br',
           'Accept': 'application/json',
-          'Token': cookie.token,
-          'User-Id': cookie.encrypted_id
+          'Token': token,
+          'User-Id': user_id
         }
       }
 
@@ -126,8 +129,8 @@ export default function HallPage(){
               'Authorization': 'Basic Y2Fwc3RvbmUyMDIxOjEyMzQ=',
               // 'Accept-Encoding': 'gzip, deflate, br',
               'Accept': 'application/json',
-              'Token': cookie.token,
-              'User-Id': cookie.encrypted_id
+              'Token': token,
+              'User-Id': user_id
             }
           }
 
@@ -428,7 +431,7 @@ export default function HallPage(){
                                             </Box>
                                         </Center>
                                     </Box>
-                                    <Box p="3" w="100%" bg="light" my='auto' ml={'20%'} mr={'15%'}>
+                                    <Box p="3" w="100%" bg="light" my='auto' ml={{lg: '20%', base: '0'}} mr={{lg: '15%', base: '0'}} overflowX={{lg: 'visible', sm: "auto", base: "auto"}}>
                                         <Center>
                                         {post.attachment1 != 'undefined' ? 
                                         <Image src={post.attachment1} w={{lg: '10vw', sm:'100%'}} h={{lg: '10vh', sm: '20vh'}} onError={addDefaultSrc} borderRadius={10}/>

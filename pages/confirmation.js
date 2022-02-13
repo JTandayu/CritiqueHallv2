@@ -33,6 +33,7 @@ import axios from "axios"
 import { useCookies } from 'react-cookie';
 import React from 'react';
 import { useToast } from '@chakra-ui/react';
+import { getCookie } from 'cookies-next'
 
 
 const breakpoints = createBreakpoints({
@@ -51,7 +52,8 @@ export default function ConfirmationPage(){
   const { API_KEY } = process.env
 
   const [code, setCode] = useState('')
-  const [cookies, setCookies, removeCookies] = useCookies(['token', 'id', 'encrypted_id'])
+  // const [cookies] = useCookies()
+  const user_id = getCookie('encrypted_id')
 
   const toast = useToast()
   const toastIdRef = React.useRef()
@@ -81,7 +83,7 @@ export default function ConfirmationPage(){
             'Authorization': 'Basic Y2Fwc3RvbmUyMDIxOjEyMzQ=',
             // 'Accept-Encoding': 'gzip, deflate, br',
             'Accept': 'application/json',
-            'User-Id': cookies.encrypted_id
+            'User-Id': user_id
           }
         }
 

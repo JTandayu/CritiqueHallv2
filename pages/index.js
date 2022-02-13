@@ -30,6 +30,7 @@ import { useToast } from '@chakra-ui/react';
 import { ChakraProvider } from "@chakra-ui/react"
 import SimpleReactLightbox from 'simple-react-lightbox'
 import theme from '../component/theme'
+import { setCookies, getCookies } from 'cookies-next';
 
 const MotionButton = motion(Button)
 
@@ -69,18 +70,19 @@ export default function Login({user}) {
 
   const toast = useToast()
   const toastIdRef = React.useRef()
+  const cookie = getCookies()
 
-  const [cookie, setCookies, removeCookies] = useCookies(['token', 'display_name', 'encrypted_id'])
+  // const [cookie, setCookies] = useCookies(['token', 'display_name', 'encrypted_id'])
 
   // console.log(cookie)
-  // useEffect(() => {
-  //   if(cookie.token != 'undefined' || cookie.encrypted_id != 'undefined' || cookie.display_name != 'undefined' || cookie.hasOwnProperty('token') != false || cookie.hasOwnProperty('encrypted_id') != false || cookie.hasOwnProperty('display_name') != false){
-  //     router.replace('/home')
-  //   }
-  // }, [])
+  useEffect(() => {
+    if(cookie.hasOwnProperty('token') != false || cookie.hasOwnProperty('encrypted_id') != false || cookie.hasOwnProperty('display_name') != false){
+      router.replace('/home')
+    }
+  }, [])
   
-  const testCookie = cookie.hasOwnProperty('merchant_id')
-  console.log(testCookie)
+  // const testCookie = cookie.hasOwnProperty('merchant_id')
+  // console.log(testCookie)
   
 
   const changeDarkAndLightIcon = () => {
@@ -93,7 +95,7 @@ export default function Login({user}) {
   }
 
 
-    const submitLogin = async () =>{
+    const submitLogin = () =>{
 
       let formData = new FormData(); 
       formData.append('email', email);   //append the values with key, value pair
@@ -116,11 +118,9 @@ export default function Login({user}) {
       axios.post(`${API_URL}/api/login`, formData, config)
       .then(response => {
           console.log(response.data);
-          setCookies('token', response.data.token)
-          setCookies('display_name', response.data.display_name)
-          // setCookies('id', response.data.id)
-          setCookies('encrypted_id', response.data.encrypted_id)
-          setCookies('profile_pic', response.data.profile_pic)
+            setCookies('token', response.data.token)
+            setCookies('display_name', response.data.display_name)
+            setCookies('encrypted_id', response.data.encrypted_id)
           document.getElementById('warning1').hidden=true;
 
           if(response.data.status === 'Email not verified'){

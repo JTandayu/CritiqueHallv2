@@ -24,6 +24,7 @@ import { Stack } from '@chakra-ui/react'
 import axios from 'axios'
 import { useCookies } from 'react-cookie'
 import ScrollToTop from "react-scroll-to-top";
+import { getCookie } from 'cookies-next'
 
 
 const breakpoints = createBreakpoints({
@@ -47,7 +48,9 @@ export default function FeedbackPage(){
     const[ans3, setAns3] = useState(0)
     const[ans4, setAns4] = useState(0)
     const[feedback, setFeedback] = useState('')
-    const [cookie, setCookies] = useCookies('token', 'encrypte_id')
+    const [cookie] = useCookies()
+    const token = getCookie('token')
+    const user_id = getCookie('encrypted_id')
 
     const config = {
         headers: { 
@@ -56,8 +59,8 @@ export default function FeedbackPage(){
           'Authorization': 'Basic Y2Fwc3RvbmUyMDIxOjEyMzQ=',
           // 'Accept-Encoding': 'gzip, deflate, br',
           'Accept': 'application/json',
-          'Token': cookie.token,
-          'User-Id': cookie.encrypted_id
+          'Token': token,
+          'User-Id': user_id
         }
     }
 

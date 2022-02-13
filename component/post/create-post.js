@@ -36,6 +36,7 @@ import axios from 'axios'
 import { storage } from '../../firebase.js'
 import { getDownloadURL, ref, uploadBytesResumable, deleteObject  } from 'firebase/storage'
 import React from "react";
+import { getCookie } from 'cookies-next'
 
 
 const breakpoints = createBreakpoints({
@@ -87,7 +88,9 @@ function CreatePost({data}) {
     const toastIdRef = React.useRef()
 
     const [color, setColor] = useState('purple')
-    const [cookies, setCookie, removeCookie] = useCookies(['token', 'id', 'encrypted_id', 'display_name']);
+    const [cookies] = useCookies([]);
+    const token = getCookie('token')
+    const user_id = getCookie('encrypted_id')
     // const [attachment1, setAttachment1] = useState('')
     // const [attachment2, setAttachment2] = useState('')
     // const [attachment3, setAttachment3] = useState('')
@@ -203,9 +206,6 @@ function CreatePost({data}) {
 
 
     const submitPost = async () =>{
-        const token = cookies.token
-        const id = cookies.id
-        const enc_id =  cookies.encrypted_id
 
         let formData = new FormData(); 
         formData.append('title', title);
@@ -225,7 +225,7 @@ function CreatePost({data}) {
             'Authorization': 'Basic Y2Fwc3RvbmUyMDIxOjEyMzQ=',
             'Accept': 'application/json',
             'Token': token,
-            'User-Id': enc_id
+            'User-Id': user_id
             }
         }
 

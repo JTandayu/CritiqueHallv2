@@ -29,6 +29,7 @@ import { useCookies } from "react-cookie";
 import { useRouter } from "next/router";
 import { useToast } from "@chakra-ui/react";
 import React from "react";
+import { getCookie } from 'cookies-next'
 
 
 
@@ -74,7 +75,9 @@ function EditPost({data, url, fileNames}){
     const [title, setTitle] = useState(data.title)
     const [description, setDescription] = useState(data.body)
 
-    const [cookies, setCookie, removeCookie] = useCookies(['token', 'id', 'encrypted_id', 'display_name']);
+    // const [cookies] = useCookies([]);
+    const token = getCookie('token')
+    const user_id = getCookie('encrypted_id')
     // const [data, setData] =  useState([])
 
     const [progress, setProgress] = useState(0);
@@ -171,12 +174,7 @@ function EditPost({data, url, fileNames}){
         onClose()
     }
 
-    const submitPost = async () =>{
-
-        const token = cookies.token
-        const id = cookies.id
-        const enc_id =  cookies.encrypted_id
-        
+    const submitPost = async () =>{ 
 
         let formData = new FormData(); 
         formData.append('title', title);
@@ -195,8 +193,8 @@ function EditPost({data, url, fileNames}){
             'X-API-KEY': `${API_KEY}`,
             'Authorization': 'Basic Y2Fwc3RvbmUyMDIxOjEyMzQ=',
             'Accept': 'application/json',
-            'Token': cookies.token,
-            'User-Id': cookies.encrypted_id
+            'Token': token,
+            'User-Id': user_id
             }
         }
 

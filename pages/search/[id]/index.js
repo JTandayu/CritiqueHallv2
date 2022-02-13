@@ -53,7 +53,7 @@ export default function SearchResult(){
     const { API_URL } = process.env
     const { API_KEY } = process.env
 
-    const [cookies, setCookies, removeCookies] = useCookies(['token', 'id', 'encrypted_id'])
+    const [cookies] = useCookies()
 
     // const [searchItem, setSearchItem] = useState('')
     const [searchUserData, setSearchUserData] = useState([])

@@ -26,6 +26,8 @@ import axios from "axios";
 import { WarningIcon } from "@chakra-ui/icons";
 import {useToast, useColorModeValue} from '@chakra-ui/react'
 import React from "react";
+import { getCookie } from 'cookies-next'
+
 
 
 // export async function getServerSideProps(context) {
@@ -40,11 +42,13 @@ function ReportUser({data}) {
     const { API_URL } = process.env
     const { API_KEY } = process.env
 
-    const [cookie, setCookie] = useCookies('token', 'id', 'encrypted_id', 'display_name')
+    // const [cookie] = useCookies()
     const [offense, setOffense] = useState('Inappropriate Username')
     const [message, setMessage] = useState('')
     const toast = useToast()
     const toastIdRef = React.useRef()
+    const token = getCookie('token')
+    const user_id = getCookie('encrypted_id')
     // console.log(data.encrypted_id)
 
     const config = {
@@ -54,8 +58,8 @@ function ReportUser({data}) {
           'Authorization': 'Basic Y2Fwc3RvbmUyMDIxOjEyMzQ=',
           // 'Accept-Encoding': 'gzip, deflate, br',
           'Accept': 'application/json',
-          'Token': cookie.token,
-          'User-Id': cookie.encrypted_id
+          'Token': token,
+          'User-Id': user_id
         }
     }
 
@@ -66,7 +70,7 @@ function ReportUser({data}) {
         // formData.append("critique_id", null)
         // formData.append("reply_id", null)
         formData.append("message", message)
-        formData.append("offense_type", offense)
+        // formData.append("offense_type", offense)
         console.log(offense)
 
         axios.post(`${API_URL}/api/submit_report`, formData, config)
@@ -99,25 +103,8 @@ function ReportUser({data}) {
                             <FormLabel fontFamily={'Raleway'}>Reportee</FormLabel>
                             <Text fontFamily={'Raleway'} ml={20}>{cookie.display_name}</Text>
                         </Flex>
-                        <Flex mt='3vh'>
+                        {/* <Flex mt='3vh'>
                             <FormLabel fontFamily={'Raleway'}>Type of Offense</FormLabel>
-                            {/* <Flex flexDir='column' ml={8}>
-                                <Checkbox size='md' mb={2}>
-                                    Inappropriate Post
-                                </Checkbox>
-                                <Checkbox size='md' mb={2}>
-                                    Inappropriate Critique
-                                </Checkbox>
-                                <Checkbox size='md' mb={2}>
-                                    Inappropriate Username
-                                </Checkbox>
-                                <Checkbox size='md' mb={2}>
-                                    Spamming
-                                </Checkbox>
-                                <Checkbox size='md' mb={2}>
-                                    Other
-                                </Checkbox>
-                            </Flex> */}
                             <RadioGroup name="offense" onChange={setOffense} value={offense}  ml={8}>
                                 <Stack fontFamily={'Raleway'} direction='column'>
                                     <Radio value='Inappropriate Username' mb={2}>Inappropriate Username</Radio>
@@ -127,7 +114,7 @@ function ReportUser({data}) {
                                     <Radio value='Other' mb={2}>Other</Radio>
                                 </Stack>
                             </RadioGroup>
-                        </Flex>
+                        </Flex> */}
 
                         <FormLabel fontFamily={'Raleway'}>Description</FormLabel>
                         <Textarea borderColor={useColorModeValue('black', 'white')} fontFamily={'Raleway'} w='30vw' placeholder='Your detail report...' onChange={(e)=>setMessage(e.target.value)}/>

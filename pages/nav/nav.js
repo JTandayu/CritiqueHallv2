@@ -41,7 +41,8 @@ import {
     PopoverCloseButton,
     PopoverAnchor,
   } from '@chakra-ui/react'
-import {cookie} from 'cookie'
+// import {cookie} from 'cookie'
+import { getCookie, getCookies, removeCookies } from 'cookies-next'
 
 const MotionButton = motion(Button)
 
@@ -97,6 +98,11 @@ export default function Nav(data, profile_pic){
     const [darkMode ,setDarkMode] = useState('')
     const [ImgUrl, setImgUrl] = useState('/dark-mode-icon.png')
     const router = useRouter();
+    const token = getCookie('token');
+    const user_id = getCookie('encrypted_id')
+    const display_name = getCookie('display_name')
+    const cookie = getCookies()
+    // console.log(cookie.hasOwnProperty('token'))
 
     const changeDarkAndLightIcon = () => {
         toggleColorMode()
@@ -113,7 +119,7 @@ export default function Nav(data, profile_pic){
 
     
     const [display, changeDisplay] = useState('none')
-    const [cookies, removeCookie] = useCookies(['token', 'display_name'])
+    // const [cookies, removeCookie] = useCookies(['token', 'display_name', 'encrypted_id'])
     const [search, setSearch] = useState('')
     const [profPic, setProfilePic] = useState('')
 
@@ -121,8 +127,8 @@ export default function Nav(data, profile_pic){
     const [firstId, setFirstId] = useState('')
 
 
-    const user_id = cookies.id;
-    const display_name =  cookies.display_name
+    // const user_id = cookies.id;
+    // const display_name =  cookies.display_name
     const Router = useRouter()
     
     const toast = useToast()
@@ -140,18 +146,18 @@ export default function Nav(data, profile_pic){
                 'Authorization': 'Basic Y2Fwc3RvbmUyMDIxOjEyMzQ=',
                 // 'Accept-Encoding': 'gzip, deflate, br',
                 'Accept': 'application/json',
-                'Token': cookies.token,
-                'User-Id': cookies.encrypted_id
+                'Token': token,
+                'User-Id': user_id
             }
         }
 
 
-        if (cookies.token === 'undefined' || cookies.encrypted_id === 'undefined' || cookies.hasOwnProperty('token') === false || cookies.hasOwnProperty('encrypted_id') === false){
+        if (cookie.hasOwnProperty('token') === false || cookie.hasOwnProperty('encrypted_id') === false){
             Router.replace('/')
             return null;
         }
         
-        axios.get(`${API_URL}/api/display_profile/${cookies.display_name}`, config)
+        axios.get(`${API_URL}/api/display_profile/${display_name}`, config)
         .then(response => {
             // console.log(response.data);      
             setProfilePic(response.data.data.user.profile_photo)
@@ -159,29 +165,29 @@ export default function Nav(data, profile_pic){
         .catch(error => {
             // console.log(error.response.data.error);
             if(error.response.data.error ==  'User does not exist'){
-                removeCookie('token');
-                removeCookie('id');
-                removeCookie('encrypted_id');
-                removeCookie('profile_pic');
-                removeCookie('display_name');
+                removeCookies('token');
+                removeCookies('id');
+                removeCookies('encrypted_id');
+                removeCookies('profile_pic');
+                removeCookies('display_name');
                 Router.replace('/')
                 return null;
             }
             if(error.response.data.error ==  'Token Expired'){
-                removeCookie('token');
-                removeCookie('id');
-                removeCookie('encrypted_id');
-                removeCookie('profile_pic');
-                removeCookie('display_name');
+                removeCookies('token');
+                removeCookies('id');
+                removeCookies('encrypted_id');
+                removeCookies('profile_pic');
+                removeCookies('display_name');
                 Router.replace('/')
                 return null;
             }
             if(error.response.data.error ==  'Unauthorized'){
-                removeCookie('token');
-                removeCookie('id');
-                removeCookie('encrypted_id');
-                removeCookie('profile_pic');
-                removeCookie('display_name');
+                removeCookies('token');
+                removeCookies('id');
+                removeCookies('encrypted_id');
+                removeCookies('profile_pic');
+                removeCookies('display_name');
                 Router.replace('/')
                 return null;
             }
@@ -229,12 +235,11 @@ export default function Nav(data, profile_pic){
                 'Authorization': 'Basic Y2Fwc3RvbmUyMDIxOjEyMzQ=',
                 // 'Accept-Encoding': 'gzip, deflate, br',
                 'Accept': 'application/json',
-                'Token': cookies.token,
-                'User-Id': cookies.encrypted_id
+                'Token': token,
+                'User-Id': user_id
             }
         }
         let formData = new FormData;
-
 
         axios.post(`${API_URL}/api/logout`, formData, config)
         .then((response)=>{
@@ -242,11 +247,9 @@ export default function Nav(data, profile_pic){
             toastIdRef.current = toast({ title: 'Logout Successful!', status: 'success', duration: 3000, isClosable: false })
         })
         .then(()=>{
-            removeCookie('token');
-            removeCookie('id');
-            removeCookie('encrypted_id');
-            removeCookie('profile_pic');
-            removeCookie('display_name');
+            removeCookies('token');
+            removeCookies('encrypted_id');
+            removeCookies('display_name');
             router.push('/')
         }).catch((error)=>console.log(error.response))
 
@@ -268,8 +271,8 @@ export default function Nav(data, profile_pic){
                 'Authorization': 'Basic Y2Fwc3RvbmUyMDIxOjEyMzQ=',
                 // 'Accept-Encoding': 'gzip, deflate, br',
                 'Accept': 'application/json',
-                'Token': cookies.token,
-                'User-Id': cookies.encrypted_id
+                'Token': token,
+                'User-Id': user_id
             }
         }
 
@@ -294,7 +297,7 @@ export default function Nav(data, profile_pic){
                 my='auto'
                 mr={2}
                 icon={<HamburgerIcon />}
-                display={['flex','flex','none','none']}
+                display={{sm: 'flex', md:'flex', lg: 'none', xl: 'none', base: 'flex'}}
                 left='1rem'
                 onClick={() => changeDisplay('flex')}
             />
@@ -311,7 +314,7 @@ export default function Nav(data, profile_pic){
             left='15rem'
             align='center'
             >
-                <Flex display={['none','none','flex','flex']}>
+                <Flex display={{sm: 'none', md:'none', lg: 'flex', xl: 'flex', base: 'none'}}>
                 <Link href="/home" passHref>
                     <Button
                         as='a'
@@ -381,7 +384,7 @@ export default function Nav(data, profile_pic){
             align='center'
             w="15em"
         >
-            <Flex display={['none','none','flex','flex']} w="full">
+            <Flex display={{sm: 'none', md:'none', lg: 'flex', xl: 'flex', base: 'none'}} w="full">
                 <Popover>
                     <PopoverTrigger>
                         <Button as='a'
