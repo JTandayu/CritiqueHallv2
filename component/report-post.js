@@ -12,11 +12,23 @@ import {
     Text,
     Textarea,
     Center,
+    Spacer,
+    Image,
   } from "@chakra-ui/react"
 import { useDisclosure } from '@chakra-ui/react'
 import { Button } from '@chakra-ui/react'
 import styles from "@styles/Hall.module.css";
 import { Checkbox, CheckboxGroup } from '@chakra-ui/react'
+import {useCookies} from 'react-cookie'
+import { useEffect, useState } from "react";
+import { Radio, RadioGroup, Stack } from '@chakra-ui/react'
+import axios from "axios";
+import { WarningIcon } from "@chakra-ui/icons";
+import {useToast, useColorModeValue} from '@chakra-ui/react'
+import React from "react";
+import { getCookie } from 'cookies-next'
+
+
 
 // export async function getServerSideProps(context) {
 //     return {
@@ -24,47 +36,106 @@ import { Checkbox, CheckboxGroup } from '@chakra-ui/react'
 //     }
 // }
 
-function ReportPost() {
+
+function ReportPost({data}) {
     const { isOpen, onOpen, onClose } = useDisclosure()
+    const { API_URL } = process.env
+    const { API_KEY } = process.env
+
+    // const [cookie] = useCookies()
+    const [offense, setOffense] = useState('Inappropriate Username')
+    const [message, setMessage] = useState('')
+    const toast = useToast()
+    const toastIdRef = React.useRef()
+    const token = getCookie('token')
+    const user_id = getCookie('encrypted_id')
+    // console.log(data.encrypted_id)
+
+    const config = {
+        headers: { 
+          'content-type': 'multipart/form-data',
+          'X-API-KEY': `${API_KEY}`,
+          'Authorization': 'Basic Y2Fwc3RvbmUyMDIxOjEyMzQ=',
+          // 'Accept-Encoding': 'gzip, deflate, br',
+          'Accept': 'application/json',
+          'Token': token,
+          'User-Id': user_id
+        }
+    }
+
+    const submitReport = () =>{
+        let formData = new FormData;
+        formData.append("user_id", data.encrypted_id)
+        // formData.append("post_id", null)
+        // formData.append("critique_id", null)
+        // formData.append("reply_id", null)
+        formData.append("message", message)
+        // formData.append("offense_type", offense)
+        console.log(offense)
+
+        axios.post(`${API_URL}/api/submit_report`, formData, config)
+        .then((response)=>{
+            console.log(response.data)
+            toastIdRef.current = toast({
+                title: 'Report Submitted Successfully.',
+                status: 'success',
+                duration: 3000,
+                isClosable: true,
+              })
+        })
+        .catch((error)=>{
+            console.log(error.response)
+        })
+    }
+    
 
     return(
         <>
-        <button onClick={onOpen}>Report</button>
+        <Button bgColor="#212121" _hover={{bgColor: "#212121"}} _active={{bgColor: "#212121"}} onClick={onOpen} rounded="2xl"><Image src="/more-icon.png" w={7} h={7} /></Button>
 
-
-        <form action='' method='POST'>
         <Modal isOpen={isOpen} onClose={onClose}>
             <ModalOverlay />
                 <ModalContent maxW="40rem">
-                <ModalHeader>Report Post</ModalHeader>
+                <ModalHeader fontFamily={'Raleway'}>Report User</ModalHeader>
                 <ModalCloseButton />
                 <ModalBody>
-                    <form action="" method="POST">
                         <Flex mt='3vh'>
-                            <FormLabel>Reportee</FormLabel>
-                            <Text ml={20}>Lorem Ipsum</Text>
-                            
+                            <FormLabel fontFamily={'Raleway'}>Reportee</FormLabel>
+                            <Text fontFamily={'Raleway'} ml={20}>{cookie.display_name}</Text>
                         </Flex>
-                        
-                        <FormLabel>Description</FormLabel>
-                        <Textarea w='30vw' bg='white' color='black' />
+                        {/* <Flex mt='3vh'>
+                            <FormLabel fontFamily={'Raleway'}>Type of Offense</FormLabel>
+                            <RadioGroup name="offense" onChange={setOffense} value={offense}  ml={8}>
+                                <Stack fontFamily={'Raleway'} direction='column'>
+                                    <Radio value='Inappropriate Username' mb={2}>Inappropriate Username</Radio>
+                                    <Radio value='Inappropriate Post' mb={2}>Inappropriate Post</Radio>
+                                    <Radio value='Inappropriate Critique' mb={2}>Inappropriate Critique</Radio>
+                                    <Radio value='Spamming' mb={2}>Spamming</Radio>
+                                    <Radio value='Other' mb={2}>Other</Radio>
+                                </Stack>
+                            </RadioGroup>
+                        </Flex> */}
+
+                        <FormLabel fontFamily={'Raleway'}>Description</FormLabel>
+                        <Textarea borderColor={useColorModeValue('black', 'white')} fontFamily={'Raleway'} w='30vw' placeholder='Your detail report...' onChange={(e)=>setMessage(e.target.value)}/>
                         <Center mt={10} mb={10}>
-                            <Button type='submit' colorScheme='blue' mr={3} >
+                            <Button  fontFamily={'Raleway'} bgColor={useColorModeValue('#2777C1','#0085FF')} color={useColorModeValue('#FFFFFF', '#FFFFFF')} _hover={{bgColor: useColorModeValue('#56AEFF', '#0B5090')}} colorScheme='blue' mr={3} onClick={submitReport} >
                                 Submit
                             </Button>
-                            <Button variant='ghost' onClick={onClose}>
+                            <Button fontFamily={'Raleway'} bgColor={useColorModeValue('#C1272D', '#9E0B0F')} color={useColorModeValue('white', 'white')} _hover={{bgColor: useColorModeValue('#FF000A', '#470507')}} variant='ghost' onClick={onClose}>
                                 Cancel
                             </Button>
                         </Center>
-
-                    </form>
                 </ModalBody>
+
                 {/* <ModalFooter>
-                    
+                    <Button colorScheme='blue' mr={3} onClick={onClose}>
+                    Close
+                    </Button>
+                    <Button variant='ghost'>Post</Button>
                 </ModalFooter> */}
             </ModalContent>
         </Modal>
-        </form>
         
         
         </>

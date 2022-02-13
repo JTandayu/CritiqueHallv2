@@ -49,6 +49,7 @@ function ReportUser({data}) {
     const toastIdRef = React.useRef()
     const token = getCookie('token')
     const user_id = getCookie('encrypted_id')
+    const display_name = getCookie('display_name')
     // console.log(data.encrypted_id)
 
     const config = {
@@ -101,7 +102,7 @@ function ReportUser({data}) {
                 <ModalBody>
                         <Flex mt='3vh'>
                             <FormLabel fontFamily={'Raleway'}>Reportee</FormLabel>
-                            <Text fontFamily={'Raleway'} ml={20}>{cookie.display_name}</Text>
+                            <Text fontFamily={'Raleway'} ml={20}>{display_name}</Text>
                         </Flex>
                         {/* <Flex mt='3vh'>
                             <FormLabel fontFamily={'Raleway'}>Type of Offense</FormLabel>

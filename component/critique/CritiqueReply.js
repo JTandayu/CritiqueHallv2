@@ -1,4 +1,5 @@
 import React from 'react'
+import Link from 'next/link'
 import { useEffect, useState } from 'react'
 import {Box, Flex, Heading, Image, Spacer, Text, Button, useColorModeValue } from '@chakra-ui/react'
 import {
@@ -138,7 +139,9 @@ export const CritiqueReply = ({id, post_id, newReply}) => {
                 <Box p="2" overflow-y="auto" w={{lg: '32vw', sm: '85%'}} ml={16} mt={5} key={i}>
                             <Flex>
                                 <Image src={reply.profile_photo} w='3vh' h='3vh' mt={2} />
-                                <Heading fontFamily={'Raleway'} size='md' ml={3} mt={2}>{reply.display_name}</Heading>
+                                <Link href={`/profile/${reply.display_name}`} passHref>
+                                    <Heading fontFamily={'Raleway'} size='md' ml={3} mt={2} _hover={{cursor: 'pointer'}}>{reply.display_name}</Heading>
+                                </Link>
                                 {reply.starred_by_author == '1' ? <Image src='/reputation-stars.png' alt="Reputation Stars" w="25px" h="25px" ml={3} mt={2} /> : null}
                                 {Number(reply.reputation_points) >= 50 ? <Image src={changeBadgeIcon} alt="Badge" w="25px" h="25px" ml={3} mt={2} /> : null}
                                 <Spacer />
@@ -184,7 +187,9 @@ export const CritiqueReply = ({id, post_id, newReply}) => {
                 <Box p="2" overflow-y="auto" w={{lg: '32vw', sm: '85%'}} ml={16} mt={5} key={i}>
                             <Flex>
                                 <Image src={reply.profile_photo} w='3vh' h='3vh' mt={2} />
-                                <Heading fontSize={'Raleway'} size='md' ml={3} mt={2}>{reply.display_name}</Heading>
+                                <Link href={`/profile/${reply.display_name}`} passHref>
+                                    <Heading fontSize={'Raleway'} size='md' ml={3} mt={2} _hover={{cursor: 'pointer'}}>{reply.display_name}</Heading>
+                                </Link>
                                 {reply.starred_by_author == '1' ? <Image src='/reputation-stars.png' alt="Reputation Stars" w="25px" h="25px" ml={3} mt={2} /> : null}
                                 {Number(reply.reputation_points) >= 10 ? <Image src={changeBadgeIcon} alt="Badge" w="25px" h="25px" ml={3} mt={2} /> : null}
                                 <Spacer />
