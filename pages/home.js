@@ -79,7 +79,7 @@ function Home(){
               <br />
               <Image src={Desc1} w='800px' h='150px' ml={'30%'}/>
               <br />
-              <Image src={Desc2} w='700px' h='100px' ml={'18%'}/>
+              <Image src={Desc2} w='800x' h='120px' ml={'30%'}/>
               {/* <Image className={styles.drop_shadow} src={useColorModeValue('critiquehall.png', 'critiquehall-dark.png')}  alt="Critique Hall Logo" w={{lg: '500px', md: '500px', sm: '500px'}} h='37vh' mt={5}/> */}
               {/* <Link href="/login"><Button type='submit' mt={5} colorScheme='red' position='static'>Get Started</Button></Link> */}
               {/* </SimpleGrid> */}

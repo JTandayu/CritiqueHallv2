@@ -273,7 +273,7 @@ export default function Register({data2}) {
                         variant='ghost'
                         aria-label='Home'
                         my={2}
-                        ml={4}
+                        ml={'55%'}
                         w='50%'
                         onClick={changeDarkAndLightIcon}
                         _hover={{cursor:'pointer'}}
@@ -341,7 +341,7 @@ export default function Register({data2}) {
                 </Select>
                 </Box>
                 <Box>
-                <FormLabel display="flex">Strand / Specialization<Text fontSize="sm" color={useColorModeValue('gray', 'gray')} ml={2}>depends</Text></FormLabel>
+                <FormLabel display="flex">Strand or Specialization</FormLabel>
                 <Select borderColor={useColorModeValue('black', 'white')} borderRadius="lg"  className={styles.input_select} size="sm" onChange={e => setSpecialization(e.target.value)}>
                 <option value="" disabled selected>Choose</option>
                 {specList.map((specialization, i) => (
