@@ -71,7 +71,7 @@ function Home(){
 
           <Box position='static' bgColor={useColorModeValue('#E5E5E5', '#2E2E2E')} w={{lg: "100%", base: "100%"}} h={{lg: '75vh', md: '100%', sm: '100%'}} display={{lg: 'flex', md: 'flex', sm: 'block', base: 'flex'}} z-index='-1' boxShadow='lg'>
           <Flex mt={{lg: 44, base: '50%'}} flexDir={{lg: 'column', base: 'column'}} align='center' w={{lg: '50vw', md: '100%', sm: '100%'}}>
-            <SimpleGrid columns={{base: 1}} spacing={{base: 2}}>
+            {/* <SimpleGrid columns={{base: 1}} spacing={{base: 2}}> */}
               <Image src={HomeTitle} w={{lg: '550px', base: '15em'}} h={{lg: '50px',  base: '1em'}}/>
               <br />
               <Image src={Desc1} w='800px' h='150px' ml={'30%'}/>
@@ -79,7 +79,7 @@ function Home(){
               <Image src={Desc2} w='700px' h='100px' ml={'18%'}/>
               {/* <Image className={styles.drop_shadow} src={useColorModeValue('critiquehall.png', 'critiquehall-dark.png')}  alt="Critique Hall Logo" w={{lg: '500px', md: '500px', sm: '500px'}} h='37vh' mt={5}/> */}
               {/* <Link href="/login"><Button type='submit' mt={5} colorScheme='red' position='static'>Get Started</Button></Link> */}
-              </SimpleGrid>
+              {/* </SimpleGrid> */}
             </Flex>
             <Image src='PeopleDiscuss.png' w={{lg: '70%', md: '600px', sm: '600px', base: '50%'}} h={{lg: '60vh', base: '30%'}} mt='10vh' mb='5vh' mr={5} align='center' alt="Man Texting"/>
           </Box>
