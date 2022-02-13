@@ -193,19 +193,54 @@ export default function CritiquePost(){
                 setDrop(false)
             }
 
-            if(fileName1.endsWith('.docx') == true || fileName1.endsWith('.xls') == true){
+            if(fileName1.endsWith('.docx') == true || fileName1.endsWith('.xlsx') == true ||
+            fileName1.endsWith('.pdf') == true || fileName1.endsWith('.txt') == true ||
+            fileName1.endsWith('.psd') == true || fileName1.endsWith('.ai') == true ||
+            fileName1.endsWith('.svg') == true || fileName1.endsWith('.html') == true ||
+            fileName1.endsWith('.css') == true || fileName1.endsWith('.js') == true ||
+            fileName1.endsWith('.php') == true || fileName1.endsWith('.mp3') == true ||
+            fileName1.endsWith('.wav') == true || fileName1.endsWith('.mpeg') == true ||
+            fileName1.endsWith('.flac') == true){
                 setfile1Doc(true)
             }
-            if(fileName2.endsWith('.docx') == true || fileName2.endsWith('.xls') == true){
+            if(fileName2.endsWith('.docx') == true || fileName2.endsWith('.xlsx') == true ||
+            fileName2.endsWith('.pdf') == true || fileName2.endsWith('.txt') == true ||
+            fileName2.endsWith('.psd') == true || fileName2.endsWith('.ai') == true ||
+            fileName2.endsWith('.svg') == true || fileName2.endsWith('.html') == true ||
+            fileName2.endsWith('.css') == true || fileName2.endsWith('.js') == true ||
+            fileName2.endsWith('.php') == true || fileName2.endsWith('.mp3') == true ||
+            fileName2.endsWith('.wav') == true || fileName2.endsWith('.mpeg') == true ||
+            fileName2.endsWith('.flac') == true){
                 setfile2Doc(true)
             }
-            if(fileName3.endsWith('.docx') == true || fileName3.endsWith('.xls') == true){
+            if(fileName3.endsWith('.docx') == true || fileName3.endsWith('.xlsx') == true ||
+            fileName3.endsWith('.pdf') == true || fileName3.endsWith('.txt') == true ||
+            fileName3.endsWith('.psd') == true || fileName3.endsWith('.ai') == true ||
+            fileName3.endsWith('.svg') == true || fileName3.endsWith('.html') == true ||
+            fileName3.endsWith('.css') == true || fileName3.endsWith('.js') == true ||
+            fileName3.endsWith('.php') == true || fileName3.endsWith('.mp3') == true ||
+            fileName3.endsWith('.wav') == true || fileName3.endsWith('.mpeg') == true ||
+            fileName3.endsWith('.flac') == true){
                 setfile3Doc(true)
             }
-            if(fileName4.endsWith('.docx') == true || fileName4.endsWith('.xls') == true){
+            if(fileName4.endsWith('.docx') == true || fileName4.endsWith('.xlsx') == true ||
+            fileName4.endsWith('.pdf') == true || fileName4.endsWith('.txt') == true ||
+            fileName4.endsWith('.psd') == true || fileName4.endsWith('.ai') == true ||
+            fileName4.endsWith('.svg') == true || fileName4.endsWith('.html') == true ||
+            fileName4.endsWith('.css') == true || fileName4.endsWith('.js') == true ||
+            fileName4.endsWith('.php') == true || fileName4.endsWith('.mp3') == true ||
+            fileName4.endsWith('.wav') == true || fileName4.endsWith('.mpeg') == true ||
+            fileName4.endsWith('.flac') == true){
                 setfile4Doc(true)
             }
-            if(fileName5.endsWith('.docx') == true || fileName5.endsWith('.xls') == true){
+            if(fileName5.endsWith('.docx') == true || fileName5.endsWith('.xlsx') == true ||
+            fileName5.endsWith('.pdf') == true || fileName5.endsWith('.txt') == true ||
+            fileName5.endsWith('.psd') == true || fileName5.endsWith('.ai') == true ||
+            fileName5.endsWith('.svg') == true || fileName5.endsWith('.html') == true ||
+            fileName5.endsWith('.css') == true || fileName5.endsWith('.js') == true ||
+            fileName5.endsWith('.php') == true || fileName5.endsWith('.mp3') == true ||
+            fileName5.endsWith('.wav') == true || fileName5.endsWith('.mpeg') == true ||
+            fileName5.endsWith('.flac') == true){
                 setfile5Doc(true)
             }
 
@@ -381,7 +416,7 @@ export default function CritiquePost(){
 
                     [file1Doc != true || file1Doc != true ? 
                     <Center my={10}>
-                        <Image src={data.attachment1} cursor="pointer"  disabled />
+                        <Image src={data.attachment1} w='70%' h='30%' cursor="pointer"  disabled />
                     </Center>  
                         :
                     <Center p={10} w="full"> 

@@ -176,7 +176,19 @@ function CreatePost({data}) {
                 e.target.files[i].name.endsWith(".jpg") == true || 
                 e.target.files[i].name.endsWith(".png") == true ||
                 e.target.files[i].name.endsWith(".gif") == true || 
-                e.target.files[i].name.endsWith(".mp3") == true){
+                e.target.files[i].name.endsWith(".mp3") == true || 
+                e.target.files[i].name.endsWith(".txt") == true || 
+                e.target.files[i].name.endsWith(".pdf") == true || 
+                e.target.files[i].name.endsWith(".psd") == true ||
+                e.target.files[i].name.endsWith(".ai") == true || 
+                e.target.files[i].name.endsWith(".svg") == true ||
+                e.target.files[i].name.endsWith(".html") == true || 
+                e.target.files[i].name.endsWith(".css") == true || 
+                e.target.files[i].name.endsWith(".php") == true ||
+                e.target.files[i].name.endsWith(".js") == true || 
+                e.target.files[i].name.endsWith(".wav") == true ||
+                e.target.files[i].name.endsWith(".mpeg") == true || 
+                e.target.files[i].name.endsWith(".flac") == true){
                     const newImage = e.target.files[i]
                     newImage['id'] = Math.random()
                     setImage((prevState) => [...prevState, newImage])
