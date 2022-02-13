@@ -146,8 +146,8 @@ export default function SearchResult(){
     console.log(currentSearch)
     
     const sortPostResult = async (e) =>{
-        const searchItem = localStorage.getItem('search-item')
-        setSearch(searchItem)
+        // const searchItem = localStorage.getItem('search-item')
+        // setSearch(searchItem)
 
         let formData = new FormData;
         formData.append('search_data', searchItem)
@@ -246,7 +246,7 @@ export default function SearchResult(){
                 <Spacer />
 
                 <Flex w='15vw' mt={1} fontFamily={'Raleway'}>
-                    <Text mr={5} w={20} mt={2} >Sort By: </Text>
+                    <Text mr={5} w={28} mt={2} >Sort By: </Text>
                     <Select borderColor={useColorModeValue('black', 'white')} color={useColorModeValue('black', 'white')} bgColor={useColorModeValue('#FFFFFF', '#2E2E2E')} boxShadow={'lg'} onChange={(e) => sortPostResult(e.target.value)}>
                         <option value='desc'>Newest</option>
                         <option value='asc'>Oldest</option>

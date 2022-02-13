@@ -231,7 +231,7 @@ export const Critiques = ({id, newCritique}) => {
                         <Image src={CritiqueTitle} w='25vh' h='5vh' />
                         <Spacer />
                         <Flex w={{lg: '15vw', sm: '50%'}} mt={1}>
-                        <Text fontFamily={'Raleway'} mr={{lg: 5, sm: 1}} w={20} mt={2}>Sort by: </Text>
+                        <Text fontFamily={'Raleway'} mr={{lg: 5, sm: 1}} w={28} mt={2}>Sort by: </Text>
                         <Select borderColor={useColorModeValue('black', 'white')} fontFamily={'Raleway'} onChange={(e)=>sortCritique(e.target.value)}>
                             <option value='desc'>Newest</option>
                             <option value='asc'>Oldest</option>
@@ -302,7 +302,7 @@ export const Critiques = ({id, newCritique}) => {
                                 <Flex w='20vw'>
                                     <Button variant='ghost' onClick={()=>giveStar(critique.critique_id)}><Image src={changeIcon} alt="Stars" w="25px" h="25px" ml={2} mr={2} id="changeStarClicked"/> <Text id={`star${critique.critique_id}`}>{critique.stars}</Text></Button>
                                     <Button fontFamily={'Raleway'} variant='ghost' ml={5} onClick={()=>openReply(critique.critique_id)}>Reply</Button>
-                                    {critique.is_edited == 1 ? <Text fontFamily={'Raleway'}>(Edited)</Text> : null}
+                                    {critique.is_edited == 1 ? <Text fontFamily={'Raleway'} color="gray.400" mt={3} fontSize="sm">(Edited)</Text> : null}
                                 </Flex>
                         </Box>
                         <Box p="2" w='35vw' mt={1} id={critique.critique_id} hidden>
@@ -354,7 +354,7 @@ export const Critiques = ({id, newCritique}) => {
                                 <Flex w='20vw'>
                                     <Button variant='ghost' onClick={()=>giveStar(critique.critique_id)}><Image src={changeIcon} alt="Stars" w="25px" h="25px" ml={2} mr={2} id="changeStarClicked"/> <Text id={`star${critique.critique_id}`}>{critique.stars}</Text></Button>
                                     <Button fontFamily={'Raleway'} variant='ghost' ml={5} onClick={()=>openReply(critique.critique_id)}>Reply</Button>
-                                    {critique.is_edited == 1 ? <Text fontFamily={'Raleway'}>(Edited)</Text> : null}
+                                    {critique.is_edited == 1 ? <Text fontFamily={'Raleway'} color="gray.400" mt={3} fontSize="sm">(Edited)</Text> : null}
                             </Flex>
                     </Box>
                     <Box p="2" w='35vw' mt={1} id={critique.critique_id} hidden>
