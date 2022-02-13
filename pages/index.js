@@ -73,9 +73,13 @@ export default function Login({user}) {
   const toast = useToast()
   const toastIdRef = React.useRef()
 
-  const [cookie, setCookies, removeCookies] = useCookies(['token', 'id', 'encrypted_id'])
+  const [cookie, setCookies, removeCookies] = useCookies(['token', 'display_name', 'encrypted_id'])
 
   // console.log(cookie)
+
+  if(cookie.token != 'undefined' || cookie.encrypted_id != 'undefined' || cookie.display_name != 'undefined'){
+    router.push('/home')
+  }
 
   const changeDarkAndLightIcon = () => {
     toggleColorMode()

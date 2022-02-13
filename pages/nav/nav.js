@@ -159,14 +159,29 @@ export default function Nav(data, profile_pic){
         .catch(error => {
             // console.log(error.response.data.error);
             if(error.response.data.error ==  'User does not exist'){
+                removeCookie('token');
+                removeCookie('id');
+                removeCookie('encrypted_id');
+                removeCookie('profile_pic');
+                removeCookie('display_name');
                 Router.replace('/')
                 return null;
             }
             if(error.response.data.error ==  'Token Expired'){
+                removeCookie('token');
+                removeCookie('id');
+                removeCookie('encrypted_id');
+                removeCookie('profile_pic');
+                removeCookie('display_name');
                 Router.replace('/')
                 return null;
             }
             if(error.response.data.error ==  'Unauthorized'){
+                removeCookie('token');
+                removeCookie('id');
+                removeCookie('encrypted_id');
+                removeCookie('profile_pic');
+                removeCookie('display_name');
                 Router.replace('/')
                 return null;
             }
@@ -206,7 +221,7 @@ export default function Nav(data, profile_pic){
     }
 
     //Log-out function
-    const logOut = async ()=>{
+    const logOut = () =>{
         const config = {
             headers: { 
                 'content-type': 'multipart/form-data',
