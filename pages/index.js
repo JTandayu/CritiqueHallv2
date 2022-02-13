@@ -75,7 +75,7 @@ export default function Login({user}) {
 
   // console.log(cookie)
   useEffect(() => {
-    if(cookie.token != 'undefined' || cookie.encrypted_id != 'undefined' || cookie.display_name != 'undefined'){
+    if(cookie.token != 'undefined' || cookie.encrypted_id != 'undefined' || cookie.display_name != 'undefined' || cookie.token != null || cookie.encrypted_id != null || cookie.display_name != null){
       router.replace('/home')
     }
   }, [])
