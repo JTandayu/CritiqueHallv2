@@ -42,6 +42,7 @@ import ReactDOM from 'react-dom';
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from 'react-responsive-carousel';
 import Link from 'next/link'
+import ScrollToTop from "react-scroll-to-top";
 
 
 const breakpoints = createBreakpoints({
@@ -68,6 +69,8 @@ function Home(){
             <link rel="icon" href={useColorModeValue('logo256.png', 'logo256-dark.png')} onLoad=""/>
             <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@700&display=swap" rel="stylesheet" />
           </Head>
+          
+          <ScrollToTop color={'black'} width={40} boxShadow={'dark-lg'} smooth />
 
           <Box position='static' bgColor={useColorModeValue('#E5E5E5', '#2E2E2E')} w={{lg: "100%", base: "100%"}} h={{lg: '75vh', md: '100%', sm: '100%'}} display={{lg: 'flex', md: 'flex', sm: 'block', base: 'flex'}} z-index='-1' boxShadow='lg'>
           <Flex mt={{lg: 44, base: '50%'}} flexDir={{lg: 'column', base: 'column'}} align='center' w={{lg: '50vw', md: '100%', sm: '100%'}}>

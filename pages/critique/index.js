@@ -46,6 +46,7 @@ import ReportPost from '@component/report-post'
 import DeletePost from '@component/post/options/delete'
 import { useColorMode, useColorModeValue } from "@chakra-ui/react";
 import { getCookie } from 'cookies-next'
+import ScrollToTop from "react-scroll-to-top";
 
 
 const breakpoints = createBreakpoints({
@@ -303,7 +304,7 @@ export default function HallPage(){
             {/* <Button w={{lg: "70%" , sm: '100%'}} mb="5" mx="auto" p="4" mt="14vh"  h="100px" top={0} className={styles.halls} variant="none" href="" onClick={getAll} boxShadow={'lg'}>
                     <Heading fontFamily={'Raleway'} fontWeight={'black'} size="4xl" align="center" mt="4" mb="4" color="white">HALLS</Heading>
             </Button> */}
-            
+            <ScrollToTop color={'black'} width={40} boxShadow={'dark-lg'} smooth />
             {/* Halls */}
             <Box bgImage={'/HallsCard-Critique.png'} bgRepeat={'no-repeat'} bgSize={'cover'} rounded="lg" w="70%" h='200px' display={{lg: 'flex', md: 'flex', sm: 'none'}} mx="auto" mt="15vh" top="0">
                 
