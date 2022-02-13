@@ -13,6 +13,17 @@ import {
     ModalBody,
     ModalCloseButton,
   } from "@chakra-ui/react"
+  import {
+    Popover,
+    PopoverTrigger,
+    PopoverContent,
+    PopoverHeader,
+    PopoverBody,
+    PopoverFooter,
+    PopoverArrow,
+    PopoverCloseButton,
+    PopoverAnchor,
+  } from '@chakra-ui/react'
 import EditProfile from '@component/edit-profile'
 import styles from '@styles/Profile.module.css'
 import axios from 'axios'
@@ -232,7 +243,19 @@ export default function ProfilePage({}){
                             {userData && userData.display_name === cookies.display_name ? <EditProfile data={userData}/> : null}
                         </Flex>
                         <Text w={{lg: '65vh', md: '100%', sm: '100%'}} fontSize='3xl' color="white">{userData.about_me}</Text>
-                        <Heading size='xl' color={useColorModeValue('#1B1464', '#B2A3FF')} mt={5} display="flex" fontFamily={'Raleway'}>Reputation Stars: <Text fontFamily={'Raleway'} color={useColorModeValue('#C1272D', '#FF5C61')} ml={5} display='flex'>{userData.reputation_points}{userData.reputation_points >= 10 ? <Image src={changeBadgeIcon} alt="Badge Icon" w="50px" h="50px" ml={2}/> : null}<Image src='/question-icon.png' alt="question icon" w="20px" h="20px" ml={2} mt={3}/></Text></Heading>
+                        <Heading size='xl' color={useColorModeValue('#1B1464', '#B2A3FF')} mt={5} display="flex" fontFamily={'Raleway'}>Reputation Stars: <Text fontFamily={'Raleway'} color={useColorModeValue('#C1272D', '#FF5C61')} ml={5} display='flex'>{userData.reputation_points}{userData.reputation_points >= 10 ? <Image src={changeBadgeIcon} alt="Badge Icon" w="50px" h="50px" ml={2}/> : null}
+                        <Popover trigger="hover">
+                        <PopoverTrigger>
+                        <Image src='/question-icon.png' _hover={{cursor: 'pointer'}} alt="question icon" w="20px" h="20px" ml={2} mt={3}/>
+                        </PopoverTrigger>
+                        <PopoverContent>
+                            <PopoverArrow /> 
+                            {/* <PopoverCloseButton color={useColorModeValue('black', 'white')}/> */}
+                            <PopoverBody><Text fontSize="md" fontFamily={'Raleway'} color={useColorModeValue('black', 'white')} align="justify" p={3}>Reaching 10 stars grants you a Top User badge! This will be displayed in your profile and beside your name whenever you give a critique.</Text></PopoverBody>
+                        </PopoverContent> 
+                        </Popover>
+                        </Text>
+                        </Heading>
                         <Heading size='xl' color={useColorModeValue('#1B1464', '#B2A3FF')} mt={5} fontFamily={'Raleway'} display='flex'>Specialization: <Text fontFamily={'Raleway'} color={useColorModeValue('#C1272D', '#FF5C61')} ml={5}>{userData.specialization}</Text></Heading>
                     </Box>
                 </Box>
@@ -285,8 +308,8 @@ export default function ProfilePage({}){
                                     </Center> */}
                                     <Center mt={0}>
                                         {posts.attachment1 != 'undefined' ? 
-                                        <Text fontFamily={'Raleway'} bgColor={posts.hall_color} color="white" borderRadius={10} align="center"><Image _hover={{cursor: 'pointer'}} src={posts.attachment1} w={{lg: '400px', sm: '300px'}} h='20vh' onError={addDefaultSrc} borderRadius={10} boxShadow="md"/>{posts.hall}</Text>
-                                        : <Text fontFamily={'Raleway'} bgColor={posts.hall_color} color="white" borderRadius={10} align="center"><Image _hover={{cursor: 'pointer'}} src="/no-image-preview.png" w={{lg: '400px', sm: '300px'}} h='20vh' borderRadius={10} boxShadow="md"/>{posts.hall}</Text>}
+                                        <Box bgColor={posts.hall_color} borderRadius={10}><Image _hover={{cursor: 'pointer'}} src={posts.attachment1} w={{lg: '400px', sm: '300px'}} h='20vh' onError={addDefaultSrc} borderRadius={10} boxShadow="md" display="flex"/><Box display="flex" w="100%"><Text fontFamily={'Raleway'} color="white" borderRadius={10} align="center" ml={2}>{posts.hall}</Text><Spacer /><Text fontFamily={'Raleway'} fontSize="sm" color="gray.300" borderRadius={10} align="center" mr={2}>{posts.time_ago}</Text></Box></Box>
+                                        : <Box bgColor={posts.hall_color} borderRadius={10}><Image _hover={{cursor: 'pointer'}} src="/no-image-preview.png" w={{lg: '400px', sm: '300px'}} h='20vh' onError={addDefaultSrc} borderRadius={10} boxShadow="md" display="flex"/><Box display="flex" w="100%"><Text fontFamily={'Raleway'} color="white" borderRadius={10} align="center" ml={2}>{posts.hall}</Text><Spacer /><Text fontFamily={'Raleway'} fontSize="sm" color="gray.300" borderRadius={10} align="center" mr={2}>{posts.time_ago}</Text></Box></Box>}
                                     </Center>
                                     <Flex w='100%' p={3} fontFamily={'Raleway'}>
                                     <Image src={changeStarIcon} alt="Stars" w="25px" h="25px" ml={2}/> {posts.likes}
@@ -309,9 +332,9 @@ export default function ProfilePage({}){
                                     </Center> */}
                                     <Center mt={0}>
                                         {critique.attachment1 != 'undefined' ? 
-                                         <Text fontFamily={'Raleway'} bgColor={critique.hall_color} color="white" borderRadius={10} align="center"><Image _hover={{cursor: 'pointer'}} src={critique.attachment1} w={{lg: '400px', sm: '300px'}} h='20vh' onError={addDefaultSrc} borderRadius={10} boxShadow="md" />{critique.hall}</Text>
-                                        : <Text fontFamily={'Raleway'} bgColor={critique.hall_color} color="white" borderRadius={10} align="center"><Image _hover={{cursor: 'pointer'}} src="/no-image-preview.png" w={{lg: '400px', sm: '300px'}} h='20vh' borderRadius={10} boxShadow="md"/>{critique.hall}</Text>}
-                                    </Center>
+                                         <Box bgColor={critique.hall_color} borderRadius={10}><Image _hover={{cursor: 'pointer'}} src={critique.attachment1} w={{lg: '400px', sm: '300px'}} h='20vh' onError={addDefaultSrc} borderRadius={10} boxShadow="md" display="flex"/><Box display="flex" w="100%"><Text fontFamily={'Raleway'} color="white" borderRadius={10} align="center" ml={2}>{critique.hall}</Text><Spacer /><Text fontFamily={'Raleway'} fontSize="sm" color="gray.300" borderRadius={10} align="center" mr={2}>{critique.time_ago}</Text></Box></Box>
+                                         : <Box bgColor={critique.hall_color} borderRadius={10}><Image _hover={{cursor: 'pointer'}} src="/no-image-preview.png" w={{lg: '400px', sm: '300px'}} h='20vh' onError={addDefaultSrc} borderRadius={10} boxShadow="md" display="flex"/><Box display="flex" w="100%"><Text fontFamily={'Raleway'} color="white" borderRadius={10} align="center" ml={2}>{critique.hall}</Text><Spacer /><Text fontFamily={'Raleway'} fontSize="sm" color="gray.300" borderRadius={10} align="center" mr={2}>{critique.time_ago}</Text></Box></Box>}
+                                         </Center>
                                     <Flex w='100%' p={3} fontFamily={'Raleway'}>
                                     <Image src={changeStarIcon} alt="Stars" w="25px" h="25px" ml={2}/> {critique.stars}
                                         <Spacer />
