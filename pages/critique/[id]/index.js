@@ -46,6 +46,7 @@ import ReportPost from '@component/report-post'
 import DeletePost from '@component/post/options/delete'
 import { useColorMode, useColorModeValue } from "@chakra-ui/react";
 import { getCookie } from 'cookies-next'
+import { useRouter } from 'next/router'
 
 
 const breakpoints = createBreakpoints({
@@ -88,12 +89,14 @@ export default function HallPage(){
     const { API_URL } = process.env
     const { API_KEY } = process.env
     const toast = useToast()
+    const router = useRouter()
+    // const post_id = ;
 
     const [posts, setPosts] = useState([])
     const [loading, setLoading] = useState(true)
     const [currentPage, setCurrentPage] = useState(1)
     const [postsPerPage, setPostsPerPage] = useState(6)
-    const [hall, setHalls] =  useState('0')
+    const [hall, setHalls] =  useState(router.query.id)
     const [hallNum, setHallNum] = useState([])
     const [hallList, setHallList] = useState([])
 
@@ -170,7 +173,7 @@ export default function HallPage(){
             console.log(error.response.status)
         });
 
-    }, [])
+    }, [router.isReady])
 
     // console.log(posts);
 

@@ -333,7 +333,7 @@ export default function Nav(data, profile_pic){
                         Home
                     </Button>
                 </Link>
-                <Link href="/critique" as='/critique' passHref>
+                <Link href="/critique/0" as='/critique/0' passHref>
                     <Button
                         as='a'
                         variant='ghost'
@@ -342,8 +342,8 @@ export default function Nav(data, profile_pic){
                         mr={2}
                         w='100%'
                         position='static'
-                        color={Router.pathname === "/critique" ?  changeColor : changeColor2} 
-                        textDecoration={Router.pathname === "/critique" ? 'underline' : 'none'}
+                        color={Router.pathname === "/critique/[id]" ?  changeColor : changeColor2} 
+                        textDecoration={Router.pathname === "/critique/[id]" ? 'underline' : 'none'}
                         _hover={{cursor:'pointer', textDecoration:'underline', color: useColorModeValue('#C1272D', '#FF5C61')}}
                         fontFamily={'Raleway'}
                         fontWeight={'bold'}
@@ -514,15 +514,15 @@ export default function Nav(data, profile_pic){
                         Home
                     </Button>
                 </Link>
-                <Link href="/critique" as='/critique' passHref>
+                <Link href="/critique/0" as='/critique/0' passHref>
                     <Button
                         as='a'
                         variant='ghost'
                         aria-label='Home'
                         my={5}
                         w='100%'
-                        color={Router.pathname === "/critique" ? changeColor : changeColor2}
-                        textDecoration={Router.pathname === "/critique" ? 'underline' : 'none'}
+                        color={Router.pathname === "/critique/[id]" ? changeColor : changeColor2}
+                        textDecoration={Router.pathname === "/critique/[id]" ? 'underline' : 'none'}
                         _hover={{cursor:'pointer', textDecoration:'underline', color: useColorModeValue('#C1272D', '#FF5C61')}}
                         fontFamily={'Raleway'}
                     >
