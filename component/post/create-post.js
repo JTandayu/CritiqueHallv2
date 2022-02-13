@@ -82,7 +82,7 @@ function CreatePost({data}) {
 
     const [title, setTitle] = useState('')
     const [description, setDescription] = useState('')
-    const [hall_id, setHallID] = useState('1')
+    const [hall_id, setHallID] = useState('2')
     
     const toast = useToast()
     const toastIdRef = React.useRef()
