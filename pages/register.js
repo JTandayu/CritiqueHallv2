@@ -214,6 +214,12 @@ export default function Register({data2}) {
         .catch(error => {
           // toastIdRef.current = toast({ title: 'Account Creation Unsuccessful!', description: 'Please try again.', status: 'error', duration: 2000, isClosable: true })
             console.log(error.response);
+
+            if(error.response.data.message === "<p>Display Name is already used</p>\n" || error.response.data.message === "<p>Display Name is already used</p>\n<p>Email is already used</p>\n" || error.response.data.message === "<p>Email is already used</p>\n"){
+              document.getElementById('warning2').removeAttribute('hidden');
+              document.getElementById('warning1').hidden=true;
+              document.getElementById('warning3').hidden=true;
+            }
             // window.location = "/register"
         });
       }
@@ -288,7 +294,7 @@ export default function Register({data2}) {
             </Box>
             <Box id='warning2' color='red' w='30%' h='5vh' mb={4} mt={2} hidden>
               <Center>
-                <Text mt='1vh'>Email is used</Text>
+                <Text mt='1vh'>Email or Username is already used</Text>
               </Center>
             </Box>
             <Box id='warning3' color='red' w='30%' h='5vh' mb={4} mt={2} hidden>
