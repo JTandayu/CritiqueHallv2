@@ -169,7 +169,7 @@ function CreatePost({data}) {
                     // console.log(image)
                     setCounter(0)
                     return;
-                }if(e.target.files[i].name.endsWith('.docx') != true && e.target.files[i].name.endsWith('.xlsx') != true && e.target.files[i].name.endsWith('.jpg') != true && e.target.files[i].name.endsWith('.png') != true && e.target.files[i].name.endsWith('.mp3') != true){
+                }if(e.target.files[i].name.endsWith('.docx') != true && e.target.files[i].name.endsWith('.xlsx') != true && e.target.files[i].name.endsWith('.jpg') != true && e.target.files[i].name.endsWith('.png') != true && e.target.files[i].name.endsWith('.mp3') != true && e.target.files[i].name.endsWith('.gif')){
                     toastIdRef.current = toast({
                         title: "File is not Accepted.",
                         status: 'error',
