@@ -74,11 +74,11 @@ export default function Login({user}) {
   const [cookie, setCookies, removeCookies] = useCookies(['token', 'display_name', 'encrypted_id'])
 
   // console.log(cookie)
-  useEffect(() => {
-    if(cookie.token != 'undefined' || cookie.encrypted_id != 'undefined' || cookie.display_name != 'undefined' || cookie.token != null || cookie.encrypted_id != null || cookie.display_name != null){
-      router.replace('/home')
-    }
-  }, [])
+  // useEffect(() => {
+  //   if(cookie.token != 'undefined' || cookie.encrypted_id != 'undefined' || cookie.display_name != 'undefined' || cookie.token != null || cookie.encrypted_id != null || cookie.display_name != null){
+  //     router.replace('/home')
+  //   }
+  // }, [])
   
   
 
