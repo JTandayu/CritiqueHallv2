@@ -303,7 +303,7 @@ export const Critiques = ({id, newCritique}) => {
                                     <Image src={critique.profile_photo} w='3vh' h='3vh' mt={2} />
                                     <Heading fontFamily={'Raleway'} size='sm' ml={3} mt={2}>{critique.display_name}</Heading>
                                     {critique.starred_by_author == '1' ? <Image src='/reputation-stars.png' alt="Reputation Stars" w="25px" h="25px" ml={3} mt={2} /> : null}
-                                    {Number(critique.reputation_points) >= 50 ? <Image src='/badge-icon.png' alt="Badge" w="25px" h="25px" ml={3} mt={2} /> : null}
+                                    {Number(critique.reputation_points) >= 50 ? <Image src={changeBadgeIcon} alt="Badge" w="25px" h="25px" ml={3} mt={2} /> : null}
                                     <Spacer />
                                     <Text fontFamily={'Raleway'} fontSize='sm' mt={2}>{critique.time_ago}</Text>
                                     {critique.is_edited == 1 ? 
@@ -326,7 +326,7 @@ export const Critiques = ({id, newCritique}) => {
                                     <Text fontFamily={'Raleway'} fontSize='md'>{critique.body}</Text>
                                 </Box>
                                 <Flex w='20vw'>
-                                    <Button variant='ghost' onClick={()=>giveStar(critique.critique_id)}><Image src='/stars.png' alt="Stars" w="25px" h="25px" ml={2} mr={2}/> <Text id={`star${critique.critique_id}`}>{critique.stars}</Text></Button>
+                                    <Button variant='ghost' onClick={()=>giveStar(critique.critique_id)}><Image src={changeIcon} alt="Stars" w="25px" h="25px" ml={2} mr={2}/> <Text id={`star${critique.critique_id}`}>{critique.stars}</Text></Button>
                                     <Button fontFamily={'Raleway'} variant='ghost' ml={5} onClick={()=>openReply(critique.critique_id)}>Reply</Button>
                                     {critique.is_edited == 1 ? <Text fontFamily={'Raleway'}>(Edited)</Text> : null}
                             </Flex>
