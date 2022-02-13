@@ -23,7 +23,6 @@ import { ColorModeScript, useColorMode, useColorModeValue } from '@chakra-ui/rea
 import { Box } from '@chakra-ui/react'
 import axios from 'axios';
 import React from 'react';
-import cookie from "react-cookie";
 import { useCookies } from 'react-cookie'
 import { createBreakpoints } from '@chakra-ui/theme-tools'
 import { useRouter } from 'next/router';
@@ -80,6 +79,8 @@ export default function Login({user}) {
   //   }
   // }, [])
   
+  const testCookie = cookie.hasOwnProperty('merchant_id')
+  console.log(testCookie)
   
 
   const changeDarkAndLightIcon = () => {
