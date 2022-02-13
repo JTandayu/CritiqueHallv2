@@ -37,6 +37,7 @@ import { storage } from '../../firebase.js'
 import { getDownloadURL, ref, uploadBytesResumable, deleteObject  } from 'firebase/storage'
 import React from "react";
 import { getCookie } from 'cookies-next'
+import { EditIcon } from "@chakra-ui/icons";
 
 
 const breakpoints = createBreakpoints({
@@ -283,7 +284,7 @@ function CreatePost({data}) {
                     <FormLabel fontFamily={'Raleway'} mt={2} display='flex'>Description<Text fontSize="sm" color={useColorModeValue('gray', 'gray')} ml={2}>(required)</Text></FormLabel>
                     <Textarea borderColor={useColorModeValue('black', 'white')} fontFamily={'Raleway'} type='text' w={{lg: '23vw', sm: '100%'}} h='20vh' onChange={e => setDescription(e.target.value)} />
                     <Flex mt={5}>
-                        <FormLabel fontFamily={'Raleway'} mt={2}>Post This to: </FormLabel>
+                        <FormLabel fontFamily={'Raleway'} mt={2}>Post this to: </FormLabel>
                         <Select  borderColor={useColorModeValue('black', 'white')} fontFamily={'Raleway'} w={{lg: '10vw', sm: '50vw'}} onChange={e => setHallID(e.target.value)}>
                             <option value='2'>Arts</option>
                             <option value='3'>Business</option>
@@ -314,15 +315,16 @@ function CreatePost({data}) {
                     <Divider display={{lg: 'none', sm: 'block'}} my={5} borderColor='black'/>
                 
 
-                    <Box ml='2vw' w={{lg: '20vw', sm: '100%'}} p={5}>
+                    <Box ml='2vw' w={{lg: '25vw', sm: '100%'}} p={5}>
                         <Flex flexDir={{lg: 'row', sm: 'column'}} w='30vw'>
-                            <Heading fontFamily={'Raleway'} size='sm' mr={3}>Attachments<Text fontSize="sm" color={useColorModeValue('gray', 'gray')}>(optional)</Text></Heading>
+                            <Heading fontFamily={'Raleway'} size='sm' mr={3}>Attachments<Text fontSize="sm" color={useColorModeValue('gray', 'gray')}>Please click upload after you choose a file.</Text></Heading>
                             {/* <Button bg='blue.400' color='white' ml={5} h='2em'>upload</Button> */}
                             <input type='file' multiple onChange={handleChange} accept=".jpg, .png, .docx, .xls" id='image-input' hidden />
-                            <Button fontFamily={'Raleway'} bg='yellow.400' color='black' _hover={{background: 'yellow.500'}} onClick={openInput} ml={5}>Choose Files</Button>
-                            <Button fontFamily={'Raleway'} bg='blue.400' color='white' _hover={{background: 'blue.700'}} onClick={uploadFiles} ml={5}>Upload</Button>
+                            <Button fontFamily={'Raleway'} bg='yellow.400' color='black' _hover={{background: 'yellow.500'}} onClick={openInput} ml={2}>Choose <EditIcon ml={2} /></Button>
+                            <Image src='/question-icon.png' _hover={{cursor: 'pointer'}} alt="question icon" w="20px" h="20px" ml={2} mt={3}/>
+                            <Button fontFamily={'Raleway'} bg='blue.400' color='white' _hover={{background: 'blue.700'}} onClick={uploadFiles} ml={3}>Upload</Button>
                         </Flex>
-                        <Flex bgColor={useColorModeValue('#F4F4F4', '#2E2E2E')} w={{lg: '20vw', sm: '100%'}} h='10vh' rounded='md' overflowX='auto' mt={3}
+                        <Flex bgColor={useColorModeValue('#F4F4F4', '#2E2E2E')} w={{lg: '34em', sm: '100%'}} h='10vh' rounded='md' overflowX='auto' mt={3}
                         css={{
                             '&::-webkit-scrollbar': {
                             width: '4px',
@@ -344,8 +346,8 @@ function CreatePost({data}) {
                             ))}
                         </Flex>
 
-                        <Heading fontFamily={'Raleway'} size='sm' mt={5}>Attachments Preview:</Heading>
-                        <Flex bgColor={useColorModeValue('#F4F4F4', '#2E2E2E')} w={{lg: '20vw', sm: '100%'}} h='13vh' rounded='md' overflowX='auto' css={{
+                        <Heading fontFamily={'Raleway'} size='sm' mt={5}>Image Preview:</Heading>
+                        <Flex bgColor={useColorModeValue('#F4F4F4', '#2E2E2E')} w={{lg: '34em', sm: '100%'}} h='13vh' rounded='md' overflowX='auto' css={{
                                 '&::-webkit-scrollbar': {
                                 width: '4px',
                                 height: '4px'
@@ -365,7 +367,7 @@ function CreatePost({data}) {
                         </Flex>
                         <br />
                         <Text fontFamily={'Raleway'} fontSize='lg'>Due to storage limitations:</Text>
-                        <Text fontFamily={'Raleway'} fontStyle={'italic'} fontSize='md'>- video and zip files cannot be uploaded</Text>
+                        {/* <Text fontFamily={'Raleway'} fontStyle={'italic'} fontSize='md'>- video and zip files cannot be uploaded</Text> */}
                         <Text fontFamily={'Raleway'} fontStyle={'italic'} fontSize='md'>- up to 5 attachments maximum only</Text>
                         <Text fontFamily={'Raleway'} fontStyle={'italic'} fontSize='md'>- each upload is limited to 25mb only</Text>
                         <Text fontFamily={'Raleway'} fontStyle={'italic'} fontSize='md'>- attachments cannot be edited once published!</Text>

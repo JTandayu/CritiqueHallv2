@@ -174,7 +174,7 @@ export default function Login({user}) {
                         variant='ghost'
                         aria-label='Home'
                         my={2}
-                        ml={4}
+                        ml={'10%'}
                         w='50%'
                         onClick={changeDarkAndLightIcon}
                         _hover={{cursor:'pointer'}}
@@ -191,7 +191,7 @@ export default function Login({user}) {
             {/* <Heading fontFamily={'Raleway'} mb={5} as="h2" size="lg" color={useColorModeValue('#1B1464','#B2A3FF')}>LOG-IN</Heading> */}
             <Box id='warning1' color='red' w='30%' h='5vh' mb={4} mt={2} hidden>
               <Center>
-                <Text mt='1vh'>Invalid Credentials</Text>
+                <Text mt='1vh'>Invalid credentials!</Text>
               </Center>
             </Box>
             <Box id='warning2' color='red' w='30%' h='5vh' mb={4} mt={2} hidden>
