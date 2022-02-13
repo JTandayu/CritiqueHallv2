@@ -47,6 +47,7 @@ import DeletePost from '@component/post/options/delete'
 import { useColorMode, useColorModeValue } from "@chakra-ui/react";
 import { getCookie } from 'cookies-next'
 import { useRouter } from 'next/router'
+import ScrollToTop from 'react-scroll-to-top'
 
 
 const breakpoints = createBreakpoints({
