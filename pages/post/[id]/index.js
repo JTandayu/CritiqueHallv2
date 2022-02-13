@@ -150,6 +150,7 @@ export default function CritiquePost(){
     const [file4Doc, setfile4Doc] = useState(false)
     const [file5Doc, setfile5Doc] = useState(false)
     const [newCritique, setNewCritique] = useState('')
+    const [drop, setDrop] = useState(false)
 
     useEffect(() => {
         // console.log(post_id.post_id)
@@ -180,9 +181,13 @@ export default function CritiquePost(){
             // console.log(fileName)
 
             if(response.data.post.display_name === cookies.display_name){
-                document.getElementById('diffAcc').hidden=true;
+                // document.getElementById('diffAcc').hidden=true;
+                // document.getElementById('sameAcc').removeAttribute('hidden');
+                setDrop(true)
             }else{
-                document.getElementById('sameAcc').hidden=true; 
+                // document.getElementById('sameAcc').hidden=true;
+                // document.getElementById('diffAcc').removeAttribute('hidden'); 
+                setDrop(false)
             }
 
             if(fileName1.endsWith('.docx') == true || fileName1.endsWith('.xls') == true){
@@ -395,6 +400,7 @@ export default function CritiquePost(){
                     <Box display="flex" w="100%" mt={5}>
                         <Button position='static' variant='ghost' onClick={giveLike}><Image src={useColorModeValue('/stars.png', '/stars-dark.png')} alt="Stars" w="25px" h="25px" ml={2}/> <Text id='likes' ml={2}>{data.likes}</Text></Button>
                         <Spacer />
+                        {data.display_name == cookies.display_name ?
                         <Box id='sameAcc' >
                             <Menu>
                                 <MenuButton
@@ -419,7 +425,7 @@ export default function CritiquePost(){
                                 </MenuList>
                             </Menu>
                         </Box> 
-                        
+                        :
                         <Box id='diffAcc'>
                             {/* <Menu>
                                 <MenuButton
@@ -439,7 +445,7 @@ export default function CritiquePost(){
                                 </MenuGroup>
                                 </MenuList>
                             </Menu> */}
-                        </Box>
+                        </Box>}
                     </Box>
                     {/* Critique Input */}
                     <form onSubmit={(e) => giveCritique(e)}>
