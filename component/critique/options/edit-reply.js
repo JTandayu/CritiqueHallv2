@@ -17,6 +17,7 @@ import axios from 'axios'
 import {useState, useEffect} from 'react' 
 import {useCookies} from 'react-cookie'
 import { useRouter } from 'next/router';
+import { useToast } from "@chakra-ui/react";
 
 const EditReply = ({data}) => {
     const { isOpen, onOpen, onClose } = useDisclosure()
@@ -25,6 +26,8 @@ const EditReply = ({data}) => {
     const [reply, setReply] = useState(data.body)
     const [cookies, setCookie, removeCookie] = useCookies(['token', 'id', 'encrypted_id']);
     const router = useRouter()
+    const toast = useToast()
+    const toastIdRef = React.useRef()
 
     const config = {
         headers: {
@@ -53,6 +56,9 @@ const EditReply = ({data}) => {
             router.reload()
           }).catch((error)=>{
             console.log(error.response)
+            if(error.response.data.status === "Account Muted"){
+                toastIdRef.current = toast({ title: 'Account Muted!', status: 'error', duration: 3000, isClosable: false })
+            }
         })
     }
 

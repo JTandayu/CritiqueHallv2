@@ -53,6 +53,7 @@ import { post } from 'jquery'
 import { cookie } from 'cookie'
 import Linkify from 'linkify-react';
 import { useRouter } from 'next/router'
+import React from "react";
 
 const breakpoints = createBreakpoints({
     sm: '320px',
@@ -121,6 +122,7 @@ export default function CritiquePost(){
     const { API_URL } = process.env
     const { API_KEY } = process.env
     const toast = useToast()
+    const toastIdRef = React.useRef()
     const router = useRouter()
     const post_id = router.query.id;
     // console.log(post_id)
@@ -240,6 +242,9 @@ export default function CritiquePost(){
         })
         .catch(error => {
             console.log(error);
+            if(error.response.data.status === "Account Muted"){
+                toastIdRef.current = toast({ title: 'Account Muted!', status: 'error', duration: 3000, isClosable: false })
+            }
             // console.log(error.response);
         });
     }
@@ -271,6 +276,9 @@ export default function CritiquePost(){
         })
         .catch(error => {
             console.log(error.response);
+            if(error.response.data.status === "Account Muted"){
+                toastIdRef.current = toast({ title: 'Account Muted!', status: 'error', duration: 3000, isClosable: false })
+            }
             // console.log(error.response);
         });
     }
@@ -319,43 +327,43 @@ export default function CritiquePost(){
                                 <Image src={data.attachment1} w='50vh' h='40vh' cursor="pointer" /> :
                                 <Center p={10} w="full">
                                     <Link href={data.attachment1}  passHref>
-                                        <Button>Download {fileName1} </Button>
+                                        <Button>Download Document </Button>
                                     </Link>
                                 </Center>
                                 ] : null}
-                            <Flex flexDir={{lg: 'column', sm: 'row'}} w="full" spacing={5}>
+                            <Flex flexDir={{lg: 'column', sm: 'row'}} overflowX="auto" w="full" spacing={5}>
                             {data.attachment2 != 'undefined' ? [ file2Doc != true || file2Doc != true ?
                                 <Image src={data.attachment2} w='20vh' h='10vh' cursor="pointer" /> :
-                                <Center>
+                                <Center py={5} w="20vh">
                                     <Link href={data.attachment2} passHref>
-                                        <Button>Download</Button>
+                                        <Button>Download Document</Button>
                                     </Link>
                                 </Center>
                                 ] : null}
 
                             {data.attachment3 != 'undefined' ? [ file3Doc != true || file3Doc != true ?
                                 <Image src={data.attachment3} w='20vh' h='10vh' cursor="pointer" /> :
-                                <Center py={5}>
+                                <Center py={5} w="20vh">
                                     <Link href={data.attachment3} passHref>
-                                        <Button>Download</Button>
+                                        <Button>Download Document</Button>
                                     </Link>
                                 </Center>
                                 ] : null}
 
                             {data.attachment4 != 'undefined' ? [ file4Doc != true || file4Doc != true ?
                                 <Image src={data.attachment4} w='20vh' h='10vh' cursor="pointer" /> :
-                                <Center p={5}>
+                                <Center p={5} w="20vh">
                                     <Link href={data.attachment4} passHref>
-                                        <Button>Download</Button>
+                                        <Button>Download Document</Button>
                                     </Link>
                                 </Center>
                                 ] : null}
 
                             {data.attachment5 != 'undefined' ? [ file5Doc != true || file5Doc != true ?
                                 <Image src={data.attachment5} w='20vh' h='10vh' cursor="pointer" /> :
-                                <Center p={5}>
+                                <Center p={5} w="20vh">
                                     <Link href={data.attachment5} passHref>
-                                        <Button>Download</Button>
+                                        <Button>Download Document</Button>
                                     </Link>
                                 </Center>
                                 ] : null}
@@ -363,9 +371,20 @@ export default function CritiquePost(){
                             </Flex>
                     </Flex> : 
 
+                    [file1Doc != true || file1Doc != true ? 
                     <Center my={10}>
                         <Image src={data.attachment1} w='700px' h='300px' cursor="pointer"  disabled />
-                    </Center>] : 
+                    </Center>  
+                        :
+                    <Center p={10} w="full"> 
+                        <Link href={data.attachment1}  passHref>
+                            <Button>Download Document </Button>
+                        </Link>
+                    </Center>
+                    ]
+                    
+            
+                    ] : 
                     
                     <Center my={10}>
                         <Image src="/no-preview-available.png" w='700px' h='300px' cursor="pointer"  disabled />

@@ -133,6 +133,7 @@ function EditProfile({data}) {
     //   if (!profileImage) return;
     //   if (!coverImage) return;
     if(profileImage.length !== 0){
+    setLoading(true)
       const storageProfRef = ref(storage, `/profile_pics/${data.display_name}/${profileImage[0].name}`)
       const uploadProfile = uploadBytesResumable(storageProfRef, profileImage[0])
       uploadProfile.on("state_changed", (snapshot) => {
@@ -159,6 +160,7 @@ function EditProfile({data}) {
     }
 
     if(coverImage.length !== 0){
+    setLoading(true)
       const storageCoverRef = ref(storage, `/cover_pics/${data.display_name}/${coverImage[0].name}`)
       const uploadCover = uploadBytesResumable(storageCoverRef, coverImage[0])
       uploadCover.on("state_changed", (snapshot) => {
@@ -311,8 +313,8 @@ function EditProfile({data}) {
 
                     <Box w="full" mb={8}>
                         <Center>
-                            {loading ? <Spinner /> : null}
-                            <Button fontFamily={'Raleway'} bg='blue.400' color='white' _hover={{background: 'blue.700'}} align="right" onClick={uploadFiles}>Upload Profile / Cover Picture</Button>          
+                            {loading ? <Spinner /> : 
+                            <Button fontFamily={'Raleway'} bg='blue.400' color='white' _hover={{background: 'blue.700'}} align="right" onClick={uploadFiles}>Upload Profile / Cover Picture</Button>}         
                         </Center>
                     </Box>
                     {/* <Flex mb={5}>

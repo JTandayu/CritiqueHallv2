@@ -16,6 +16,7 @@ import styles from "@styles/Hall.module.css";
 import {useCookies} from 'react-cookie'
 import axios from 'axios';
 import { useRouter } from 'next/router';
+import { useToast } from "@chakra-ui/react";
 
 const DeleteReply = ({id}) => {
     const { isOpen, onOpen, onClose } = useDisclosure()
@@ -23,6 +24,8 @@ const DeleteReply = ({id}) => {
     const { API_KEY } = process.env
     const [cookies, setCookie, removeCookie] = useCookies(['token', 'id', 'encrypted_id']);
     const router = useRouter()
+    const toast = useToast()
+    const toastIdRef = React.useRef()
 
 
     const config = {
@@ -44,6 +47,9 @@ const DeleteReply = ({id}) => {
           router.reload()
         }).catch((error)=>{
           console.log(error)
+          if(error.response.data.status === "Account Muted"){
+            toastIdRef.current = toast({ title: 'Account Muted!', status: 'error', duration: 3000, isClosable: false })
+        }
         })
       }
 

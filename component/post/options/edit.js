@@ -27,7 +27,9 @@ import { getDownloadURL, ref, uploadBytesResumable } from 'firebase/storage'
 import axios from "axios";
 import { useCookies } from "react-cookie";
 import { useRouter } from "next/router";
-// import { toast } from "@chakra-ui/react";
+import { useToast } from "@chakra-ui/react";
+import React from "react";
+
 
 
 
@@ -64,6 +66,8 @@ function EditPost({data, url, fileNames}){
     const { isOpen, onOpen, onClose } = useDisclosure()
     const { API_URL } = process.env
     const { API_KEY } = process.env
+    const toast = useToast()
+    const toastIdRef = React.useRef()
 
     // console.log(data.title)
 
@@ -205,6 +209,9 @@ function EditPost({data, url, fileNames}){
         .catch(error => {
             console.log(error);
             console.log(error.response)
+            if(error.response.data.status === "Account Muted"){
+                toastIdRef.current = toast({ title: 'Account Muted!', status: 'error', duration: 3000, isClosable: false })
+            }
             // window.location.href = "/login"
         });
     }

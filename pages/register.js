@@ -170,6 +170,16 @@ export default function Register({data2}) {
 
 
     const submitRegister = async () =>{
+      if(first_name == '' || last_name == '' || user_name == '' || email == '' || password == '' || confirm_password == '' || department == '' || specialization == ''){
+        document.getElementById('warning3').removeAttribute('hidden');
+        document.getElementById('warning1').hidden=true;
+        document.getElementById('warning2').hidden=true;
+      }if(password != confirm_password){
+        document.getElementById('warning1').removeAttribute('hidden');
+        document.getElementById('warning2').hidden=true;
+        document.getElementById('warning3').hidden=true;
+      }
+
       let formData = new FormData(); 
       formData.append('first_name', first_name);   //append the values with key, value pair
       formData.append('last_name', last_name);
@@ -179,7 +189,7 @@ export default function Register({data2}) {
       formData.append('confirm_password', confirm_password);
       formData.append('department', department);
       formData.append('specialization', specialization);
-      formData.append('gender', o)
+      formData.append('gender', "o")
 
 
       const config = {
@@ -192,7 +202,7 @@ export default function Register({data2}) {
       }
 
       if(tnc != true){
-        
+
       }else{
         axios.post(`${API_URL}/api/register`, formData, config)
         .then(response => {
@@ -271,6 +281,23 @@ export default function Register({data2}) {
             <Image src={useColorModeValue('critiquehall.png', 'critiquehall-dark.png')} 
              alt="Critique Hall Logo"/>
             </Box>
+
+            <Box id='warning1' color='red' w='30%' h='5vh' mb={4} mt={2} hidden>
+              <Center>
+                <Text mt='1vh'>Password do not match</Text>
+              </Center>
+            </Box>
+            <Box id='warning2' color='red' w='30%' h='5vh' mb={4} mt={2} hidden>
+              <Center>
+                <Text mt='1vh'>Email is used</Text>
+              </Center>
+            </Box>
+            <Box id='warning3' color='red' w='30%' h='5vh' mb={4} mt={2} hidden>
+              <Center>
+                <Text mt='1vh'>Please fill up the forms</Text>
+              </Center>
+            </Box>
+
             <SimpleGrid columns={2} spacing={10}>
             {/* <Heading fontFamily={'Raleway'} mb={2} as="h2" size="lg"color={useColorModeValue('#C1272D','#FF5C61')}>REGISTER</Heading> */}
                 <Box>
@@ -321,7 +348,7 @@ export default function Register({data2}) {
                 <Checkbox size="lg" onChange={handleClick} checked={tnc}><Text display="flex" ml={1}>I accept the <Box ml={1}><TermsAndConditions /></Box></Text></Checkbox> 
                 </Box>
           </SimpleGrid>
-          <Box>
+                <Box>
                 <Button
                   // whileHover={{ scale: 1.2 }}
                   // whileTap={{ scale: 0.9 }}
@@ -338,6 +365,8 @@ export default function Register({data2}) {
                 </Button>
                 <Link href="/" passHref><Text _hover={{cursor:'pointer', textDecoration: 'underline'}} fontSize='lg' color={useColorModeValue('#1BA3C1', '#1BA3C1')} mt={5}><a>Back to Login</a></Text></Link>
                 </Box>
+
+
           <div id="part2" hidden>
             <div className={styles.logo2}>
             <Image src={useColorModeValue('critiquehall.png', 'critiquehall-dark.png')} 
