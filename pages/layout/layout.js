@@ -10,6 +10,7 @@ import { useEffect } from 'react'
 import axios from 'axios';
 import WindowEventHandlersImpl from 'jsdom/lib/jsdom/living/nodes/WindowEventHandlers-impl';
 import { responseSymbol } from 'next/dist/server/web/spec-compliant/fetch-event';
+import Footer from './footer';
 
 // import Nav from "@component/nav";
 // import styles from '../../styles/layout/Layout.module.css'
@@ -41,6 +42,7 @@ export default function Layout({children}){
         <>
         <Nav  />
         <main>{children}</main>
+        <Footer />
         </>
     )
 

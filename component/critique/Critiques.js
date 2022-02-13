@@ -325,7 +325,7 @@ export const Critiques = ({id, newCritique}) => {
                                 <Flex>
                                     <Image src={critique.profile_photo} w='3vh' h='3vh' mt={2} />
                                     <Link href={`/profile/${critique.display_name}`} passHref>
-                                        <Heading fontFamily={'Raleway'} size='md' ml={3} mt={2}>{critique.display_name}</Heading>
+                                        <Heading fontFamily={'Raleway'} size='md' ml={3} mt={2} _hover={{cursor: 'pointer'}}>{critique.display_name}</Heading>
                                     </Link>
 
                                     {critique.starred_by_author == '1' ? <Image src='/reputation-stars.png' alt="Reputation Stars" w="25px" h="25px" ml={3} mt={2} /> : null}
