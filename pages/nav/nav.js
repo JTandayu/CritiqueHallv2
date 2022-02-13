@@ -413,7 +413,18 @@ export default function Nav(data, profile_pic){
                         <PopoverArrow />
                         <PopoverCloseButton />
                         <PopoverHeader fontFamily={'Raleway'}>Notifications</PopoverHeader>
-                        <PopoverBody fontFamily={'Raleway'} overflowY="auto">
+                        <PopoverBody fontFamily={'Raleway'} overflowY="auto" h='30vh' css={{
+                            '&::-webkit-scrollbar': {
+                            width: '4px',
+                            },
+                            '&::-webkit-scrollbar-track': {
+                            width: '6px',
+                            },
+                            '&::-webkit-scrollbar-thumb': {
+                            background: '#212121',
+                            borderRadius: '24px',
+                            },
+                        }}>
                             {notif.map((notification, i) =>
                             <Box key={i} display='flex' w="full" p={3}>
                                 {notification.profile_photo ? <Img src={notification.profile_photo} mr={3} w="25px" h="25px" alt="Notification Image" /> : null}
