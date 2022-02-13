@@ -277,11 +277,11 @@ function CreatePost({data}) {
                     <Flex mb={5} flexDir={{lg: 'row', sm: 'column'}}>
                     <Box w={{lg: '24vw', sm: '100%'}}>
                     <Flex fontFamily={'Raleway'} mt='3vh' display='flex'>
-                        <FormLabel>Title<Text fontSize="sm" color={useColorModeValue('gray', 'gray')}>(required)</Text></FormLabel>
+                        <FormLabel>Title:<Text fontSize="sm" color={useColorModeValue('gray', 'gray')}>(required)</Text></FormLabel>
                         <Input borderColor={useColorModeValue('black', 'white')} type='text' w={{lg: '75%', sm: '100%'}} ml='11px' onChange={e => setTitle(e.target.value)}  />
                     </Flex>
 
-                    <FormLabel fontFamily={'Raleway'} mt={2} display='flex'>Description<Text fontSize="sm" color={useColorModeValue('gray', 'gray')} ml={2}>(required)</Text></FormLabel>
+                    <FormLabel fontFamily={'Raleway'} mt={2} display='flex'>Description:<Text fontSize="sm" color={useColorModeValue('gray', 'gray')} ml={2}>(required)</Text></FormLabel>
                     <Textarea borderColor={useColorModeValue('black', 'white')} fontFamily={'Raleway'} type='text' w={{lg: '23vw', sm: '100%'}} h='20vh' onChange={e => setDescription(e.target.value)} />
                     <Flex mt={5}>
                         <FormLabel fontFamily={'Raleway'} mt={2}>Post this to: </FormLabel>
@@ -317,7 +317,7 @@ function CreatePost({data}) {
 
                     <Box ml='2vw' w={{lg: '25vw', sm: '100%'}} p={5}>
                         <Flex flexDir={{lg: 'row', sm: 'column'}} w='30vw'>
-                            <Heading fontFamily={'Raleway'} size='sm' mr={3}>Attachments<Text fontSize="sm" color={useColorModeValue('gray', 'gray')}>Please click upload after you choose a file.</Text></Heading>
+                            <Heading fontFamily={'Raleway'} size='sm' mr={3}>Attachments:<Text fontSize="sm" color={useColorModeValue('gray', 'gray')}>Please click upload after you choose a file.</Text></Heading>
                             {/* <Button bg='blue.400' color='white' ml={5} h='2em'>upload</Button> */}
                             <input type='file' multiple onChange={handleChange} accept=".jpg, .png, .docx, .xls" id='image-input' hidden />
                             <Button fontFamily={'Raleway'} bg='yellow.400' color='black' _hover={{background: 'yellow.500'}} onClick={openInput} ml={2}>Choose <EditIcon ml={2} /></Button>
