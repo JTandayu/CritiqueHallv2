@@ -24,6 +24,7 @@ import EditReply from './options/edit-reply'
 import DeleteReply from './options/delete-reply'
 import EditReplyHistory from './options/edit-reply-history'
 import { useRouter } from 'next/router'
+import { useToast } from "@chakra-ui/react";
 
 const breakpoints = createBreakpoints({
     sm: '320px',
@@ -41,6 +42,8 @@ export const CritiqueReply = ({id, post_id, newReply}) => {
     const [cookie, setCookie] = useCookies('token', 'id', 'encrypted_id', 'display_name')
     const [critiqueReply, setCritiqueReply] =  useState([])
     const router = useRouter()
+    const toast = useToast()
+    const toastIdRef = React.useRef()
     // console.log(post_id)
 
     const changeIcon = useColorModeValue('/stars.png', '/stars-dark.png')
@@ -88,6 +91,9 @@ export const CritiqueReply = ({id, post_id, newReply}) => {
             document.getElementById(reply_id).innerHTML=response.data.stars;
         }).catch((error) =>{
             console.log(error)
+            if(error.response.data.status === "Account Muted"){
+                toastIdRef.current = toast({ title: 'Account Muted!', status: 'error', duration: 3000, isClosable: false })
+            }
         })
     }
 

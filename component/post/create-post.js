@@ -236,7 +236,10 @@ function CreatePost({data}) {
           window.location.href = "/critique"
         })
         .catch(error => {
-            toastIdRef.current = toast({ title: 'Create post unsuccessful!', status: 'error', duration: 3000, isClosable: false })
+            // toastIdRef.current = toast({ title: 'Create post unsuccessful!', status: 'error', duration: 3000, isClosable: false })
+            if(error.response.data.status === "Account Muted"){
+                toastIdRef.current = toast({ title: 'Account Muted!', status: 'error', duration: 3000, isClosable: false })
+            }
             console.log(error);
             console.log(error.response)
         });

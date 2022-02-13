@@ -25,6 +25,7 @@ import EditCritique from './options/edit-critique'
 import DeleteCritique from './options/delete-critique'
 import EditCritiqueHistory from './options/edit-critique-history'
 import { useRouter } from 'next/router'
+import { useToast } from "@chakra-ui/react";
 
 const breakpoints = createBreakpoints({
     sm: '320px',
@@ -48,6 +49,8 @@ export const Critiques = ({id, newCritique}) => {
     const [loading, setLoading] = useState(true)
     const [newReply, setNewReply] = useState('')
     const router = useRouter()
+    const toast = useToast()
+    const toastIdRef = React.useRef()
     // const [newPostCritique, setNewPostCritique] = useState(newPost)
     // const filterCritique = filter;
     // console.log(filter)
@@ -120,6 +123,9 @@ export const Critiques = ({id, newCritique}) => {
 
         }).catch((error) =>{
             console.log(error)
+            if(error.response.data.status === "Account Muted"){
+                toastIdRef.current = toast({ title: 'Account Muted!', status: 'error', duration: 3000, isClosable: false })
+            }
         })
     }
 
@@ -203,6 +209,9 @@ export const Critiques = ({id, newCritique}) => {
             document.getElementById(`star${crit_id}`).innerHTML=response.data.stars;
         }).catch((error) =>{
             console.log(error.response)
+            if(error.response.data.status === "Account Muted"){
+                toastIdRef.current = toast({ title: 'Account Muted!', status: 'error', duration: 3000, isClosable: false })
+            }
         })
     }
 

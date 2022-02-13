@@ -18,7 +18,7 @@ import {
   FormHelperText,
 } from "@chakra-ui/react"
 import { GetStaticProps } from 'next'
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { ColorModeScript, useColorMode, useColorModeValue } from '@chakra-ui/react'
 import { Box } from '@chakra-ui/react'
 import axios from 'axios';
@@ -33,8 +33,6 @@ import SimpleReactLightbox from 'simple-react-lightbox'
 import theme from '../component/theme'
 
 const MotionButton = motion(Button)
-
-
 
 const breakpoints = createBreakpoints({
   sm: '320px',
@@ -76,10 +74,13 @@ export default function Login({user}) {
   const [cookie, setCookies, removeCookies] = useCookies(['token', 'display_name', 'encrypted_id'])
 
   // console.log(cookie)
-
-  if(cookie.token != 'undefined' || cookie.encrypted_id != 'undefined' || cookie.display_name != 'undefined'){
-    router.push('/home')
-  }
+  useEffect(() => {
+    if(cookie.token != 'undefined' || cookie.encrypted_id != 'undefined' || cookie.display_name != 'undefined'){
+      router.replace('/home')
+    }
+  }, [])
+  
+  
 
   const changeDarkAndLightIcon = () => {
     toggleColorMode()
@@ -124,6 +125,8 @@ export default function Login({user}) {
           if(response.data.status === 'Email not verified'){
             toastIdRef.current = toast({ title: 'Email Not Verified!', status: 'error', duration: 3000, isClosable: false })
             router.replace("/confirmation")
+          }else if(response.data.status.includes('You are temporarily suspended')){
+            toastIdRef.current = toast({ title: response.data.status, status: 'error', duration: 3000, isClosable: false })
           }else{
             toastIdRef.current = toast({ title: 'Login Successful!', status: 'success', duration: 3000, isClosable: false })
             router.push("/home")
