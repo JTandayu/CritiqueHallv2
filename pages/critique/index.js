@@ -102,7 +102,7 @@ export default function HallPage(){
     const [hallList, setHallList] = useState([])
 
     const changeColor = useColorModeValue('#BAB9B9', '#1F1F1F')
-    const thereIsNothing = useColorModeValue('/there-is-nothing.png', '/there-is-nothing-dark.png')
+    const thereNoPost = useColorModeValue('/there-no-post.png', '/there-no-post-dark.png')
 
 
     // const [cookie] = useCookies()
@@ -473,7 +473,7 @@ export default function HallPage(){
                             
                     )
                     ]
-                    : <Center><Image src={thereIsNothing} w='600px' h='50px' disabled /></Center>}
+                    : <Center><Image src={thereNoPost} w='700px' h='50px' disabled /></Center>}
                 </Box>
             </Box>
 
