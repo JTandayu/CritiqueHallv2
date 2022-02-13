@@ -26,6 +26,7 @@ import axios from 'axios'
 import Pagination from '@choc-ui/paginator'
 import { useCookies } from 'react-cookie'
 import { useRouter } from 'next/router'
+import ScrollToTop from "react-scroll-to-top";
 
 
 // export async function getServerSideProps(context){
@@ -187,6 +188,9 @@ export default function SearchResult(){
                 <link rel="icon" href={useColorModeValue('/logo256.png', '/logo256-dark.png')} onLoad=""/>
                 <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@700&display=swap" rel="stylesheet" />
             </Head>
+
+            <ScrollToTop color={'black'} width={40} boxShadow={'dark-lg'} smooth />
+            
             <Box w="100%" mb="10" mt="15vh">
                 <Heading fontFamily={'Raleway'} color={useColorModeValue('#C1272D', '#FF5C61')}><Center><Image src={useColorModeValue('/searchresults.png', '/searchresults-dark.png')} w="20%" /> &quot;{search}&quot;</Center></Heading>
             </Box>
