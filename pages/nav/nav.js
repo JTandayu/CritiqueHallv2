@@ -380,7 +380,7 @@ export default function Nav(data, profile_pic){
             </Flex>
             <Spacer />
                 <form onSubmit={searchItem}>
-                    <Input fontFamily={'Raleway'} fontWeight={'light'} placeholder='Looking for something?' display={['none','none','none','flex']} w='30vw' type='text' mt={7} mr={{lg: '25vw', md: '10vw'}} onChange={(e)=>setSearch(e.target.value)} borderColor={useColorModeValue('black', 'white')}/>
+                    <Input fontFamily={'Raleway'} fontWeight={'light'} placeholder='Search for a user or a post' display={['none','none','none','flex']} w='30vw' type='text' mt={7} mr={{lg: '25vw', md: '10vw'}} onChange={(e)=>setSearch(e.target.value)} borderColor={useColorModeValue('black', 'white')}/>
                 </form>
             <Spacer />
         <Flex
@@ -514,7 +514,7 @@ export default function Nav(data, profile_pic){
                     </Button>
                 </Link>
                 <form onSubmit={searchItem}>
-                    <Input fontFamily={'Raleway'} fontSize="xs" fontWeight={'light'} w='50vw' type='text' mt={7} placeholder='Looking for something?' onChange={(e)=>setSearch(e.target.value)} boxShadow={'md'} />
+                    <Input fontFamily={'Raleway'} fontSize="xs" fontWeight={'light'} w='50vw' type='text' mt={7} placeholder='Search for a user or a post' onChange={(e)=>setSearch(e.target.value)} boxShadow={'md'} />
                 </form>
                 <Link href="/home" passHref>
                     <Button
