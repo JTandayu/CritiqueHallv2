@@ -129,10 +129,11 @@ export default function CritiquePost(){
     // console.log(post_id)
 
 
-    const [cookies] = useCookies([])
+    // const [cookies] = useCookies([])
     const [critique, setCritique] = useState('')
     const token = getCookie('token')
     const user_id = getCookie('encrypted_id')
+    const display_name = getCookie('display_name')
     console.log(token)
     console.log(user_id)
     const likes = null
@@ -182,7 +183,7 @@ export default function CritiquePost(){
             // console.log(storage.refFromURL(response.data.post.attachment1))
             // console.log(fileName)
 
-            if(response.data.post.display_name === cookies.display_name){
+            if(response.data.post.display_name === display_name){
                 // document.getElementById('diffAcc').hidden=true;
                 // document.getElementById('sameAcc').removeAttribute('hidden');
                 setDrop(true)
@@ -402,7 +403,7 @@ export default function CritiquePost(){
                     <Box display="flex" w="100%" mt={5}>
                         <Button position='static' variant='ghost' onClick={giveLike}><Image src={useColorModeValue('/stars.png', '/stars-dark.png')} alt="Stars" w="25px" h="25px" ml={2}/> <Text id='likes' ml={2}>{data.likes}</Text></Button>
                         <Spacer />
-                        {data.display_name == cookies.display_name ?
+                        {data.display_name == display_name ?
                         <Box id='sameAcc' >
                             <Menu>
                                 <MenuButton
