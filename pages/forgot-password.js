@@ -130,7 +130,7 @@ export default function ForgotPassword(){
 
             <Box id='warning1' color='red' w='100%' h='5vh' mb={4} mt={2} hidden>
               <Center>
-                <Text mt='1vh' w="100%">Email Field is Required</Text>
+                <Text mt='1vh' w="100%">Email field is required</Text>
               </Center>
             </Box>
             <Box id='warning2' color='red' w='100%' h='5vh' mb={4} mt={2} hidden>
