@@ -184,7 +184,56 @@ function Home(){
                 </div>
             </Carousel> */}
           </Box>  
-
+          <Box w="100%" h="25vh" bgColor={useColorModeValue("#E7E7E7", "#2E2E2E")} p={7} display="flex">
+            <Box w="50%">
+                <Heading size="xl" fontFamily={'Raleway'} color={useColorModeValue("#C1272D", "#FF5C61")}>Our Story</Heading>
+                <Text fontFamily={'Raleway'} mt={5} pr={16} textAlign='justify'>This project began last October and was made possible by four 4th year friends from Web Development. We understood the hardships brought about by the new normal, that is why Critique Hall was developed to serve as a place for students to not only connect but also learn from each other.</Text>
+                <Text fontFamily={'Raleway'} display="flex">For Inquiries, send an email to <Text fontFamily={'Raleway'} color="#1BA3C1" ml={1}>critiquehall@gmail.com</Text></Text>
+            </Box>
+            <Spacer />
+            <Box w="50%">
+                <Heading size="xl" fontFamily={'Raleway'} color={useColorModeValue("#C1272D", "#FF5C61")}>The Researchers</Heading>
+                <Box w="full" mt={5}>
+                    <SimpleGrid columns={2} spacing={5}>
+                        <Box w="30em" px={3}>
+                            <Flex>
+                                <Text fontFamily={'Raleway'} color={useColorModeValue("#29226E", "#B2A3FF")}>Azariah Danizar G. Concepcion</Text>
+                                <Text fontFamily={'Raleway'} ml={2}>Back-end Dev</Text>
+                            </Flex>
+                            <Text fontFamily={'Raleway'}>(+63) 949 846 0846</Text>
+                        </Box>
+                        <Box w="30em" px={3}>
+                            <Flex>
+                                <Text fontFamily={'Raleway'} color={useColorModeValue("#29226E", "#B2A3FF")}>Richie Gene R. Tan</Text>
+                                <Text fontFamily={'Raleway'} ml={2}>UI/UX Designer</Text>
+                            </Flex>
+                            <Text fontFamily={'Raleway'}>(+63) 916 424 9531</Text>
+                        </Box>
+                        <Box w="30em" px={3}>
+                            <Flex>
+                                <Text fontFamily={'Raleway'} color={useColorModeValue("#29226E", "#B2A3FF")}>Jomari L. Matias</Text>
+                                <Text fontFamily={'Raleway'} ml={2}>Project Documentarian</Text>
+                            </Flex>
+                            <Text fontFamily={'Raleway'}>(+63) 998 084 4162</Text>
+                        </Box>
+                        <Box w="30em" px={3}>
+                            <Flex>
+                                <Text fontFamily={'Raleway'} color={useColorModeValue("#29226E", "#B2A3FF")}>Jose Luis P. Tandayu</Text>
+                                <Text fontFamily={'Raleway'} ml={2}>Front-end Dev</Text>
+                            </Flex>
+                            <Text fontFamily={'Raleway'}>(+63) 916 418 7235</Text>
+                        </Box>
+                    </SimpleGrid>
+                </Box>
+            </Box>
+        </Box>
+        <Box w="100%" bgColor={useColorModeValue("#E7E7E7", "#2E2E2E")}>
+                <Center>
+                <Text fontFamily={'Raleway'} fontSize={{lg: 'md', base: 'xs'}} fontWeight={'bold'} mt={3}>© 2022</Text>
+                <Image src={useColorModeValue("/critiquehall2.png", "/critiquehall2-dark.png")} alt='Critique Hall Logo' w={{lg: '120px', md: '150px', sm: '150px', base: '100px'}} h={{lg: '30px', md: '30px', sm: '30px', base: '20px'}} ml={2}/>
+                <Text fontFamily={'Raleway'} fontSize={{lg: 'md', base: 'xs'}} fontWeight={'bold'} mt={3} ml={3}>All Rights Reserved </Text>
+                </Center>
+                </Box>
         </main>
     )
 }
