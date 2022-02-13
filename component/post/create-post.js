@@ -100,6 +100,7 @@ function CreatePost({data}) {
     const [progress, setProgress] = useState(0);
     const [image, setImage] = useState([])
     const [counter, setCounter] = useState(0)
+    const [uploadCounter, setUploadCounter] = useState(0)
     const [fileName, setFileName] = useState([])
     const [urls, setUrls] = useState([]); 
     // console.log(image.length)
@@ -110,14 +111,14 @@ function CreatePost({data}) {
                 ,status: 'error', isClosable: true});
             return;
         }
-        if (counter > 5){
+        if (uploadCounter > 5){
             toastIdRef.current = toast({title: 'Maximum of 5 files only. Please attach link of file instead'
                 ,status: 'error', isClosable: true});
             return null;
         }
         const promises = []
         if (!image) return;
-        image.map((image) => {
+        image.map((image, i) => {
             const storageRef = ref(storage, `/files/${cookies.display_name}/${image.name}`)
             const uploadTask = uploadBytesResumable(storageRef, image)
             promises.push(uploadTask) 
@@ -133,8 +134,10 @@ function CreatePost({data}) {
                     // console.log(urls)
                     setUrls((prevState) => [...prevState, urls])
                     setFileName((prevState) => [...prevState, image.name])
-                    setImage([])
-
+                    setUploadCounter(prevCount => prevCount + 1)
+                    if(i >= (image.length - 1)){
+                        setImage([])
+                    }  
                 })
             }
             );
@@ -147,15 +150,15 @@ function CreatePost({data}) {
 
     const handleChange = e =>{
         console.log(counter)
-        console.log(e.target.files.length)
+        console.log(e.target.files)
+        setImage([])
 
-        if(e.target.files.length > 5 - counter){
+        if(e.target.files.length > 5 - uploadCounter){
             toastIdRef.current = toast({title: 'Maximum of 5 files only. Please attach link of file instead'
                     ,status: 'error', isClosable: true});
             return null;
         }else{
             for(let i = 0; i < e.target.files.length; i++){
-                // console.log(e.target.files[i].size)
                 if(e.target.files[i].size > 25000000){
                     toastIdRef.current = toast({
                         title: "File size is higher than the limit.",
@@ -163,6 +166,15 @@ function CreatePost({data}) {
                         isClosable: true,
                       })
                     // console.log(image)
+                    setCounter(0)
+                    return;
+                }if(e.target.files[i].name.endsWith('.docx') != true && e.target.files[i].name.endsWith('.xlsx') != true && e.target.files[i].name.endsWith('.jpg') != true && e.target.files[i].name.endsWith('.png') != true && e.target.files[i].name.endsWith('.mp3') != true){
+                    toastIdRef.current = toast({
+                        title: "File is not Accepted.",
+                        status: 'error',
+                        isClosable: true,
+                      })
+                    setCounter(0)
                     return;
                 }
                 else{
@@ -185,6 +197,7 @@ function CreatePost({data}) {
             fileName.splice(i, 1)
             image.splice(i, 1)
             urls.splice(i, 1)
+            setUploadCounter(prevCount => prevCount - 1)
 
             setFileName(fileName => fileName.filter(e => e !== i))
 

@@ -222,8 +222,14 @@ export default function Nav(data, profile_pic){
     //Search Function
     const searchItem = (e)=>{
         e.preventDefault()
+        if(search === ""){
+            toastIdRef.current = toast({ title: 'What are you doing?', status: 'error', duration: 3000, isClosable: false })
+            return null;
+        }else{
+            Router.push(`/search/${search}`)
+        }
         // localStorage.setItem("search-item", search);
-        Router.push(`/search/${search}`)
+        
     }
 
     //Log-out function

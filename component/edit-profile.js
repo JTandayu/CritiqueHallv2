@@ -140,33 +140,46 @@ function EditProfile({data}) {
     setLoading(true)
       const storageProfRef = ref(storage, `/profile_pics/${data.display_name}/${profileImage[0].name}`)
       const uploadProfile = uploadBytesResumable(storageProfRef, profileImage[0])
-      uploadProfile.on("state_changed", (snapshot) => {
-        const prog = Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
 
-        setProgress(prog);
-      }, (err) => console.log(err),
-      () => {
-        getDownloadURL(uploadProfile.snapshot.ref)
-        .then(url => {
-         toastIdRef.current = toast({
-            title: 'Profile photo uploaded successfully!',
-            status: 'success',
-            duration: 3000,
-            isClosable: true,
-          })
-        console.log(url)
-        setProfileImageUrl(url)
-        setUploadProfileDone(true);
-        setLoading(false)
-        })
-      }
-      );
+      if(profileImage[0].name.endsWith('.jpg') == true || profileImage[0].name.endsWith('.png') == true || profileImage[0].name.endsWith('.gif') == true){
+        uploadProfile.on("state_changed", (snapshot) => {
+            const prog = Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
+
+            setProgress(prog);
+        }, (err) => console.log(err),
+        () => {
+            getDownloadURL(uploadProfile.snapshot.ref)
+            .then(url => {
+            toastIdRef.current = toast({
+                title: 'Profile photo uploaded successfully!',
+                status: 'success',
+                duration: 3000,
+                isClosable: true,
+            })
+            console.log(url)
+            setProfileImageUrl(url)
+            setUploadProfileDone(true);
+            setLoading(false)
+            })
+        }
+        );
+        }else{
+            toastIdRef.current = toast({
+                title: 'File type not accepted!',
+                status: 'error',
+                duration: 3000,
+                isClosable: true,
+              })
+              setLoading(false)
+              return;
+        }
     }
 
     if(coverImage.length !== 0){
     setLoading(true)
       const storageCoverRef = ref(storage, `/cover_pics/${data.display_name}/${coverImage[0].name}`)
       const uploadCover = uploadBytesResumable(storageCoverRef, coverImage[0])
+      if(coverImage[0].name.endsWith('.jpg') == true || coverImage[0].name.endsWith('.png') == true || coverImage[0].name.endsWith('.gif') == true){
       uploadCover.on("state_changed", (snapshot) => {
         const prog = Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
 
@@ -187,7 +200,16 @@ function EditProfile({data}) {
             setLoading(false)
         })
       }
-      );
+      );}else{
+            toastIdRef.current = toast({
+            title: 'File type not accepted!',
+            status: 'error',
+            duration: 3000,
+            isClosable: true,
+          })
+          setLoading(false)
+          return;
+      }
     }
     else{
         setUploadProfileDone(true);
@@ -230,7 +252,7 @@ function EditProfile({data}) {
         formData.append('profile_photo', profileImageUrl)
         formData.append('cover_photo', coverImageUrl)
         
-        console.log(coverImageUrl)
+        // console.log(coverImageUrl)
         axios.post(`${API_URL}/api/change_profile`, formData, config)
         .then((response) => {
             console.log(response)
@@ -241,10 +263,18 @@ function EditProfile({data}) {
                 isClosable: true,
               })
             router.reload();
-        }).catch((error) => (
-            toastIdRef.current = toast({ title: 'Error!', status: 'error', duration: 3000, isClosable: true }),
+        }).catch((error) => {
+            if(error.response.data.message == "<p>The About Me field cannot exceed 255 characters…>\n<p>The Confirm Password field is required.</p>\n" ){
+                toastIdRef.current = toast({ title: 'The about me exceeds the limit (max 255). Please try again!', status: 'error', duration: 3000, isClosable: true })
+            }else if(error.response.data.message == "<p>The About Me field cannot exceed 255 characters in length.</p>\n"){
+                toastIdRef.current = toast({ title: 'The about me exceeds the limit (max 255). Please try again!', status: 'error', duration: 3000, isClosable: true })
+            }else if(error.response.data.message == "<p>The Confirm Password field is required.</p>\n"){
+                toastIdRef.current = toast({ title: 'Please enter the confirm password!', status: 'error', duration: 3000, isClosable: true })
+            }else{
+                toastIdRef.current = toast({ title: 'Error! Please Check your Input.', status: 'error', duration: 3000, isClosable: true })
+            }
             console.log(error.response)
-        ))
+        })
     }
 
     const submitPassword = async () =>{
@@ -262,10 +292,10 @@ function EditProfile({data}) {
                 duration: 3000,
                 isClosable: true,
               })
-            }).catch((error) => (
-            toastIdRef.current = toast({ title: 'Error!', status: 'error', duration: 3000, isClosable: true }),
+            }).catch((error) => {
+            toastIdRef.current = toast({ title: 'Error! Please Check your Input.', status: 'error', duration: 3000, isClosable: true }),
             console.log(error.response)
-        ))
+        })
     }
 
     const openProfilePicture = async() => {

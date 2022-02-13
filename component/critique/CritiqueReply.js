@@ -176,7 +176,7 @@ export const CritiqueReply = ({id, post_id, newReply}) => {
                             </Box>
                             <Flex w='20vw'>
                                 <Button variant='ghost' onClick={(e)=>giveStar(reply.reply_id, e)}><Image src={changeIcon} alt="Stars" w="25px" h="25px" ml={2} mr={2}/> <Text id={`starreply${reply.reply_id}`}>{reply.stars}</Text></Button>
-                                {reply.is_edited == 1 ? <Text fontFamily={'Raleway'}>(Edited)</Text> : null}
+                                {reply.is_edited == 1 ? <Text fontFamily={'Raleway'} color="gray.400" mt={3} fontSize="sm">(Edited)</Text> : null}
                         </Flex>
 
                 </Box>
@@ -215,7 +215,7 @@ export const CritiqueReply = ({id, post_id, newReply}) => {
                             </Box>
                             <Flex w='20vw'>
                                 <Button variant='ghost' onClick={(e)=>giveStar(reply.reply_id, e)}><Image src={changeIcon} alt="Stars" w="25px" h="25px" ml={2} mr={2}/> <Text id={`starreply${reply.reply_id}`}>{reply.stars}</Text></Button>
-                                {reply.is_edited == 1 ? <Text fontFamily={'Raleway'}>(Edited)</Text> : null}
+                                {reply.is_edited == 1 ? <Text fontFamily={'Raleway'} color="gray.400" mt={3} fontSize="sm">(Edited)</Text> : null}
                         </Flex>
 
                 </Box>

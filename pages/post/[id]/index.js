@@ -306,7 +306,7 @@ export default function CritiquePost(){
                 <Box display="flex" flexDir={{lg: 'row', sm: 'column', base: 'column'}} p="3">
                     {/* Main */}
                     {/* <PostMain /> */}
-                <Box  w={{lg: '50%', sm: '100%'}}  bg={useColorModeValue('white', '#212121')} h={{lg: "90vh", sm: "100%"}} p={5} boxShadow='dark-lg' borderRadius={10} mt={28} ml='3vw'>
+                <Box  w={{lg: '50%', sm: '100%'}}  bg={useColorModeValue('white', '#212121')} h={{lg: "100%", sm: "100%"}} p={5} boxShadow='dark-lg' borderRadius={10} mt={28} ml='3vw'>
                     <Heading fontFamily={'Raleway'} mx="auto">{data.title}</Heading>
 
                     {/* Description */}
@@ -381,7 +381,7 @@ export default function CritiquePost(){
 
                     [file1Doc != true || file1Doc != true ? 
                     <Center my={10}>
-                        <Image src={data.attachment1} w='700px' h='300px' cursor="pointer"  disabled />
+                        <Image src={data.attachment1} cursor="pointer"  disabled />
                     </Center>  
                         :
                     <Center p={10} w="full"> 
