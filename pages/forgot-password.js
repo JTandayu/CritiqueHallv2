@@ -17,7 +17,7 @@ import {
   FormHelperText,
 } from "@chakra-ui/react"
 import { useState } from 'react'
-import { useColorMode, useColorModeValue } from '@chakra-ui/react';
+import { useColorMode, useColorModeValue, Center } from '@chakra-ui/react';
 import { createBreakpoints } from '@chakra-ui/theme-tools'
 import React from 'react';
 import { useToast } from '@chakra-ui/react'
@@ -58,6 +58,13 @@ export default function ForgotPassword(){
 
   const forgotPassword = async () =>{
 
+        if (email == ''){
+            document.getElementById('warning1').removeAttribute('hidden');
+            document.getElementById('warning2').hidden=true;
+        } else{
+
+        
+
         let formData = new FormData(); 
         formData.append('email', email);
         
@@ -80,11 +87,15 @@ export default function ForgotPassword(){
             // window.location = "/home"
         })
         .catch(error => {
-          toastIdRef.current = toast({ title: 'Reset Password Link Error!', description: 'Please try again!', status: 'error', duration: 2000, isClosable: true })
+          // toastIdRef.current = toast({ title: 'Reset Password Link Error!', description: 'Please try again!', status: 'error', duration: 2000, isClosable: true })
             console.log(error);
-            console.log(error.response);
+            // console.log(error.response);
+            if(error.response.data.status === "Wrong Credential"){
+              document.getElementById('warning2').removeAttribute('hidden');
+              document.getElementById('warning1').hidden=true;
+            }
             // window.location = "/forgot-password"
-        });
+        });}
     }
 
     return(
@@ -116,6 +127,18 @@ export default function ForgotPassword(){
             </div>
 
             <Heading fontFamily={'Raleway'} mb={'10%'} as="h2" size="lg" color={useColorModeValue('#1B1464','#B2A3FF')}>Forgot Password</Heading>
+
+            <Box id='warning1' color='red' w='100%' h='5vh' mb={4} mt={2} hidden>
+              <Center>
+                <Text mt='1vh' w="100%">Email Field is Required</Text>
+              </Center>
+            </Box>
+            <Box id='warning2' color='red' w='100%' h='5vh' mb={4} mt={2} hidden>
+              <Center>
+                <Text mt='1vh'>Email does not exist</Text>
+              </Center>
+            </Box>
+
             <center><FormControl id="forgotpassword" action="/home">
                 <FormLabel>iACADEMY Email</FormLabel>
                 <Input borderColor={useColorModeValue('black', 'white')} size='lg' width={'40vh'} className={styles.input_box} type="email" value={email} onChange={e => setEmail(e.target.value)}/>
