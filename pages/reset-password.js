@@ -95,6 +95,16 @@ export default function ResetPassword({}){
         formData.append('confirm_new_password', confirm_password);
         formData.append('token', token);
         formData.append('user_id', userId);
+
+        if (password == '' || confirm_password == ''){
+          document.getElementById('warning2').removeAttribute('hidden');
+          document.getElementById('warning1').hidden=true;
+          return;
+        }else if (password == confirm_password){
+          document.getElementById('warning1').removeAttribute('hidden');
+          document.getElementById('warning2').hidden=true;
+          return;
+        }
   
         const config = {
           headers: { 
@@ -138,6 +148,16 @@ export default function ResetPassword({}){
 
             <Heading fontFamily={'Raleway'} mb={2} as="h2" size="lg" color={useColorModeValue('#1B1464','#B2A3FF')}>Reset Password</Heading>
             <br />
+            <Box id='warning1' color='red' w='30%' h='5vh' mb={4} mt={2} hidden>
+              <Center>
+                <Text mt='1vh'>Password do not match</Text>
+              </Center>
+            </Box>
+            <Box id='warning2' color='red' w='30%' h='5vh' mb={4} mt={2} hidden>
+              <Center>
+                <Text mt='1vh'>What are you doing?</Text>
+              </Center>
+            </Box>
             {/* <p className={styles.description}>Kindly enter your E-mail Address to receive a link for further process in changing your password.</p> */}
             <center><FormControl id="forgotpassword" action="/home">
                 <FormLabel>New Password</FormLabel>
