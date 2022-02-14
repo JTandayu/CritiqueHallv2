@@ -421,7 +421,7 @@ export default function HallPage(){
                     
                     {/* Critique Item */}
                     { posts.length != 0 ? 
-                    [loading ? <Box>Loading...</Box> : 
+                    [loading ? <Box fontFamily={"Raleway"}>Loading...</Box> : 
                     currentPosts.map((post, i) => 
                             <Box bgColor={changeColor} w="100%" display={{lg: 'flex', sm: 'block'}} key={post.post_id} mt='2ch' border='1px solid gray.500' boxShadow='lg' rounded='lg'>
                                 <Link href={`/post/${post.post_id}`} passHref>
