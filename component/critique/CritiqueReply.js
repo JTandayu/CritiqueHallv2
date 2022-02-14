@@ -143,7 +143,7 @@ export const CritiqueReply = ({id, post_id, newReply}) => {
                                     <Heading fontFamily={'Raleway'} size='md' ml={3} mt={2} _hover={{cursor: 'pointer'}}>{reply.display_name}</Heading>
                                 </Link>
                                 {reply.starred_by_author == '1' ? <Image src='/reputation-stars.png' alt="Reputation Stars" w="25px" h="25px" ml={3} mt={2} /> : null}
-                                {Number(reply.reputation_points) >= 50 ? <Image src={changeBadgeIcon} alt="Badge" w="25px" h="25px" ml={3} mt={2} /> : null}
+                                {Number(reply.reputation_points) >= 10 ? <Image src={changeBadgeIcon} alt="Badge" w="25px" h="25px" ml={3} mt={2} /> : null}
                                 <Spacer />
                                 <Text fontFamily={'Raleway'} fontSize='sm' mt={2}>{reply.time_ago}</Text>
 
@@ -188,7 +188,7 @@ export const CritiqueReply = ({id, post_id, newReply}) => {
                             <Flex>
                                 <Image src={reply.profile_photo} w='3vh' h='3vh' mt={2} />
                                 <Link href={`/profile/${reply.display_name}`} passHref>
-                                    <Heading fontSize={'Raleway'} size='md' ml={3} mt={2} _hover={{cursor: 'pointer'}}>{reply.display_name}</Heading>
+                                    <Heading fontFamily={'Raleway'} size='md' ml={3} mt={2} _hover={{cursor: 'pointer'}}>{reply.display_name}</Heading>
                                 </Link>
                                 {reply.starred_by_author == '1' ? <Image src='/reputation-stars.png' alt="Reputation Stars" w="25px" h="25px" ml={3} mt={2} /> : null}
                                 {Number(reply.reputation_points) >= 10 ? <Image src={changeBadgeIcon} alt="Badge" w="25px" h="25px" ml={3} mt={2} /> : null}
