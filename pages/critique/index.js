@@ -289,7 +289,7 @@ export default function HallPage(){
     }
 
     const addDefaultSrc = (e) => {
-        e.target.src = "/no-preview-available.png";
+        e.target.src = "/no-image-attachment.png";
         e.target.onerror = null;
     }
 
@@ -439,7 +439,7 @@ export default function HallPage(){
                                         <Center>
                                         {post.attachment1 != 'undefined' ? 
                                         <Image src={post.attachment1} w={{lg: '10vw', sm:'100%'}} h={{lg: '10vh', sm: '20vh'}} onError={addDefaultSrc} borderRadius={10}/>
-                                        : <Image src="/no-image-preview.png" w={{lg: '10vw', sm:'100%'}} h={{lg: '10vh', sm: '20vh'}} borderRadius={10}/>}
+                                        : <Image src="/no-image-attachment.png" w={{lg: '10vw', sm:'100%'}} h={{lg: '10vh', sm: '20vh'}} borderRadius={10}/>}
                                         {post.attachment2 != 'undefined' ? 
                                         <Image src={post.attachment2} w={{lg: '10vw', sm:'100%'}} h={{lg: '10vh', sm: '20vh'}} onError={addDefaultSrc} borderRadius={10}/>
                                         : null}

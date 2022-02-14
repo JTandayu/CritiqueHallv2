@@ -430,7 +430,7 @@ export default function CritiquePost(){
                     ] : 
                     
                     <Center my={10}>
-                        <Image src="/no-preview-available.png" w='700px' h='300px' cursor="pointer"  disabled />
+                        <Image src="/no-image-attachment.png" w='700px' h='300px' cursor="pointer"  disabled />
                     </Center>
                     }
                     </SRLWrapper>
