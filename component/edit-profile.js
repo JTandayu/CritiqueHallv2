@@ -157,6 +157,12 @@ function EditProfile({data}) {
                 duration: 3000,
                 isClosable: true,
             })
+            toastIdRef.current = toast({
+                title: `File: ${profileImage[0].name}`,
+                status: 'info',
+                duration: 3000,
+                isClosable: true,
+            })
             console.log(url)
             setProfileImageUrl(url)
             setUploadProfileDone(true);
@@ -195,6 +201,12 @@ function EditProfile({data}) {
                 duration: 3000,
                 isClosable: true,
               })
+              toastIdRef.current = toast({
+                title: `File: ${coverImage[0].name}`,
+                status: 'info',
+                duration: 3000,
+                isClosable: true,
+            })
             console.log(url)
             setCoverImageUrl(url)
             setUploadCoverDone(true);

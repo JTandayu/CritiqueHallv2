@@ -189,6 +189,11 @@ function CreatePost({data}) {
                 e.target.files[i].name.endsWith(".wav") == true ||
                 e.target.files[i].name.endsWith(".mpeg") == true || 
                 e.target.files[i].name.endsWith(".flac") == true){
+                    toastIdRef.current = toast({
+                        title: `${e.target.files[i].name}`,
+                        status: 'info',
+                        isClosable: true,
+                      })
                     const newImage = e.target.files[i]
                     newImage['id'] = Math.random()
                     setImage((prevState) => [...prevState, newImage])
