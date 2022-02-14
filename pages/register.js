@@ -183,6 +183,11 @@ export default function Register({data2}) {
         document.getElementById('warning1').removeAttribute('hidden');
         document.getElementById('warning2').hidden=true;
         document.getElementById('warning3').hidden=true;
+      }if(tnc == false){
+        document.getElementById('warning3').removeAttribute('hidden');
+        document.getElementById('warning1').hidden=true;
+        document.getElementById('warning2').hidden=true;
+        return;
       }
 
       let formData = new FormData(); 
