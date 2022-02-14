@@ -128,6 +128,7 @@ export default function Login({user}) {
             router.replace("/confirmation")
           }else if(response.data.status.includes('You are temporarily suspended')){
             toastIdRef.current = toast({ title: response.data.status, status: 'error', duration: 3000, isClosable: false })
+            
           }else{
             setCookies('token', response.data.token)
             setCookies('display_name', response.data.display_name)
