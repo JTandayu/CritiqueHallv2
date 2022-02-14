@@ -190,9 +190,9 @@ export default function SearchResult(){
             </Head>
 
             <ScrollToTop color={'black'} width={40} boxShadow={'dark-lg'} smooth />
-            
+            {/* <Image src={useColorModeValue('/searchresults.png', '/searchresults-dark.png')} w="20%"/> */}
             <Box w="100%" mb="10" mt="15vh">
-                <Heading fontFamily={'Raleway'} color={useColorModeValue('#C1272D', '#FF5C61')}><Center><Image src={useColorModeValue('/searchresults.png', '/searchresults-dark.png')} w="20%" /> &quot;{search}&quot;</Center></Heading>
+                <Heading fontFamily={'Raleway'} color={useColorModeValue('#C1272D', '#FF5C61')}><Center><Image src={useColorModeValue('/critique-user-icon.png', '/critique-user-icon-dark.png')} w='1em' mr={5}/><Text color={changeColor2} mr={2}>Search results for:</Text> &quot;{search}&quot;</Center></Heading>
             </Box>
             
             
