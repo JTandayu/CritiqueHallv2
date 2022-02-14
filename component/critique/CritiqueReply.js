@@ -27,6 +27,7 @@ import EditReplyHistory from './options/edit-reply-history'
 import { useRouter } from 'next/router'
 import { useToast } from "@chakra-ui/react";
 import { getCookie } from 'cookies-next'
+import ReportReply from '@component/report-reply'
 
 const breakpoints = createBreakpoints({
     sm: '320px',
@@ -206,6 +207,10 @@ export const CritiqueReply = ({id, post_id, newReply}) => {
                                     <MenuList p={3}>
                                     <MenuGroup>
                                         <MenuItem fontFamily={'Raleway'}><EditReplyHistory id={reply.reply_id} /></MenuItem>
+                                    </MenuGroup>
+                                    <MenuDivider />
+                                    <MenuGroup>
+                                        <MenuItem fontFamily={'Raleway'}><ReportReply id={reply.reply_id} /></MenuItem>
                                     </MenuGroup>
                                     </MenuList>
                                 </Menu>: <Box w={8}></Box>}

@@ -370,7 +370,7 @@ export default function CritiquePost(){
                         </Box> 
                         :
                         <Box id='diffAcc'>
-                            {/* <Menu>
+                            <Menu>
                                 <MenuButton
                                 px={4}
                                 py={2}
@@ -379,15 +379,15 @@ export default function CritiquePost(){
                                 <ChevronDownIcon />
                                 </MenuButton>
                                 <MenuList p={3}>
-                                <MenuGroup>
+                                {/* <MenuGroup>
                                     <MenuItem><EditHistory /></MenuItem>
                                 </MenuGroup>
-                                <MenuDivider />
+                                <MenuDivider /> */}
                                 <MenuGroup >
-                                    <MenuItem><ReportPost /></MenuItem>
+                                    <MenuItem><ReportPost id={data.post_id} /></MenuItem>
                                 </MenuGroup>
                                 </MenuList>
-                            </Menu> */}
+                            </Menu>
                         </Box>}</Heading>
                     {/* Description */}
                     <Box mt={5}>

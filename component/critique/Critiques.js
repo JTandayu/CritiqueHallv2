@@ -28,6 +28,7 @@ import EditCritiqueHistory from './options/edit-critique-history'
 import { useRouter } from 'next/router'
 import { useToast } from "@chakra-ui/react";
 import { getCookie } from 'cookies-next'
+import ReportCritique from '@component/report-critique'
 
 const breakpoints = createBreakpoints({
     sm: '320px',
@@ -344,6 +345,10 @@ export const Critiques = ({id, newCritique}) => {
                                         <MenuList p={3}>
                                         <MenuGroup>
                                             <MenuItem fontFamily={'Raleway'}><EditCritiqueHistory id={critique.critique_id} /></MenuItem>
+                                        </MenuGroup>
+                                        <MenuDivider />
+                                        <MenuGroup>
+                                            <MenuItem fontFamily={'Raleway'}><ReportCritique id={critique.critique_id} /></MenuItem>
                                         </MenuGroup>
                                         </MenuList>
                                     </Menu> : <Box w={8}></Box>}

@@ -37,7 +37,7 @@ import { getCookie } from 'cookies-next'
 // }
 
 
-function ReportCritique({data}) {
+function ReportCritique({data, id}) {
     const { isOpen, onOpen, onClose } = useDisclosure()
     const { API_URL } = process.env
     const { API_KEY } = process.env
@@ -49,6 +49,7 @@ function ReportCritique({data}) {
     const toastIdRef = React.useRef()
     const token = getCookie('token')
     const user_id = getCookie('encrypted_id')
+    const display_name = getCookie('display_name')
     // console.log(data.encrypted_id)
 
     const config = {
@@ -65,9 +66,9 @@ function ReportCritique({data}) {
 
     const submitReport = () =>{
         let formData = new FormData;
-        formData.append("user_id", data.encrypted_id)
+        // formData.append("user_id", data.encrypted_id)
         // formData.append("post_id", null)
-        // formData.append("critique_id", null)
+        formData.append("critique_id", id)
         // formData.append("reply_id", null)
         formData.append("message", message)
         // formData.append("offense_type", offense)
@@ -101,7 +102,7 @@ function ReportCritique({data}) {
                 <ModalBody>
                         <Flex mt='3vh'>
                             <FormLabel fontFamily={'Raleway'}>Reportee</FormLabel>
-                            <Text fontFamily={'Raleway'} ml={20}>{cookie.display_name}</Text>
+                            <Text fontFamily={'Raleway'} ml={20}>{display_name}</Text>
                         </Flex>
                         {/* <Flex mt='3vh'>
                             <FormLabel fontFamily={'Raleway'}>Type of Offense</FormLabel>

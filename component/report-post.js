@@ -37,7 +37,7 @@ import { getCookie } from 'cookies-next'
 // }
 
 
-function ReportPost({data}) {
+function ReportPost({data, id}) {
     const { isOpen, onOpen, onClose } = useDisclosure()
     const { API_URL } = process.env
     const { API_KEY } = process.env
@@ -49,6 +49,7 @@ function ReportPost({data}) {
     const toastIdRef = React.useRef()
     const token = getCookie('token')
     const user_id = getCookie('encrypted_id')
+    const display_name = getCookie('display_name')
     // console.log(data.encrypted_id)
 
     const config = {
@@ -65,8 +66,8 @@ function ReportPost({data}) {
 
     const submitReport = () =>{
         let formData = new FormData;
-        formData.append("user_id", data.encrypted_id)
-        // formData.append("post_id", null)
+        // formData.append("user_id", data.encrypted_id)
+        formData.append("post_id", id)
         // formData.append("critique_id", null)
         // formData.append("reply_id", null)
         formData.append("message", message)
@@ -101,7 +102,7 @@ function ReportPost({data}) {
                 <ModalBody>
                         <Flex mt='3vh'>
                             <FormLabel fontFamily={'Raleway'}>Reportee</FormLabel>
-                            <Text fontFamily={'Raleway'} ml={20}>{cookie.display_name}</Text>
+                            <Text fontFamily={'Raleway'} ml={20}>{display_name}</Text>
                         </Flex>
                         {/* <Flex mt='3vh'>
                             <FormLabel fontFamily={'Raleway'}>Type of Offense</FormLabel>

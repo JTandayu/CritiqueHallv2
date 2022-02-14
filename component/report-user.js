@@ -72,7 +72,7 @@ function ReportUser({data}) {
         // formData.append("reply_id", null)
         formData.append("message", message)
         // formData.append("offense_type", offense)
-        console.log(offense)
+        // console.log(offense)
 
         axios.post(`${API_URL}/api/submit_report`, formData, config)
         .then((response)=>{
