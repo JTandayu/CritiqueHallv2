@@ -79,7 +79,7 @@ function ReportUser({data}) {
             console.log(response.data)
             toastIdRef.current = toast({
                 position: 'top',
-                title: 'Report submitted successfully!.',
+                title: 'Report submitted successfully!',
                 status: 'success',
                 duration: 3000,
                 isClosable: true,
