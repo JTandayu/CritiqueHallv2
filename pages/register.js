@@ -28,6 +28,7 @@ import React from 'react';
 import { useToast, Checkbox, CheckboxGroup } from '@chakra-ui/react';
 import TermsAndConditions from '@component/terms-and-conditions';
 import { getCookie, setCookies } from 'cookies-next'
+import { useRouter } from 'next/router';
 
 const MotionButton = motion(Button)
 
@@ -80,6 +81,9 @@ const breakpoints = createBreakpoints({
 export default function Register({data2}) {
   const { API_URL } = process.env
   const { API_KEY } = process.env
+  const router =useRouter()
+  const url = router.query
+  console.log(url)
 
   // const first_name, last_name, email, password, confirm_password, department, specialization, profile_pic, cover_pic = useState('')
   const [first_name, setFirstName] = useState('')

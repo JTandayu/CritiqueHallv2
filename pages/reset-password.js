@@ -3,7 +3,7 @@ import Head from 'next/head'
 import styles from "@styles/ResetPassword.module.css";
 import { css, cx } from '@emotion/react'
 import { motion } from "framer-motion"
-import Home from './home'
+// import Home from './home'
 import Link from 'next/link'
 // import Logo from "@public/critiquehall.png";
 import { Heading } from '@chakra-ui/react'
@@ -31,6 +31,7 @@ import { useColorMode, useColorModeValue } from '@chakra-ui/react';
 import { createBreakpoints } from '@chakra-ui/theme-tools'
 import { useToast } from '@chakra-ui/react'
 import React from 'react';
+import { useRouter } from 'next/router';
 import axios from 'axios';
 
 
@@ -45,14 +46,35 @@ const breakpoints = createBreakpoints({
 
 const MotionButton = motion(Button)
 
-export default function ResetPassword(){
+// export async function getServerSideProps(context){
+//   const token = await context.params.token;
+//   const userId = await context.params.userId;
+
+//   return{
+//     props:{
+//       token,
+//       userId
+//     }
+//   }
+// }
+
+export default function ResetPassword({}){
   const { API_URL } = process.env
   const { API_KEY } = process.env
+  const router =useRouter()
+  // const url = router.query.user_id
+  // console.log(url)
 
   const [password, setPassword] = useState('')
   const [confirm_password, setConfirmPassword] = useState('')
   const toast = useToast()
   const toastIdRef = React.useRef()
+
+  const token = router.query.token;
+  const userId = router.query.user_id;
+
+  // console.log(token);
+  // console.log(userId)
 
   const { colorMode, toggleColorMode } = useColorMode()
   colorMode === 'light' ? 'Dark' : 'Light'
@@ -69,10 +91,10 @@ export default function ResetPassword(){
 
     const resetPassword = async () =>{
         let formData = new FormData(); 
-        formData.append('password', password);
-        formData.append('confirm-password', confirm_password);
-        
-  
+        formData.append('new_password', password);
+        formData.append('confirm_new_password', confirm_password);
+        formData.append('token', token);
+        formData.append('user_id', userId);
   
         const config = {
           headers: { 
@@ -81,19 +103,20 @@ export default function ResetPassword(){
             'Authorization': 'Basic Y2Fwc3RvbmUyMDIxOjEyMzQ=',
             // 'Accept-Encoding': 'gzip, deflate, br',
             'Accept': 'application/json',
+
           }
         }
   
-        axios.post(`${API_URL}/api/reset-password`, formData, config)
+        axios.post(`${API_URL}/api/reset_password`, formData, config)
         .then(response => {
             toastIdRef.current = toast({ title: 'Reset Password Successful!', description: 'Please login with your new password.', status: 'success', duration: 2000, isClosable: true })
             console.log(response);
-              window.location = "/login"
+            router.replace('/login')
         })
         .catch(error => {
           toastIdRef.current = toast({ title: 'Reset Password Unsuccessful!', description: 'Please try again!', status: 'error', duration: 2000, isClosable: true })
-            console.log(error);
-            window.location = "/reset-password"
+            console.log(error.reponse);
+            // window.location = "/reset-password"
         });
     }
 
@@ -108,21 +131,9 @@ export default function ResetPassword(){
         
         <Box className={styles.main} bg={useColorModeValue('white', '#212121')} w={{lg: '100ch' , md: '100%' , sm: '100%', base: '100%'}}>
             <center>
-            {/* <Button
-                        as='a'
-                        variant='ghost'
-                        aria-label='Home'
-                        my={2}
-                        ml={4}
-                        w='50%'
-                        onClick={changeDarkAndLightIcon}
-                        _hover={{cursor:'pointer'}}
-                        _active={{bgColor: 'none'}}
-                    >
-                        <Image className={styles.darkicon} src={ImgUrl} alt="darkmode" w="2em" h="2em" ml={'15em'} />
-                    </Button> */}
+            
             <div className={styles.logo}>
-            <Image src={useColorModeValue('critiquehall.png', 'critiquehall-dark.png')} alt="Critique Hall Logo"/>
+            <Image src={useColorModeValue('/critiquehall.png', '/critiquehall-dark.png')} alt="Critique Hall Logo"/>
             </div>
 
             <Heading fontFamily={'Raleway'} mb={2} as="h2" size="lg" color={useColorModeValue('#1B1464','#B2A3FF')}>Reset Password</Heading>
@@ -168,7 +179,7 @@ export default function ResetPassword(){
             </FormControl></center>
 
             <p className={styles.register}>
-            <Link href="./login" passHref><Text _hover={{cursor:'pointer'}} fontSize='lg'  color={useColorModeValue('#1BA3C1', '#1BA3C1')}><a>Back to Login</a></Text></Link>
+            <Link href="/" passHref><Text _hover={{cursor:'pointer'}} fontSize='lg'  color={useColorModeValue('#1BA3C1', '#1BA3C1')}><a>Back to Login</a></Text></Link>
             </p>
             </center>
         </Box>
