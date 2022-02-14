@@ -27,6 +27,7 @@ import Pagination from '@choc-ui/paginator'
 import { useCookies } from 'react-cookie'
 import { useRouter } from 'next/router'
 import ScrollToTop from "react-scroll-to-top";
+import {getCookie} from "cookies-next"
 
 
 // export async function getServerSideProps(context){
@@ -54,7 +55,7 @@ export default function SearchResult(){
     const { API_URL } = process.env
     const { API_KEY } = process.env
 
-    const [cookies] = useCookies()
+    // const [cookies] = useCookies()
 
     // const [searchItem, setSearchItem] = useState('')
     const [searchUserData, setSearchUserData] = useState([])
@@ -65,6 +66,8 @@ export default function SearchResult(){
     const changeColor = useColorModeValue('#BAB9B9', '#1F1F1F')
     const changeColor2 = useColorModeValue('#1B1464', '#B2A3FF')
     const router = useRouter();
+    const token = getCookie('token')
+    const user_id = getCookie('encrypted_id')
     
     // const searchItem = ;
 
@@ -80,8 +83,8 @@ export default function SearchResult(){
             'Authorization': 'Basic Y2Fwc3RvbmUyMDIxOjEyMzQ=',
             // 'Accept-Encoding': 'gzip, deflate, br',
             'Accept': 'application/json',
-            'Token': cookies.token,
-            'User-Id': cookies.encrypted_id
+            'Token': token,
+            'User-Id': user_id
         }
     }
     
