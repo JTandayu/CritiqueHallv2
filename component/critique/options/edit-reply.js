@@ -25,7 +25,7 @@ const EditReply = ({data}) => {
     const { API_URL } = process.env
     const { API_KEY } = process.env
     const [reply, setReply] = useState(data.body)
-    const [cookies] = useCookies();
+    // const [cookies] = useCookies();
 
     const token = getCookie('token')
     const user_id = getCookie('encrypted_id')
