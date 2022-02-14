@@ -136,13 +136,15 @@ function CreatePost({data}) {
                     setUrls((prevState) => [...prevState, urls])
                     setFileName((prevState) => [...prevState, image.name])
                     setUploadCounter(prevCount => prevCount + 1)
-                    if(i >= (image.length - 1)){
+                    if(i + 1 == image.length){
                         setImage([])
                     }  
                 })
             }
             );
         })
+
+        
 
         Promise.all(promises);
         document.getElementById('image-input').value=null;
@@ -292,6 +294,7 @@ function CreatePost({data}) {
         setImage([])
         setUrls([])
         setCounter(0)
+        setUploadCounter(0)
         onClose()
     }
 
