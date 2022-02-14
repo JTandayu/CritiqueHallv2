@@ -124,16 +124,16 @@ export default function Login({user}) {
           document.getElementById('warning1').hidden=true;
 
           if(response.data.status === 'Email not verified'){
-            toastIdRef.current = toast({ title: 'Email Not Verified!', status: 'error', duration: 3000, isClosable: false })
+            toastIdRef.current = toast({ position: 'top', title: 'Email not verified!', status: 'error', duration: 3000, isClosable: true })
             router.replace("/confirmation")
           }else if(response.data.status.includes('You are temporarily suspended')){
-            toastIdRef.current = toast({ title: response.data.status, status: 'error', duration: 3000, isClosable: false })
+            toastIdRef.current = toast({ position: 'top', title: response.data.status, status: 'error', duration: 3000, isClosable: true })
             
           }else{
             setCookies('token', response.data.token)
             setCookies('display_name', response.data.display_name)
             setCookies('encrypted_id', response.data.encrypted_id)
-            toastIdRef.current = toast({ title: 'Login Successful!', status: 'success', duration: 3000, isClosable: false })
+            toastIdRef.current = toast({ position: 'top', title: 'Login successful!', status: 'success', duration: 3000, isClosable: true })
             router.push("/home")
           }
           // window.location.href = "/home"

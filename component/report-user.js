@@ -78,6 +78,7 @@ function ReportUser({data}) {
         .then((response)=>{
             console.log(response.data)
             toastIdRef.current = toast({
+                position: 'top',
                 title: 'Report submitted successfully!.',
                 status: 'success',
                 duration: 3000,
@@ -100,10 +101,10 @@ function ReportUser({data}) {
                 <ModalHeader fontFamily={'Raleway'}>Report User</ModalHeader>
                 <ModalCloseButton />
                 <ModalBody>
-                        <Flex mt='3vh'>
+                        {/* <Flex mt='3vh'>
                             <FormLabel fontFamily={'Raleway'}>Reportee</FormLabel>
                             <Text fontFamily={'Raleway'} ml={20}>{display_name}</Text>
-                        </Flex>
+                        </Flex> */}
                         {/* <Flex mt='3vh'>
                             <FormLabel fontFamily={'Raleway'}>Type of Offense</FormLabel>
                             <RadioGroup name="offense" onChange={setOffense} value={offense}  ml={8}>
@@ -118,7 +119,7 @@ function ReportUser({data}) {
                         </Flex> */}
 
                         <FormLabel fontFamily={'Raleway'}>Description</FormLabel>
-                        <Textarea borderColor={useColorModeValue('black', 'white')} fontFamily={'Raleway'} w='30vw' placeholder='Your detail report...' onChange={(e)=>setMessage(e.target.value)}/>
+                        <Textarea borderColor={useColorModeValue('black', 'white')} fontFamily={'Raleway'} w='30vw' onChange={(e)=>setMessage(e.target.value)}/>
                         <Center mt={10} mb={10}>
                             <Button  fontFamily={'Raleway'} bgColor={useColorModeValue('#2777C1','#0085FF')} color={useColorModeValue('#FFFFFF', '#FFFFFF')} _hover={{bgColor: useColorModeValue('#56AEFF', '#0B5090')}} colorScheme='blue' mr={3} onClick={submitReport} >
                                 Submit
