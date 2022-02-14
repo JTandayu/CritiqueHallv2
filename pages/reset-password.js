@@ -9,7 +9,7 @@ import Link from 'next/link'
 import { Heading } from '@chakra-ui/react'
 import { Box, Image, Text } from "@chakra-ui/react"
 import { Button, ButtonGroup, Input } from "@chakra-ui/react"
-import { Stack, HStack, VStack } from "@chakra-ui/react"
+import { Stack, HStack, VStack, Center } from "@chakra-ui/react"
 import {
   FormControl,
   FormLabel,
