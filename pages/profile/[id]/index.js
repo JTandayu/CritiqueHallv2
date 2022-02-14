@@ -268,24 +268,26 @@ export default function ProfilePage({}){
                     <Button className={useColorModeValue(styles.myposts, styles.myposts2)} fontFamily={'Raleway'} color={useColorModeValue('black', 'white')} fontWeight={'bold'} ml={5} h='2em' position='static' onClick={OpenPost} boxShadow={'lg'}>My Posts</Button>
                     <Button className={useColorModeValue(styles.mycritiques, styles.mycritiques2)} fontFamily={'Raleway'} color={useColorModeValue('black', 'white')} fontWeight={'bold'} ml={5} h='2em' position='static' onClick={OpenCritique} boxShadow={'lg'}>My Critiques</Button>
                     <Spacer />
-                    <Flex w={{lg: '15vw', sm: '30vw'}} mt={1} mr={8} id='postFilter'>
+                    <Flex w={{lg: '15vw', sm: '30vw'}} mt={1} mr={10} id='postFilter'>
                         {/* <Text fontFamily={'Raleway'} mr={{lg: 5, sm: 1}} w={20} mt={2}>Sort by: </Text> */}
+                        <Text fontFamily={'Raleway'} mr={{lg: 1, sm: 1}} w={28} mt={2}>Sort by:</Text>
                         <Select fontFamily={'Raleway'} fontWeight={'bold'} onChange={(e)=>sortPost(e.target.value)}  color={useColorModeValue('black', 'white')} bgColor={useColorModeValue('#FFFFFF', '#2E2E2E')} borderColor={useColorModeValue('black', 'white')} boxShadow={'lg'}>
                             <option disabled>Filter Item</option>
                             <option value='desc'>Newest</option>
                             <option value='asc'>Oldest</option>
                             <option value='most_stars'>Most Post Stars</option>
-                            <option value='most_interacted'>Most Interacted</option>
+                            {/* <option value='most_interacted'>Most Interacted</option> */}
                         </Select>
                     </Flex>
-                    <Flex w={{lg: '15vw', sm: '30vw'}} mt={1} mr={8} id='critiqueFilter'>
+                    <Flex w={{lg: '15vw', sm: '30vw'}} mt={1} mr={10} id='critiqueFilter'>
                         {/* <Text fontFamily={'Raleway'} mr={{lg: 5, sm: 1}} w={20} mt={2}>Sort by: </Text> */}
+                        <Text fontFamily={'Raleway'} mr={{lg: 1, sm: 1}} w={28} mt={2}>Sort by:</Text>
                         <Select fontFamily={'Raleway'} fontWeight={'bold'} onChange={(e)=>sortCritique(e.target.value)}  color={useColorModeValue('black', 'white')} bgColor={useColorModeValue('#FFFFFF', '#2E2E2E')} borderColor={useColorModeValue('black', 'white')} boxShadow={'lg'}>
                             <option disabled>Filter Item</option>
                             <option value='desc'>Newest</option>
                             <option value='asc'>Oldest</option>
                             <option value='most_stars'>Most Critique Stars</option>
-                            <option value='most_interacted'>Most Interacted</option>
+                            {/* <option value='most_interacted'>Most Interacted</option> */}
                         </Select>
                     </Flex>
                 </Box>

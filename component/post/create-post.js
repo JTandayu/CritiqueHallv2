@@ -225,7 +225,7 @@ function CreatePost({data}) {
                 // console.log(response.data)
                 // alert("File deleted successfully")
                 toastIdRef.current = toast({
-                    title: "File deleted successfully",
+                    title: "File deleted successfully!",
                     status: 'success',
                     isClosable: true,
                   })
