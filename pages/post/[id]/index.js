@@ -487,7 +487,7 @@ export default function CritiquePost(){
                     </SRLWrapper>
                     {/* Options */}
                     <Box display="flex" w="100%" mt={5}>
-                        <Button position='static' variant='ghost' onClick={giveLike}><Image src={useColorModeValue('/stars.png', '/stars-dark.png')} alt="Stars" w="25px" h="25px" ml={2}/> <Text id='likes' ml={2}>{data.likes}</Text></Button>
+                        <Button  fontFamily={'Raleway'} position='static' variant='ghost' onClick={giveLike}><Image src={useColorModeValue('/stars.png', '/stars-dark.png')} alt="Stars" w="25px" h="25px" ml={2}/> <Text id='likes' ml={2}>{data.likes}</Text></Button>
                         <Spacer />
                         {/* dito 'yung menu dropdown options */}
                     </Box>

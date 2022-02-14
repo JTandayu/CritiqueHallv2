@@ -176,7 +176,7 @@ export const CritiqueReply = ({id, post_id, newReply}) => {
                                 <Text fontFamily={'Raleway'} fontSize='sm' textAlign={'justify'}>{reply.body}</Text>
                             </Box>
                             <Flex w='20vw'>
-                                <Button variant='ghost' onClick={(e)=>giveStar(reply.reply_id, e)}><Image src={changeIcon} alt="Stars" w="25px" h="25px" ml={2} mr={2}/> <Text id={`starreply${reply.reply_id}`}>{reply.stars}</Text></Button>
+                                <Button fontFamily={'Raleway'} variant='ghost' onClick={(e)=>giveStar(reply.reply_id, e)}><Image src={changeIcon} alt="Stars" w="25px" h="25px" ml={2} mr={2}/> <Text id={`starreply${reply.reply_id}`}>{reply.stars}</Text></Button>
                                 {reply.is_edited == 1 ? <Text fontFamily={'Raleway'} color="gray.400" mt={3} fontSize="sm">(Edited)</Text> : null}
                         </Flex>
 
@@ -194,7 +194,7 @@ export const CritiqueReply = ({id, post_id, newReply}) => {
                                 {reply.starred_by_author == '1' ? <Image src='/reputation-stars.png' alt="Reputation Stars" w="25px" h="25px" ml={3} mt={2} /> : null}
                                 {Number(reply.reputation_points) >= 10 ? <Image src={changeBadgeIcon} alt="Badge" w="25px" h="25px" ml={3} mt={2} /> : null}
                                 <Spacer />
-                                <Text fontFamily={'Raleway'} fontSize='sm' mt={2}>{reply.time_ago}</Text>
+                                <Text fontFamily={'Raleway'} color="gray.400" fontSize='sm' mt={2}>{reply.time_ago}</Text>
                                 {reply.is_edited == 1 ?  
                                 <Menu>
                                     <MenuButton
@@ -219,7 +219,7 @@ export const CritiqueReply = ({id, post_id, newReply}) => {
                                 <Text fontSize='md' fontFamily={'Raleway'}  textAlign={'justify'}>{reply.body}</Text>
                             </Box>
                             <Flex w='20vw'>
-                                <Button variant='ghost' onClick={(e)=>giveStar(reply.reply_id, e)}><Image src={changeIcon} alt="Stars" w="25px" h="25px" ml={2} mr={2}/> <Text id={`starreply${reply.reply_id}`}>{reply.stars}</Text></Button>
+                                <Button fontFamily={'Raleway'} variant='ghost' onClick={(e)=>giveStar(reply.reply_id, e)}><Image src={changeIcon} alt="Stars" w="25px" h="25px" ml={2} mr={2}/> <Text id={`starreply${reply.reply_id}`}>{reply.stars}</Text></Button>
                                 {reply.is_edited == 1 ? <Text fontFamily={'Raleway'} color="gray.400" mt={3} fontSize="sm">(Edited)</Text> : null}
                         </Flex>
 
