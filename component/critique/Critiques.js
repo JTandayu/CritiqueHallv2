@@ -236,7 +236,7 @@ export const Critiques = ({id, newCritique}) => {
                             <option value='desc'>Newest</option>
                             <option value='asc'>Oldest</option>
                             <option value='most_stars'>Most Stars</option>
-                            <option value='most_interacted'>Most Interacted</option>
+                            {/* <option value='most_interacted'>Most Interacted</option> */}
                         </Select>
                         </Flex>
             </Box>
