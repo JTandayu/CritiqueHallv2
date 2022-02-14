@@ -166,36 +166,28 @@ export default function Nav(data, profile_pic){
             // console.log(error.response.data.error);
             if(error.response.data.error ==  'User does not exist'){
                 removeCookies('token');
-                removeCookies('id');
                 removeCookies('encrypted_id');
-                removeCookies('profile_pic');
                 removeCookies('display_name');
                 Router.replace('/')
                 return null;
             }
             if(error.response.data.error ==  'Token Expired'){
                 removeCookies('token');
-                removeCookies('id');
                 removeCookies('encrypted_id');
-                removeCookies('profile_pic');
                 removeCookies('display_name');
                 Router.replace('/')
                 return null;
             }
             if(error.response.data.error ==  'Unauthorized'){
                 removeCookies('token');
-                removeCookies('id');
                 removeCookies('encrypted_id');
-                removeCookies('profile_pic');
                 removeCookies('display_name');
                 Router.replace('/')
                 return null;
             }
             if(error.response.data.error ==  'Account Suspended'){
                 removeCookies('token');
-                removeCookies('id');
                 removeCookies('encrypted_id');
-                removeCookies('profile_pic');
                 removeCookies('display_name');
                 Router.replace('/')
                 return null;

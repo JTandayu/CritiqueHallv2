@@ -23,19 +23,19 @@ export default function Custom500() {
     const { API_URL } = process.env
     const { API_KEY } = process.env
 
-    const [cookie, setCookies] = useCookies('token', 'encrypte_id')
+    // const [cookie, setCookies] = useCookies('token', 'encrypte_id')
 
-    const config = {
-        headers: { 
-          'content-type': 'multipart/form-data',
-          'X-API-KEY': `${API_KEY}`,
-          'Authorization': 'Basic Y2Fwc3RvbmUyMDIxOjEyMzQ=',
-          // 'Accept-Encoding': 'gzip, deflate, br',
-          'Accept': 'application/json',
-          'token': cookie.token,
-          'user_id': cookie.encrypted_id
-        }
-    }
+    // const config = {
+    //     headers: { 
+    //       'content-type': 'multipart/form-data',
+    //       'X-API-KEY': `${API_KEY}`,
+    //       'Authorization': 'Basic Y2Fwc3RvbmUyMDIxOjEyMzQ=',
+    //       // 'Accept-Encoding': 'gzip, deflate, br',
+    //       'Accept': 'application/json',
+    //       'token': cookie.token,
+    //       'user_id': cookie.encrypted_id
+    //     }
+    // }
 
     return (
         <main className={useColorModeValue(styles.container, styles.container2)}>

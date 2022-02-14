@@ -33,7 +33,7 @@ function DeletePost({id}){
 
     const [progress, setProgress] = useState(0);
     const [url, setUrl] = useState(''); 
-    const [cookies] = useCookies([]);
+    // const [cookies] = useCookies([]);
     const token = getCookie('token')
     const user_id = getCookie('encrypted_id')
 

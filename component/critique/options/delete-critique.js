@@ -23,7 +23,7 @@ const DeleteCritique = ({id}) => {
     const { isOpen, onOpen, onClose } = useDisclosure()
     const { API_URL } = process.env
     const { API_KEY } = process.env
-    const [cookies] = useCookies();
+    // const [cookies] = useCookies();
 
     const token = getCookie('token')
     const user_id = getCookie('encrypted_id')
