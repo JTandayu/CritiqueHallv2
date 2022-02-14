@@ -281,19 +281,19 @@ export default function SearchResult(){
                                     <Box p="3" w="100%" bg="light" my='auto'  ml={'20%'} mr={'20%'}>
                                         <Center>
                                         {post.attachment1 != 'undefined' ? 
-                                        <Image src={post.attachment1} w={{lg: '10vw', sm:'100%'}} h={{lg: '10vh', sm: '20vh'}} onError={addDefaultSrc} borderRadius={10}/>
-                                        : <Image src="/no-image-attachment.png" w={{lg: '10vw', sm:'100%'}} h={{lg: '10vh', sm: '20vh'}} borderRadius={10}/>}
+                                        <Image src={post.attachment1} w={{lg: '10vw', sm:'100%'}} h={{lg: '10vh', sm: '20vh'}} onError={addDefaultSrc} borderRadius={10} objectFit='cover'/>
+                                        : <Image src="/no-image-attachment.png" w={{lg: '10vw', sm:'100%'}} h={{lg: '10vh', sm: '20vh'}} borderRadius={10} objectFit='cover'/>}
                                         {post.attachment2 != 'undefined' ? 
-                                        <Image src={post.attachment2} w={{lg: '10vw', sm:'100%'}} h={{lg: '10vh', sm: '20vh'}} onError={addDefaultSrc} borderRadius={10}/>
+                                        <Image src={post.attachment2} w={{lg: '10vw', sm:'100%'}} h={{lg: '10vh', sm: '20vh'}} onError={addDefaultSrc} borderRadius={10} objectFit='cover'/>
                                         : null}
                                         {post.attachment3 != 'undefined' ? 
-                                        <Image src={post.attachment3} w={{lg: '10vw', sm:'100%'}} h={{lg: '10vh', sm: '20vh'}} onError={addDefaultSrc} borderRadius={10}/>
+                                        <Image src={post.attachment3} w={{lg: '10vw', sm:'100%'}} h={{lg: '10vh', sm: '20vh'}} onError={addDefaultSrc} borderRadius={10} objectFit='cover'/>
                                         : null}
                                         </Center>
                                     </Box>
                                     <Box fontFamily={'Raleway'} p="3" w="100%" bg="light" my='auto'>
                                         <Center>
-                                        <Text>{post.title}</Text>
+                                        <Text isTruncated>{post.title}</Text>
                                         </Center>
                                     </Box>
                                     <Box fontFamily={'Raleway'} p="3" w="100%" bg="light" my='auto'>
@@ -304,7 +304,7 @@ export default function SearchResult(){
                                 </Box>
                                 </a>
                                 </Link> 
-                                <Box fontFamily={'Raleway'} p="3" w="100%" bg="light" display='flex'>
+                                <Box fontFamily={'Raleway'} fontSize="sm" p="3" w="100%" bg="light" display='flex'>
                                     <Box w="100%" bg="light" my='auto'>
                                         <Center>
                                             {post.time_ago}
