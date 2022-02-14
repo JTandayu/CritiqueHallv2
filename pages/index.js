@@ -162,6 +162,7 @@ export default function Login({user}) {
           <meta name="description" content="Critique Hall by create next app" />
           <link rel="icon" href={useColorModeValue('logo256.png', 'logo256-dark.png')} onLoad=""/>
           <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@700&display=swap" rel="stylesheet" />
+          <meta name="keywords" content="Critique Hall, critique hall, critiquehall, CritiqueHall, CRITIQUEHALL, CRITIQUE HALL" />
         </Head>
   
         <Box as='main' bg={useColorModeValue('white', '#212121')} w={{lg: '100ch' , md: '100%' , sm: '100%', base: '100%'}} className={styles.main} 
