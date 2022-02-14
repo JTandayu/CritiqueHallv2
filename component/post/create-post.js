@@ -278,7 +278,7 @@ function CreatePost({data}) {
     }
 
     const addDefaultSrc = (e) => {
-        e.target.src = "/no-preview-available.png";
+        e.target.src = "/no-image-attachment.png";
         e.target.onerror = null;
     }
     
