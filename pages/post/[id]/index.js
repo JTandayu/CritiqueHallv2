@@ -342,13 +342,15 @@ export default function CritiquePost(){
                     {/* Main */}
                     {/* <PostMain /> */}
                 <Box  w={{lg: '50%', sm: '100%'}}  bg={useColorModeValue('white', '#212121')} h={{lg: "100%", sm: "100%"}} p={5} boxShadow='dark-lg' borderRadius={10} mt={28} ml='3vw'>
-                    <Heading fontFamily={'Raleway'} mx="auto" display="flex">{data.title}
-                    {data.display_name == display_name ?
+                <Heading fontFamily={'Raleway'} fontSize="xl" mx="auto" display="flex"><Image src={data.profile_photo} w="50px" h="50px" mr={3} borderRadius={10}/>
+                <Link href={`/profile/${data.display_name}`} passHref><Text fontFamily={'Raleway'} fontSize="xl" _hover={{cursor: 'pointer'}} mt={4}>{data.display_name}</Text></Link>
+                <Text fontFamily={'Raleway'} fontSize="md" ml={'65%'} color="gray.400" mt={5} isTruncated>{data.time_ago}</Text>
+                {data.display_name == display_name ?
                         <Box id='sameAcc' >
                             <Menu>
                                 <MenuButton
                                 px={4}
-                                py={2}
+                                py={4}
                                 transition='all 0.2s'
                                 >
                                 <ChevronDownIcon />
@@ -388,7 +390,10 @@ export default function CritiquePost(){
                                 </MenuGroup>
                                 </MenuList>
                             </Menu>
-                        </Box>}</Heading>
+                        </Box>}
+                    </Heading> 
+                    <Heading fontFamily={'Raleway'} mx="auto" display="flex" mt={5}>{data.title}
+                    </Heading>
                     {/* Description */}
                     <Box mt={5}>
                         {/* <Heading size='md'>Description</Heading> */}
