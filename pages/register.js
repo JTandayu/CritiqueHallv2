@@ -268,7 +268,7 @@ export default function Register({data2}) {
           <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@700&display=swap" rel="stylesheet" />
         </Head>
   
-        <Box  bg={useColorModeValue('white', '#212121')} w={{lg: '100ch' , md: '100%' , sm: '100%', base: '100%'}} className={styles.main} 
+        <Box bg={useColorModeValue('white', '#212121')} w={{lg: '100ch' , md: '100%' , sm: '100%', base: '100%'}} className={styles.main} 
           id="motion-main" 
         >
           <center><FormControl id="registerpart1">
