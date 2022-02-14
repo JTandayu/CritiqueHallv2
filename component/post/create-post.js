@@ -402,7 +402,7 @@ function CreatePost({data}) {
                             }} mt={3}>
 
                             {urls.map((url, i) => (
-                                <Image src={url} key={i} w={{lg: '10vw', sm: '80vw'}} h='10vh' ml={5} onError={addDefaultSrc} />
+                                <Image src={url} key={i} w={{lg: '10vw', sm: '80vw'}} h='10vh' ml={5} onError={addDefaultSrc} objectFit="cover"/>
                             ))} 
                         </Flex>
                         <br />
