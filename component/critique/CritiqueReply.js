@@ -146,7 +146,7 @@ export const CritiqueReply = ({id, post_id, newReply}) => {
                                 {reply.starred_by_author == '1' ? <Image src='/reputation-stars.png' alt="Reputation Stars" w="25px" h="25px" ml={3} mt={2} /> : null}
                                 {Number(reply.reputation_points) >= 10 ? <Image src={changeBadgeIcon} alt="Badge" w="25px" h="25px" ml={3} mt={2} /> : null}
                                 <Spacer />
-                                <Text fontFamily={'Raleway'} fontSize='sm' mt={2}>{reply.time_ago}</Text>
+                                <Text fontFamily={'Raleway'} color="gray.400" fontSize='sm' mt={2}>{reply.time_ago}</Text>
 
                                 <Menu>
                                     <MenuButton

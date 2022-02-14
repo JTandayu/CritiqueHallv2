@@ -374,7 +374,7 @@ export default function Nav(data, profile_pic){
                         Critique
                     </Button>
                 </Link>
-                <Link href="/feedback" passHref>
+                {/* <Link href="/feedback" passHref>
                     <Button
                         as='a'
                         variant='ghost'
@@ -391,12 +391,12 @@ export default function Nav(data, profile_pic){
                     >
                         Feedback
                     </Button>
-                </Link>
+                </Link> */}
                 </Flex>
             </Flex>
             <Spacer />
                 <form onSubmit={searchItem}>
-                    <Input fontFamily={'Raleway'} fontWeight={'light'} placeholder='Search for a user or a post' display={['none','none','none','flex']} w='30vw' type='text' mt={7} mr={{lg: '25vw', md: '10vw'}} onChange={(e)=>setSearch(e.target.value)} borderColor={useColorModeValue('black', 'white')}/>
+                    <Input fontFamily={'Raleway'} fontWeight={'light'} placeholder='Search for a user or a post' display={['none','none','none','flex']} w='30vw' type='text' mt={7} mr={{lg: '38vw', md: '10vw'}} onChange={(e)=>setSearch(e.target.value)} borderColor={useColorModeValue('black', 'white')}/>
                 </form>
             <Spacer />
         <Flex
@@ -562,7 +562,7 @@ export default function Nav(data, profile_pic){
                         Critique
                     </Button>
                 </Link>
-                <Link href="/feedback" passHref>
+                {/* <Link href="/feedback" passHref>
                     <Button
                         as='a'
                         variant='ghost'
@@ -576,7 +576,7 @@ export default function Nav(data, profile_pic){
                     >
                         Feedback
                     </Button>
-                </Link>
+                </Link> */}
                 <Link href="/profile/[id]" as={`/profile/${user_id}`} passHref>
                     <Button
                         as='a'

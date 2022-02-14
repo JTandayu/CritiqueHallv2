@@ -4,13 +4,13 @@
     background-size: cover; */
     background-color: #F4F4F4;
     opacity: 1;
-    min-height: 88vh;
+    min-height: 100vh;
     padding: 0 0.5rem;
     display: flex;
     flex-direction: column;
     /* justify-content: center; */
     align-items: center;
-    height: 1200px;
+    height: 100%;
     /* max-height: 100%; */
     top: 0;
   }
@@ -21,13 +21,13 @@
     background-size: cover; */
     background-color: #2E2E2E;
     opacity: 1;
-    min-height: 88vh;
+    min-height: 100vh;
     padding: 0 0.5rem;
     display: flex;
     flex-direction: column;
     /* justify-content: center; */
     align-items: center;
-    height: 1200px;
+    height: 100%;
     /* max-height: 100%; */
     top: 0;
   }

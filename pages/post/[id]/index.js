@@ -128,6 +128,7 @@ export default function CritiquePost(){
     const post_id = router.query.id;
     // console.log(post_id)
 
+    // const changeBadgeIcon = useColorModeValue('/badge-icon.png', '/badge-icon-dark.png')
 
     // const [cookies] = useCookies([])
     const [critique, setCritique] = useState('')

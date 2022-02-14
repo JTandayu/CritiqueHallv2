@@ -330,9 +330,9 @@ export const Critiques = ({id, newCritique}) => {
                                     </Link>
 
                                     {critique.starred_by_author == '1' ? <Image src='/reputation-stars.png' alt="Reputation Stars" w="25px" h="25px" ml={3} mt={2} /> : null}
-                                    {Number(critique.reputation_points) >= 50 ? <Image src={changeBadgeIcon} alt="Badge" w="25px" h="25px" ml={3} mt={2} /> : null}
+                                    {Number(critique.reputation_points) >= 10 ? <Image src={changeBadgeIcon} alt="Badge" w="25px" h="25px" ml={3} mt={2} /> : null}
                                     <Spacer />
-                                    <Text fontFamily={'Raleway'} fontSize='sm' mt={2}>{critique.time_ago}</Text>
+                                    <Text fontFamily={'Raleway'} color="gray.400" fontSize='sm' mt={2}>{critique.time_ago}</Text>
                                     {critique.is_edited == 1 ? 
                                     <Menu>
                                         <MenuButton
@@ -357,7 +357,7 @@ export const Critiques = ({id, newCritique}) => {
                                     <Text fontFamily={'Raleway'} textAlign={'justify'} fontSize='sm'>{critique.body}</Text>
                                 </Box>
                                 <Flex w='20vw'>
-                                    <Button variant='ghost' onClick={()=>giveStar(critique.critique_id)}><Image src={changeIcon} alt="Stars" w="25px" h="25px" ml={2} mr={2} id="changeStarClicked"/> <Text id={`star${critique.critique_id}`}>{critique.stars}</Text></Button>
+                                    <Button fontFamily={'Raleway'} variant='ghost' onClick={()=>giveStar(critique.critique_id)}><Image src={changeIcon} alt="Stars" w="25px" h="25px" ml={2} mr={2} id="changeStarClicked"/><Text id={`star${critique.critique_id}`}>{critique.stars}</Text></Button>
                                     <Button fontFamily={'Raleway'} variant='ghost' ml={5} onClick={()=>openReply(critique.critique_id)}>Reply</Button>
                                     {critique.is_edited == 1 ? <Text fontFamily={'Raleway'} color="gray.400" mt={3} fontSize="sm">(Edited)</Text> : null}
                             </Flex>
