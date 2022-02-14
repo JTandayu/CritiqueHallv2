@@ -92,7 +92,7 @@ function ReportUser({data}) {
 
     return(
         <>
-        <Button fontFamily={'Raleway'} bgColor="#212121" _hover={{bgColor: "#212121"}} _active={{bgColor: "#212121"}} onClick={onOpen} rounded="2xl">Report User</Button>
+        <Button fontFamily={'Raleway'} width='100%' justifyContent="flex-start" _hover={{bgColor: "none", cursor: "pointer"}} onClick={onOpen}>Report User</Button>
 
         <Modal isOpen={isOpen} onClose={onClose}>
             <ModalOverlay />

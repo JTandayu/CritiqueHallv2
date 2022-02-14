@@ -92,7 +92,7 @@ function ReportCritique({data, id}) {
 
     return(
         <>
-        <Button bgColor="#212121" _hover={{bgColor: "#212121"}} _active={{bgColor: "#212121"}} onClick={onOpen} rounded="2xl">Report Critique</Button>
+        <Button fontFamily={'Raleway'} width='100%' justifyContent="flex-start" _hover={{bgColor: "none", cursor: "pointer"}} onClick={onOpen}>Report Critique</Button>
 
         <Modal isOpen={isOpen} onClose={onClose}>
             <ModalOverlay />

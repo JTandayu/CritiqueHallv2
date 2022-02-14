@@ -92,7 +92,7 @@ function ReportReply({data, id}) {
 
     return(
         <>
-        <Button fontFamily={'Raleway'} bgColor="#212121" _hover={{bgColor: "#212121"}} _active={{bgColor: "#212121"}} onClick={onOpen} rounded="2xl">Report Reply</Button>
+        <Button fontFamily={'Raleway'} width='100%' justifyContent="flex-start" _hover={{bgColor: "none", cursor: "pointer"}} onClick={onOpen}>Report Reply</Button>
 
         <Modal isOpen={isOpen} onClose={onClose}>
             <ModalOverlay />
