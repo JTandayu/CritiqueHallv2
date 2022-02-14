@@ -342,8 +342,53 @@ export default function CritiquePost(){
                     {/* Main */}
                     {/* <PostMain /> */}
                 <Box  w={{lg: '50%', sm: '100%'}}  bg={useColorModeValue('white', '#212121')} h={{lg: "100%", sm: "100%"}} p={5} boxShadow='dark-lg' borderRadius={10} mt={28} ml='3vw'>
-                    <Heading fontFamily={'Raleway'} mx="auto">{data.title}</Heading>
-
+                    <Heading fontFamily={'Raleway'} mx="auto" display="flex">{data.title}
+                    {data.display_name == display_name ?
+                        <Box id='sameAcc' >
+                            <Menu>
+                                <MenuButton
+                                px={4}
+                                py={2}
+                                transition='all 0.2s'
+                                >
+                                <ChevronDownIcon />
+                                </MenuButton>
+                                <MenuList p={3}>
+                                <MenuGroup>
+                                    <MenuItem fontFamily={'Raleway'} fontSize='md'><EditPost data={data} url={urls} fileNames={fileName} /></MenuItem>
+                                </MenuGroup>
+                                <MenuDivider />
+                                {/* <MenuGroup>
+                                    <MenuItem><EditHistory /></MenuItem>
+                                </MenuGroup>
+                                <MenuDivider /> */}
+                                <MenuGroup>
+                                    <MenuItem fontFamily={'Raleway'} fontSize='md'><DeletePost id={data.post_id} /></MenuItem>
+                                </MenuGroup>
+                                </MenuList>
+                            </Menu>
+                        </Box> 
+                        :
+                        <Box id='diffAcc'>
+                            {/* <Menu>
+                                <MenuButton
+                                px={4}
+                                py={2}
+                                transition='all 0.2s'
+                                >
+                                <ChevronDownIcon />
+                                </MenuButton>
+                                <MenuList p={3}>
+                                <MenuGroup>
+                                    <MenuItem><EditHistory /></MenuItem>
+                                </MenuGroup>
+                                <MenuDivider />
+                                <MenuGroup >
+                                    <MenuItem><ReportPost /></MenuItem>
+                                </MenuGroup>
+                                </MenuList>
+                            </Menu> */}
+                        </Box>}</Heading>
                     {/* Description */}
                     <Box mt={5}>
                         {/* <Heading size='md'>Description</Heading> */}
@@ -438,52 +483,7 @@ export default function CritiquePost(){
                     <Box display="flex" w="100%" mt={5}>
                         <Button position='static' variant='ghost' onClick={giveLike}><Image src={useColorModeValue('/stars.png', '/stars-dark.png')} alt="Stars" w="25px" h="25px" ml={2}/> <Text id='likes' ml={2}>{data.likes}</Text></Button>
                         <Spacer />
-                        {data.display_name == display_name ?
-                        <Box id='sameAcc' >
-                            <Menu>
-                                <MenuButton
-                                px={4}
-                                py={2}
-                                transition='all 0.2s'
-                                >
-                                <ChevronDownIcon />
-                                </MenuButton>
-                                <MenuList p={3}>
-                                <MenuGroup>
-                                    <MenuItem fontFamily={'Raleway'}><EditPost data={data} url={urls} fileNames={fileName} /></MenuItem>
-                                </MenuGroup>
-                                <MenuDivider />
-                                {/* <MenuGroup>
-                                    <MenuItem><EditHistory /></MenuItem>
-                                </MenuGroup>
-                                <MenuDivider /> */}
-                                <MenuGroup>
-                                    <MenuItem fontFamily={'Raleway'}><DeletePost id={data.post_id} /></MenuItem>
-                                </MenuGroup>
-                                </MenuList>
-                            </Menu>
-                        </Box> 
-                        :
-                        <Box id='diffAcc'>
-                            {/* <Menu>
-                                <MenuButton
-                                px={4}
-                                py={2}
-                                transition='all 0.2s'
-                                >
-                                <ChevronDownIcon />
-                                </MenuButton>
-                                <MenuList p={3}>
-                                <MenuGroup>
-                                    <MenuItem><EditHistory /></MenuItem>
-                                </MenuGroup>
-                                <MenuDivider />
-                                <MenuGroup >
-                                    <MenuItem><ReportPost /></MenuItem>
-                                </MenuGroup>
-                                </MenuList>
-                            </Menu> */}
-                        </Box>}
+                        {/* dito 'yung menu dropdown options */}
                     </Box>
                     {/* Critique Input */}
                     <form onSubmit={(e) => giveCritique(e)}>

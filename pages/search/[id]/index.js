@@ -193,9 +193,9 @@ export default function SearchResult(){
             </Head>
 
             <ScrollToTop color={'black'} width={40} boxShadow={'dark-lg'} smooth />
-            
+            {/* <Image src={useColorModeValue('/searchresults.png', '/searchresults-dark.png')} w="20%"/> */}
             <Box w="100%" mb="10" mt="15vh">
-                <Heading fontFamily={'Raleway'} color={useColorModeValue('#C1272D', '#FF5C61')}><Center><Image src={useColorModeValue('/searchresults.png', '/searchresults-dark.png')} w="20%" /> &quot;{search}&quot;</Center></Heading>
+                <Heading fontFamily={'Raleway'} color={useColorModeValue('#C1272D', '#FF5C61')}><Center><Image src={useColorModeValue('/critique-user-icon.png', '/critique-user-icon-dark.png')} w='1em' mr={5}/><Text color={changeColor2} mr={2}>Search results for:</Text> &quot;{search}&quot;</Center></Heading>
             </Box>
             
             
@@ -219,7 +219,7 @@ export default function SearchResult(){
                     </Box>
                     <Spacer />
                     <Box p="3" w="100%" bg="light" ml="30vh">
-                        <Heading fontFamily={'Raleway'} fontWeight={'black'} size='2xl' textShadow='2px 2px #000' mt={28}>{user.display_name}</Heading>
+                        <Heading fontFamily={'Raleway'} fontWeight={'black'} size='2xl' textShadow='2px 2px #000' mt={28}>{user.display_name}{user.reputation_points >= 10 ? <Image src={changeBadgeIcon} alt="Badge Icon" w="50px" h="50px" ml={2}/> : null}</Heading>
                     </Box>      
                 </Box>
                 

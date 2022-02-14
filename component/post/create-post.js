@@ -225,7 +225,7 @@ function CreatePost({data}) {
                 // console.log(response.data)
                 // alert("File deleted successfully")
                 toastIdRef.current = toast({
-                    title: "File deleted successfully",
+                    title: "File deleted successfully!",
                     status: 'success',
                     isClosable: true,
                   })
@@ -326,7 +326,7 @@ function CreatePost({data}) {
                     </Flex>
                     
 
-                    <Center mt={10}>
+                    {/* <Center mt={10}>
                         <Button fontFamily={'Raleway'} bgColor={useColorModeValue('#2777C1','#0085FF')} color={useColorModeValue('#FFFFFF', '#FFFFFF')} _hover={{bgColor: useColorModeValue('#56AEFF', '#0B5090')}} mr={2} onClick={submitPost}>
                             Submit
                         </Button>
@@ -334,7 +334,7 @@ function CreatePost({data}) {
                         <Button fontFamily={'Raleway'} bgColor={useColorModeValue('#C1272D', '#9E0B0F')} color={useColorModeValue('white', 'white')} _hover={{bgColor: useColorModeValue('#FF000A', '#470507')}} variant='ghost' mr={2} onClick={closeCreate}>
                             Cancel
                         </Button>
-                    </Center>
+                    </Center> */}
 
                     </Box>
                     
@@ -402,6 +402,16 @@ function CreatePost({data}) {
                         <Text fontFamily={'Raleway'} fontStyle={'italic'} fontSize='md'>- up to 5 attachments maximum only</Text>
                         <Text fontFamily={'Raleway'} fontStyle={'italic'} fontSize='md'>- each upload is limited to 25mb only</Text>
                         <Text fontFamily={'Raleway'} fontStyle={'italic'} fontSize='md'>- attachments cannot be edited once published!</Text>
+
+                        <Box mt={10} ml={'78%'} display="flex" w="full">
+                        <Button fontFamily={'Raleway'} bgColor={useColorModeValue('#2777C1','#0085FF')} color={useColorModeValue('#FFFFFF', '#FFFFFF')} _hover={{bgColor: useColorModeValue('#56AEFF', '#0B5090')}} mr={5} onClick={submitPost}>
+                            Submit
+                        </Button>
+
+                        <Button fontFamily={'Raleway'} bgColor={useColorModeValue('#C1272D', '#9E0B0F')} color={useColorModeValue('white', 'white')} _hover={{bgColor: useColorModeValue('#FF000A', '#470507')}} variant='ghost' mr={2} onClick={closeCreate}>
+                            Cancel
+                        </Button>
+                        </Box>
                     </Box>
 
                     </Flex >

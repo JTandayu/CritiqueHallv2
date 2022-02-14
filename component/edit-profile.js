@@ -16,6 +16,7 @@ import {
     Textarea,
     Box,
     Switch,
+    Text,
     Spinner
   } from "@chakra-ui/react"
 import { useDisclosure } from '@chakra-ui/react'
@@ -348,7 +349,8 @@ function EditProfile({data}) {
                     <Box w="full" mb={8}>
                         <Center>
                             {loading ? <Spinner /> : 
-                            <Button fontFamily={'Raleway'} bg='blue.400' color='white' _hover={{background: 'blue.700'}} align="right" onClick={uploadFiles}>Upload Profile / Cover Picture</Button>}         
+                            <Button fontFamily={'Raleway'} bg='blue.400' color='white' _hover={{background: 'blue.700'}} align="right" onClick={uploadFiles}>Upload Profile / Cover Picture</Button>}
+                            <Text fontFamily={'Raleway'} fontSize="sm" color={useColorModeValue('gray', 'gray')} ml={3}>Please click upload after you choose a file.</Text>         
                         </Center>
                     </Box>
                     {/* <Flex mb={5}>
@@ -376,7 +378,7 @@ function EditProfile({data}) {
                         <Textarea fontFamily={'Raleway'} placeholder='there is a limit so be careful!' borderColor={useColorModeValue('black', 'white')} type='text' w='100%' h='15vh' value={aboutMe} onChange={(e) => setAboutMe(e.target.value)} />
                     </Flex>
                     <Flex mb={5}>
-                        <FormLabel fontFamily={'Raleway'}>Confirm Password</FormLabel>
+                        <FormLabel fontFamily={'Raleway'}>Confirm password before saving</FormLabel>
                         <Input fontFamily={'Raleway'} borderColor={useColorModeValue('black', 'white')} type='password' w='10vw' ml='10px' onChange={(e) => setConfirmPassword(e.target.value)} />
                     </Flex>
                     <Flex>

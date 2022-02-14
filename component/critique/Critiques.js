@@ -231,12 +231,12 @@ export const Critiques = ({id, newCritique}) => {
                         <Image src={CritiqueTitle} w='25vh' h='5vh' />
                         <Spacer />
                         <Flex w={{lg: '15vw', sm: '50%'}} mt={1}>
-                        <Text fontFamily={'Raleway'} mr={{lg: 5, sm: 1}} w={28} mt={2}>Sort by: </Text>
+                        <Text fontFamily={'Raleway'} mr={{lg: 1, sm: 1}} w={28} mt={2}>Sort by:</Text>
                         <Select borderColor={useColorModeValue('black', 'white')} fontFamily={'Raleway'} onChange={(e)=>sortCritique(e.target.value)}>
                             <option value='desc'>Newest</option>
                             <option value='asc'>Oldest</option>
                             <option value='most_stars'>Most Stars</option>
-                            <option value='most_interacted'>Most Interacted</option>
+                            {/* <option value='most_interacted'>Most Interacted</option> */}
                         </Select>
                         </Flex>
             </Box>

@@ -33,3 +33,43 @@
     max-height: 100%;
     z-index: 0;
   }
+  
+  .myposts {
+    color: #FFFFFF;
+    background-color: #29226E;
+  }
+
+  .myposts:focus {
+    color: #FFFFFF;
+    background-color: #29226E;
+  }
+
+  .myposts2 {
+    color: #FFFFFF;
+    background-color: #B2A3FF;
+  }
+
+  .myposts2:focus {
+    color: #FFFFFF;
+    background-color: #B2A3FF;
+  }
+
+  .mycritiques {
+    color: #FFFFFF;
+    background-color: #29226E;
+  }
+
+  .mycritiques:focus {
+    color: #FFFFFF;
+    background-color: #29226E;
+  }
+
+  .mycritiques2 {
+    color: #FFFFFF;
+    background-color: #B2A3FF;
+  }
+
+  .mycritiques2:focus {
+    color: #FFFFFF;
+    background-color: #B2A3FF;
+  }
