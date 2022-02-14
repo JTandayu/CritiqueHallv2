@@ -270,6 +270,7 @@ function EditProfile({data}) {
         .then((response) => {
             console.log(response)
             toastIdRef.current = toast({
+                position: 'top',
                 title: 'Profile changed successfully!',
                 status: 'success',
                 duration: 3000,
@@ -278,13 +279,13 @@ function EditProfile({data}) {
             router.reload();
         }).catch((error) => {
             if(error.response.data.message == "<p>The About Me field cannot exceed 255 characters…>\n<p>The Confirm Password field is required.</p>\n" ){
-                toastIdRef.current = toast({ title: 'The about me exceeds the limit (max 255). Please try again!', status: 'error', duration: 3000, isClosable: true })
+                toastIdRef.current = toast({ position: 'top', title: 'The about me exceeds the limit (max 255). Please try again!', status: 'error', duration: 3000, isClosable: true })
             }else if(error.response.data.message == "<p>The About Me field cannot exceed 255 characters in length.</p>\n"){
-                toastIdRef.current = toast({ title: 'The about me exceeds the limit (max 255). Please try again!', status: 'error', duration: 3000, isClosable: true })
+                toastIdRef.current = toast({ position: 'top', title: 'The about me exceeds the limit (max 255). Please try again!', status: 'error', duration: 3000, isClosable: true })
             }else if(error.response.data.message == "<p>The Confirm Password field is required.</p>\n"){
-                toastIdRef.current = toast({ title: 'Please enter the confirm password!', status: 'error', duration: 3000, isClosable: true })
+                toastIdRef.current = toast({ position: 'top', title: 'Please enter the confirm password!', status: 'error', duration: 3000, isClosable: true })
             }else{
-                toastIdRef.current = toast({ title: 'Error! Please Check your Input.', status: 'error', duration: 3000, isClosable: true })
+                toastIdRef.current = toast({ position: 'top', title: 'Error! Please Check your Input.', status: 'error', duration: 3000, isClosable: true })
             }
             console.log(error.response)
         })
@@ -300,13 +301,14 @@ function EditProfile({data}) {
         .then((response) => {
             console.log(response)
             toastIdRef.current = toast({
+                position: 'top',
                 title: 'Password changed successfully!',
                 status: 'success',
                 duration: 3000,
                 isClosable: true,
               })
             }).catch((error) => {
-            toastIdRef.current = toast({ title: 'Error! Please Check your Input.', status: 'error', duration: 3000, isClosable: true }),
+            toastIdRef.current = toast({ position: 'top', title: 'Error, Please check first your input fields!.', status: 'error', duration: 3000, isClosable: true }),
             console.log(error.response)
         })
     }

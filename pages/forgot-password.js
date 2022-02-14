@@ -82,7 +82,7 @@ export default function ForgotPassword(){
   
         axios.post(`${API_URL}/api/forgot_password`, formData, config)
         .then(response => {
-          toastIdRef.current = toast({ title: 'Reset Password Link Sent!', description: 'We have sent a reset password confirmation to your Email. Check on your primary or spam folder.', status: 'success', duration: 2000, isClosable: true })
+          toastIdRef.current = toast({ position: 'top', title: 'Reset Password Link Sent!', description: 'We have sent a reset password confirmation to your Email. Check on your primary or spam folder.', status: 'success', duration: 3000, isClosable: true })
             console.log(response);
             // window.location = "/home"
         })
@@ -130,7 +130,7 @@ export default function ForgotPassword(){
 
             <Box id='warning1' color='red' w='100%' h='5vh' mb={4} mt={2} hidden>
               <Center>
-                <Text mt='1vh' w="100%">What are you doing?</Text>
+                <Text mt='1vh' w="100%">Please input your Email!</Text>
               </Center>
             </Box>
             <Box id='warning2' color='red' w='100%' h='5vh' mb={4} mt={2} hidden>
@@ -140,7 +140,7 @@ export default function ForgotPassword(){
             </Box>
 
             <center><FormControl id="forgotpassword" action="/home">
-                <FormLabel>iACADEMY Email</FormLabel>
+                <FormLabel>Email</FormLabel>
                 <Input borderColor={useColorModeValue('black', 'white')} size='lg' width={'40vh'} className={styles.input_box} type="email" value={email} onChange={e => setEmail(e.target.value)}/>
                 {/* <FormHelperText className={styles.helperText}>This field is required.</FormHelperText> */}
                 <br/>

@@ -164,7 +164,7 @@ export default function Login({user}) {
         <Head>
           <title>Critique Hall | Login</title>
           <meta name="description" content="Critique Hall by create next app" />
-          <link rel="icon" href={useColorModeValue('logo256.png', 'logo256-dark.png')} onLoad=""/>
+          <link rel="icon" href={useColorModeValue('/logo256.png', '/logo256-dark.png')} onLoad=""/>
           <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@700&display=swap" rel="stylesheet" />
           <meta name="keywords" content="Critique Hall, critique hall, critiquehall, CritiqueHall, CRITIQUEHALL, CRITIQUE HALL" />
         </Head>
@@ -201,11 +201,11 @@ export default function Login({user}) {
             </Box>
             <Box id='warning2' color='red' w='30%' h='5vh' mb={4} mt={2} hidden>
               <Center>
-                <Text mt='1vh'>What are you doing?</Text>
+                <Text mt='1vh'>Please input all the fields!</Text>
               </Center>
             </Box>
             <center><FormControl id="loginform" >
-              <FormLabel>iACADEMY Email</FormLabel>
+              <FormLabel>Email</FormLabel>
                 <Input borderColor={useColorModeValue('black', 'white')} size='lg' width={'40vh'} id="email" value={email} className={styles.input_box} type="email" onChange={e => setEmail(e.target.value)} />
                 {/* <input placeholder="Username" id="email" value={email} className={styles.input_box} type="email" /> */}
                 <br/>

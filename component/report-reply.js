@@ -84,6 +84,7 @@ function ReportReply({data, id}) {
                 duration: 3000,
                 isClosable: true,
               })
+              onClose()
         })
         .catch((error)=>{
             console.log(error.response)

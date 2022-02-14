@@ -124,7 +124,7 @@ export default function ResetPassword({}){
             router.replace('/login')
         })
         .catch(error => {
-          toastIdRef.current = toast({ title: 'Reset Password Unsuccessful!', description: 'Please try again!', status: 'error', duration: 2000, isClosable: true })
+          // toastIdRef.current = toast({ title: 'Reset Password Unsuccessful!', description: 'Please try again!', status: 'error', duration: 2000, isClosable: true })
             console.log(error.reponse);
             // window.location = "/reset-password"
         });
@@ -148,14 +148,14 @@ export default function ResetPassword({}){
 
             <Heading fontFamily={'Raleway'} mb={2} as="h2" size="lg" color={useColorModeValue('#1B1464','#B2A3FF')}>Reset Password</Heading>
             <br />
-            <Box id='warning1' color='red' w='30%' h='5vh' mb={4} mt={2} hidden>
+            <Box id='warning1' color='red' w='80%' h='5vh' mb={4} mt={2} hidden>
               <Center>
-                <Text mt='1vh'>Password do not match</Text>
+                <Text mt='1vh'>New Password and Confirm New Password do not match!</Text>
               </Center>
             </Box>
-            <Box id='warning2' color='red' w='30%' h='5vh' mb={4} mt={2} hidden>
+            <Box id='warning2' color='red' w='80%' h='5vh' mb={4} mt={2} hidden>
               <Center>
-                <Text mt='1vh'>What are you doing?</Text>
+                <Text mt='1vh'>Please input all the fields!</Text>
               </Center>
             </Box>
             {/* <p className={styles.description}>Kindly enter your E-mail Address to receive a link for further process in changing your password.</p> */}

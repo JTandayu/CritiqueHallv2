@@ -224,7 +224,7 @@ export default function Nav(data, profile_pic){
     const searchItem = (e)=>{
         e.preventDefault()
         if(search === ""){
-            toastIdRef.current = toast({ title: 'What are you doing?', status: 'error', duration: 3000, isClosable: false })
+            toastIdRef.current = toast({ position: 'top', title: 'Please input your search!', status: 'error', duration: 3000, isClosable: true })
             return null;
         }else{
             Router.push(`/search/${search}`)
@@ -251,7 +251,7 @@ export default function Nav(data, profile_pic){
         axios.post(`${API_URL}/api/logout`, formData, config)
         .then((response)=>{
             console.log(response)
-            toastIdRef.current = toast({ title: 'Logout Successful!', status: 'success', duration: 3000, isClosable: false })
+            toastIdRef.current = toast({ position: 'top', title: 'Logout successful!', status: 'success', duration: 3000, isClosable: true })
         })
         .then(()=>{
             removeCookies('token');

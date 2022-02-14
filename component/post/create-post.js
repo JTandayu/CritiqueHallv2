@@ -232,6 +232,7 @@ function CreatePost({data}) {
                 // console.log(response.data)
                 // alert("File deleted successfully")
                 toastIdRef.current = toast({
+                    position: 'top',
                     title: "File deleted successfully!",
                     status: 'success',
                     isClosable: true,
@@ -271,13 +272,13 @@ function CreatePost({data}) {
         axios.post(`${API_URL}/api/create_post`, formData, config)
         .then(response => {
           console.log(response.data);
-          toastIdRef.current = toast({ title: 'Create post successful!', status: 'success', duration: 3000, isClosable: false })
+          toastIdRef.current = toast({ position: 'top', title: 'Create post successful!', status: 'success', duration: 3000, isClosable: true })
           window.location.href = "/critique"
         })
         .catch(error => {
             // toastIdRef.current = toast({ title: 'Create post unsuccessful!', status: 'error', duration: 3000, isClosable: false })
             if(error.response.data.status === "Account Muted"){
-                toastIdRef.current = toast({ title: 'Account Muted!', status: 'error', duration: 3000, isClosable: false })
+                toastIdRef.current = toast({ position: 'top', title: 'Account muted!', status: 'error', duration: 3000, isClosable: true })
             }
             console.log(error);
             console.log(error.response)

@@ -91,13 +91,13 @@ export default function ConfirmationPage(){
   
         axios.post(`${API_URL}/api/confirm_verification`, formData, config)
         .then(response => {
-            toastIdRef.current = toast({ title: 'Account Verification Successful!', description: 'Login with your newly registered account.', status: 'success', duration: 3000, isClosable: true })
+            toastIdRef.current = toast({ position: 'top', title: 'Account verification successful!', status: 'success', duration: 3000, isClosable: true })
             console.log(response);
             setCookies('token', response.data.token)
             window.location = "/home"
         })
         .catch(error => {
-            toastIdRef.current = toast({ title: 'Account Verification Unsuccessful!', description: 'Please try again.', status: 'error', duration: 3000, isClosable: true })
+            toastIdRef.current = toast({ position: 'top', title: 'Account verification unsuccessful!', description: 'Please try again.', status: 'error', duration: 3000, isClosable: true })
             console.log(error.response);
         });
     }
