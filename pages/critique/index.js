@@ -439,13 +439,13 @@ export default function HallPage(){
                                     <Box p="3" w="100%" bg="light" my='auto' ml={{lg: '20%', base: '0'}} mr={{lg: '15%', base: '0'}} overflowX={{lg: 'visible', sm: "auto", base: "auto"}}>
                                         <Center>
                                         {post.attachment1 != 'undefined' ? 
-                                        <Image src={post.attachment1} w={{lg: '10vw', sm:'100%'}} h={{lg: '10vh', sm: '20vh'}} onError={addDefaultSrc} borderRadius={10}/>
-                                        : <Image src="/no-image-attachment.png" w={{lg: '10vw', sm:'100%'}} h={{lg: '10vh', sm: '20vh'}} borderRadius={10}/>}
+                                        <Image src={post.attachment1} w={{lg: '10vw', sm:'100%'}} h={{lg: '10vh', sm: '20vh'}} onError={addDefaultSrc} borderRadius={10} objectFit='cover'/>
+                                        : <Image src="/no-image-attachment.png" w={{lg: '10vw', sm:'100%'}} h={{lg: '10vh', sm: '20vh'}} borderRadius={10} objectFit='cover'/>}
                                         {post.attachment2 != 'undefined' ? 
-                                        <Image src={post.attachment2} w={{lg: '10vw', sm:'100%'}} h={{lg: '10vh', sm: '20vh'}} onError={addDefaultSrc} borderRadius={10}/>
+                                        <Image src={post.attachment2} w={{lg: '10vw', sm:'100%'}} h={{lg: '10vh', sm: '20vh'}} onError={addDefaultSrc} borderRadius={10} objectFit='cover'/>
                                         : null}
                                         {post.attachment3 != 'undefined' ? 
-                                        <Image src={post.attachment3} w={{lg: '10vw', sm:'100%'}} h={{lg: '10vh', sm: '20vh'}} onError={addDefaultSrc} borderRadius={10}/>
+                                        <Image src={post.attachment3} w={{lg: '10vw', sm:'100%'}} h={{lg: '10vh', sm: '20vh'}} onError={addDefaultSrc} borderRadius={10} objectFit='cover'/>
                                         : null}
                                         </Center>
                                     </Box>

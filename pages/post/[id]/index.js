@@ -418,7 +418,7 @@ export default function CritiquePost(){
                     [ data.attachment2 != 'undefined' ?
                     <Flex ml={{lg: "10vh", sm: 5}} flexDir={{lg: "row", sm: 'column'}} mt={5}>
                             {data.attachment1 != 'undefined' ? [ file1Doc != true || file1Doc != true ?
-                                <Image src={data.attachment1} w='50vh' h='40vh' cursor="pointer" /> :
+                                <Image src={data.attachment1} w='50vh' h='40vh' cursor="pointer" objectFit='cover'/> :
                                 <Center p={10} w="full">
                                     <Link href={data.attachment1}  passHref>
                                         <Button>Download File </Button>
@@ -427,7 +427,7 @@ export default function CritiquePost(){
                                 ] : null}
                             <Flex flexDir={{lg: 'column', sm: 'row'}} overflowX="auto" w="full" spacing={5}>
                             {data.attachment2 != 'undefined' ? [ file2Doc != true || file2Doc != true ?
-                                <Image src={data.attachment2} w='20vh' h='10vh' cursor="pointer" /> :
+                                <Image src={data.attachment2} w='20vh' h='10vh' cursor="pointer" objectFit='cover'/> :
                                 <Center py={5} w="20vh">
                                     <Link href={data.attachment2} passHref>
                                         <Button>Download File</Button>
@@ -436,7 +436,7 @@ export default function CritiquePost(){
                                 ] : null}
 
                             {data.attachment3 != 'undefined' ? [ file3Doc != true || file3Doc != true ?
-                                <Image src={data.attachment3} w='20vh' h='10vh' cursor="pointer" /> :
+                                <Image src={data.attachment3} w='20vh' h='10vh' cursor="pointer" objectFit='cover'/> :
                                 <Center py={5} w="20vh">
                                     <Link href={data.attachment3} passHref>
                                         <Button>Download File</Button>
@@ -445,7 +445,7 @@ export default function CritiquePost(){
                                 ] : null}
 
                             {data.attachment4 != 'undefined' ? [ file4Doc != true || file4Doc != true ?
-                                <Image src={data.attachment4} w='20vh' h='10vh' cursor="pointer" /> :
+                                <Image src={data.attachment4} w='20vh' h='10vh' cursor="pointer" objectFit='cover'/> :
                                 <Center p={5} w="20vh">
                                     <Link href={data.attachment4} passHref>
                                         <Button>Download File</Button>
@@ -454,7 +454,7 @@ export default function CritiquePost(){
                                 ] : null}
 
                             {data.attachment5 != 'undefined' ? [ file5Doc != true || file5Doc != true ?
-                                <Image src={data.attachment5} w='20vh' h='10vh' cursor="pointer" /> :
+                                <Image src={data.attachment5} w='20vh' h='10vh' cursor="pointer" objectFit='cover'/> :
                                 <Center p={5} w="20vh">
                                     <Link href={data.attachment5} passHref>
                                         <Button>Download File</Button>
@@ -467,7 +467,7 @@ export default function CritiquePost(){
 
                     [file1Doc != true || file1Doc != true ? 
                     <Center my={10}>
-                        <Image src={data.attachment1} w='70%' h='30%' cursor="pointer"  disabled />
+                        <Image src={data.attachment1} w='70%' h='30%' cursor="pointer"  disabled  objectFit='cover'/>
                     </Center>  
                         :
                     <Center p={10} w="full"> 
@@ -481,7 +481,7 @@ export default function CritiquePost(){
                     ] : 
                     
                     <Center my={10}>
-                        <Image src="/no-image-attachment.png" w='700px' h='300px' cursor="pointer"  disabled />
+                        <Image src="/no-image-attachment.png" w='700px' h='300px' cursor="pointer"  disabled objectFit='cover'/>
                     </Center>
                     }
                     </SRLWrapper>
