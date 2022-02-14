@@ -255,7 +255,7 @@ export const Critiques = ({id, newCritique}) => {
                     borderRadius: '24px',
                     },
                 }} mt={5}>
-            {loading ? <Box>Loading...</Box> :
+            {loading ? <Box fontFamily={"Raleway"}>Loading...</Box> :
              critiqueItems.length != 0 ?
                 critiqueItems.map((critique, i) => { 
                     if(critique.display_name === display_name){
