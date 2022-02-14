@@ -462,7 +462,7 @@ export default function HallPage(){
                                 </Box>
                                 </a>
                                 </Link> 
-                                <Box fontFamily={'Raleway'} fontSize="sm" color="gray.400" p="3" w="100%" bg="light" display='flex'>
+                                <Box fontFamily={'Raleway'} fontSize="sm" p="3" w="100%" bg="light" display='flex'>
                                     <Box w="100%" bg="light" my='auto'>
                                         <Center>
                                             {post.time_ago}
