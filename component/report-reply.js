@@ -78,7 +78,7 @@ function ReportReply({data, id}) {
         .then((response)=>{
             console.log(response.data)
             toastIdRef.current = toast({
-                title: 'Report Submitted Successfully.',
+                title: 'Report submitted successfully!.',
                 status: 'success',
                 duration: 3000,
                 isClosable: true,
@@ -97,7 +97,7 @@ function ReportReply({data, id}) {
         <Modal isOpen={isOpen} onClose={onClose}>
             <ModalOverlay />
                 <ModalContent maxW="40rem">
-                <ModalHeader fontFamily={'Raleway'}>Report User</ModalHeader>
+                <ModalHeader fontFamily={'Raleway'}>Report Reply</ModalHeader>
                 <ModalCloseButton />
                 <ModalBody>
                         <Flex mt='3vh'>

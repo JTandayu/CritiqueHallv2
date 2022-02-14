@@ -78,7 +78,7 @@ function ReportUser({data}) {
         .then((response)=>{
             console.log(response.data)
             toastIdRef.current = toast({
-                title: 'Report Submitted Successfully.',
+                title: 'Report submitted successfully!.',
                 status: 'success',
                 duration: 3000,
                 isClosable: true,
@@ -92,7 +92,7 @@ function ReportUser({data}) {
 
     return(
         <>
-        <Button fontFamily={'Raleway'} width='100%' justifyContent="flex-start" _hover={{bgColor: "none", cursor: "pointer"}} onClick={onOpen}>Report User</Button>
+        <Button bgColor="#212121" _hover={{bgColor: "#212121"}} _active={{bgColor: "#212121"}} onClick={onOpen} rounded="2xl"><Image src="/more-icon.png" w={7} h={7} /></Button>
 
         <Modal isOpen={isOpen} onClose={onClose}>
             <ModalOverlay />
