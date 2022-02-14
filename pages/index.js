@@ -118,9 +118,9 @@ export default function Login({user}) {
       axios.post(`${API_URL}/api/login`, formData, config)
       .then(response => {
           console.log(response.data);
-            setCookies('token', response.data.token)
-            setCookies('display_name', response.data.display_name)
-            setCookies('encrypted_id', response.data.encrypted_id)
+            // setCookies('token', response.data.token)
+            // setCookies('display_name', response.data.display_name)
+            // setCookies('encrypted_id', response.data.encrypted_id)
           document.getElementById('warning1').hidden=true;
 
           if(response.data.status === 'Email not verified'){
@@ -129,6 +129,9 @@ export default function Login({user}) {
           }else if(response.data.status.includes('You are temporarily suspended')){
             toastIdRef.current = toast({ title: response.data.status, status: 'error', duration: 3000, isClosable: false })
           }else{
+            setCookies('token', response.data.token)
+            setCookies('display_name', response.data.display_name)
+            setCookies('encrypted_id', response.data.encrypted_id)
             toastIdRef.current = toast({ title: 'Login Successful!', status: 'success', duration: 3000, isClosable: false })
             router.push("/home")
           }
