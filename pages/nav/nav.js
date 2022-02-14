@@ -191,6 +191,15 @@ export default function Nav(data, profile_pic){
                 Router.replace('/')
                 return null;
             }
+            if(error.response.data.error ==  'Account Suspended'){
+                removeCookies('token');
+                removeCookies('id');
+                removeCookies('encrypted_id');
+                removeCookies('profile_pic');
+                removeCookies('display_name');
+                Router.replace('/')
+                return null;
+            }
         });
 
         axios.get(`${API_URL}/api/get_notifs`, config)
@@ -257,7 +266,22 @@ export default function Nav(data, profile_pic){
             removeCookies('encrypted_id');
             removeCookies('display_name');
             router.push('/')
-        }).catch((error)=>console.log(error.response))
+        }).catch((error)=>{
+            console.log(error.response)
+            if(error.response.data.error ==  'Account Suspended'){
+                removeCookies('token');
+                removeCookies('encrypted_id');
+                removeCookies('display_name');
+                Router.replace('/')
+                return null;
+            }else{
+                removeCookies('token');
+                removeCookies('encrypted_id');
+                removeCookies('display_name');
+                Router.replace('/')
+                return null;
+            }
+        })
 
 
         // toastIdRef.current = toast({ title: 'Logout Successful!', status: 'success', duration: 3000, isClosable: false })
