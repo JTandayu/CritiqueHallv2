@@ -16,6 +16,7 @@ import {
     Textarea,
     Box,
     Switch,
+    Text,
     Spinner
   } from "@chakra-ui/react"
 import { useDisclosure } from '@chakra-ui/react'
@@ -348,7 +349,8 @@ function EditProfile({data}) {
                     <Box w="full" mb={8}>
                         <Center>
                             {loading ? <Spinner /> : 
-                            <Button fontFamily={'Raleway'} bg='blue.400' color='white' _hover={{background: 'blue.700'}} align="right" onClick={uploadFiles}>Upload Profile / Cover Picture</Button>}         
+                            <Button fontFamily={'Raleway'} bg='blue.400' color='white' _hover={{background: 'blue.700'}} align="right" onClick={uploadFiles}>Upload Profile / Cover Picture</Button>}
+                            <Text fontFamily={'Raleway'} fontSize="sm" color={useColorModeValue('gray', 'gray')} ml={3}>Please click upload after you choose a file.</Text>         
                         </Center>
                     </Box>
                     {/* <Flex mb={5}>
