@@ -370,7 +370,7 @@ export default function CritiquePost(){
                                 <Image src={data.attachment1} w='50vh' h='40vh' cursor="pointer" /> :
                                 <Center p={10} w="full">
                                     <Link href={data.attachment1}  passHref>
-                                        <Button>Download Document </Button>
+                                        <Button>Download File </Button>
                                     </Link>
                                 </Center>
                                 ] : null}
@@ -379,7 +379,7 @@ export default function CritiquePost(){
                                 <Image src={data.attachment2} w='20vh' h='10vh' cursor="pointer" /> :
                                 <Center py={5} w="20vh">
                                     <Link href={data.attachment2} passHref>
-                                        <Button>Download Document</Button>
+                                        <Button>Download File</Button>
                                     </Link>
                                 </Center>
                                 ] : null}
@@ -388,7 +388,7 @@ export default function CritiquePost(){
                                 <Image src={data.attachment3} w='20vh' h='10vh' cursor="pointer" /> :
                                 <Center py={5} w="20vh">
                                     <Link href={data.attachment3} passHref>
-                                        <Button>Download Document</Button>
+                                        <Button>Download File</Button>
                                     </Link>
                                 </Center>
                                 ] : null}
@@ -397,7 +397,7 @@ export default function CritiquePost(){
                                 <Image src={data.attachment4} w='20vh' h='10vh' cursor="pointer" /> :
                                 <Center p={5} w="20vh">
                                     <Link href={data.attachment4} passHref>
-                                        <Button>Download Document</Button>
+                                        <Button>Download File</Button>
                                     </Link>
                                 </Center>
                                 ] : null}
@@ -406,7 +406,7 @@ export default function CritiquePost(){
                                 <Image src={data.attachment5} w='20vh' h='10vh' cursor="pointer" /> :
                                 <Center p={5} w="20vh">
                                     <Link href={data.attachment5} passHref>
-                                        <Button>Download Document</Button>
+                                        <Button>Download File</Button>
                                     </Link>
                                 </Center>
                                 ] : null}
@@ -421,7 +421,7 @@ export default function CritiquePost(){
                         :
                     <Center p={10} w="full"> 
                         <Link href={data.attachment1}  passHref>
-                            <Button>Download Document </Button>
+                            <Button>Download File </Button>
                         </Link>
                     </Center>
                     ]
