@@ -216,7 +216,7 @@ export const CritiqueReply = ({id, post_id, newReply}) => {
                                 </Menu>: <Box w={8}></Box>}
                             </Flex>
                             <Box w='100%' mt={1}>
-                                <Text fontSize='md' fontFamily={'Raleway'}  textAlign={'justify'}>{reply.body}</Text>
+                                <Text fontSize='sm' fontFamily={'Raleway'}  textAlign={'justify'}>{reply.body}</Text>
                             </Box>
                             <Flex w='20vw'>
                                 <Button fontFamily={'Raleway'} variant='ghost' onClick={(e)=>giveStar(reply.reply_id, e)}><Image src={changeIcon} alt="Stars" w="25px" h="25px" ml={2} mr={2}/> <Text id={`starreply${reply.reply_id}`}>{reply.stars}</Text></Button>
