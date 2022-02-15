@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "postbuild": "next-sitemap --config next-sitemap.config.js",
     "start": "next start",
     "lint": "next lint"
   },
@@ -37,13 +38,13 @@
     "react-responsive-carousel": "^3.2.22",
     "react-scroll-to-top": "^1.0.8",
     "sass": "^1.49.0",
-    "simple-react-lightbox": "^3.6.9-0",
-    "sitemap": "^7.1.1"
+    "simple-react-lightbox": "^3.6.9-0"
   },
   "devDependencies": {
     "css-loader": "^6.5.1",
     "eslint": "8.7.0",
     "eslint-config-next": "12.0.9",
+    "next-sitemap": "^2.1.14",
     "style-loader": "^3.3.1"
   }
 }
