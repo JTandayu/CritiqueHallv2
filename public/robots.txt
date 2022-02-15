@@ -1,0 +1,6 @@
+Sitemap: https://critiquehall.vercel.app/api/posts-sitemap
+
+User-agent: *
+Allow: /*
+
+Disallow: /api/*
