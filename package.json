@@ -37,7 +37,8 @@
     "react-responsive-carousel": "^3.2.22",
     "react-scroll-to-top": "^1.0.8",
     "sass": "^1.49.0",
-    "simple-react-lightbox": "^3.6.9-0"
+    "simple-react-lightbox": "^3.6.9-0",
+    "sitemap": "^7.1.1"
   },
   "devDependencies": {
     "css-loader": "^6.5.1",
