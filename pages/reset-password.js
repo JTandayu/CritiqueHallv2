@@ -161,13 +161,13 @@ export default function ResetPassword({}){
             {/* <p className={styles.description}>Kindly enter your E-mail Address to receive a link for further process in changing your password.</p> */}
             <center><FormControl id="forgotpassword" action="/home">
                 <FormLabel>New Password</FormLabel>
-                <Input borderColor={useColorModeValue('black', 'white')}  size='lg' width={'40vh'} className={styles.input_box} type="password" value={password} onChange={e => setPassword(e.target.value)}/>
+                <Input borderColor={useColorModeValue('black', 'white')}  size={{lg: 'lg', base: 'sm'}} width={{lg:'40vh', base: '40vh'}} className={styles.input_box} type="password" value={password} onChange={e => setPassword(e.target.value)}/>
                 {/* <input placeholder="New Password" className={styles.input_box} type="password" value={password} onChange={e => setPassword(e.target.value)}/> */}
                 {/* <FormHelperText className={styles.helperText}>This field is required.</FormHelperText> */}
                 <br/>
                 <br />
                 <FormLabel>Confirm New Password</FormLabel>
-                <Input borderColor={useColorModeValue('black', 'white')}  size='lg' width={'40vh'} className={styles.input_box} type="password" value={confirm_password} onChange={e => setConfirmPassword(e.target.value)}/>
+                <Input borderColor={useColorModeValue('black', 'white')}  size={{lg: 'lg', base: 'sm'}} width={{lg:'40vh', base: '40vh'}} className={styles.input_box} type="password" value={confirm_password} onChange={e => setConfirmPassword(e.target.value)}/>
                 {/* <input placeholder="Confirm New Password" className={styles.input_box} type="password" value={confirm_password} onChange={e => setConfirmPassword(e.target.value)}/> */}
                 <br/>
                 <br/>
