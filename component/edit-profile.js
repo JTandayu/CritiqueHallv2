@@ -308,6 +308,14 @@ function EditProfile({data}) {
         formData.append('new_password', newPassword)
         formData.append('confirm_new_password', confirmNewPassword)
 
+        if(newPassword !== confirmNewPassword){
+            toastIdRef.current = toast({ position: 'top', title: 'Password do not match!', status: 'error', duration: 3000, isClosable: true })
+            return;
+        }else if(newPassword == "" || confirmNewPassword == "" || currentPassword == ""){
+            toastIdRef.current = toast({ position: 'top', title: 'Error, Please check first your input fields!.', status: 'error', duration: 3000, isClosable: true })
+            return;
+        }
+
         axios.post(`${API_URL}/api/change_password`, formData, config)
         .then((response) => {
             console.log(response)
