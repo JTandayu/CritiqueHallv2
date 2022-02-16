@@ -141,7 +141,7 @@ export default function ForgotPassword(){
 
             <center><FormControl id="forgotpassword" action="/home">
                 <FormLabel>Email</FormLabel>
-                <Input borderColor={useColorModeValue('black', 'white')} size='lg' width={'40vh'} className={styles.input_box} type="email" value={email} onChange={e => setEmail(e.target.value)}/>
+                <Input borderColor={useColorModeValue('black', 'white')} size={{lg: 'lg', base: 'sm'}} width={{lg:'40vh', base: '40vh'}} className={styles.input_box} type="email" value={email} onChange={e => setEmail(e.target.value)}/>
                 {/* <FormHelperText className={styles.helperText}>This field is required.</FormHelperText> */}
                 <br/>
                 {/* <Popover

@@ -279,13 +279,24 @@ function EditProfile({data}) {
             router.reload();
         }).catch((error) => {
             if(error.response.data.message == "<p>The About Me field cannot exceed 255 characters…>\n<p>The Confirm Password field is required.</p>\n" ){
-                toastIdRef.current = toast({ position: 'top', title: 'The about me exceeds the limit (max 255). Please try again!', status: 'error', duration: 3000, isClosable: true })
+                toastIdRef.current = toast({ position: 'top', title: 'About Me exceeds the limit (max 255). Please try again!', status: 'error', duration: 3000, isClosable: true })
+                toastIdRef.current = toast({ position: 'top', title: 'Input your confirm password before saving!', status: 'error', duration: 3000, isClosable: true })
             }else if(error.response.data.message == "<p>The About Me field cannot exceed 255 characters in length.</p>\n"){
-                toastIdRef.current = toast({ position: 'top', title: 'The about me exceeds the limit (max 255). Please try again!', status: 'error', duration: 3000, isClosable: true })
+                toastIdRef.current = toast({ position: 'top', title: 'About Me exceeds the limit (max 255). Please try again!', status: 'error', duration: 3000, isClosable: true })
             }else if(error.response.data.message == "<p>The Confirm Password field is required.</p>\n"){
-                toastIdRef.current = toast({ position: 'top', title: 'Please enter the confirm password!', status: 'error', duration: 3000, isClosable: true })
+                toastIdRef.current = toast({ position: 'top', title: 'Input your confirm password before saving!', status: 'error', duration: 3000, isClosable: true })
+            }else if(error.response.data.message == "<p>The Display Name field cannot exceed 50 characters in length.</p>\n<p>The Confirm Password field is required.</p>\n"){
+                toastIdRef.current = toast({ position: 'top', title: 'Display Name exceeds the limit (max 50). Please try again!', status: 'error', duration: 3000, isClosable: true })
+                toastIdRef.current = toast({ position: 'top', title: 'Input your confirm password before saving!', status: 'error', duration: 3000, isClosable: true })
+            }else if(error.response.data.message == "<p>The Display Name field cannot exceed 50 characters in length.</p>\n<p>The About Me field cannot exceed 255 characters in length.</p>\n"){
+                toastIdRef.current = toast({ position: 'top', title: 'Display Name exceeds the limit (max 50). Please try again!', status: 'error', duration: 3000, isClosable: true })
+                toastIdRef.current = toast({ position: 'top', title: 'About Me exceeds the limit (max 255). Please try again!', status: 'error', duration: 3000, isClosable: true })
+            }else if(error.response.data.message == "<p>No changes made</p>\n"){
+                toastIdRef.current = toast({ position: 'top', title: 'No changes were made!', status: 'error', duration: 3000, isClosable: true })
+            }else if(error.response.error == "Wrong password"){
+                toastIdRef.current = toast({ position: 'top', title: 'Incorrect password, please try again!', status: 'error', duration: 3000, isClosable: true })
             }else{
-                toastIdRef.current = toast({ position: 'top', title: 'Error! Please Check your Input.', status: 'error', duration: 3000, isClosable: true })
+                toastIdRef.current = toast({ position: 'top', title: 'Error, Please check your inputs!', status: 'error', duration: 3000, isClosable: true })
             }
             console.log(error.response)
         })

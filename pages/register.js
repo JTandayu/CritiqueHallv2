@@ -312,37 +312,37 @@ export default function Register({data2}) {
               </Center>
             </Box>
 
-            <SimpleGrid columns={2} spacing={10}>
+            <SimpleGrid columns={{lg: 2, base: 1}} spacing={{lg: 10, base: 2}}>
             {/* <Heading fontFamily={'Raleway'} mb={2} as="h2" size="lg"color={useColorModeValue('#C1272D','#FF5C61')}>REGISTER</Heading> */}
                 <Box>
                 <FormLabel>First Name</FormLabel>
-                <Input  borderColor={useColorModeValue('black', 'white')} className={styles.input_box} type="text" value={first_name} onChange={e => setFirstName(e.target.value)}/>
+                <Input size={{lg: 'lg', base: 'sm'}} width={{lg:'35vh', base: '30vh'}} borderColor={useColorModeValue('black', 'white')} className={styles.input_box} type="text" value={first_name} onChange={e => setFirstName(e.target.value)}/>
                 </Box>
                 <Box>
                 <FormLabel>Last Name</FormLabel>
-                <Input  borderColor={useColorModeValue('black', 'white')}  className={styles.input_box} type="text" value={last_name} onChange={e => setLastName(e.target.value)}/>
+                <Input size={{lg: 'lg', base: 'sm'}} width={{lg:'35vh', base: '30vh'}} borderColor={useColorModeValue('black', 'white')}  className={styles.input_box} type="text" value={last_name} onChange={e => setLastName(e.target.value)}/>
                 </Box>
                 <Box>
                 <FormLabel>Display Name</FormLabel>
-                <Input  borderColor={useColorModeValue('black', 'white')}  className={styles.input_box} type="text" value={user_name} onChange={e => setUserName(e.target.value)}/>
+                <Input size={{lg: 'lg', base: 'sm'}} width={{lg:'35vh', base: '30vh'}} borderColor={useColorModeValue('black', 'white')}  className={styles.input_box} type="text" value={user_name} onChange={e => setUserName(e.target.value)}/>
                 </Box>
                 <Box>
                 <FormLabel>Email</FormLabel>
-                <Input  borderColor={useColorModeValue('black', 'white')} className={styles.input_box} type="text" value={email} onChange={e => setEmail(e.target.value)}/>
+                <Input size={{lg: 'lg', base: 'sm'}} width={{lg:'35vh', base: '30vh'}} borderColor={useColorModeValue('black', 'white')} className={styles.input_box} type="text" value={email} onChange={e => setEmail(e.target.value)}/>
                 </Box>
                 {/* <FormHelperText className={styles.helperText}>format: ***@iacademy.edu.ph</FormHelperText> */}
                 {/* <br/> */}
                 <Box>
                 <FormLabel>Password</FormLabel>
-                <Input  borderColor={useColorModeValue('black', 'white')} className={styles.input_box} type="password" value={password} onChange={e => setPassword(e.target.value)}/>
+                <Input size={{lg: 'lg', base: 'sm'}} width={{lg:'35vh', base: '30vh'}} borderColor={useColorModeValue('black', 'white')} className={styles.input_box} type="password" value={password} onChange={e => setPassword(e.target.value)}/>
                 </Box>
                 <Box>
                 <FormLabel>Confirm Password</FormLabel>
-                <Input  borderColor={useColorModeValue('black', 'white')}  className={styles.input_box} type="password" value={confirm_password} onChange={e => setConfirmPassword(e.target.value)}/>
+                <Input size={{lg: 'lg', base: 'sm'}} width={{lg:'35vh', base: '30vh'}} borderColor={useColorModeValue('black', 'white')}  className={styles.input_box} type="password" value={confirm_password} onChange={e => setConfirmPassword(e.target.value)}/>
                 </Box>
                 <Box>
                 <FormLabel>Department</FormLabel>
-                <Select borderColor={useColorModeValue('black', 'white')} borderRadius="lg" className={styles.input_select} size="sm" onChange={e => getSpecList(e.target.value)}>
+                <Select size={{lg: 'lg', base: 'sm'}} width={{lg:'35vh', base: '30vh'}} borderColor={useColorModeValue('black', 'white')} borderRadius="lg" className={styles.input_select}  onChange={e => getSpecList(e.target.value)}>
                   <option value="" disabled selected>Choose</option>
                   {depList.map((department, i) => (
                     <option disabled={department.name === "College" || department.name === "Senior High School" || department.name === "Faculty" ? true : null} value={department.name} key={i}>{department.name}</option>
@@ -351,7 +351,7 @@ export default function Register({data2}) {
                 </Box>
                 <Box>
                 <FormLabel display="flex">Strand or Specialization</FormLabel>
-                <Select borderColor={useColorModeValue('black', 'white')} borderRadius="lg"  className={styles.input_select} size="sm" onChange={e => setSpecialization(e.target.value)}>
+                <Select size={{lg: 'lg', base: 'sm'}} width={{lg:'35vh', base: '30vh'}} borderColor={useColorModeValue('black', 'white')} borderRadius="lg"  className={styles.input_select} onChange={e => setSpecialization(e.target.value)}>
                 <option value="" disabled selected>Choose</option>
                 {specList.map((specialization, i) => (
                   <option value={specialization.name} key={i}>{specialization.name}</option>
@@ -381,73 +381,7 @@ export default function Register({data2}) {
                 </Box>
 
 
-          <div id="part2" hidden>
-            <div className={styles.logo2}>
-            <Image src={useColorModeValue('critiquehall.png', 'critiquehall-dark.png')} 
-             alt="Critique Hall Logo"/>
-            </div>
           
-            {/* <Heading fontFamily={'Raleway'} mb={2} as="h2" size="lg" color={useColorModeValue('#C1272D','#FF5C61')}>REGISTER</Heading> */}
-                <FormLabel>Department</FormLabel>
-                <Select borderColor={useColorModeValue('black', 'white')}  className={styles.input_select} placeholder="Select Department" size="sm" onChange={e => getSpecList(e.target.value)}>
-                  {depList.map((department, i) => (
-                    <option disabled={department.name === "Shs" ? true : null} value={department.name} key={i}>{department.name}</option>
-                  ))}
-                {/* <option value="shs">Senior High School (SHS)</option>
-                <option value="col">College (COL)</option> */}
-                </Select>
-                <br />
-                <FormLabel>Strand or Specialization</FormLabel>
-                <Select borderColor={useColorModeValue('black', 'white')}  className={styles.input_select} placeholder="Select Strand / Specialization" size="sm" onChange={e => setSpecialization(e.target.value)}>
-                {specList.map((specialization, i) => (
-                  <option value={specialization.name} key={i}>{specialization.name}</option>
-                ))}
-                </Select>
-                <br />
-                <FormLabel>Gender</FormLabel>
-                <Select  borderColor={useColorModeValue('black', 'white')}  className={styles.input_select} placeholder="Select Gender" size="sm" onChange={e => setGender(e.target.value)}>
-                  <option value='m'>Male</option>
-                  <option value='f'>Female</option>
-                  <option value='o'>Other</option>
-                </Select>
-                <br />
-                <HStack direction="row" spacing={8} align="center">
-                <Button
-                  // whileHover={{ scale: 1.2 }}
-                  // whileTap={{ scale: 0.9 }} 
-                  bgColor={useColorModeValue('#0C1F83', '#2346FF')}
-                  color={useColorModeValue('white', 'white')}
-                  _hover={{bgColor: 'blue'}}  
-                  type="submit" 
-                  size="lg"
-                  leftIcon={<ArrowLeftIcon />}
-                  onClick={toPart1} 
-                  >
-                {/* <button >Previous Page</button> */}
-                Previous Page
-                </Button>
-                <Button
-                  whileHover={{ scale: 1.2 }}
-                  whileTap={{ scale: 0.9 }}
-                  bgColor={useColorModeValue('darkgreen', 'darkgreen')}
-                  color={useColorModeValue('white', 'white')}
-                  _hover={{bgColor: '#0C7A0A'}}  
-                  type="submit" 
-                  size="lg"
-                  rightIcon={<CheckIcon />}
-                  // variant='none' 
-                  onClick={submitRegister}
-                  >
-                {/* <Link href="/home">Register</Link> */}
-                Register
-                </Button>
-                </HStack>
-            
-
-            <p className={styles.register}>
-            <Link href="/" passHref><Text _hover={{cursor:'pointer'}} fontSize='md' color={useColorModeValue('#E32A1E', '#FF5C61')}><a>Return to Login</a></Text></Link>
-            </p>
-          </div>
           </FormControl></center>
 
         </Box>

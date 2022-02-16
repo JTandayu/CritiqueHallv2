@@ -4,7 +4,7 @@
   background-color: #3778DA;
   background-size: 50%;
   background-size: display;
-  height: 100vh;
+  height: 100%;
   padding: 0 0.5rem;
   display: flex;
   flex-direction: column;
@@ -20,7 +20,7 @@
   background-color: #1D447E;
   background-size: 50%;
   background-size: display;
-  height: 100vh;
+  height: 100%;
   padding: 0 0.5rem;
   display: flex;
   flex-direction: column;
@@ -56,15 +56,16 @@
 } */
 
 .input_box{
-  width: 20em;
-  padding: 5px;
+  /* width: 30vh; */
+  padding: 10px;
   margin-bottom: 1ch;
-  border-radius: 50%;
+  border-radius: 15px;
   /* border: 1px solid rgb(92, 92, 92); */
   box-shadow: 0px 10px 4px rgba(0, 0, 0, 0.25);
 }
 
 .input_select {
+  border-radius: 15px;
   box-shadow: 0px 10px 4px rgba(0, 0, 0, 0.25);
 }
 

@@ -43,6 +43,8 @@ import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a lo
 import { Carousel } from 'react-responsive-carousel';
 import Link from 'next/link'
 import ScrollToTop from "react-scroll-to-top";
+import TermsAndConditions from '@component/terms-and-conditions';
+import PrivacyPolicy from '@component/privacy-policy'
 
 
 const breakpoints = createBreakpoints({
@@ -229,9 +231,15 @@ function Home(){
         </Box>
         <Box w="100%" bgColor={useColorModeValue("#E7E7E7", "#2E2E2E")}>
                 <Center>
+                <Text fontFamily={'Raleway'} fontSize={{lg: 'md', base: 'xs'}} fontWeight={'bold'} mt={3}mb={1}><PrivacyPolicy /></Text>
+                <Text fontFamily={'Raleway'} fontSize={{lg: 'md', base: 'xs'}} fontWeight={'bold'} mt={3} ml={10} mb={1}><TermsAndConditions /></Text>
+                </Center>
+                </Box>
+        <Box w="100%" bgColor={useColorModeValue("#E7E7E7", "#2E2E2E")}>
+                <Center>
                 <Text fontFamily={'Raleway'} fontSize={{lg: 'md', base: 'xs'}} fontWeight={'bold'} mt={3}>© 2022</Text>
-                <Image src={useColorModeValue("/critiquehall2.png", "/critiquehall2-dark.png")} alt='Critique Hall Logo' w={{lg: '120px', md: '150px', sm: '150px', base: '100px'}} h={{lg: '30px', md: '30px', sm: '30px', base: '20px'}} ml={2}/>
-                <Text fontFamily={'Raleway'} fontSize={{lg: 'md', base: 'xs'}} fontWeight={'bold'} mt={3} ml={3}>All Rights Reserved </Text>
+                <Image src={useColorModeValue("/critiquehall2.png", "/critiquehall2-dark.png")} alt='Critique Hall Logo' w={{lg: '100px', md: '150px', sm: '150px', base: '100px'}} h={{lg: '30px', md: '30px', sm: '30px', base: '20px'}} ml={2}/>
+                <Text fontFamily={'Raleway'} fontSize={{lg: 'md', base: 'xs'}} fontWeight={'bold'} mt={3} ml={2}>All Rights Reserved </Text>
                 </Center>
                 </Box>
         </main>

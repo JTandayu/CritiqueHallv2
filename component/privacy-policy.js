@@ -12,11 +12,11 @@ import {
   import { useDisclosure, useColorModeValue, Spacer } from '@chakra-ui/react'
 
 
-export default function TermsAndConditions() {
+export default function PrivacyPolicy() {
     const { isOpen, onOpen, onClose } = useDisclosure()
     return (
         <>
-        <Text fontFamily={'Raleway'} _hover={{cursor: 'pointer', textDecoration: 'underline'}} color={useColorModeValue('#1BA3C1', '#1BA3C1')}><a onClick={onOpen}>Terms and Conditions</a></Text>
+        <Text fontFamily={'Raleway'} _hover={{cursor: 'pointer', textDecoration: 'underline'}} color={useColorModeValue('#1BA3C1', '#1BA3C1')}><a onClick={onOpen}>Privacy Policy</a></Text>
         <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent maxW={{lg: "40em", base: "35em"}} h={'80vh'} overflowY="auto" css={{
@@ -31,52 +31,54 @@ export default function TermsAndConditions() {
                             borderRadius: '24px',
                             },
                         }}>
-          <ModalHeader fontFamily={'Raleway'} fontSize="3xl">Terms and Conditions</ModalHeader>
+          <ModalHeader fontFamily={'Raleway'} fontSize="3xl">Privacy Policy</ModalHeader>
           <ModalCloseButton />
           <ModalBody fontFamily={'Raleway'} fontWeight={'light'}>
-            <Text fontSize="xl" color={useColorModeValue('#1BA3C1', '#1BA3C1')}>Terms and Conditions</Text>
+            <Text fontSize="xl" color={useColorModeValue('#1BA3C1', '#1BA3C1')}>Privacy Policy</Text>
             <Spacer />
-            <Text fontSize="sm" textAlign={'justify'}>These terms and conditions (&quot;Agreement&quot;) set forth the general terms and conditions of your use of the critiquehall.vercel.app website (&quot;Website&quot; or &quot;Service&quot;) and any of its related products and services (collectively, &quot;Services&quot;). 
-            This Agreement is legally binding between you (&quot;User&quot;, &quot;you&quot; or &quot;your&quot;) and this Website operator (&quot;Operator&quot;, &quot;we&quot;, &quot;us&quot; or &quot;our&quot;). If you do not agree with the terms of this agreement, you must not accept this agreement and may not access and use the Website and Services. 
-            By accessing and using the Website and Services, you acknowledge that you have read, understood, and agree to be bound by the terms of this Agreement. You acknowledge that this Agreement is a contract between you and the Operator, 
-            even though it is electronic and is not physically signed by you, and it governs your use of the Website and Services.</Text>
+            <Text fontSize="sm" textAlign={'justify'}>This Privacy Policy describes Our policies and procedures on the collection, use and disclosure of Your information when You use the Service and tells You about Your privacy rights and how the law protects You. 
+            We use Your Personal data to provide and improve the Service. By using the Service, You agree to the collection and use of information in accordance with this Privacy Policy.</Text>
             <Spacer />
             <br />
-            <Text fontSize="xl" color={useColorModeValue('#1BA3C1', '#1BA3C1')}>Accounts and Membership</Text>
-            <Spacer />
-            <Text fontSize="sm" textAlign={'justify'}>If you create an account on the Website, you are responsible for maintaining the security of your account and you are fully responsible for all activities that occur under the account and any other actions taken in connection with it. 
-            Providing false contact information of any kind may result in the termination of your account. You must immediately notify us of any unauthorized uses of your account or any other breaches of security. 
-            We will not be liable for any acts or omissions by you, including any damages of any kind incurred as a result of such acts or omissions. We may suspend or disable your account if we determine that you have violated any provision of this Agreement or that your conduct or content would tend to damage our reputation and goodwill.</Text>
+            <Text fontSize="xl" color={useColorModeValue("#C1272D", "#FF5C61")}>Interpretations and Definitions</Text>
             <Spacer />
             <br />
-            <Text fontSize="xl" color={useColorModeValue('#1BA3C1', '#1BA3C1')}>User Content</Text>
+            <Text fontSize="xl" color={useColorModeValue('#1BA3C1', '#1BA3C1')}>Interpretation</Text>
             <Spacer />
-            <Text fontSize="sm" textAlign={'justify'}>We do not own any data, 
-            information or material (collectively, &quot;Content&quot;) 
-            that you submit on the Website in the course of using the Service. 
-            You shall have sole responsibility for the accuracy, quality, integrity, legality, reliability, appropriateness, and intellectual property ownership or right to use of all submitted Content. We may, but have no obligation to, monitor and review the Content on the Website submitted or created using our Services by you. You grant us permission to access, copy, distribute, store, transmit, reformat, display and perform the Content of your user account solely as required for the purpose of providing the Services to you. Without limiting any of those representations or warranties, we have the right, though not the obligation, to, in our own sole discretion, refuse or remove any Content that, in our reasonable opinion, violates any of our policies or is in any way harmful or objectionable. Unless specifically permitted by you, your use of the Website and Services does not grant us the license to use, reproduce, adapt, modify, publish or distribute the Content created by you or stored in your user account for commercial, marketing or any similar purpose.</Text>
+            <Text fontSize="sm" textAlign={'justify'}>The words of which the initial letter is capitalized have meanings defined under the following conditions. 
+            The following definitions shall have the same meaning regardless of whether they appear in singular or in plural.</Text>
             <Spacer />
             <br />
-            <Text fontSize="xl" color={useColorModeValue('#1BA3C1', '#1BA3C1')}>Adult Content</Text>
+            <Text fontSize="xl" color={useColorModeValue('#1BA3C1', '#1BA3C1')}>Definitions</Text>
             <Spacer />
-            <Text fontSize="sm" textAlign={'justify'}>Please be aware that there may be certain adult or mature content available on the Website. 
-            Where there is mature or adult content, individuals who are less than 18 years of age or are not permitted to access such content under the laws of any applicable jurisdiction may not access such content. 
-            If we learn that that is violated, we will require verified parental consent, in accordance with the Children’s Online Privacy Protection Act of 1998 (&quot;COPPA&quot;).</Text>
-            <Spacer />
-            <br />
-            <Text fontSize="xl" color={useColorModeValue('#1BA3C1', '#1BA3C1')}>Backups</Text>
-            <Spacer />
-            <Text fontSize="sm" textAlign={'justify'}>We are not responsible for the Content residing on the Website. 
-            In no event shall we be held liable for any loss of any Content. It is your sole responsibility to maintain appropriate backup of your Content. </Text>
-            <Spacer />
-            <br />
-            <Text fontSize="xl" color={useColorModeValue('#1BA3C1', '#1BA3C1')}>Links to Other Resources</Text>
-            <Spacer />
-            <Text fontSize="sm" textAlign={'justify'}>Although the Website and Services may link to other resources (such as websites, mobile applications, etc.), we are not, directly or indirectly, implying any approval, association, sponsorship, endorsement, or affiliation with any linked resource, unless specifically stated herein. 
-            We are not responsible for examining or evaluating, and we do not warrant the offerings of, any businesses or individuals or the content of their resources. We do not assume any responsibility or liability for the actions, products, services, and content of any other third parties. 
-            You should carefully review the legal statements and other conditions of use of any resource which you access through a link on the Website. Your linking to any other off-site resources is at your own risk.</Text>
+            <Text fontSize="sm" textAlign={'justify'}>For the purposes of this Privacy Policy:</Text>
+            <Text fontSize="xs" textAlign={'justify'}>- Account means a unique account created for You to access our Service or parts of our Service.</Text>
+            <Text fontSize="xs" textAlign={'justify'}>- Affiliate means an entity that controls, is controlled by or is under common control with a party, where &quot;control&quot; means ownership of 50% or more of the shares, equity interest or other securities entitled to vote for election of directors or other managing authority.</Text>
+            <Text fontSize="xs" textAlign={'justify'}>- Application means the software program provided by the Company on any electronic device, named Critique Hall</Text>
+            <Text fontSize="xs" textAlign={'justify'}>- Company (referred to as either &quot;the Company&quot;, &quot;We&quot;, &quot;Us&quot; or &quot;Our&quot; in this Agreement) refers to Critique Hall.</Text>
+            <Text fontSize="xs" textAlign={'justify'}>- Cookies are small files that are placed on Your computer, mobile device or any other device by a website, containing the details of Your browsing history on that website among its many uses.</Text>
+            <Text fontSize="xs" textAlign={'justify'}>- Country refers to: Philippines</Text>
+            <Text fontSize="xs" textAlign={'justify'}>- Device means any device that can access the Service such as a computer, a cellphone or a digital tablet.</Text>
+            <Text fontSize="xs" textAlign={'justify'}>- Personal Data is any information that relates to an identified or identifiable individual.</Text>
+            <Text fontSize="xs" textAlign={'justify'}>- Service refers to the Application or the Website or both.</Text>
+            <Text fontSize="xs" textAlign={'justify'}>- Service Provider means any natural or legal person who processes the data on behalf of the Company. It refers to third-party companies or individuals employed by the Company to facilitate the Service, to provide the Service on behalf of the Company, to perform services related to the Service or to assist the Company in analyzing how the Service is used.</Text>
+            <Text fontSize="xs" textAlign={'justify'}>- Usage Data refers to data collected automatically, either generated by the use of the Service or from the Service infrastructure itself (for example, the duration of a page visit).</Text>
+            <Text fontSize="xs" textAlign={'justify'}>- Website refers to Critique Hall, accessible from &lt;https://critiquehall.vercel.app&gt;</Text>
+            <Text fontSize="xs" textAlign={'justify'}>- You means the individual accessing or using the Service, or the company, or other legal entity on behalf of which such individual is accessing or using the Service, as applicable.</Text>
             <Spacer />
             <br />
+            <Text fontSize="xl" color={useColorModeValue("#C1272D", "#FF5C61")}>Collecting and Using Your Personal Data</Text>
+            <Spacer />
+            <br />
+            <Text fontSize="xl" color={useColorModeValue('#1BA3C1', '#1BA3C1')}>Types of Data Collected</Text>
+            <Spacer />
+            <Text fontSize="sm" textAlign={'justify'}>1. Personal Data</Text>
+            <Spacer />
+            <Text fontSize="sm" textAlign={'justify'}>While using Our Service, We may ask You to provide Us with certain personally
+            identifiable information that can be used to contact or identify You.
+            Personally identifiable information may include, but is not limited to:</Text>
+            <Text fontSize="xs" textAlign={'justify'}>- Email address</Text>
+            <Spacer />
             <Text fontSize="xl" color={useColorModeValue('#1BA3C1', '#1BA3C1')}>Prohibited Uses</Text>
             <Spacer />
             <Text fontSize="sm" textAlign={'justify'}>In addition to other terms as set forth in the Agreement, you are prohibited from using the Website and Services or Content: (a) for any unlawful purpose; (b) to solicit others to perform or participate in any unlawful acts; (c) to violate any international, federal, provincial or state regulations, rules, laws, or local ordinances; (d) to infringe upon or violate our intellectual property rights or the intellectual property rights of others; (e) to harass, abuse, insult, harm, defame, slander, disparage, intimidate, or discriminate based on gender, sexual orientation, religion, ethnicity, race, age, national origin, or disability; (f) to submit false or misleading information; (g) to upload or transmit viruses or any other type of malicious code that will or may be used in any way that will affect the functionality or operation of the Website and Services, third party products and services, or the Internet; (h) to spam, phish, pharm, pretext, spider, crawl, or scrape; (i) for any obscene or immoral purpose; or (j) to interfere with or circumvent the security features of the Website and Services, third party products and services, or the Internet. We reserve the right to terminate your use of the Website and Services for violating any of the prohibited uses.</Text>
