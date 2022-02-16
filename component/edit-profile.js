@@ -312,7 +312,7 @@ function EditProfile({data}) {
             toastIdRef.current = toast({ position: 'top', title: 'Password do not match!', status: 'error', duration: 3000, isClosable: true })
             return;
         }else if(newPassword == "" || confirmNewPassword == "" || currentPassword == ""){
-            toastIdRef.current = toast({ position: 'top', title: 'Error, Please check first your input fields!.', status: 'error', duration: 3000, isClosable: true })
+            toastIdRef.current = toast({ position: 'top', title: 'Please input all the fields!', status: 'error', duration: 3000, isClosable: true })
             return;
         }
 
@@ -326,8 +326,9 @@ function EditProfile({data}) {
                 duration: 3000,
                 isClosable: true,
               })
+              router.reload();
             }).catch((error) => {
-            toastIdRef.current = toast({ position: 'top', title: 'Error, Please check first your input fields!.', status: 'error', duration: 3000, isClosable: true }),
+            toastIdRef.current = toast({ position: 'top', title: 'Error, Please try again!', status: 'error', duration: 3000, isClosable: true }),
             console.log(error.response)
         })
     }
@@ -357,11 +358,11 @@ function EditProfile({data}) {
                         <Spacer />
                         {/* <Button>Edit</Button> */}
                     </Flex>
-                    <Divider mt={1}/>
+                    {/* <Divider mt={1}/> */}
                     <Flex p={7}>
                         <Flex flexDir='column' align='center'>
                             <Heading fontFamily={'Raleway'} size='md' mb={5}>Profile Picture</Heading>
-                            <Image rounded='full' src={data.profile_photo} w='7vw' h='7vw'></Image>
+                            <Image rounded='full' src={data.profile_photo} w='7vw' h='7vw' objectFit="cover"></Image>
                             <Center mt={3}>
                                 <input type='file' onChange={(e)=>setProfileImage(e.target.files)} id='profile-picture-input' hidden/>
                                 <Button fontFamily={'Raleway'} bg='yellow.400' color='black' _hover={{background: 'yellow.500'}} onClick={openProfilePicture} ml={5}>Choose<EditIcon ml={2}/></Button>
@@ -371,7 +372,7 @@ function EditProfile({data}) {
                         <Spacer />
                         <Flex flexDir='column' align='center'>
                             <Heading fontFamily={'Raleway'} size='md' mb={3}>Cover Picture</Heading>
-                            <Image src={data.cover_photo} w='14vw' h='7vw'></Image>
+                            <Image src={data.cover_photo} w='14vw' h='7vw' borderRadius={10} objectFit="cover"></Image>
                             <Center mt={3}>
                                 <input type='file' onChange={(e)=>setCoverImage(e.target.files)} id='cover-picture-input' hidden/>
                                 <Button fontFamily={'Raleway'} bg='yellow.400' color='black' _hover={{background: 'yellow.500'}} onClick={openCoverPicture} ml={5}>Choose<EditIcon ml={2} /></Button>
@@ -416,7 +417,7 @@ function EditProfile({data}) {
                     </Flex>
                     <Flex>
                         <Spacer />
-                        <Button fontFamily={'Raleway'} bgColor={useColorModeValue('#0C1F83', '#1D447E')} color={useColorModeValue('white', 'white')} _hover={{bgColor: useColorModeValue('#173cff', '#428eff')}} mr={3} onClick={SubmitPersonalInformation}>Save</Button>
+                        <Button fontFamily={'Raleway'} bgColor={useColorModeValue('#0C1F83', '#1D447E')} color={useColorModeValue('white', 'white')} _hover={{bgColor: useColorModeValue('#173cff', '#428eff')}} mr={'53%'} onClick={SubmitPersonalInformation}>Save</Button>
                     </Flex>
                     <Divider mb={5} mt={5}/>
                     <Flex>
@@ -440,7 +441,7 @@ function EditProfile({data}) {
                     </Center>
                     <Flex w='100%'>
                         <Spacer />
-                        <Button fontFamily={'Raleway'} bgColor={useColorModeValue('#0C1F83', '#1D447E')} color={useColorModeValue('white', 'white')} _hover={{bgColor: useColorModeValue('#173cff', '#428eff')}} mr={3} onClick={submitPassword}>Save</Button>
+                        <Button fontFamily={'Raleway'} bgColor={useColorModeValue('#0C1F83', '#1D447E')} color={useColorModeValue('white', 'white')} _hover={{bgColor: useColorModeValue('#173cff', '#428eff')}} mr={'33%'} onClick={submitPassword}>Save</Button>
                     </Flex>
                     {/* <Divider mb={5} mt={5} /> */}
 
