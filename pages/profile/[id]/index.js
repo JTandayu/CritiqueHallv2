@@ -216,9 +216,9 @@ export default function ProfilePage({}){
                 <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@700&display=swap" rel="stylesheet" />
             </Head>
 
-            <Box mx={{lg: 'auto', md: '0', sm: '0'}} my='auto' bg={useColorModeValue('#E0EEFF', '#333e4f')} w={{lg: '90%', md: '100%', sm: '100%'}} h={{lg: '80vh', md: '100vh', sm: '150vh'}} rounded='lg' mt={32} mb={{lg: 0, md: 0, sm: 10}} position='static' boxShadow={'dark-lg'}>
+            <Box mx={{lg: 'auto', md: '0', sm: '0'}} my='auto' bg={useColorModeValue('#E0EEFF', '#333e4f')} w={{lg: '90%', md: '100%', sm: '100%', base: "100%"}} h={{lg: '80vh', md: '100vh', sm: '150vh'}} rounded='lg' mt={32} mb={{lg: 0, md: 0, sm: 10}} position='static' boxShadow={'dark-lg'}>
              
-                <Box display='flex' flexDir={{lg: 'row', md: 'column', sm: 'column'}} w='100%'>
+                <Box display='flex' flexDir={{lg: 'row', md: 'column', sm: 'column', base: "column"}} w='100%'>
                     
                     <Box w={{lg: '100vw', md: '40vw', sm: '90%'}} h={{lg: '35vh', md: '35vh', sm: '45vh'}} bg='white' bgImage={`url('${userData.cover_photo}')`} bgSize="cover" p={3} display={{lg: 'flex', sm: 'block'}} mt={5} ml={{lg: 8, md: 0, sm: 5}} rounded='lg'>
                         
@@ -228,7 +228,7 @@ export default function ProfilePage({}){
                             </Center>
                         </Box>
 
-                        <Box w={{lg:'50vh'}} mx='auto' ml={{lg: '10vw', md: 0, sm: 0}} alignItems={{sm: "center"}}>
+                        <Box w={{lg:'50vh', base: "100%"}} mx='auto' ml={{lg: '10vw', md: 0, sm: 0, base: 0}} alignItems={{sm: "center", base: "center"}}>
                             <Box ml={16} mt={2} float="right">
                                 {userData && userData.display_name !== display_name ? <ReportUser data={userData}  /> : null}
                             </Box>
@@ -263,7 +263,7 @@ export default function ProfilePage({}){
                         <Heading size='lg' color={useColorModeValue('#1B1464', '#B2A3FF')} mt={5} fontFamily={'Raleway'} display='flex'>Specialization: <Text fontFamily={'Raleway'} color={useColorModeValue('#C1272D', '#FF5C61')} ml={5}>{userData.specialization}</Text></Heading>
                     </Box>
                 </Box>
-                <Box display='flex' w={{lg: '100%', md: '100%', sm: '100%'}} mt={5} ml={3} mr={5}>
+                <Box display='flex' w={{lg: '100%', md: '100%', sm: '100%', base: "100%"}} mt={5} ml={3} mr={5}>
                     {/* <Button ml={5} h='2em' position='static'>All</Button> */}
                     <Button className={useColorModeValue(styles.myposts, styles.myposts2)} fontFamily={'Raleway'} color={useColorModeValue('black', 'white')} fontWeight={'bold'} ml={5} h='2em' position='static' onClick={OpenPost} boxShadow={'lg'}>My Posts</Button>
                     <Button className={useColorModeValue(styles.mycritiques, styles.mycritiques2)} fontFamily={'Raleway'} color={useColorModeValue('black', 'white')} fontWeight={'bold'} ml={5} h='2em' position='static' onClick={OpenCritique} boxShadow={'lg'}>My Critiques</Button>

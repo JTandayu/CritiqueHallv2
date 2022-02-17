@@ -339,10 +339,10 @@ export default function CritiquePost(){
             </Head>
 
             <Box w="100%" h="full" spacing="10px" mt="5">
-                <Box display="flex" flexDir={{lg: 'row', sm: 'column', base: 'column'}} p="3">
+                <Box display="flex" flexDir={{lg: 'row', sm: 'column', base: 'column'}} w="100%" p="3">
                     {/* Main */}
                     {/* <PostMain /> */}
-                <Box  w={{lg: '50%', sm: '100%'}}  bg={useColorModeValue('white', '#212121')} h={{lg: "100%", sm: "100%"}} p={5} boxShadow='dark-lg' borderRadius={10} mt={28} ml='3vw'>
+                <Box  w={{lg: '50%', sm: '100%', base: "100%"}}  bg={useColorModeValue('white', '#212121')} h={{lg: "100%", sm: "100%"}} p={5} boxShadow='dark-lg' borderRadius={10} mt={28} ml={{lg: '3vw', base: 0}}>
                 <Heading fontFamily={'Raleway'} fontSize="xl" mx="auto" display="flex"><Image src={data.profile_photo} w="50px" h="50px" mr={3} borderRadius={10}/>
                 <Link href={`/profile/${data.display_name}`} passHref><Text fontFamily={'Raleway'} fontSize="xl" _hover={{cursor: 'pointer'}} mt={4}>{data.display_name}</Text></Link>
                 <Text fontFamily={'Raleway'} fontSize="md" ml={'65%'} color="gray.400" mt={5} isTruncated>{data.time_ago}</Text>
@@ -493,15 +493,15 @@ export default function CritiquePost(){
                     </Box>
                     {/* Critique Input */}
                     <form onSubmit={(e) => giveCritique(e)}>
-                    <Box display='flex' flexDir='column' mt={5}>
-                        <Textarea borderColor={useColorModeValue('black', 'white')} fontFamily={'Raleway'} placeholder='Critique this...' bg={useColorModeValue('white', '#212121')} boxShadow='md' w={{lg: '90vh', sm: '100%'}} mx="auto" mt={3} onChange={e => setCritique(e.target.value)} value={critique} />
+                    <Box display='flex' w="full" flexDir='column' mt={5}>
+                        <Textarea borderColor={useColorModeValue('black', 'white')} fontFamily={'Raleway'} placeholder='Critique this...' bg={useColorModeValue('white', '#212121')} boxShadow='md' w={{lg: '100%', sm: '100%'}} mx="auto" mt={3} onChange={e => setCritique(e.target.value)} value={critique} />
                         <Button fontFamily={'Raleway'} color={useColorModeValue('white', 'white')} _hover={{bgColor: useColorModeValue('#173cff', '#428eff')}} bgColor={useColorModeValue('#0C1F83', '#1D447E')} type='submit' w='10vh' mx='auto' mt={3}>Submit</Button>
                     </Box>
                     </form>
         
             </Box>
                     {/* Critique */}
-                    <Box w={{lg: '40%', sm: '100%'}} bg={useColorModeValue('white', '#212121')} borderRadius={10} h='90vh' p={5} boxShadow='dark-lg' mt={28} ml='3vw'>
+                    <Box w={{lg: '40%', sm: '100%', base: "100%"}} bg={useColorModeValue('white', '#212121')} borderRadius={10} h='90vh' p={5} boxShadow='dark-lg' mt={28} ml={{lg: '3vw', base: 0}}>
                         <Critiques id={data.post_id} newCritique={newCritique} />
                     </Box>
                     

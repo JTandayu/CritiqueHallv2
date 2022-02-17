@@ -354,8 +354,8 @@ export const Critiques = ({id, newCritique}) => {
                                 <Box w='100%' mt={1}>
                                     <Text fontFamily={'Raleway'} textAlign={'justify'} fontSize='md'>{critique.body}</Text>
                                 </Box>
-                                <Flex w='20vw'>
-                                    <Button fontFamily={'Raleway'} variant='ghost' onClick={()=>giveStar(critique.critique_id)}><Image src={changeIcon} alt="Stars" w="25px" h="25px" ml={2} mr={2} id="changeStarClicked"/><Text id={`star${critique.critique_id}`}>{critique.stars}</Text></Button>
+                                <Flex w='30vw'>
+                                    <Button fontFamily={'Raleway'} variant='ghost' w={{lg: "5em", base: "100px"}} onClick={()=>giveStar(critique.critique_id)}><Image src={changeIcon} alt="Stars" w="25px" h="25px" ml={2} mr={2} id="changeStarClicked"/><Text id={`star${critique.critique_id}`}>{critique.stars}</Text></Button>
                                     <Button fontFamily={'Raleway'} variant='ghost' ml={5} onClick={()=>openReply(critique.critique_id)}>Reply</Button>
                                     {critique.is_edited == 1 ? <Text fontFamily={'Raleway'} color="gray.400" mt={3} fontSize="sm">(Edited)</Text> : null}
                             </Flex>

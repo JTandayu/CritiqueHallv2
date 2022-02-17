@@ -309,7 +309,7 @@ export default function HallPage(){
             </Button> */}
             <ScrollToTop color={'black'} width={40} boxShadow={'dark-lg'} smooth />
             {/* Halls */}
-            <Box bgImage={'/HallsCard-Critique.png'} bgRepeat={'no-repeat'} bgSize={'cover'} rounded="lg" w="70%" h='140px' display={{lg: 'flex', md: 'flex', sm: 'none'}} mx="auto" mt="15vh" top="0">
+            <Box bgImage={'/HallsCard-Critique.png'} bgRepeat={'no-repeat'} bgSize={'cover'} rounded="lg" w="70%" h='140px' display={{lg: 'flex', md: 'flex', sm: 'none', base: "none"}} mx="auto" mt="15vh" top="0">
                 
                 <Button variant='ghost' w="200px" h="100px" mt={5} className={styles.arts} rounded="lg" position='static' _hover={{cursor: 'pointer'}} onClick={getArts} boxShadow={'lg'}>
                 <Box w="full" h="10vh" ml={{lg: 0, sm: 0}}  px='5'>
