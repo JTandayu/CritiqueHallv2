@@ -217,7 +217,7 @@ export default function PrivacyPolicy() {
             <Spacer />
             <Text fontSize="sm" textAlign={'justify'}>If you have any questions about this Privacy Policy, You can contact us:</Text>
             <br />
-            <Text fontSize="sm" textAlign={'justify'} display="flex">- By email: <Text fontSize="xs" fontStyle={'italic'}  color={useColorModeValue("#C1272D", "#FF5C61")} ml={1}>critiquehall@gmail.com</Text></Text>
+            <Text fontSize="sm" textAlign={'justify'} display="flex">- By email: <Text fontSize="sm" fontStyle={'italic'}  color={useColorModeValue("#C1272D", "#FF5C61")} ml={1}>critiquehall@gmail.com</Text></Text>
             <Spacer />
             <Text fontSize="sm" textAlign={'justify'}>- By phone number: 09980844162</Text>
             <br />
