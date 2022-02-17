@@ -448,7 +448,7 @@ export default function Nav(data, profile_pic){
                             },
                         }}>
                             {notif.map((notification, i) =>
-                            <Box key={i} display='flex' w="full" p={3}>
+                            <Box key={i} display='flex' w="full" p={5}>
                                 {notification.profile_photo ? <Img src={notification.profile_photo} mr={3} w="25px" h="25px" alt="Notification Image" /> : null}
                                 <Text mr={3} fontFamily={'Raleway'}>{notification.display_name}</Text>
                                 <Text mr={2} fontFamily={'Raleway'}>{notification.action}</Text>
