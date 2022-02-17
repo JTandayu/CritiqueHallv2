@@ -74,14 +74,14 @@ function Home(){
           </Head>
 
           <ScrollToTop color={'black'} width={40} boxShadow={'dark-lg'} smooth />
-
-          <Box bgColor={useColorModeValue('#E5E5E5', '#2E2E2E')} w="100%" h={{lg: '75vh', md: '100%', sm: '100%'}} display={{lg: 'flex', md: 'flex', sm: 'block', base: 'block'}} boxShadow='lg'>
+          {/* Clear */}
+          <Box bgColor={useColorModeValue('#E5E5E5', '#2E2E2E')} w="100%" h={{lg: '75vh', md: '100%', sm: '100%'}} display={{lg: 'flex', md: 'block', sm: 'block', base: 'block'}} boxShadow='lg'>
             <Flex mt={{lg: 44, base: '50%'}} flexDir={{lg: 'column', base: 'column'}} align='center' w={{lg: '50vw', md: '100%', sm: '100%', base: "100%"}}>
-              <Image src={HomeTitle} w={{lg: '550px', base: '15em'}} h={{lg: '50px',  base: '1em'}}/>
+              <Image src={HomeTitle} w={{lg: '550px', base: '20em'}} h={{lg: '50px',  base: '2em'}}/>
               <br />
-              <Image src={Desc1} w='800px' h='150px' ml={'30%'}/>
+              <Image src={Desc1} w={{lg: '800px', base: "100%"}} h={{lg: '150px', base: "100%"}} ml={{lg: '30%', base: 0}}/>
               <br />
-              <Image src={Desc2} w='800x' h='120px' ml={'30%'}/>
+              <Image src={Desc2} w={{lg: '800px', base: "100%"}} h={{lg: '120px', base: "100%"}} ml={{lg: '30%', base: 0}}/>
 
             </Flex>
             <Image src='PeopleDiscuss.png' w={{lg: '70%', md: '600px', sm: '600px', base: '100%'}} h={{lg: '60vh', base: '30%'}} mt='10vh' mb='5vh' mr={{lg: 5, base: 0}} align='center' alt="Man Texting"/>
@@ -89,7 +89,7 @@ function Home(){
           </Box>
 
 
-
+          {/* Clear */}
           <Box position='static' bgColor={useColorModeValue('#29226E', '#000000')} boxShadow='lg' w="100%" h="55vh" display={{lg: 'flex', md: 'flex', sm: 'block', base: "block"}} flexDir='column' className={styles.halls}>
             <Flex mt='10vh' w={{lg: '90%', md: '100vw', sm: '100%'}} mx='auto' overflowX='auto'>
               <Box w={{lg: '20vw', md: '100%', sm: '100%'}} h='40vh' bgImage={'Arts.png'} bgPosition={'center'} bg borderRadius={10}>
@@ -116,6 +116,7 @@ function Home(){
 
           </Box> 
            
+           {/* Problem */}
           <Box w="100%" h={{lg: "25vh", base: "100%"}} bgColor={useColorModeValue("#E7E7E7", "#2E2E2E")} p={7} display="flex" flexDir={{base: "column", lg: "row"}}>
             <Box w={{lg: "50%", base: "100%"}}>
                 <Heading size="xl" fontFamily={'Raleway'} color={useColorModeValue("#C1272D", "#FF5C61")}>Our Story</Heading>
@@ -123,35 +124,35 @@ function Home(){
                 <Text fontFamily={'Raleway'} display="flex">For Inquiries, send an email to <Text fontFamily={'Raleway'} color="#1BA3C1" ml={1}>critiquehall@gmail.com</Text></Text>
             </Box>
             <Spacer />
-            <Box w="50%">
+            <Box w={{lg: "50%", base: "100%"}}>
                 <Heading size="xl" w="full" fontFamily={'Raleway'} color={useColorModeValue("#C1272D", "#FF5C61")}>The Researchers</Heading>
                 <Box w="full" mt={5}>
-                    <SimpleGrid columns={{lg: 2, base: 1}} spacing={5}>
-                        <Box w="30em" px={3}>
+                    <SimpleGrid columns={{lg: 2, md: 2, sm: 1, base: 1}} spacing={5}>
+                        <Box w={{lg: "30em", base: "100%"}} px={3}>
                             <Flex flexDir={{base: "column", lg: "row"}}>
                                 <Text fontFamily={'Raleway'} color={useColorModeValue("#29226E", "#B2A3FF")}>Azariah Danizar G. Concepcion</Text>
-                                <Text fontFamily={'Raleway'} ml={2}>Back-end Dev</Text>
+                                <Text fontFamily={'Raleway'} ml={{lg: 2, base: 0}}>Back-end Dev</Text>
                             </Flex>
                             <Text fontFamily={'Raleway'}>(+63) 949 846 0846</Text>
                         </Box>
-                        <Box w="30em" px={3}>
+                        <Box w={{lg: "30em", base: "100%"}} px={3}>
                             <Flex flexDir={{base: "column", lg: "row"}}> 
                                 <Text fontFamily={'Raleway'} color={useColorModeValue("#29226E", "#B2A3FF")}>Richie Gene R. Tan</Text>
-                                <Text fontFamily={'Raleway'} ml={2}>UI/UX Designer</Text>
+                                <Text fontFamily={'Raleway'} ml={{lg: 2, base: 0}}>UI/UX Designer</Text>
                             </Flex>
                             <Text fontFamily={'Raleway'}>(+63) 916 424 9531</Text>
                         </Box>
-                        <Box w="30em" px={3}>
+                        <Box w={{lg: "30em", base: "100%"}} px={3}>
                             <Flex>
                                 <Text fontFamily={'Raleway'} color={useColorModeValue("#29226E", "#B2A3FF")}>Jomari L. Matias</Text>
-                                <Text fontFamily={'Raleway'} ml={2}>Project Documentarian</Text>
+                                <Text fontFamily={'Raleway'} ml={{lg: 2, base: 0}}>Project Documentarian</Text>
                             </Flex>
                             <Text fontFamily={'Raleway'}>(+63) 998 084 4162</Text>
                         </Box>
-                        <Box w="30em" px={3}>
+                        <Box w={{lg: "30em", base: "100%"}} px={3}>
                             <Flex>
                                 <Text fontFamily={'Raleway'} color={useColorModeValue("#29226E", "#B2A3FF")}>Jose Luis P. Tandayu</Text>
-                                <Text fontFamily={'Raleway'} ml={2}>Front-end Dev</Text>
+                                <Text fontFamily={'Raleway'} ml={{lg: 2, base: 0}}>Front-end Dev</Text>
                             </Flex>
                             <Text fontFamily={'Raleway'}>(+63) 916 418 7235</Text>
                         </Box>
@@ -160,6 +161,7 @@ function Home(){
             </Box>
         </Box>
 
+        {/* Clear */}
         <Box w="100%" bgColor={useColorModeValue("#E7E7E7", "#2E2E2E")}>
                 <Center>
                 <Text fontFamily={'Raleway'} fontSize={{lg: 'md', base: 'xs'}} fontWeight={'bold'} mt={3}mb={1}><PrivacyPolicy /></Text>
