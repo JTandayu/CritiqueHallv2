@@ -220,11 +220,11 @@ export default function ProfilePage({}){
              
                 <Box display='flex' flexDir={{lg: 'row', md: 'column', sm: 'column', base: "column"}} w='100%'>
                     
-                    <Box w={{lg: '100vw', md: '40vw', sm: '90%'}} h={{lg: '35vh', md: '35vh', sm: '45vh'}} bg='white' bgImage={`url('${userData.cover_photo}')`} bgSize="cover" p={3} display={{lg: 'flex', sm: 'block'}} mt={5} ml={{lg: 8, md: 0, sm: 5}} rounded='lg'>
+                    <Box w={{lg: '100vw', md: '40vw', sm: '90%', base: '85vw'}} h={{lg: '35vh', md: '35vh', sm: '45vh', base: '30vh'}} bg='white' bgImage={`url('${userData.cover_photo}')`} bgSize="cover" p={3} display={{lg: 'flex', sm: 'block'}} mt={5} ml={{lg: 8, md: 0, sm: 5, base: 5}} rounded='lg'>
                         
-                        <Box w='20vh' h='20vh' mt={24} ml={{lg: 5, md: 0, sm: 0}} mx={{lg: 0, md: 0, sm: 'auto'}} rounded='full'>
+                        <Box w='20vh' h='20vh' mt={24} ml={{lg: 5, md: 0, sm: 0, base: '25%'}} mx={{lg: 0, md: 0, sm: 'auto'}} rounded='full'>
                             <Center>
-                                <Image w='18vh' h='18vh' rounded='full' src={userData.profile_photo} mt={3}/>
+                                <Image w={{lg: '18vh', base: '10vh'}} h={{lg: '18vh', base: '10vh'}} rounded='full' src={userData.profile_photo} mt={{lg: 3, base: '-20%'}}/>
                             </Center>
                         </Box>
 
@@ -232,10 +232,10 @@ export default function ProfilePage({}){
                             <Box ml={16} mt={2} float="right">
                                 {userData && userData.display_name !== display_name ? <ReportUser data={userData}  /> : null}
                             </Box>
-                            <Heading fontFamily={'Raleway'} fontWeight={'black'} size='2xl' textShadow='2px 2px #000' color='white' ml={{lg: '10vw', md: 0, sm: 0}} mt={{lg: 48}}>{userData.display_name}</Heading>
+                            <Heading fontFamily={'Raleway'} fontWeight={'black'} fontSize="2xl" textShadow='2px 2px #000' color='white' ml={{lg: '10vw', md: 0, sm: 0, base: '35%'}} mt={{lg: 48, base: '-30%'}}>{userData.display_name}</Heading>
                             <Flex ml={{lg: '10vw', md: 0, sm: 0}} mt={1} mx='auto' textShadow='1px 1px #000' >
-                                <Heading fontFamily={'Raleway'} size='lg' mr={3} color='white'>{userData.first_name}</Heading>
-                                <Heading fontFamily={'Raleway'} size='lg' color='white'>{userData.last_name}</Heading>
+                                <Heading fontFamily={'Raleway'} size={{lg: 'lg', base: 'md'}} mr={3} color='white'>{userData.first_name}</Heading>
+                                <Heading fontFamily={'Raleway'} size={{lg: 'lg', base: 'md'}}  color='white'>{userData.last_name}</Heading>
                             </Flex>
                         </Box>
                         
