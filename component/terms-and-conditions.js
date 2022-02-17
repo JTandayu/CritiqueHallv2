@@ -19,7 +19,7 @@ export default function TermsAndConditions() {
         <Text fontFamily={'Raleway'} _hover={{cursor: 'pointer', textDecoration: 'underline'}} color={useColorModeValue('#1BA3C1', '#1BA3C1')}><a onClick={onOpen}>Terms and Conditions</a></Text>
         <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
-        <ModalContent maxW={{lg: "40em", base: "35em"}} h={'80vh'} overflowY="auto" css={{
+        <ModalContent maxW={{lg: "40em", base: "20em"}} h={'80vh'} overflowY="auto" css={{
                             '&::-webkit-scrollbar': {
                             width: '4px',
                             },
