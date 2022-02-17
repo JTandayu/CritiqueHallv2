@@ -265,8 +265,8 @@ export default function ProfilePage({}){
                 </Box>
                 <Box display='flex' w={{lg: '100%', md: '100%', sm: '100%', base: "100%"}} mt={5} ml={3} mr={5}>
                     {/* <Button ml={5} h='2em' position='static'>All</Button> */}
-                    <Button className={useColorModeValue(styles.myposts, styles.myposts2)} fontFamily={'Raleway'} color={useColorModeValue('black', 'white')} fontWeight={'bold'} ml={5} h='2em' position='static' onClick={OpenPost} boxShadow={'lg'}>My Posts</Button>
-                    <Button className={useColorModeValue(styles.mycritiques, styles.mycritiques2)} fontFamily={'Raleway'} color={useColorModeValue('black', 'white')} fontWeight={'bold'} ml={5} h='2em' position='static' onClick={OpenCritique} boxShadow={'lg'}>My Critiques</Button>
+                    <Button className={useColorModeValue(styles.myposts, styles.myposts2)} fontFamily={'Raleway'} color={useColorModeValue('black', 'white')} fontWeight={'bold'} ml={5} h='2em' position='static' onClick={OpenPost} boxShadow={'lg'}>{userData.display_name === display_name ? <p>My Posts</p> : <p>Post</p>}</Button>
+                    <Button className={useColorModeValue(styles.mycritiques, styles.mycritiques2)} fontFamily={'Raleway'} color={useColorModeValue('black', 'white')} fontWeight={'bold'} ml={5} h='2em' position='static' onClick={OpenCritique} boxShadow={'lg'}>{userData.display_name === display_name ? <p>My Critiques</p> : <p>Critiques</p>}</Button>
                     <Spacer />
                     <Flex w={{lg: '15vw', sm: '30vw'}} mt={1} mr={10} id='postFilter'>
                         {/* <Text fontFamily={'Raleway'} mr={{lg: 5, sm: 1}} w={20} mt={2}>Sort by: </Text> */}

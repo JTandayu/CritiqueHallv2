@@ -282,7 +282,7 @@ export default function Register({data2}) {
                         variant='ghost'
                         aria-label='Home'
                         my={2}
-                        ml={'55%'}
+                        ml={{lg: '55%', base: 0}}
                         w='50%'
                         onClick={changeDarkAndLightIcon}
                         _hover={{cursor:'pointer'}}
@@ -296,6 +296,7 @@ export default function Register({data2}) {
              alt="Critique Hall Logo"/>
             </Box>
 
+            <Box h={{lg: "full", base: "50vh"}} overflowY="auto">
             <Box id='warning1' color='red' w='30%' h='5vh' mb={4} mt={2} hidden>
               <Center>
                 <Text mt='1vh'>Password and Confirm Password do not match!</Text>
@@ -316,33 +317,33 @@ export default function Register({data2}) {
             {/* <Heading fontFamily={'Raleway'} mb={2} as="h2" size="lg"color={useColorModeValue('#C1272D','#FF5C61')}>REGISTER</Heading> */}
                 <Box>
                 <FormLabel>First Name</FormLabel>
-                <Input size={{lg: 'lg', base: 'sm'}} width={{lg:'35vh', base: '30vh'}} borderColor={useColorModeValue('black', 'white')} className={styles.input_box} type="text" value={first_name} onChange={e => setFirstName(e.target.value)}/>
+                <Input size={{lg: 'lg', base: 'sm'}} width={{lg:'35vh', base: '100%'}} borderColor={useColorModeValue('black', 'white')} className={styles.input_box} type="text" value={first_name} onChange={e => setFirstName(e.target.value)}/>
                 </Box>
                 <Box>
                 <FormLabel>Last Name</FormLabel>
-                <Input size={{lg: 'lg', base: 'sm'}} width={{lg:'35vh', base: '30vh'}} borderColor={useColorModeValue('black', 'white')}  className={styles.input_box} type="text" value={last_name} onChange={e => setLastName(e.target.value)}/>
+                <Input size={{lg: 'lg', base: 'sm'}} width={{lg:'35vh', base:'100%'}} borderColor={useColorModeValue('black', 'white')}  className={styles.input_box} type="text" value={last_name} onChange={e => setLastName(e.target.value)}/>
                 </Box>
                 <Box>
                 <FormLabel>Display Name</FormLabel>
-                <Input size={{lg: 'lg', base: 'sm'}} width={{lg:'35vh', base: '30vh'}} borderColor={useColorModeValue('black', 'white')}  className={styles.input_box} type="text" value={user_name} onChange={e => setUserName(e.target.value)}/>
+                <Input size={{lg: 'lg', base: 'sm'}} width={{lg:'35vh', base: '100%'}} borderColor={useColorModeValue('black', 'white')}  className={styles.input_box} type="text" value={user_name} onChange={e => setUserName(e.target.value)}/>
                 </Box>
                 <Box>
                 <FormLabel>Email</FormLabel>
-                <Input size={{lg: 'lg', base: 'sm'}} width={{lg:'35vh', base: '30vh'}} borderColor={useColorModeValue('black', 'white')} className={styles.input_box} type="text" value={email} onChange={e => setEmail(e.target.value)}/>
+                <Input size={{lg: 'lg', base: 'sm'}} width={{lg:'35vh', base: '100%'}} borderColor={useColorModeValue('black', 'white')} className={styles.input_box} type="text" value={email} onChange={e => setEmail(e.target.value)}/>
                 </Box>
                 {/* <FormHelperText className={styles.helperText}>format: ***@iacademy.edu.ph</FormHelperText> */}
                 {/* <br/> */}
                 <Box>
                 <FormLabel>Password</FormLabel>
-                <Input size={{lg: 'lg', base: 'sm'}} width={{lg:'35vh', base: '30vh'}} borderColor={useColorModeValue('black', 'white')} className={styles.input_box} type="password" value={password} onChange={e => setPassword(e.target.value)}/>
+                <Input size={{lg: 'lg', base: 'sm'}} width={{lg:'35vh', base: '100%'}} borderColor={useColorModeValue('black', 'white')} className={styles.input_box} type="password" value={password} onChange={e => setPassword(e.target.value)}/>
                 </Box>
                 <Box>
                 <FormLabel>Confirm Password</FormLabel>
-                <Input size={{lg: 'lg', base: 'sm'}} width={{lg:'35vh', base: '30vh'}} borderColor={useColorModeValue('black', 'white')}  className={styles.input_box} type="password" value={confirm_password} onChange={e => setConfirmPassword(e.target.value)}/>
+                <Input size={{lg: 'lg', base: 'sm'}} width={{lg:'35vh', base: '100%'}} borderColor={useColorModeValue('black', 'white')}  className={styles.input_box} type="password" value={confirm_password} onChange={e => setConfirmPassword(e.target.value)}/>
                 </Box>
                 <Box>
                 <FormLabel>Department</FormLabel>
-                <Select size={{lg: 'lg', base: 'sm'}} width={{lg:'35vh', base: '30vh'}} borderColor={useColorModeValue('black', 'white')} borderRadius="lg" className={styles.input_select}  onChange={e => getSpecList(e.target.value)}>
+                <Select size={{lg: 'lg', base: 'sm'}} width={{lg:'35vh', base: '100%'}} borderColor={useColorModeValue('black', 'white')} borderRadius="lg" className={styles.input_select}  onChange={e => getSpecList(e.target.value)}>
                   <option value="" disabled selected>Choose</option>
                   {depList.map((department, i) => (
                     <option disabled={department.name === "College" || department.name === "Senior High School" || department.name === "Faculty" ? true : null} value={department.name} key={i}>{department.name}</option>
@@ -351,7 +352,7 @@ export default function Register({data2}) {
                 </Box>
                 <Box>
                 <FormLabel display="flex">Strand or Specialization</FormLabel>
-                <Select size={{lg: 'lg', base: 'sm'}} width={{lg:'35vh', base: '30vh'}} borderColor={useColorModeValue('black', 'white')} borderRadius="lg"  className={styles.input_select} onChange={e => setSpecialization(e.target.value)}>
+                <Select size={{lg: 'lg', base: 'sm'}} width={{lg:'35vh', base: '100%'}} borderColor={useColorModeValue('black', 'white')} borderRadius="lg"  className={styles.input_select} onChange={e => setSpecialization(e.target.value)}>
                 <option value="" disabled selected>Choose</option>
                 {specList.map((specialization, i) => (
                   <option value={specialization.name} key={i}>{specialization.name}</option>
@@ -378,6 +379,7 @@ export default function Register({data2}) {
                 Submit
                 </Button>
                 <Link href="/" passHref><Text _hover={{cursor:'pointer', textDecoration: 'underline'}} fontSize='lg' color={useColorModeValue('#1BA3C1', '#1BA3C1')} mt={5}><a>Back to Login</a></Text></Link>
+                </Box>
                 </Box>
 
 

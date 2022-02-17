@@ -304,9 +304,6 @@ export default function HallPage(){
             <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@700&display=swap" rel="stylesheet" />
             </Head>
             
-            {/* <Button w={{lg: "70%" , sm: '100%'}} mb="5" mx="auto" p="4" mt="14vh"  h="100px" top={0} className={styles.halls} variant="none" href="" onClick={getAll} boxShadow={'lg'}>
-                    <Heading fontFamily={'Raleway'} fontWeight={'black'} size="4xl" align="center" mt="4" mb="4" color="white">HALLS</Heading>
-            </Button> */}
             <ScrollToTop color={'black'} width={40} boxShadow={'dark-lg'} smooth />
             {/* Halls */}
             <Box bgImage={'/HallsCard-Critique.png'} bgRepeat={'no-repeat'} bgSize={'cover'} rounded="lg" w="70%" h='140px' display={{lg: 'flex', md: 'flex', sm: 'none', base: "none"}} mx="auto" mt="15vh" top="0">
@@ -314,11 +311,7 @@ export default function HallPage(){
                 <Button variant='ghost' w="200px" h="100px" mt={5} className={styles.arts} rounded="lg" position='static' _hover={{cursor: 'pointer'}} onClick={getArts} boxShadow={'lg'}>
                 <Box w="full" h="10vh" ml={{lg: 0, sm: 0}}  px='5'>
                     <Center>
-                    {/* <Text fontFamily={'Raleway'} fontSize="3xl" color="white" my="auto" mt="5" textShadow="1px 1px #000">Technology</Text> */}
                     </Center>
-                    {/* <Center>
-                        <Heading fontFamily={'Raleway'} size="xs" color="white" mt="1" textShadow="1px 1px #000">Post:</Heading>
-                    </Center> */}
                     
                 </Box>
                 </Button>
@@ -328,11 +321,7 @@ export default function HallPage(){
                 <Button variant='ghost' w="200px" h="100px" mt={5} className={styles.business} rounded="lg" position='static' _hover={{cursor: 'pointer'}} onClick={getBusiness} boxShadow={'lg'}>
                 <Box w="full" h="10vh" ml={{lg: 0, sm: 0}} rounded="lg" px='9'>
                     <Center>
-                    {/* <Text fontFamily={'Raleway'} fontSize="3xl" color="white" my="auto" mt="5" textShadow="1px 1px #000">Arts</Text> */}
                     </Center>
-                    {/* <Center>
-                        <Heading fontFamily={'Raleway'} size="xs" color="white" mt="1" textShadow="1px 1px #000">Post:</Heading>
-                    </Center> */}
                     
                 </Box>
                 </Button>
@@ -342,11 +331,7 @@ export default function HallPage(){
                 <Button variant='ghost' w="200px" h="100px" mt={5} className={styles.technology} rounded="lg" position='static' _hover={{cursor: 'pointer'}} onClick={getTechnology} boxShadow={'lg'}>
                 <Box w="full" h="10vh" ml={{lg: 0, sm: 0}} rounded="lg" px='9' >
                     <Center>
-                    {/* <Text fontFamily={'Raleway'} fontSize="3xl" color="white" my="auto" mt="5" textShadow="1px 1px #000">Business</Text> */}
                     </Center>
-                    {/* <Center>
-                        <Heading fontFamily={'Raleway'} size="xs" color="white" mt="1" textShadow="1px 1px #000">Post: </Heading>
-                    </Center> */}
                 </Box>
                 </Button>
 
@@ -355,11 +340,7 @@ export default function HallPage(){
                 <Button variant='ghost' w="200px" h="100px" mt={5} className={styles.lounge} rounded="lg" position='static' _hover={{cursor: 'pointer'}} onClick={getLounge} boxShadow={'lg'}>
                 <Box w="full" h="10vh" ml={{lg: 0, sm: 0}} rounded="lg" px='9'>
                     <Center>
-                    {/* <Text fontFamily={'Raleway'} fontSize="3xl" color="white" my="auto" mt="5" borderColor={'black'}>Lounge</Text> */}
                     </Center>
-                    {/* <Center>
-                        <Heading fontFamily={'Raleway'} size="xs" color="white" mt="1" textShadow="1px 1px #000">Post: </Heading>
-                    </Center> */}
                 </Box>
                 </Button>
             </Box>
@@ -369,27 +350,15 @@ export default function HallPage(){
                         px={4}
                         py={2}
                         w="100%"
-                        onChange={(e) => getPostDropDown(e.target.value)} value={hall}>
+                        onChange={(e) => getPostDropDown(e.target.value)} value={hall} defaultValue="0">
+                    <option value="0">All</option>
                     {hallList.map((halls) => 
                         <option key={halls.hall_id} value={halls.hall_id}>{halls.hall_name}</option>
                     )}
                 </Select>
             </Box>
 
-            <Box w={{lg: "70%", sm: "100%"}} mt="5" display="flex" flexDir={{lg: 'row', sm: 'column-reverse'}}>
-
-            {/* <ul className='pagination'>
-                {pageNumbers.map(number=>(
-                    <li key={number} className='page-item'>
-                        <Link href='/critique'>
-                        <a onClick={()=>paginate(number)} className='page-link'>
-                            {number}
-                        </a>
-                        </Link>
-                    </li> 
-                ))}
-            </ul> */}
-
+            <Box w={{lg: "70%", sm: "100%"}} mt="5" display="flex" alignItems="center" flexDir={{lg: 'row', sm: 'column-reverse', base: "column-reverse"}}>
             <Pagination
                     defaultCurrent={5}
                     current={currentPage}
@@ -407,10 +376,8 @@ export default function HallPage(){
                     responsive
                     fontFamily={'Raleway'}
                 />
-            {/* <Pagination></Pagination> */}
-            {/* <Box w="50%"></Box> */}
             <Spacer />
-            <Box mt={{lg: 0, sm: 5}} mb={{lg: 0, sm: 5}} >
+            <Box mt={{lg: 0, sm: 5, base: 5}} mb={{lg: 0, sm: 5, base: 5}} >
                 <Center>
                     <CreatePost />
                 </Center>
@@ -442,10 +409,10 @@ export default function HallPage(){
                                         <Image src={post.attachment1} w={{lg: '10vw', sm:'100%'}} h={{lg: '10vh', sm: '20vh'}} onError={addDefaultSrc} borderRadius={10} objectFit='cover'/>
                                         : <Image src="/no-image-attachment.png" w={{lg: '10vw', sm:'100%'}} h={{lg: '10vh', sm: '20vh'}} borderRadius={10} objectFit='cover'/>}
                                         {post.attachment2 != 'undefined' ? 
-                                        <Image src={post.attachment2} w={{lg: '10vw', sm:'100%'}} h={{lg: '10vh', sm: '20vh'}} onError={addDefaultSrc} borderRadius={10} objectFit='cover'/>
+                                        <Image src={post.attachment2} w={{lg: '10vw', sm:'100%'}} h={{lg: '10vh', sm: '20vh'}} display={{lg: "block", base: "none"}} onError={addDefaultSrc} borderRadius={10} objectFit='cover'/>
                                         : null}
                                         {post.attachment3 != 'undefined' ? 
-                                        <Image src={post.attachment3} w={{lg: '10vw', sm:'100%'}} h={{lg: '10vh', sm: '20vh'}} onError={addDefaultSrc} borderRadius={10} objectFit='cover'/>
+                                        <Image src={post.attachment3} w={{lg: '10vw', sm:'100%'}} h={{lg: '10vh', sm: '20vh'}} display={{lg: "block", base: "none"}} onError={addDefaultSrc} borderRadius={10} objectFit='cover'/>
                                         : null}
                                         </Center>
                                     </Box>

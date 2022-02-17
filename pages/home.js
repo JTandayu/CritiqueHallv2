@@ -79,9 +79,9 @@ function Home(){
             <Flex mt={{lg: 44, base: '50%'}} flexDir={{lg: 'column', base: 'column'}} align='center' w={{lg: '50vw', md: '100%', sm: '100%', base: "100%"}}>
               <Image src={HomeTitle} w={{lg: '550px', base: '20em'}} h={{lg: '50px',  base: '2em'}}/>
               <br />
-              <Image src={Desc1} w={{lg: '800px', base: "100%"}} h={{lg: '150px', base: "100%"}} ml={{lg: '30%', base: 0}}/>
+              <Image src={Desc1} w={{lg: '800px', base: "100%"}} h={{lg: '150px', base: "100%"}} ml={{lg: '30%', md: 0, base: 0}}/>
               <br />
-              <Image src={Desc2} w={{lg: '800px', base: "100%"}} h={{lg: '120px', base: "100%"}} ml={{lg: '30%', base: 0}}/>
+              <Image src={Desc2} w={{lg: '800px', base: "100%"}} h={{lg: '120px', base: "100%"}} ml={{lg: '30%', md: 0, base: 0}}/>
 
             </Flex>
             <Image src='PeopleDiscuss.png' w={{lg: '70%', md: '600px', sm: '600px', base: '100%'}} h={{lg: '60vh', base: '30%'}} mt='10vh' mb='5vh' mr={{lg: 5, base: 0}} align='center' alt="Man Texting"/>
@@ -127,6 +127,7 @@ function Home(){
             <Box w={{lg: "50%", base: "100%"}}>
                 <Heading size="xl" w="full" fontFamily={'Raleway'} color={useColorModeValue("#C1272D", "#FF5C61")}>The Researchers</Heading>
                 <Box w="full" mt={5}>
+                  {/* Problem for laptops */}
                     <SimpleGrid columns={{lg: 2, md: 2, sm: 1, base: 1}} spacing={5}>
                         <Box w={{lg: "30em", base: "100%"}} px={3}>
                             <Flex flexDir={{base: "column", lg: "row"}}>

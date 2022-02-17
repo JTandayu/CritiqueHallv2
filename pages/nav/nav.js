@@ -347,7 +347,7 @@ export default function Nav(data, profile_pic){
                             onClick={readNotif}
                         ><Img className={styles.darkicon2} src={useColorModeValue('/notification-alert-icon.png', '/notification-alert-icon-dark.png')} alt="Notification" w="2em" h="2em" ml={-5}/></Button>
                     </PopoverTrigger>
-                    <PopoverContent>
+                    <PopoverContent w="100vw">
                         <PopoverArrow />
                         <PopoverCloseButton />
                         <PopoverHeader fontFamily={'Raleway'}>Notifications</PopoverHeader>
@@ -438,12 +438,17 @@ export default function Nav(data, profile_pic){
                         Feedback
                     </Button>
                 </Link> */}
+                <Box  display="flex">
+                <form onSubmit={searchItem}>
+                    <Input fontFamily={'Raleway'} verticalAlign="center" fontWeight={'light'} placeholder='Search for a user or a post' display={['none','none','none','flex']} w='30vw' type='text' mt={3} mr={{lg: '38vw', md: '10vw'}} onChange={(e)=>setSearch(e.target.value)} borderColor={useColorModeValue('black', 'white')}/>
+                </form>
+                </Box>
                 </Flex>
             </Flex>
             <Spacer />
-                <form onSubmit={searchItem}>
+                {/* <form onSubmit={searchItem}>
                     <Input fontFamily={'Raleway'} fontWeight={'light'} placeholder='Search for a user or a post' display={['none','none','none','flex']} w='30vw' type='text' mt={7} mr={{lg: '38vw', md: '10vw'}} onChange={(e)=>setSearch(e.target.value)} borderColor={useColorModeValue('black', 'white')}/>
-                </form>
+                </form> */}
             <Spacer />
         <Flex
             pos='fixed'

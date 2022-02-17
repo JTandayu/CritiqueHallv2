@@ -200,6 +200,7 @@ function EditPost({data, url, fileNames}){
         .then(response => {
           console.log(response.data);
         //   window.location.href = "/critique"
+            onClose()
             router.reload()
         })
         .catch(error => {
@@ -225,14 +226,14 @@ function EditPost({data, url, fileNames}){
                 <ModalCloseButton />
                 <ModalBody>
                 <Flex mb={5}>
-                    <Box w='24vw'>
+                    <Box w={{lg: '24vw', base: "100%"}}>
                     <Flex mt='3vh'>
                         <FormLabel fontFamily={'Raleway'}>Title</FormLabel>
-                        <Input fontFamily={'Raleway'} borderColor={useColorModeValue('black', 'white')} type='text' w='20vw' ml='11px' value={title} onChange={(e) => setTitle(e.target.value)}  />
+                        <Input fontFamily={'Raleway'} borderColor={useColorModeValue('black', 'white')} type='text' w={{lg: '20vw', base: "100%"}} ml='11px' value={title} onChange={(e) => setTitle(e.target.value)}  />
                     </Flex>
 
                     <FormLabel mt={2} fontFamily={'Raleway'}>Description</FormLabel>
-                        <Textarea fontFamily={'Raleway'} borderColor={useColorModeValue('black', 'white')} type='text' w='23vw' h='20vh' value={description} onChange={(e) => setDescription(e.target.value)} />
+                        <Textarea fontFamily={'Raleway'} borderColor={useColorModeValue('black', 'white')} type='text' w={{lg: '23vw', base: "100%"}} h='20vh' value={description} onChange={(e) => setDescription(e.target.value)} />
 
                     <Center mt={10}>
                         <Button fontFamily={'Raleway'} bgColor={useColorModeValue('#2777C1','#0085FF')} color={useColorModeValue('#FFFFFF', '#FFFFFF')} _hover={{bgColor: useColorModeValue('#56AEFF', '#0B5090')}} type="submit" colorScheme='blue' mr={2} onClick={submitPost}>

@@ -273,6 +273,7 @@ function CreatePost({data}) {
         .then(response => {
           console.log(response.data);
           toastIdRef.current = toast({ position: 'top', title: 'Create post successful!', status: 'success', duration: 3000, isClosable: true })
+          onClose()
           window.location.href = "/critique"
         })
         .catch(error => {
@@ -314,7 +315,7 @@ function CreatePost({data}) {
                 <ModalHeader fontFamily={'Raleway'}>Create Post</ModalHeader>
                 <ModalCloseButton />
                 <ModalBody >
-                    <Flex mb={5} flexDir={{lg: 'row', sm: 'column'}}>
+                    <Flex mb={5} flexDir={{lg: 'row', sm: 'column', base: 'column'}}>
                     <Box w={{lg: '24vw', sm: '100%'}}>
                     <Flex fontFamily={'Raleway'} mt='3vh' display='flex'>
                         <FormLabel>Title<Text fontSize="sm" color={useColorModeValue('gray', 'gray')}>(required)</Text></FormLabel>
@@ -322,7 +323,7 @@ function CreatePost({data}) {
                     </Flex>
 
                     <FormLabel fontFamily={'Raleway'} mt={2} display='flex'>Description<Text fontSize="sm" color={useColorModeValue('gray', 'gray')} ml={2}>(required)</Text></FormLabel>
-                    <Textarea borderColor={useColorModeValue('black', 'white')} fontFamily={'Raleway'} type='text' w={{lg: '23vw', sm: '100%'}} h='20vh' onChange={e => setDescription(e.target.value)} />
+                    <Textarea borderColor={useColorModeValue('black', 'white')} fontFamily={'Raleway'} type='text' w={{lg: '23vw', sm: '100%', base: "100%"}} h='20vh' onChange={e => setDescription(e.target.value)} />
                     <Flex mt={5}>
                         <FormLabel fontFamily={'Raleway'} mt={2}>Post this to: </FormLabel>
                         <Select  borderColor={useColorModeValue('black', 'white')} fontFamily={'Raleway'} w={{lg: '10vw', sm: '50vw'}} onChange={e => setHallID(e.target.value)}>
@@ -348,21 +349,25 @@ function CreatePost({data}) {
                     </Box>
                     
 
-                    <Center height='50vh' display={{lg: 'block', sm: 'none'}}>
-                        <Divider orientation='vertical' borderColor='black'/>
+                    <Center height={{lg: '50vh', base: '5vh'}} display={{lg: 'block', sm: 'none'}}>
+                        <Divider orientation={{lg: 'vertical', base: 'horizontal'}} borderColor='black'/>
                     </Center>
 
                     <Divider display={{lg: 'none', sm: 'block'}} my={5} borderColor='black'/>
                 
 
                     <Box ml='2vw' w={{lg: '25vw', sm: '100%'}} p={5}>
-                        <Flex flexDir={{lg: 'row', sm: 'column'}} w='30vw'>
+                        <Flex flexDir={{lg: 'row', sm: 'row', base: 'row'}} w='30vw'>
                             <Heading fontFamily={'Raleway'} size='sm' mr={3}>Attachments<Text fontSize="sm" color={useColorModeValue('gray', 'gray')}>Please click upload after you choose a file.</Text></Heading>
                             {/* <Button bg='blue.400' color='white' ml={5} h='2em'>upload</Button> */}
-                            <input type='file' multiple onChange={handleChange} accept=".jpg, .png, .docx, .xls" id='image-input' hidden />
-                            <Button fontFamily={'Raleway'} bg='yellow.400' color='black' _hover={{background: 'yellow.500'}} onClick={openInput} ml={2}>Choose <EditIcon ml={2} /></Button>
-                            <Image src='/question-icon.png' _hover={{cursor: 'pointer'}} alt="question icon" w="20px" h="20px" ml={2} mt={3}/>
-                            <Button fontFamily={'Raleway'} bg='blue.400' color='white' _hover={{background: 'blue.700'}} onClick={uploadFiles} ml={3}>Upload</Button>
+                            <Flex flexDir={{lg: 'row', sm: 'column', base: 'column'}}>
+                                <Flex>
+                                    <input type='file' multiple onChange={handleChange} accept=".jpg, .png, .docx, .xls" id='image-input' hidden />
+                                    <Button fontFamily={'Raleway'} bg='yellow.400' color='black' _hover={{background: 'yellow.500'}} onClick={openInput} ml={2}>Choose <EditIcon ml={2} /></Button>
+                                    <Image src='/question-icon.png' _hover={{cursor: 'pointer'}} alt="question icon" w="20px" h="20px" ml={2} mt={{lg: 3, base: 3}} mb={{lg: 0, base: 5}}/>
+                                </Flex>
+                            <Button fontFamily={'Raleway'} bg='blue.400' color='white' _hover={{background: 'blue.700'}} onClick={uploadFiles} ml={{lg: 3, base: 2}}>Upload</Button>
+                            </Flex>
                         </Flex>
                         <Flex bgColor={useColorModeValue('#F4F4F4', '#2E2E2E')} w={{lg: '34em', sm: '100%'}} h='10vh' rounded='md' overflowX='auto' mt={3}
                         css={{

@@ -228,12 +228,12 @@ export const Critiques = ({id, newCritique}) => {
 
     return (
         <div>
-            <Box display='flex'>
+            <Box display='flex' flexDir={{lg: 'row', base: 'column'}}>
                         <Image src={CritiqueTitle} w='25vh' h='5vh' />
                         <Spacer />
                         <Flex w={{lg: '15vw', sm: '50%'}} mt={1}>
-                        <Text fontFamily={'Raleway'} mr={{lg: 1, sm: 1}} w={28} mt={2}>Sort by:</Text>
-                        <Select borderColor={useColorModeValue('black', 'white')} fontFamily={'Raleway'} onChange={(e)=>sortCritique(e.target.value)}>
+                        <Text fontFamily={'Raleway'} mr={{lg: 1, sm: 1}} w={28} my={{lg: 2, base: 5}}>Sort by:</Text>
+                        <Select my={{lg: 0, base: 5}} borderColor={useColorModeValue('black', 'white')} fontFamily={'Raleway'} onChange={(e)=>sortCritique(e.target.value)}>
                             <option value='desc'>Newest</option>
                             <option value='asc'>Oldest</option>
                             <option value='most_stars'>Most Stars</option>

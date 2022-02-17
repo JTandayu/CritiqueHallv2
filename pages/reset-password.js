@@ -100,7 +100,7 @@ export default function ResetPassword({}){
           document.getElementById('warning2').removeAttribute('hidden');
           document.getElementById('warning1').hidden=true;
           return;
-        }else if (password == confirm_password){
+        }else if (password !== confirm_password){
           document.getElementById('warning1').removeAttribute('hidden');
           document.getElementById('warning2').hidden=true;
           return;

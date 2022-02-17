@@ -67,6 +67,11 @@ const EditCritique = ({data}) => {
         })
     }
 
+    const cancelEdit = () =>{
+        setCritique(data.body)
+        onClose()
+    }
+
     return (
         <>
             <Box onClick={onOpen} width='100%' justifyContent="flex-start" _hover={{bgColor: "none", cursor: "pointer"}}>Edit</Box>
@@ -79,7 +84,7 @@ const EditCritique = ({data}) => {
                     <ModalBody>
                         <Textarea fontFamily={'Raleway'} borderColor={useColorModeValue('black', 'white')} w='100%' h='70%' value={critique} onChange={(e)=>setCritique(e.target.value)} mb={5}></Textarea>
                         <Button fontFamily={'Raleway'} bgColor={useColorModeValue('#2777C1','#0085FF')} color={useColorModeValue('#FFFFFF', '#FFFFFF')} _hover={{bgColor: useColorModeValue('#56AEFF', '#0B5090')}} onClick={editCritiqueItem} mr={3}>Save</Button>
-                        <Button fontFamily={'Raleway'} bgColor={useColorModeValue('#C1272D', '#9E0B0F')} color={useColorModeValue('white', 'white')} _hover={{bgColor: useColorModeValue('#FF000A', '#470507')}} onClick={onClose}>Cancel</Button>
+                        <Button fontFamily={'Raleway'} bgColor={useColorModeValue('#C1272D', '#9E0B0F')} color={useColorModeValue('white', 'white')} _hover={{bgColor: useColorModeValue('#FF000A', '#470507')}} onClick={cancelEdit}>Cancel</Button>
                         
                     </ModalBody>
                 </ModalContent>

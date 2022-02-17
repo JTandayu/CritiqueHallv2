@@ -230,7 +230,7 @@ export default function SearchResult(){
             </Box>
             ))}
             <Heading mt={5} fontFamily={'Raleway'}  color={useColorModeValue('#1B1464', '#B2A3FF')}>Posts:</Heading>
-            <Flex w={{lg: '70%', sm: '100%'}} my="30px">
+            <Flex w={{lg: '70%', sm: '100%', base: "100%"}} my="30px" flexDir={{lg: 'row', base: 'column-reverse'}} alignItems="center">
 
                 <Pagination
                     defaultCurrent={5}
@@ -250,8 +250,8 @@ export default function SearchResult(){
                 />
                 <Spacer />
 
-                <Flex w='15vw' mt={1} fontFamily={'Raleway'}>
-                    <Text mr={5} w={28} mt={2} >Sort By: </Text>
+                <Flex w={{lg: '15vw', base: '60%'}} mt={1} mb={{lg: 0, base: 10}} fontFamily={'Raleway'}>
+                    <Text mr={{lg: 5, base: 0}} w={{lg: 28, base: '100%'}} mt={2} >Sort By: </Text>
                     <Select borderColor={useColorModeValue('black', 'white')} color={useColorModeValue('black', 'white')} bgColor={useColorModeValue('#FFFFFF', '#2E2E2E')} boxShadow={'lg'} onChange={(e) => sortPostResult(e.target.value)}>
                         <option value='desc'>Newest</option>
                         <option value='asc'>Oldest</option>

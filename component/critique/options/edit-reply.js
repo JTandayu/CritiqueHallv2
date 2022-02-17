@@ -68,6 +68,11 @@ const EditReply = ({data}) => {
         })
     }
 
+    const cancelEdit = () =>{
+        setReply(data.body)
+        onClose()
+    }
+
     return (
         <>
             <Box onClick={onOpen} width='100%' justifyContent="flex-start" _hover={{bgColor: "none", cursor: "pointer"}}>Edit</Box>
@@ -80,7 +85,7 @@ const EditReply = ({data}) => {
                     <ModalBody>
                         <Textarea borderColor={useColorModeValue('black', 'white')} fontFamily={'Raleway'} w='100%' h='70%' value={reply} onChange={(e)=>setReply(e.target.value)} mb={5}></Textarea>
                         <Button fontFamily={'Raleway'} bgColor={useColorModeValue('#2777C1','#0085FF')} color={useColorModeValue('#FFFFFF', '#FFFFFF')} _hover={{bgColor: useColorModeValue('#56AEFF', '#0B5090')}} mr={3} onClick={editReply}>Save</Button>
-                        <Button fontFamily={'Raleway'} bgColor={useColorModeValue('#C1272D', '#9E0B0F')} color={useColorModeValue('white', 'white')} _hover={{bgColor: useColorModeValue('#FF000A', '#470507')}} onClick={onClose}>Cancel</Button>
+                        <Button fontFamily={'Raleway'} bgColor={useColorModeValue('#C1272D', '#9E0B0F')} color={useColorModeValue('white', 'white')} _hover={{bgColor: useColorModeValue('#FF000A', '#470507')}} onClick={cancelEdit}>Cancel</Button>
                     </ModalBody>
                 </ModalContent>
             </Modal>

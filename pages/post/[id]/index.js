@@ -135,7 +135,7 @@ export default function CritiquePost(){
     const token = getCookie('token')
     const user_id = getCookie('encrypted_id')
     const display_name = getCookie('display_name')
-    
+
     const likes = null
     const [data, setData] = useState([])
     const [urls, setUrls] = useState([])
@@ -344,7 +344,7 @@ export default function CritiquePost(){
                 <Box  w={{lg: '50%', sm: '100%', base: "100%"}}  bg={useColorModeValue('white', '#212121')} h={{lg: "100%", sm: "100%"}} p={5} boxShadow='dark-lg' borderRadius={10} mt={28} ml={{lg: '3vw', base: 0}}>
                 <Heading fontFamily={'Raleway'} fontSize="xl" mx="auto" display="flex"><Image src={data.profile_photo} w="50px" h="50px" mr={3} borderRadius={10}/>
                 <Link href={`/profile/${data.display_name}`} passHref><Text fontFamily={'Raleway'} fontSize="xl" _hover={{cursor: 'pointer'}} mt={4}>{data.display_name}</Text></Link>
-                <Text fontFamily={'Raleway'} fontSize="md" ml={'65%'} color="gray.400" mt={5} isTruncated>{data.time_ago}</Text>
+                <Text fontFamily={'Raleway'} fontSize="md" ml={{lg:'65%', base: '10%'}} color="gray.400" mt={5} isTruncated>{data.time_ago}</Text>
                 {data.display_name == display_name ?
                         <Box id='sameAcc' >
                             <Menu>
@@ -396,26 +396,15 @@ export default function CritiquePost(){
                     </Heading>
                     {/* Description */}
                     <Box mt={5}>
-                        {/* <Heading size='md'>Description</Heading> */}
                         <Linkify>
                             <Text fontFamily={'Raleway'} fontSize='sm' textAlign={'justify'} w={{lg: '45vw', sm: '100%'}} mx='auto' mt={5}>{data.body}</Text>
                         </Linkify>
                     </Box>
 
                     <SRLWrapper options={options}>     
-                    {/* Image */}
-                    {/* <Flex ml={{lg: "10vh", sm: 5}} flexDir={{lg: "row", sm: 'column'}} mt={5}>
-                        <Image src={data.attachment1} w='50vh' h='40vh' />
-                        <Flex flexDir='column' spacing={5}>
-                            <Image src={data.attachment2} w='20vh' h='10vh' />
-                            <Image src={data.attachment3} w='20vh' h='10vh' />
-                            <Image src={data.attachment4} w='20vh' h='10vh' />
-                            <Image src={data.attachment5} w='20vh' h='10vh' />
-                        </Flex>
-                    </Flex> */}
                     { data.attachment1 != 'undefined' ?
                     [ data.attachment2 != 'undefined' ?
-                    <Flex ml={{lg: "10vh", sm: 5}} flexDir={{lg: "row", sm: 'column'}} mt={5}>
+                    <Flex ml={{lg: "10vh", sm: 5, base: 5}} flexDir={{lg: "row", sm: 'column'}} mt={5}>
                             {data.attachment1 != 'undefined' ? [ file1Doc != true || file1Doc != true ?
                                 <Image src={data.attachment1} w='50vh' h='40vh' cursor="pointer" objectFit='cover'/> :
                                 <Center p={10} w="full">
