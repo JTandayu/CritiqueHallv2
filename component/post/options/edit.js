@@ -167,10 +167,8 @@ function EditPost({data, url, fileNames}){
     }
 
     const closeModal = () =>{
-        setUrls(urlList)
-        setFileName(fileNameList)
-        console.log(urlList)
-        console.log(fileNameList)
+        setTitle(data.title)
+        setDescription(data.body)
         onClose()
     }
 

@@ -323,7 +323,7 @@ export default function Nav(data, profile_pic){
                 left='1rem'
                 onClick={() => changeDisplay('flex')}
             />
-            <Spacer />
+            <Spacer display={{lg: "none"}} />
             
             <Flex w='10em' h='3em' mx={[16,16,8,8]} mt={5}>
                 <Link href="/home" passHref>
@@ -331,7 +331,7 @@ export default function Nav(data, profile_pic){
                 </Link>
             </Flex>
 
-            <Spacer />
+            <Spacer display={{lg: "block", md: "none", base: "none"}} />
             <Popover >
                     <PopoverTrigger>
                         <Button as='a'

@@ -78,6 +78,7 @@ function EditProfile({data}) {
     const [lastName, setLastName] = useState(data.last_name)
     const [displayName, setDisplayName] = useState(data.display_name)
     const [aboutMe, setAboutMe] = useState(data.about_me)
+
     const [currentPassword, setCurrentPassword] = useState('')
     const [newPassword, setNewPassword] = useState('')
     const [confirmNewPassword, setConfirmNewPassword] = useState('')
@@ -112,6 +113,21 @@ function EditProfile({data}) {
           'Token': token,
           'User-Id': user_id
         }
+    }
+
+    const cancelChange = () => {
+        
+        setProfileImageUrl(data.profile_photo)
+        setCoverImageUrl(data.cover_photo)
+        setFirstName(data.first_name)
+        setLastName(data.last_name)
+        setDisplayName(data.display_name)
+        setAboutMe(data.about_me)
+        setCurrentPassword('')
+        setNewPassword('')
+        setConfirmNewPassword('')
+        setConfirmPassword('')
+        onClose();
     }
 
     // console.log(data);
@@ -276,6 +292,7 @@ function EditProfile({data}) {
                 duration: 3000,
                 isClosable: true,
               })
+              onClose();
             router.reload();
         }).catch((error) => {
             if(error.response.data.message == "<p>The About Me field cannot exceed 255 characters…>\n<p>The Confirm Password field is required.</p>\n" ){
@@ -326,6 +343,7 @@ function EditProfile({data}) {
                 duration: 3000,
                 isClosable: true,
               })
+              onClose();
               router.reload();
             }).catch((error) => {
             toastIdRef.current = toast({ position: 'top', title: 'Error, Please try again!', status: 'error', duration: 3000, isClosable: true }),
@@ -459,7 +477,7 @@ function EditProfile({data}) {
 
                 <ModalFooter>
                     {/* <Button colorScheme='blue' mr={3}>Save</Button> */}
-                    <Button fontFamily={'Raleway'} bgColor={useColorModeValue('#C1272D', '#9E0B0F')} color={useColorModeValue('white', 'white')} _hover={{bgColor: useColorModeValue('#FF000A', '#470507')}}  onClick={onClose}>
+                    <Button fontFamily={'Raleway'} bgColor={useColorModeValue('#C1272D', '#9E0B0F')} color={useColorModeValue('white', 'white')} _hover={{bgColor: useColorModeValue('#FF000A', '#470507')}}  onClick={cancelChange}>
                     Cancel
                     </Button>
                 </ModalFooter>

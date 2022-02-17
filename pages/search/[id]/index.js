@@ -211,15 +211,15 @@ export default function SearchResult(){
             {/* User item */}
             <Text id='user' mx='auto' my="50px" hidden fontFamily={'Raleway'} color={changeColor2}>No Users Found</Text> 
             {searchUserData.map((user, i) => (
-            <Box w='50%' key={user.user_id} bgImage={`url('${user.cover_photo}')`} bgSize="cover" color="white" mt={5} rounded="lg">
+            <Box w={{lg: '50%', base: "100%"}} key={user.user_id} bgImage={`url('${user.cover_photo}')`} bgSize="cover" color="white" mt={5} rounded="lg">
             <Link href="/profile/[id]" as={`/profile/${user.display_name}`} passHref>
                 <a>
-                <Box w={{lg: '100%', sm: '100%'}} display={{lg: 'flex', sm: 'block'}}   mt='2ch' mx="auto" borderColor='dark' rounded='lg' fontFamily={'Raleway'}>
-                    <Box p="3" w="100%" bg="light" ml="30px">
-                        <Image src={user.profile_photo} w='170px' h='170px' rounded='full' />
+                <Box w={{lg: '100%', sm: '100%'}} display={{lg: 'flex', sm: 'block'}} flexDir={{lg: "row", base: "column"}}  mt='2ch' mx="auto" borderColor='dark' rounded='lg' fontFamily={'Raleway'}>
+                    <Box p="3" w="100%" bg="light" ml={{lg: "30px", base: 0}}>
+                        <Image src={user.profile_photo} w='170px' h='170px' rounded='full'/>
                     </Box>
                     <Spacer />
-                    <Box p="3" w="100%" bg="light" ml="20vh">
+                    <Box p="3" w="100%" bg="light" ml={{lg: "20vh", base: 0}}>
                         <Heading fontFamily={'Raleway'} fontWeight={'black'} size='2xl' textShadow='2px 2px #000' mt={28} display="flex">{user.display_name}{user.reputation_points >= 10 ? <Image src={changeBadgeIcon} alt="Badge Icon" w="50px" h="50px" ml={5}/> : null}</Heading>
                         
                     </Box>      
@@ -264,10 +264,10 @@ export default function SearchResult(){
             <Text id='post' mx='auto' hidden fontFamily={'Raleway'} color={changeColor2}>No Posts Found</Text>
             
             {currentSearch.map((post, i) => (
-            <Box bgColor={changeColor} w={{lg: '70%', sm: '100%'}} mt='2ch' mx="auto" key={post.post_id} display="flex" boxShadow='lg' rounded='lg' fontFamily={'Raleway'}>
+            <Box bgColor={changeColor} w={{lg: '70%', sm: '100%'}} mt='2ch' mx="auto" key={post.post_id} display="flex" flexDir={{lg: "row", base: "column"}} boxShadow='lg' rounded='lg' fontFamily={'Raleway'}>
                                 <Link href='/post/[id]'  as={`/post/${post.post_id}`} passHref>
                                 <a>
-                                <Box display={{lg: 'flex', sm: 'block'}} w={{lg: "50vw", sm: '100%'}}>
+                                <Box display={{lg: 'flex', sm: 'block', base: "block"}} w={{lg: "50vw", sm: '100%'}}>
                                     <Box fontFamily={'Raleway'} p="3" w="100%" bg="light" my='auto'>
                                         <Center>
                                         {/* <Text >{post.hall_id}</Text> */}
@@ -278,20 +278,20 @@ export default function SearchResult(){
                                         </Box>
                                         </Center>
                                     </Box>
-                                    <Box p="3" w="100%" bg="light" my='auto'  ml={'20%'} mr={'20%'}>
+                                    <Box p="3" w="100%" bg="light" my='auto'  ml={{lg: '20%', base: 0}} mr={{lg: '20%', base: 0}}>
                                         <Center>
                                         {post.attachment1 != 'undefined' ? 
-                                        <Image src={post.attachment1} w={{lg: '10vw', sm:'100%'}} h={{lg: '10vh', sm: '20vh'}} onError={addDefaultSrc} borderRadius={10} objectFit='cover'/>
-                                        : <Image src="/no-image-attachment.png" w={{lg: '10vw', sm:'100%'}} h={{lg: '10vh', sm: '20vh'}} borderRadius={10} objectFit='cover'/>}
+                                        <Image src={post.attachment1} w={{lg: '10vw', sm:'100%', base: "100%"}} h={{lg: '10vh', sm: '20vh'}} onError={addDefaultSrc} borderRadius={10} objectFit='cover'/>
+                                        : <Image src="/no-image-attachment.png" w={{lg: '10vw', sm:'100%', base: "100%"}} h={{lg: '10vh', sm: '20vh'}} borderRadius={10} objectFit='cover'/>}
                                         {post.attachment2 != 'undefined' ? 
-                                        <Image src={post.attachment2} w={{lg: '10vw', sm:'100%'}} h={{lg: '10vh', sm: '20vh'}} onError={addDefaultSrc} borderRadius={10} objectFit='cover'/>
+                                        <Image src={post.attachment2} w={{lg: '10vw', sm:'100%'}} display={{lg: "block", base: "none"}} h={{lg: '10vh', sm: '20vh'}} onError={addDefaultSrc} borderRadius={10} objectFit='cover'/>
                                         : null}
                                         {post.attachment3 != 'undefined' ? 
-                                        <Image src={post.attachment3} w={{lg: '10vw', sm:'100%'}} h={{lg: '10vh', sm: '20vh'}} onError={addDefaultSrc} borderRadius={10} objectFit='cover'/>
+                                        <Image src={post.attachment3} w={{lg: '10vw', sm:'100%'}} display={{lg: "block", base: "none"}} h={{lg: '10vh', sm: '20vh'}} onError={addDefaultSrc} borderRadius={10} objectFit='cover'/>
                                         : null}
                                         </Center>
                                     </Box>
-                                    <Box fontFamily={'Raleway'} p="3" w="20%" bg="light" my='auto'>
+                                    <Box fontFamily={'Raleway'} p="3" w={{lg: "20%", base: "100%"}} mr={{lg: "1em"}} bg="light" my='auto'>
                                         <Center>
                                         <Text isTruncated>{post.title}</Text>
                                         </Center>
