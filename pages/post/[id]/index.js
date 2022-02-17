@@ -135,8 +135,7 @@ export default function CritiquePost(){
     const token = getCookie('token')
     const user_id = getCookie('encrypted_id')
     const display_name = getCookie('display_name')
-    console.log(token)
-    console.log(user_id)
+    
     const likes = null
     const [data, setData] = useState([])
     const [urls, setUrls] = useState([])

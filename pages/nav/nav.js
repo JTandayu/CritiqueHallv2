@@ -313,7 +313,7 @@ export default function Nav(data, profile_pic){
     return(
     <>
     <Flex boxShadow='md' w='100%' h='100px' bg={useColorModeValue('white', '#212121')} pos='fixed' zIndex={100}> 
-        <IconButton
+            <IconButton
                 aria-label='Open Menu'
                 size='lg'
                 my='auto'
@@ -323,13 +323,59 @@ export default function Nav(data, profile_pic){
                 left='1rem'
                 onClick={() => changeDisplay('flex')}
             />
+            <Spacer />
             
-            <Flex w='10em' h='3em' ml={[32,32,16,16]} mt={5}>
+            <Flex w='10em' h='3em' mx={[16,16,8,8]} mt={5}>
                 <Link href="/home" passHref>
                 <Img className={styles.critique_logo} src={useColorModeValue('/critiquehall2.png', '/critiquehall2-dark.png')} alt="Critique Hall Logo" w="10em" h="3em" _hover={{cursor:'pointer'}}></Img>
                 </Link>
             </Flex>
+
             <Spacer />
+            <Popover >
+                    <PopoverTrigger>
+                        <Button as='a'
+                            variant='ghost'
+                            aria-label='Home'
+                            my={2}
+                            w='20%'
+                            position='static'
+                            color={useColorModeValue('#1B1464')}
+                            _hover={{cursor:'pointer', textDecoration:'underline'}}
+                            _active={{bgColor: 'none', textDecoration:'underline'}}
+                            display={{lg: "none", md: "none", base: "block"}}
+                            onClick={readNotif}
+                        ><Img className={styles.darkicon2} src={useColorModeValue('/notification-alert-icon.png', '/notification-alert-icon-dark.png')} alt="Notification" w="2em" h="2em" ml={-5}/></Button>
+                    </PopoverTrigger>
+                    <PopoverContent>
+                        <PopoverArrow />
+                        <PopoverCloseButton />
+                        <PopoverHeader fontFamily={'Raleway'}>Notifications</PopoverHeader>
+                        <PopoverBody fontFamily={'Raleway'} overflowY="auto" h='30vh' css={{
+                            '&::-webkit-scrollbar': {
+                            width: '4px',
+                            },
+                            '&::-webkit-scrollbar-track': {
+                            width: '6px',
+                            },
+                            '&::-webkit-scrollbar-thumb': {
+                            background: '#212121',
+                            borderRadius: '24px',
+                            },
+                        }}>
+                            {notif.map((notification, i) =>
+                            <Box key={i} display='flex' w="full" p={5}>
+                                {notification.profile_photo ? <Img src={notification.profile_photo} mr={3} w="25px" h="25px" alt="Notification Image" /> : null}
+                                <Text mr={3} fontFamily={'Raleway'}>{notification.display_name}</Text>
+                                <Text mr={2} fontFamily={'Raleway'}>{notification.action}</Text>
+                                <Text w="full" fontFamily={'Raleway'} isTruncated>{notification.title}</Text>
+                            <Divider />
+                            </Box>
+                            )}
+                        </PopoverBody>
+                    </PopoverContent>
+                </Popover>
+            
             <Flex
             pos='fixed'
             top='1rem'
