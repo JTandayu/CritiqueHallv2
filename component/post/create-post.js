@@ -38,6 +38,17 @@ import { getDownloadURL, ref, uploadBytesResumable, deleteObject  } from 'fireba
 import React from "react";
 import { getCookie } from 'cookies-next'
 import { EditIcon } from "@chakra-ui/icons";
+import {
+    Popover,
+    PopoverTrigger,
+    PopoverContent,
+    PopoverHeader,
+    PopoverBody,
+    PopoverFooter,
+    PopoverArrow,
+    PopoverCloseButton,
+    PopoverAnchor,
+  } from '@chakra-ui/react'
 
 
 const breakpoints = createBreakpoints({
@@ -364,7 +375,23 @@ function CreatePost({data}) {
                                 <Flex>
                                     <input type='file' multiple onChange={handleChange} accept=".jpg, .png, .docx, .xls" id='image-input' hidden />
                                     <Button fontFamily={'Raleway'} bg='yellow.400' color='black' _hover={{background: 'yellow.500'}} onClick={openInput} ml={2}>Choose <EditIcon ml={2} /></Button>
+                                    <Popover trigger="hover">
+                                    <PopoverTrigger>
                                     <Image src='/question-icon.png' _hover={{cursor: 'pointer'}} alt="question icon" w="20px" h="20px" ml={2} mt={{lg: 3, base: 3}} mb={{lg: 0, base: 5}}/>
+                                    </PopoverTrigger>
+                                    <PopoverContent w="100%">
+                                    <PopoverArrow /> 
+                                    {/* <PopoverCloseButton color={useColorModeValue('black', 'white')}/> */}
+                                    <PopoverBody>
+                                        <Text fontSize="md" fontFamily={'Raleway'} color={useColorModeValue('black', 'white')} align="justify" p={3}>Supported file formats:</Text>
+                                        <Box display="flex"><Text fontSize="md" fontStyle={"italic"} fontFamily={'Raleway'} color={useColorModeValue('black', 'white')} align="justify" p={2}>Text:</Text> <Text fontSize="md" fontFamily={'Raleway'} color={useColorModeValue('black', 'white')} align="justify" p={2}> txt | pdf | docx</Text></Box>
+                                        <Box display="flex"><Text fontSize="md" fontStyle={"italic"} fontFamily={'Raleway'} color={useColorModeValue('black', 'white')} align="justify" p={2}>Audio:</Text> <Text fontSize="md" fontFamily={'Raleway'} color={useColorModeValue('black', 'white')} align="justify" p={2}> mp3 | wav | mpeg | flac</Text></Box>
+                                        <Box display="flex"><Text fontSize="md" fontStyle={"italic"} fontFamily={'Raleway'} color={useColorModeValue('black', 'white')} align="justify" p={2}>Commonly in Arts hall:</Text> <Text fontSize="md" fontFamily={'Raleway'} color={useColorModeValue('black', 'white')} align="justify" p={1} mt={1}> psd | ai | svg</Text></Box>
+                                        <Box display="flex"><Text fontSize="md" fontStyle={"italic"} fontFamily={'Raleway'} color={useColorModeValue('black', 'white')} align="justify" p={2}>Commonly in Business hall:</Text> <Text fontSize="md" fontFamily={'Raleway'} color={useColorModeValue('black', 'white')} align="justify" p={2}>xlsx</Text></Box>
+                                        <Box display="flex"><Text fontSize="md" fontStyle={"italic"} fontFamily={'Raleway'} color={useColorModeValue('black', 'white')} align="justify" p={2}>Commonly in Technology hall:</Text> <Text fontSize="md" fontFamily={'Raleway'} color={useColorModeValue('black', 'white')} align="justify" p={2}>html | css | php | js</Text></Box>
+                                        </PopoverBody>
+                                    </PopoverContent> 
+                                    </Popover>
                                 </Flex>
                             <Button fontFamily={'Raleway'} bg='blue.400' color='white' _hover={{background: 'blue.700'}} onClick={uploadFiles} ml={{lg: 3, base: 2}}>Upload</Button>
                             </Flex>

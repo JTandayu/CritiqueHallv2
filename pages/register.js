@@ -27,6 +27,7 @@ import { useCookies } from 'react-cookie';
 import React from 'react';
 import { useToast, Checkbox, CheckboxGroup } from '@chakra-ui/react';
 import TermsAndConditions from '@component/terms-and-conditions';
+import PrivacyPolicy from '@component/privacy-policy';
 import { getCookie, setCookies } from 'cookies-next'
 import { useRouter } from 'next/router';
 
@@ -313,35 +314,39 @@ export default function Register({data2}) {
               </Center>
             </Box>
 
-            <SimpleGrid columns={{lg: 2, base: 1}} spacing={{lg: 10, base: 2}}>
+            <SimpleGrid columns={{lg: 2, base: 1}} spacing={{lg: 3, base: 2}}>
             {/* <Heading fontFamily={'Raleway'} mb={2} as="h2" size="lg"color={useColorModeValue('#C1272D','#FF5C61')}>REGISTER</Heading> */}
                 <Box>
                 <FormLabel>First Name</FormLabel>
-                <Input size={{lg: 'lg', base: 'sm'}} width={{lg:'35vh', base: '100%'}} borderColor={useColorModeValue('black', 'white')} className={styles.input_box} type="text" value={first_name} onChange={e => setFirstName(e.target.value)}/>
+                <Input size={{lg: 'lg', base: 'sm'}} width={{lg:'35vh', base: '90%'}} borderColor={useColorModeValue('black', 'white')} className={styles.input_box} type="text" value={first_name} onChange={e => setFirstName(e.target.value)}/>
                 </Box>
                 <Box>
                 <FormLabel>Last Name</FormLabel>
-                <Input size={{lg: 'lg', base: 'sm'}} width={{lg:'35vh', base:'100%'}} borderColor={useColorModeValue('black', 'white')}  className={styles.input_box} type="text" value={last_name} onChange={e => setLastName(e.target.value)}/>
+                <Input size={{lg: 'lg', base: 'sm'}} width={{lg:'35vh', base:'90%'}} borderColor={useColorModeValue('black', 'white')}  className={styles.input_box} type="text" value={last_name} onChange={e => setLastName(e.target.value)}/>
                 </Box>
                 <Box>
                 <FormLabel>Display Name</FormLabel>
-                <Input size={{lg: 'lg', base: 'sm'}} width={{lg:'35vh', base: '100%'}} borderColor={useColorModeValue('black', 'white')}  className={styles.input_box} type="text" value={user_name} onChange={e => setUserName(e.target.value)}/>
+                <Input size={{lg: 'lg', base: 'sm'}} width={{lg:'35vh', base: '90%'}} borderColor={useColorModeValue('black', 'white')}  className={styles.input_box} type="text" value={user_name} onChange={e => setUserName(e.target.value)}/>
                 </Box>
                 <Box>
                 <FormLabel>Email</FormLabel>
-                <Input size={{lg: 'lg', base: 'sm'}} width={{lg:'35vh', base: '100%'}} borderColor={useColorModeValue('black', 'white')} className={styles.input_box} type="text" value={email} onChange={e => setEmail(e.target.value)}/>
+                <Input size={{lg: 'lg', base: 'sm'}} width={{lg:'35vh', base: '90%'}} borderColor={useColorModeValue('black', 'white')} className={styles.input_box} type="text" value={email} onChange={e => setEmail(e.target.value)}/>
                 </Box>
                 {/* <FormHelperText className={styles.helperText}>format: ***@iacademy.edu.ph</FormHelperText> */}
                 {/* <br/> */}
                 <Box>
                 <FormLabel>Password</FormLabel>
-                <Input size={{lg: 'lg', base: 'sm'}} width={{lg:'35vh', base: '100%'}} borderColor={useColorModeValue('black', 'white')} className={styles.input_box} type="password" value={password} onChange={e => setPassword(e.target.value)}/>
+                <Input size={{lg: 'lg', base: 'sm'}} width={{lg:'35vh', base: '90%'}} borderColor={useColorModeValue('black', 'white')} className={styles.input_box} type="password" value={password} onChange={e => setPassword(e.target.value)}/>
                 </Box>
                 <Box>
                 <FormLabel>Confirm Password</FormLabel>
-                <Input size={{lg: 'lg', base: 'sm'}} width={{lg:'35vh', base: '100%'}} borderColor={useColorModeValue('black', 'white')}  className={styles.input_box} type="password" value={confirm_password} onChange={e => setConfirmPassword(e.target.value)}/>
+                <Input size={{lg: 'lg', base: 'sm'}} width={{lg:'35vh', base: '90%'}} borderColor={useColorModeValue('black', 'white')}  className={styles.input_box} type="password" value={confirm_password} onChange={e => setConfirmPassword(e.target.value)}/>
                 </Box>
                 <Box>
+                <FormLabel>What program or strand are you specializing in?</FormLabel>
+                <Input size={{lg: 'lg', base: 'sm'}} width={{lg:'35vh', base: '90%'}} placeholder="e.g. AB in Multimedia Arts and Design or HUMSS" borderColor={useColorModeValue('black', 'white')}  className={styles.input_box} type="text"/>
+                </Box>
+                {/* <Box>
                 <FormLabel>Department</FormLabel>
                 <Select size={{lg: 'lg', base: 'sm'}} width={{lg:'35vh', base: '100%'}} borderColor={useColorModeValue('black', 'white')} borderRadius="lg" className={styles.input_select}  onChange={e => getSpecList(e.target.value)}>
                   <option value="" disabled selected>Choose</option>
@@ -349,8 +354,8 @@ export default function Register({data2}) {
                     <option disabled={department.name === "College" || department.name === "Senior High School" || department.name === "Faculty" ? true : null} value={department.name} key={i}>{department.name}</option>
                   ))}
                 </Select>
-                </Box>
-                <Box>
+                </Box> */}
+                {/* <Box>
                 <FormLabel display="flex">Strand or Specialization</FormLabel>
                 <Select size={{lg: 'lg', base: 'sm'}} width={{lg:'35vh', base: '100%'}} borderColor={useColorModeValue('black', 'white')} borderRadius="lg"  className={styles.input_select} onChange={e => setSpecialization(e.target.value)}>
                 <option value="" disabled selected>Choose</option>
@@ -358,13 +363,12 @@ export default function Register({data2}) {
                   <option value={specialization.name} key={i}>{specialization.name}</option>
                 ))}
                 </Select>
-                </Box>
-                <Box>
-                <Checkbox size="lg" onChange={handleClick} checked={tnc}><Text display="flex" ml={1}>I accept the <Box ml={1}><TermsAndConditions /></Box></Text></Checkbox> 
-                </Box>
+                </Box> */}  
           </SimpleGrid>
-                <Box>
-                <Button
+                <Box mt={5}>
+                <Checkbox size={"md"} onChange={handleClick} checked={tnc}><Text display="flex" fontSize={{lg: "md", base: "sm"}} ml={1}>I accept the <Box ml={{lg: 1, base: 1}}><TermsAndConditions />
+                </Box></Text><Text display="flex" fontSize={{lg: "md", base: "sm"}} ml={{lg: 1, base: 1}}>and<Box ml={{lg: 1, base: 1}}><PrivacyPolicy /></Box></Text></Checkbox> 
+                <Center><Button
                   // whileHover={{ scale: 1.2 }}
                   // whileTap={{ scale: 0.9 }}
                   className={styles.RegisterButton} 
@@ -377,8 +381,8 @@ export default function Register({data2}) {
                   onClick={submitRegister}
                   >
                 Submit
-                </Button>
-                <Link href="/" passHref><Text _hover={{cursor:'pointer', textDecoration: 'underline'}} fontSize='lg' color={useColorModeValue('#1BA3C1', '#1BA3C1')} mt={5}><a>Back to Login</a></Text></Link>
+                </Button></Center>
+                <Link href="/" passHref><Text _hover={{cursor:'pointer', textDecoration: 'underline'}} fontSize={{lg: "lg", base: "sm"}} color={useColorModeValue('#1BA3C1', '#1BA3C1')} mt={5}><a>Back to Login</a></Text></Link>
                 </Box>
                 </Box>
 
