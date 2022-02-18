@@ -16,7 +16,7 @@ export default function PrivacyPolicy() {
     const { isOpen, onOpen, onClose } = useDisclosure()
     return (
         <>
-        <Text fontFamily={'Raleway'} _hover={{cursor: 'pointer', textDecoration: 'underline'}} color={useColorModeValue('#1BA3C1', '#1BA3C1')}><a onClick={onOpen}>Privacy Policy.</a></Text>
+        <Text fontFamily={'Raleway'} _hover={{cursor: 'pointer', textDecoration: 'underline'}} color={useColorModeValue('#1BA3C1', '#1BA3C1')}><a onClick={onOpen}>Privacy Policy</a></Text>
         <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent maxW={{lg: "40em", base: "20em"}} h={'80vh'} overflowY="auto" css={{
