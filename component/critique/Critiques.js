@@ -293,10 +293,6 @@ export const Critiques = ({id, newCritique}) => {
                                         <MenuGroup>
                                             <MenuItem fontFamily={'Raleway'}><DeleteCritique id={critique.critique_id} /></MenuItem>
                                         </MenuGroup>
-                                        <MenuDivider />
-                                        <MenuGroup>
-                                            <MenuItem fontFamily={'Raleway'}><ReportCritique id={critique.critique_id} /></MenuItem>
-                                        </MenuGroup>
                                         </MenuList>
                                     </Menu>
                                 </Flex>
