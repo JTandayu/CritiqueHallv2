@@ -169,6 +169,10 @@ export const CritiqueReply = ({id, post_id, newReply}) => {
                                     <MenuGroup>
                                         <MenuItem fontFamily={'Raleway'}><DeleteReply id={reply.reply_id} /></MenuItem>
                                     </MenuGroup>
+                                    <MenuDivider />
+                                    <MenuGroup>
+                                        <MenuItem fontFamily={'Raleway'}><ReportReply id={reply.reply_id} /></MenuItem>
+                                    </MenuGroup>
                                     </MenuList>
                                 </Menu>
                             </Flex>
