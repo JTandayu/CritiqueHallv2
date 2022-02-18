@@ -361,7 +361,7 @@ export default function CritiquePost(){
                                 </MenuGroup>
                                 <MenuDivider />
                                 <MenuGroup>
-                                    <MenuItem><EditHistory id={data.post_id} /></MenuItem>
+                                    <MenuItem fontFamily={'Raleway'} fontSize='md'><EditHistory id={data.post_id} /></MenuItem>
                                 </MenuGroup>
                                 <MenuDivider />
                                 <MenuGroup>
@@ -382,11 +382,11 @@ export default function CritiquePost(){
                                 </MenuButton>
                                 <MenuList p={3}>
                                 <MenuGroup>
-                                    <MenuItem><EditHistory id={data.post_id} /></MenuItem>
+                                    <MenuItem fontFamily={'Raleway'} fontSize='md'><EditHistory id={data.post_id} /></MenuItem>
                                 </MenuGroup>
                                 <MenuDivider />
                                 <MenuGroup >
-                                    <MenuItem><ReportPost id={data.post_id} /></MenuItem>
+                                    <MenuItem fontFamily={'Raleway'} fontSize='md'><ReportPost id={data.post_id} /></MenuItem>
                                 </MenuGroup>
                                 </MenuList>
                             </Menu>

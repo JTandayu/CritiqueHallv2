@@ -349,6 +349,7 @@ export default function HallPage(){
                         px={4}
                         py={2}
                         w="100%"
+                        fontFamily={"Raleway"}
                         onChange={(e) => getPostDropDown(e.target.value)} value={hall} defaultValue="0">
                     <option value="0">All</option>
                     {hallList.map((halls) => 
