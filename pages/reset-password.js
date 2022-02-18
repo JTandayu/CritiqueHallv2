@@ -96,16 +96,6 @@ export default function ResetPassword({}){
         formData.append('token', token);
         formData.append('user_id', userId);
 
-        if (password == '' || confirm_password == ''){
-          document.getElementById('warning2').removeAttribute('hidden');
-          document.getElementById('warning1').hidden=true;
-          return;
-        }else if (password !== confirm_password){
-          document.getElementById('warning1').removeAttribute('hidden');
-          document.getElementById('warning2').hidden=true;
-          return;
-        }
-  
         const config = {
           headers: { 
             'content-type': 'multipart/form-data',
@@ -116,7 +106,16 @@ export default function ResetPassword({}){
 
           }
         }
-  
+
+        if (password == '' || confirm_password == ''){
+          document.getElementById('warning2').removeAttribute('hidden');
+          document.getElementById('warning1').hidden=true;
+          return;
+        }else if (password !== confirm_password){
+          document.getElementById('warning1').removeAttribute('hidden');
+          document.getElementById('warning2').hidden=true;
+          return;
+        }else{
         axios.post(`${API_URL}/api/reset_password`, formData, config)
         .then(response => {
             toastIdRef.current = toast({ title: 'Reset Password Successful!', description: 'Please login with your new password.', status: 'success', duration: 2000, isClosable: true })
@@ -128,6 +127,7 @@ export default function ResetPassword({}){
             console.log(error.reponse);
             // window.location = "/reset-password"
         });
+      }
     }
 
     return(
