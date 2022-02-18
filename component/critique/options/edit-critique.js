@@ -78,7 +78,18 @@ const EditCritique = ({data}) => {
 
             <Modal isOpen={isOpen} onClose={onClose}>
                 <ModalOverlay />
-                    <ModalContent maxW="40rem" h='40vh'>
+                    <ModalContent maxW="40rem" h='40vh' overflowY="auto" css={{
+                            '&::-webkit-scrollbar': {
+                            width: '4px',
+                            },
+                            '&::-webkit-scrollbar-track': {
+                            width: '6px',
+                            },
+                            '&::-webkit-scrollbar-thumb': {
+                            background: '#212121',
+                            borderRadius: '24px',
+                            },
+                        }}>
                     <ModalHeader fontFamily={'Raleway'}>Edit Critique</ModalHeader>
                     <ModalCloseButton />
                     <ModalBody>

@@ -64,7 +64,18 @@ const DeleteReply = ({id}) => {
           
             <Modal isOpen={isOpen} onClose={onClose}>
                 <ModalOverlay />
-                    <ModalContent maxW="40rem" h='20vh'>
+                    <ModalContent maxW="40rem" h='20vh' overflowY="auto" css={{
+                            '&::-webkit-scrollbar': {
+                            width: '4px',
+                            },
+                            '&::-webkit-scrollbar-track': {
+                            width: '6px',
+                            },
+                            '&::-webkit-scrollbar-thumb': {
+                            background: '#212121',
+                            borderRadius: '24px',
+                            },
+                        }}>
                     <ModalHeader fontFamily={'Raleway'}>Delete Reply</ModalHeader>
                     <ModalCloseButton />
                     <ModalBody fontFamily={'Raleway'}>
