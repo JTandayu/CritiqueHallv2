@@ -118,7 +118,7 @@ export default function ResetPassword({}){
         }else{
         axios.post(`${API_URL}/api/reset_password`, formData, config)
         .then(response => {
-            toastIdRef.current = toast({ title: 'Reset Password Successful!', description: 'Please login with your new password.', status: 'success', duration: 2000, isClosable: true })
+            toastIdRef.current = toast({position: 'top', title: 'Reset Password Successful!', description: 'Please login with your new password.', status: 'success', duration: 2000, isClosable: true })
             console.log(response);
             router.replace('/login')
         })
