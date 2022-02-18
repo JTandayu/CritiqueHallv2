@@ -366,7 +366,7 @@ export default function Register({data2}) {
                 </Box> */}  
           </SimpleGrid>
                 <Box mt={5}>
-                <Checkbox size={"md"} onChange={handleClick} checked={tnc}><Text display="flex" fontSize={{lg: "md", base: "sm"}} ml={1}>I accept the <Box ml={{lg: 1, base: 1}}><TermsAndConditions />
+                <Checkbox colorScheme='green' size={"md"} onChange={handleClick} checked={tnc}><Text display="flex" fontSize={{lg: "md", base: "sm"}} ml={1}>I have read and accept the <Box ml={{lg: 1, base: 1}}><TermsAndConditions />
                 </Box></Text><Text display="flex" fontSize={{lg: "md", base: "sm"}} ml={{lg: 1, base: 1}}>and<Box ml={{lg: 1, base: 1}}><PrivacyPolicy /></Box></Text></Checkbox> 
                 <Center><Button
                   // whileHover={{ scale: 1.2 }}
