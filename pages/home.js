@@ -169,7 +169,7 @@ function Home(){
         <Box w="100%" bgColor={useColorModeValue("#E7E7E7", "#2E2E2E")}>
                 <Center>
                 <Text fontFamily={'Raleway'} fontSize={{lg: 'md', base: 'xs'}} fontWeight={'bold'} mt={{lg: 10, base: 3}} mb={1}><PrivacyPolicy /></Text>
-                <Text fontFamily={'Raleway'} fontSize={{lg: 'md', base: 'xs'}} fontWeight={'bold'} mt={{lg: 10, base: 3}} ml={{lg: '5%', base: 5}} mb={1}><TermsAndConditions /></Text>
+                <Text fontFamily={'Raleway'} fontSize={{lg: 'md', base: 'xs'}} fontWeight={'bold'} mt={{lg: 10, base: 3}} ml={{lg: '2%', base: 5}} mb={1}><TermsAndConditions /></Text>
                 </Center>
                 </Box>
         <Box w="100%" bgColor={useColorModeValue("#E7E7E7", "#2E2E2E")}>
