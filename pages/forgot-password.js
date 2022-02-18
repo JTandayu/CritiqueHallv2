@@ -172,9 +172,9 @@ export default function ForgotPassword(){
                 </Popover> */}
             </FormControl></center>
 
-            <p className={styles.register}>
-            <Link href="/" passHref><Text _hover={{cursor:'pointer'}} fontSize='lg' color={useColorModeValue('#1BA3C1', '#1BA3C1')}>Back to Login</Text></Link>
-            </p>
+            
+            <Link href="/" passHref><Text _hover={{cursor:'pointer', textDecoration: 'underline'}} fontSize={{lg: "lg", base: "sm"}} color={useColorModeValue('#1BA3C1', '#1BA3C1')} mt={5}>Back to Login</Text></Link>
+          
             </center>
 
         </Box>
