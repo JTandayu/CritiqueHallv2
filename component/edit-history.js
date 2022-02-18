@@ -74,7 +74,7 @@ function EditHistory({id}) {
                 <ModalHeader fontFamily={'Raleway'}>Edit History</ModalHeader>
                 <ModalCloseButton />
                 <ModalBody fontFamily={'Raleway'}>
-                {data.length != 0 ?
+                {/* {data.length != 0 ?
                         data.map((history, i) => 
                             <Box key={i} w="full">
                                 <Center display="flex" flexDir="column">
@@ -88,7 +88,7 @@ function EditHistory({id}) {
                                 </Center>
                             </Box>
                         )
-                    : <Text fontFamily={'Raleway'} color="black">There is nothing in here...</Text>}
+                    : <Text fontFamily={'Raleway'} color="black">There is nothing in here...</Text>} */}
                 </ModalBody>
             </ModalContent>
         </Modal>
