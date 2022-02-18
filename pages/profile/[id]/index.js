@@ -304,7 +304,7 @@ export default function ProfilePage({}){
                     </Flex>
                 </Box>
                 {loading ? 
-                <Box display='flex' h={{lg: '30vh', sm: '40vh', base: '42vh'}} w={{lg: '100%', base: "90%" }} p={3} mt={5} ml={3} mr={3}  rounded='lg' overflowX='auto' css={{
+                <Box display='flex' h={{lg: '30vh', sm: '40vh', base: '42vh'}} w={{lg: '98%', base: "90%" }} p={3} mt={5} ml={3} mr={3}  rounded='lg' overflowX='auto' css={{
                             '&::-webkit-scrollbar': {
                             width: '4px',
                             },
