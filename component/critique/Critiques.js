@@ -123,7 +123,7 @@ export const Critiques = ({id, newCritique}) => {
 
         axios.post(`${API_URL}/api/create_reply`, formData, config)
         .then((response) =>{
-            console.log(response.data)
+            // console.log(response.data)
             document.getElementById(critique_id).hidden=true;
             document.getElementById(`reply${critique_id}`).value=''
             setNewReply(reply[critique_id]);
@@ -151,10 +151,10 @@ export const Critiques = ({id, newCritique}) => {
 
         axios.post(`${API_URL}/api/display_all_critiques`, formData, config)
         .then((response) =>{
-            console.log(response.data)
+            // console.log(response.data)
             setCritiqueItems(response.data.data)
             // document.getElementById(response.data.data.critique_id).hidden=true
-            console.log(response.data.data[0])
+            // console.log(response.data.data[0])
             
             for(let i = 0; i < response.data.data.length; i++){
                 if(i == response.data.data.length - 1){
@@ -175,8 +175,8 @@ export const Critiques = ({id, newCritique}) => {
         let formData = new FormData;
         formData.append('post_id', id);
         formData.append('last_id', lastId);
-        console.log(lastId)
-        console.log(critiqueItems)
+        // console.log(lastId)
+        // console.log(critiqueItems)
 
         axios.post(`${API_URL}/api/display_all_critiques`, formData, config)
         .then((response) =>{
@@ -212,10 +212,10 @@ export const Critiques = ({id, newCritique}) => {
         
         axios.post(`${API_URL}/api/star_critique`, formData, config)
         .then((response) =>{
-            console.log(response.data)
+            // console.log(response.data)
             document.getElementById(`star${crit_id}`).innerHTML=response.data.stars;
         }).catch((error) =>{
-            console.log(error.response)
+            console.log(error)
             if(error.response.data.status === "Account Muted"){
                 toastIdRef.current = toast({ title: 'Account Muted!', status: 'error', duration: 3000, isClosable: false })
             }
@@ -243,7 +243,7 @@ export const Critiques = ({id, newCritique}) => {
             </Box>
 
 
-            <Box overflowY="auto" overflowX='hidden' h={{'2xl': '80%', xl: '75vh', lg: '70vh', sm: '70vh', base: '70vh'}} css={{
+            <Box overflowY="auto" h={{'2xl': '80vh', xl: '75vh', lg: '70vh', sm: '70vh', base: '70vh'}} css={{
                     '&::-webkit-scrollbar': {
                     width: '4px',
                     },

@@ -140,14 +140,13 @@ export default function HallPage(){
 
         axios.get(`${API_URL}/api/posts_pagination/${hall}`, config)
         .then(response => {
-            console.log(response.data.posts);
+            console.log(response);
             setPosts(response.data.posts);
             console.log(posts) 
             setLoading(false)
         })
         .catch(error => {
-            console.log(error.response);
-            console.log(error.response.status)
+            console.log(error);
             // if(error.response.status ==  '401'){
             //     Router.replace('/login')
             //     return;
@@ -156,21 +155,21 @@ export default function HallPage(){
 
         axios.get(`${API_URL}/api/get_halls`, config)
         .then(response => {
-            console.log(response.data);
+            console.log(response);
             setHallList(response.data.halls)
         })
         .catch(error => {
-            console.log(error.response);
+            console.log(error);
             console.log(error.response.status)
         });
 
         axios.get(`${API_URL}/api/posts_per_hall`, config)
         .then(response => {
-            console.log(response.data);
+            console.log(response);
             setHallNum(response.data.halls)
         })
         .catch(error => {
-            console.log(error.response);
+            console.log(error);
             console.log(error.response.status)
         });
 
@@ -196,7 +195,7 @@ export default function HallPage(){
 
         axios.get(`${API_URL}/api/posts_pagination/1`, config)
         .then(response => {
-            console.log(response.data.posts);
+            console.log(response);
             setPosts(response.data.posts);
             setHalls(1)
             console.log(posts)
@@ -206,7 +205,7 @@ export default function HallPage(){
             }
         })
         .catch(error => {
-            console.log(error.response);
+            console.log(error);
         });
 
     }
@@ -217,27 +216,27 @@ export default function HallPage(){
 
         axios.get(`${API_URL}/api/posts_pagination/${item}`, config)
         .then(response => {
-            console.log(response.data.posts);
+            console.log(response);
             setPosts(response.data.posts);
             setCurrentPage(1);
             console.log(posts)
         })
         .catch(error => {
-            console.log(error.response);
+            console.log(error);
         });
     }
 
     const getAll = async () =>{
         axios.get(`${API_URL}/api/posts_pagination/0`, config)
         .then(response => {
-            console.log(response.data.posts);
+            console.log(response);
             setPosts(response.data.posts);
             setCurrentPage(1);
             setHalls(0)
             console.log(posts)
         })
         .catch(error => {
-            console.log(error.response);
+            console.log(error);
         });
 
     }
@@ -246,14 +245,14 @@ export default function HallPage(){
     const getArts = async () =>{
         axios.get(`${API_URL}/api/posts_pagination/2`, config)
         .then(response => {
-            console.log(response.data.posts);
+            console.log(response);
             setPosts(response.data.posts);
             setCurrentPage(1);
             setHalls(2)
             console.log(posts)
         })
         .catch(error => {
-            console.log(error.response);
+            console.log(error);
         });
 
     }
@@ -262,14 +261,14 @@ export default function HallPage(){
 
         axios.get(`${API_URL}/api/posts_pagination/3`, config)
         .then(response => {
-            console.log(response.data.posts);
+            console.log(response);
             setPosts(response.data.posts);
             setCurrentPage(1);
             setHalls(3)
             console.log(posts)
         })
         .catch(error => {
-            console.log(error.response);
+            console.log(error);
         });
 
     }
@@ -277,14 +276,14 @@ export default function HallPage(){
     const getLounge = async () =>{
         axios.get(`${API_URL}/api/posts_pagination/4`, config)
         .then(response => {
-            console.log(response.data.posts);
+            console.log(response);
             setPosts(response.data.posts);
             setCurrentPage(1);
             setHalls(4)
             console.log(posts)
         })
         .catch(error => {
-            console.log(error.response);
+            console.log(error);
         });
     }
 

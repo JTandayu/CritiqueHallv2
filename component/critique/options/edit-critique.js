@@ -56,7 +56,7 @@ const EditCritique = ({data}) => {
         
         axios.post(`${API_URL}/api/update_critique`, formData, config)
         .then((response) => {
-            console.log(response.data)
+            console.log(response)
             onClose()
             router.reload()
           }).catch((error)=>{

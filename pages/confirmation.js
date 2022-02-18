@@ -98,7 +98,7 @@ export default function ConfirmationPage(){
         })
         .catch(error => {
             toastIdRef.current = toast({ position: 'top', title: 'Account verification unsuccessful!', description: 'Please try again.', status: 'error', duration: 3000, isClosable: true })
-            console.log(error.response);
+            console.log(error);
         });
     }
 

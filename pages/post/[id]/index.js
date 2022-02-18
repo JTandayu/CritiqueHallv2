@@ -280,7 +280,7 @@ export default function CritiquePost(){
 
         axios.post(`${API_URL}/api/like_post/${post_id}`, formData, config)
         .then(response => {
-            console.log(response.data);
+            // console.log(response.data);
             document.getElementById('likes').innerHTML=response.data.stars;
         })
         .catch(error => {
@@ -312,7 +312,7 @@ export default function CritiquePost(){
 
         axios.post(`${API_URL}/api/create_critique`, formData, config)
         .then(response => {
-            console.log(response.data);
+            // console.log(response.data);
             setNewCritique(critique)
             // window.location.href=`/post/${post_id.post_id}`
             setCritique('')

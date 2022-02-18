@@ -207,7 +207,7 @@ export default function Nav(data, profile_pic){
         const getNotif = setInterval(()=>{
             axios.get(`${API_URL}/api/get_notifs`, config)
             .then(response => {
-                console.log(response.data);      
+                // console.log(response.data);      
                 setNotif(response.data.status)
                 setFirstId(response.data.status[0].notifs_id)
             })

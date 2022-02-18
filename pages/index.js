@@ -117,7 +117,7 @@ export default function Login({user}) {
       } else{
       axios.post(`${API_URL}/api/login`, formData, config)
       .then(response => {
-          console.log(response.data);
+          console.log(response);
             // setCookies('token', response.data.token)
             // setCookies('display_name', response.data.display_name)
             // setCookies('encrypted_id', response.data.encrypted_id)
@@ -141,7 +141,7 @@ export default function Login({user}) {
       })
       .catch(error => {
           // toastIdRef.current = toast({ title: 'Login Unsuccessful!', status: 'error', duration: 3000, isClosable: false })
-          console.log(error.response);
+          console.log(error);
           if(error.response.data.message == 'Wrong credentials'){
             document.getElementById('warning1').removeAttribute('hidden');
             document.getElementById('warning2').hidden=true;

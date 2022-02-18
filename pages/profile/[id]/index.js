@@ -129,13 +129,13 @@ export default function ProfilePage({}){
 
         axios.get(`${API_URL}/api/display_profile/${data}`, config)
         .then(response => {
-            console.log(response.data);      
+            // console.log(response.data);      
             setUserData(response.data.data.user)
             displayPostCritique(response.data.data.user.encrypted_id)
             setEncId(response.data.data.user.encrypted_id)
         })
         .catch(error => {
-            console.log(error.response);
+            console.log(error);
         });
 
         
@@ -149,7 +149,7 @@ export default function ProfilePage({}){
 
         axios.post(`${API_URL}/api/display_posts`, formData, config)
         .then(response => {
-            console.log(response.data);      
+            // console.log(response.data);      
             setUserPosts(response.data.posts)
         })
         .catch(error => {
@@ -159,7 +159,7 @@ export default function ProfilePage({}){
 
         axios.post(`${API_URL}/api/display_critiques`, formData, config)
         .then(response => {
-            console.log(response.data);      
+            // console.log(response.data);      
             setUserCritique(response.data.critiques)
         })
         .catch(error => {
@@ -175,7 +175,7 @@ export default function ProfilePage({}){
 
         axios.post(`${API_URL}/api/display_posts`, formData, config)
         .then(response => {
-            console.log(response.data);      
+            // console.log(response.data);      
             setUserPosts(response.data.posts)
         })
         .catch(error => {
@@ -190,7 +190,7 @@ export default function ProfilePage({}){
         
         axios.post(`${API_URL}/api/display_critiques`, formData, config)
         .then(response => {
-            console.log(response.data);      
+            // console.log(response.data);      
             setUserCritique(response.data.critiques)
         })
         .catch(error => {

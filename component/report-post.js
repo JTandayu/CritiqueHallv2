@@ -76,7 +76,7 @@ function ReportPost({data, id}) {
 
         axios.post(`${API_URL}/api/submit_report`, formData, config)
         .then((response)=>{
-            console.log(response.data)
+            console.log(response)
             toastIdRef.current = toast({
                 position: 'top',
                 title: 'Report submitted successfully!',

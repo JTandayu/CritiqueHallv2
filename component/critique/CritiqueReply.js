@@ -96,7 +96,7 @@ export const CritiqueReply = ({id, post_id, newReply}) => {
 
         axios.post(`${API_URL}/api/star_reply`, formData, config)
         .then((response) =>{
-            console.log(response.data)
+            // console.log(response.data)
             document.getElementById(`starreply${reply_id}`).innerHTML=response.data.stars;
         }).catch((error) =>{
             console.log(error)
@@ -113,7 +113,7 @@ export const CritiqueReply = ({id, post_id, newReply}) => {
 
         axios.post(`${API_URL}/api/display_replies`, formData, config)
         .then((response) =>{
-            console.log(response.data)
+            // console.log(response.data)
 
             response.data.data.map((item)=>{
                 setCritiqueReply((prevState) => [...prevState, item])

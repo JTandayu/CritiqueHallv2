@@ -122,7 +122,7 @@ export default function SearchResult(){
 
         axios.post(`${API_URL}/api/search`, formData, config)
         .then((response) => {
-            console.log(response.data);
+            // console.log(response.data);
             setSearchUserData(response.data.data.users);
             setSearchPostData(response.data.data.posts);
             // console.log(searchUserData.length);
@@ -147,7 +147,7 @@ export default function SearchResult(){
     const indexOfFirstPostSearch = indexOfLastPostSearch - searchPostsPerPage
     const currentSearch = searchPostData.slice(indexOfFirstPostSearch, indexOfLastPostSearch);
 
-    console.log(currentSearch)
+    // console.log(currentSearch)
     
     const sortPostResult = async (e) =>{
         // const searchItem = localStorage.getItem('search-item')
@@ -159,7 +159,7 @@ export default function SearchResult(){
 
         axios.post(`${API_URL}/api/search`, formData, config)
         .then((response) => {
-            console.log(response.data);
+            // console.log(response.data);
             setSearchUserData(response.data.data.users);
             setSearchPostData(response.data.data.posts);
             // console.log(searchUserData.length);
@@ -174,7 +174,7 @@ export default function SearchResult(){
             }
         })
         .catch((error) => (
-            console.log(error.response)
+            console.log(error)
         ));
 
     }

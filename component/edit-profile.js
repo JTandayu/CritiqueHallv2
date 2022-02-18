@@ -179,7 +179,7 @@ function EditProfile({data}) {
                 duration: 3000,
                 isClosable: true,
             })
-            console.log(url)
+            // console.log(url)
             setProfileImageUrl(url)
             setUploadProfileDone(true);
             setLoading(false)
@@ -223,7 +223,7 @@ function EditProfile({data}) {
                 duration: 3000,
                 isClosable: true,
             })
-            console.log(url)
+            // console.log(url)
             setCoverImageUrl(url)
             setUploadCoverDone(true);
             setLoading(false)
@@ -315,7 +315,7 @@ function EditProfile({data}) {
             }else{
                 toastIdRef.current = toast({ position: 'top', title: 'Error, Please check your inputs!', status: 'error', duration: 3000, isClosable: true })
             }
-            console.log(error.response)
+            console.log(error)
         })
     }
 
@@ -347,7 +347,7 @@ function EditProfile({data}) {
               router.reload();
             }).catch((error) => {
             toastIdRef.current = toast({ position: 'top', title: 'Error, Please try again!', status: 'error', duration: 3000, isClosable: true }),
-            console.log(error.response)
+            console.log(error)
         })
     }
 

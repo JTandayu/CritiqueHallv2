@@ -59,7 +59,7 @@ function EditCritiqueHistory({id}) {
 
         axios.get(`${API_URL}/api/version_critique/${id}`, config)
         .then((response)=>{
-            console.log(response.data.data)
+            console.log(response)
             setData(response.data.data)
         }).catch((error)=>console.log(error.response))
     }, []);
