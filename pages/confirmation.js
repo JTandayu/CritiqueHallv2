@@ -124,6 +124,7 @@ export default function ConfirmationPage(){
       axios.post(`${API_URL}/api/login`, formData2, config)
       .then(response => {
           console.log(response.data);
+          toastIdRef.current = toast({position: 'top', title: 'Verification code resent!', status: 'success', duration: 2000, isClosable: true })
           // window.location = "/confirmation"
       })
       .catch(error => {
