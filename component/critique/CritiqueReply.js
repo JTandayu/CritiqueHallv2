@@ -205,14 +205,14 @@ export const CritiqueReply = ({id, post_id, newReply}) => {
                                     <ChevronDownIcon />
                                     </MenuButton>
                                     <MenuList p={3}>
-                                    <MenuGroup>
-                                        <MenuItem fontFamily={'Raleway'}><EditReplyHistory id={reply.reply_id} /></MenuItem>
-                                    </MenuGroup>
-                                    <MenuDivider />
                                     {reply.is_edited == 1 ?
                                     <MenuGroup>
-                                        <MenuItem fontFamily={'Raleway'}><ReportReply id={reply.reply_id} /></MenuItem>
+                                        <MenuItem fontFamily={'Raleway'}><EditReplyHistory id={reply.reply_id} /></MenuItem>
                                     </MenuGroup>: null}
+                                    <MenuDivider />
+                                    <MenuGroup>
+                                        <MenuItem fontFamily={'Raleway'}><ReportReply id={reply.reply_id} /></MenuItem>
+                                    </MenuGroup>
                                     </MenuList>
                                 </Menu>
                             </Flex>

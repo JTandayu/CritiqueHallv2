@@ -341,14 +341,14 @@ export const Critiques = ({id, newCritique}) => {
                                         <ChevronDownIcon />
                                         </MenuButton>
                                         <MenuList p={3}>
-                                        <MenuGroup>
-                                            <MenuItem fontFamily={'Raleway'}><EditCritiqueHistory id={critique.critique_id} /></MenuItem>
-                                        </MenuGroup>
-                                        <MenuDivider />
                                         {critique.is_edited == 1 ? 
                                         <MenuGroup>
-                                            <MenuItem fontFamily={'Raleway'}><ReportCritique id={critique.critique_id} /></MenuItem>
+                                            <MenuItem fontFamily={'Raleway'}><EditCritiqueHistory id={critique.critique_id} /></MenuItem>
                                         </MenuGroup> : null}
+                                        <MenuDivider />
+                                        <MenuGroup>
+                                            <MenuItem fontFamily={'Raleway'}><ReportCritique id={critique.critique_id} /></MenuItem>
+                                        </MenuGroup> 
                                         </MenuList>
                                     </Menu> 
                                 </Flex>
