@@ -169,8 +169,10 @@ export default function ConfirmationPage(){
             </p> */}
             </center>
 
-            <Text _hover={{cursor:'pointer', textDecoration: 'underline'}} fontSize='xl' color={useColorModeValue('#1BA3C1', '#1BA3C1')} mt={5}>Resend Code</Text>
-              
+            <Box display="flex">
+            <Text _hover={{cursor:'pointer', textDecoration: 'underline'}} fontSize={{lg: "lg", base: "sm"}} color={useColorModeValue('#1BA3C1', '#1BA3C1')} mt={5}>Resend Code</Text>
+            <Link href="/" passHref><Text _hover={{cursor:'pointer', textDecoration: 'underline'}} fontSize={{lg: "lg", base: "sm"}} color={useColorModeValue('#1BA3C1', '#1BA3C1')} ml={5} mt={5}>Back to Login</Text></Link>
+            </Box>  
         </Box>
         </div>
     )
