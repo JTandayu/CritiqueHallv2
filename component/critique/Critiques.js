@@ -331,7 +331,7 @@ export const Critiques = ({id, newCritique}) => {
                                     {critique.starred_by_author == '1' ? <Image src='/reputation-stars.png' alt="Reputation Stars"  w="15px" h="15px" ml={3} mt={2} /> : null}
                                     <Spacer />
                                     <Text fontFamily={'Raleway'} color="gray.400" fontSize='sm' mt={2}>{critique.time_ago}</Text>
-                                    {critique.is_edited == 1 ? 
+                                    
                                     <Menu>
                                         <MenuButton
                                         px={4}
@@ -345,11 +345,12 @@ export const Critiques = ({id, newCritique}) => {
                                             <MenuItem fontFamily={'Raleway'}><EditCritiqueHistory id={critique.critique_id} /></MenuItem>
                                         </MenuGroup>
                                         <MenuDivider />
+                                        {critique.is_edited == 1 ? 
                                         <MenuGroup>
                                             <MenuItem fontFamily={'Raleway'}><ReportCritique id={critique.critique_id} /></MenuItem>
-                                        </MenuGroup>
+                                        </MenuGroup> : null}
                                         </MenuList>
-                                    </Menu> : <Box w={8}></Box>}
+                                    </Menu> 
                                 </Flex>
                                 <Box w='100%' mt={1}>
                                     <Text fontFamily={'Raleway'} textAlign={'justify'} fontSize='md'>{critique.body}</Text>

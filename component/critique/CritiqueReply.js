@@ -195,7 +195,7 @@ export const CritiqueReply = ({id, post_id, newReply}) => {
                                 {reply.starred_by_author == '1' ? <Image src='/reputation-stars.png' alt="Reputation Stars" w="25px" h="25px" ml={3} mt={2} /> : null}
                                 <Spacer />
                                 <Text fontFamily={'Raleway'} color="gray.400" fontSize='sm' mt={2}>{reply.time_ago}</Text>
-                                {reply.is_edited == 1 ?  
+                                  
                                 <Menu>
                                     <MenuButton
                                     px={4}
@@ -209,11 +209,12 @@ export const CritiqueReply = ({id, post_id, newReply}) => {
                                         <MenuItem fontFamily={'Raleway'}><EditReplyHistory id={reply.reply_id} /></MenuItem>
                                     </MenuGroup>
                                     <MenuDivider />
+                                    {reply.is_edited == 1 ?
                                     <MenuGroup>
                                         <MenuItem fontFamily={'Raleway'}><ReportReply id={reply.reply_id} /></MenuItem>
-                                    </MenuGroup>
+                                    </MenuGroup>: null}
                                     </MenuList>
-                                </Menu>: <Box w={8}></Box>}
+                                </Menu>
                             </Flex>
                             <Box w='100%' mt={1}>
                                 <Text fontSize='sm' fontFamily={'Raleway'}  textAlign={'justify'}>{reply.body}</Text>
