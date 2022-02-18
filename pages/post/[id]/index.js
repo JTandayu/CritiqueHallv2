@@ -361,7 +361,7 @@ export default function CritiquePost(){
                                 </MenuGroup>
                                 <MenuDivider />
                                 <MenuGroup>
-                                    <MenuItem><EditHistory /></MenuItem>
+                                    <MenuItem><EditHistory id={data.post_id} /></MenuItem>
                                 </MenuGroup>
                                 <MenuDivider />
                                 <MenuGroup>
@@ -382,7 +382,7 @@ export default function CritiquePost(){
                                 </MenuButton>
                                 <MenuList p={3}>
                                 <MenuGroup>
-                                    <MenuItem><EditHistory /></MenuItem>
+                                    <MenuItem><EditHistory id={data.post_id} /></MenuItem>
                                 </MenuGroup>
                                 <MenuDivider />
                                 <MenuGroup >
