@@ -60,7 +60,7 @@ function EditHistory({id}) {
             console.log(response.data.data)
             setData(response.data.data)
         }).catch((error)=>console.log(error.response))
-    }, []);
+    }, [id]);
 
 
     return(
