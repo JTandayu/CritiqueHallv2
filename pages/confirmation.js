@@ -8,7 +8,7 @@ import Link from 'next/link'
 // import Logo from "@public/critiquehall2.png";
 import { Heading } from '@chakra-ui/react'
 import { Box } from "@chakra-ui/react"
-import { Button, ButtonGroup, Image, Input } from "@chakra-ui/react"
+import { Button, ButtonGroup, Image, Input, Text } from "@chakra-ui/react"
 import { Stack, HStack, VStack } from "@chakra-ui/react"
 import {
   FormControl,
@@ -169,6 +169,8 @@ export default function ConfirmationPage(){
             </p> */}
             </center>
 
+            <Text _hover={{cursor:'pointer', textDecoration: 'underline'}} fontSize='xl' color={useColorModeValue('#1BA3C1', '#1BA3C1')} mt={5}>Resend Code</Text>
+              
         </Box>
         </div>
     )
