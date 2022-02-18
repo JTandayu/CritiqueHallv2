@@ -410,13 +410,13 @@ function EditProfile({data}) {
                         <Input type='text' w='5vw' bg="white" color='black' />
                     </Flex> */}
                     <Divider mb={5} mt={5}/>
-                    <Flex mb={5} flexDir='column' align='center'>
-                        <Flex flexDir={{lg: "row", base: "column"}}>
+                    <Flex mb={5} flexDir={{lg: "row", base: "column"}} align='center'>
+                        <Flex flexDir={{lg: "row", md: "row",base: "column"}}>
                             <FormLabel fontFamily={'Raleway'} w={{lg: '7vw', base: "100%"}}>First Name</FormLabel>
                             <Input fontFamily={'Raleway'} borderColor={useColorModeValue('black', 'white')} type='text' value={firstName} onChange={(e) => setFirstName(e.target.value)} ml={{lg: '23px', base: 0}} />
                         </Flex>
                         <Spacer />
-                        <Flex flexDir={{lg: "row", base: "column"}}>
+                        <Flex flexDir={{lg: "row", md: "row", base: "column"}}>
                             <FormLabel fontFamily={'Raleway'} w={{lg: '7vw', base: "100%"}}>Last Name</FormLabel>
                             <Input fontFamily={'Raleway'} borderColor={useColorModeValue('black', 'white')} type='text' value={lastName} onChange={(e) => setLastName(e.target.value)} />
                         </Flex>
@@ -435,7 +435,7 @@ function EditProfile({data}) {
                     </Flex>
                     <Flex>
                         <Spacer />
-                        <Button fontFamily={'Raleway'} bgColor={useColorModeValue('#0C1F83', '#1D447E')} color={useColorModeValue('white', 'white')} _hover={{bgColor: useColorModeValue('#173cff', '#428eff')}} mr={{lg: '53%', base: 0}} onClick={SubmitPersonalInformation}>Save</Button>
+                        <Button fontFamily={'Raleway'} bgColor={useColorModeValue('#0C1F83', '#1D447E')} color={useColorModeValue('white', 'white')} _hover={{bgColor: useColorModeValue('#173cff', '#428eff')}} mr={{'2xl': 0, md: 0, base: 0}} onClick={SubmitPersonalInformation}>Save</Button>
                     </Flex>
                     <Divider mb={5} mt={5}/>
                     <Flex>
@@ -459,7 +459,7 @@ function EditProfile({data}) {
                     </Center>
                     <Flex w='100%'>
                         <Spacer />
-                        <Button fontFamily={'Raleway'} bgColor={useColorModeValue('#0C1F83', '#1D447E')} color={useColorModeValue('white', 'white')} _hover={{bgColor: useColorModeValue('#173cff', '#428eff')}} mr={{lg: '33%', base: 0}} onClick={submitPassword}>Save</Button>
+                        <Button fontFamily={'Raleway'} bgColor={useColorModeValue('#0C1F83', '#1D447E')} color={useColorModeValue('white', 'white')} _hover={{bgColor: useColorModeValue('#173cff', '#428eff')}} mr={{'2xl': 0, lg: 0,  base: 0}} onClick={submitPassword}>Save</Button>
                     </Flex>
                     {/* <Divider mb={5} mt={5} /> */}
 
