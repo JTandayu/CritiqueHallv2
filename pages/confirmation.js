@@ -124,7 +124,7 @@ export default function ConfirmationPage(){
       axios.post(`${API_URL}/api/login`, formData2, config)
       .then(response => {
           console.log(response.data);
-          window.location = "/confirmation"
+          // window.location = "/confirmation"
       })
       .catch(error => {
           console.log(error.response);
