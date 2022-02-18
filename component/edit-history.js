@@ -65,7 +65,7 @@ function EditHistory({id}) {
 
     return(
         <>
-        <button onClick={onOpen} ml={5}>History</button>
+        <button onClick={onOpen} ml={5}>Edit History</button>
 
         <form action='' method='POST'>
         <Modal isOpen={isOpen} onClose={onClose}>
