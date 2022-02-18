@@ -360,10 +360,10 @@ export default function CritiquePost(){
                                     <MenuItem fontFamily={'Raleway'} fontSize='md'><EditPost data={data} url={urls} fileNames={fileName} /></MenuItem>
                                 </MenuGroup>
                                 <MenuDivider />
-                                {/* <MenuGroup>
+                                <MenuGroup>
                                     <MenuItem fontFamily={'Raleway'} fontSize='md'><EditHistory id={data.post_id} /></MenuItem>
                                 </MenuGroup>
-                                <MenuDivider /> */}
+                                <MenuDivider />
                                 <MenuGroup>
                                     <MenuItem fontFamily={'Raleway'} fontSize='md'><DeletePost id={data.post_id} /></MenuItem>
                                 </MenuGroup>
@@ -381,10 +381,10 @@ export default function CritiquePost(){
                                 <ChevronDownIcon />
                                 </MenuButton>
                                 <MenuList p={3}>
-                                {/* <MenuGroup>
+                                <MenuGroup>
                                     <MenuItem fontFamily={'Raleway'} fontSize='md'><EditHistory id={data.post_id} /></MenuItem>
                                 </MenuGroup>
-                                <MenuDivider /> */}
+                                <MenuDivider />
                                 <MenuGroup >
                                     <MenuItem fontFamily={'Raleway'} fontSize='md'><ReportPost id={data.post_id} /></MenuItem>
                                 </MenuGroup>
