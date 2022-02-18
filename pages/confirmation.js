@@ -139,9 +139,9 @@ export default function ConfirmationPage(){
                 <br/>
                 <Button
                   className={styles.login_button}
-                  bgColor={useColorModeValue('#0C1F83', '#2346FF')}
+                  bgColor={useColorModeValue('#0C1F83', '#1D447E')}
                   color={useColorModeValue('white', 'white')}
-                  _hover={{bgColor: 'blue'}} 
+                  _hover={{bgColor: useColorModeValue('#173cff', '#428eff')}}
                   size="lg"
                   onClick={accountVerification}
                   >
