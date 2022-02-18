@@ -323,11 +323,11 @@ export default function Nav(data, profile_pic){
                 left='1rem'
                 onClick={() => changeDisplay('flex')}
             />
-            <Spacer display={{lg: "none"}} />
+            <Spacer display={{lg: "none", base: 'block'}} />
             
-            <Flex w='10em' h='3em' mx={[16,16,8,8]} mt={5}>
+            <Flex w={{lg: '10em', md: '100%', base: '100%'}} justifyContent="center" h='3em' mx={{xl: 16, lg: 16, md: 8, sm: 8, base: 8}} mt={5}>
                 <Link href="/home" passHref>
-                <Img className={styles.critique_logo} src={useColorModeValue('/critiquehall2.png', '/critiquehall2-dark.png')} alt="Critique Hall Logo" w="10em" h="3em" _hover={{cursor:'pointer'}}></Img>
+                        <Img className={styles.critique_logo} src={useColorModeValue('/critiquehall2.png', '/critiquehall2-dark.png')} alt="Critique Hall Logo" w="10em" h="3em" _hover={{cursor:'pointer'}}></Img>
                 </Link>
             </Flex>
 
@@ -339,13 +339,15 @@ export default function Nav(data, profile_pic){
                             aria-label='Home'
                             my={2}
                             w='20%'
+                            mt={{lg: 0, base: 8}}
+                            right="0"
                             position='static'
                             color={useColorModeValue('#1B1464')}
                             _hover={{cursor:'pointer', textDecoration:'underline'}}
                             _active={{bgColor: 'none', textDecoration:'underline'}}
-                            display={{lg: "none", md: "none", base: "block"}}
+                            display={{lg: "none", md: "block", base: "block"}}
                             onClick={readNotif}
-                        ><Img className={styles.darkicon2} src={useColorModeValue('/notification-alert-icon.png', '/notification-alert-icon-dark.png')} alt="Notification" w="2em" h="2em" ml={-5}/></Button>
+                        ><Img className={styles.darkicon2} src={useColorModeValue('/notification-alert-icon.png', '/notification-alert-icon-dark.png')} alt="Notification" w="2em" h="2em" ml={2}/></Button>
                     </PopoverTrigger>
                     <PopoverContent w="100vw">
                         <PopoverArrow />

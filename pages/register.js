@@ -176,7 +176,7 @@ export default function Register({data2}) {
 
 
     const submitRegister = async () =>{
-      if(first_name == '' || last_name == '' || user_name == '' || email == '' || password == '' || confirm_password == '' || department == '' || specialization == ''){
+      if(first_name == '' || last_name == '' || user_name == '' || email == '' || password == '' || confirm_password == '' || specialization == ''){
         document.getElementById('warning3').removeAttribute('hidden');
         document.getElementById('warning1').hidden=true;
         document.getElementById('warning2').hidden=true;
@@ -198,7 +198,7 @@ export default function Register({data2}) {
       formData.append('email', email);
       formData.append('password', password);
       formData.append('confirm_password', confirm_password);
-      formData.append('department', department);
+      // formData.append('department', department);
       formData.append('specialization', specialization);
       formData.append('gender', "o")
 
@@ -344,7 +344,7 @@ export default function Register({data2}) {
                 </Box>
                 <Box>
                 <FormLabel>What program or strand are you specializing in?</FormLabel>
-                <Input size={{lg: 'lg', base: 'sm'}} width={{lg:'35vh', base: '90%'}} placeholder="e.g. AB in Multimedia Arts and Design or HUMSS" borderColor={useColorModeValue('black', 'white')}  className={styles.input_box} type="text"/>
+                <Input size={{lg: 'lg', base: 'sm'}} width={{lg:'35vh', base: '90%'}} placeholder="e.g. AB in Multimedia Arts and Design or HUMSS" borderColor={useColorModeValue('black', 'white')} onChange={e => setSpecialization(e.target.value)}  className={styles.input_box} type="text"/>
                 </Box>
                 {/* <Box>
                 <FormLabel>Department</FormLabel>
