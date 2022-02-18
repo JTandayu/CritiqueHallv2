@@ -8,7 +8,7 @@ import Link from 'next/link'
 // import Logo from "@public/critiquehall2.png";
 import { Heading } from '@chakra-ui/react'
 import { Box } from "@chakra-ui/react"
-import { Button, ButtonGroup, Image, Input } from "@chakra-ui/react"
+import { Button, ButtonGroup, Image, Input, Text } from "@chakra-ui/react"
 import { Stack, HStack, VStack } from "@chakra-ui/react"
 import {
   FormControl,
@@ -168,9 +168,9 @@ export default function ConfirmationPage(){
                 <br/>
                 <Button
                   className={styles.login_button}
-                  bgColor={useColorModeValue('#0C1F83', '#2346FF')}
+                  bgColor={useColorModeValue('#0C1F83', '#1D447E')}
                   color={useColorModeValue('white', 'white')}
-                  _hover={{bgColor: 'blue'}} 
+                  _hover={{bgColor: useColorModeValue('#173cff', '#428eff')}}
                   size="lg"
                   onClick={accountVerification}
                   >
@@ -198,6 +198,10 @@ export default function ConfirmationPage(){
             </p> */}
             </center>
 
+            <Box display="flex">
+            <Text _hover={{cursor:'pointer', textDecoration: 'underline'}} fontSize={{lg: "lg", base: "sm"}} color={useColorModeValue('#1BA3C1', '#1BA3C1')} mt={5}>Resend Code</Text>
+            <Link href="/" passHref><Text _hover={{cursor:'pointer', textDecoration: 'underline'}} fontSize={{lg: "lg", base: "sm"}} color={useColorModeValue('#1BA3C1', '#1BA3C1')} ml={5} mt={5}>Back to Login</Text></Link>
+            </Box>  
         </Box>
         </div>
     )

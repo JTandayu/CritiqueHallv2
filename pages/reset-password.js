@@ -118,7 +118,7 @@ export default function ResetPassword({}){
         }else{
         axios.post(`${API_URL}/api/reset_password`, formData, config)
         .then(response => {
-            toastIdRef.current = toast({ title: 'Reset Password Successful!', description: 'Please login with your new password.', status: 'success', duration: 2000, isClosable: true })
+            toastIdRef.current = toast({position: 'top', title: 'Reset Password Successful!', description: 'Please login with your new password.', status: 'success', duration: 2000, isClosable: true })
             console.log(response);
             router.replace('/login')
         })
@@ -199,7 +199,7 @@ export default function ResetPassword({}){
             </FormControl></center>
 
             <p className={styles.register}>
-            <Link href="/" passHref><Text _hover={{cursor:'pointer'}} fontSize='lg'  color={useColorModeValue('#1BA3C1', '#1BA3C1')}><a>Back to Login</a></Text></Link>
+            <Link href="/" passHref><Text _hover={{cursor:'pointer'}} fontSize='lg'  color={useColorModeValue('#1BA3C1', '#1BA3C1')}>Back to Login</Text></Link>
             </p>
             </center>
         </Box>
