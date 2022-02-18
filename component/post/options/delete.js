@@ -78,14 +78,14 @@ function DeletePost({id}){
       axios.delete(`${API_URL}/api/delete_post/${id}`, config)
       .then((response) => {
         console.log(response.data)
-        toastIdRef.current = toast({ title: 'Post deleted successfully!', status: 'success', duration: 3000, isClosable: false })
+        toastIdRef.current = toast({ position: 'top', title: 'Post deleted successfully!', status: 'success', duration: 3000, isClosable: false })
         onClose()
       })
       .then(()=>{
         router.push("/critique")
       }).catch((error)=>{
         if(error.response.data.status === "Account Muted"){
-          toastIdRef.current = toast({ title: 'Account Muted!', status: 'error', duration: 3000, isClosable: false })
+          toastIdRef.current = toast({ position: 'top', title: 'Account muted!', status: 'error', duration: 3000, isClosable: false })
         }
         // toastIdRef.current = toast({ title: 'Delete post unsuccessful!', status: 'error', duration: 3000, isClosable: false })
         console.log(error.response)
