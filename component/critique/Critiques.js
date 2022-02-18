@@ -268,7 +268,7 @@ export const Critiques = ({id, newCritique}) => {
                                         <Heading fontFamily={'Raleway'} size='md' ml={3} mt={2} _hover={{cursor: 'pointer'}}>{critique.display_name}</Heading>
                                     </Link>
                                     {Number(critique.reputation_points) >= 10 ? <Image src={changeBadgeIcon} alt="Badge" w="25px" h="25px" ml={3} mt={2} /> : null}
-                                    {critique.starred_by_author == '1' ? <Image src='/reputation-stars.png' alt="Reputation Stars"  w="15px" h="15px" ml={3} mt={2} /> : null}
+                                    {critique.starred_by_author == '1' ? <><Image src={critque.author_photo} alt="Reputation Stars" w="20px" h="20px" ml={3} mt={2} rounded="full"/><Image src='/reputation-stars.png' alt="Reputation Stars"  w="15px" h="15px" ml={3} mt={2} /></> : null}
                                     <Spacer />
                                     <Text fontFamily={'Raleway'} color="gray.400" fontSize='sm' mt={2}>{critique.time_ago}</Text>
 
@@ -328,7 +328,7 @@ export const Critiques = ({id, newCritique}) => {
                                         <Heading fontFamily={'Raleway'} size='md' ml={3} mt={2} _hover={{cursor: 'pointer'}}>{critique.display_name}</Heading>
                                     </Link>
                                     {Number(critique.reputation_points) >= 10 ? <Image src={changeBadgeIcon} alt="Badge" w="25px" h="25px" ml={3} mt={2} /> : null}
-                                    {critique.starred_by_author == '1' ? <Image src='/reputation-stars.png' alt="Reputation Stars"  w="15px" h="15px" ml={3} mt={2} /> : null}
+                                    {critique.starred_by_author == '1' ? <><Image src={critque.author_photo} alt="Reputation Stars"  w="20px" h="20px" ml={3} mt={2} rounded="full" /><Image src='/reputation-stars.png' alt="Reputation Stars"  w="15px" h="15px" ml={3} mt={2} /></> : null}
                                     <Spacer />
                                     <Text fontFamily={'Raleway'} color="gray.400" fontSize='sm' mt={2}>{critique.time_ago}</Text>
                                     

@@ -144,7 +144,7 @@ export const CritiqueReply = ({id, post_id, newReply}) => {
                                     <Heading fontFamily={'Raleway'} size='md' ml={3} mt={2} _hover={{cursor: 'pointer'}}>{reply.display_name}</Heading>
                                 </Link>
                                 {Number(reply.reputation_points) >= 10 ? <Image src={changeBadgeIcon} alt="Badge" w="25px" h="25px" ml={3} mt={2} /> : null}
-                                {reply.starred_by_author == '1' ? <Image src='/reputation-stars.png' alt="Reputation Stars" w="15px" h="15px" ml={3} mt={4} /> : null}
+                                {reply.starred_by_author == '1' ? <><Image src={reply.author_photo} alt="Reputation Stars"  w="20px" h="20px" ml={3} mt={2} rounded="full"/><Image src='/reputation-stars.png' alt="Reputation Stars"  w="15px" h="15px" ml={3} mt={2} /></> : null}
                                 <Spacer />
                                 <Text fontFamily={'Raleway'} color="gray.400" fontSize='sm' mt={2}>{reply.time_ago}</Text>
 
@@ -192,7 +192,7 @@ export const CritiqueReply = ({id, post_id, newReply}) => {
                                     <Heading fontFamily={'Raleway'} size='md' ml={3} mt={2} _hover={{cursor: 'pointer'}}>{reply.display_name}</Heading>
                                 </Link>
                                 {Number(reply.reputation_points) >= 10 ? <Image src={changeBadgeIcon} alt="Badge" w="25px" h="25px" ml={3} mt={2} /> : null}
-                                {reply.starred_by_author == '1' ? <Image src='/reputation-stars.png' alt="Reputation Stars" w="25px" h="25px" ml={3} mt={2} /> : null}
+                                {reply.starred_by_author == '1' ? <><Image src={reply.author_photo} alt="Reputation Stars"  w="20px" h="20px" ml={3} mt={2} rounded="full"/><Image src='/reputation-stars.png' alt="Reputation Stars"  w="15px" h="15px" ml={3} mt={2} /></> : null}
                                 <Spacer />
                                 <Text fontFamily={'Raleway'} color="gray.400" fontSize='sm' mt={2}>{reply.time_ago}</Text>
                                   
