@@ -257,7 +257,8 @@ export default function Register({data2}) {
           setCookies('token', response.data.token)
           setCookies('display_name', response.data.display_name)
           setCookies('encrypted_id', response.data.encrypted_id)
-
+          setCookies('email', email)
+          setCookies('password', password)
           window.location = "/confirmation"
       })
       .catch(error => {

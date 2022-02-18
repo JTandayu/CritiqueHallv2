@@ -33,7 +33,7 @@ import axios from "axios"
 import { useCookies } from 'react-cookie';
 import React from 'react';
 import { useToast } from '@chakra-ui/react';
-import { getCookie } from 'cookies-next'
+import { getCookie, removeCookies } from 'cookies-next'
 
 
 const breakpoints = createBreakpoints({
@@ -54,6 +54,8 @@ export default function ConfirmationPage(){
   const [code, setCode] = useState('')
   // const [cookies] = useCookies()
   const user_id = getCookie('encrypted_id')
+  const email = getCookie('email')
+  const password = getCookie('password')
 
   const toast = useToast()
   const toastIdRef = React.useRef()
@@ -94,12 +96,39 @@ export default function ConfirmationPage(){
             toastIdRef.current = toast({ position: 'top', title: 'Account verification successful!', status: 'success', duration: 3000, isClosable: true })
             console.log(response);
             setCookies('token', response.data.token)
+            removeCookies('email')
+            removeCookies('password')
             window.location = "/home"
         })
         .catch(error => {
             toastIdRef.current = toast({ position: 'top', title: 'Account verification unsuccessful!', description: 'Please try again.', status: 'error', duration: 3000, isClosable: true })
             console.log(error);
         });
+    }
+
+    const ResendCode = () =>{
+      const config = {
+        headers: { 
+          'content-type': 'multipart/form-data',
+          'X-API-KEY': `${API_KEY}`,
+          'Authorization': 'Basic Y2Fwc3RvbmUyMDIxOjEyMzQ=',
+          'Accept': 'application/json',
+        }
+      }
+
+      let formData2 = new FormData;
+      formData2.append('email', email);
+      formData2.append('password', password);
+      // console.log(email)
+
+      axios.post(`${API_URL}/api/login`, formData2, config)
+      .then(response => {
+          console.log(response.data);
+          window.location = "/confirmation"
+      })
+      .catch(error => {
+          console.log(error.response);
+      });
     }
 
     return(
