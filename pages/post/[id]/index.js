@@ -360,10 +360,10 @@ export default function CritiquePost(){
                                     <MenuItem fontFamily={'Raleway'} fontSize='md'><EditPost data={data} url={urls} fileNames={fileName} /></MenuItem>
                                 </MenuGroup>
                                 <MenuDivider />
-                                {/* <MenuGroup>
+                                <MenuGroup>
                                     <MenuItem><EditHistory /></MenuItem>
                                 </MenuGroup>
-                                <MenuDivider /> */}
+                                <MenuDivider />
                                 <MenuGroup>
                                     <MenuItem fontFamily={'Raleway'} fontSize='md'><DeletePost id={data.post_id} /></MenuItem>
                                 </MenuGroup>
@@ -381,10 +381,10 @@ export default function CritiquePost(){
                                 <ChevronDownIcon />
                                 </MenuButton>
                                 <MenuList p={3}>
-                                {/* <MenuGroup>
+                                <MenuGroup>
                                     <MenuItem><EditHistory /></MenuItem>
                                 </MenuGroup>
-                                <MenuDivider /> */}
+                                <MenuDivider />
                                 <MenuGroup >
                                     <MenuItem><ReportPost id={data.post_id} /></MenuItem>
                                 </MenuGroup>
@@ -489,7 +489,7 @@ export default function CritiquePost(){
         
             </Box>
                     {/* Critique */}
-                    <Box w={{lg: '40%', sm: '100%', base: "100%"}} bg={useColorModeValue('white', '#212121')} borderRadius={10} h='90vh' p={5} boxShadow='dark-lg' mt={28} ml={{lg: '3vw', base: 0}}>
+                    <Box w={{ xl: '40%', lg: '100%', sm: '100%', base: "100%"}} bg={useColorModeValue('white', '#212121')} borderRadius={10} h='90vh' p={5} boxShadow='dark-lg' mt={28} ml={{lg: '3vw', base: 0}}>
                         <Critiques id={data.post_id} newCritique={newCritique} />
                     </Box>
                     

@@ -91,22 +91,25 @@ function Home(){
 
           {/* Clear */}
           <Box position='static' bgColor={useColorModeValue('#29226E', '#000000')} boxShadow='lg' w="100%" h="55vh" display={{lg: 'flex', md: 'flex', sm: 'block', base: "block"}} flexDir='column' className={styles.halls} overflowX='auto'>
-            <Flex mt='10vh' w={{lg: '90%', md: '100vw', sm: '100%'}} mx='auto' overflowX='auto'>
+            <Flex mt='10vh' w={{lg: '90%', md: '100vw', sm: '400vw' , base: '300vw'}} mx='auto' overflowX='auto'>
               <Box w={{lg: '20vw', md: '100%', sm: '100%', base: "100%"}} h='40vh' bgImage={'Arts.png'} bgPosition={'center'} bg borderRadius={10}>
                 <Center mt='80%'>
                 <Link href='/critique' passHref={true}><Button size="lg" fontFamily={'Raleway'} fontSize="2xl" ml={5} bgColor={useColorModeValue('#A88816', '#A88816')} _hover={{bgColor: useColorModeValue('#483C10', '#483C10')}} color='white'>View</Button></Link>
                 </Center>
               </Box>
+              <Spacer />
               <Box w={{lg: '20vw', md: '100%', sm: '100%' , base: "100%"}} h='40vh' bgImage={'Business.png'} bgPosition={'center'} ml={{lg: '0', md: '0', sm: '20vw'}} borderRadius={10}>
                 <Center mt='80%'>
                 <Link href='/critique' passHref={true}><Button size="lg" fontFamily={'Raleway'} fontSize="2xl" ml={5} bgColor={useColorModeValue('#850306', '#850306')} _hover={{bgColor: useColorModeValue('#4a0305', '#4a0305')}} color='white'>View</Button></Link>
                 </Center>
               </Box>
+              <Spacer />
               <Box w={{lg: '20vw', md: '100%', sm: '100%' , base: "100%"}} h='40vh' bgImage={'Technology.png'} bgPosition={'center'} borderRadius={10}>
                 <Center mt='80%'>
                 <Link href='/critique' passHref={true}><Button size="lg" fontFamily={'Raleway'} fontSize="2xl" ml={5} bgColor={useColorModeValue('#31518f', '#31518f')} _hover={{bgColor: useColorModeValue('#09255c', '#09255c')}} color='white'>View</Button></Link>
                 </Center>
               </Box>
+              <Spacer />
               <Box w={{lg: '20vw', md: '100%', sm: '100%' , base: "100%"}} h='40vh' bgImage={'Lounge.png'} bgPosition={'center'} borderRadius={10}>
                 <Center mt='80%'>
                 <Link href='/critique' passHref={true}><Button size="lg" fontFamily={'Raleway'} fontSize="2xl" ml={5} bgColor={useColorModeValue('#00786f', '#00786f')} _hover={{bgColor: useColorModeValue('#003834', '#003834')}} color='white'>View</Button></Link>

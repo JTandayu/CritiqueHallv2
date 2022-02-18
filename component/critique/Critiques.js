@@ -243,7 +243,7 @@ export const Critiques = ({id, newCritique}) => {
             </Box>
 
 
-            <Box overflowY="scroll" h={{lg: '80vh', sm: '70vh'}} css={{
+            <Box overflowY="auto" overflowX='hidden' h={{'2xl': '80%', xl: '75vh', lg: '70vh', sm: '70vh', base: '70vh'}} css={{
                     '&::-webkit-scrollbar': {
                     width: '4px',
                     },

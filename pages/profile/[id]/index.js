@@ -32,6 +32,18 @@ import { useCookies, cookies } from 'react-cookie'
 import ReportUser from '@component/report-user'
 import { useRouter } from 'next/router'
 import { getCookie } from 'cookies-next'
+import { extendTheme } from '@chakra-ui/react'
+import { createBreakpoints } from '@chakra-ui/theme-tools'
+
+const breakpoints = createBreakpoints({
+    sm: '320px',
+    md: '768px',
+    lg: '960px',
+    xl: '1200px',
+    '2xl': '1536px',
+  })
+
+const theme = extendTheme({ breakpoints })
 
 // export async function getServerSideProps(context){
 //     const { API_URL } = process.env
@@ -220,7 +232,7 @@ export default function ProfilePage({}){
              
                 <Box display='flex' flexDir={{lg: 'row', md: 'column', sm: 'column', base: "column"}} w='100%'>
                     
-                    <Box w={{lg: '100vw', md: '40vw', sm: '90%', base: '85vw'}} h={{lg: '35vh', md: '35vh', sm: '45vh', base: '30vh'}} bg='white' bgImage={`url('${userData.cover_photo}')`} bgSize="cover" p={3} display={{lg: 'flex', sm: 'block'}} mt={5} ml={{lg: 8, md: 0, sm: 5, base: 5}} rounded='lg'>
+                    <Box w={{lg: '100vw', md: '40vw', sm: '90%', base: '85vw'}} h={{lg: '35vh', md: '35vh', sm: '45vh', base: '40vh'}} bg='white' bgImage={`url('${userData.cover_photo}')`} bgSize="cover" p={3} display={{lg: 'flex', sm: 'block'}} mt={5} ml={{lg: 8, md: 0, sm: 5, base: 5}} rounded='lg'>
                         
                         <Box w='20vh' h='20vh' mt={24} ml={{lg: 5, md: 0, sm: 0, base: '25%'}} mx={{lg: 0, md: 0, sm: 'auto'}} rounded='full'>
                             <Center>
@@ -232,9 +244,9 @@ export default function ProfilePage({}){
                             <Box ml={16} mt={2} float="right">
                                 {userData && userData.display_name !== display_name ? <ReportUser data={userData}  /> : null}
                             </Box>
-                            <Heading fontFamily={'Raleway'} fontWeight={'black'} fontSize="2xl" textShadow='2px 2px #000' color='white' ml={{lg: '10vw', md: 0, sm: 0, base: '35%'}} mt={{lg: 48, base: '-30%'}}>{userData.display_name}</Heading>
+                            <Heading fontFamily={'Raleway'} fontWeight={'black'} size="xl" textShadow='2px 2px #000' color='white' ml={{lg: '10vw', md: 0, sm: 0, base: '30%'}} mt={{'2xl': 48 , lg: 40,  base: '-20%'}}>{userData.display_name}</Heading>
                             <Flex ml={{lg: '10vw', md: 0, sm: 0}} mt={1} mx='auto' textShadow='1px 1px #000' >
-                                <Heading fontFamily={'Raleway'} size={{lg: 'lg', base: 'md'}} mr={3} color='white'>{userData.first_name}</Heading>
+                                <Heading fontFamily={'Raleway'} size={{lg: 'lg', base: 'md'}} mr={3} color='white' ml={{lg: 0, md: 0, sm: 0, base: '30%'}}>{userData.first_name}</Heading>
                                 <Heading fontFamily={'Raleway'} size={{lg: 'lg', base: 'md'}}  color='white'>{userData.last_name}</Heading>
                             </Flex>
                         </Box>
@@ -263,12 +275,12 @@ export default function ProfilePage({}){
                         <Heading size='lg' color={useColorModeValue('#1B1464', '#B2A3FF')} mt={5} fontFamily={'Raleway'} display='flex'>Specialization: <Text fontFamily={'Raleway'} color={useColorModeValue('#C1272D', '#FF5C61')} ml={5}>{userData.specialization}</Text></Heading>
                     </Box>
                 </Box>
-                <Box display='flex' w={{lg: '100%', md: '100%', sm: '100%', base: "100%"}} mt={5} ml={3} mr={5}>
+                <Box display='flex' flexDir={{lg: 'row', base: "column"}} w={{lg: '100%', md: '100%', sm: '100%', base: "90%"}} mt={5} ml={{lg: 3, base: 5}} mr={5}>
                     {/* <Button ml={5} h='2em' position='static'>All</Button> */}
-                    <Button className={useColorModeValue(styles.myposts, styles.myposts2)} fontFamily={'Raleway'} color={useColorModeValue('black', 'white')} fontWeight={'bold'} ml={5} h='2em' position='static' onClick={OpenPost} boxShadow={'lg'}>{userData.display_name === display_name ? <p>My Posts</p> : <p>Post</p>}</Button>
-                    <Button className={useColorModeValue(styles.mycritiques, styles.mycritiques2)} fontFamily={'Raleway'} color={useColorModeValue('black', 'white')} fontWeight={'bold'} ml={5} h='2em' position='static' onClick={OpenCritique} boxShadow={'lg'}>{userData.display_name === display_name ? <p>My Critiques</p> : <p>Critiques</p>}</Button>
+                    <Button className={useColorModeValue(styles.myposts, styles.myposts2)} fontFamily={'Raleway'} color={useColorModeValue('black', 'white')} fontWeight={'bold'} ml={{lg: 5, base: 0}} h='2em' position='static' onClick={OpenPost} boxShadow={'lg'}>{userData.display_name === display_name ? <p>My Posts</p> : <p>Post</p>}</Button>
+                    <Button className={useColorModeValue(styles.mycritiques, styles.mycritiques2)} fontFamily={'Raleway'} color={useColorModeValue('black', 'white')} fontWeight={'bold'} mt={{lg: 0, base: 5}} ml={{lg: 5, base: 0}} h='2em' position='static' onClick={OpenCritique} boxShadow={'lg'}>{userData.display_name === display_name ? <p>My Critiques</p> : <p>Critiques</p>}</Button>
                     <Spacer />
-                    <Flex w={{lg: '15vw', sm: '30vw'}} mt={1} mr={10} id='postFilter'>
+                    <Flex w={{lg: '15vw', sm: '30vw'}} mt={{lg: 1, base: 5}} mr={10} id='postFilter'>
                         {/* <Text fontFamily={'Raleway'} mr={{lg: 5, sm: 1}} w={20} mt={2}>Sort by: </Text> */}
                         <Text fontFamily={'Raleway'} mr={{lg: 1, sm: 1}} w={28} mt={2}>Sort by:</Text>
                         <Select fontFamily={'Raleway'} fontWeight={'bold'} onChange={(e)=>sortPost(e.target.value)}  color={useColorModeValue('black', 'white')} bgColor={useColorModeValue('#FFFFFF', '#2E2E2E')} borderColor={useColorModeValue('black', 'white')} boxShadow={'lg'}>
@@ -279,7 +291,7 @@ export default function ProfilePage({}){
                             {/* <option value='most_interacted'>Most Interacted</option> */}
                         </Select>
                     </Flex>
-                    <Flex w={{lg: '15vw', sm: '30vw'}} mt={1} mr={10} id='critiqueFilter'>
+                    <Flex w={{lg: '15vw', sm: '30vw'}} mt={{lg: 1, base: 5}}  mr={10} id='critiqueFilter'>
                         {/* <Text fontFamily={'Raleway'} mr={{lg: 5, sm: 1}} w={20} mt={2}>Sort by: </Text> */}
                         <Text fontFamily={'Raleway'} mr={{lg: 1, sm: 1}} w={28} mt={2}>Sort by:</Text>
                         <Select fontFamily={'Raleway'} fontWeight={'bold'} onChange={(e)=>sortCritique(e.target.value)}  color={useColorModeValue('black', 'white')} bgColor={useColorModeValue('#FFFFFF', '#2E2E2E')} borderColor={useColorModeValue('black', 'white')} boxShadow={'lg'}>
@@ -292,7 +304,7 @@ export default function ProfilePage({}){
                     </Flex>
                 </Box>
                 {loading ? 
-                <Box display='flex' h={{lg: '30vh', sm: '40vh'}} p={3} mt={5} ml={3} mr={3}  rounded='lg' overflowX='auto' css={{
+                <Box display='flex' h={{lg: '30vh', sm: '40vh', base: '42vh'}} w={{lg: '100%', base: "90%" }} p={3} mt={5} ml={3} mr={3}  rounded='lg' overflowX='auto' css={{
                             '&::-webkit-scrollbar': {
                             width: '4px',
                             },
@@ -308,7 +320,7 @@ export default function ProfilePage({}){
                         {userPosts !== null ?
                         userPosts.map((posts, i) => (
                             <Link href={`/post/${posts.post_id}`} key={i} passHref>
-                                <Box bgColor={changeColorBox} w={{lg: '20vw', sm: '300px'}} h='28vh' ml={5} borderRadius={10} boxShadow="md">
+                                <Box bgColor={changeColorBox} w={{lg: '20vw', sm: '300px', base: '300px'}} h={{lg: '28vh', base: '30vh'}} ml={5} borderRadius={10} boxShadow="md">
                                     {/* <Center mt={3}>
                                         <Heading size='md' mx="auto">{posts.title}</Heading>
                                     </Center> */}
@@ -332,7 +344,7 @@ export default function ProfilePage({}){
                         {userCritique !== null ?
                         userCritique.map((critique, i) => (
                             <Link href={`/post/${critique.post_id}`} key={i} passHref>
-                                <Box bgColor={changeColorBox} w={{lg: '20vw', sm: '300px'}} h='28vh' ml={5} borderRadius={10} boxShadow="md">
+                                <Box bgColor={changeColorBox} w={{lg: '20vw', sm: '300px', base: '300px'}} h={{lg: '28vh', base: '30vh'}} ml={5} borderRadius={10} boxShadow="md">
                                     {/* <Center mt={3}>
                                         <Heading size='md' mx="auto">{critique.title}</Heading>
                                     </Center> */}

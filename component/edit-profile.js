@@ -401,7 +401,7 @@ function EditProfile({data}) {
                     <Box w="full" mb={8}>
                         <Center>
                             {loading ? <Spinner /> : 
-                            <Button fontFamily={'Raleway'} bg='blue.400' color='white' _hover={{background: 'blue.700'}} align="right" onClick={uploadFiles}>Upload Profile / Cover Picture</Button>}
+                            <Button fontFamily={'Raleway'} fontSize={{lg: 'xs', base: 'xs'}} bg='blue.400' color='white' _hover={{background: 'blue.700'}} align="right" onClick={uploadFiles}>Upload Picture/s</Button>}
                             <Text fontFamily={'Raleway'} fontSize="sm" color={useColorModeValue('gray', 'gray')} ml={3}>Please click upload after you choose a file.</Text>         
                         </Center>
                     </Box>
@@ -432,11 +432,12 @@ function EditProfile({data}) {
                     <Flex mb={5} flexDir={{lg: "row", base: "column"}}>
                         <FormLabel fontFamily={'Raleway'}>Confirm password before saving</FormLabel>
                         <Input fontFamily={'Raleway'} borderColor={useColorModeValue('black', 'white')} type='password' w={{lg: '10vw', base: "100%"}} ml={{lg: '10px', base: 0}} onChange={(e) => setConfirmPassword(e.target.value)} />
+                        <Button fontFamily={'Raleway'} bgColor={useColorModeValue('#0C1F83', '#1D447E')} ml={{lg: 5, base: 0}} mt={{lg: 0, base: 5}} color={useColorModeValue('white', 'white')} _hover={{bgColor: useColorModeValue('#173cff', '#428eff')}} mr={{'2xl': 0, md: 0, base: 0}} onClick={SubmitPersonalInformation}>Save</Button>
                     </Flex>
-                    <Flex>
+                    {/* <Flex>
                         <Spacer />
                         <Button fontFamily={'Raleway'} bgColor={useColorModeValue('#0C1F83', '#1D447E')} color={useColorModeValue('white', 'white')} _hover={{bgColor: useColorModeValue('#173cff', '#428eff')}} mr={{'2xl': 0, md: 0, base: 0}} onClick={SubmitPersonalInformation}>Save</Button>
-                    </Flex>
+                    </Flex> */}
                     <Divider mb={5} mt={5}/>
                     <Flex>
                         <Heading fontFamily={'Raleway'} size='md' mb={5}>Change Password</Heading>

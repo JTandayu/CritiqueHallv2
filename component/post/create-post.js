@@ -198,7 +198,6 @@ function CreatePost({data}) {
                 e.target.files[i].name.endsWith(".html") == true || 
                 e.target.files[i].name.endsWith(".css") == true || 
                 e.target.files[i].name.endsWith(".php") == true ||
-                e.target.files[i].name.endsWith(".js") == true || 
                 e.target.files[i].name.endsWith(".wav") == true ||
                 e.target.files[i].name.endsWith(".mpeg") == true || 
                 e.target.files[i].name.endsWith(".flac") == true){
