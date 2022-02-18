@@ -332,7 +332,7 @@ export default function Nav(data, profile_pic){
             </Flex>
 
             <Spacer display={{lg: "block", md: "none", base: "none"}} />
-            {/* <Popover >
+            <Popover >
                     <PopoverTrigger>
                         <Button as='a'
                             variant='ghost'
@@ -363,7 +363,7 @@ export default function Nav(data, profile_pic){
                             borderRadius: '24px',
                             },
                         }}>
-                            {notif.map((notification, i) =>
+                            {/* {notif.map((notification, i) =>
                             <Box key={i} display='flex' w="full" p={5}>
                                 {notification.profile_photo ? <Img src={notification.profile_photo} mr={3} w="25px" h="25px" alt="Notification Image" /> : null}
                                 <Text mr={3} fontFamily={'Raleway'}>{notification.display_name}</Text>
@@ -371,10 +371,10 @@ export default function Nav(data, profile_pic){
                                 <Text w="full" fontFamily={'Raleway'} isTruncated>{notification.title}</Text>
                             <Divider />
                             </Box>
-                            )}
+                            )} */}
                         </PopoverBody>
                     </PopoverContent>
-                </Popover> */}
+                </Popover>
             
             <Flex
             pos='fixed'
@@ -498,7 +498,7 @@ export default function Nav(data, profile_pic){
                             borderRadius: '24px',
                             },
                         }}>
-                            {notif.map((notification, i) =>
+                            {/* {notif.map((notification, i) =>
                             <Box key={i} display='flex' w="full" p={5}>
                                 {notification.profile_photo ? <Img src={notification.profile_photo} mr={3} w="25px" h="25px" alt="Notification Image" /> : null}
                                 <Text mr={3} fontFamily={'Raleway'}>{notification.display_name}</Text>
@@ -506,7 +506,7 @@ export default function Nav(data, profile_pic){
                                 <Text w="full" fontFamily={'Raleway'} isTruncated>{notification.title}</Text>
                             <Divider />
                             </Box>
-                            )}
+                            )} */}
                         </PopoverBody>
                     </PopoverContent>
                 </Popover>
