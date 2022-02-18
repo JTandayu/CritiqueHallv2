@@ -332,7 +332,7 @@ export default function Nav(data, profile_pic){
             </Flex>
 
             <Spacer display={{lg: "block", md: "none", base: "none"}} />
-            <Popover >
+            {/* <Popover >
                     <PopoverTrigger>
                         <Button as='a'
                             variant='ghost'
@@ -374,7 +374,7 @@ export default function Nav(data, profile_pic){
                             )}
                         </PopoverBody>
                     </PopoverContent>
-                </Popover>
+                </Popover> */}
             
             <Flex
             pos='fixed'
