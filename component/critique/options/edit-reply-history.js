@@ -111,7 +111,7 @@ function EditReplyHistory({id}) {
                                             <Spacer />
                                             <Text fontFamily={'Raleway'}>{history.time_ago}</Text>
                                         </Box>
-                                        <Text fontFamily={'Raleway'} w="70%">{history.body}</Text>
+                                        <Text fontFamily={'Raleway'} textAlign={'justify'} w="70%">{history.body}</Text>
                                     </Center>
                                 </Box>
                             )
