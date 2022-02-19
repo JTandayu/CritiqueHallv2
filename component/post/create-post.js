@@ -176,6 +176,7 @@ function CreatePost({data}) {
                 // console.log(e.target.files[i].name.endsWith(".docx"))
                 if(e.target.files[i].size > 25000000){
                     toastIdRef.current = toast({
+                        position: 'top',
                         title: "File size is higher than the limit.",
                         status: 'error',
                         isClosable: true,
@@ -202,6 +203,7 @@ function CreatePost({data}) {
                 e.target.files[i].name.endsWith(".mpeg") == true || 
                 e.target.files[i].name.endsWith(".flac") == true){
                     toastIdRef.current = toast({
+                        position: 'top',
                         title: `${e.target.files[i].name}`,
                         status: 'info',
                         isClosable: true,
@@ -213,7 +215,8 @@ function CreatePost({data}) {
                 }
                 else{  
                     toastIdRef.current = toast({
-                        title: "File is not Accepted.",
+                        position: 'top',
+                        title: "File is not accepted!",
                         status: 'error',
                         isClosable: true,
                       })
@@ -292,7 +295,7 @@ function CreatePost({data}) {
         })
         .catch(error => {
             // toastIdRef.current = toast({ title: 'Create post unsuccessful!', status: 'error', duration: 3000, isClosable: false })
-            if(error.response.data.status === "Account Muted"){
+            if(error.response.data.status === "Account muted"){
                 toastIdRef.current = toast({ position: 'top', title: 'Account muted!', status: 'error', duration: 3000, isClosable: true })
             }
             console.log(error);
@@ -302,7 +305,8 @@ function CreatePost({data}) {
     }
 
     const addDefaultSrc = (e) => {
-        e.target.src = "/no-image-attachment.png";
+        // e.target.src = "/no-image-attachment.png";
+        e.target.style.display = "none";
         e.target.onerror = null;
     }
     
