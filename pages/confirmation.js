@@ -34,6 +34,8 @@ import { useCookies } from 'react-cookie';
 import React from 'react';
 import { useToast } from '@chakra-ui/react';
 import { getCookie, removeCookies } from 'cookies-next'
+import {useRouter} from 'next/router'
+
 
 
 const breakpoints = createBreakpoints({
@@ -59,6 +61,7 @@ export default function ConfirmationPage(){
 
   const toast = useToast()
   const toastIdRef = React.useRef()
+  const router = useRouter()
 
   const { colorMode, toggleColorMode } = useColorMode()
   colorMode === 'light' ? 'Dark' : 'Light'
@@ -98,7 +101,7 @@ export default function ConfirmationPage(){
             setCookies('token', response.data.token)
             removeCookies('email')
             removeCookies('password')
-            window.location = "/home"
+            router.replace('/home')
         })
         .catch(error => {
             // toastIdRef.current = toast({ position: 'top', title: 'Account verification unsuccessful!', description: 'Please try again.', status: 'error', duration: 3000, isClosable: true })
