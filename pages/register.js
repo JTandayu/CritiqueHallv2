@@ -217,7 +217,7 @@ export default function Register({data2}) {
       }else{
         axios.post(`${API_URL}/api/register`, formData, config)
         .then(response => {
-          toastIdRef.current = toast({ position: 'top', title: 'Account creation successful!', description: 'Please check your Email for the 6-Digit Code Verification.', status: 'success', duration: 3000, isClosable: true })
+          toastIdRef.current = toast({ position: 'top', title: 'Account registered!', description: '6-Digit code sent, Please check your spam section if it does not appear in your inbox.', status: 'success', duration: 3000, isClosable: true })
             console.log(response.data);
             submitLogin()
         })
