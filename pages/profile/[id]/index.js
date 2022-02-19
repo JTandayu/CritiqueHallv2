@@ -104,6 +104,7 @@ export default function ProfilePage({}){
     const changeBadgeIcon = useColorModeValue('/badge-icon.png', '/badge-icon-dark.png')
     const changeStarIcon = useColorModeValue('/stars-clicked.png', '/stars-clicked-dark.png')
     const changeCommentIcon = useColorModeValue('/comments.png', '/comments-dark.png')
+    const thereNoPost = useColorModeValue('/there-no-post.png', '/there-no-post-dark.png')
 
     const config = {
         headers: { 
