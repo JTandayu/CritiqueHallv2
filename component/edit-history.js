@@ -37,8 +37,6 @@ function EditHistory({id}) {
     const token = getCookie('token')
     const user_id = getCookie('encrypted_id')
 
-    const changeTextColor = useColorModeValue('black', 'white')
-
     const [data, setData] = useState([])
 
     const config = {
@@ -102,7 +100,7 @@ function EditHistory({id}) {
                                 </Center>
                             </Box>
                         )
-                    : <Text fontFamily={'Raleway'} color={changeTextColor}>There is nothing in here...</Text>]
+                    : <Text fontFamily={'Raleway'}>There is nothing in here...</Text>]
                 : null}
                 </ModalBody>
             </ModalContent>

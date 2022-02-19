@@ -40,8 +40,6 @@ function EditReplyHistory({id}) {
 
     const token = getCookie('token')
     const user_id = getCookie('encrypted_id')
-    const changeTextColor = useColorModeValue('black', 'white')
-
 
     const [data, setData] = useState([])
 
@@ -104,7 +102,7 @@ function EditReplyHistory({id}) {
                                     </Center>
                                 </Box>
                             )
-                        : <Text fontFamily={'Raleway'} color={changeTextColor}>There is nothing in here...</Text>}
+                        : <Text fontFamily={'Raleway'}>There is nothing in here...</Text>}
                     </ModalBody>
                 </ModalContent>
             </Modal>
