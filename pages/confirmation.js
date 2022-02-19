@@ -33,7 +33,7 @@ import axios from "axios"
 import { useCookies } from 'react-cookie';
 import React from 'react';
 import { useToast } from '@chakra-ui/react';
-import { getCookie, removeCookies } from 'cookies-next'
+import { getCookie, setCookies, removeCookies } from 'cookies-next'
 import {useRouter} from 'next/router'
 
 
