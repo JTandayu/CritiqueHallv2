@@ -114,9 +114,9 @@ export default function TermsAndConditions() {
           </ModalBody>
 
           <ModalFooter>
-            <Button fontFamily={'Raleway'}  bgColor={useColorModeValue('#2777C1','#0085FF')} color={useColorModeValue('#FFFFFF', '#FFFFFF')} _hover={{bgColor: useColorModeValue('#56AEFF', '#0B5090')}} mr={3} onClick={onClose}>
+            {/* <Button fontFamily={'Raleway'}  bgColor={useColorModeValue('#2777C1','#0085FF')} color={useColorModeValue('#FFFFFF', '#FFFFFF')} _hover={{bgColor: useColorModeValue('#56AEFF', '#0B5090')}} mr={3} onClick={onClose}>
               Close
-            </Button>
+            </Button> */}
           </ModalFooter>
         </ModalContent>
         </Modal>

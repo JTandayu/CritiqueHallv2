@@ -255,12 +255,12 @@ export default function ProfilePage({}){
                     </Box>
                     <Box overflowY='auto' w={{lg: '70vw', md: '97%', sm: '90%', base: '89%'}} h={{lg: '35vh', md: '30%', sm: '45vh'}} bg={useColorModeValue('#81A4CF', '#0A1A2D')} p={3} mt={5} ml={{lg: 8, md: 3, sm: 5, base: 5}} mr={{lg: 5, md: 0, sm: 0}} rounded='lg' fontFamily={'Raleway'}>
                         <Flex>
-                        <Heading size='lg' as='h3' color={useColorModeValue('#1B1464', '#B2A3FF')} mt={10} fontFamily={'Raleway'} display='flex'><Image src={useColorModeValue('/critique-user-icon.png', '/critique-user-icon-dark.png')} w='10%' mr={5}/>About Me: </Heading>
+                        <Heading fontSize={{lg: 'lg', base: 'md'}} color={useColorModeValue('#1B1464', '#B2A3FF')} mt={10} fontFamily={'Raleway'} display='flex'><Image src={useColorModeValue('/critique-user-icon.png', '/critique-user-icon-dark.png')} w='10%' mr={5}/>About Me: </Heading>
                         <Spacer />
                             {userData && userData.display_name === display_name ? <EditProfile data={userData}/> : null}
                         </Flex>
-                        <Text w={{lg: '65vh', md: '100%', sm: '100%'}} fontSize='xl' color="white">{userData.about_me}</Text>
-                        <Heading size='lg' color={useColorModeValue('#1B1464', '#B2A3FF')} mt={5} display="flex" fontFamily={'Raleway'}>Reputation Stars: <Text fontFamily={'Raleway'} color={useColorModeValue('#C1272D', '#FF5C61')} ml={5} display='flex'>{userData.reputation_points}{userData.reputation_points >= 10 ? <Image src={changeBadgeIcon} alt="Badge Icon" w="50px" h="50px" ml={2}/> : null}
+                        <Text w={{lg: '65vh', md: '100%', sm: '100%'}} fontSize='md' color="white"  textShadow='2px 2px #000'>{userData.about_me}</Text>
+                        <Heading fontSize={{lg: 'lg', base: 'md'}} color={useColorModeValue('#1B1464', '#B2A3FF')} mt={5} display="flex" fontFamily={'Raleway'}>Reputation Stars: <Text fontFamily={'Raleway'} color={useColorModeValue('white', 'white')} ml={5} display='flex' textShadow='2px 2px #000'>{userData.reputation_points}{userData.reputation_points >= 10 ? <Image src={changeBadgeIcon} alt="Badge Icon" w="50px" h="50px" ml={2}/> : null}
                         <Popover trigger="hover">
                         <PopoverTrigger>
                         <Image src='/question-icon.png' _hover={{cursor: 'pointer'}} alt="question icon" w="20px" h="20px" ml={2} mt={3}/>
@@ -268,12 +268,12 @@ export default function ProfilePage({}){
                         <PopoverContent>
                             <PopoverArrow /> 
                             {/* <PopoverCloseButton color={useColorModeValue('black', 'white')}/> */}
-                            <PopoverBody><Text fontSize="md" fontFamily={'Raleway'} color={useColorModeValue('black', 'white')} align="justify" p={3}>Reaching 10 stars grants you a Top User badge! This will be displayed in your profile and beside your name whenever you give a critique.</Text></PopoverBody>
+                            <PopoverBody><Text fontSize="md" fontFamily={'Raleway'} color={useColorModeValue('black', 'white')} align="justify" p={3}  textShadow='0px 0px #000'>Reaching 10 stars grants you a Top User badge! This will be displayed in your profile and beside your name whenever you give a critique.</Text></PopoverBody>
                         </PopoverContent> 
                         </Popover>
                         </Text>
                         </Heading>
-                        <Heading size='lg' color={useColorModeValue('#1B1464', '#B2A3FF')} mt={5} fontFamily={'Raleway'} display='flex'>Specialization: <Text fontFamily={'Raleway'} color={useColorModeValue('#C1272D', '#FF5C61')} ml={5}>{userData.specialization}</Text></Heading>
+                        <Heading fontSize={{lg: 'lg', base: 'md'}} color={useColorModeValue('#1B1464', '#B2A3FF')} mt={5} fontFamily={'Raleway'} display='flex'>Specialization: <Text fontFamily={'Raleway'} color={useColorModeValue('white', 'white')} ml={5}  textShadow='2px 2px #000'>{userData.specialization}</Text></Heading>
                     </Box>
                 </Box>
                 <Box display='flex' flexDir={{lg: 'row', md: 'row', base: "column"}} w={{lg: '100%', md: '100%', sm: '100%', base: "90%"}} mt={5} ml={{lg: 3, base: 5}} mr={5}>

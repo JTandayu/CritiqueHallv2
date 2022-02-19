@@ -3,6 +3,7 @@
     background-repeat: no-repeat;
     background-color: #3778DA;
     background-size: 50%;
+    background-position: left left;
     height: 100vh;
     padding: 0 0.5rem;
     display: flex;
@@ -18,6 +19,7 @@
     background-repeat: no-repeat;
     background-color: #1D447E;
     background-size: 50%;
+    background-position: left left;
     height: 100vh;
     padding: 0 0.5rem;
     display: flex;

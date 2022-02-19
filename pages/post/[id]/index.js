@@ -344,7 +344,8 @@ export default function CritiquePost(){
                 <Box  w={{lg: '50%', sm: '100%', base: "100%"}}  bg={useColorModeValue('white', '#212121')} h={{lg: "100%", sm: "100%"}} p={5} boxShadow='dark-lg' borderRadius={10} mt={28} ml={{lg: '3vw', base: 0}}>
                 <Heading fontFamily={'Raleway'} fontSize="xl" mx="auto" display="flex"><Image src={data.profile_photo} w="50px" h="50px" mr={3} borderRadius={10}/>
                 <Link href={`/profile/${data.display_name}`} passHref><Text fontFamily={'Raleway'} fontSize="xl" _hover={{cursor: 'pointer'}} mt={4}>{data.display_name}</Text></Link>
-                <Text fontFamily={'Raleway'} fontSize="md" ml={{lg:'65%', base: '10%'}} color="gray.400" mt={5} isTruncated>{data.time_ago}</Text>
+                <Spacer />
+                <Text fontFamily={'Raleway'} fontSize="md" color="gray.400" mt={5} isTruncated>{data.time_ago}</Text>
                 {data.display_name == display_name ?
                         <Box id='sameAcc' >
                             <Menu>
@@ -409,7 +410,7 @@ export default function CritiquePost(){
                                 <Image src={data.attachment1} w='50vh' h='40vh' cursor="pointer" objectFit='cover'/> :
                                 <Center p={10} w="full">
                                     <Link href={data.attachment1}  passHref>
-                                        <Button>Download File </Button>
+                                        <Button>Download File</Button>
                                     </Link>
                                 </Center>
                                 ] : null}
@@ -460,7 +461,7 @@ export default function CritiquePost(){
                         :
                     <Center p={10} w="full"> 
                         <Link href={data.attachment1}  passHref>
-                            <Button>Download File </Button>
+                            <Button>Download File</Button>
                         </Link>
                     </Center>
                     ]
@@ -469,13 +470,13 @@ export default function CritiquePost(){
                     ] : 
                     
                     <Center my={10}>
-                        <Image src="/no-image-attachment.png" w='700px' h='300px' cursor="pointer"  disabled objectFit='cover'/>
+                        {/* <Image src="/no-image-attachment.png" w='700px' h='300px' cursor="pointer"  disabled objectFit='cover'/> */}
                     </Center>
                     }
                     </SRLWrapper>
                     {/* Options */}
                     <Box display="flex" w="100%" mt={5}>
-                        <Button  fontFamily={'Raleway'} position='static' variant='ghost' onClick={giveLike}><Image src={useColorModeValue('/stars.png', '/stars-dark.png')} alt="Stars" w="25px" h="25px" ml={2}/> <Text id='likes' ml={2}>{data.likes}</Text></Button>
+                        <Button  fontFamily={'Raleway'} position='static' variant='ghost' onClick={giveLike}><Image src={useColorModeValue('/stars-clicked.png', '/stars-clicked-dark.png')} alt="Stars" w="25px" h="25px" ml={2}/> <Text id='likes' ml={2}>{data.likes}</Text></Button>
                         <Spacer />
                         {/* dito 'yung menu dropdown options */}
                     </Box>
