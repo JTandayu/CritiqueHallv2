@@ -321,7 +321,7 @@ function CreatePost({data}) {
 
         <Modal isOpen={isOpen} onClose={onClose}>
             <ModalOverlay />
-                <ModalContent maxW="70rem">
+                <ModalContent maxW={{'2xl': "70rem", xl: '75rem', base: '100%'}}>
                 <ModalHeader fontFamily={'Raleway'}>Create Post</ModalHeader>
                 <ModalCloseButton />
                 <ModalBody >

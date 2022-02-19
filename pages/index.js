@@ -125,6 +125,10 @@ export default function Login({user}) {
 
           if(response.data.status === 'Email not verified'){
             toastIdRef.current = toast({ position: 'top', title: 'Email not verified!', status: 'error', duration: 3000, isClosable: true })
+            setCookies('email', email)
+            setCookies('password', password)
+            setCookies('display_name', response.data.display_name)
+            setCookies('encrypted_id', response.data.encrypted_id)
             router.replace("/confirmation")
           }else if(response.data.status.includes('You are temporarily suspended')){
             toastIdRef.current = toast({ position: 'top', title: response.data.status, status: 'error', duration: 3000, isClosable: true })
