@@ -150,8 +150,9 @@ export default function ProfilePage({}){
 
         axios.post(`${API_URL}/api/display_posts`, formData, config)
         .then(response => {
-            console.log(response.data);      
+            // console.log(response.data);      
             setUserPosts(response.data.posts.posts)
+            console.log(userPosts)
         })
         .catch(error => {
             console.log(error.response);
@@ -162,6 +163,7 @@ export default function ProfilePage({}){
         .then(response => {
             console.log(response.data);      
             setUserCritique(response.data.critiques.critiques)
+            console.log(userCritique)
         })
         .catch(error => {
             console.log(error.response);
