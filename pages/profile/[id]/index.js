@@ -148,7 +148,7 @@ export default function ProfilePage({}){
 
         axios.post(`${API_URL}/api/display_posts`, formData, config)
         .then(response => {
-            // console.log(response.data);      
+            console.log(response.data);      
             setUserPosts(response.data.posts.posts)
             // console.log(userPosts.length)
         })
