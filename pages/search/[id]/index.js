@@ -211,7 +211,7 @@ export default function SearchResult(){
             {/* User item */}
             <Text id='user' mx='auto' my="50px" hidden fontFamily={'Raleway'} color={changeColor2}>No Users Found</Text> 
             {searchUserData.map((user, i) => (
-            <Box w={{lg: '50%', base: "100%"}} key={user.user_id} bgImage={`url('${user.cover_photo}')`} bgSize="cover" color="white" mt={5} rounded="lg">
+            <Box w={{lg: '50%', base: "100%"}} key={user.user_id} bgImage={`url('${user.cover_photo}')`} bgSize="cover" border="2px" borderColor={changeColor2} color="white" mt={5} rounded="lg">
             <Link href="/profile/[id]" as={`/profile/${user.display_name}`} passHref>
                 <a>
                 <Box w={{lg: '100%', sm: '100%'}} display={{lg: 'flex', sm: 'block'}} flexDir={{lg: "row", base: "column"}}  mt='2ch' mx="auto" borderColor='dark' rounded='lg' fontFamily={'Raleway'}>
@@ -220,8 +220,8 @@ export default function SearchResult(){
                     </Box>
                     <Spacer />
                     <Box p="3" w="100%" bg="light" ml={{lg: "20vh", base: 0}}>
-                        <Heading fontFamily={'Raleway'} fontWeight={'black'} size='2xl' textShadow='2px 2px #000' mt={28} display="flex">{user.display_name}{user.reputation_points >= 10 ? <Image src={changeBadgeIcon} alt="Badge Icon" w="50px" h="50px" ml={5}/> : null}</Heading>
-                        
+                        <Heading bgColor={changeColor2} borderRadius={10} fontFamily={'Raleway'} fontWeight={'black'} size='2xl' textShadow='2px 2px #000' p={1}  mt={28} display="flex">{user.display_name}{user.reputation_points >= 10 ? <Image src={changeBadgeIcon} alt="Badge Icon" w="50px" h="50px" ml={2}/> : null}</Heading>
+                        <Center><Heading bgColor={changeColor2} borderRadius={10} fontFamily={'Raleway'} fontWeight={'black'} size='md' textShadow='2px 2px #000'A p={1} mt={2} display="flex">{user.first_name}<Text ml={2}>{user.last_name}</Text></Heading></Center>
                     </Box>      
                 </Box>
                 

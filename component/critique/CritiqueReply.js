@@ -55,8 +55,7 @@ export const CritiqueReply = ({id, post_id, newReply}) => {
     const toastIdRef = React.useRef()
     // console.log(post_id)
 
-    const changeIcon = useColorModeValue('/stars.png', '/stars-dark.png')
-    const changeIcon2 = useColorModeValue('/stars-clicked.png', '/stars-clicked-dark.png')
+    const changeIcon = useColorModeValue('/stars-clicked.png', '/stars-clicked-dark.png')
     const changeBadgeIcon = useColorModeValue('/badge-icon.png', '/badge-icon-dark.png')
 
     const config = {

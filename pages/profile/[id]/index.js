@@ -245,21 +245,30 @@ export default function ProfilePage({}){
                             <Box ml={16} mt={2} float="right">
                                 {userData && userData.display_name !== display_name ? <ReportUser data={userData}  /> : null}
                             </Box>
-                            <Heading fontFamily={'Raleway'} fontWeight={'black'} size="xl" textShadow='2px 2px #000' color='white' ml={{lg: '10vw', md: 0, sm: 0, base: '30%'}} mt={{'2xl': 48 , lg: 40,  base: '-20%'}}>{userData.display_name}</Heading>
-                            <Flex ml={{lg: '10vw', md: 0, sm: 0}} mt={1} mx='auto' textShadow='1px 1px #000' >
+                            {/* <Heading fontFamily={'Raleway'} fontWeight={'black'} size="xl" textShadow='2px 2px #000' color='white' ml={{lg: '10vw', md: 0, sm: 0, base: '30%'}} mt={{'2xl': 48 , lg: 40,  base: '-20%'}}>{userData.display_name}</Heading> */}
+                            {/* <Flex ml={{lg: '10vw', md: 0, sm: 0}} mt={1} mx='auto' textShadow='1px 1px #000' >
                                 <Heading fontFamily={'Raleway'} size={{lg: 'lg', base: 'md'}} mr={3} color='white' ml={{lg: 0, md: 0, sm: 0, base: '30%'}}>{userData.first_name}</Heading>
                                 <Heading fontFamily={'Raleway'} size={{lg: 'lg', base: 'md'}}  color='white'>{userData.last_name}</Heading>
-                            </Flex>
+                            </Flex> */}
                         </Box>
                         
                     </Box>
                     <Box overflowY='auto' w={{lg: '70vw', md: '97%', sm: '90%', base: '89%'}} h={{lg: '35vh', md: '30%', sm: '45vh'}} bg={useColorModeValue('#81A4CF', '#0A1A2D')} p={3} mt={5} ml={{lg: 8, md: 3, sm: 5, base: 5}} mr={{lg: 5, md: 0, sm: 0}} rounded='lg' fontFamily={'Raleway'}>
-                        <Flex>
-                        <Heading fontSize={{lg: 'lg', base: 'md'}} color={useColorModeValue('#1B1464', '#B2A3FF')} mt={10} fontFamily={'Raleway'} display='flex'><Image src={useColorModeValue('/critique-user-icon.png', '/critique-user-icon-dark.png')} w='10%' mr={5}/>About Me: </Heading>
+                        <Flex  mt={1} mx='auto' textShadow='1px 1px #000'>
+                        <Heading fontFamily={'Raleway'}  size="lg" mr={3} color='white' ml={{lg: 0, md: 0, sm: 0, base: '2%'}}>{userData.display_name}</Heading>
                         <Spacer />
                             {userData && userData.display_name === display_name ? <EditProfile data={userData}/> : null}
                         </Flex>
-                        <Text w={{lg: '65vh', md: '100%', sm: '100%'}} fontSize='md' color="white"  textShadow='2px 2px #000'>{userData.about_me}</Text>
+                        <Flex  mt={1} mx='auto' textShadow='1px 1px #000'>
+                        <Heading fontFamily={'Raleway'} size="md" mr={3} color='gray.300' ml={{lg: 0, md: 0, sm: 0, base: '2%'}}>{userData.first_name}</Heading>
+                        <Heading fontFamily={'Raleway'} size="md" color='gray.300'>{userData.last_name}</Heading>
+                        </Flex>
+                        <Flex>
+                        <Heading fontSize={{lg: 'lg', base: 'md'}} color={useColorModeValue('#1B1464', '#B2A3FF')} mt={5} fontFamily={'Raleway'} display='flex'><Image src={useColorModeValue('/critique-user-icon.png', '/critique-user-icon-dark.png')} w='10%' mr={5}/>About Me: </Heading>
+                        {/* <Spacer />
+                            {userData && userData.display_name === display_name ? <EditProfile data={userData}/> : null} */}
+                        </Flex>
+                        <Text w={{lg: '65vh', md: '100%', sm: '100%'}} fontSize='md' color="white"  textShadow='2px 2px #000' mt={2}>{userData.about_me}</Text>
                         <Heading fontSize={{lg: 'lg', base: 'md'}} color={useColorModeValue('#1B1464', '#B2A3FF')} mt={5} display="flex" fontFamily={'Raleway'}>Reputation Stars: <Text fontFamily={'Raleway'} color={useColorModeValue('white', 'white')} ml={5} display='flex' textShadow='2px 2px #000'>{userData.reputation_points}{userData.reputation_points >= 10 ? <Image src={changeBadgeIcon} alt="Badge Icon" w="50px" h="50px" ml={2}/> : null}
                         <Popover trigger="hover">
                         <PopoverTrigger>

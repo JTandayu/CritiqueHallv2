@@ -385,14 +385,20 @@ export default function HallPage(){
                                 <a>
                                 <Box display={{lg: 'flex', sm: 'block'}} w={{lg: "50vw", sm: '100%'}}>
                                     <Box fontFamily={'Raleway'} p="3" w="100%" bg="light" my='auto'>
-                                        <Center>
+                                        <Center display={{lg: 'none', base: 'block'}} w="100%">
                                             <Box bgColor={post.hall_color} w="150px" p={5} color="white" rounded="md" boxShadow="lg">
                                                 <Center>
                                                     {post.hall}
                                                 </Center>
                                             </Box>
                                         </Center>
+                                        <Box display={{lg: 'block', base: 'none'}} bgColor={post.hall_color} w="150px" p={5} color="white" rounded="md" boxShadow="lg">
+                                                <Center>
+                                                    {post.hall}
+                                                </Center>
+                                            </Box>
                                     </Box>
+                         
                                     {post.attachment1 != 'undefined' ?
                                     <Box p="3" w="100%" bg="light" my='auto' ml={{lg: '20%', base: '0'}} mr={{lg: '15%', base: '0'}} overflowX={{lg: 'visible', sm: "auto", base: "auto"}}>
                                         <Center>

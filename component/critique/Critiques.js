@@ -67,8 +67,7 @@ export const Critiques = ({id, newCritique}) => {
     const beCritique = useColorModeValue('/be-first-critique.png', '/be-first-critique-dark.png')
     const CritiqueTitle = useColorModeValue('/critiques-title.png', '/critiques-title-dark.png')
     const TextareaBorderColor = useColorModeValue('black', 'white')
-    const changeIcon = useColorModeValue('/stars.png', '/stars-dark.png')
-    const changeIcon2 = useColorModeValue('/stars-clicked.png', '/stars-clicked-dark.png')
+    const changeIcon = useColorModeValue('/stars-clicked.png', '/stars-clicked-dark.png')
     const changeBadgeIcon = useColorModeValue('/badge-icon.png', '/badge-icon-dark.png')
 
     const config = {
