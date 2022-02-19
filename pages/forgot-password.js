@@ -107,7 +107,7 @@ export default function ForgotPassword(){
           <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@700&display=swap" rel="stylesheet" />
         </Head>
         
-        <Box className={styles.main} bg={useColorModeValue('white', '#212121')} w={{'2xl': '100ch' , xl: '70ch', lg: '70ch' , md: '100%' , sm: '100%', base: '100%' }} >
+        <Box className={styles.main} bg={useColorModeValue('white', '#212121')} w={{'2xl': '50vw' , xl: '50vw', lg: '50vw' , md: '100%' , sm: '100%', base: '100%'}}>
             <center>
             {/* <Button
                         as='a'

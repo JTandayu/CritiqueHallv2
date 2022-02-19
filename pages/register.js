@@ -275,7 +275,7 @@ export default function Register({data2}) {
           <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@700&display=swap" rel="stylesheet" />
         </Head>
   
-        <Box bg={useColorModeValue('white', '#212121')} w={{'2xl': '100ch' , xl: '70ch', md: '100%' , sm: '100%', base: '100%'}} className={styles.main} 
+        <Box bg={useColorModeValue('white', '#212121')} w={{'2xl': '50vw' , xl: '50vw', lg: '50vw' , md: '100%' , sm: '100%', base: '100%'}} className={styles.main} 
           id="motion-main" 
         >
           <center><FormControl id="registerpart1">
@@ -314,9 +314,7 @@ export default function Register({data2}) {
                 <Text mt='1vh'>Please input all the fields!</Text>
               </Center>
             </Box>
-
-            <SimpleGrid columns={{lg: 2, base: 1}} spacing={{lg: 3, base: 2}}>
-            {/* <Heading fontFamily={'Raleway'} mb={2} as="h2" size="lg"color={useColorModeValue('#C1272D','#FF5C61')}>REGISTER</Heading> */}
+            <SimpleGrid columns={{lg: 2, base: 1}} spacing={{lg: 2, base: 2}} mt={'5%'}>
                 <Box>
                 <FormLabel>First Name</FormLabel>
                 <Input size={{lg: 'lg', base: 'sm'}} width={{lg:'35vh', base: '90%'}} borderColor={useColorModeValue('black', 'white')} className={styles.input_box} type="text" value={first_name} onChange={e => setFirstName(e.target.value)}/>
@@ -333,8 +331,6 @@ export default function Register({data2}) {
                 <FormLabel>Email</FormLabel>
                 <Input size={{lg: 'lg', base: 'sm'}} width={{lg:'35vh', base: '90%'}} borderColor={useColorModeValue('black', 'white')} className={styles.input_box} type="text" value={email} onChange={e => setEmail(e.target.value)}/>
                 </Box>
-                {/* <FormHelperText className={styles.helperText}>format: ***@iacademy.edu.ph</FormHelperText> */}
-                {/* <br/> */}
                 <Box>
                 <FormLabel>Password</FormLabel>
                 <Input size={{lg: 'lg', base: 'sm'}} width={{lg:'35vh', base: '90%'}} borderColor={useColorModeValue('black', 'white')} className={styles.input_box} type="password" value={password} onChange={e => setPassword(e.target.value)}/>
@@ -343,29 +339,11 @@ export default function Register({data2}) {
                 <FormLabel>Confirm Password</FormLabel>
                 <Input size={{lg: 'lg', base: 'sm'}} width={{lg:'35vh', base: '90%'}} borderColor={useColorModeValue('black', 'white')}  className={styles.input_box} type="password" value={confirm_password} onChange={e => setConfirmPassword(e.target.value)}/>
                 </Box>
+          </SimpleGrid>
                 <Box>
                 <FormLabel>What program or strand are you specializing in?</FormLabel>
-                <Input size={{lg: 'lg', base: 'sm'}} width={{lg:'35vh', base: '90%'}} placeholder="e.g. AB in Multimedia Arts and Design or HUMSS" borderColor={useColorModeValue('black', 'white')} onChange={e => setSpecialization(e.target.value)}  className={styles.input_box} type="text"/>
+                <Input size={{lg: 'lg', base: 'sm'}} width={{lg:'43vh', base: '90%'}} placeholder="e.g. AB in Multimedia Arts and Design or HUMSS" borderColor={useColorModeValue('black', 'white')} onChange={e => setSpecialization(e.target.value)}  className={styles.input_box} type="text"/>
                 </Box>
-                {/* <Box>
-                <FormLabel>Department</FormLabel>
-                <Select size={{lg: 'lg', base: 'sm'}} width={{lg:'35vh', base: '100%'}} borderColor={useColorModeValue('black', 'white')} borderRadius="lg" className={styles.input_select}  onChange={e => getSpecList(e.target.value)}>
-                  <option value="" disabled selected>Choose</option>
-                  {depList.map((department, i) => (
-                    <option disabled={department.name === "College" || department.name === "Senior High School" || department.name === "Faculty" ? true : null} value={department.name} key={i}>{department.name}</option>
-                  ))}
-                </Select>
-                </Box> */}
-                {/* <Box>
-                <FormLabel display="flex">Strand or Specialization</FormLabel>
-                <Select size={{lg: 'lg', base: 'sm'}} width={{lg:'35vh', base: '100%'}} borderColor={useColorModeValue('black', 'white')} borderRadius="lg"  className={styles.input_select} onChange={e => setSpecialization(e.target.value)}>
-                <option value="" disabled selected>Choose</option>
-                {specList.map((specialization, i) => (
-                  <option value={specialization.name} key={i}>{specialization.name}</option>
-                ))}
-                </Select>
-                </Box> */}  
-          </SimpleGrid>
                 <Box mt={5}>
                 <Checkbox colorScheme='green' size={"md"} onChange={handleClick} checked={tnc}><Text display="flex" fontSize={{lg: "md", base: "sm"}} ml={1}>I have read and accept the <Box ml={{lg: 1, base: 1}}><TermsAndConditions />
                 </Box></Text><Text display="flex" fontSize={{lg: "md", base: "sm"}} ml={{lg: 1, base: 1}}>and<Box ml={{lg: 1, base: 1}}><PrivacyPolicy /></Box>.</Text></Checkbox> 
@@ -377,13 +355,13 @@ export default function Register({data2}) {
                   color={useColorModeValue('white', 'white')}
                   _hover={{bgColor: useColorModeValue('#173cff', '#428eff')}}
                   type="submit" 
-                  size="lg"
+                  size="md"
                   // rightIcon={<ArrowRightIcon />}
                   onClick={submitRegister}
                   >
                 Submit
                 </Button></Center>
-                <Link href="/" passHref><Text _hover={{cursor:'pointer', textDecoration: 'underline'}} fontSize={{lg: "lg", base: "sm"}} color={useColorModeValue('#1BA3C1', '#1BA3C1')} mt={5}>Back to Login</Text></Link>
+                <Link href="/" passHref><Text _hover={{cursor:'pointer', textDecoration: 'underline'}} fontSize={{lg: "md", base: "sm"}} color={useColorModeValue('#1BA3C1', '#1BA3C1')} mt={3}>Back to Login</Text></Link>
                 </Box>
                 </Box>
 

@@ -173,7 +173,7 @@ export default function Login({user}) {
           <meta name="keywords" content="Critique Hall, critique hall, critiquehall, CritiqueHall, CRITIQUEHALL, CRITIQUE HALL" />
         </Head>
   
-        <Box as='main' bg={useColorModeValue('white', '#212121')} w={{'2xl': '100ch' , xl: '70ch', lg: '70ch' , md: '100%' , sm: '100%', base: '100%'}} className={styles.main} 
+        <Box as='main' bg={useColorModeValue('white', '#212121')} w={{'2xl': '50vw' , xl: '50vw', lg: '50vw' , md: '100%' , sm: '100%', base: '100%'}} className={styles.main} 
           // animate = {{y: 0 , opacity: 1}}
           // initial = {{y: -70, opacity: 0}}
           // transition ={{duration: .7}}
