@@ -105,7 +105,7 @@ function DeletePost({id}){
               <ModalHeader fontFamily={'Raleway'}>Delete Post</ModalHeader>
               <ModalCloseButton />
               <ModalBody fontFamily={'Raleway'}>
-                  Are you Sure?
+                  Are you sure?
               </ModalBody>
               <ModalFooter>
                   <Button fontFamily={'Raleway'} bgColor={useColorModeValue('#2777C1','#0085FF')} color={useColorModeValue('#FFFFFF', '#FFFFFF')} _hover={{bgColor: useColorModeValue('#56AEFF', '#0B5090')}} colorScheme='blue' mr={3} onClick={onClose}>
