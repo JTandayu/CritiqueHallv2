@@ -72,7 +72,7 @@ function EditHistory({id}) {
         <form action='' method='POST'>
         <Modal isOpen={isOpen} onClose={onClose}>
             <ModalOverlay />
-                <ModalContent maxW="40rem" h='40vh'>
+                <ModalContent maxW="40rem" h='40vh' overflowY="auto">
                 <ModalHeader fontFamily={'Raleway'}>Edit History</ModalHeader>
                 <ModalCloseButton />
                 <ModalBody fontFamily={'Raleway'}>
