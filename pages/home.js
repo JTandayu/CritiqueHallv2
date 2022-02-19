@@ -91,7 +91,7 @@ function Home(){
 
           {/* Clear */}
           <Box position='static' bgColor={useColorModeValue('#29226E', '#000000')} boxShadow='lg' w="100%" h="55vh" display={{lg: 'flex', md: 'flex', sm: 'block', base: "block"}} flexDir='column' className={styles.halls} overflowX='auto'>
-            <Flex mt='10vh' w={{lg: '90%', md: '100vw', sm: '400vw' , base: '300vw'}} mx='auto' overflowX='auto'>
+            <Flex mt='10vh' w={{lg: '90%', md: '200vw', sm: '400vw' , base: '300vw'}} mx='auto' overflowX='auto'>
               <Box w={{lg: '20vw', md: '100%', sm: '100%', base: "100%"}} h='40vh' bgImage={'Arts.png'} bgPosition={'center'} bgSize="cover" borderRadius={10}>
                 <Center mt='80%'>
                 <Link href='/critique' passHref={true}><Button size="lg" fontFamily={'Raleway'} fontSize="2xl" ml={5} bgColor={useColorModeValue('#A88816', '#A88816')} _hover={{bgColor: useColorModeValue('#483C10', '#483C10')}} color='white'>View</Button></Link>

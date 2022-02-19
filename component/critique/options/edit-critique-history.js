@@ -18,6 +18,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import {useCookies} from 'react-cookie'
 import { getCookie } from 'cookies-next'
+import {useColorModeValue} from '@chakra-ui/react'
 
 // export async function getStaticProps(context) {
 //     const res = await fetch(`https://...`)
