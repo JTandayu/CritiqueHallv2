@@ -11,7 +11,7 @@ import {
     Center,
     Spacer
   } from "@chakra-ui/react"
-import { useDisclosure } from '@chakra-ui/react'
+import { useDisclosure, useColorModeValue } from '@chakra-ui/react'
 import { Button } from '@chakra-ui/react'
 import styles from "@styles/Hall.module.css";
 import axios from "axios";
@@ -36,6 +36,8 @@ function EditHistory({id}) {
 
     const token = getCookie('token')
     const user_id = getCookie('encrypted_id')
+
+    const changeTextColor = useColorModeValue('black', 'white')
 
     const [data, setData] = useState([])
 
@@ -100,7 +102,7 @@ function EditHistory({id}) {
                                 </Center>
                             </Box>
                         )
-                    : <Text fontFamily={'Raleway'} color="black">There is nothing in here...</Text>]
+                    : <Text fontFamily={'Raleway'} color={changeTextColor}>There is nothing in here...</Text>]
                 : null}
                 </ModalBody>
             </ModalContent>

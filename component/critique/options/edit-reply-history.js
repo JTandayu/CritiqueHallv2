@@ -9,7 +9,8 @@ import {
     Text,
     Box,
     Center,
-    Spacer
+    Spacer,
+    useColorModeValue
   } from "@chakra-ui/react"
 import { useDisclosure } from '@chakra-ui/react'
 import { Button } from '@chakra-ui/react'
@@ -18,6 +19,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import {useCookies} from 'react-cookie'
 import { getCookie } from 'cookies-next'
+import { useCol } from "react-bootstrap/esm/Col";
 
 // export async function getStaticProps(context) {
 //     const res = await fetch(`https://...`)
@@ -38,6 +40,7 @@ function EditReplyHistory({id}) {
 
     const token = getCookie('token')
     const user_id = getCookie('encrypted_id')
+    const changeTextColor = useColorModeValue('black', 'white')
 
 
     const [data, setData] = useState([])
@@ -101,7 +104,7 @@ function EditReplyHistory({id}) {
                                     </Center>
                                 </Box>
                             )
-                        : <Text fontFamily={'Raleway'} color="black">There is nothing in here...</Text>}
+                        : <Text fontFamily={'Raleway'} color={changeTextColor}>There is nothing in here...</Text>}
                     </ModalBody>
                 </ModalContent>
             </Modal>

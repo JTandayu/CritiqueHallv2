@@ -35,6 +35,8 @@ function EditCritiqueHistory({id}) {
     const { API_URL } = process.env
     const { API_KEY } = process.env
     // const [cookies] = useCookies();
+
+    const changeTextColor = useColorModeValue('black', 'white')
     
     const token = getCookie('token')
     const user_id = getCookie('encrypted_id')
@@ -72,7 +74,18 @@ function EditCritiqueHistory({id}) {
 
         <Modal isOpen={isOpen} onClose={onClose}>
             <ModalOverlay />
-                <ModalContent maxW="40rem" h='40vh'>
+                <ModalContent maxW="40rem" h='40vh' overflowY="auto" css={{
+                            '&::-webkit-scrollbar': {
+                            width: '4px',
+                            },
+                            '&::-webkit-scrollbar-track': {
+                            width: '6px',
+                            },
+                            '&::-webkit-scrollbar-thumb': {
+                            background: '#212121',
+                            borderRadius: '24px',
+                            },
+                        }}>
                 <ModalHeader fontFamily={'Raleway'}>Edit History</ModalHeader>
                 <ModalCloseButton />
                 <ModalBody>
@@ -89,7 +102,7 @@ function EditCritiqueHistory({id}) {
                                 </Center>
                             </Box>
                         )
-                    : <Text fontFamily={'Raleway'} color="black">There is nothing in here...</Text>}
+                    : <Text fontFamily={'Raleway'} color={changeTextColor}>There is nothing in here...</Text>}
                 </ModalBody>
             </ModalContent>
         </Modal>
