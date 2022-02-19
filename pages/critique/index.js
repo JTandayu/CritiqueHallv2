@@ -393,6 +393,7 @@ export default function HallPage(){
                                             </Box>
                                         </Center>
                                     </Box>
+                                    {post.attachment1 != 'undefined' ?
                                     <Box p="3" w="100%" bg="light" my='auto' ml={{lg: '20%', base: '0'}} mr={{lg: '15%', base: '0'}} overflowX={{lg: 'visible', sm: "auto", base: "auto"}}>
                                         <Center>
                                         {post.attachment1 != 'undefined' ? 
@@ -405,7 +406,7 @@ export default function HallPage(){
                                         <Image src={post.attachment3} w={{lg: '10vw', sm:'100%'}} h={{lg: '10vh', sm: '20vh'}} display={{lg: "block", base: "none"}} onError={addDefaultSrc} borderRadius={10} objectFit='cover'/>
                                         : null}
                                         </Center>
-                                    </Box>
+                                    </Box>: null}
                                     <Box fontFamily={'Raleway'} p="3" w="20%" bg="light" my='auto'>
                                         <Center>
                                         <Text isTruncated>{post.title}</Text>
