@@ -139,8 +139,6 @@ export default function ProfilePage({}){
             console.log(error);
         });
 
-        
-
     }, [data])
 
     const displayPostCritique = (enc_id) => {
@@ -320,8 +318,8 @@ export default function ProfilePage({}){
                             },
                         }}>
                     <Box id='posts' display='flex'>
-                        {userPosts.length != 0 ?
-                        [userPosts.map((posts, i) => (
+                        {userPosts != null ?
+                        userPosts.map((posts, i) => (
                             <Link href={`/post/${posts.post_id}`} key={i} passHref>
                                 <Box bgColor={changeColorBox} w={{lg: '20vw', sm: '300px', base: '300px'}} h={{lg: '28vh', md: '28vh', base: '30vh'}} ml={5} borderRadius={10} boxShadow="md">
                                     {/* <Center mt={3}>
@@ -341,11 +339,11 @@ export default function ProfilePage({}){
                                     </Flex>
                                 </Box>
                             </Link>
-                        ))] : <Text fontFamily={'Raleway'} fontWeight={'bold'} fontSize="6xl" color="dark">No posts found...</Text>}
+                        )) : <Text fontFamily={'Raleway'} fontWeight={'bold'} fontSize="6xl" color="dark">No posts found...</Text>}
                     </Box>
                     <Box id='critiques' display='flex'>
-                        {userCritique.length != 0 ?
-                        [userCritique.map((critique, i) => (
+                        {userCritique != null ?
+                        userCritique.map((critique, i) => (
                             <Link href={`/post/${critique.post_id}`} key={i} passHref>
                                 <Box bgColor={changeColorBox} w={{lg: '20vw', sm: '300px', base: '300px'}} h={{lg: '28vh', md: '28vh', base: '30vh'}} ml={5} borderRadius={10} boxShadow="md">
                                     {/* <Center mt={3}>
@@ -363,7 +361,7 @@ export default function ProfilePage({}){
                                     </Flex>
                                 </Box>
                             </Link>)    
-                        )] : <Text fontFamily={'Raleway'} fontWeight={'bold'} fontSize="6xl" color="dark">No critiques found...</Text> }
+                        ) : <Text fontFamily={'Raleway'} fontWeight={'bold'} fontSize="6xl" color="dark">No critiques found...</Text> }
                     </Box>
                 </Box>
                 : <Text fontFamily={'Raleway'} fontWeight={'bold'} fontSize="6xl" color="dark">Loading...</Text> }
