@@ -259,7 +259,7 @@ export default function ProfilePage({}){
                         <Spacer />
                             {userData && userData.display_name === display_name ? <EditProfile data={userData}/> : null}
                         </Flex>
-                        <Text w={{lg: '65vh', md: '100%', sm: '100%'}} fontSize='xl' textAlign={'justify'} color="white">{userData.about_me}</Text>
+                        <Text w={{lg: '65vh', md: '100%', sm: '100%'}} fontSize='xl' color="white">{userData.about_me}</Text>
                         <Heading size='lg' color={useColorModeValue('#1B1464', '#B2A3FF')} mt={5} display="flex" fontFamily={'Raleway'}>Reputation Stars: <Text fontFamily={'Raleway'} color={useColorModeValue('#C1272D', '#FF5C61')} ml={5} display='flex'>{userData.reputation_points}{userData.reputation_points >= 10 ? <Image src={changeBadgeIcon} alt="Badge Icon" w="50px" h="50px" ml={2}/> : null}
                         <Popover trigger="hover">
                         <PopoverTrigger>
@@ -318,7 +318,7 @@ export default function ProfilePage({}){
                             },
                         }}>
                     <Box id='posts' display='flex'>
-                        {userPosts.length !== 0 ?
+                        {userPosts.length != 0 ?
                         userPosts.map((posts, i) => (
                             <Link href={`/post/${posts.post_id}`} key={i} passHref>
                                 <Box bgColor={changeColorBox} w={{lg: '20vw', sm: '300px', base: '300px'}} h={{lg: '28vh', md: '28vh', base: '30vh'}} ml={5} borderRadius={10} boxShadow="md">
@@ -342,7 +342,7 @@ export default function ProfilePage({}){
                         )) : null}
                     </Box>
                     <Box id='critiques' display='flex'>
-                        {userPosts.length !== 0 ?
+                        {userCritique.length != 0 ?
                         userCritique.map((critique, i) => (
                             <Link href={`/post/${critique.post_id}`} key={i} passHref>
                                 <Box bgColor={changeColorBox} w={{lg: '20vw', sm: '300px', base: '300px'}} h={{lg: '28vh', md: '28vh', base: '30vh'}} ml={5} borderRadius={10} boxShadow="md">
@@ -364,7 +364,7 @@ export default function ProfilePage({}){
                         ) : null }
                     </Box>
                 </Box>
-                : null }
+                : <Text fontFamily={'Raleway'} fontWeight={'bold'} fontSize="lg">Loading...</Text> }
             </Box>
         </main>
     )
