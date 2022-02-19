@@ -19,7 +19,6 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import {useCookies} from 'react-cookie'
 import { getCookie } from 'cookies-next'
-import { useCol } from "react-bootstrap/esm/Col";
 
 // export async function getStaticProps(context) {
 //     const res = await fetch(`https://...`)
@@ -37,6 +36,8 @@ function EditReplyHistory({id}) {
     const { API_URL } = process.env
     const { API_KEY } = process.env
     // const [cookies] = useCookies();
+
+    const changeTextColor = useColorModeValue('black', 'white')
 
     const token = getCookie('token')
     const user_id = getCookie('encrypted_id')
@@ -102,7 +103,7 @@ function EditReplyHistory({id}) {
                                     </Center>
                                 </Box>
                             )
-                        : <Text fontFamily={'Raleway'}>There is nothing in here...</Text>}
+                        : <Text fontFamily={'Raleway'} color={changeTextColor}>There is nothing in here...</Text>}
                     </ModalBody>
                 </ModalContent>
             </Modal>

@@ -39,6 +39,8 @@ function EditHistory({id}) {
 
     const [data, setData] = useState([])
 
+    const changeTextColor = useColorModeValue('black', 'white')
+
     const config = {
         headers: {
         'content-type': 'multipart/form-data',
@@ -100,7 +102,7 @@ function EditHistory({id}) {
                                 </Center>
                             </Box>
                         )
-                    : <Text fontFamily={'Raleway'}>There is nothing in here...</Text>]
+                    : <Text fontFamily={'Raleway'} color={changeTextColor}>There is nothing in here...</Text>]
                 : null}
                 </ModalBody>
             </ModalContent>
