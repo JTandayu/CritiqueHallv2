@@ -87,6 +87,18 @@ function EditHistory({id}) {
                 <ModalHeader fontFamily={'Raleway'}>Edit History</ModalHeader>
                 <ModalCloseButton />
                 <ModalBody fontFamily={'Raleway'}>
+                <Box w="full" h='40vh' overflowY="auto" css={{
+                            '&::-webkit-scrollbar': {
+                            width: '4px',
+                            },
+                            '&::-webkit-scrollbar-track': {
+                            width: '6px',
+                            },
+                            '&::-webkit-scrollbar-thumb': {
+                            background: '#212121',
+                            borderRadius: '24px',
+                            },
+                        }}>
                 {data != undefined ? 
                 [data.length != 0 ?
                         data.map((history, i) => 
@@ -104,6 +116,7 @@ function EditHistory({id}) {
                         )
                     : <Text fontFamily={'Raleway'} color={changeTextColor}>There is nothing in here...</Text>]
                 : null}
+                </Box>
                 </ModalBody>
             </ModalContent>
         </Modal>

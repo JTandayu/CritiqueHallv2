@@ -326,7 +326,7 @@ function CreatePost({data}) {
                 <ModalCloseButton />
                 <ModalBody >
                     <Flex mb={5} flexDir={{lg: 'row', sm: 'column', base: 'column'}}>
-                    <Box w={{lg: '24vw', sm: '100%'}}>
+                    <Box w={{'2xl': '24vw', xl: '30vw', lg: '30vw', sm: '100%', base: '100%'}}>
                     <Flex fontFamily={'Raleway'} mt='3vh' display='flex'>
                         <FormLabel>Title<Text fontSize="sm" color={useColorModeValue('gray', 'gray')}>(required)</Text></FormLabel>
                         <Input borderColor={useColorModeValue('black', 'white')} type='text' w={{lg: '75%', sm: '100%'}} ml='11px' onChange={e => setTitle(e.target.value)}  />
@@ -443,7 +443,7 @@ function CreatePost({data}) {
                         <Text fontFamily={'Raleway'} fontStyle={'italic'} fontSize='md'>- each upload is limited to 25mb only</Text>
                         <Text fontFamily={'Raleway'} fontStyle={'italic'} fontSize='md'>- attachments cannot be edited once published!</Text>
 
-                        <Box mt={10} ml={'78%'} display="flex" w="full">
+                        <Box mt={10} ml={{'2xl' : '78%', xl: '75%', md: '70%'}} display="flex" w="full">
                         <Button fontFamily={'Raleway'} bgColor={useColorModeValue('#2777C1','#0085FF')} color={useColorModeValue('#FFFFFF', '#FFFFFF')} _hover={{bgColor: useColorModeValue('#56AEFF', '#0B5090')}} mr={5} onClick={submitPost}>
                             Submit
                         </Button>
