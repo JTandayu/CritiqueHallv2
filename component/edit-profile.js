@@ -78,6 +78,7 @@ function EditProfile({data}) {
     const [lastName, setLastName] = useState(data.last_name)
     const [displayName, setDisplayName] = useState(data.display_name)
     const [aboutMe, setAboutMe] = useState(data.about_me)
+    const [specialization, setSpecialization] = useState(data.specialization)
 
     const [currentPassword, setCurrentPassword] = useState('')
     const [newPassword, setNewPassword] = useState('')
@@ -123,6 +124,7 @@ function EditProfile({data}) {
         setLastName(data.last_name)
         setDisplayName(data.display_name)
         setAboutMe(data.about_me)
+        setSpecialization(data.specialization)
         setCurrentPassword('')
         setNewPassword('')
         setConfirmNewPassword('')
@@ -280,6 +282,7 @@ function EditProfile({data}) {
         formData.append('confirm_password', confirmPassword)
         formData.append('profile_photo', profileImageUrl)
         formData.append('cover_photo', coverImageUrl)
+        formData.append('specialization', specialization)
         
         // console.log(coverImageUrl)
         axios.post(`${API_URL}/api/change_profile`, formData, config)
@@ -428,6 +431,10 @@ function EditProfile({data}) {
                     <Flex mb={5} flexDir={{lg: "row", base: "column"}}>
                         <FormLabel fontFamily={'Raleway'} w={{lg: '7vw', base: "100%"}}>About Me</FormLabel>
                         <Textarea fontFamily={'Raleway'} placeholder='there is a limit so be careful!' borderColor={useColorModeValue('black', 'white')} type='text' w='100%' h='15vh' value={aboutMe} onChange={(e) => setAboutMe(e.target.value)} />
+                    </Flex>
+                    <Flex mb={5} flexDir={{lg: "row", base: "column"}}>
+                        <FormLabel fontFamily={'Raleway'}>Specialization</FormLabel>
+                        <Input fontFamily={'Raleway'} borderColor={useColorModeValue('black', 'white')} type='text' w={{lg: '10vw', base: "100%"}} value={specialization} ml={{lg: '10px', base: 0}} onChange={(e) => setSpecialization(e.target.value)} />
                     </Flex>
                     <Flex mb={5} flexDir={{lg: "row", base: "column"}}>
                         <FormLabel fontFamily={'Raleway'}>Confirm password before saving</FormLabel>
