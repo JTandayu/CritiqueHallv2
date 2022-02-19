@@ -445,8 +445,8 @@ function CreatePost({data}) {
                         <Text fontFamily={'Raleway'} fontSize='lg'>Due to storage limitations:</Text>
                         {/* <Text fontFamily={'Raleway'} fontStyle={'italic'} fontSize='md'>- video and zip files cannot be uploaded</Text> */}
                         <Text fontFamily={'Raleway'} fontStyle={'italic'} fontSize='md'>- video and zip files cannot be uploaded.</Text>
-                        <Text fontFamily={'Raleway'} fontStyle={'italic'} fontSize='md'>- up to 5 attachments maximum only</Text>
-                        <Text fontFamily={'Raleway'} fontStyle={'italic'} fontSize='md'>- each upload is limited to 25mb only</Text>
+                        <Text fontFamily={'Raleway'} fontStyle={'italic'} fontSize='md'>- up to 5 attachments maximum only.</Text>
+                        <Text fontFamily={'Raleway'} fontStyle={'italic'} fontSize='md'>- each upload is limited to 25mb only.</Text>
                         <Text fontFamily={'Raleway'} fontStyle={'italic'} fontSize='md'>- attachments cannot be edited once published!</Text>
 
                         <Box mt={10} ml={{'2xl' : '78%', xl: '75%', md: '70%'}} display="flex" w="full">
