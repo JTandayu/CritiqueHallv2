@@ -257,6 +257,10 @@ function CreatePost({data}) {
 
     const submitPost = async () =>{
 
+        if(title.length > 50){
+            toastIdRef.current = toast({ position: 'top', title: 'Title should not exceed 50 characters!', status: 'error', duration: 3000, isClosable: true })
+            return;
+        }else{
         let formData = new FormData(); 
         formData.append('title', title);
         formData.append('body', description);
@@ -294,6 +298,7 @@ function CreatePost({data}) {
             console.log(error);
             console.log(error.response)
         });
+        }
     }
 
     const addDefaultSrc = (e) => {
