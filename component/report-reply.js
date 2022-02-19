@@ -65,6 +65,16 @@ function ReportReply({data, id}) {
     }
 
     const submitReport = () =>{
+        if(message == ''){
+            toastIdRef.current = toast({
+                position: 'top',
+                title: 'Message is Empty! Please Enter a Message',
+                status: 'error',
+                duration: 3000,
+                isClosable: true,
+              })
+            return;
+        }else{
         let formData = new FormData;
         // formData.append("user_id", data.encrypted_id)
         // formData.append("post_id", null)
@@ -88,7 +98,7 @@ function ReportReply({data, id}) {
         })
         .catch((error)=>{
             console.log(error.response)
-        })
+        })}
     }
     
 

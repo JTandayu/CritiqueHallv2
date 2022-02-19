@@ -65,12 +65,24 @@ function ReportUser({data}) {
     }
 
     const submitReport = () =>{
+
+        if(message == ''){
+            toastIdRef.current = toast({
+                position: 'top',
+                title: 'Message is Empty! Please Enter a Message',
+                status: 'error',
+                duration: 3000,
+                isClosable: true,
+              })
+            return;
+        }else{
         let formData = new FormData;
         formData.append("user_id", data.encrypted_id)
         // formData.append("post_id", null)
         // formData.append("critique_id", null)
         // formData.append("reply_id", null)
         formData.append("message", message)
+
         // formData.append("offense_type", offense)
         // console.log(offense)
 
@@ -89,6 +101,7 @@ function ReportUser({data}) {
         .catch((error)=>{
             console.log(error.response)
         })
+        }
     }
     
 
