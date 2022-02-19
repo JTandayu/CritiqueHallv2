@@ -38,7 +38,7 @@ import { useRouter } from "next/router";
 import {useToast} from '@chakra-ui/react'
 import React from "react";
 import { EditIcon } from '@chakra-ui/icons'
-import { getCookie } from 'cookies-next'
+import { getCookie, setCookies } from 'cookies-next'
 
 // export async function getServerSideProps(context) {
 //     const res = await fetch(`https://...`)
@@ -274,10 +274,6 @@ function EditProfile({data}) {
 
     const SubmitPersonalInformation = async() =>{
 
-        if(displayName.length > 50){
-            toastIdRef.current = toast({ position: 'top', title: 'Display Name exceeds the limit (max 50). Please try again!', status: 'error', duration: 3000, isClosable: true })
-        }
-
         let formData =  new FormData;
         formData.append('first_name', firstName)
         formData.append('last_name', lastName)
@@ -299,10 +295,11 @@ function EditProfile({data}) {
                 duration: 3000,
                 isClosable: true,
               })
+              setCookies('display_name', displayName);
               onClose();
             router.reload();
         }).catch((error) => {
-            if(error.response.data.message == "<p>The About Me field cannot exceed 255 characters…</p>\n<p>The Confirm Password field is required.</p>\n" ){
+            if(error.response.data.message == "<p>The About Me field cannot exceed 255 characters…>\n<p>The Confirm Password field is required.</p>\n" ){
                 toastIdRef.current = toast({ position: 'top', title: 'About Me exceeds the limit (max 255). Please try again!', status: 'error', duration: 3000, isClosable: true })
                 toastIdRef.current = toast({ position: 'top', title: 'Input your confirm password before saving!', status: 'error', duration: 3000, isClosable: true })
             }else if(error.response.data.message == "<p>The About Me field cannot exceed 255 characters in length.</p>\n"){
@@ -313,6 +310,9 @@ function EditProfile({data}) {
                 toastIdRef.current = toast({ position: 'top', title: 'Display Name exceeds the limit (max 50). Please try again!', status: 'error', duration: 3000, isClosable: true })
                 toastIdRef.current = toast({ position: 'top', title: 'Input your confirm password before saving!', status: 'error', duration: 3000, isClosable: true })
             }else if(error.response.data.message == "<p>The Display Name field cannot exceed 50 characters in length.</p>\n<p>The About Me field cannot exceed 255 characters in length.</p>\n"){
+                toastIdRef.current = toast({ position: 'top', title: 'Display Name exceeds the limit (max 50). Please try again!', status: 'error', duration: 3000, isClosable: true })
+                toastIdRef.current = toast({ position: 'top', title: 'About Me exceeds the limit (max 255). Please try again!', status: 'error', duration: 3000, isClosable: true })
+            }else if(error.response.data.message == "<p>The Display Name field cannot exceed 50 characters in length.</p>\n"){
                 toastIdRef.current = toast({ position: 'top', title: 'Display Name exceeds the limit (max 50). Please try again!', status: 'error', duration: 3000, isClosable: true })
                 toastIdRef.current = toast({ position: 'top', title: 'About Me exceeds the limit (max 255). Please try again!', status: 'error', duration: 3000, isClosable: true })
             }else if(error.response.data.message == "<p>No changes made</p>\n"){
@@ -434,16 +434,16 @@ function EditProfile({data}) {
                     </Flex>
                     <Flex mb={5} flexDir={{lg: "row", base: "column"}}>
                         <FormLabel fontFamily={'Raleway'} w={{lg: '7vw', base: "100%"}}>About Me</FormLabel>
-                        <Textarea fontFamily={'Raleway'} placeholder='Maximum of 255 characters only.' borderColor={useColorModeValue('black', 'white')} type='text' w='100%' h='15vh' value={aboutMe} onChange={(e) => setAboutMe(e.target.value)} />
+                        <Textarea fontFamily={'Raleway'} placeholder='there is a limit so be careful!' borderColor={useColorModeValue('black', 'white')} type='text' w='100%' h='15vh' value={aboutMe} onChange={(e) => setAboutMe(e.target.value)} />
                     </Flex>
                     <Flex mb={5} flexDir={{lg: "row", base: "column"}}>
                         <FormLabel fontFamily={'Raleway'}>Specialization</FormLabel>
-                        <Input fontFamily={'Raleway'} borderColor={useColorModeValue('black', 'white')} type='text' w={{lg: '20vw', base: "100%"}} value={specialization} ml={{lg: '10px', base: 0}} onChange={(e) => setSpecialization(e.target.value)} />
+                        <Input fontFamily={'Raleway'} borderColor={useColorModeValue('black', 'white')} type='text' w={{lg: '10vw', base: "100%"}} value={specialization} ml={{lg: '10px', base: 0}} onChange={(e) => setSpecialization(e.target.value)} />
                     </Flex>
                     <Flex mb={5} flexDir={{lg: "row", base: "column"}}>
                         <FormLabel fontFamily={'Raleway'}>Confirm password before saving</FormLabel>
                         <Input fontFamily={'Raleway'} borderColor={useColorModeValue('black', 'white')} type='password' w={{lg: '10vw', base: "100%"}} ml={{lg: '10px', base: 0}} onChange={(e) => setConfirmPassword(e.target.value)} />
-                        <Button fontFamily={'Raleway'} bgColor={useColorModeValue('#0C1F83', '#1D447E')} ml={{lg: 5, base: 0}} mt={{lg: 0, base: 5}} color={useColorModeValue('white', 'white')} _hover={{bgColor: useColorModeValue('#173cff', '#428eff')}} mr={{'2xl': 0, md: 0, base: 0}} onClick={SubmitPersonalInformation}>Save information changes</Button>
+                        <Button fontFamily={'Raleway'} bgColor={useColorModeValue('#0C1F83', '#1D447E')} ml={{lg: 5, base: 0}} mt={{lg: 0, base: 5}} color={useColorModeValue('white', 'white')} _hover={{bgColor: useColorModeValue('#173cff', '#428eff')}} mr={{'2xl': 0, md: 0, base: 0}} onClick={SubmitPersonalInformation}>Save</Button>
                     </Flex>
                     {/* <Flex>
                         <Spacer />
@@ -469,9 +469,9 @@ function EditProfile({data}) {
                             <Input fontFamily={'Raleway'} borderColor={useColorModeValue('black', 'white')} type='password' w={{lg: '10vw', base: "100%"}} ml='10px' mr='1px' onChange={(e) => setConfirmNewPassword(e.target.value)}/>
                         </Flex>
                     </Center>
-                    <Flex w={{lg: '75%', base: '85%'}}>
+                    <Flex w='100%'>
                         <Spacer />
-                        <Button fontFamily={'Raleway'} bgColor={useColorModeValue('#0C1F83', '#1D447E')} color={useColorModeValue('white', 'white')} _hover={{bgColor: useColorModeValue('#173cff', '#428eff')}} mr={{'2xl': 0, lg: 0,  base: 0}} onClick={submitPassword}>Save password changes</Button>
+                        <Button fontFamily={'Raleway'} bgColor={useColorModeValue('#0C1F83', '#1D447E')} color={useColorModeValue('white', 'white')} _hover={{bgColor: useColorModeValue('#173cff', '#428eff')}} mr={{'2xl': 0, lg: 0,  base: 0}} onClick={submitPassword}>Save</Button>
                     </Flex>
                     {/* <Divider mb={5} mt={5} /> */}
 
@@ -489,9 +489,9 @@ function EditProfile({data}) {
 
                 <ModalFooter>
                     {/* <Button colorScheme='blue' mr={3}>Save</Button> */}
-                    {/* <Button fontFamily={'Raleway'} bgColor={useColorModeValue('#C1272D', '#9E0B0F')} color={useColorModeValue('white', 'white')} _hover={{bgColor: useColorModeValue('#FF000A', '#470507')}}  onClick={cancelChange}>
+                    <Button fontFamily={'Raleway'} bgColor={useColorModeValue('#C1272D', '#9E0B0F')} color={useColorModeValue('white', 'white')} _hover={{bgColor: useColorModeValue('#FF000A', '#470507')}}  onClick={cancelChange}>
                     Cancel
-                    </Button> */}
+                    </Button>
                 </ModalFooter>
             </ModalContent>
         </Modal>
