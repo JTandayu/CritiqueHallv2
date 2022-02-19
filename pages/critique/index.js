@@ -97,7 +97,6 @@ export default function HallPage(){
     const [loading, setLoading] = useState(true)
     const [currentPage, setCurrentPage] = useState(1)
     const [postsPerPage, setPostsPerPage] = useState(6)
-    const [currentPosts, setCurrentPosts] = useState([])
     const [hall, setHalls] =  useState('0')
     const [hallNum, setHallNum] = useState([])
     const [hallList, setHallList] = useState([])
@@ -180,12 +179,7 @@ export default function HallPage(){
 
     const indexOfLastPost =  currentPage*postsPerPage
     const indexOfFirstPost = indexOfLastPost - postsPerPage
-    // const currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost);
-    if(posts.length != 0){
-        setCurrentPosts(posts.slice(indexOfFirstPost, indexOfLastPost))
-    }else{
-        setCurrentPage([])
-    }
+    const currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost);
 
     const getTechnology = async () =>{
 
