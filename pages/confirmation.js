@@ -104,6 +104,9 @@ export default function ConfirmationPage(){
             router.replace('/home')
         })
         .catch(error => {
+            if(error.response.data.status == 'Wrong code'){
+              toastIdRef.current = toast({ position: 'top', title: 'Wrong Code!', description: 'Please try again.', status: 'error', duration: 3000, isClosable: true })
+            }
             // toastIdRef.current = toast({ position: 'top', title: 'Account verification unsuccessful!', description: 'Please try again.', status: 'error', duration: 3000, isClosable: true })
             console.log(error);
         });
