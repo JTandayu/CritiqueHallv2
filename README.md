@@ -3,10 +3,10 @@
 ![ImageLogo](https://github.com/JTandayu/CritiqueHallv2/blob/main/public/critiquehall2-dark.png)
 
 Members:
-- Azariah Danizar G. Concepcion
-- Jomari L. Matias
-- Jose Luis P. Tandayu
-- Richie Gene R. Tan
+- Azariah Danizar G. Concepcion (Back-End Developer)
+- Jomari L. Matias (UI/UX Designer / Project Documentarian)
+- Jose Luis P. Tandayu (Full-Stack Developer)
+- Richie Gene R. Tan (Full-Stack Developer / Creative Director)
 
 
 ## Objectives of Critique Hall
