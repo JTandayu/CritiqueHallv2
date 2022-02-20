@@ -108,12 +108,14 @@ export default function ResetPassword({}){
         }
 
         if (password == '' || confirm_password == ''){
-          document.getElementById('warning2').removeAttribute('hidden');
-          document.getElementById('warning1').hidden=true;
+          // document.getElementById('warning2').removeAttribute('hidden');
+          // document.getElementById('warning1').hidden=true;
+          toastIdRef.current = toast({ position: 'top', title: 'Please input your password and confirm password!', status: 'error', duration: 3000, isClosable: true })
           return;
         }else if (password !== confirm_password){
-          document.getElementById('warning1').removeAttribute('hidden');
-          document.getElementById('warning2').hidden=true;
+          // document.getElementById('warning1').removeAttribute('hidden');
+          // document.getElementById('warning2').hidden=true;
+          toastIdRef.current = toast({ position: 'top', title: 'Passwords do not match!', status: 'error', duration: 3000, isClosable: true })
           return;
         }else{
         axios.post(`${API_URL}/api/reset_password`, formData, config)

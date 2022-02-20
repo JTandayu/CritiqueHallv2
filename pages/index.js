@@ -112,8 +112,9 @@ export default function Login({user}) {
       }
 
       if(email ==  '' && password == ''){
-        document.getElementById('warning2').removeAttribute('hidden');
-        document.getElementById('warning1').hidden=true;
+        // document.getElementById('warning2').removeAttribute('hidden');
+        // document.getElementById('warning1').hidden=true;
+        toastIdRef.current = toast({ position: 'top', title: 'Please input your email and password!', status: 'error', duration: 3000, isClosable: true })
       } else{
       axios.post(`${API_URL}/api/login`, formData, config)
       .then(response => {
@@ -147,12 +148,14 @@ export default function Login({user}) {
           // toastIdRef.current = toast({ title: 'Login Unsuccessful!', status: 'error', duration: 3000, isClosable: false })
           console.log(error);
           if(error.response.data.message == 'Wrong credentials'){
-            document.getElementById('warning1').removeAttribute('hidden');
-            document.getElementById('warning2').hidden=true;
+            // document.getElementById('warning1').removeAttribute('hidden');
+            // document.getElementById('warning2').hidden=true;
+            toastIdRef.current = toast({ position: 'top', title: 'Invalid credentials!', status: 'error', duration: 3000, isClosable: true })
           }
           else if(error.response.data.status == "Error"){
-            document.getElementById('warning1').removeAttribute('hidden');
-            document.getElementById('warning2').hidden=true;
+            // document.getElementById('warning1').removeAttribute('hidden');
+            // document.getElementById('warning2').hidden=true;
+            toastIdRef.current = toast({ position: 'top', title: 'Invalid credentials!', status: 'error', duration: 3000, isClosable: true })
           }
           
           
@@ -200,12 +203,12 @@ export default function Login({user}) {
             {/* <Heading fontFamily={'Raleway'} mb={5} as="h2" size="lg" color={useColorModeValue('#1B1464','#B2A3FF')}>LOG-IN</Heading> */}
             <Box id='warning1' color='red' w='30%' h='5vh' mb={4} mt={2} hidden>
               <Center>
-                <Text mt='1vh'>Invalid credentials!</Text>
+                <Text fontSize={{'2xl': "sm", xl: "xs", lg: "sm", base: "sm"}} mt='1vh'>Invalid credentials!</Text>
               </Center>
             </Box>
             <Box id='warning2' color='red' w='30%' h='5vh' mb={4} mt={2} hidden>
               <Center>
-                <Text mt='1vh'>Please input all the fields!</Text>
+                <Text fontSize={{'2xl': "sm", xl: "xs", lg: "sm", base: "sm"}} mt='1vh'>Please input all the fields!</Text>
               </Center>
             </Box>
             <center><FormControl id="loginform" >
