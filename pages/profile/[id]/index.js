@@ -272,7 +272,7 @@ export default function ProfilePage({}){
                         <Heading fontSize={{lg: 'lg', base: 'md'}} color={useColorModeValue('#1B1464', '#B2A3FF')} mt={5} display="flex" fontFamily={'Raleway'}>Reputation Stars: <Text fontFamily={'Raleway'} color={useColorModeValue('white', 'white')} ml={5} display='flex' textShadow='2px 2px #000'>{userData.reputation_points}{userData.reputation_points >= 10 ? <Image src={changeBadgeIcon} alt="Badge Icon" w="50px" h="50px" ml={2}/> : null}
                         <Popover trigger="hover">
                         <PopoverTrigger>
-                        <Image src='/question-icon.png' _hover={{cursor: 'pointer'}} alt="question icon" w="20px" h="20px" ml={2} mt={3}/>
+                        <Image src='/question-icon.png' _hover={{cursor: 'pointer'}} alt="question icon" w="20px" h="20px" ml={2} mt={1}/>
                         </PopoverTrigger>
                         <PopoverContent>
                             <PopoverArrow /> 
