@@ -260,7 +260,7 @@ export default function ProfilePage({}){
                             {userData && userData.display_name === display_name ? <EditProfile data={userData}/> : null}
                         </Flex>
                         <Flex  mt={1} mx='auto' textShadow='1px 1px #000'>
-                        <Heading fontFamily={'Raleway'} size="md" mr={3} color='gray.300' ml={{lg: 0, md: 0, sm: 0, base: '2%'}}>{userData.first_name}</Heading>
+                        <Heading fontFamily={'Raleway'} size="md" mr={2} color='gray.300' ml={{lg: 0, md: 0, sm: 0, base: '2%'}}>{userData.first_name}</Heading>
                         <Heading fontFamily={'Raleway'} size="md" color='gray.300'>{userData.last_name}</Heading>
                         </Flex>
                         <Flex>
