@@ -333,10 +333,10 @@ function EditProfile({data}) {
         formData.append('confirm_new_password', confirmNewPassword)
 
         if(newPassword !== confirmNewPassword){
-            toastIdRef.current = toast({ position: 'top', title: 'Password do not match!', status: 'error', duration: 3000, isClosable: true })
+            toastIdRef.current = toast({ position: 'top', title: 'Passwords do not match!', status: 'error', duration: 3000, isClosable: true })
             return;
         }else if(newPassword == "" || confirmNewPassword == "" || currentPassword == ""){
-            toastIdRef.current = toast({ position: 'top', title: 'Please input all the fields!', status: 'error', duration: 3000, isClosable: true })
+            toastIdRef.current = toast({ position: 'top', title: 'Please input your password!', status: 'error', duration: 3000, isClosable: true })
             return;
         }
 

@@ -267,31 +267,37 @@ export default function SearchResult(){
             <Box bgColor={changeColor} w={{lg: '70%', sm: '100%'}} mt='2ch' mx="auto" key={post.post_id} display="flex" flexDir={{lg: "row", base: "column"}} boxShadow='lg' rounded='lg' fontFamily={'Raleway'}>
                                 <Link href='/post/[id]'  as={`/post/${post.post_id}`} passHref>
                                 <a>
-                                <Box display={{lg: 'flex', sm: 'block', base: "block"}} w={{lg: "50vw", sm: '100%'}}>
+                                <Box display={{lg: 'flex', sm: 'block'}} w={{lg: "50vw", sm: '100%'}}>
                                     <Box fontFamily={'Raleway'} p="3" w="100%" bg="light" my='auto'>
-                                        <Center>
-                                        {/* <Text >{post.hall_id}</Text> */}
-                                        <Box bgColor={post.hall_color} w="150px" p={5} color="white" rounded="md" boxShadow="lg">
-                                            <Center>
-                                            {post.hall_name}
-                                            </Center>
-                                        </Box>
+                                        <Center display={{lg: 'none', base: 'block'}} w="100%">
+                                            <Box bgColor={post.hall_color} w="150px" p={5} color="white" rounded="md" boxShadow="lg">
+                                                <Center>
+                                                    {post.hall_name}
+                                                </Center>
+                                            </Box>
                                         </Center>
+                                        <Box display={{lg: 'block', base: 'none'}} bgColor={post.hall_color} w="150px" p={5} color="white" rounded="md" boxShadow="lg">
+                                                <Center>
+                                                    {post.hall_name}
+                                                </Center>
+                                            </Box>
                                     </Box>
-                                    <Box p="3" w="100%" bg="light" my='auto'  ml={{lg: '20%', base: 0}} mr={{lg: '20%', base: 0}}>
+                         
+                                    {post.attachment1 != 'undefined' ?
+                                    <Box p="3" w="100%" bg="light" my='auto' ml={{lg: '20%', base: '0'}} mr={{lg: '15%', base: '0'}} overflowX={{lg: 'visible', sm: "auto", base: "auto"}}>
                                         <Center>
                                         {post.attachment1 != 'undefined' ? 
-                                        <Image src={post.attachment1} w={{lg: '10vw', sm:'100%', base: "100%"}} h={{lg: '10vh', sm: '20vh'}} onError={addDefaultSrc} borderRadius={10} objectFit='cover'/>
-                                        : <Image src="/no-image-attachment.png" w={{lg: '10vw', sm:'100%', base: "100%"}} h={{lg: '10vh', sm: '20vh'}} borderRadius={10} objectFit='cover'/>}
+                                        <Image src={post.attachment1} w={{lg: '10vw', sm:'100%'}} h={{lg: '10vh', sm: '20vh'}} onError={addDefaultSrc} borderRadius={10} objectFit='cover'/>
+                                        : <Image src="/no-image-attachment.png" w={{lg: '10vw', sm:'100%'}} h={{lg: '10vh', sm: '20vh'}} borderRadius={10} objectFit='cover'/>}
                                         {post.attachment2 != 'undefined' ? 
-                                        <Image src={post.attachment2} w={{lg: '10vw', sm:'100%'}} display={{lg: "block", base: "none"}} h={{lg: '10vh', sm: '20vh'}} onError={addDefaultSrc} borderRadius={10} objectFit='cover'/>
+                                        <Image src={post.attachment2} w={{lg: '10vw', sm:'100%'}} h={{lg: '10vh', sm: '20vh'}} display={{lg: "block", base: "none"}} onError={addDefaultSrc} borderRadius={10} objectFit='cover'/>
                                         : null}
                                         {post.attachment3 != 'undefined' ? 
-                                        <Image src={post.attachment3} w={{lg: '10vw', sm:'100%'}} display={{lg: "block", base: "none"}} h={{lg: '10vh', sm: '20vh'}} onError={addDefaultSrc} borderRadius={10} objectFit='cover'/>
+                                        <Image src={post.attachment3} w={{lg: '10vw', sm:'100%'}} h={{lg: '10vh', sm: '20vh'}} display={{lg: "block", base: "none"}} onError={addDefaultSrc} borderRadius={10} objectFit='cover'/>
                                         : null}
                                         </Center>
-                                    </Box>
-                                    <Box fontFamily={'Raleway'} p="3" w={{lg: "20%", base: "100%"}} mr={{lg: "1em"}} bg="light" my='auto'>
+                                    </Box>: null}
+                                    <Box fontFamily={'Raleway'} p="3" w="20%" bg="light" my='auto'>
                                         <Center>
                                         <Text isTruncated>{post.title}</Text>
                                         </Center>
