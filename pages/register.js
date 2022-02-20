@@ -204,7 +204,7 @@ export default function Register({data2}) {
         toastIdRef.current = toast({ position: 'top', title: 'Specialization must not exceed 100 characters!', status: 'error', duration: 3000, isClosable: true })
         return;
       }
-      if(first_name.length > 50 || last.length > 50){
+      if(first_name.length > 50 || last_name.length > 50){
         toastIdRef.current = toast({ position: 'top', title: 'First Name or Last Name must not exceed 50 characters!', status: 'error', duration: 3000, isClosable: true })
         return;
       }if(user_name.length > 16){
@@ -371,7 +371,7 @@ export default function Register({data2}) {
                 </Box>
           </SimpleGrid>
                 <Box mt={5}>
-                <FormLabel>What program or strand are you specializing in?</FormLabel>
+                <FormLabel>What program or strand do you specialize in?</FormLabel>
                 <Input size={{lg: 'lg', base: 'sm'}} width={{lg:'43vh', base: '90%'}} placeholder="e.g. AB in Multimedia Arts and Design or HUMSS" borderColor={useColorModeValue('black', 'white')} onChange={e => setSpecialization(e.target.value)}  className={styles.input_box} type="text"/>
                 </Box>
                 <Box mt={5}>
