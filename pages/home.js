@@ -135,28 +135,28 @@ function Home(){
                         <Box w={{'2xl': '30em', lg: "23em", base: "100%"}} px={{lg: 3, base: 3}}>
                             <Flex>
                                 <Text fontFamily={'Raleway'} size={{'2xl': 'lg', lg: 'md', base: 'xs'}} color={useColorModeValue("#29226E", "#B2A3FF")}>Azariah Danizar G. Concepcion</Text>
-                                <Text fontFamily={'Raleway'} size={{'2xl': 'lg', lg: 'md', base: 'xs'}} ml={{lg: 5, base: '4vh'}}>Back-end Dev</Text>
+                                <Text fontFamily={'Raleway'} size={{'2xl': 'lg', lg: 'md', base: 'xs'}} ml={{lg: 5, base: 1}}>Back-end Dev</Text>
                             </Flex>
                             <Text fontFamily={'Raleway'} fontSize={{lg: 'md', base: 'xs'}} color="gray.400" mt={{base: 2}}>(+63) 949 846 0846</Text>
                         </Box>
                         <Box w={{'2xl': '30em',lg: "23em", base: "100%"}} px={{lg: 3, base: 3}}>
                             <Flex> 
                                 <Text fontFamily={'Raleway'} size={{'2xl': 'lg', lg: 'md', base: 'xs'}} color={useColorModeValue("#29226E", "#B2A3FF")}>Richie Gene R. Tan</Text>
-                                <Text fontFamily={'Raleway'} size={{'2xl': 'lg', lg: 'md', base: 'xs'}} ml={{lg: 8, base: '10vh'}}>UI/UX Designer</Text>
+                                <Text fontFamily={'Raleway'} size={{'2xl': 'lg', lg: 'md', base: 'xs'}} ml={{lg: 8, base: 8}}>UI/UX Designer</Text>
                             </Flex>
                             <Text fontFamily={'Raleway'} fontSize={{lg: 'md', base: 'xs'}} color="gray.400" mt={{base: 2}}>(+63) 916 424 9531</Text>
                         </Box>
                         <Box w={{'2xl': '30em',lg: "23em", base: "100%"}} px={{lg: 3, base: 3}}>
                             <Flex>
                                 <Text fontFamily={'Raleway'} size={{'2xl': 'lg', lg: 'md', base: 'xs'}} color={useColorModeValue("#29226E", "#B2A3FF")}>Jomari L. Matias</Text>
-                                <Text fontFamily={'Raleway'} size={{'2xl': 'lg', lg: 'md', base: 'xs'}} ml={{lg: 5, base: '8vh'}}>Project Documentarian</Text>
+                                <Text fontFamily={'Raleway'} size={{'2xl': 'lg', lg: 'md', base: 'xs'}} ml={{lg: 5, base: '11vh'}}>Project Documentarian</Text>
                             </Flex>
                             <Text fontFamily={'Raleway'} fontSize={{lg: 'md', base: 'xs'}} color="gray.400" mt={{base: 2}}>(+63) 998 084 4162</Text>
                         </Box>
                         <Box w={{'2xl': '30em',lg: "23em", base: "100%"}} px={{lg: 3, base: 3}}>
                             <Flex>
-                                <Text fontFamily={'Raleway'} fontSize={{'2xl': 'lg', lg: 'sm', base: 'xs'}} color={useColorModeValue("#29226E", "#B2A3FF")}>Jose Luis P. Tandayu</Text>
-                                <Text fontFamily={'Raleway'} fontSize={{'2xl': 'lg', lg: 'sm', base: 'xs'}} ml={{lg: 5, base: '8vh'}}>Front-end Dev</Text>
+                                <Text fontFamily={'Raleway'} size={{'2xl': 'lg', lg: 'md', base: 'xs'}} color={useColorModeValue("#29226E", "#B2A3FF")}>Jose Luis P. Tandayu</Text>
+                                <Text fontFamily={'Raleway'} size={{'2xl': 'lg', lg: 'md', base: 'xs'}} ml={{lg: 5, base: '2vh'}}>Front-end Dev</Text>
                             </Flex>
                             <Text fontFamily={'Raleway'} fontSize={{lg: 'md', base: 'xs'}} color="gray.400" mt={{base: 2}}>(+63) 916 418 7235</Text>
                         </Box>

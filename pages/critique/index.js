@@ -101,7 +101,8 @@ export default function HallPage(){
     const [hallNum, setHallNum] = useState([])
     const [hallList, setHallList] = useState([])
 
-    const changeColor = useColorModeValue('#BAB9B9', '#1F1F1F')
+    const changeColor = useColorModeValue('white', 'black')
+    const changeBorderColor = useColorModeValue('2px solid black', '2px solid white')
     const thereNoPost = useColorModeValue('/there-no-post.png', '/there-no-post-dark.png')
 
 
@@ -278,8 +279,8 @@ export default function HallPage(){
     }
 
     const addDefaultSrc = (e) => {
-        e.target.style.display = "none";
-        // e.target.src = "/no-image-attachment.png";
+        // e.target.style.display = "none";
+        e.target.src = "/no-image-attachment.png";
         e.target.onerror = null;
     }
 
@@ -381,7 +382,7 @@ export default function HallPage(){
                     { posts.length != 0 ? 
                     [loading ? <Box fontFamily={"Raleway"}>Loading...</Box> : 
                     currentPosts.map((post, i) => 
-                            <Box bgColor={changeColor} w="100%" display={{lg: 'flex', sm: 'block'}} key={post.post_id} mt='2ch' border='1px solid gray.500' boxShadow='lg' rounded='lg'>
+                            <Box bgColor={changeColor} w="100%" display={{lg: 'flex', sm: 'block'}} key={post.post_id} mt='2ch' border={changeBorderColor} boxShadow='lg' rounded='lg'>
                                 <Link href={`/post/${post.post_id}`} passHref>
                                 <a>
                                 <Box display={{lg: 'flex', sm: 'block'}} w={{lg: "50vw", sm: '100%'}}>
