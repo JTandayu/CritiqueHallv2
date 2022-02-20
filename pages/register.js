@@ -192,6 +192,20 @@ export default function Register({data2}) {
         // document.getElementById('warning2').hidden=true;
         toastIdRef.current = toast({ position: 'top', title: 'Please accept Terms and Conditions and Privacy Policy!', status: 'error', duration: 3000, isClosable: true })
         return;
+      }if(password.length > 8 || confirm_password > 8){
+        toastIdRef.current = toast({ position: 'top', title: 'Password must not exceed 8 characters!', status: 'error', duration: 3000, isClosable: true })
+        return;
+      }
+      if(specialization.length > 100){
+        toastIdRef.current = toast({ position: 'top', title: 'Specialization must not exceed 100 characters!', status: 'error', duration: 3000, isClosable: true })
+        return;
+      }
+      if(first_name.length > 50 || last.length > 50){
+        toastIdRef.current = toast({ position: 'top', title: 'First Name or Last Name must not exceed 50 characters!', status: 'error', duration: 3000, isClosable: true })
+        return;
+      }if(user_name.length > 16){
+        toastIdRef.current = toast({ position: 'top', title: 'Display Name must not exceed 16 characters!', status: 'error', duration: 3000, isClosable: true })
+        return;
       }
 
       let formData = new FormData(); 
@@ -233,6 +247,15 @@ export default function Register({data2}) {
               // document.getElementById('warning1').hidden=true;
               // document.getElementById('warning3').hidden=true;
               toastIdRef.current = toast({ position: 'top', title: 'Display Name or Email is already in used!', status: 'error', duration: 3000, isClosable: true })
+              return;
+            }
+            if(error.response.data.message === "<p>The Display Name field cannot exceed 16 characters.</p>\n<p>The Email field must contain a valid email address.</p>\n"){
+              toastIdRef.current = toast({ position: 'top', title: 'Display Name must not exceed 16 characters! Please enter a valid email address!', status: 'error', duration: 3000, isClosable: true })
+              return;
+            }
+            if(error.response.data.message === "<p>The Email field must contain a valid email address.</p>\n"){
+              toastIdRef.current = toast({ position: 'top', title: 'Please enter a valid email address!', status: 'error', duration: 3000, isClosable: true })
+              return;
             }
         });
       }

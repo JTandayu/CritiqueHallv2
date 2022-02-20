@@ -142,7 +142,7 @@ export default function HallPage(){
         .then(response => {
             console.log(response);
             setPosts(response.data.posts);
-            console.log(posts) 
+            // console.log(posts) 
             setLoading(false)
         })
         .catch(error => {
