@@ -347,7 +347,7 @@ export default function Nav(data, profile_pic){
                             _active={{bgColor: 'none', textDecoration:'underline'}}
                             display={{lg: "none", md: "block", base: "block"}}
                             onClick={readNotif}
-                        ><Img className={styles.darkicon2} src={useColorModeValue('/notification-alert-icon.png', '/notification-alert-icon-dark.png')} alt="Notification" w="2em" h="2em" ml={2}/></Button>
+                        ><Img className={styles.darkicon2} src={useColorModeValue('/notification-icon.png', '/notification-icon-dark.png')} alt="Notification" w="2em" h="2em" ml={2}/></Button>
                     </PopoverTrigger>
                     <PopoverContent w="100vw">
                         <PopoverArrow />
