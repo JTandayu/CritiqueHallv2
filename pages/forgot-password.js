@@ -59,8 +59,9 @@ export default function ForgotPassword(){
   const forgotPassword = async () =>{
 
         if (email == ''){
-            document.getElementById('warning1').removeAttribute('hidden');
-            document.getElementById('warning2').hidden=true;
+            // document.getElementById('warning1').removeAttribute('hidden');
+            // document.getElementById('warning2').hidden=true;
+            toastIdRef.current = toast({ position: 'top', title: 'Please input your email!', status: 'error', duration: 3000, isClosable: true })
         } else{
 
         
@@ -91,8 +92,9 @@ export default function ForgotPassword(){
             console.log(error);
             // console.log(error.response);
             if(error.response.data.status === "Wrong Credential"){
-              document.getElementById('warning2').removeAttribute('hidden');
-              document.getElementById('warning1').hidden=true;
+              // document.getElementById('warning2').removeAttribute('hidden');
+              // document.getElementById('warning1').hidden=true;
+              toastIdRef.current = toast({ position: 'top', title: 'Sorry, we could not find your email!', status: 'error', duration: 3000, isClosable: true })
             }
             // window.location = "/forgot-password"
         });}

@@ -177,17 +177,20 @@ export default function Register({data2}) {
 
     const submitRegister = async () =>{
       if(first_name == '' || last_name == '' || user_name == '' || email == '' || password == '' || confirm_password == '' || specialization == ''){
-        document.getElementById('warning3').removeAttribute('hidden');
-        document.getElementById('warning1').hidden=true;
-        document.getElementById('warning2').hidden=true;
+        // document.getElementById('warning3').removeAttribute('hidden');
+        // document.getElementById('warning1').hidden=true;
+        // document.getElementById('warning2').hidden=true;
+        toastIdRef.current = toast({ position: 'top', title: 'Please input all the fields!', status: 'error', duration: 3000, isClosable: true })
       }if(password != confirm_password){
-        document.getElementById('warning1').removeAttribute('hidden');
-        document.getElementById('warning2').hidden=true;
-        document.getElementById('warning3').hidden=true;
+        // document.getElementById('warning1').removeAttribute('hidden');
+        // document.getElementById('warning2').hidden=true;
+        // document.getElementById('warning3').hidden=true;
+        toastIdRef.current = toast({ position: 'top', title: 'Passwords do not match!', status: 'error', duration: 3000, isClosable: true })
       }if(tnc == false){
-        document.getElementById('warning3').removeAttribute('hidden');
-        document.getElementById('warning1').hidden=true;
-        document.getElementById('warning2').hidden=true;
+        // document.getElementById('warning3').removeAttribute('hidden');
+        // document.getElementById('warning1').hidden=true;
+        // document.getElementById('warning2').hidden=true;
+        toastIdRef.current = toast({ position: 'top', title: 'Please accept Terms and Conditions and Privacy Policy!', status: 'error', duration: 3000, isClosable: true })
         return;
       }
 
@@ -226,11 +229,11 @@ export default function Register({data2}) {
             console.log(error.response);
 
             if(error.response.data.message === "<p>Display Name is already used!</p>\n" || error.response.data.message === "<p>Display Name is already used</p>\n<p>Email is already used</p>\n" || error.response.data.message === "<p>Email is already used</p>\n"){
-              document.getElementById('warning2').removeAttribute('hidden');
-              document.getElementById('warning1').hidden=true;
-              document.getElementById('warning3').hidden=true;
+              // document.getElementById('warning2').removeAttribute('hidden');
+              // document.getElementById('warning1').hidden=true;
+              // document.getElementById('warning3').hidden=true;
+              toastIdRef.current = toast({ position: 'top', title: 'Display Name or Email is already in used!', status: 'error', duration: 3000, isClosable: true })
             }
-            // window.location = "/register"
         });
       }
     }
@@ -290,28 +293,28 @@ export default function Register({data2}) {
                         _hover={{cursor:'pointer'}}
                         _active={{bgColor: 'none'}}
                     >
-                        <Image className={styles.darkicon} src={ImgUrl} alt="darkmode" w="2em" h="2em" ml={'15em'} />
+                        <Image className={styles.darkicon} src={ImgUrl} alt="darkmode" w="2em" h="2em" ml={'15em'} mt={10} />
                     </Button>
           
             <Box className={styles.logo}>
             <Image src={useColorModeValue('critiquehall.png', 'critiquehall-dark.png')} 
-             alt="Critique Hall Logo"/>
+             alt="Critique Hall Logo" mb={2}/>
             </Box>
 
             <Box h={{lg: "full", base: "50vh"}} overflowY="auto">
-            <Box id='warning1' color='red' w='30%' h='5vh' mb={4} mt={2} hidden>
+            <Box id='warning1' color='red' w='30%' h='5vh' mb={2} mt={2} hidden>
               <Center>
-                <Text mt='1vh'>Password and Confirm Password do not match!</Text>
+                <Text fontSize={{'2xl': "sm", xl: "xs", lg: "sm", base: "sm"}} mt='2vh'>Passwords do not match!</Text>
               </Center>
             </Box>
-            <Box id='warning2' color='red' w='30%' h='5vh' mb={4} mt={2} hidden>
+            <Box id='warning2' color='red' w='30%' h='5vh' mb={2} mt={2} hidden>
               <Center>
-                <Text mt='1vh'>Email or Username is already taken!</Text>
+                <Text fontSize={{'2xl': "sm", xl: "xs", lg: "sm", base: "sm"}} mt='2vh'>Email or username is already taken!</Text>
               </Center>
             </Box>
-            <Box id='warning3' color='red' w='30%' h='5vh' mb={4} mt={2} hidden>
+            <Box id='warning3' color='red' w='30%' h='5vh' mb={2} mt={2} hidden>
               <Center>
-                <Text mt='1vh'>Please input all the fields!</Text>
+                <Text fontSize={{'2xl': "sm", xl: "xs", lg: "sm", base: "sm"}} mt='2vh'>Please input all the fields!</Text>
               </Center>
             </Box>
             <SimpleGrid columns={{lg: 2, base: 1}} spacing={{lg: 2, base: 2}} mt={'5%'}>
@@ -340,7 +343,7 @@ export default function Register({data2}) {
                 <Input size={{lg: 'lg', base: 'sm'}} width={{lg:'35vh', base: '90%'}} borderColor={useColorModeValue('black', 'white')}  className={styles.input_box} type="password" value={confirm_password} onChange={e => setConfirmPassword(e.target.value)}/>
                 </Box>
           </SimpleGrid>
-                <Box>
+                <Box mt={5}>
                 <FormLabel>What program or strand are you specializing in?</FormLabel>
                 <Input size={{lg: 'lg', base: 'sm'}} width={{lg:'43vh', base: '90%'}} placeholder="e.g. AB in Multimedia Arts and Design or HUMSS" borderColor={useColorModeValue('black', 'white')} onChange={e => setSpecialization(e.target.value)}  className={styles.input_box} type="text"/>
                 </Box>
@@ -361,7 +364,7 @@ export default function Register({data2}) {
                   >
                 Submit
                 </Button></Center>
-                <Link href="/" passHref><Text _hover={{cursor:'pointer', textDecoration: 'underline'}} fontSize={{lg: "md", base: "sm"}} color={useColorModeValue('#1BA3C1', '#1BA3C1')} mt={3}>Back to Login</Text></Link>
+                <Link href="/" passHref><Text _hover={{cursor:'pointer', textDecoration: 'underline'}} fontSize={{lg: "md", base: "sm"}} color={useColorModeValue('#1BA3C1', '#1BA3C1')} mt={5} mb={5}>Back to Login</Text></Link>
                 </Box>
                 </Box>
 
