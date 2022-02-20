@@ -192,11 +192,11 @@ export default function Register({data2}) {
         // document.getElementById('warning2').hidden=true;
         toastIdRef.current = toast({ position: 'top', title: 'Please accept Terms and Conditions and Privacy Policy!', status: 'error', duration: 3000, isClosable: true })
         return;
-      }if(password.length < 8 || confirm_password < 8){
+      }if(password.length < 8 || confirm_password.length < 8){
         toastIdRef.current = toast({ position: 'top', title: 'Password must be minimum of 8 characters!', status: 'error', duration: 3000, isClosable: true })
         return;
       }
-      if(password.length > 100 || confirm_password > 100){
+      if(password.length > 100 || confirm_password.length > 100){
         toastIdRef.current = toast({ position: 'top', title: 'Password must not exceed 100 characters!', status: 'error', duration: 3000, isClosable: true })
         return;
       }
