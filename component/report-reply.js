@@ -112,10 +112,10 @@ function ReportReply({data, id}) {
                 <ModalHeader fontFamily={'Raleway'}>Report Reply</ModalHeader>
                 <ModalCloseButton />
                 <ModalBody>
-                        <Flex mt='3vh'>
+                        {/* <Flex mt='3vh'>
                             <FormLabel fontFamily={'Raleway'}>Reportee</FormLabel>
                             <Text fontFamily={'Raleway'} ml={20}>{display_name}</Text>
-                        </Flex>
+                        </Flex> */}
                         {/* <Flex mt='3vh'>
                             <FormLabel fontFamily={'Raleway'}>Type of Offense</FormLabel>
                             <RadioGroup name="offense" onChange={setOffense} value={offense}  ml={8}>

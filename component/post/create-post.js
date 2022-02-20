@@ -295,7 +295,7 @@ function CreatePost({data}) {
         })
         .catch(error => {
             // toastIdRef.current = toast({ title: 'Create post unsuccessful!', status: 'error', duration: 3000, isClosable: false })
-            if(error.response.data.status === "Account muted"){
+            if(error.response.data.status === "Account Muted"){
                 toastIdRef.current = toast({ position: 'top', title: 'Account muted!', status: 'error', duration: 3000, isClosable: true })
             }
             console.log(error);

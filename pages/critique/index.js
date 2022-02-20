@@ -278,7 +278,8 @@ export default function HallPage(){
     }
 
     const addDefaultSrc = (e) => {
-        e.target.src = "/no-image-attachment.png";
+        e.target.style.display = "none";
+        // e.target.src = "/no-image-attachment.png";
         e.target.onerror = null;
     }
 
@@ -404,7 +405,7 @@ export default function HallPage(){
                                         <Center>
                                         {post.attachment1 != 'undefined' ? 
                                         <Image src={post.attachment1} w={{lg: '10vw', sm:'100%'}} h={{lg: '10vh', sm: '20vh'}} onError={addDefaultSrc} borderRadius={10} objectFit='cover'/>
-                                        : <Image src="/no-image-attachment.png" w={{lg: '10vw', sm:'100%'}} h={{lg: '10vh', sm: '20vh'}} borderRadius={10} objectFit='cover'/>}
+                                        : null}
                                         {post.attachment2 != 'undefined' ? 
                                         <Image src={post.attachment2} w={{lg: '10vw', sm:'100%'}} h={{lg: '10vh', sm: '20vh'}} display={{lg: "block", base: "none"}} onError={addDefaultSrc} borderRadius={10} objectFit='cover'/>
                                         : null}

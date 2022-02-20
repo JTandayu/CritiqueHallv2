@@ -473,7 +473,7 @@ export default function Nav(data, profile_pic){
                             _hover={{cursor:'pointer', textDecoration:'underline'}}
                             _active={{bgColor: 'none', textDecoration:'underline'}}
                             onClick={readNotif}
-                        ><Img className={styles.darkicon2} src={useColorModeValue('/notification-alert-icon.png', '/notification-alert-icon-dark.png')} alt="Notification" w="2em" h="2em" ml={-5}/></Button>
+                        ><Img className={styles.darkicon2} src={useColorModeValue('/notification-icon.png', '/notification-icon-dark.png')} alt="Notification" w="2em" h="2em" ml={-5}/></Button>
                     </PopoverTrigger>
                     <Button as='a'
                             variant='ghost'
@@ -507,7 +507,7 @@ export default function Nav(data, profile_pic){
                                 {notification.profile_photo ? <Img src={notification.profile_photo} mr={3} w="25px" h="25px" alt="Notification Image" /> : null}
                                 <Text mr={3} fontFamily={'Raleway'}>{notification.display_name}</Text>
                                 <Text mr={2} fontFamily={'Raleway'}>{notification.action}</Text>
-                                <Text w="full" fontFamily={'Raleway'} isTruncated>{notification.title}</Text>
+                                {/* <Text w="full" fontFamily={'Raleway'} isTruncated>{notification.title}</Text> */}
                             <Divider />
                             </Box>
                             )]: <Center><Text fontFamily={'Raleway'}>Nothing at the Moment...</Text></Center>}

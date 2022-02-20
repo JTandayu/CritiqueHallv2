@@ -130,7 +130,7 @@ export const Critiques = ({id, newCritique}) => {
         }).catch((error) =>{
             console.log(error)
             if(error.response.data.status === "Account Muted"){
-                toastIdRef.current = toast({ title: 'Account Muted!', status: 'error', duration: 3000, isClosable: false })
+                toastIdRef.current = toast({ position: 'top', title: 'Account muted!', status: 'error', duration: 3000, isClosable: true })
             }
         })
     }

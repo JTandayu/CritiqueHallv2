@@ -89,7 +89,7 @@ function ReportCritique({data, id}) {
             console.log(response)
             toastIdRef.current = toast({
                 position: 'top',
-                title: 'Report submitted successfully!.',
+                title: 'Report submitted successfully!',
                 status: 'success',
                 duration: 3000,
                 isClosable: true,
