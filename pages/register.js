@@ -196,6 +196,10 @@ export default function Register({data2}) {
         toastIdRef.current = toast({ position: 'top', title: 'Password must be minimum of 8 characters!', status: 'error', duration: 3000, isClosable: true })
         return;
       }
+      if(password.length > 100 || confirm_password > 100){
+        toastIdRef.current = toast({ position: 'top', title: 'Password must not exceed 100 characters!', status: 'error', duration: 3000, isClosable: true })
+        return;
+      }
       if(specialization.length > 100){
         toastIdRef.current = toast({ position: 'top', title: 'Specialization must not exceed 100 characters!', status: 'error', duration: 3000, isClosable: true })
         return;
