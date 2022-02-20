@@ -44,7 +44,7 @@ export const Critiques = ({id, newCritique}) => {
     const { API_URL } = process.env
     const { API_KEY } = process.env
 
-    const [cookie] = useCookies()
+    // const [cookie] = useCookies()
     const token = getCookie('token')
     const user_id = getCookie('encrypted_id')
     const display_name = getCookie('display_name')
