@@ -34,7 +34,7 @@ import {
     MenuDivider,
     Center
   } from '@chakra-ui/react'
-  import { ChevronDownIcon } from '@chakra-ui/icons'
+  import { ChevronDownIcon, DownloadIcon } from '@chakra-ui/icons'
 import EditPost from '@component/post/options/edit';
 import EditHistory from '@component/edit-history';
 import ReportPost from '@component/report-post';
@@ -129,6 +129,10 @@ export default function CritiquePost(){
     // console.log(post_id)
 
     // const changeBadgeIcon = useColorModeValue('/badge-icon.png', '/badge-icon-dark.png')
+
+    const changeBackgroundColor = useColorModeValue('#03521d', '#03521d')
+    const changeTextColor = useColorModeValue('white', 'white')
+    const changeHoverColor = {bgColor: useColorModeValue('#007326', '#007326')}
 
     // const [cookies] = useCookies([])
     const [critique, setCritique] = useState('')
@@ -410,7 +414,7 @@ export default function CritiquePost(){
                                 <Image src={data.attachment1} w='50vh' h='40vh' cursor="pointer" objectFit='cover'/> :
                                 <Center p={10} w="full">
                                     <Link href={data.attachment1}  passHref>
-                                        <Button>Download File</Button>
+                                    <Button fontFamily={'Raleway'} bgColor={changeBackgroundColor} color={changeTextColor} _hover={changeHoverColor}>Download File <DownloadIcon ml={2} /></Button>
                                     </Link>
                                 </Center>
                                 ] : null}
@@ -419,7 +423,7 @@ export default function CritiquePost(){
                                 <Image src={data.attachment2} w='20vh' h='10vh' cursor="pointer" objectFit='cover'/> :
                                 <Center py={5} w="20vh">
                                     <Link href={data.attachment2} passHref>
-                                        <Button>Download File</Button>
+                                    <Button fontFamily={'Raleway'} bgColor={changeBackgroundColor} color={changeTextColor} _hover={changeHoverColor}>Download File <DownloadIcon ml={2} /></Button>
                                     </Link>
                                 </Center>
                                 ] : null}
@@ -428,7 +432,7 @@ export default function CritiquePost(){
                                 <Image src={data.attachment3} w='20vh' h='10vh' cursor="pointer" objectFit='cover'/> :
                                 <Center py={5} w="20vh">
                                     <Link href={data.attachment3} passHref>
-                                        <Button>Download File</Button>
+                                    <Button fontFamily={'Raleway'} bgColor={changeBackgroundColor} color={changeTextColor} _hover={changeHoverColor}>Download File <DownloadIcon ml={2} /></Button>
                                     </Link>
                                 </Center>
                                 ] : null}
@@ -437,7 +441,7 @@ export default function CritiquePost(){
                                 <Image src={data.attachment4} w='20vh' h='10vh' cursor="pointer" objectFit='cover'/> :
                                 <Center p={5} w="20vh">
                                     <Link href={data.attachment4} passHref>
-                                        <Button>Download File</Button>
+                                    <Button fontFamily={'Raleway'} bgColor={changeBackgroundColor} color={changeTextColor} _hover={changeHoverColor}>Download File <DownloadIcon ml={2} /></Button>
                                     </Link>
                                 </Center>
                                 ] : null}
@@ -446,7 +450,7 @@ export default function CritiquePost(){
                                 <Image src={data.attachment5} w='20vh' h='10vh' cursor="pointer" objectFit='cover'/> :
                                 <Center p={5} w="20vh">
                                     <Link href={data.attachment5} passHref>
-                                        <Button>Download File</Button>
+                                    <Button fontFamily={'Raleway'} bgColor={changeBackgroundColor} color={changeTextColor} _hover={changeHoverColor}>Download File <DownloadIcon ml={2} /></Button>
                                     </Link>
                                 </Center>
                                 ] : null}
@@ -461,7 +465,7 @@ export default function CritiquePost(){
                         :
                     <Center p={10} w="full"> 
                         <Link href={data.attachment1}  passHref>
-                            <Button>Download File</Button>
+                            <Button fontFamily={'Raleway'} bgColor={changeBackgroundColor} color={changeTextColor} _hover={changeHoverColor}>Download File <DownloadIcon ml={2} /></Button>
                         </Link>
                     </Center>
                     ]
