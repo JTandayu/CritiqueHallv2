@@ -91,7 +91,7 @@ export const Critiques = ({id, newCritique}) => {
 
         axios.post(`${API_URL}/api/display_all_critiques`, formData, config)
         .then((response) =>{
-            // console.log(response)
+            console.log(response.data)
             setCritiqueItems(response.data.data)
             setLoading(false)
             // document.getElementById(response.data.data.critique_id).hidden=true
