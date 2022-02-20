@@ -261,6 +261,18 @@ export default function Register({data2}) {
               toastIdRef.current = toast({ position: 'top', title: 'Please enter a valid email address!', status: 'error', duration: 3000, isClosable: true })
               return;
             }
+            if(error.response.data.message === "<p>The First Name field may only contain alphabetical characters.</p>\n"){
+              toastIdRef.current = toast({ position: 'top', title: 'First Name must only contain alpphabetical characters!', status: 'error', duration: 3000, isClosable: true })
+              return;
+            }
+            if(error.response.data.message === "<p>The Last Name field may only contain alphabetical characters.</p>\n"){
+              toastIdRef.current = toast({ position: 'top', title: 'Last Name must only contain alpphabetical characters!', status: 'error', duration: 3000, isClosable: true })
+              return;
+            }
+            if(error.response.data.message === "<p>The First Name field may only contain alphabetical characters.</p>\n<p>The Last Name field may only contain alphabetical characters.</p>\n"){
+              toastIdRef.current = toast({ position: 'top', title: 'First Name and Last Name must only contain alpphabetical characters!', status: 'error', duration: 3000, isClosable: true })
+              return;
+            }
         });
       }
     }
