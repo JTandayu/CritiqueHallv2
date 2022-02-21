@@ -119,7 +119,7 @@ function Home(){
           </Box> 
            
            {/* Problem */}
-          <Box w="100%" h={{'2xl': "25vh", lg: "30vh", base: "100%"}} bgColor={useColorModeValue("#E7E7E7", "#2E2E2E")} p={7} display="flex" flexDir={{base: "column", lg: "row"}} h="100%">
+          <Box w="100%" h={{'2xl': "100%", lg: "100%", base: "100%"}} bgColor={useColorModeValue("#E7E7E7", "#2E2E2E")} p={7} display="flex" flexDir={{base: "column", lg: "row"}}>
             <Box w={{lg: "45%", base: "100%"}} h="100%">
                 <Heading fontSize={{lg: '3xl', base: '3xl'}} fontFamily={'Raleway'} ml={{lg: '2em', base: '1%'}} color={useColorModeValue("#C1272D", "#FF5C61")}>Our Story</Heading>
                 <Text fontFamily={'Raleway'} fontSize={{lg: 'md', base: 'xs'}} ml={{lg: '5em', base: '1%'}} pr={{lg: 16, base: 1}} mt={5} textAlign='justify'>This project began last October and was made possible by four 4th year friends from Web Development. We understood the hardships brought about by the new normal, that is why Critique Hall was developed to serve as a place for students to not only connect but also learn from each other.</Text>
