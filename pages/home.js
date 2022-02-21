@@ -119,15 +119,15 @@ function Home(){
           </Box> 
            
            {/* Problem */}
-          <Box w="100%" h={{'2xl': "25vh", lg: "30vh", base: "100%"}} bgColor={useColorModeValue("#E7E7E7", "#2E2E2E")} p={7} display="flex" flexDir={{base: "column", lg: "row"}}>
+          <Box w="100%" h={{'2xl': "25vh", lg: "30vh", base: "100%"}} bgColor={useColorModeValue("#E7E7E7", "#2E2E2E")} p={7} display="flex" flexDir={{base: "column", lg: "row"}} h="100%">
             <Box w={{lg: "45%", base: "100%"}} h="100%">
-                <Heading fontSize={{lg: '3xl', base: '3xl'}} fontFamily={'Raleway'} color={useColorModeValue("#C1272D", "#FF5C61")}>Our Story</Heading>
-                <Text fontFamily={'Raleway'} fontSize={{lg: 'md', base: 'xs'}} ml={{lg: 2, base: '1%'}} pr={{lg: 16, base: 1}} mt={5} textAlign='justify'>This project began last October and was made possible by four 4th year friends from Web Development. We understood the hardships brought about by the new normal, that is why Critique Hall was developed to serve as a place for students to not only connect but also learn from each other.</Text>
-                <Text fontFamily={'Raleway'} fontSize={{lg: 'md', base: 'xs'}} display="flex"  ml={{lg: 2, base: '1%'}} mt={{lg: 1, base: 5}}>For Inquiries, send an email to <Text fontFamily={'Raleway'} color="#1BA3C1" ml={1}>critiquehall@gmail.com</Text></Text>
+                <Heading fontSize={{lg: '3xl', base: '3xl'}} fontFamily={'Raleway'} ml={{lg: '2em', base: '1%'}} color={useColorModeValue("#C1272D", "#FF5C61")}>Our Story</Heading>
+                <Text fontFamily={'Raleway'} fontSize={{lg: 'md', base: 'xs'}} ml={{lg: '5em', base: '1%'}} pr={{lg: 16, base: 1}} mt={5} textAlign='justify'>This project began last October and was made possible by four 4th year friends from Web Development. We understood the hardships brought about by the new normal, that is why Critique Hall was developed to serve as a place for students to not only connect but also learn from each other.</Text>
+                <Text fontFamily={'Raleway'} fontSize={{lg: 'md', base: 'xs'}} display="flex"  ml={{lg: '5em', base: '1%'}} mt={{lg: 1, base: 5}}>For Inquiries, send an email to <Text fontFamily={'Raleway'} color="#1BA3C1" ml={1}>critiquehall@gmail.com</Text></Text>
             </Box>
             <Spacer />
             
-            <Box w={{lg: "60%", base: "100%"}} h="100%">
+            <Box w={{lg: "50%", base: "100%"}} h="100%">
                 <Heading size="xl" w="full" fontFamily={'Raleway'} fontSize={{lg: '3xl', base: '3xl'}} color={useColorModeValue("#C1272D", "#FF5C61")} mt={{lg: 1, base: 5}}>The Researchers</Heading>
                 <Box w="full" mt={5}>
                   {/* Problem for laptops */}
