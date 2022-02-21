@@ -370,7 +370,7 @@ export default function Nav(data, profile_pic){
                             <Box key={i} display='flex' w="full" p={5}>
                                 {notification.profile_photo ? <Img src={notification.profile_photo} mr={3} w="25px" h="25px" alt="Notification Image" /> : null}
                                 {notification.display_name ? <Text mr={3} fontFamily={'Raleway'}>{notification.display_name}</Text> : null}
-                                <Text mr={2} fontFamily={'Raleway'} w="full">{notification.action}</Text>
+                                <Text mr={2} fontFamily={'Raleway'} w="full" textAlign="justify">{notification.action}</Text>
                                 {/* <Text w="full" fontFamily={'Raleway'} isTruncated>{notification.title}</Text> */}
                             {/* <Divider /> */}
                             </Box>
@@ -506,7 +506,7 @@ export default function Nav(data, profile_pic){
                             <Box key={i} display='flex' w="full" p={5}>
                                 {notification.profile_photo ? <Img src={notification.profile_photo} mr={3} w="25px" h="25px" alt="Notification Image" /> : null}
                                 <Text mr={3} fontFamily={'Raleway'}>{notification.display_name}</Text>
-                                <Text mr={2} fontFamily={'Raleway'}>{notification.action}</Text>
+                                <Text mr={2} fontFamily={'Raleway'} w="full" textAlign="justify">{notification.action}</Text>
                                 {/* <Text w="full" fontFamily={'Raleway'} isTruncated>{notification.title}</Text> */}
                             {/* <Divider /> */}
                             </Box>
