@@ -170,12 +170,14 @@ function EditProfile({data}) {
             getDownloadURL(uploadProfile.snapshot.ref)
             .then(url => {
             toastIdRef.current = toast({
+                position: 'top',
                 title: 'Profile photo uploaded successfully!',
                 status: 'success',
                 duration: 3000,
                 isClosable: true,
             })
             toastIdRef.current = toast({
+                position: 'top',
                 title: `File: ${profileImage[0].name}`,
                 status: 'info',
                 duration: 3000,
@@ -190,6 +192,7 @@ function EditProfile({data}) {
         );
         }else{
             toastIdRef.current = toast({
+                position: 'top',
                 title: 'File type not accepted!',
                 status: 'error',
                 duration: 3000,
@@ -214,12 +217,14 @@ function EditProfile({data}) {
         getDownloadURL(uploadCover.snapshot.ref)
         .then(url => {
             toastIdRef.current = toast({
+                position: 'top',
                 title: 'Cover photo uploaded successfully!',
                 status: 'success',
                 duration: 3000,
                 isClosable: true,
               })
               toastIdRef.current = toast({
+                position: 'top',
                 title: `File: ${coverImage[0].name}`,
                 status: 'info',
                 duration: 3000,
@@ -233,6 +238,7 @@ function EditProfile({data}) {
       }
       );}else{
             toastIdRef.current = toast({
+            position: 'top',
             title: 'File type not accepted!',
             status: 'error',
             duration: 3000,
