@@ -371,8 +371,8 @@ export default function Nav(data, profile_pic){
                                 {notification.profile_photo ? <Img src={notification.profile_photo} mr={3} w="25px" h="25px" alt="Notification Image" /> : null}
                                 <Text mr={3} fontFamily={'Raleway'}>{notification.display_name}</Text>
                                 <Text mr={2} fontFamily={'Raleway'} w="full">{notification.action}</Text>
-                                <Text w="full" fontFamily={'Raleway'} isTruncated>{notification.title}</Text>
-                            <Divider />
+                                {/* <Text w="full" fontFamily={'Raleway'} isTruncated>{notification.title}</Text> */}
+                            {/* <Divider /> */}
                             </Box>
                             )]: <Center><Text fontFamily={'Raleway'}>Nothing at the Moment...</Text></Center>}
                         </PopoverBody>
@@ -508,7 +508,7 @@ export default function Nav(data, profile_pic){
                                 <Text mr={3} fontFamily={'Raleway'}>{notification.display_name}</Text>
                                 <Text mr={2} fontFamily={'Raleway'}>{notification.action}</Text>
                                 {/* <Text w="full" fontFamily={'Raleway'} isTruncated>{notification.title}</Text> */}
-                            <Divider />
+                            {/* <Divider /> */}
                             </Box>
                             )]: <Center><Text fontFamily={'Raleway'}>Nothing at the Moment...</Text></Center>}
                         </PopoverBody>
