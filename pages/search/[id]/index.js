@@ -66,6 +66,8 @@ export default function SearchResult(){
     const changeColor = useColorModeValue('#BAB9B9', '#1F1F1F')
     const changeColor2 = useColorModeValue('#1B1464', '#B2A3FF')
     const changeBadgeIcon = useColorModeValue('/badge-icon.png', '/badge-icon-dark.png')
+    const changeBackgroundColor = useColorModeValue('white', 'black')
+    const changeBorderColor = useColorModeValue('2px solid black', '2px solid white')
     const router = useRouter();
     const token = getCookie('token')
     const user_id = getCookie('encrypted_id')
@@ -264,7 +266,7 @@ export default function SearchResult(){
             <Text id='post' mx='auto' hidden fontFamily={'Raleway'} color={changeColor2}>No Posts Found</Text>
             
             {currentSearch.map((post, i) => (
-            <Box bgColor={changeColor} w={{lg: '70%', sm: '100%'}} mt='2ch' mx="auto" key={post.post_id} display="flex" flexDir={{lg: "row", base: "column"}} boxShadow='lg' rounded='lg' fontFamily={'Raleway'}>
+            <Box bgColor={changeBackgroundColor} border={changeBorderColor} w={{lg: '70%', sm: '100%'}} mt='2ch' mx="auto" key={post.post_id} display="flex" flexDir={{lg: "row", base: "column"}} boxShadow='lg' rounded='lg' fontFamily={'Raleway'}>
                                 <Link href='/post/[id]'  as={`/post/${post.post_id}`} passHref>
                                 <a>
                                 <Box display={{lg: 'flex', sm: 'block'}} w={{lg: "50vw", sm: '100%'}}>
@@ -283,12 +285,12 @@ export default function SearchResult(){
                                             </Box>
                                     </Box>
                          
-                                    {post.attachment1 != 'undefined' ?
+                                    {post.attachment1 != 'undefined' && post.attachment1.includes('.jpg') || post.attachment1.includes('.png') || post.attachment1.includes('.gif')   ?
                                     <Box p="3" w="100%" bg="light" my='auto' ml={{lg: '20%', base: '0'}} mr={{lg: '15%', base: '0'}} overflowX={{lg: 'visible', sm: "auto", base: "auto"}}>
                                         <Center>
                                         {post.attachment1 != 'undefined' ? 
                                         <Image src={post.attachment1} w={{lg: '10vw', sm:'100%'}} h={{lg: '10vh', sm: '20vh'}} onError={addDefaultSrc} borderRadius={10} objectFit='cover'/>
-                                        : <Image src="/no-image-attachment.png" w={{lg: '10vw', sm:'100%'}} h={{lg: '10vh', sm: '20vh'}} borderRadius={10} objectFit='cover'/>}
+                                        : null}
                                         {post.attachment2 != 'undefined' ? 
                                         <Image src={post.attachment2} w={{lg: '10vw', sm:'100%'}} h={{lg: '10vh', sm: '20vh'}} display={{lg: "block", base: "none"}} onError={addDefaultSrc} borderRadius={10} objectFit='cover'/>
                                         : null}
