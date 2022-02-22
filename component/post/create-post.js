@@ -168,7 +168,7 @@ function CreatePost({data}) {
         setImage([])
 
         if(e.target.files.length > 5 - uploadCounter){
-            toastIdRef.current = toast({title: 'Maximum of 5 files only. Please attach link of file instead'
+            toastIdRef.current = toast({position: 'top', title: 'You can only upload up to 5 attachments.'
                     ,status: 'error', isClosable: true});
             return null;
         }else{
@@ -177,7 +177,7 @@ function CreatePost({data}) {
                 if(e.target.files[i].size > 25000000){
                     toastIdRef.current = toast({
                         position: 'top',
-                        title: "File size is higher than the limit.",
+                        title: "Your file exceeds the 25MB limit.",
                         status: 'error',
                         isClosable: true,
                       })
@@ -216,7 +216,7 @@ function CreatePost({data}) {
                 else{  
                     toastIdRef.current = toast({
                         position: 'top',
-                        title: "File is not accepted!",
+                        title: "File is not supported.",
                         status: 'error',
                         isClosable: true,
                       })
