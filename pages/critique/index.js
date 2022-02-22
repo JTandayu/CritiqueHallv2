@@ -279,8 +279,8 @@ export default function HallPage(){
     }
 
     const addDefaultSrc = (e) => {
-        // e.target.style.display = "none";
-        e.target.src = "/no-image-attachment.png";
+        e.target.style.display = "none";
+        // e.target.src = "/no-image-attachment.png";
         e.target.onerror = null;
     }
 
