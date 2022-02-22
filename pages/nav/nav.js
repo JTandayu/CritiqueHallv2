@@ -368,6 +368,7 @@ export default function Nav(data, profile_pic){
                             {notif != 'undefined' ? 
                             [notif.map((notification, i) =>
                             <Box key={i} display='flex' w="full" p={5}>
+                                <Text mr={3} fontFamily={'Raleway'}>{notification.ago_time}</Text>
                                 {notification.profile_photo ? <Img src={notification.profile_photo} mr={3} w="25px" h="25px" alt="Notification Image" /> : null}
                                 {notification.display_name ? <Text mr={3} fontFamily={'Raleway'}>{notification.display_name}</Text> : null}
                                 <Text mr={2} fontFamily={'Raleway'} w="full" textAlign="justify">{notification.action}</Text>
@@ -504,8 +505,9 @@ export default function Nav(data, profile_pic){
                             {notif != 'undefined' ? 
                             [notif.map((notification, i) =>
                             <Box key={i} display='flex' w="full" p={5}>
+                                <Text mr={3} fontFamily={'Raleway'}>{notification.ago_time}</Text>
                                 {notification.profile_photo ? <Img src={notification.profile_photo} mr={3} w="25px" h="25px" alt="Notification Image" /> : null}
-                                <Text mr={3} fontFamily={'Raleway'}>{notification.display_name}</Text>
+                                {notification.display_name ? <Text mr={3} fontFamily={'Raleway'}>{notification.display_name}</Text> : null}
                                 <Text mr={2} fontFamily={'Raleway'} w="full" textAlign="justify">{notification.action}</Text>
                                 {/* <Text w="full" fontFamily={'Raleway'} isTruncated>{notification.title}</Text> */}
                             {/* <Divider /> */}
