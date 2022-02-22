@@ -105,7 +105,7 @@ export default function ConfirmationPage(){
         })
         .catch(error => {
             if(error.response.data.status == 'Wrong code'){
-              toastIdRef.current = toast({ position: 'top', title: 'Please try again.',  status: 'error', duration: 3000, isClosable: true })
+              toastIdRef.current = toast({ position: 'top', title: 'Wrong Code!', description: 'Please try again.', status: 'error', duration: 3000, isClosable: true })
             }
             // toastIdRef.current = toast({ position: 'top', title: 'Account verification unsuccessful!', description: 'Please try again.', status: 'error', duration: 3000, isClosable: true })
             console.log(error.response);
@@ -130,12 +130,21 @@ export default function ConfirmationPage(){
       axios.post(`${API_URL}/api/login`, formData2, config)
       .then(response => {
           console.log(response.data);
-          toastIdRef.current = toast({position: 'top', title: 'Verification code resent!', status: 'success', duration: 3000, isClosable: true })
+          toastIdRef.current = toast({position: 'top', title: 'Verification code resent!', status: 'success', duration: 2000, isClosable: true })
           // window.location = "/confirmation"
       })
       .catch(error => {
           console.log(error.response);
       });
+    }
+
+    const backLogin = () =>{
+      removeCookies('email')
+      removeCookies('password')
+      removeCookies('token')
+      removeCookies('encrypted_id')
+      removeCookies('display_name')
+      router.replace('/')
     }
 
     return(
@@ -207,7 +216,7 @@ export default function ConfirmationPage(){
 
             <Box display="flex">
             <Text _hover={{cursor:'pointer', textDecoration: 'underline'}} fontSize={{lg: "lg", base: "sm"}} color={useColorModeValue('#1BA3C1', '#1BA3C1')} mt={5} onClick={ResendCode}>Resend Code</Text>
-            <Link href="/" passHref><Text _hover={{cursor:'pointer', textDecoration: 'underline'}} fontSize={{lg: "lg", base: "sm"}} color={useColorModeValue('#1BA3C1', '#1BA3C1')} ml={5} mt={5}>Back to Login</Text></Link>
+            <Text _hover={{cursor:'pointer', textDecoration: 'underline'}} fontSize={{lg: "lg", base: "sm"}} color={useColorModeValue('#1BA3C1', '#1BA3C1')} ml={5} mt={5} onClick={backLogin}>Back to Login</Text>
             </Box>  
         </Box>
         </div>
