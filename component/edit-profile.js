@@ -193,7 +193,7 @@ function EditProfile({data}) {
         }else{
             toastIdRef.current = toast({
                 position: 'top',
-                title: 'File type not accepted!',
+                title: 'File type not supported.',
                 status: 'error',
                 duration: 3000,
                 isClosable: true,
@@ -239,7 +239,7 @@ function EditProfile({data}) {
       );}else{
             toastIdRef.current = toast({
             position: 'top',
-            title: 'File type not accepted!',
+            title: 'File type not supported.',
             status: 'error',
             duration: 3000,
             isClosable: true,
