@@ -132,7 +132,7 @@ export default function Login({user}) {
             setCookies('encrypted_id', response.data.encrypted_id)
             router.replace("/confirmation")
           }else if(response.data.status.includes('You are temporarily suspended')){
-            toastIdRef.current = toast({ position: 'top', title: response.data.status, status: 'error', isClosable: true })
+            toastIdRef.current = toast({ position: 'top', title: response.data.status, status: 'error', duration: null, isClosable: true })
             
           }else{
             setCookies('token', response.data.token)
