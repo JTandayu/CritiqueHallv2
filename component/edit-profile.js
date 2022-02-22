@@ -294,11 +294,11 @@ function EditProfile({data}) {
             return;
         }
         if(format.test(firstName)) {
-            toastIdRef.current = toast({ position: 'top', title: 'First Name must only contain alphanumeric characters and spaces.', status: 'error', duration: 3000, isClosable: true })
+            toastIdRef.current = toast({ position: 'top', title: 'First Name must contain alphanumeric characters.', status: 'error', duration: 3000, isClosable: true })
             return;
         }
         if(format.test(LastName)) {
-            toastIdRef.current = toast({ position: 'top', title: 'Last Name must only contain alphanumeric characters and spaces.', status: 'error', duration: 3000, isClosable: true })
+            toastIdRef.current = toast({ position: 'top', title: 'Last Name must contain alphanumeric characters.', status: 'error', duration: 3000, isClosable: true })
             return;
         }
         if(displayName.length > 50) {
@@ -314,7 +314,7 @@ function EditProfile({data}) {
             return;
         }
         if (format.test(specialization)) {
-            toastIdRef.current = toast({ position: 'top', title: 'Specialization must only contain alphanumeric characters and spaces.', status: 'error', duration: 3000, isClosable: true })
+            toastIdRef.current = toast({ position: 'top', title: 'Specialization must contain alphanumeric characters.', status: 'error', duration: 3000, isClosable: true })
             return;
         }
         if(confirmPassword == '') {

@@ -179,15 +179,15 @@ export default function Register({data2}) {
       const format = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/;
 
       if(format.test(first_name)) {
-        toastIdRef.current = toast({ position: 'top', title: 'First Name must contain alphanumeric characters and spaces.', status: 'error', duration: 3000, isClosable: true })
+        toastIdRef.current = toast({ position: 'top', title: 'First Name must contain alphanumeric characters.', status: 'error', duration: 3000, isClosable: true })
         return;
       }
       if(format.test(last_name)) {
-        toastIdRef.current = toast({ position: 'top', title: 'Last Name must contain alphanumeric characters and spaces.', status: 'error', duration: 3000, isClosable: true })
+        toastIdRef.current = toast({ position: 'top', title: 'Last Name must contain alphanumeric characters.', status: 'error', duration: 3000, isClosable: true })
         return;
       }
       if(format.test(specialization)) {
-        toastIdRef.current = toast({ position: 'top', title: 'Specialization must contain alphanumeric characters and spaces.', status: 'error', duration: 3000, isClosable: true })
+        toastIdRef.current = toast({ position: 'top', title: 'Specialization must contain alphanumeric characters.', status: 'error', duration: 3000, isClosable: true })
         return;
       }
       if(first_name == '' || last_name == '' || user_name == '' || email == '' || password == '' || confirm_password == '' || specialization == ''){
@@ -276,15 +276,15 @@ export default function Register({data2}) {
               return;
             }
             if(error.response.data.message === "<p>The First Name field may only contain alphabetical characters.</p>\n"){
-              toastIdRef.current = toast({ position: 'top', title: 'First Name must only contain alpphabetical characters!', status: 'error', duration: 3000, isClosable: true })
+              toastIdRef.current = toast({ position: 'top', title: 'First Name must contain alpphabetical characters!', status: 'error', duration: 3000, isClosable: true })
               return;
             }
             if(error.response.data.message === "<p>The Last Name field may only contain alphabetical characters.</p>\n"){
-              toastIdRef.current = toast({ position: 'top', title: 'Last Name must only contain alpphabetical characters!', status: 'error', duration: 3000, isClosable: true })
+              toastIdRef.current = toast({ position: 'top', title: 'Last Name must contain alpphabetical characters!', status: 'error', duration: 3000, isClosable: true })
               return;
             }
             if(error.response.data.message === "<p>The First Name field may only contain alphabetical characters.</p>\n<p>The Last Name field may only contain alphabetical characters.</p>\n"){
-              toastIdRef.current = toast({ position: 'top', title: 'First Name and Last Name must only contain alpphabetical characters!', status: 'error', duration: 3000, isClosable: true })
+              toastIdRef.current = toast({ position: 'top', title: 'First Name and Last Name must contain alpphabetical characters!', status: 'error', duration: 3000, isClosable: true })
               return;
             }
         });
