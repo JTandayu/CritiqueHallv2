@@ -398,7 +398,7 @@ export default function Register({data2}) {
           </SimpleGrid>
                 <Box mt={5}>
                 <FormLabel>What program or strand do you specialize in?</FormLabel>
-                <Input size={{lg: 'lg', base: 'sm'}} width={{lg:'43vh', base: '90%'}} placeholder="e.g. AB in Multimedia Arts and Design or HUMSS" borderColor={useColorModeValue('black', 'white')} onChange={e => setSpecialization(e.target.value)}  className={styles.input_box} type="text"/>
+                <Input size={{lg: 'lg', base: 'sm'}} width={{lg:'71vh', base: '90%'}} placeholder="e.g. AB in Multimedia Arts and Design or HUMSS" borderColor={useColorModeValue('black', 'white')} onChange={e => setSpecialization(e.target.value)}  className={styles.input_box} type="text"/>
                 </Box>
                 <Box mt={5}>
                 <Checkbox colorScheme='green' size={"md"} onChange={handleClick} checked={tnc}><Text display="flex" fontSize={{lg: "md", base: "sm"}} ml={1}>I have read and accept the <Box ml={{lg: 1, base: 1}}><TermsAndConditions />
