@@ -76,7 +76,7 @@ export default function Login({user}) {
 
   // console.log(cookie)
   useEffect(() => {
-    if(cookie.hasOwnProperty('token') != false || cookie.hasOwnProperty('encrypted_id') != false || cookie.hasOwnProperty('display_name') != false){
+    if(cookie.hasOwnProperty('token') != false && cookie.hasOwnProperty('encrypted_id') != false && cookie.hasOwnProperty('display_name') != false){
       router.replace('/home')
     }
   }, [])
