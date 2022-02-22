@@ -415,9 +415,9 @@ export default function HallPage(){
                                         : null}
                                         </Center>
                                     </Box>: null}
-                                    <Box fontFamily={'Raleway'} p="3" w="20%" bg="light" my='auto'>
+                                    <Box fontFamily={'Raleway'} p="3" w={{lg: "20%", base: "100%"}} bg="light" my='auto'>
                                         <Center>
-                                        <Text isTruncated>{post.title}</Text>
+                                        <Text>{post.title}</Text>
                                         </Center>
                                     </Box>
                                     <Box fontFamily={'Raleway'} p="3" w="100%" bg="light" my='auto'>
