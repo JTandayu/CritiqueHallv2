@@ -484,14 +484,14 @@ function EditProfile({data}) {
                     </Flex>
                     <Flex mb={5} flexDir={{lg: "row", base: "column"}}>
                         <FormLabel fontFamily={'Raleway'} w={{lg: '7vw', base: "100%"}}>About Me</FormLabel>
-                        <Textarea fontFamily={'Raleway'} placeholder='Maximum of 255 characters only.' borderColor={useColorModeValue('black', 'white')} type='text' w='100%' h='15vh' value={aboutMe} onChange={(e) => setAboutMe(e.target.value)} />
+                        <Textarea fontFamily={'Raleway'} placeholder='Maximum of 255 characters only.' borderColor={useColorModeValue('black', 'white')} type='text' w='100%' h='1vh' value={aboutMe} onChange={(e) => setAboutMe(e.target.value)} />
                     </Flex>
                     <Flex mb={5} flexDir={{lg: "row", base: "column"}}>
                         <FormLabel fontFamily={'Raleway'}>Specialization</FormLabel>
-                        <Input fontFamily={'Raleway'} borderColor={useColorModeValue('black', 'white')} type='text' w={{lg: '14vw', base: "100%"}} value={specialization} ml={{lg: '10px', base: 0}} onChange={(e) => setSpecialization(e.target.value)} />
+                        <Input fontFamily={'Raleway'} borderColor={useColorModeValue('black', 'white')} type='text' w={{lg: '50vw', base: "100%"}} value={specialization} ml={{lg: '10px', base: 0}} onChange={(e) => setSpecialization(e.target.value)} />
                     </Flex>
                     <Flex mb={5} flexDir={{lg: "row", base: "column"}}>
-                        <FormLabel fontFamily={'Raleway'}>Confirm password before saving</FormLabel>
+                        <FormLabel fontFamily={'Raleway'} color={useColorModeValue('#1B1464', '#B2A3FF')}>Confirm password before saving</FormLabel>
                         <Input fontFamily={'Raleway'} borderColor={useColorModeValue('black', 'white')} type='password' w={{lg: '10vw', base: "100%"}} ml={{lg: '10px', base: 0}} onChange={(e) => setConfirmPassword(e.target.value)} />
                         <Button fontFamily={'Raleway'} bgColor={useColorModeValue('#0C1F83', '#1D447E')} ml={{lg: 5, base: 0}} mt={{lg: 0, base: 5}} color={useColorModeValue('white', 'white')} _hover={{bgColor: useColorModeValue('#173cff', '#428eff')}} mr={{'2xl': 0, md: 0, base: 0}} onClick={SubmitPersonalInformation}>Save information changes</Button>
                     </Flex>
