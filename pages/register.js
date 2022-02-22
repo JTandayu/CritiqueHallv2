@@ -176,6 +176,20 @@ export default function Register({data2}) {
 
 
     const submitRegister = async () =>{
+      const format = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/;
+
+      if(format.test(first_name)) {
+        toastIdRef.current = toast({ position: 'top', title: 'First Name may only contain alpha-numeric characters and spaces!', status: 'error', duration: 3000, isClosable: true })
+        return;
+      }
+      if(format.test(last_name)) {
+        toastIdRef.current = toast({ position: 'top', title: 'Last Name may only contain alpha-numeric characters and spaces!', status: 'error', duration: 3000, isClosable: true })
+        return;
+      }
+      if(format.test(specialization)) {
+        toastIdRef.current = toast({ position: 'top', title: 'Specialization may only contain alpha-numeric characters and spaces!', status: 'error', duration: 3000, isClosable: true })
+        return;
+      }
       if(first_name == '' || last_name == '' || user_name == '' || email == '' || password == '' || confirm_password == '' || specialization == ''){
         // document.getElementById('warning3').removeAttribute('hidden');
         // document.getElementById('warning1').hidden=true;

@@ -280,6 +280,8 @@ function EditProfile({data}) {
 
     const SubmitPersonalInformation = async() =>{
 
+        const format = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/;
+
         if(firstName == '' || lastName == '' || displayName == '' || aboutMe == '' || specialization == ''){
             // document.getElementById('warning3').removeAttribute('hidden');
             // document.getElementById('warning1').hidden=true;
@@ -301,6 +303,10 @@ function EditProfile({data}) {
         }
         if(specialization.length > 50) {
             toastIdRef.current = toast({ position: 'top', title: 'Specialization should not exceed 50 characters!', status: 'error', duration: 3000, isClosable: true })
+            return;
+        }
+        if (format.test(specialization)) {
+            toastIdRef.current = toast({ position: 'top', title: 'Specialization may only contain alpha-numeric characters and spaces!', status: 'error', duration: 3000, isClosable: true })
             return;
         }
         if(confirmPassword == '') {
