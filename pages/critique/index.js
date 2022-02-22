@@ -385,7 +385,7 @@ export default function HallPage(){
                             <Box bgColor={changeColor} w="100%" display={{lg: 'flex', sm: 'block'}} key={post.post_id} mt='2ch' border={changeBorderColor} boxShadow='lg' rounded='lg'>
                                 <Link href={`/post/${post.post_id}`} passHref>
                                 <a>
-                                <Box display={{lg: 'flex', sm: 'block'}} w={{lg: "50vw", sm: '100%'}}>
+                                <Box display={{lg: 'flex', sm: 'block'}} w={{lg: "50vw", sm: '100%', base: "100%"}}>
                                     <Box fontFamily={'Raleway'} p="3" w="100%" bg="light" my='auto'>
                                         <Center display={{lg: 'none', base: 'block'}} w="100%">
                                             <Box bgColor={post.hall_color} w="150px" p={5} color="white" rounded="md" boxShadow="lg">
