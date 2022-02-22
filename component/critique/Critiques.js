@@ -216,7 +216,7 @@ export const Critiques = ({id, newCritique}) => {
         }).catch((error) =>{
             console.log(error)
             if(error.response.data.status === "Account Muted"){
-                toastIdRef.current = toast({ title: 'Account Muted!', status: 'error', duration: 3000, isClosable: false })
+                toastIdRef.current = toast({ title: 'You are currently muted. Please check your notifications for more details.', status: 'error', duration: 3000, isClosable: false })
             }
         })
     }

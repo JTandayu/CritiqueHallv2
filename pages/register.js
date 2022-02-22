@@ -179,50 +179,50 @@ export default function Register({data2}) {
       const format = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/;
 
       if(format.test(first_name)) {
-        toastIdRef.current = toast({ position: 'top', title: 'First Name may only contain alpha-numeric characters and spaces!', status: 'error', duration: 3000, isClosable: true })
+        toastIdRef.current = toast({ position: 'top', title: 'First Name must contain alphanumeric characters and spaces.', status: 'error', duration: 3000, isClosable: true })
         return;
       }
       if(format.test(last_name)) {
-        toastIdRef.current = toast({ position: 'top', title: 'Last Name may only contain alpha-numeric characters and spaces!', status: 'error', duration: 3000, isClosable: true })
+        toastIdRef.current = toast({ position: 'top', title: 'Last Name must contain alphanumeric characters and spaces.', status: 'error', duration: 3000, isClosable: true })
         return;
       }
       if(format.test(specialization)) {
-        toastIdRef.current = toast({ position: 'top', title: 'Specialization may only contain alpha-numeric characters and spaces!', status: 'error', duration: 3000, isClosable: true })
+        toastIdRef.current = toast({ position: 'top', title: 'Specialization must contain alphanumeric characters and spaces.', status: 'error', duration: 3000, isClosable: true })
         return;
       }
       if(first_name == '' || last_name == '' || user_name == '' || email == '' || password == '' || confirm_password == '' || specialization == ''){
         // document.getElementById('warning3').removeAttribute('hidden');
         // document.getElementById('warning1').hidden=true;
         // document.getElementById('warning2').hidden=true;
-        toastIdRef.current = toast({ position: 'top', title: 'Please input all the fields!', status: 'error', duration: 3000, isClosable: true })
+        toastIdRef.current = toast({ position: 'top', title: 'Please fill up all the fields.', status: 'error', duration: 3000, isClosable: true })
       }if(password != confirm_password){
         // document.getElementById('warning1').removeAttribute('hidden');
         // document.getElementById('warning2').hidden=true;
         // document.getElementById('warning3').hidden=true;
-        toastIdRef.current = toast({ position: 'top', title: 'Passwords do not match!', status: 'error', duration: 3000, isClosable: true })
+        toastIdRef.current = toast({ position: 'top', title: 'Passwords do not match.', status: 'error', duration: 3000, isClosable: true })
       }if(tnc == false){
         // document.getElementById('warning3').removeAttribute('hidden');
         // document.getElementById('warning1').hidden=true;
         // document.getElementById('warning2').hidden=true;
-        toastIdRef.current = toast({ position: 'top', title: 'Please accept Terms and Conditions and Privacy Policy!', status: 'error', duration: 3000, isClosable: true })
+        toastIdRef.current = toast({ position: 'top', title: 'Please accept the Terms and Conditions and Privacy Policy.', status: 'error', duration: 3000, isClosable: true })
         return;
       }if(password.length < 8 || confirm_password.length < 8){
-        toastIdRef.current = toast({ position: 'top', title: 'Password must be minimum of 8 characters!', status: 'error', duration: 3000, isClosable: true })
+        toastIdRef.current = toast({ position: 'top', title: 'Password must be a minimum of 8 characters.', status: 'error', duration: 3000, isClosable: true })
         return;
       }
       if(password.length > 100 || confirm_password.length > 100){
-        toastIdRef.current = toast({ position: 'top', title: 'Password must not exceed 100 characters!', status: 'error', duration: 3000, isClosable: true })
+        toastIdRef.current = toast({ position: 'top', title: 'Password must not exceed 100 characters.', status: 'error', duration: 3000, isClosable: true })
         return;
       }
       if(specialization.length > 100){
-        toastIdRef.current = toast({ position: 'top', title: 'Specialization must not exceed 100 characters!', status: 'error', duration: 3000, isClosable: true })
+        toastIdRef.current = toast({ position: 'top', title: 'Specialization must not exceed 100 characters.', status: 'error', duration: 3000, isClosable: true })
         return;
       }
       if(first_name.length > 50 || last_name.length > 50){
-        toastIdRef.current = toast({ position: 'top', title: 'First Name or Last Name must not exceed 50 characters!', status: 'error', duration: 3000, isClosable: true })
+        toastIdRef.current = toast({ position: 'top', title: 'First Name and Last Name must not exceed 50 characters.', status: 'error', duration: 3000, isClosable: true })
         return;
       }if(user_name.length > 16){
-        toastIdRef.current = toast({ position: 'top', title: 'Display Name must not exceed 16 characters!', status: 'error', duration: 3000, isClosable: true })
+        toastIdRef.current = toast({ position: 'top', title: 'Display Name must not exceed 16 characters.', status: 'error', duration: 3000, isClosable: true })
         return;
       }
 
@@ -252,7 +252,7 @@ export default function Register({data2}) {
       }else{
         axios.post(`${API_URL}/api/register`, formData, config)
         .then(response => {
-          toastIdRef.current = toast({ position: 'top', title: 'Account registered!', description: '6-Digit code sent, Please check your spam section if it does not appear in your inbox.', status: 'success', duration: 3000, isClosable: true })
+          toastIdRef.current = toast({ position: 'top', title: 'Account successfully registered!', description: 'A 6-Digit code has been sent to your email. Please check your spam section if it does not appear in your inbox.', status: 'success', duration: 3000, isClosable: true })
             console.log(response.data);
             submitLogin()
         })

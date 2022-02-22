@@ -61,7 +61,7 @@ export default function ForgotPassword(){
         if (email == ''){
             // document.getElementById('warning1').removeAttribute('hidden');
             // document.getElementById('warning2').hidden=true;
-            toastIdRef.current = toast({ position: 'top', title: 'Please input your email!', status: 'error', duration: 3000, isClosable: true })
+            toastIdRef.current = toast({ position: 'top', title: 'Please input your email.', status: 'error', duration: 3000, isClosable: true })
         } else{
 
         
@@ -83,7 +83,7 @@ export default function ForgotPassword(){
   
         axios.post(`${API_URL}/api/forgot_password`, formData, config)
         .then(response => {
-          toastIdRef.current = toast({ position: 'top', title: 'Reset Password Link Sent!', description: 'We have sent a reset password confirmation to your Email. Check on your primary or spam folder.', status: 'success', duration: 3000, isClosable: true })
+          toastIdRef.current = toast({ position: 'top', title: 'A link has been sent to your email.', status: 'success', duration: 3000, isClosable: true })
             console.log(response);
             // window.location = "/home"
         })
@@ -94,7 +94,7 @@ export default function ForgotPassword(){
             if(error.response.data.status === "Wrong Credential"){
               // document.getElementById('warning2').removeAttribute('hidden');
               // document.getElementById('warning1').hidden=true;
-              toastIdRef.current = toast({ position: 'top', title: 'Sorry, we could not find your email!', status: 'error', duration: 3000, isClosable: true })
+              toastIdRef.current = toast({ position: 'top', title: 'Sorry, we could not find that email.', status: 'error', duration: 3000, isClosable: true })
             }
             // window.location = "/forgot-password"
         });}

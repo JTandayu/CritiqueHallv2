@@ -105,7 +105,7 @@ export default function ConfirmationPage(){
         })
         .catch(error => {
             if(error.response.data.status == 'Wrong code'){
-              toastIdRef.current = toast({ position: 'top', title: 'Wrong Code!', description: 'Please try again.', status: 'error', duration: 3000, isClosable: true })
+              toastIdRef.current = toast({ position: 'top', title: 'Please try again.',  status: 'error', duration: 3000, isClosable: true })
             }
             // toastIdRef.current = toast({ position: 'top', title: 'Account verification unsuccessful!', description: 'Please try again.', status: 'error', duration: 3000, isClosable: true })
             console.log(error.response);
@@ -130,7 +130,7 @@ export default function ConfirmationPage(){
       axios.post(`${API_URL}/api/login`, formData2, config)
       .then(response => {
           console.log(response.data);
-          toastIdRef.current = toast({position: 'top', title: 'Verification code resent!', status: 'success', duration: 2000, isClosable: true })
+          toastIdRef.current = toast({position: 'top', title: 'Verification code resent!', status: 'success', duration: 3000, isClosable: true })
           // window.location = "/confirmation"
       })
       .catch(error => {

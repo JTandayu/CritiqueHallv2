@@ -110,17 +110,17 @@ export default function ResetPassword({}){
         if (password == '' || confirm_password == ''){
           // document.getElementById('warning2').removeAttribute('hidden');
           // document.getElementById('warning1').hidden=true;
-          toastIdRef.current = toast({ position: 'top', title: 'Please input your password and confirm password!', status: 'error', duration: 3000, isClosable: true })
+          toastIdRef.current = toast({ position: 'top', title: 'Please fill up all the fields.', status: 'error', duration: 3000, isClosable: true })
           return;
         }else if (password !== confirm_password){
           // document.getElementById('warning1').removeAttribute('hidden');
           // document.getElementById('warning2').hidden=true;
-          toastIdRef.current = toast({ position: 'top', title: 'Passwords do not match!', status: 'error', duration: 3000, isClosable: true })
+          toastIdRef.current = toast({ position: 'top', title: 'Passwords do not match.', status: 'error', duration: 3000, isClosable: true })
           return;
         }else{
         axios.post(`${API_URL}/api/reset_password`, formData, config)
         .then(response => {
-            toastIdRef.current = toast({position: 'top', title: 'Reset Password Successful!', description: 'Please login with your new password.', status: 'success', duration: 2000, isClosable: true })
+            toastIdRef.current = toast({position: 'top', title: 'Your password has been successfully reset!', status: 'success', duration: 3000, isClosable: true })
             console.log(response);
             router.replace('/login')
         })

@@ -100,7 +100,7 @@ export const CritiqueReply = ({id, post_id, newReply}) => {
         }).catch((error) =>{
             console.log(error)
             if(error.response.data.status === "Account Muted"){
-                toastIdRef.current = toast({ position: 'top', title: 'Account muted!', status: 'error', duration: 3000, isClosable: true })
+                toastIdRef.current = toast({ position: 'top', title: 'You are currently muted. Please check your notifications for more details.', status: 'error', duration: 3000, isClosable: true })
             }
         })
     }

@@ -286,27 +286,35 @@ function EditProfile({data}) {
             // document.getElementById('warning3').removeAttribute('hidden');
             // document.getElementById('warning1').hidden=true;
             // document.getElementById('warning2').hidden=true;
-            toastIdRef.current = toast({ position: 'top', title: 'Please input all the fields!', status: 'error', duration: 3000, isClosable: true })
+            toastIdRef.current = toast({ position: 'top', title: 'Please fill up all the fields.', status: 'error', duration: 3000, isClosable: true })
             return;
         }
         if(firstName.length > 50 || lastName.length > 50) {
-            toastIdRef.current = toast({ position: 'top', title: 'First Name and Last Name should not exceed 50 characters!', status: 'error', duration: 3000, isClosable: true })
+            toastIdRef.current = toast({ position: 'top', title: 'First Name and Last Name must not exceed 50 characters.', status: 'error', duration: 3000, isClosable: true })
+            return;
+        }
+        if(format.test(firstName)) {
+            toastIdRef.current = toast({ position: 'top', title: 'First Name must only contain alphanumeric characters and spaces.', status: 'error', duration: 3000, isClosable: true })
+            return;
+        }
+        if(format.test(LastName)) {
+            toastIdRef.current = toast({ position: 'top', title: 'Last Name must only contain alphanumeric characters and spaces.', status: 'error', duration: 3000, isClosable: true })
             return;
         }
         if(displayName.length > 50) {
-            toastIdRef.current = toast({ position: 'top', title: 'Display Name should not exceed 50 characters!', status: 'error', duration: 3000, isClosable: true })
+            toastIdRef.current = toast({ position: 'top', title: 'Display Name must not exceed 50 characters.', status: 'error', duration: 3000, isClosable: true })
             return;
         }
         if(aboutMe.length > 255) {
-            toastIdRef.current = toast({ position: 'top', title: 'About Me should not exceed 255 characters!', status: 'error', duration: 3000, isClosable: true })
+            toastIdRef.current = toast({ position: 'top', title: 'About Me must not exceed 255 characters.', status: 'error', duration: 3000, isClosable: true })
             return;
         }
         if(specialization.length > 50) {
-            toastIdRef.current = toast({ position: 'top', title: 'Specialization should not exceed 50 characters!', status: 'error', duration: 3000, isClosable: true })
+            toastIdRef.current = toast({ position: 'top', title: 'Specialization must not exceed 50 characters.', status: 'error', duration: 3000, isClosable: true })
             return;
         }
         if (format.test(specialization)) {
-            toastIdRef.current = toast({ position: 'top', title: 'Specialization may only contain alpha-numeric characters and spaces!', status: 'error', duration: 3000, isClosable: true })
+            toastIdRef.current = toast({ position: 'top', title: 'Specialization must only contain alphanumeric characters and spaces.', status: 'error', duration: 3000, isClosable: true })
             return;
         }
         if(confirmPassword == '') {
@@ -375,10 +383,10 @@ function EditProfile({data}) {
         formData.append('confirm_new_password', confirmNewPassword)
 
         if(newPassword !== confirmNewPassword){
-            toastIdRef.current = toast({ position: 'top', title: 'New Password and Confirm New Password do not match!', status: 'error', duration: 3000, isClosable: true })
+            toastIdRef.current = toast({ position: 'top', title: 'Passwords do not match.', status: 'error', duration: 3000, isClosable: true })
             return;
         }else if(newPassword == "" || confirmNewPassword == "" || currentPassword == ""){
-            toastIdRef.current = toast({ position: 'top', title: 'Please input your password before saving!', status: 'error', duration: 3000, isClosable: true })
+            toastIdRef.current = toast({ position: 'top', title: 'You have not entered a password yet.', status: 'error', duration: 3000, isClosable: true })
             return;
         }
 
@@ -513,7 +521,7 @@ function EditProfile({data}) {
                     </Center>
                     <Flex w={{lg: '75%', base: '85%'}}>
                         <Spacer />
-                        <Button fontFamily={'Raleway'} bgColor={useColorModeValue('#0C1F83', '#1D447E')} color={useColorModeValue('white', 'white')} _hover={{bgColor: useColorModeValue('#173cff', '#428eff')}} mr={{'2xl': 0, lg: 0,  base: 0}} onClick={submitPassword}>Save password changes</Button>
+                        <Button fontFamily={'Raleway'} bgColor={useColorModeValue('#0C1F83', '#1D447E')} color={useColorModeValue('white', 'white')} _hover={{bgColor: useColorModeValue('#173cff', '#428eff')}} mr={{'2xl': 0, lg: 0,  base: 0}} onClick={submitPassword}>Change Password</Button>
                     </Flex>
                     {/* <Divider mb={5} mt={5} /> */}
 

@@ -114,7 +114,7 @@ export default function Login({user}) {
       if(email ==  '' && password == ''){
         // document.getElementById('warning2').removeAttribute('hidden');
         // document.getElementById('warning1').hidden=true;
-        toastIdRef.current = toast({ position: 'top', title: 'Please input your email and password!', status: 'error', duration: 3000, isClosable: true })
+        toastIdRef.current = toast({ position: 'top', title: 'Please fill up all the fields.', status: 'error', duration: 3000, isClosable: true })
       } else{
       axios.post(`${API_URL}/api/login`, formData, config)
       .then(response => {
@@ -125,7 +125,7 @@ export default function Login({user}) {
           document.getElementById('warning1').hidden=true;
 
           if(response.data.status === 'Email not verified'){
-            toastIdRef.current = toast({ position: 'top', title: 'Email not verified!', status: 'error', duration: 3000, isClosable: true })
+            toastIdRef.current = toast({ position: 'top', title: 'Your email is not yet verified. Please check your inbox.', status: 'error', duration: 3000, isClosable: true })
             setCookies('email', email)
             setCookies('password', password)
             setCookies('display_name', response.data.display_name)
@@ -150,12 +150,12 @@ export default function Login({user}) {
           if(error.response.data.message == 'Wrong credentials'){
             // document.getElementById('warning1').removeAttribute('hidden');
             // document.getElementById('warning2').hidden=true;
-            toastIdRef.current = toast({ position: 'top', title: 'Invalid credentials!', status: 'error', duration: 3000, isClosable: true })
+            toastIdRef.current = toast({ position: 'top', title: 'Invalid credentials.', status: 'error', duration: 3000, isClosable: true })
           }
           else if(error.response.data.status == "Error"){
             // document.getElementById('warning1').removeAttribute('hidden');
             // document.getElementById('warning2').hidden=true;
-            toastIdRef.current = toast({ position: 'top', title: 'Invalid credentials!', status: 'error', duration: 3000, isClosable: true })
+            toastIdRef.current = toast({ position: 'top', title: 'Invalid credentials.', status: 'error', duration: 3000, isClosable: true })
           }
           
           

@@ -261,15 +261,15 @@ function CreatePost({data}) {
     const submitPost = async () =>{
 
         if(title.length > 50){
-            toastIdRef.current = toast({ position: 'top', title: 'Title should not exceed 50 characters!', status: 'error', duration: 3000, isClosable: true })
+            toastIdRef.current = toast({ position: 'top', title: 'Title must not exceed 50 characters.', status: 'error', duration: 3000, isClosable: true })
             return;
         }
         if(description.length > 255){
-            toastIdRef.current = toast({ position: 'top', title: 'Description should not exceed 255 characters!', status: 'error', duration: 3000, isClosable: true })
+            toastIdRef.current = toast({ position: 'top', title: 'Description must not exceed 255 characters.', status: 'error', duration: 3000, isClosable: true })
             return;
         }
         if(title == '' || description == '') {
-            toastIdRef.current = toast({ position: 'top', title: 'Title and Description is required!', status: 'error', duration: 3000, isClosable: true })
+            toastIdRef.current = toast({ position: 'top', title: 'Title and Description are required.', status: 'error', duration: 3000, isClosable: true })
             return;
         }
         
@@ -306,7 +306,7 @@ function CreatePost({data}) {
         .catch(error => {
             // toastIdRef.current = toast({ title: 'Create post unsuccessful!', status: 'error', duration: 3000, isClosable: false })
             if(error.response.data.status === "Account Muted"){
-                toastIdRef.current = toast({ position: 'top', title: 'Account muted!', status: 'error', duration: 3000, isClosable: true })
+                toastIdRef.current = toast({ position: 'top', title: 'You are currently muted. Please check your notifications for more details.', status: 'error', duration: 3000, isClosable: true })
             }
             console.log(error);
             console.log(error.response)
