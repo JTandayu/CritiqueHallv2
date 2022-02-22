@@ -280,6 +280,34 @@ function EditProfile({data}) {
 
     const SubmitPersonalInformation = async() =>{
 
+        if(firstName == '' || lastName == '' || displayName == '' || aboutMe == '' || specialization == ''){
+            // document.getElementById('warning3').removeAttribute('hidden');
+            // document.getElementById('warning1').hidden=true;
+            // document.getElementById('warning2').hidden=true;
+            toastIdRef.current = toast({ position: 'top', title: 'Please input all the fields!', status: 'error', duration: 3000, isClosable: true })
+            return;
+        }
+        if(firstName.length > 50 || lastName.length > 50) {
+            toastIdRef.current = toast({ position: 'top', title: 'First Name and Last Name should not exceed 50 characters!', status: 'error', duration: 3000, isClosable: true })
+            return;
+        }
+        if(displayName.length > 50) {
+            toastIdRef.current = toast({ position: 'top', title: 'Display Name should not exceed 50 characters!', status: 'error', duration: 3000, isClosable: true })
+            return;
+        }
+        if(aboutMe.length > 255) {
+            toastIdRef.current = toast({ position: 'top', title: 'About Me should not exceed 255 characters!', status: 'error', duration: 3000, isClosable: true })
+            return;
+        }
+        if(specialization.length > 50) {
+            toastIdRef.current = toast({ position: 'top', title: 'Specialization should not exceed 50 characters!', status: 'error', duration: 3000, isClosable: true })
+            return;
+        }
+        if(confirmPassword == '') {
+            toastIdRef.current = toast({ position: 'top', title: 'Please confirm your password before saving!', status: 'error', duration: 3000, isClosable: true })
+            return;
+        }
+
         let formData =  new FormData;
         formData.append('first_name', firstName)
         formData.append('last_name', lastName)
@@ -293,7 +321,7 @@ function EditProfile({data}) {
         // console.log(coverImageUrl)
         axios.post(`${API_URL}/api/change_profile`, formData, config)
         .then((response) => {
-            console.log(response)
+            console.log(response.data)
             toastIdRef.current = toast({
                 position: 'top',
                 title: 'Profile changed successfully!',
@@ -305,30 +333,32 @@ function EditProfile({data}) {
               onClose();
             router.reload();
         }).catch((error) => {
-            if(error.response.data.message == "<p>The About Me field cannot exceed 255 characters…>\n<p>The Confirm Password field is required.</p>\n" ){
-                toastIdRef.current = toast({ position: 'top', title: 'About Me exceeds the limit (max 255). Please try again!', status: 'error', duration: 3000, isClosable: true })
-                toastIdRef.current = toast({ position: 'top', title: 'Input your confirm password before saving!', status: 'error', duration: 3000, isClosable: true })
-            }else if(error.response.data.message == "<p>The About Me field cannot exceed 255 characters in length.</p>\n"){
-                toastIdRef.current = toast({ position: 'top', title: 'About Me exceeds the limit (max 255). Please try again!', status: 'error', duration: 3000, isClosable: true })
-            }else if(error.response.data.message == "<p>The Confirm Password field is required.</p>\n"){
-                toastIdRef.current = toast({ position: 'top', title: 'Input your confirm password before saving!', status: 'error', duration: 3000, isClosable: true })
-            }else if(error.response.data.message == "<p>The Display Name field cannot exceed 50 characters in length.</p>\n<p>The Confirm Password field is required.</p>\n"){
-                toastIdRef.current = toast({ position: 'top', title: 'Display Name exceeds the limit (max 50). Please try again!', status: 'error', duration: 3000, isClosable: true })
-                toastIdRef.current = toast({ position: 'top', title: 'Input your confirm password before saving!', status: 'error', duration: 3000, isClosable: true })
-            }else if(error.response.data.message == "<p>The Display Name field cannot exceed 50 characters in length.</p>\n<p>The About Me field cannot exceed 255 characters in length.</p>\n"){
-                toastIdRef.current = toast({ position: 'top', title: 'Display Name exceeds the limit (max 50). Please try again!', status: 'error', duration: 3000, isClosable: true })
-                toastIdRef.current = toast({ position: 'top', title: 'About Me exceeds the limit (max 255). Please try again!', status: 'error', duration: 3000, isClosable: true })
-            }else if(error.response.data.message == "<p>The Display Name field cannot exceed 50 characters in length.</p>\n"){
-                toastIdRef.current = toast({ position: 'top', title: 'Display Name exceeds the limit (max 50). Please try again!', status: 'error', duration: 3000, isClosable: true })
-                toastIdRef.current = toast({ position: 'top', title: 'About Me exceeds the limit (max 255). Please try again!', status: 'error', duration: 3000, isClosable: true })
-            }else if(error.response.data.message == "<p>No changes made</p>\n"){
-                toastIdRef.current = toast({ position: 'top', title: 'No changes were made!', status: 'error', duration: 3000, isClosable: true })
-            }else if(error.response.data.Error == "Wrong password"){
+            // if(error.response.data.message == "<p>The About Me field cannot exceed 255 characters…>\n<p>The Confirm Password field is required.</p>\n" ){
+            //     toastIdRef.current = toast({ position: 'top', title: 'About Me exceeds the limit (max 255). Please try again!', status: 'error', duration: 3000, isClosable: true })
+            //     toastIdRef.current = toast({ position: 'top', title: 'Input your confirm password before saving!', status: 'error', duration: 3000, isClosable: true })
+            // }else if(error.response.data.message == "<p>The About Me field cannot exceed 255 characters in length.</p>\n"){
+            //     toastIdRef.current = toast({ position: 'top', title: 'About Me exceeds the limit (max 255). Please try again!', status: 'error', duration: 3000, isClosable: true })
+            // }else if(error.response.data.message == "<p>The Confirm Password field is required.</p>\n"){
+            //     toastIdRef.current = toast({ position: 'top', title: 'Input your confirm password before saving!', status: 'error', duration: 3000, isClosable: true })
+            // }else if(error.response.data.message == "<p>The Display Name field cannot exceed 50 characters in length.</p>\n<p>The Confirm Password field is required.</p>\n"){
+            //     toastIdRef.current = toast({ position: 'top', title: 'Display Name exceeds the limit (max 50). Please try again!', status: 'error', duration: 3000, isClosable: true })
+            //     toastIdRef.current = toast({ position: 'top', title: 'Input your confirm password before saving!', status: 'error', duration: 3000, isClosable: true })
+            // }else if(error.response.data.message == "<p>The Display Name field cannot exceed 50 characters in length.</p>\n<p>The About Me field cannot exceed 255 characters in length.</p>\n"){
+            //     toastIdRef.current = toast({ position: 'top', title: 'Display Name exceeds the limit (max 50). Please try again!', status: 'error', duration: 3000, isClosable: true })
+            //     toastIdRef.current = toast({ position: 'top', title: 'About Me exceeds the limit (max 255). Please try again!', status: 'error', duration: 3000, isClosable: true })
+            // }else if(error.response.data.message == "<p>The Display Name field cannot exceed 50 characters in length.</p>\n"){
+            //     toastIdRef.current = toast({ position: 'top', title: 'Display Name exceeds the limit (max 50). Please try again!', status: 'error', duration: 3000, isClosable: true })
+            //     toastIdRef.current = toast({ position: 'top', title: 'About Me exceeds the limit (max 255). Please try again!', status: 'error', duration: 3000, isClosable: true })
+            // }else if(error.response.data.message == "<p>No changes made</p>\n"){
+            //     toastIdRef.current = toast({ position: 'top', title: 'No changes were made!', status: 'error', duration: 3000, isClosable: true })
+             if(error.response.data.Error == "Wrong password"){
                 toastIdRef.current = toast({ position: 'top', title: 'Incorrect password, please try again!', status: 'error', duration: 3000, isClosable: true })
-            }else{
-                toastIdRef.current = toast({ position: 'top', title: 'Error, Please check your inputs!', status: 'error', duration: 3000, isClosable: true })
-            }
+             }
+            // }else{
+            //     toastIdRef.current = toast({ position: 'top', title: 'Error, Please check your inputs!', status: 'error', duration: 3000, isClosable: true })
+            // }
             console.log(error)
+            console.log(error.response)
         })
     }
 
@@ -339,10 +369,10 @@ function EditProfile({data}) {
         formData.append('confirm_new_password', confirmNewPassword)
 
         if(newPassword !== confirmNewPassword){
-            toastIdRef.current = toast({ position: 'top', title: 'Passwords do not match!', status: 'error', duration: 3000, isClosable: true })
+            toastIdRef.current = toast({ position: 'top', title: 'New Password and Confirm New Password do not match!', status: 'error', duration: 3000, isClosable: true })
             return;
         }else if(newPassword == "" || confirmNewPassword == "" || currentPassword == ""){
-            toastIdRef.current = toast({ position: 'top', title: 'Please input your password!', status: 'error', duration: 3000, isClosable: true })
+            toastIdRef.current = toast({ position: 'top', title: 'Please input your password before saving!', status: 'error', duration: 3000, isClosable: true })
             return;
         }
 
@@ -359,7 +389,7 @@ function EditProfile({data}) {
               onClose();
               router.reload();
             }).catch((error) => {
-            toastIdRef.current = toast({ position: 'top', title: 'Error, Please try again!', status: 'error', duration: 3000, isClosable: true }),
+            toastIdRef.current = toast({ position: 'top', title: 'Your current password is invalid, please try again!', status: 'error', duration: 3000, isClosable: true }),
             console.log(error)
         })
     }

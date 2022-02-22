@@ -263,7 +263,17 @@ function CreatePost({data}) {
         if(title.length > 50){
             toastIdRef.current = toast({ position: 'top', title: 'Title should not exceed 50 characters!', status: 'error', duration: 3000, isClosable: true })
             return;
-        }else{
+        }
+        if(description.length > 255){
+            toastIdRef.current = toast({ position: 'top', title: 'Description should not exceed 255 characters!', status: 'error', duration: 3000, isClosable: true })
+            return;
+        }
+        if(title == '' || description == '') {
+            toastIdRef.current = toast({ position: 'top', title: 'Title and Description is required!', status: 'error', duration: 3000, isClosable: true })
+            return;
+        }
+        
+        else{
         let formData = new FormData(); 
         formData.append('title', title);
         formData.append('body', description);
