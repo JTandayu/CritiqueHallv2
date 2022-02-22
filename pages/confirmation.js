@@ -78,6 +78,10 @@ export default function ConfirmationPage(){
 
   const accountVerification = async () =>{
 
+    if(code == '') {
+      toastIdRef.current = toast({ position: 'top', title: 'Verification code is required.', status: 'error', duration: 3000, isClosable: true })
+    }
+
         let formData = new FormData(); 
         formData.append('verification_code', code);
         
