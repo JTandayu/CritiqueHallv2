@@ -371,7 +371,7 @@ export default function Nav(data, profile_pic){
                                 <Text mr={3} fontFamily={'Raleway'} fontSize="xs" color="gray.400">{notification.ago_time}</Text>
                                 {notification.profile_photo ? <Img src={notification.profile_photo} mr={3} w="25px" h="25px" alt="Notification Image" /> : null}
                                 {notification.display_name ? <Text mr={3} fontFamily={'Raleway'}>{notification.display_name}</Text> : null}
-                                <Text mr={2} fontFamily={'Raleway'} w="full" size="md" textAlign="justify">{notification.action}</Text>
+                                <Text mr={2} fontFamily={'Raleway'} w="full" fontSize="md" textAlign="justify">{notification.action}</Text>
                                 {/* <Text w="full" fontFamily={'Raleway'} isTruncated>{notification.title}</Text> */}
                             {/* <Divider /> */}
                             </Box>
@@ -508,7 +508,7 @@ export default function Nav(data, profile_pic){
                                 <Text mr={3} fontFamily={'Raleway'} fontSize="xs" color="gray.400">{notification.ago_time}</Text>
                                 {notification.profile_photo ? <Img src={notification.profile_photo} mr={3} w="25px" h="25px" alt="Notification Image" /> : null}
                                 {notification.display_name ? <Text mr={3} fontFamily={'Raleway'}>{notification.display_name}</Text> : null}
-                                <Text mr={2} fontFamily={'Raleway'} w="full" size="md" textAlign="justify">{notification.action}</Text>
+                                <Text mr={2} fontFamily={'Raleway'} w="full" fontSize="md" textAlign="justify">{notification.action}</Text>
                                 {/* <Text w="full" fontFamily={'Raleway'} isTruncated>{notification.title}</Text> */}
                             {/* <Divider /> */}
                             </Box>
