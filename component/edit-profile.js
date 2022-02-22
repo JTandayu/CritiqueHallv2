@@ -297,7 +297,7 @@ function EditProfile({data}) {
             toastIdRef.current = toast({ position: 'top', title: 'First Name must contain alphanumeric characters.', status: 'error', duration: 3000, isClosable: true })
             return;
         }
-        if(format.test(LastName)) {
+        if(format.test(lastName)) {
             toastIdRef.current = toast({ position: 'top', title: 'Last Name must contain alphanumeric characters.', status: 'error', duration: 3000, isClosable: true })
             return;
         }
