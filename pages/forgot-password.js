@@ -96,7 +96,7 @@ export default function ForgotPassword(){
               // document.getElementById('warning1').hidden=true;
               toastIdRef.current = toast({ position: 'top', title: 'Sorry, we could not find that email.', status: 'error', duration: 3000, isClosable: true })
             }else{
-              toastIdRef.current = toast({ position: 'top', title: 'Invalid Email Input.', status: 'error', duration: 3000, isClosable: true })
+              toastIdRef.current = toast({ position: 'top', title: 'Invalid email input.', status: 'error', duration: 3000, isClosable: true })
             }
             // window.location = "/forgot-password"
         });}
