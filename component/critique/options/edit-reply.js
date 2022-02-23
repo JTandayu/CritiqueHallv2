@@ -51,6 +51,11 @@ const EditReply = ({data}) => {
     }, [])
 
     const editReply = () => {
+
+        if (reply == ''){
+            toastIdRef.current = toast({ position: 'top', title: 'Reply cannot be blank!', status: 'error', duration: 3000, isClosable: true })
+            return;
+        }
         let formData = new FormData;
         formData.append('reply_id', data.reply_id)
         formData.append('body', reply)

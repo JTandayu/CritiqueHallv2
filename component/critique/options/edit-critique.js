@@ -50,6 +50,11 @@ const EditCritique = ({data}) => {
     // }, [])
 
     const editCritiqueItem = () => {
+        if (critique == ''){
+            toastIdRef.current = toast({ position: 'top', title: 'Critique cannot be blank!', status: 'error', duration: 3000, isClosable: true })
+            return;
+        }
+
         let formData = new FormData;
         formData.append('critique_id', data.critique_id)
         formData.append('body', critique)
