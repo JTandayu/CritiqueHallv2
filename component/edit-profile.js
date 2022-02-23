@@ -388,6 +388,9 @@ function EditProfile({data}) {
         }else if(newPassword == "" || confirmNewPassword == "" || currentPassword == ""){
             toastIdRef.current = toast({ position: 'top', title: 'You have not entered a password yet.', status: 'error', duration: 3000, isClosable: true })
             return;
+        }else if(newPassword.length < 8 || confirmNewPassword.length < 8){
+            toastIdRef.current = toast({ position: 'top', title: 'New Password must be a minimum of 8 characters.', status: 'error', duration: 3000, isClosable: true })
+            return;
         }
 
         axios.post(`${API_URL}/api/change_password`, formData, config)
