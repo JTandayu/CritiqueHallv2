@@ -115,7 +115,7 @@ export default function ConfirmationPage(){
               toastIdRef.current = toast({ position: 'top', title: 'Invalid code.', status: 'error', duration: 3000, isClosable: true })
             }
             if(error.response.data.status == 'Code expired'){
-              toastIdRef.current = toast({ position: 'top', title: 'Verification code expired. Resend another one.', status: 'error', duration: 3000, isClosable: true })
+              toastIdRef.current = toast({ position: 'top', title: 'Verification code expired.', status: 'error', duration: 3000, isClosable: true })
             }
             if(error.response.data.message === "<p>The Verification Code field must contain only numbers.</p>\n") {
               toastIdRef.current = toast({ position: 'top', title: 'Invalid code.', status: 'error', duration: 3000, isClosable: true })
