@@ -114,10 +114,9 @@ export const Critiques = ({id, newCritique}) => {
     }
 
     const submitReply = (critique_id, e) =>{
-        
-
         if(reply[critique_id] == ''){
-            toastIdRef.current = toast({ position: 'top', title: 'Please Enter a Reply!', status: 'error', duration: 3000, isClosable: true })
+            e.preventDefault();
+            toastIdRef.current = toast({ position: 'top', title: 'Reply is required.', status: 'error', duration: 3000, isClosable: true })
             return;
         }else{
         e.preventDefault();
