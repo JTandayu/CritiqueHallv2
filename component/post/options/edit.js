@@ -174,6 +174,11 @@ function EditPost({data, url, fileNames}){
 
     const submitPost = async () =>{ 
 
+        if(title == "" || description == ""){
+            toastIdRef.current = toast({ position: 'top', title: 'Title or Description cannot be blank!', status: 'error', duration: 3000, isClosable: false })
+            return;
+        }
+
         let formData = new FormData(); 
         formData.append('title', title);
         formData.append('body', description);
