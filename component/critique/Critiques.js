@@ -116,6 +116,11 @@ export const Critiques = ({id, newCritique}) => {
     const submitReply = (critique_id, e) =>{
         e.preventDefault();
 
+        if(reply[critique_id] == ''){
+            toastIdRef.current = toast({ position: 'top', title: 'Please Enter a Reply!', status: 'error', duration: 3000, isClosable: true })
+            return;
+        }
+
         let formData = new FormData;
         formData.append('critique_id', critique_id);
         formData.append('body', reply[critique_id]);
