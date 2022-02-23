@@ -69,7 +69,7 @@ function ReportUser({data}) {
         if(message == ''){
             toastIdRef.current = toast({
                 position: 'top',
-                title: 'Message is Empty! Please Enter a Message',
+                title: 'Description is required.',
                 status: 'error',
                 duration: 3000,
                 isClosable: true,
