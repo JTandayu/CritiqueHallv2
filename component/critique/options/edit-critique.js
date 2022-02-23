@@ -51,10 +51,9 @@ const EditCritique = ({data}) => {
 
     const editCritiqueItem = () => {
         if (critique == ''){
-            toastIdRef.current = toast({ position: 'top', title: 'Critique cannot be blank!', status: 'error', duration: 3000, isClosable: true })
+            toastIdRef.current = toast({ position: 'top', title: 'Critique is required.', status: 'error', duration: 3000, isClosable: true })
             return;
-        }
-
+        }else{
         let formData = new FormData;
         formData.append('critique_id', data.critique_id)
         formData.append('body', critique)
@@ -69,7 +68,7 @@ const EditCritique = ({data}) => {
             if(error.response.data.status === "Account Muted"){
                 toastIdRef.current = toast({ position: 'top', title: 'Account muted!', status: 'error', duration: 3000, isClosable: true })
             }
-        })
+        })}
     }
 
     const cancelEdit = () =>{

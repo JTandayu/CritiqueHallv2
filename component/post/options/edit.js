@@ -175,10 +175,9 @@ function EditPost({data, url, fileNames}){
     const submitPost = async () =>{ 
 
         if(title == "" || description == ""){
-            toastIdRef.current = toast({ position: 'top', title: 'Title or Description cannot be blank!', status: 'error', duration: 3000, isClosable: false })
+            toastIdRef.current = toast({ position: 'top', title: 'Title or Description is required.', status: 'error', duration: 3000, isClosable: false })
             return;
-        }
-
+        }else{
         let formData = new FormData(); 
         formData.append('title', title);
         formData.append('body', description);
@@ -215,7 +214,7 @@ function EditPost({data, url, fileNames}){
                 toastIdRef.current = toast({ position: 'top', title: 'Account muted!', status: 'error', duration: 3000, isClosable: false })
             }
             // window.location.href = "/login"
-        });
+        });}
     }
 
     return(

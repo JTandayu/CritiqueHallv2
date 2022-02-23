@@ -114,12 +114,13 @@ export const Critiques = ({id, newCritique}) => {
     }
 
     const submitReply = (critique_id, e) =>{
-        e.preventDefault();
+        
 
         if(reply[critique_id] == ''){
             toastIdRef.current = toast({ position: 'top', title: 'Please Enter a Reply!', status: 'error', duration: 3000, isClosable: true })
             return;
-        }
+        }else{
+        e.preventDefault();
 
         let formData = new FormData;
         formData.append('critique_id', critique_id);
@@ -137,7 +138,7 @@ export const Critiques = ({id, newCritique}) => {
             if(error.response.data.status === "Account Muted"){
                 toastIdRef.current = toast({ position: 'top', title: 'Account muted!', status: 'error', duration: 3000, isClosable: true })
             }
-        })
+        })}
     }
 
     const handleChange = (e, i) =>{

@@ -53,9 +53,9 @@ const EditReply = ({data}) => {
     const editReply = () => {
 
         if (reply == ''){
-            toastIdRef.current = toast({ position: 'top', title: 'Reply cannot be blank!', status: 'error', duration: 3000, isClosable: true })
+            toastIdRef.current = toast({ position: 'top', title: 'Reply is required.', status: 'error', duration: 3000, isClosable: true })
             return;
-        }
+        }else{
         let formData = new FormData;
         formData.append('reply_id', data.reply_id)
         formData.append('body', reply)
@@ -70,7 +70,7 @@ const EditReply = ({data}) => {
             if(error.response.data.status === "Account Muted"){
                 toastIdRef.current = toast({ position: 'top', title: 'Account muted!', status: 'error', duration: 3000, isClosable: true })
             }
-        })
+        })}
     }
 
     const cancelEdit = () =>{
