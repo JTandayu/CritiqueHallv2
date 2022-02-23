@@ -137,6 +137,8 @@ export const Critiques = ({id, newCritique}) => {
             console.log(error)
             if(error.response.data.status === "Account Muted"){
                 toastIdRef.current = toast({ position: 'top', title: 'Account muted!', status: 'error', duration: 3000, isClosable: true })
+            }else if(error.response.data.message === "<p>The Reply field is required.<p>\n"){
+                toastIdRef.current = toast({ position: 'top', title: 'Reply is required', status: 'error', duration: 3000, isClosable: false })
             }
         })}
     }

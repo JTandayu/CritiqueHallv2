@@ -330,6 +330,8 @@ export default function CritiquePost(){
             console.log(error.response);
             if(error.response.data.status === "Account Muted"){
                 toastIdRef.current = toast({ position: 'top', title: 'You are currently muted. Please check your notifications for more details.', status: 'error', duration: 3000, isClosable: false })
+            }else if(error.response.data.message === "<p>The Body field is required.<p>\n"){
+                toastIdRef.current = toast({ position: 'top', title: 'Description is required', status: 'error', duration: 3000, isClosable: false })
             }
             // console.log(error.response);
         });}
