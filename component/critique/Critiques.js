@@ -114,7 +114,7 @@ export const Critiques = ({id, newCritique}) => {
     }
 
     const submitReply = (critique_id, e) =>{
-        if(reply[critique_id] == '' || reply[critique_id] == 'undefined'){
+        if(reply[critique_id] == '' || reply[critique_id] == 'undefined' || reply[critique_id] == null){
             e.preventDefault();
             toastIdRef.current = toast({ position: 'top', title: 'Reply is required.', status: 'error', duration: 3000, isClosable: true })
             return null;
