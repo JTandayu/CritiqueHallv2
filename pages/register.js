@@ -264,29 +264,29 @@ export default function Register({data2}) {
               // document.getElementById('warning2').removeAttribute('hidden');
               // document.getElementById('warning1').hidden=true;
               // document.getElementById('warning3').hidden=true;
-              toastIdRef.current = toast({ position: 'top', title: 'Display Name or Email is already in used!', status: 'error', duration: 3000, isClosable: true })
+              toastIdRef.current = toast({ position: 'top', title: 'Display Name or Email is already in use.', status: 'error', duration: 3000, isClosable: true })
               return;
             }
-            if(error.response.data.message === "<p>The Display Name field cannot exceed 16 characters.</p>\n<p>The Email field must contain a valid email address.</p>\n"){
-              toastIdRef.current = toast({ position: 'top', title: 'Display Name must not exceed 16 characters! Please enter a valid email address!', status: 'error', duration: 3000, isClosable: true })
-              return;
-            }
+            // if(error.response.data.message === "<p>The Display Name field cannot exceed 16 characters.</p>\n<p>The Email field must contain a valid email address.</p>\n"){
+            //   toastIdRef.current = toast({ position: 'top', title: 'Display Name must not exceed 16 characters! Please enter a valid email address!', status: 'error', duration: 3000, isClosable: true })
+            //   return;
+            // }
             if(error.response.data.message === "<p>The Email field must contain a valid email address.</p>\n"){
-              toastIdRef.current = toast({ position: 'top', title: 'Please enter a valid email address!', status: 'error', duration: 3000, isClosable: true })
+              toastIdRef.current = toast({ position: 'top', title: 'Valid email is required.', status: 'error', duration: 3000, isClosable: true })
               return;
             }
-            if(error.response.data.message === "<p>The First Name field may only contain alphabetical characters.</p>\n"){
-              toastIdRef.current = toast({ position: 'top', title: 'First Name must contain alpphabetical characters!', status: 'error', duration: 3000, isClosable: true })
-              return;
-            }
-            if(error.response.data.message === "<p>The Last Name field may only contain alphabetical characters.</p>\n"){
-              toastIdRef.current = toast({ position: 'top', title: 'Last Name must contain alpphabetical characters!', status: 'error', duration: 3000, isClosable: true })
-              return;
-            }
-            if(error.response.data.message === "<p>The First Name field may only contain alphabetical characters.</p>\n<p>The Last Name field may only contain alphabetical characters.</p>\n"){
-              toastIdRef.current = toast({ position: 'top', title: 'First Name and Last Name must contain alpphabetical characters!', status: 'error', duration: 3000, isClosable: true })
-              return;
-            }
+            // if(error.response.data.message === "<p>The First Name field may only contain alphabetical characters.</p>\n"){
+            //   toastIdRef.current = toast({ position: 'top', title: 'First Name must contain alpphabetical characters.', status: 'error', duration: 3000, isClosable: true })
+            //   return;
+            // }
+            // if(error.response.data.message === "<p>The Last Name field may only contain alphabetical characters.</p>\n"){
+            //   toastIdRef.current = toast({ position: 'top', title: 'Last Name must contain alphabetical characters.', status: 'error', duration: 3000, isClosable: true })
+            //   return;
+            // }
+            // if(error.response.data.message === "<p>The First Name field may only contain alphabetical characters.</p>\n<p>The Last Name field may only contain alphabetical characters.</p>\n"){
+            //   toastIdRef.current = toast({ position: 'top', title: 'First Name and Last Name must contain alpphabetical characters.', status: 'error', duration: 3000, isClosable: true })
+            //   return;
+            // }
         });
       }
     }
