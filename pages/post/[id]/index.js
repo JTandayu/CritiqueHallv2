@@ -298,6 +298,7 @@ export default function CritiquePost(){
 
     const giveCritique = (e) =>{
         if(critique == ''){
+            e.preventDefault();
             toastIdRef.current = toast({ position: 'top', title: 'Critique is required.', status: 'error', duration: 3000, isClosable: true })
             return;
         }else{

@@ -117,8 +117,9 @@ export const Critiques = ({id, newCritique}) => {
         if(reply[critique_id] == ''){
             e.preventDefault();
             toastIdRef.current = toast({ position: 'top', title: 'Reply is required.', status: 'error', duration: 3000, isClosable: true })
-            return;
+            return null;
         }else{
+            
         e.preventDefault();
 
         let formData = new FormData;
