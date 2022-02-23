@@ -297,6 +297,10 @@ export default function CritiquePost(){
     }
 
     const giveCritique = (e) =>{
+        if(critique == ''){
+            toastIdRef.current = toast({ position: 'top', title: 'Critique is required.', status: 'error', duration: 3000, isClosable: true })
+            return;
+        }else{
         e.preventDefault();
         let formData = new FormData();
         formData.append('body', critique)
@@ -327,7 +331,7 @@ export default function CritiquePost(){
                 toastIdRef.current = toast({ position: 'top', title: 'You are currently muted. Please check your notifications for more details.', status: 'error', duration: 3000, isClosable: false })
             }
             // console.log(error.response);
-        });
+        });}
     }
 
 
