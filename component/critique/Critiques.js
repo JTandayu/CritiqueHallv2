@@ -132,6 +132,7 @@ export const Critiques = ({id, newCritique}) => {
             document.getElementById(critique_id).hidden=true;
             document.getElementById(`reply${critique_id}`).value=''
             setNewReply(reply[critique_id]);
+            reply[critique_id] = null;
 
         }).catch((error) =>{
             console.log(error)
