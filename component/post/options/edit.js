@@ -175,7 +175,7 @@ function EditPost({data, url, fileNames}){
     const submitPost = async () =>{ 
 
         if(title == "" || description == ""){
-            toastIdRef.current = toast({ position: 'top', title: 'Title or Description is required.', status: 'error', duration: 3000, isClosable: false })
+            toastIdRef.current = toast({ position: 'top', title: 'Title and Description is required.', status: 'error', duration: 3000, isClosable: false })
             return;
         }else{
         let formData = new FormData(); 
