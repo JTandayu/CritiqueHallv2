@@ -186,6 +186,10 @@ export default function Register({data2}) {
         toastIdRef.current = toast({ position: 'top', title: 'Last Name must contain alphanumeric characters.', status: 'error', duration: 3000, isClosable: true })
         return;
       }
+      if(format.test(user_name)) {
+        toastIdRef.current = toast({ position: 'top', title: 'Display Name must contain alphanumeric characters.', status: 'error', duration: 3000, isClosable: true })
+        return;
+      }
       if(format.test(specialization)) {
         toastIdRef.current = toast({ position: 'top', title: 'Specialization must contain alphanumeric characters.', status: 'error', duration: 3000, isClosable: true })
         return;
@@ -381,7 +385,7 @@ export default function Register({data2}) {
                 </Box>
                 <Box>
                 <FormLabel>Display Name</FormLabel>
-                <Input size={{lg: 'lg', base: 'sm'}} width={{lg:'35vh', base: '90%'}} borderColor={useColorModeValue('black', 'white')}  className={styles.input_box} type="text" value={user_name} onChange={e => setUserName(e.target.value)}/>
+                <Input size={{lg: 'lg', base: 'sm'}} width={{lg:'35vh', base: '90%'}} borderColor={useColorModeValue('black', 'white')} placeholder="No underscores, please!" className={styles.input_box} type="text" value={user_name} onChange={e => setUserName(e.target.value)}/>
                 </Box>
                 <Box>
                 <FormLabel>Email</FormLabel>

@@ -301,6 +301,10 @@ function EditProfile({data}) {
             toastIdRef.current = toast({ position: 'top', title: 'Last Name must contain alphanumeric characters.', status: 'error', duration: 3000, isClosable: true })
             return;
         }
+        if(format.test(displayName)) {
+            toastIdRef.current = toast({ position: 'top', title: 'Display Name must contain alphanumeric characters.', status: 'error', duration: 3000, isClosable: true })
+            return;
+        }
         if(displayName.length > 50) {
             toastIdRef.current = toast({ position: 'top', title: 'Display Name must not exceed 50 characters.', status: 'error', duration: 3000, isClosable: true })
             return;
@@ -483,7 +487,7 @@ function EditProfile({data}) {
                     </Flex>
                     <Flex mb={5} flexDir={{lg: "row", base: "column"}}>
                         <FormLabel fontFamily={'Raleway'}>Display Name</FormLabel>
-                        <Input fontFamily={'Raleway'} borderColor={useColorModeValue('black', 'white')} type='text' w={{lg: '14vw', base: "100%"}} value={displayName} ml={{lg: '10px', base: 0}} onChange={(e) => setDisplayName(e.target.value)} />
+                        <Input fontFamily={'Raleway'} borderColor={useColorModeValue('black', 'white')} type='text' w={{lg: '14vw', base: "100%"}} placeholder="No underscores, please!" value={displayName} ml={{lg: '10px', base: 0}} onChange={(e) => setDisplayName(e.target.value)} />
                     </Flex>
                     <Flex mb={5} flexDir={{lg: "row", base: "column"}}>
                         <FormLabel fontFamily={'Raleway'} w={{lg: '7vw', base: "100%"}}>About Me</FormLabel>
