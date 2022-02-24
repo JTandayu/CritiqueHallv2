@@ -171,7 +171,7 @@ function EditProfile({data}) {
             .then(url => {
             toastIdRef.current = toast({
                 position: 'top',
-                title: 'Profile photo uploaded successfully!',
+                title: 'Profile picture uploaded successfully!',
                 status: 'success',
                 duration: 3000,
                 isClosable: true,
@@ -218,7 +218,7 @@ function EditProfile({data}) {
         .then(url => {
             toastIdRef.current = toast({
                 position: 'top',
-                title: 'Cover photo uploaded successfully!',
+                title: 'Cover picture uploaded successfully!',
                 status: 'success',
                 duration: 3000,
                 isClosable: true,
