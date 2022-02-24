@@ -187,7 +187,7 @@ export default function Register({data2}) {
         return;
       }
       if(format.test(user_name)) {
-        toastIdRef.current = toast({ position: 'top', title: 'Display Name must contain alphanumeric characters.', status: 'error', duration: 3000, isClosable: true })
+        toastIdRef.current = toast({ position: 'top', title: 'Display Name must contain alphanumeric characters (no special characters).', status: 'error', duration: 3000, isClosable: true })
         return;
       }
       if(format.test(specialization)) {

@@ -302,7 +302,7 @@ function EditProfile({data}) {
             return;
         }
         if(format.test(displayName)) {
-            toastIdRef.current = toast({ position: 'top', title: 'Display Name must contain alphanumeric characters.', status: 'error', duration: 3000, isClosable: true })
+            toastIdRef.current = toast({ position: 'top', title: 'Display Name must contain alphanumeric characters (no special characters).', status: 'error', duration: 3000, isClosable: true })
             return;
         }
         if(displayName.length > 50) {
