@@ -137,9 +137,9 @@ export const Critiques = ({id, newCritique}) => {
         }).catch((error) =>{
             console.log(error)
             if(error.response.data.status === "Account Muted"){
-                toastIdRef.current = toast({ position: 'top', title: 'Account muted!', status: 'error', duration: 3000, isClosable: true })
+                toastIdRef.current = toast({ position: 'top', title: 'You are currently muted. Please check your notifications for more details.', status: 'error', duration: 3000, isClosable: true })
             }else if(error.response.data.message === "<p>The Reply field is required.<p>\n"){
-                toastIdRef.current = toast({ position: 'top', title: 'Reply is required', status: 'error', duration: 3000, isClosable: false })
+                toastIdRef.current = toast({ position: 'top', title: 'Reply is required.', status: 'error', duration: 3000, isClosable: false })
             }
         })}
     }
@@ -225,7 +225,7 @@ export const Critiques = ({id, newCritique}) => {
         }).catch((error) =>{
             console.log(error)
             if(error.response.data.status === "Account Muted"){
-                toastIdRef.current = toast({ title: 'You are currently muted. Please check your notifications for more details.', status: 'error', duration: 3000, isClosable: false })
+                toastIdRef.current = toast({ position: 'top', title: 'You are currently muted. Please check your notifications for more details.', status: 'error', duration: 3000, isClosable: false })
             }
         })
     }
