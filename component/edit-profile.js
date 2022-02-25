@@ -317,10 +317,6 @@ function EditProfile({data}) {
             toastIdRef.current = toast({ position: 'top', title: 'Specialization must not exceed 50 characters.', status: 'error', duration: 3000, isClosable: true })
             return;
         }
-        if (format.test(specialization)) {
-            toastIdRef.current = toast({ position: 'top', title: 'Specialization must contain alphanumeric characters.', status: 'error', duration: 3000, isClosable: true })
-            return;
-        }
         if(confirmPassword == '') {
             toastIdRef.current = toast({ position: 'top', title: 'Please confirm your password before saving!', status: 'error', duration: 3000, isClosable: true })
             return;

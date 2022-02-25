@@ -190,10 +190,6 @@ export default function Register({data2}) {
         toastIdRef.current = toast({ position: 'top', title: 'Display Name must contain alphanumeric characters (no special characters).', status: 'error', duration: 3000, isClosable: true })
         return;
       }
-      if(format.test(specialization)) {
-        toastIdRef.current = toast({ position: 'top', title: 'Specialization must contain alphanumeric characters.', status: 'error', duration: 3000, isClosable: true })
-        return;
-      }
       if(first_name == '' || last_name == '' || user_name == '' || email == '' || password == '' || confirm_password == '' || specialization == ''){
         // document.getElementById('warning3').removeAttribute('hidden');
         // document.getElementById('warning1').hidden=true;
