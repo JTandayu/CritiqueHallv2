@@ -285,7 +285,7 @@ export default function SearchResult(){
                                             </Box>
                                     </Box>
                          
-                                    {post.attachment1 != 'undefined' && post.attachment1.includes('.jpg') || post.attachment1.includes('.png') || post.attachment1.includes('.gif')   ?
+                                    {post.attachment1 != 'undefined' && post.attachment1.includes('.jpg') || post.attachment1.includes('.jpeg') || post.attachment1.includes('.JPG') || post.attachment1.includes('.png') || post.attachment1.includes('.gif')   ?
                                     <Box p="3" w="100%" bg="light" my='auto' ml={{lg: '20%', base: '0'}} mr={{lg: '15%', base: '0'}} overflowX={{lg: 'visible', sm: "auto", base: "auto"}}>
                                         <Center>
                                         {post.attachment1 != 'undefined' ? 
