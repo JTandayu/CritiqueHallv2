@@ -282,7 +282,7 @@ function EditProfile({data}) {
 
         const format = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/;
 
-        if(firstName == '' || lastName == '' || displayName == '' || aboutMe == '' || specialization == ''){
+        if(firstName == '' || lastName == '' || displayName == '' || specialization == ''){
             // document.getElementById('warning3').removeAttribute('hidden');
             // document.getElementById('warning1').hidden=true;
             // document.getElementById('warning2').hidden=true;
