@@ -187,7 +187,9 @@ function CreatePost({data}) {
                 }else{
                 if(e.target.files[i].name.endsWith(".docx") == true || 
                 e.target.files[i].name.endsWith(".xlsx") == true || 
-                e.target.files[i].name.endsWith(".jpg") == true || 
+                e.target.files[i].name.endsWith(".jpg") == true ||
+                e.target.files[i].name.endsWith(".jpeg") == true ||
+                e.target.files[i].name.endsWith(".JPG") == true ||  
                 e.target.files[i].name.endsWith(".png") == true ||
                 e.target.files[i].name.endsWith(".gif") == true || 
                 e.target.files[i].name.endsWith(".mp3") == true || 
@@ -402,6 +404,7 @@ function CreatePost({data}) {
                                     {/* <PopoverCloseButton color={useColorModeValue('black', 'white')}/> */}
                                     <PopoverBody>
                                         <Text fontSize="md" fontFamily={'Raleway'} color={useColorModeValue('black', 'white')} align="justify" p={3}>Supported file formats:</Text>
+                                        <Box display="flex"><Text fontSize="md" fontStyle={"italic"} fontFamily={'Raleway'} color={useColorModeValue('black', 'white')} align="justify" p={2}>Image files</Text></Box>
                                         <Box display="flex"><Text fontSize="md" fontStyle={"italic"} fontFamily={'Raleway'} color={useColorModeValue('black', 'white')} align="justify" p={2}>Text:</Text> <Text fontSize="md" fontFamily={'Raleway'} color={useColorModeValue('black', 'white')} align="justify" p={2}> txt | pdf | docx</Text></Box>
                                         <Box display="flex"><Text fontSize="md" fontStyle={"italic"} fontFamily={'Raleway'} color={useColorModeValue('black', 'white')} align="justify" p={2}>Audio:</Text> <Text fontSize="md" fontFamily={'Raleway'} color={useColorModeValue('black', 'white')} align="justify" p={2}> mp3 | wav | mpeg | flac</Text></Box>
                                         <Box display="flex"><Text fontSize="md" fontStyle={"italic"} fontFamily={'Raleway'} color={useColorModeValue('black', 'white')} align="justify" p={2}>Commonly in Arts hall:</Text> <Text fontSize="md" fontFamily={'Raleway'} color={useColorModeValue('black', 'white')} align="justify" p={1} mt={1}> psd | ai | svg</Text></Box>

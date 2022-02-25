@@ -160,7 +160,7 @@ function EditProfile({data}) {
       const storageProfRef = ref(storage, `/profile_pics/${data.display_name}/${profileImage[0].name}`)
       const uploadProfile = uploadBytesResumable(storageProfRef, profileImage[0])
 
-      if(profileImage[0].name.endsWith('.jpg') == true || profileImage[0].name.endsWith('.png') == true || profileImage[0].name.endsWith('.gif') == true){
+      if(profileImage[0].name.endsWith('.jpg') == true || profileImage[0].name.endsWith('.jpeg') == true || profileImage[0].name.endsWith('.JPG') == true || profileImage[0].name.endsWith('.png') == true || profileImage[0].name.endsWith('.gif') == true){
         uploadProfile.on("state_changed", (snapshot) => {
             const prog = Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
 
@@ -207,7 +207,7 @@ function EditProfile({data}) {
     setLoading(true)
       const storageCoverRef = ref(storage, `/cover_pics/${data.display_name}/${coverImage[0].name}`)
       const uploadCover = uploadBytesResumable(storageCoverRef, coverImage[0])
-      if(coverImage[0].name.endsWith('.jpg') == true || coverImage[0].name.endsWith('.png') == true || coverImage[0].name.endsWith('.gif') == true){
+      if(coverImage[0].name.endsWith('.jpg') == true || coverImage[0].name.endsWith('.jpeg') == true || coverImage[0].name.endsWith('.JPG') == true || coverImage[0].name.endsWith('.png') == true || coverImage[0].name.endsWith('.gif') == true){
       uploadCover.on("state_changed", (snapshot) => {
         const prog = Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
 
