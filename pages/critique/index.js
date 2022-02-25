@@ -164,15 +164,15 @@ export default function HallPage(){
             console.log(error.response.status)
         });
 
-        axios.get(`${API_URL}/api/posts_per_hall`, config)
-        .then(response => {
-            console.log(response);
-            setHallNum(response.data.halls)
-        })
-        .catch(error => {
-            console.log(error);
-            console.log(error.response.status)
-        });
+        // axios.get(`${API_URL}/api/posts_per_hall`, config)
+        // .then(response => {
+        //     console.log(response);
+        //     setHallNum(response.data.halls)
+        // })
+        // .catch(error => {
+        //     console.log(error);
+        //     console.log(error.response.status)
+        // });
 
     }, [router.isReady])
 

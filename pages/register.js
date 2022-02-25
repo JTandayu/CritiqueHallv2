@@ -134,14 +134,14 @@ export default function Register({data2}) {
         }
       }
 
-      axios.get(`${API_URL}/api/get_departments`, config)
-      .then(response => {
-          console.log(response.data);
-          setDepList(response.data.Departments);
-      })
-      .catch(error => {
-          console.log(error);
-      });
+      // axios.get(`${API_URL}/api/get_departments`, config)
+      // .then(response => {
+      //     console.log(response.data);
+      //     setDepList(response.data.Departments);
+      // })
+      // .catch(error => {
+      //     console.log(error);
+      // });
 
       
     }, [])
