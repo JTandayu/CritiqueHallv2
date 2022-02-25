@@ -163,8 +163,8 @@ function CreatePost({data}) {
    
 
     const handleChange = e =>{
-        console.log(counter)
-        console.log(e.target.files)
+        // console.log(counter)
+        // console.log(e.target.files)
         setImage([])
 
         if(e.target.files.length > 5 - uploadCounter){
@@ -298,7 +298,7 @@ function CreatePost({data}) {
 
         axios.post(`${API_URL}/api/create_post`, formData, config)
         .then(response => {
-          console.log(response.data);
+          console.log(response);
           toastIdRef.current = toast({ position: 'top', title: 'Create post successful!', status: 'success', duration: 3000, isClosable: true })
           onClose()
           window.location.href = "/critique"

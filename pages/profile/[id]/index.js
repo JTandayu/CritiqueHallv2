@@ -153,7 +153,7 @@ export default function ProfilePage({}){
             // console.log(userPosts.length)
         })
         .catch(error => {
-            console.log(error.response);
+            console.log(error);
         });
         
 
@@ -164,7 +164,7 @@ export default function ProfilePage({}){
             // console.log(userCritique.length)
         })
         .catch(error => {
-            console.log(error.response);
+            console.log(error);
         });
     }
 
@@ -180,7 +180,7 @@ export default function ProfilePage({}){
             setUserPosts(response.data.posts)
         })
         .catch(error => {
-            console.log(error.response);
+            console.log(error);
         });
     }
 
@@ -195,7 +195,7 @@ export default function ProfilePage({}){
             setUserCritique(response.data.critiques)
         })
         .catch(error => {
-            console.log(error.response);
+            console.log(error);
         });
     }
 

@@ -333,7 +333,7 @@ export default function CritiquePost(){
             setCritique('')
         })
         .catch(error => {
-            console.log(error.response);
+            console.log(error);
             if(error.response.data.status === "Account Muted"){
                 toastIdRef.current = toast({ position: 'top', title: 'You are currently muted. Please check your notifications for more details.', status: 'error', duration: 3000, isClosable: false })
             }else if(error.response.data.message === "<p>The Body field is required.<p>\n"){

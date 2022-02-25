@@ -64,7 +64,7 @@ const EditCritique = ({data}) => {
             onClose()
             router.reload()
           }).catch((error)=>{
-            console.log(error.response)
+            console.log(error)
             if(error.response.data.status === "Account Muted"){
                 toastIdRef.current = toast({ position: 'top', title: 'Account muted!', status: 'error', duration: 3000, isClosable: true })
             }
