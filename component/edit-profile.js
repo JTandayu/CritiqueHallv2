@@ -365,7 +365,7 @@ function EditProfile({data}) {
             //     toastIdRef.current = toast({ position: 'top', title: 'About Me exceeds the limit (max 255). Please try again!', status: 'error', duration: 3000, isClosable: true })
             // }else if(error.response.data.message == "<p>No changes made</p>\n"){
             //     toastIdRef.current = toast({ position: 'top', title: 'No changes were made!', status: 'error', duration: 3000, isClosable: true })
-             if(error.response.data.Error == "Wrong password"){
+             if(error.response.data.message == "<p>Wrong password</p>\n"){
                 toastIdRef.current = toast({ position: 'top', title: 'Incorrect password, please try again!', status: 'error', duration: 3000, isClosable: true })
              }
             // }else{
