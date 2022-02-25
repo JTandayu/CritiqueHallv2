@@ -301,7 +301,13 @@ export default function CritiquePost(){
             e.preventDefault();
             toastIdRef.current = toast({ position: 'top', title: 'Critique is required.', status: 'error', duration: 3000, isClosable: true })
             return;
-        }else{
+        }
+        if(critique.length > 3000){
+            e.preventDefault();
+            toastIdRef.current = toast({ position: 'top', title: 'Critique must not exceed 3000 characters.', status: 'error', duration: 3000, isClosable: true })
+            return;
+        }
+        else{
         e.preventDefault();
         let formData = new FormData();
         formData.append('body', critique)
