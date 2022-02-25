@@ -415,7 +415,8 @@ export default function CritiquePost(){
                     {/* Description */}
                     <Box mt={5}>
                         <Linkify>
-                            <Text fontFamily={'Raleway'} fontSize='sm' textAlign={'justify'} w={{lg: '45vw', sm: '100%'}} mx='auto' mt={5}>{data.body}</Text>
+                            <Text fontFamily={'Raleway'} fontSize='sm' textAlign={'justify'} w={{lg: '45vw', sm: '100%'}} mx='auto' mt={5} display={{lg: 'block', base: 'none'}}>{data.body}</Text>
+                            <Text fontFamily={'Raleway'} fontSize='sm' textAlign={'justify'} w={{lg: '45vw', sm: '100%'}} mx='auto' mt={5} display={{lg: 'none', base: 'block'}} isTruncated>{data.body}</Text>
                         </Linkify>
                     </Box>
 
