@@ -118,7 +118,13 @@ export const Critiques = ({id, newCritique}) => {
             e.preventDefault();
             toastIdRef.current = toast({ position: 'top', title: 'Reply is required.', status: 'error', duration: 3000, isClosable: true })
             return null;
-        }else{
+        }
+        if(reply[critique_id].length > 3000){
+            e.preventDefault();
+            toastIdRef.current = toast({ position: 'top', title: 'Reply must not exceed 3000 characters.', status: 'error', duration: 3000, isClosable: true })
+            return null;
+        }
+        else{
 
         e.preventDefault();
 
