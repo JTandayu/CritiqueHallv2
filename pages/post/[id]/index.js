@@ -410,8 +410,8 @@ export default function CritiquePost(){
                             </Menu>
                         </Box>}
                     </Heading> 
-                    <Heading fontFamily={'Raleway'} mx="auto" display="flex" mt={5} display={{lg: 'block', base: 'none'}}>{data.title}</Heading>
-                    <Heading fontFamily={'Raleway'} mx="auto" display="flex" mt={5} display={{lg: 'none', base: 'block'}} isTruncated>{data.title}</Heading>
+                    <Heading fontFamily={'Raleway'} mx="auto" mt={5} display={{lg: 'flex', base: 'none'}}>{data.title}</Heading>
+                    <Heading fontFamily={'Raleway'} mx="auto" mt={5} display={{lg: 'none', base: 'flex'}} isTruncated>{data.title}</Heading>
                     {/* Description */}
                     <Box mt={5}>
                         <Linkify>
