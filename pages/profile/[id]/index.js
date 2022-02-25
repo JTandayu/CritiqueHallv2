@@ -277,7 +277,7 @@ export default function ProfilePage({}){
                         <PopoverContent>
                             <PopoverArrow /> 
                             {/* <PopoverCloseButton color={useColorModeValue('black', 'white')}/> */}
-                            <PopoverBody><Text fontSize="md" fontFamily={'Raleway'} color={useColorModeValue('black', 'white')} align="justify" p={3}  textShadow='0px 0px #000'>Reaching 10 stars grants you a Top User badge! This will be displayed in your profile and beside your name whenever you give a critique.</Text></PopoverBody>
+                            <PopoverBody><Text fontSize="md" fontFamily={'Raleway'} color={useColorModeValue('black', 'white')} align="justify" p={3}  textShadow='0px 0px #000'>You gain 1 when someone stars your critique. 3 if it&rsquo;s from the post&rsquo;s author! <Spacer /><br /> Reaching 10 stars grants you a Top User badge! This will be displayed in your profile and beside your name whenever you give a critique.</Text></PopoverBody>
                         </PopoverContent> 
                         </Popover>
                         </Text>
