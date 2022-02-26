@@ -223,7 +223,7 @@ export default function SearchResult(){
                     <Spacer />
                     <Box p="3" w="100%" bg="light" ml={{lg: "20vh", base: 0}}>
                         <Center><Heading bgColor={changeColor2} borderRadius={10} fontFamily={'Raleway'} fontWeight={'black'} size='2xl' textShadow='2px 2px #000' p={1}  mt={28} display="flex">{user.display_name}{user.reputation_points >= 10 ? <Image src={changeBadgeIcon} alt="Badge Icon" w="50px" h="50px" ml={2}/> : null}</Heading></Center>
-                        <Center><Heading bgColor={changeColor2} borderRadius={10} fontFamily={'Raleway'} fontWeight={'black'} size='md' color='gray.300' textShadow='2px 2px #000'A p={1} mt={2} display="flex">{user.first_name}<Text ml={2} color='gray.300'>{user.last_name}</Text></Heading></Center>
+                        <Center><Heading bgColor={changeColor2} borderRadius={10} fontFamily={'Raleway'} fontWeight={'black'} size='md' color='gray.300' textShadow='2px 2px #000'A p={1} mt={2} display="flex">{user.first_name}<Text ml={1} color='gray.300'>{user.last_name}</Text></Heading></Center>
                     </Box>      
                 </Box>
                 
