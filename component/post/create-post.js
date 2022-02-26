@@ -29,7 +29,7 @@ import { Input } from '@chakra-ui/react'
 import { Label } from '@chakra-ui/react'
 import { Center } from '@chakra-ui/react'
 import { Divider } from '@chakra-ui/react'
-import { Select } from '@chakra-ui/react'
+import { Select, Spinner } from '@chakra-ui/react'
 import { createBreakpoints } from '@chakra-ui/theme-tools'
 import { useCookies, cookies } from 'react-cookie'
 import axios from 'axios'
@@ -103,6 +103,7 @@ function CreatePost({data}) {
     const [cookies] = useCookies([]);
     const token = getCookie('token')
     const user_id = getCookie('encrypted_id')
+    const [loading, setLoading] = useState(false)
     // const [attachment1, setAttachment1] = useState('')
     // const [attachment2, setAttachment2] = useState('')
     // const [attachment3, setAttachment3] = useState('')
@@ -130,9 +131,10 @@ function CreatePost({data}) {
         }
         const promises = []
         if (!image) return;
-        image.map((image, i) => {
-            const storageRef = ref(storage, `/files/${cookies.display_name}/${image.name}`)
-            const uploadTask = uploadBytesResumable(storageRef, image)
+        image.map((images, i) => {
+            setLoading(true)
+            const storageRef = ref(storage, `/files/${cookies.display_name}/${images.name}`)
+            const uploadTask = uploadBytesResumable(storageRef, images)
             promises.push(uploadTask) 
             uploadTask.on("state_changed", (snapshot) => {
                 const prog = Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
@@ -145,10 +147,11 @@ function CreatePost({data}) {
                 .then(urls => {
                     // console.log(urls)
                     setUrls((prevState) => [...prevState, urls])
-                    setFileName((prevState) => [...prevState, image.name])
+                    setFileName((prevState) => [...prevState, images.name])
                     setUploadCounter(prevCount => prevCount + 1)
                     if(i + 1 == image.length){
                         setImage([])
+                        setLoading(false);
                     }  
                 })
             }
@@ -415,7 +418,7 @@ function CreatePost({data}) {
                                     </PopoverContent> 
                                     </Popover>
                                 </Flex>
-                            <Button fontFamily={'Raleway'} bg='blue.400' color='white' _hover={{background: 'blue.700'}} onClick={uploadFiles} ml={{lg: 3, base: 2}}>Upload</Button>
+                            {loading == false ? <Button fontFamily={'Raleway'} bg='blue.400' color='white' _hover={{background: 'blue.700'}} onClick={uploadFiles} ml={{lg: 3, base: 2}}>Upload</Button> : <Spinner />}
                             </Flex>
                         </Flex>
                         <Flex bgColor={useColorModeValue('#F4F4F4', '#2E2E2E')} w={{lg: '34em', sm: '100%'}} h='10vh' rounded='md' overflowX='auto' mt={3}
