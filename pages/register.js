@@ -275,8 +275,12 @@ export default function Register({data2}) {
             //   toastIdRef.current = toast({ position: 'top', title: 'Display Name must not exceed 16 characters! Please enter a valid email address!', status: 'error', duration: 3000, isClosable: true })
             //   return;
             // }
-            if(error.response.data.message == "<p>The Email field must contain a valid email address.</p>\n"){
+            if(error.response.data.message.includes("<p>The Email field must contain a valid email address.</p>\n")){
               toastIdRef.current = toast({ position: 'top', title: 'Valid email is required.', status: 'error', duration: 3000, isClosable: true })
+              return;
+            }
+            if(error.response.data.message.includes("<p>The Display Name field may only contain alpha-numeric characters.</p>\n")){
+              toastIdRef.current = toast({ position: 'top', title: 'No special characters/spaces.', status: 'error', duration: 3000, isClosable: true })
               return;
             }
             if(error.response.data.message == "<p>The Display Name field may only contain alpha-numeric characters.</p>\n" || error.response.data.message == "<p>Email is already used</p>\n"){
