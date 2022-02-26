@@ -188,7 +188,7 @@ export default function Register({data2}) {
         return;
       }
       if(format.test(user_name)) {
-        toastIdRef.current = toast({ position: 'top', title: 'Display Name must contain alphanumeric characters (no special characters).', status: 'error', duration: 3000, isClosable: true })
+        toastIdRef.current = toast({ position: 'top', title: 'The Display Name field must contain alphanumeric characters (no special characters/spaces)', status: 'error', duration: 3000, isClosable: true })
         return;
       }
       if(first_name == '' || last_name == '' || user_name == '' || email == '' || password == '' || confirm_password == '' || specialization == ''){
@@ -225,6 +225,12 @@ export default function Register({data2}) {
       }if(user_name.length > 16){
         toastIdRef.current = toast({ position: 'top', title: 'Display Name must not exceed 16 characters.', status: 'error', duration: 3000, isClosable: true })
         return;
+<<<<<<< HEAD
+=======
+      }if(user_name.matches("\\S+") && (user_name.length() > 0)){
+        toastIdRef.current = toast({ position: 'top', title: 'The Display Name field must contain alphanumeric characters (no special characters/spaces)', status: 'error', duration: 3000, isClosable: true })
+        return;
+>>>>>>> 415a227c0dc32c7fbf1e22e1b06870ff39806cfc
       }
 
       let formData = new FormData(); 
@@ -277,11 +283,11 @@ export default function Register({data2}) {
               return;
             }
             if(error.response.data.message.includes("<p>The Display Name field may only contain alpha-numeric characters.</p>\n")){
-              toastIdRef.current = toast({ position: 'top', title: 'No special characters/spaces.', status: 'error', duration: 3000, isClosable: true })
+              toastIdRef.current = toast({ position: 'top', title: 'The Display Name field must contain alphanumeric characters (no special characters/spaces)', status: 'error', duration: 3000, isClosable: true })
               return;
             }
             if(error.response.data.message == "<p>The Display Name field may only contain alpha-numeric characters.</p>\n" || error.response.data.message == "<p>Email is already used</p>\n"){
-              toastIdRef.current = toast({ position: 'top', title: 'No special characters/spaces.', status: 'error', duration: 3000, isClosable: true })
+              toastIdRef.current = toast({ position: 'top', title: 'The Display Name field must contain alphanumeric characters (no special characters/spaces)', status: 'error', duration: 3000, isClosable: true })
               toastIdRef.current = toast({ position: 'top', title: 'Email is already in use.', status: 'error', duration: 3000, isClosable: true })
               return;
             }
