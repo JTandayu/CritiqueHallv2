@@ -389,7 +389,7 @@ export default function Register({data2}) {
                 </Box>
                 <Box>
                 <FormLabel>Display Name</FormLabel>
-                <Input size={{lg: 'lg', base: 'sm'}} width={{lg:'35vh', base: '90%'}} borderColor={useColorModeValue('black', 'white')} placeholder="No underscores, please!" className={styles.input_box} type="text" value={user_name} onChange={e => setUserName(e.target.value)}/>
+                <Input size={{lg: 'lg', base: 'sm'}} width={{lg:'35vh', base: '90%'}} borderColor={useColorModeValue('black', 'white')} placeholder="No spaces/underscores, pls!" className={styles.input_box} type="text" value={user_name} onChange={e => setUserName(e.target.value)}/>
                 </Box>
                 <Box>
                 <FormLabel>Email</FormLabel>
