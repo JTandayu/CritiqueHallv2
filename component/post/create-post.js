@@ -266,8 +266,8 @@ function CreatePost({data}) {
             toastIdRef.current = toast({ position: 'top', title: 'Title must not exceed 50 characters.', status: 'error', duration: 3000, isClosable: true })
             return;
         }
-        if(description.length > 255){
-            toastIdRef.current = toast({ position: 'top', title: 'Description must not exceed 255 characters.', status: 'error', duration: 3000, isClosable: true })
+        if(description.length > 5000){
+            toastIdRef.current = toast({ position: 'top', title: 'Description must not exceed 5000 characters.', status: 'error', duration: 3000, isClosable: true })
             return;
         }
         if(title == '' || description == '') {
