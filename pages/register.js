@@ -280,11 +280,11 @@ export default function Register({data2}) {
               return;
             }
             if(error.response.data.message.includes("<p>The Display Name field may only contain alpha-numeric characters.</p>\n")){
-              toastIdRef.current = toast({ position: 'top', title: 'No special characters/spaces.', status: 'error', duration: 3000, isClosable: true })
+              toastIdRef.current = toast({ position: 'top', title: 'The Display Name field must contain alphanumeric characters (no special characters/spaces)', status: 'error', duration: 3000, isClosable: true })
               return;
             }
             if(error.response.data.message == "<p>The Display Name field may only contain alpha-numeric characters.</p>\n" || error.response.data.message == "<p>Email is already used</p>\n"){
-              toastIdRef.current = toast({ position: 'top', title: 'No special characters/spaces.', status: 'error', duration: 3000, isClosable: true })
+              toastIdRef.current = toast({ position: 'top', title: 'The Display Name field must contain alphanumeric characters (no special characters/spaces)', status: 'error', duration: 3000, isClosable: true })
               toastIdRef.current = toast({ position: 'top', title: 'Email is already in use.', status: 'error', duration: 3000, isClosable: true })
               return;
             }
