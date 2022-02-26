@@ -55,6 +55,7 @@ import Linkify from 'linkify-react';
 import { useRouter } from 'next/router'
 import React from "react";
 import { getCookie } from 'cookies-next'
+import ScrollToTop from 'react-scroll-to-top'
 
 const breakpoints = createBreakpoints({
     sm: '320px',
@@ -353,6 +354,8 @@ export default function CritiquePost(){
             <link rel="icon" href={useColorModeValue('/logo256.png', '/logo256-dark.png')} onLoad=""/>
             <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@700&display=swap" rel="stylesheet" />
             </Head>
+
+            <ScrollToTop color={'black'} width={40} boxShadow={'dark-lg'} smooth />
 
             <Box w="100%" h="full" spacing="10px" mt="5">
                 <Box display="flex" flexDir={{lg: 'row', sm: 'column', base: 'column'}} w="100%" p="3">
