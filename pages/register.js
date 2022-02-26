@@ -275,6 +275,10 @@ export default function Register({data2}) {
               toastIdRef.current = toast({ position: 'top', title: 'Valid email is required.', status: 'error', duration: 3000, isClosable: true })
               return;
             }
+            if(error.response.data.message === "<p>The Display Name field may only contain alpha-numeric characters.</p>"){
+              toastIdRef.current = toast({ position: 'top', title: 'Display Name must contain alphanumeric characters (no special characters).', status: 'error', duration: 3000, isClosable: true })
+              return;
+            }
             // if(error.response.data.message === "<p>The First Name field may only contain alphabetical characters.</p>\n"){
             //   toastIdRef.current = toast({ position: 'top', title: 'First Name must contain alpphabetical characters.', status: 'error', duration: 3000, isClosable: true })
             //   return;
