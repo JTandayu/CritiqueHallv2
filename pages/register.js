@@ -225,6 +225,9 @@ export default function Register({data2}) {
       }if(user_name.length > 16){
         toastIdRef.current = toast({ position: 'top', title: 'Display Name must not exceed 16 characters.', status: 'error', duration: 3000, isClosable: true })
         return;
+      }if(user_name.matches("\\S+") && (user_name.length() > 0)){
+        toastIdRef.current = toast({ position: 'top', title: 'No special characters/spaces.', status: 'error', duration: 3000, isClosable: true })
+        return;
       }
 
       let formData = new FormData(); 
