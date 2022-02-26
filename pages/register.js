@@ -188,7 +188,7 @@ export default function Register({data2}) {
         return;
       }
       if(format.test(user_name)) {
-        toastIdRef.current = toast({ position: 'top', title: 'Display Name must contain alphanumeric characters (no special characters).', status: 'error', duration: 3000, isClosable: true })
+        toastIdRef.current = toast({ position: 'top', title: 'The Display Name field must contain alphanumeric characters (no special characters/spaces)', status: 'error', duration: 3000, isClosable: true })
         return;
       }
       if(first_name == '' || last_name == '' || user_name == '' || email == '' || password == '' || confirm_password == '' || specialization == ''){
@@ -226,7 +226,7 @@ export default function Register({data2}) {
         toastIdRef.current = toast({ position: 'top', title: 'Display Name must not exceed 16 characters.', status: 'error', duration: 3000, isClosable: true })
         return;
       }if(user_name.matches("\\S+") && (user_name.length() > 0)){
-        toastIdRef.current = toast({ position: 'top', title: 'No special characters/spaces.', status: 'error', duration: 3000, isClosable: true })
+        toastIdRef.current = toast({ position: 'top', title: 'The Display Name field must contain alphanumeric characters (no special characters/spaces)', status: 'error', duration: 3000, isClosable: true })
         return;
       }
 
