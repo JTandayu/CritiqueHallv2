@@ -418,7 +418,7 @@ function CreatePost({data}) {
                                     </PopoverContent> 
                                     </Popover>
                                 </Flex>
-                            {loading == false ? <Button fontFamily={'Raleway'} bg='blue.400' color='white' _hover={{background: 'blue.700'}} onClick={uploadFiles} ml={{lg: 3, base: 2}}>Upload</Button> : <Spinner />}
+                            {loading == false ? <Button fontFamily={'Raleway'} bg='blue.400' color='white' _hover={{background: 'blue.700'}} onClick={uploadFiles} ml={{lg: 3, base: 2}}>Upload</Button> : <Spinner ml={10} mt={2}/>}
                             </Flex>
                         </Flex>
                         <Flex bgColor={useColorModeValue('#F4F4F4', '#2E2E2E')} w={{lg: '34em', sm: '100%'}} h='10vh' rounded='md' overflowX='auto' mt={3}
