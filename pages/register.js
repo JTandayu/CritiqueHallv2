@@ -266,7 +266,6 @@ export default function Register({data2}) {
               // document.getElementById('warning1').hidden=true;
               // document.getElementById('warning3').hidden=true;
               toastIdRef.current = toast({ position: 'top', title: 'Display Name or Email is already in use.', status: 'error', duration: 3000, isClosable: true })
-              return;
             }
             // if(error.response.data.message === "<p>The Display Name field cannot exceed 16 characters.</p>\n<p>The Email field must contain a valid email address.</p>\n"){
             //   toastIdRef.current = toast({ position: 'top', title: 'Display Name must not exceed 16 characters! Please enter a valid email address!', status: 'error', duration: 3000, isClosable: true })
@@ -274,12 +273,16 @@ export default function Register({data2}) {
             // }
             if(error.response.data.message == "<p>The Email field must contain a valid email address.</p>\n"){
               toastIdRef.current = toast({ position: 'top', title: 'Valid email is required.', status: 'error', duration: 3000, isClosable: true })
-              return;
             }
-            if(error.response.data.message == "<p>The Display Name field may only contain alpha-numeric characters.</p>\n" || error.response.data.message == "<p>Email is already used</p>\n"){
+            if(error.response.data.message == "<p>The Display Name field may only contain alpha-numeric characters.</p>\n"){
+              toastIdRef.current = toast({ position: 'top', title: 'No special characters/spaces.', status: 'error', duration: 3000, isClosable: true })
+            }
+            if(error.response.data.message == "<p>The Display Name field may only contain alpha-numeric characters.</p>\n<p>Email is already used</p>\n"){
               toastIdRef.current = toast({ position: 'top', title: 'No special characters/spaces.', status: 'error', duration: 3000, isClosable: true })
               toastIdRef.current = toast({ position: 'top', title: 'Email is already in use.', status: 'error', duration: 3000, isClosable: true })
-              return;
+            }
+            if(error.response.data.message == "<p>Email is already used</p>\n"){
+              toastIdRef.current = toast({ position: 'top', title: 'Email is already in use.', status: 'error', duration: 3000, isClosable: true })
             }
             // if(error.response.data.message === "<p>The First Name field may only contain alphabetical characters.</p>\n"){
             //   toastIdRef.current = toast({ position: 'top', title: 'First Name must contain alpphabetical characters.', status: 'error', duration: 3000, isClosable: true })
