@@ -260,7 +260,7 @@ export default function Register({data2}) {
           // toastIdRef.current = toast({ title: 'Account Creation Unsuccessful!', description: 'Please try again.', status: 'error', duration: 2000, isClosable: true })
             console.log(error.response);
 
-            if(error.response.data.message == "<p>Display Name is already used</p>\n" || error.response.data.message == "<p>Email is already used</p>\n"){
+            if(error.response.data.message == "<p>Display Name is already used</p>\n" && error.response.data.message == "<p>Email is already used</p>\n"){
               // document.getElementById('warning2').removeAttribute('hidden');
               // document.getElementById('warning1').hidden=true;
               // document.getElementById('warning3').hidden=true;
@@ -275,7 +275,7 @@ export default function Register({data2}) {
               toastIdRef.current = toast({ position: 'top', title: 'Valid email is required.', status: 'error', duration: 3000, isClosable: true })
               return;
             }
-            if(error.response.data.message == "<p>The Display Name field may only contain alpha-numeric characters.</p>\n" || error.response.data.message == "<p>Email is already used</p>\n"){
+            if(error.response.data.message == "<p>The Display Name field may only contain alpha-numeric characters.</p>\n" && error.response.data.message == "<p>Email is already used</p>\n"){
               toastIdRef.current = toast({ position: 'top', title: 'Display Name must contain alphanumeric characters (no special characters).', status: 'error', duration: 3000, isClosable: true })
               toastIdRef.current = toast({ position: 'top', title: 'Display Name or Email is already in use.', status: 'error', duration: 3000, isClosable: true })
               return;
@@ -386,7 +386,7 @@ export default function Register({data2}) {
                 </Box>
                 <Box>
                 <FormLabel>Display Name</FormLabel>
-                <Input size={{lg: 'lg', base: 'sm'}} width={{lg:'35vh', base: '90%'}} borderColor={useColorModeValue('black', 'white')} placeholder="No spaces/underscores, please!" className={styles.input_box} type="text" value={user_name} onChange={e => setUserName(e.target.value)}/>
+                <Input size={{lg: 'lg', base: 'sm'}} width={{lg:'35vh', base: '90%'}} borderColor={useColorModeValue('black', 'white')} placeholder="No underscores, please!" className={styles.input_box} type="text" value={user_name} onChange={e => setUserName(e.target.value)}/>
                 </Box>
                 <Box>
                 <FormLabel>Email</FormLabel>
