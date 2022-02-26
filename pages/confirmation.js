@@ -123,6 +123,9 @@ export default function ConfirmationPage(){
             if(error.response.data.message === "<p>The Verification Code field must contain only numbers.</p>\n") {
               toastIdRef.current = toast({ position: 'top', title: 'Invalid code.', status: 'error', duration: 3000, isClosable: true })
             }
+            if(error.response.data.message === "Already Verified") {
+              toastIdRef.current = toast({ position: 'top', title: 'Account already verified.', status: 'info', duration: 3000, isClosable: true })
+            }
             // toastIdRef.current = toast({ position: 'top', title: 'Account verification unsuccessful!', description: 'Please try again.', status: 'error', duration: 3000, isClosable: true })
             console.log(error.response);
         });
