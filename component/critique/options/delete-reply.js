@@ -47,7 +47,7 @@ const DeleteReply = ({id}) => {
     const deleteReply = async () =>{
         axios.delete(`${API_URL}/api/delete_reply/${id}`, config)
         .then((response) => {
-          console.log(response)
+          // console.log(response)
           onClose()
           router.reload()
         }).catch((error)=>{

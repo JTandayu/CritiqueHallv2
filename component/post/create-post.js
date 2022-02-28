@@ -315,7 +315,7 @@ function CreatePost({data}) {
                 toastIdRef.current = toast({ position: 'top', title: 'You are currently muted. Please check your notifications for more details.', status: 'error', duration: 3000, isClosable: true })
             }
             console.log(error);
-            console.log(error.response)
+            // console.log(error.response)
         });
         }
     }

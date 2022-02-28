@@ -59,9 +59,9 @@ function EditHistory({id}) {
 
         axios.get(`${API_URL}/api/version_post/${id}`,  config)
         .then((response)=>{
-            console.log(response.data.data)
+            // console.log(response.data.data)
             setData(response.data.data)
-        }).catch((error)=>console.log(error.response))
+        }).catch((error)=>console.log(error))
     }, [id]);
 
 

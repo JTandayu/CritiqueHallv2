@@ -250,7 +250,7 @@ export default function Nav(data, profile_pic){
 
         axios.post(`${API_URL}/api/logout`, formData, config)
         .then((response)=>{
-            console.log(response)
+            // console.log(response)
             toastIdRef.current = toast({ position: 'top', title: 'Logout successful!', status: 'success', duration: 3000, isClosable: true })
         })
         .then(()=>{
@@ -259,7 +259,7 @@ export default function Nav(data, profile_pic){
             removeCookies('display_name');
             router.push('/')
         }).catch((error)=>{
-            console.log(error.response)
+            console.log(error)
             if(error.response.data.error ==  'Account Suspended'){
                 removeCookies('token');
                 removeCookies('encrypted_id');

@@ -194,7 +194,7 @@ export const Critiques = ({id, newCritique}) => {
 
         axios.post(`${API_URL}/api/display_all_critiques`, formData, config)
         .then((response) =>{
-            console.log(response.data.length)
+            // console.log(response.data.length)
             // this.setState((prevState) => [...prevState, urls])
             response.data.data.map((item)=>{
                 setCritiqueItems((prevState) => [...prevState, item])
@@ -214,7 +214,7 @@ export const Critiques = ({id, newCritique}) => {
 
 
         }).catch((error) =>{
-            console.log(error.response)
+            console.log(error)
         })
         // document.getElementById('reply').hidden=true;
     }

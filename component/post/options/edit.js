@@ -202,14 +202,14 @@ function EditPost({data, url, fileNames}){
 
         axios.post(`${API_URL}/api/update_post`, formData, config)
         .then(response => {
-          console.log(response.data);
+        //   console.log(response.data);
         //   window.location.href = "/critique"
             onClose()
             router.reload()
         })
         .catch(error => {
             console.log(error);
-            console.log(error.response)
+            // console.log(error.response)
             if(error.response.data.status === "Account Muted"){
                 toastIdRef.current = toast({ position: 'top', title: 'Account muted!', status: 'error', duration: 3000, isClosable: false })
             }

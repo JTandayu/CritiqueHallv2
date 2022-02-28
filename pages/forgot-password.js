@@ -84,7 +84,7 @@ export default function ForgotPassword(){
         axios.post(`${API_URL}/api/forgot_password`, formData, config)
         .then(response => {
           toastIdRef.current = toast({ position: 'top', title: 'A link has been sent to your email.', status: 'success', duration: 3000, isClosable: true })
-            console.log(response);
+            // console.log(response);
             // window.location = "/home"
         })
         .catch(error => {

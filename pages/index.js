@@ -118,7 +118,7 @@ export default function Login({user}) {
       } else{
       axios.post(`${API_URL}/api/login`, formData, config)
       .then(response => {
-          console.log(response);
+          // console.log(response);
             // setCookies('token', response.data.token)
             // setCookies('display_name', response.data.display_name)
             // setCookies('encrypted_id', response.data.encrypted_id)

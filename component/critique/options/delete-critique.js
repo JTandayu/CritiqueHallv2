@@ -46,7 +46,7 @@ const DeleteCritique = ({id}) => {
     const deleteCritiqueItem = async () =>{
         axios.delete(`${API_URL}/api/delete_critique/${id}`, config)
         .then((response) => {
-          console.log(response)
+        //   console.log(response)
           onClose()
           router.reload();
         }).catch((error)=>{

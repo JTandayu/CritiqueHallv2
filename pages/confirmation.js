@@ -104,7 +104,7 @@ export default function ConfirmationPage(){
         axios.post(`${API_URL}/api/confirm_verification`, formData, config)
         .then(response => {
             toastIdRef.current = toast({ position: 'top', title: 'Account verification successful!', status: 'success', duration: 3000, isClosable: true })
-            console.log(response.data);
+            // console.log(response.data);
             setCookies('token', response.data.token)
             removeCookies('email')
             removeCookies('password')
@@ -127,7 +127,7 @@ export default function ConfirmationPage(){
               toastIdRef.current = toast({ position: 'top', title: 'Account already verified.', status: 'info', duration: 3000, isClosable: true })
             }
             // toastIdRef.current = toast({ position: 'top', title: 'Account verification unsuccessful!', description: 'Please try again.', status: 'error', duration: 3000, isClosable: true })
-            console.log(error.response);
+            console.log(error);
         });
     }
 

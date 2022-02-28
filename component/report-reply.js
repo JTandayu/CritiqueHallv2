@@ -82,11 +82,11 @@ function ReportReply({data, id}) {
         formData.append("reply_id", id)
         formData.append("message", message)
         // formData.append("offense_type", offense)
-        console.log(offense)
+        // console.log(offense)
 
         axios.post(`${API_URL}/api/submit_report`, formData, config)
         .then((response)=>{
-            console.log(response)
+            // console.log(response)
             toastIdRef.current = toast({
                 position: 'top',
                 title: 'Report submitted successfully!',
@@ -97,7 +97,7 @@ function ReportReply({data, id}) {
               onClose()
         })
         .catch((error)=>{
-            console.log(error.response)
+            console.log(error)
         })}
     }
     

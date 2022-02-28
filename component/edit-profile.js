@@ -335,7 +335,7 @@ function EditProfile({data}) {
         // console.log(coverImageUrl)
         axios.post(`${API_URL}/api/change_profile`, formData, config)
         .then((response) => {
-            console.log(response.data)
+            // console.log(response.data)
             toastIdRef.current = toast({
                 position: 'top',
                 title: 'Profile changed successfully!',
@@ -372,7 +372,7 @@ function EditProfile({data}) {
             //     toastIdRef.current = toast({ position: 'top', title: 'Error, Please check your inputs!', status: 'error', duration: 3000, isClosable: true })
             // }
             console.log(error)
-            console.log(error.response)
+            // console.log(error.response)
         })
     }
 
@@ -395,7 +395,7 @@ function EditProfile({data}) {
 
         axios.post(`${API_URL}/api/change_password`, formData, config)
         .then((response) => {
-            console.log(response)
+            // console.log(response)
             toastIdRef.current = toast({
                 position: 'top',
                 title: 'Password changed successfully!',

@@ -88,7 +88,7 @@ function ReportUser({data}) {
 
         axios.post(`${API_URL}/api/submit_report`, formData, config)
         .then((response)=>{
-            console.log(response)
+            // console.log(response)
             toastIdRef.current = toast({
                 position: 'top',
                 title: 'Report submitted successfully!',
@@ -99,7 +99,7 @@ function ReportUser({data}) {
             onClose()
         })
         .catch((error)=>{
-            console.log(error.response)
+            console.log(error)
         })
         }
     }

@@ -62,7 +62,7 @@ function EditReplyHistory({id}) {
 
         axios.get(`${API_URL}/api/version_reply/${id}`,  config)
         .then((response)=>{
-            console.log(response)
+            // console.log(response)
             setData(response.data.data)
         }).catch((error)=>console.log(error.response))
     }, []);

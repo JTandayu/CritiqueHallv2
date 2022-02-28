@@ -318,7 +318,7 @@ export default function Register({data2}) {
 
       axios.post(`${API_URL}/api/login`, formData2, config)
       .then(response => {
-          console.log(response.data);
+          // console.log(response.data);
           setCookies('token', response.data.token)
           setCookies('display_name', response.data.display_name)
           setCookies('encrypted_id', response.data.encrypted_id)
@@ -327,7 +327,7 @@ export default function Register({data2}) {
           window.location = "/confirmation"
       })
       .catch(error => {
-          console.log(error.response);
+          console.log(error);
       });
     }
 
