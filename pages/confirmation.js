@@ -121,10 +121,10 @@ export default function ConfirmationPage(){
             if(error.response.data.status == 'Code expired'){
               toastIdRef.current = toast({ position: 'top', title: 'Verification code expired.', status: 'error', duration: 3000, isClosable: true })
             }
-            if(error.response.data.message === "<p>The Verification Code field must contain only numbers.</p>\n") {
+            if(error.response.data.message == "<p>The Verification Code field must contain only numbers.</p>\n") {
               toastIdRef.current = toast({ position: 'top', title: 'Invalid code.', status: 'error', duration: 3000, isClosable: true })
             }
-            if(error.response.data.message === "Already Verified") {
+            if(error.response.data.message == "Email have been verified") {
               toastIdRef.current = toast({ position: 'top', title: 'Account already verified.', status: 'info', duration: 3000, isClosable: true })
             }
             // toastIdRef.current = toast({ position: 'top', title: 'Account verification unsuccessful!', description: 'Please try again.', status: 'error', duration: 3000, isClosable: true })
