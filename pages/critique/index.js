@@ -127,6 +127,7 @@ export default function HallPage(){
     useEffect(() => {
         const { API_URL } = process.env
         const { API_KEY } = process.env
+        setLoading(true)
 
         const config = {
             headers: { 
@@ -184,17 +185,19 @@ export default function HallPage(){
     const currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost);
 
     const getTechnology = async () =>{
-
+        setLoading(true)
         axios.get(`${API_URL}/api/posts_pagination/1`, config)
         .then(response => {
             // console.log(response);
             setPosts(response.data.posts);
             setHalls(1)
-            console.log(posts)
+            // console.log(posts)
+            setLoading(false)
 
             if(response.status ===  '401'){
                 window.location = '/login'
             }
+            
         })
         .catch(error => {
             console.log(error);
@@ -203,7 +206,7 @@ export default function HallPage(){
     }
 
     const getPostDropDown = async (item) =>{
-        
+        setLoading(true)
         setHalls(item)
 
         axios.get(`${API_URL}/api/posts_pagination/${item}`, config)
@@ -211,7 +214,8 @@ export default function HallPage(){
             // console.log(response);
             setPosts(response.data.posts);
             setCurrentPage(1);
-            console.log(posts)
+            // console.log(posts)
+            setLoading(false)
         })
         .catch(error => {
             console.log(error);
@@ -235,12 +239,14 @@ export default function HallPage(){
 
 
     const getArts = async () =>{
+        setLoading(true)
         axios.get(`${API_URL}/api/posts_pagination/2`, config)
         .then(response => {
             // console.log(response);
             setPosts(response.data.posts);
             setCurrentPage(1);
             setHalls(2)
+            setLoading(false)
             // console.log(posts)
         })
         .catch(error => {
@@ -250,13 +256,14 @@ export default function HallPage(){
     }
 
     const getBusiness = async () =>{
-
+        setLoading(true)
         axios.get(`${API_URL}/api/posts_pagination/3`, config)
         .then(response => {
             // console.log(response);
             setPosts(response.data.posts);
             setCurrentPage(1);
             setHalls(3)
+            setLoading(false)
             // console.log(posts)
         })
         .catch(error => {
@@ -266,12 +273,14 @@ export default function HallPage(){
     }
 
     const getLounge = async () =>{
+        setLoading(true)
         axios.get(`${API_URL}/api/posts_pagination/4`, config)
         .then(response => {
             // console.log(response);
             setPosts(response.data.posts);
             setCurrentPage(1);
             setHalls(4)
+            setLoading(false)
             // console.log(posts)
         })
         .catch(error => {
