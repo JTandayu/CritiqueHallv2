@@ -237,7 +237,7 @@ export default function ProfilePage({}){
                         
                         <Box w='20vh' h='20vh' mt={24} ml={{lg: 5, md: 0, sm: 0, base: '25%'}} mx={{lg: 0, md: 0, sm: 'auto'}} rounded='full'>
                             <Center>
-                                <Image w={{lg: '18vh', base: '10vh'}} h={{lg: '18vh', base: '10vh'}} rounded='full' src={userData.profile_photo} mt={{lg: 3, base: '-20%'}}/>
+                                <Image w={{lg: '18vh', base: '20vh'}} h={{lg: '18vh', base: '20vh'}} rounded='full' src={userData.profile_photo} mt={{lg: 3, base: '-20%'}}/>
                             </Center>
                         </Box>
 

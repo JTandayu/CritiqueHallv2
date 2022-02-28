@@ -106,9 +106,10 @@ export default function ConfirmationPage(){
             toastIdRef.current = toast({ position: 'top', title: 'Account verification successful!', status: 'success', duration: 3000, isClosable: true })
             // console.log(response.data);
             setCookies('token', response.data.token)
-            removeCookies('email')
-            removeCookies('password')
-            router.replace('/home')
+        }).then(()=>{
+          removeCookies('email')
+          removeCookies('password')
+          router.push('/home')
         })
         .catch(error => {
             if(error.response.data.status == 'Wrong code'){
