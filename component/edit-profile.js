@@ -440,7 +440,7 @@ function EditProfile({data}) {
                     <Flex p={7} flexDir={{lg: "row", base: "column"}}>
                         <Flex flexDir='column' align='center'>
                             <Heading fontFamily={'Raleway'} size='md' mb={5}>Profile Picture</Heading>
-                            <Image rounded='full' src={data.profile_photo} w='7vw' h='7vw' objectFit="cover"></Image>
+                            <Image rounded='full' src={data.profile_photo} w={{lg: '7vw', base: "50%"}} h={{lg: '7vw', base: "50%"}} objectFit="cover"></Image>
                             <Center mt={3}>
                                 <input type='file' onChange={(e)=>setProfileImage(e.target.files)} id='profile-picture-input' hidden/>
                                 <Button fontFamily={'Raleway'} bg='yellow.400' color='black' _hover={{background: 'yellow.500'}} onClick={openProfilePicture} ml={5}>Choose<EditIcon ml={2}/></Button>
@@ -450,7 +450,7 @@ function EditProfile({data}) {
                         <Spacer />
                         <Flex flexDir='column' align='center'>
                             <Heading fontFamily={'Raleway'} size='md' mb={3}>Cover Picture</Heading>
-                            <Image src={data.cover_photo} w='14vw' h='7vw' borderRadius={10} objectFit="cover"></Image>
+                            <Image src={data.cover_photo} w={{lg: '14vw', base: "100%"}} h={{lg: '7vw', base: "80%"}} borderRadius={10} objectFit="cover"></Image>
                             <Center mt={3}>
                                 <input type='file' onChange={(e)=>setCoverImage(e.target.files)} id='cover-picture-input' hidden/>
                                 <Button fontFamily={'Raleway'} bg='yellow.400' color='black' _hover={{background: 'yellow.500'}} onClick={openCoverPicture} ml={5}>Choose<EditIcon ml={2} /></Button>
@@ -509,22 +509,22 @@ function EditProfile({data}) {
                         {/* <Button>Edit</Button> */}
                     </Flex>
                     <Center display='flex' flexDir='column' mb={5} w={{base: "100%"}}>
-                        <Flex mb={3} flexDir={{lg: "row", base: "column"}}>
+                        <Flex mb={3} flexDir={{lg: "row", base: "column"}} w={{lg: '20vw', base: "100%"}}>
                             <FormLabel fontFamily={'Raleway'} w={48}>Current Password</FormLabel>
-                            <Input fontFamily={'Raleway'} borderColor={useColorModeValue('black', 'white')} type='password' w={{lg: '10vw', base: "100%"}} ml='10px' onChange={(e) => setCurrentPassword(e.target.value)} />
+                            <Input fontFamily={'Raleway'} borderColor={useColorModeValue('black', 'white')} type='password' w={{lg: '10vw', base: "100%"}} ml={{lg: '10px', base: 0}} onChange={(e) => setCurrentPassword(e.target.value)} />
                         </Flex>
-                        <Flex mb={3} flexDir={{lg: "row", base: "column"}}>
+                        <Flex mb={3} flexDir={{lg: "row", base: "column"}} w={{lg: '20vw', base: "100%"}}>
                             <FormLabel fontFamily={'Raleway'} w={48}>New Password</FormLabel>
-                            <Input fontFamily={'Raleway'} borderColor={useColorModeValue('black', 'white')} type='password' w={{lg: '10vw', base: "100%"}} ml='10px' mr='1px' onChange={(e) => setNewPassword(e.target.value)}/>
+                            <Input fontFamily={'Raleway'} borderColor={useColorModeValue('black', 'white')} type='password' w={{lg: '10vw', base: "100%"}} ml={{lg: '10px', base: 0}} mr='1px' onChange={(e) => setNewPassword(e.target.value)}/>
                         </Flex>
-                        <Flex flexDir={{lg: "row", base: "column"}}>
+                        <Flex flexDir={{lg: "row", base: "column"}} w={{lg: '20vw', base: "100%"}}>
                             <FormLabel fontFamily={'Raleway'} w={48}>Confirm New Password</FormLabel>
-                            <Input fontFamily={'Raleway'} borderColor={useColorModeValue('black', 'white')} type='password' w={{lg: '10vw', base: "100%"}} ml='10px' mr='1px' onChange={(e) => setConfirmNewPassword(e.target.value)}/>
+                            <Input fontFamily={'Raleway'} borderColor={useColorModeValue('black', 'white')} type='password' w={{lg: '10vw', base: "100%"}} ml={{lg: '10px', base: 0}} mr='1px' onChange={(e) => setConfirmNewPassword(e.target.value)}/>
                         </Flex>
                     </Center>
-                    <Flex w={{lg: '75%', base: '85%'}}>
+                    <Flex w={{lg: '75%', base: '100%'}}>
                         <Spacer />
-                        <Button fontFamily={'Raleway'} bgColor={useColorModeValue('#0C1F83', '#1D447E')} color={useColorModeValue('white', 'white')} _hover={{bgColor: useColorModeValue('#173cff', '#428eff')}} onClick={submitPassword}>Change Password</Button>
+                        <Button fontFamily={'Raleway'} bgColor={useColorModeValue('#0C1F83', '#1D447E')} color={useColorModeValue('white', 'white')} _hover={{bgColor: useColorModeValue('#173cff', '#428eff')}} w={{lg: '10vw', base: "100%"}} onClick={submitPassword}>Change Password</Button>
                     </Flex>
                     {/* <Divider mb={5} mt={5} /> */}
 

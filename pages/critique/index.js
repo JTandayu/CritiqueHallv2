@@ -163,7 +163,7 @@ export default function HallPage(){
         })
         .catch(error => {
             console.log(error);
-            console.log(error.response.status)
+            // console.log(error.response.status)
         });
 
         // axios.get(`${API_URL}/api/posts_per_hall`, config)
