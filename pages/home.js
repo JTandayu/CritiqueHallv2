@@ -94,25 +94,25 @@ function Home(){
             <Flex mt='10vh' w={{lg: '90%', md: '200vw', sm: '400vw' , base: '300vw'}} mx='auto' overflowX='auto'>
               <Box w={{lg: '20vw', md: '100%', sm: '100%', base: "100%"}} h='40vh' bgImage={'Arts.png'} bgPosition={'center'} bgSize="cover" borderRadius={10}>
                 <Center mt='80%'>
-                <Link href='/critique' passHref={true}><Button size="lg" fontFamily={'Raleway'} fontSize="2xl" ml={5} bgColor={useColorModeValue('#A88816', '#A88816')} _hover={{bgColor: useColorModeValue('#483C10', '#483C10')}} color='white'>View</Button></Link>
+                <Link href='/critique?id=2' passHref={true}><Button size="lg" fontFamily={'Raleway'} fontSize="2xl" ml={5} bgColor={useColorModeValue('#A88816', '#A88816')} _hover={{bgColor: useColorModeValue('#483C10', '#483C10')}} color='white'>View</Button></Link>
                 </Center>
               </Box>
               <Spacer />
               <Box w={{lg: '20vw', md: '100%', sm: '100%' , base: "100%"}} h='40vh' bgImage={'Business.png'} bgPosition={'center'} bgSize="cover" ml={{lg: '0', md: '0', sm: '20vw'}} borderRadius={10} objectFit="cover">
                 <Center mt='80%'>
-                <Link href='/critique' passHref={true}><Button size="lg" fontFamily={'Raleway'} fontSize="2xl" ml={5} bgColor={useColorModeValue('#850306', '#850306')} _hover={{bgColor: useColorModeValue('#4a0305', '#4a0305')}} color='white'>View</Button></Link>
+                <Link href='/critique?id=3' passHref={true}><Button size="lg" fontFamily={'Raleway'} fontSize="2xl" ml={5} bgColor={useColorModeValue('#850306', '#850306')} _hover={{bgColor: useColorModeValue('#4a0305', '#4a0305')}} color='white'>View</Button></Link>
                 </Center>
               </Box>
               <Spacer />
               <Box w={{lg: '20vw', md: '100%', sm: '100%' , base: "100%"}} h='40vh' bgImage={'Technology.png'} bgPosition={'center'} bgSize="cover" borderRadius={10}>
                 <Center mt='80%'>
-                <Link href='/critique' passHref={true}><Button size="lg" fontFamily={'Raleway'} fontSize="2xl" ml={5} bgColor={useColorModeValue('#31518f', '#31518f')} _hover={{bgColor: useColorModeValue('#09255c', '#09255c')}} color='white'>View</Button></Link>
+                <Link href='/critique?id=1' passHref={true}><Button size="lg" fontFamily={'Raleway'} fontSize="2xl" ml={5} bgColor={useColorModeValue('#31518f', '#31518f')} _hover={{bgColor: useColorModeValue('#09255c', '#09255c')}} color='white'>View</Button></Link>
                 </Center>
               </Box>
               <Spacer />
               <Box w={{lg: '20vw', md: '100%', sm: '100%' , base: "100%"}} h='40vh' bgImage={'Lounge.png'} bgPosition={'center'} bgSize="cover" borderRadius={10}>
                 <Center mt='80%'>
-                <Link href='/critique' passHref={true}><Button size="lg" fontFamily={'Raleway'} fontSize="2xl" ml={5} bgColor={useColorModeValue('#00786f', '#00786f')} _hover={{bgColor: useColorModeValue('#003834', '#003834')}} color='white'>View</Button></Link>
+                <Link href='/critique?id=4' passHref={true}><Button size="lg" fontFamily={'Raleway'} fontSize="2xl" ml={5} bgColor={useColorModeValue('#00786f', '#00786f')} _hover={{bgColor: useColorModeValue('#003834', '#003834')}} color='white'>View</Button></Link>
                 </Center>
               </Box>
             </Flex>

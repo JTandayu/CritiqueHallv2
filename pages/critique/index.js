@@ -91,13 +91,14 @@ export default function HallPage(){
     const { API_KEY } = process.env
     const toast = useToast()
     const router = useRouter()
+    const id = router.query.id;
     // const post_id = ;
 
     const [posts, setPosts] = useState([])
     const [loading, setLoading] = useState(true)
     const [currentPage, setCurrentPage] = useState(1)
     const [postsPerPage, setPostsPerPage] = useState(6)
-    const [hall, setHalls] =  useState('0')
+    const [hall, setHalls] =  useState(id)
     const [hallNum, setHallNum] = useState([])
     const [hallList, setHallList] = useState([])
 

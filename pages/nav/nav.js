@@ -414,7 +414,7 @@ export default function Nav(data, profile_pic){
                         mr={2}
                         w='100%'
                         position='static'
-                        color={Router.pathname === "/critique" ?  changeColor : changeColor2} 
+                        color={Router.pathname === "/critique?id=0" ?  changeColor : changeColor2} 
                         textDecoration={Router.pathname === "/critique" ? 'underline' : 'none'}
                         _hover={{cursor:'pointer', textDecoration:'underline', color: useColorModeValue('#C1272D', '#FF5C61')}}
                         fontFamily={'Raleway'}
@@ -611,7 +611,7 @@ export default function Nav(data, profile_pic){
                         aria-label='Home'
                         my={5}
                         w='100%'
-                        color={Router.pathname === "/critique" ? changeColor : changeColor2}
+                        color={Router.pathname === "/critique?id=0" ? changeColor : changeColor2}
                         textDecoration={Router.pathname === "/critique" ? 'underline' : 'none'}
                         _hover={{cursor:'pointer', textDecoration:'underline', color: useColorModeValue('#C1272D', '#FF5C61')}}
                         fontFamily={'Raleway'}

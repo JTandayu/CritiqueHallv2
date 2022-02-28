@@ -503,7 +503,7 @@ export default function CritiquePost(){
                     {/* Critique Input */}
                     <form onSubmit={(e) => giveCritique(e)}>
                     <Box display='flex' w="full" flexDir='column' mt={5}>
-                        <Textarea borderColor={useColorModeValue('black', 'white')} fontFamily={'Raleway'} placeholder='Critique this...' bg={useColorModeValue('white', '#212121')} boxShadow='md' w={{lg: '100%', sm: '100%'}} mx="auto" mt={3} onChange={e => setCritique(e.target.value)} value={critique} />
+                        <Textarea borderColor={useColorModeValue('black', 'white')} fontFamily={'Raleway'} placeholder='Critique this...' bg={useColorModeValue('white', '#212121')} boxShadow='md' w={{lg: '100%', sm: '100%', base: '100%'}} mx="auto" mt={3} onChange={e => setCritique(e.target.value)} value={critique} />
                         <Button fontFamily={'Raleway'} color={useColorModeValue('white', 'white')} _hover={{bgColor: useColorModeValue('#173cff', '#428eff')}} bgColor={useColorModeValue('#0C1F83', '#1D447E')} type='submit' w='10vh' mx='auto' mt={3}>Submit</Button>
                     </Box>
                     </form>
