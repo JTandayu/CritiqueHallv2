@@ -397,7 +397,7 @@ function CreatePost({data}) {
                             {/* <Button bg='blue.400' color='white' ml={5} h='2em'>upload</Button> */}
                             <Flex flexDir={{lg: 'row', sm: 'column', base: 'column'}}>
                                 <Flex>
-                                    <input type='file' multiple onChange={handleChange} accept=".jpg, .png, .docx, .xls" id='image-input' hidden />
+                                    <input type='file' multiple onChange={handleChange} accept=".jpg, .png, .docx, .xlsx, .jpeg, .JPG, .gif, .PNG, .ai, .svg, .html, .css, .wav, .mpeg, .flac, .mp3, .txt, .pdf, .psd" id='image-input' hidden />
                                     <Button fontFamily={'Raleway'} bg='yellow.400' color='black' _hover={{background: 'yellow.500'}} onClick={openInput} ml={2}>Choose <EditIcon ml={2} /></Button>
                                     <Popover trigger="hover">
                                     <PopoverTrigger>
