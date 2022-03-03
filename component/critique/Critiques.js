@@ -29,6 +29,8 @@ import { useRouter } from 'next/router'
 import { useToast } from "@chakra-ui/react";
 import { getCookie } from 'cookies-next'
 import ReportCritique from '@component/report-critique'
+import styles from  '@styles/Feedback.module.css'
+
 
 const breakpoints = createBreakpoints({
     sm: '320px',
@@ -311,7 +313,7 @@ export const Critiques = ({id, newCritique}) => {
                                     </Menu>
                                 </Flex>
                                 <Box w='100%' mt={1}>
-                                    <Text fontFamily={'Raleway'} textAlign={'justify'} fontSize='md'>{critique.body}</Text>
+                                    <Text fontFamily={'Raleway'} textAlign={'justify'} fontSize='md' className={styles.post_body}>{critique.body}</Text>
                                 </Box>
                                 <Flex w='30vw'>
                                     <Button fontFamily={'Raleway'} variant='ghost' w={{lg: "5em", base: "100px"}} onClick={()=>giveStar(critique.critique_id)}><Image src={changeIcon} alt="Stars" w="25px" h="25px" ml={2} mr={2} id="changeStarClicked"/> <Text id={`star${critique.critique_id}`}>{critique.stars}</Text></Button>
@@ -367,7 +369,7 @@ export const Critiques = ({id, newCritique}) => {
                                     </Menu> 
                                 </Flex>
                                 <Box w='100%' mt={1}>
-                                    <Text fontFamily={'Raleway'} textAlign={'justify'} fontSize='md'>{critique.body}</Text>
+                                    <Text fontFamily={'Raleway'} textAlign={'justify'} fontSize='md' className={styles.post_body}>{critique.body}</Text>
                                 </Box>
                                 <Flex w='30vw'>
                                     <Button fontFamily={'Raleway'} variant='ghost' w={{lg: "5em", base: "100px"}} onClick={()=>giveStar(critique.critique_id)}><Image src={changeIcon} alt="Stars" w="25px" h="25px" ml={2} mr={2} id="changeStarClicked"/><Text id={`star${critique.critique_id}`}>{critique.stars}</Text></Button>

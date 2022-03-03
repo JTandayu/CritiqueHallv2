@@ -28,6 +28,7 @@ import { useRouter } from 'next/router'
 import { useToast } from "@chakra-ui/react";
 import { getCookie } from 'cookies-next'
 import ReportReply from '@component/report-reply'
+import styles from  '@styles/Feedback.module.css'
 
 const breakpoints = createBreakpoints({
     sm: '320px',
@@ -172,7 +173,7 @@ export const CritiqueReply = ({id, post_id, newReply}) => {
                                 </Menu>
                             </Flex>
                             <Box w='100%' mt={1}>
-                                <Text fontFamily={'Raleway'} fontSize='sm' textAlign={'justify'}>{reply.body}</Text>
+                                <Text fontFamily={'Raleway'} fontSize='sm' textAlign={'justify'} className={styles.post_body}>{reply.body}</Text>
                             </Box>
                             <Flex w='20vw'>
                                 <Button fontFamily={'Raleway'} variant='ghost' onClick={(e)=>giveStar(reply.reply_id, e)}><Image src={changeIcon} alt="Stars" w="25px" h="25px" ml={2} mr={2}/> <Text id={`starreply${reply.reply_id}`}>{reply.stars}</Text></Button>
@@ -216,7 +217,7 @@ export const CritiqueReply = ({id, post_id, newReply}) => {
                                 </Menu>
                             </Flex>
                             <Box w='100%' mt={1}>
-                                <Text fontSize='sm' fontFamily={'Raleway'}  textAlign={'justify'}>{reply.body}</Text>
+                                <Text fontSize='sm' fontFamily={'Raleway'}  textAlign={'justify'} className={styles.post_body}>{reply.body}</Text>
                             </Box>
                             <Flex w='20vw'>
                                 <Button fontFamily={'Raleway'} variant='ghost' onClick={(e)=>giveStar(reply.reply_id, e)}><Image src={changeIcon} alt="Stars" w="25px" h="25px" ml={2} mr={2}/> <Text id={`starreply${reply.reply_id}`}>{reply.stars}</Text></Button>
