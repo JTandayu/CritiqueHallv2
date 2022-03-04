@@ -450,7 +450,7 @@ export default function HallPage(){
                             
                     )
                     ]
-                    : <Center><Image src={thereNoPost} w='700px' h='50px' disabled /></Center>}
+                    : <Center><Image src={thereNoPost} w='200px' h='50px' disabled /></Center>}
                 </Box>
             </Box>
 
