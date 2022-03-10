@@ -52,7 +52,10 @@ const DeleteReply = ({id}) => {
           router.reload()
         }).catch((error)=>{
           console.log(error)
-          if(error.response.data.status === "Account Muted"){
+          if(typeof error.response === 'undefined'){
+            toastIdRef.current = toast({ position: 'top', title: 'Something is wrong in the server. Please try again later.', status: 'error', duration: 3000, isClosable: true })
+          }
+          else if(error.response.data.status === "Account Muted"){
             toastIdRef.current = toast({ position: 'top', title: 'Account muted!', status: 'error', duration: 3000, isClosable: true })
         }
         })

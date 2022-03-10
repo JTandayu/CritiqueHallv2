@@ -210,7 +210,10 @@ function EditPost({data, url, fileNames}){
         .catch(error => {
             console.log(error);
             // console.log(error.response)
-            if(error.response.data.status === "Account Muted"){
+            if(typeof error.response === 'undefined'){
+                toastIdRef.current = toast({ position: 'top', title: 'Something is wrong in the server. Please try again later.', status: 'error', duration: 3000, isClosable: true })
+              }
+            else if(error.response.data.status === "Account Muted"){
                 toastIdRef.current = toast({ position: 'top', title: 'Account muted!', status: 'error', duration: 3000, isClosable: false })
             }
             // window.location.href = "/login"

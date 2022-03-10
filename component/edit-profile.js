@@ -406,8 +406,14 @@ function EditProfile({data}) {
               onClose();
               router.reload();
             }).catch((error) => {
-            toastIdRef.current = toast({ position: 'top', title: 'Your current password is invalid, please try again!', status: 'error', duration: 3000, isClosable: true }),
+
+            
             console.log(error)
+            if(typeof error.response === 'undefined'){
+                toastIdRef.current = toast({ position: 'top', title: 'Something is wrong in the server. Please try again later.', status: 'error', duration: 3000, isClosable: true })
+            }else{
+                toastIdRef.current = toast({ position: 'top', title: 'Your current password is invalid, please try again!', status: 'error', duration: 3000, isClosable: true })
+            }
         })
     }
 

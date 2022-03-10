@@ -112,19 +112,22 @@ export default function ConfirmationPage(){
           router.push('/home')
         })
         .catch(error => {
-            if(error.response.data.status == 'Wrong code'){
+            if(typeof error.response === 'undefined'){
+              toastIdRef.current = toast({ position: 'top', title: 'Something is wrong in the server. Please try again later.', status: 'error', duration: 3000, isClosable: true })
+            }
+            else if(error.response.data.status == 'Wrong code'){
               toastIdRef.current = toast({ position: 'top', title: 'Invalid code.', status: 'error', duration: 3000, isClosable: true })
             }
-            if(error.response.data == '\n<div style="border:1px solid #990000;padding-left…nce\t\t\t</p>\n\n\t\t\n\t\n\n</div>{"status":"Code expired"}'){
+            else if(error.response.data == '\n<div style="border:1px solid #990000;padding-left…nce\t\t\t</p>\n\n\t\t\n\t\n\n</div>{"status":"Code expired"}'){
               toastIdRef.current = toast({ position: 'top', title: 'Verification code expired.', status: 'error', duration: 3000, isClosable: true })
             }
-            if(error.response.data.status == 'Code expired'){
+            else if(error.response.data.status == 'Code expired'){
               toastIdRef.current = toast({ position: 'top', title: 'Verification code expired.', status: 'error', duration: 3000, isClosable: true })
             }
-            if(error.response.data.message == "<p>The Verification Code field must contain only numbers.</p>\n") {
+            else if(error.response.data.message == "<p>The Verification Code field must contain only numbers.</p>\n") {
               toastIdRef.current = toast({ position: 'top', title: 'Invalid code.', status: 'error', duration: 3000, isClosable: true })
             }
-            if(error.response.data.message == "Email have been verified") {
+            else if(error.response.data.message == "Email have been verified") {
               toastIdRef.current = toast({ position: 'top', title: 'Account already verified.', status: 'info', duration: 3000, isClosable: true })
             }
             // toastIdRef.current = toast({ position: 'top', title: 'Account verification unsuccessful!', description: 'Please try again.', status: 'error', duration: 3000, isClosable: true })

@@ -84,7 +84,10 @@ function DeletePost({id}){
       .then(()=>{
         router.push("/critique")
       }).catch((error)=>{
-        if(error.response.data.status === "Account Muted"){
+        if(typeof error.response === 'undefined'){
+          toastIdRef.current = toast({ position: 'top', title: 'Something is wrong in the server. Please try again later.', status: 'error', duration: 3000, isClosable: true })
+        }
+        else if(error.response.data.status === "Account Muted"){
           toastIdRef.current = toast({ position: 'top', title: 'Account muted!', status: 'error', duration: 3000, isClosable: false })
         }
         // toastIdRef.current = toast({ title: 'Delete post unsuccessful!', status: 'error', duration: 3000, isClosable: false })

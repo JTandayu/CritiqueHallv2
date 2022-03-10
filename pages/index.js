@@ -146,8 +146,11 @@ export default function Login({user}) {
       })
       .catch(error => {
           // toastIdRef.current = toast({ title: 'Login Unsuccessful!', status: 'error', duration: 3000, isClosable: false })
-          console.log(error);
-          if(error.response.data.message == 'Wrong credentials'){
+          console.log(error.response);
+          if(typeof error.response === 'undefined'){
+            toastIdRef.current = toast({ position: 'top', title: 'Something is wrong in the server. Please try again later.', status: 'error', duration: 3000, isClosable: true })
+          }
+          else if(error.response.data.message == 'Wrong credentials'){
             // document.getElementById('warning1').removeAttribute('hidden');
             // document.getElementById('warning2').hidden=true;
             toastIdRef.current = toast({ position: 'top', title: 'Invalid credentials.', status: 'error', duration: 3000, isClosable: true })
@@ -157,6 +160,7 @@ export default function Login({user}) {
             // document.getElementById('warning2').hidden=true;
             toastIdRef.current = toast({ position: 'top', title: 'Invalid credentials.', status: 'error', duration: 3000, isClosable: true })
           }
+          
           
           
           // window.location.href = "/login"

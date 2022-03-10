@@ -84,6 +84,9 @@ export const CritiqueReply = ({id, post_id, newReply}) => {
 
         }).catch((error) =>{
             console.log(error)
+            if(typeof error.response === 'undefined'){
+                toastIdRef.current = toast({ position: 'top', title: 'Something is wrong in the server. Please try again later.', status: 'error', duration: 3000, isClosable: true })
+            }
         })
 
     }, [newReply, id])
@@ -100,7 +103,10 @@ export const CritiqueReply = ({id, post_id, newReply}) => {
             document.getElementById(`starreply${reply_id}`).innerHTML=response.data.stars;
         }).catch((error) =>{
             console.log(error)
-            if(error.response.data.status === "Account Muted"){
+            if(typeof error.response === 'undefined'){
+                toastIdRef.current = toast({ position: 'top', title: 'Something is wrong in the server. Please try again later.', status: 'error', duration: 3000, isClosable: true })
+            }
+            else if(error.response.data.status === "Account Muted"){
                 toastIdRef.current = toast({ position: 'top', title: 'You are currently muted. Please check your notifications for more details.', status: 'error', duration: 3000, isClosable: true })
             }
         })

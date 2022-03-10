@@ -164,28 +164,36 @@ export default function Nav(data, profile_pic){
         })
         .catch(error => {
             // console.log(error.response.data.error);
-            if(error.response.data.error ==  'User does not exist'){
+            if(typeof error.response === 'undefined'){
+                toastIdRef.current = toast({ position: 'top', title: 'Something is wrong in the server. Please try again later.', status: 'error', duration: 3000, isClosable: true })
                 removeCookies('token');
                 removeCookies('encrypted_id');
                 removeCookies('display_name');
                 Router.replace('/')
                 return null;
             }
-            if(error.response.data.error ==  'Token Expired'){
+            else if(error.response.data.error ==  'User does not exist'){
                 removeCookies('token');
                 removeCookies('encrypted_id');
                 removeCookies('display_name');
                 Router.replace('/')
                 return null;
             }
-            if(error.response.data.error ==  'Unauthorized'){
+            else if(error.response.data.error ==  'Token Expired'){
                 removeCookies('token');
                 removeCookies('encrypted_id');
                 removeCookies('display_name');
                 Router.replace('/')
                 return null;
             }
-            if(error.response.data.error ==  'Account Suspended'){
+            else if(error.response.data.error ==  'Unauthorized'){
+                removeCookies('token');
+                removeCookies('encrypted_id');
+                removeCookies('display_name');
+                Router.replace('/')
+                return null;
+            }
+            else if(error.response.data.error ==  'Account Suspended'){
                 removeCookies('token');
                 removeCookies('encrypted_id');
                 removeCookies('display_name');
@@ -260,7 +268,15 @@ export default function Nav(data, profile_pic){
             router.push('/')
         }).catch((error)=>{
             console.log(error)
-            if(error.response.data.error ==  'Account Suspended'){
+            if(typeof error.response === 'undefined'){
+                toastIdRef.current = toast({ position: 'top', title: 'Something is wrong in the server. Please try again later.', status: 'error', duration: 3000, isClosable: true })
+                removeCookies('token');
+                removeCookies('encrypted_id');
+                removeCookies('display_name');
+                Router.replace('/')
+                return null;
+            }
+            else if(error.response.data.error ==  'Account Suspended'){
                 removeCookies('token');
                 removeCookies('encrypted_id');
                 removeCookies('display_name');

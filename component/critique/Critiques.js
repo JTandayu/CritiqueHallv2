@@ -106,6 +106,9 @@ export const Critiques = ({id, newCritique}) => {
             }
         }).catch((error) =>{
             console.log(error)
+            if(typeof error.response === 'undefined'){
+                toastIdRef.current = toast({ position: 'top', title: 'Something is wrong in the server. Please try again later.', status: 'error', duration: 3000, isClosable: true })
+            }
         })
         
     }, [newCritique, id])
@@ -144,7 +147,10 @@ export const Critiques = ({id, newCritique}) => {
 
         }).catch((error) =>{
             console.log(error)
-            if(error.response.data.status === "Account Muted"){
+            if(typeof error.response === 'undefined'){
+                toastIdRef.current = toast({ position: 'top', title: 'Something is wrong in the server. Please try again later.', status: 'error', duration: 3000, isClosable: true })
+              }
+            else if(error.response.data.status === "Account Muted"){
                 toastIdRef.current = toast({ position: 'top', title: 'You are currently muted. Please check your notifications for more details.', status: 'error', duration: 3000, isClosable: true })
             }else if(error.response.data.message === "<p>The Reply field is required.<p>\n"){
                 toastIdRef.current = toast({ position: 'top', title: 'Reply is required.', status: 'error', duration: 3000, isClosable: false })

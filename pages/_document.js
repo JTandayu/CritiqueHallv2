@@ -9,6 +9,7 @@ export default class Document extends NextDocument {
         <Head>
           <meta name="google-site-verification" content="sUvYsIUWImHfTkWIYvXMioXKxYtGLe8oq53x-vEMHX0" />
           <meta name="keywords" content="Critique Hall, critique hall, critiquehall, CritiqueHall, CRITIQUEHALL, CRITIQUE HALL" />
+          <meta charset="UTF-8" />
           <script
           async
           src="https://www.googletagmanager.com/gtag/js?id=G-BJ9NXYN9GV"

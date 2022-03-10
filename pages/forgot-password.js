@@ -91,7 +91,10 @@ export default function ForgotPassword(){
           // toastIdRef.current = toast({ title: 'Reset Password Link Error!', description: 'Please try again!', status: 'error', duration: 2000, isClosable: true })
             console.log(error);
             // console.log(error.response);
-            if(error.response.data.status === "Wrong Credential"){
+            if(typeof error.response === 'undefined'){
+              toastIdRef.current = toast({ position: 'top', title: 'Something is wrong in the server. Please try again later.', status: 'error', duration: 3000, isClosable: true })
+            }
+            else if(error.response.data.status === "Wrong Credential"){
               // document.getElementById('warning2').removeAttribute('hidden');
               // document.getElementById('warning1').hidden=true;
               toastIdRef.current = toast({ position: 'top', title: 'Sorry, we could not find that email.', status: 'error', duration: 3000, isClosable: true })
