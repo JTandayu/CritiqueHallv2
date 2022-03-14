@@ -113,7 +113,7 @@ export default function ConfirmationPage(){
         })
         .catch(error => {
             if(typeof error.response === 'undefined'){
-              toastIdRef.current = toast({ position: 'top', title: 'Something is wrong in the server. Please try again later.', status: 'error', duration: 3000, isClosable: true })
+              toastIdRef.current = toast({ position: 'top', title: 'Server error. Please try again later.', status: 'error', duration: 3000, isClosable: true })
             }
             else if(error.response.data.status == 'Wrong code'){
               toastIdRef.current = toast({ position: 'top', title: 'Invalid code.', status: 'error', duration: 3000, isClosable: true })

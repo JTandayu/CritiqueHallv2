@@ -128,7 +128,7 @@ export default function ResetPassword({}){
           // toastIdRef.current = toast({ title: 'Reset Password Unsuccessful!', description: 'Please try again!', status: 'error', duration: 2000, isClosable: true })
             console.log(error);
             if(typeof error.response === 'undefined'){
-              toastIdRef.current = toast({ position: 'top', title: 'Something is wrong in the server. Please try again later.', status: 'error', duration: 3000, isClosable: true })
+              toastIdRef.current = toast({ position: 'top', title: 'Server error. Please try again later.', status: 'error', duration: 3000, isClosable: true })
             }
             else if(error.response.data.message == 'Token expired'){
               toastIdRef.current = toast({ position: 'top', title: 'Reset password link expired, please send a new one.', status: 'error', duration: 3000, isClosable: true })

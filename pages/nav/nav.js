@@ -165,7 +165,7 @@ export default function Nav(data, profile_pic){
         .catch(error => {
             // console.log(error.response.data.error);
             if(typeof error.response === 'undefined'){
-                toastIdRef.current = toast({ position: 'top', title: 'Something is wrong in the server. Please try again later.', status: 'error', duration: 3000, isClosable: true })
+                toastIdRef.current = toast({ position: 'top', title: 'Server error. Please try again later.', status: 'error', duration: 3000, isClosable: true })
                 removeCookies('token');
                 removeCookies('encrypted_id');
                 removeCookies('display_name');
@@ -269,7 +269,7 @@ export default function Nav(data, profile_pic){
         }).catch((error)=>{
             console.log(error)
             if(typeof error.response === 'undefined'){
-                toastIdRef.current = toast({ position: 'top', title: 'Something is wrong in the server. Please try again later.', status: 'error', duration: 3000, isClosable: true })
+                toastIdRef.current = toast({ position: 'top', title: 'Server error. Please try again later.', status: 'error', duration: 3000, isClosable: true })
                 removeCookies('token');
                 removeCookies('encrypted_id');
                 removeCookies('display_name');
