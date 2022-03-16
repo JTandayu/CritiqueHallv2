@@ -366,7 +366,7 @@ function EditProfile({data}) {
             // }else if(error.response.data.message == "<p>No changes made</p>\n"){
             //     toastIdRef.current = toast({ position: 'top', title: 'No changes were made!', status: 'error', duration: 3000, isClosable: true })
             if(typeof error.response === 'undefined'){
-                toastIdRef.current = toast({ position: 'top', title: 'Server error. Please try again later.', status: 'error', duration: 3000, isClosable: true })
+                toastIdRef.current = toast({ position: 'top', title: 'Undefined request. Please try again.', status: 'error', duration: 3000, isClosable: true })
             }
             else if(error.response.data.message == "<p>Wrong password</p>\n"){
                 toastIdRef.current = toast({ position: 'top', title: 'Incorrect password, please try again!', status: 'error', duration: 3000, isClosable: true })
@@ -413,7 +413,7 @@ function EditProfile({data}) {
             
             console.log(error)
             if(typeof error.response === 'undefined'){
-                toastIdRef.current = toast({ position: 'top', title: 'Server error. Please try again later.', status: 'error', duration: 3000, isClosable: true })
+                toastIdRef.current = toast({ position: 'top', title: 'Undefined request. Please try again.', status: 'error', duration: 3000, isClosable: true })
             }else{
                 toastIdRef.current = toast({ position: 'top', title: 'Your current password is invalid, please try again!', status: 'error', duration: 3000, isClosable: true })
             }

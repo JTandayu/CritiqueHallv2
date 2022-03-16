@@ -151,7 +151,7 @@ export default function HallPage(){
         .catch(error => {
             console.log(error);
             if(typeof error.response === 'undefined'){
-                toastIdRef.current = toast({ position: 'top', title: 'Server error. Please try again later.', status: 'error', duration: 3000, isClosable: true })
+                toastIdRef.current = toast({ position: 'top', title: 'Undefined request. Please try again.', status: 'error', duration: 3000, isClosable: true })
             }
             // if(error.response.status ==  '401'){
             //     Router.replace('/login')
@@ -167,7 +167,7 @@ export default function HallPage(){
         .catch(error => {
             console.log(error);
             if(typeof error.response === 'undefined'){
-                toastIdRef.current = toast({ position: 'top', title: 'Server error. Please try again later.', status: 'error', duration: 3000, isClosable: true })
+                toastIdRef.current = toast({ position: 'top', title: 'Undefined request. Please try again.', status: 'error', duration: 3000, isClosable: true })
             }
             // console.log(error.response.status)
         });
@@ -208,7 +208,7 @@ export default function HallPage(){
         .catch(error => {
             console.log(error);
             if(typeof error.response === 'undefined'){
-                toastIdRef.current = toast({ position: 'top', title: 'Server error. Please try again later.', status: 'error', duration: 3000, isClosable: true })
+                toastIdRef.current = toast({ position: 'top', title: 'Undefined request. Please try again.', status: 'error', duration: 3000, isClosable: true })
               }
         });
 
@@ -229,7 +229,7 @@ export default function HallPage(){
         .catch(error => {
             console.log(error);
             if(typeof error.response === 'undefined'){
-                toastIdRef.current = toast({ position: 'top', title: 'Server error. Please try again later.', status: 'error', duration: 3000, isClosable: true })
+                toastIdRef.current = toast({ position: 'top', title: 'Undefined request. Please try again.', status: 'error', duration: 3000, isClosable: true })
               }
         });
     }
@@ -246,7 +246,7 @@ export default function HallPage(){
         .catch(error => {
             console.log(error);
             if(typeof error.response === 'undefined'){
-                toastIdRef.current = toast({ position: 'top', title: 'Server error. Please try again later.', status: 'error', duration: 3000, isClosable: true })
+                toastIdRef.current = toast({ position: 'top', title: 'Undefined request. Please try again.', status: 'error', duration: 3000, isClosable: true })
               }
         });
 
@@ -267,7 +267,7 @@ export default function HallPage(){
         .catch(error => {
             console.log(error);
             if(typeof error.response === 'undefined'){
-                toastIdRef.current = toast({ position: 'top', title: 'Server error. Please try again later.', status: 'error', duration: 3000, isClosable: true })
+                toastIdRef.current = toast({ position: 'top', title: 'Undefined request. Please try again.', status: 'error', duration: 3000, isClosable: true })
               }
         });
 
@@ -287,7 +287,7 @@ export default function HallPage(){
         .catch(error => {
             console.log(error);
             if(typeof error.response === 'undefined'){
-                toastIdRef.current = toast({ position: 'top', title: 'Server error. Please try again later.', status: 'error', duration: 3000, isClosable: true })
+                toastIdRef.current = toast({ position: 'top', title: 'Undefined request. Please try again.', status: 'error', duration: 3000, isClosable: true })
               }
         });
 
@@ -307,7 +307,7 @@ export default function HallPage(){
         .catch(error => {
             console.log(error);
             if(typeof error.response === 'undefined'){
-                toastIdRef.current = toast({ position: 'top', title: 'Server error. Please try again later.', status: 'error', duration: 3000, isClosable: true })
+                toastIdRef.current = toast({ position: 'top', title: 'Undefined request. Please try again.', status: 'error', duration: 3000, isClosable: true })
               }
         });
     }
