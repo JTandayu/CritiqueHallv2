@@ -148,7 +148,7 @@ export default function Login({user}) {
           // toastIdRef.current = toast({ title: 'Login Unsuccessful!', status: 'error', duration: 3000, isClosable: false })
           console.log(error.response);
           if(typeof error.response === 'undefined'){
-            toastIdRef.current = toast({ position: 'top', title: 'Server error. Please try again later.', status: 'error', duration: 3000, isClosable: true })
+            toastIdRef.current = toast({ position: 'top', title: 'Undefined request. Please try again.', status: 'error', duration: 3000, isClosable: true })
           }
           else if(error.response.data.message == 'Wrong credentials'){
             // document.getElementById('warning1').removeAttribute('hidden');
