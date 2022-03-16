@@ -115,6 +115,9 @@ export default function ConfirmationPage(){
             if(typeof error.response === 'undefined'){
               toastIdRef.current = toast({ position: 'top', title: 'Undefined request. Please try again.', status: 'error', duration: 3000, isClosable: true })
             }
+            else if(error.response.status == 500) {
+              toastIdRef.current = toast({ position: 'top', title: 'Server error. Please try again later.', status: 'error', duration: 3000, isClosable: true })
+            }
             else if(error.response.data.status == 'Wrong code'){
               toastIdRef.current = toast({ position: 'top', title: 'Invalid code.', status: 'error', duration: 3000, isClosable: true })
             }
