@@ -172,6 +172,9 @@ export default function Nav(data, profile_pic){
                 Router.replace('/')
                 return null;
             }
+            else if(error.response.status == 500) {
+                toastIdRef.current = toast({ position: 'top', title: 'Server error. Please try again later.', status: 'error', duration: 3000, isClosable: true })
+            }
             else if(error.response.data.error ==  'User does not exist'){
                 removeCookies('token');
                 removeCookies('encrypted_id');
@@ -275,6 +278,9 @@ export default function Nav(data, profile_pic){
                 removeCookies('display_name');
                 Router.replace('/')
                 return null;
+            }
+            else if(error.response.status == 500) {
+                toastIdRef.current = toast({ position: 'top', title: 'Server error. Please try again later.', status: 'error', duration: 3000, isClosable: true })
             }
             else if(error.response.data.error ==  'Account Suspended'){
                 removeCookies('token');
