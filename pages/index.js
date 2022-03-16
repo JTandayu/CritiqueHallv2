@@ -160,7 +160,7 @@ export default function Login({user}) {
             // document.getElementById('warning2').hidden=true;
             toastIdRef.current = toast({ position: 'top', title: 'Invalid credentials.', status: 'error', duration: 3000, isClosable: true })
           }
-          else if(error.response.data.status == 500) {
+          else if(error.response.status == 500) {
             toastIdRef.current = toast({ position: 'top', title: 'Server error. Please try again later.', status: 'error', duration: 3000, isClosable: true })
           }
           
